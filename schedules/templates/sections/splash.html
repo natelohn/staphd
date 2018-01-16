@@ -1,0 +1,15 @@
+{% extends "sections/base.html" %}
+{% load static from staticfiles %}
+{% block head_content%}
+	<link rel="stylesheet" href="{% static 'css/splash.css' %}">
+{% endblock %}
+{% block content %}
+<div class="splash-bg">
+	<video loop muted autoplay poster="{% static 'images/lake.jpg' %}" src="{% static 'videos/lake.mov' %}" class="splash-bg__video"></video>
+</div>
+<div class="splash-header">
+	<h1>staphd.com</h1>
+</div>
+{% block login %}
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "sections/base.html" %}
+{% load static from staticfiles %}
+{% block head_content%}
+	<link rel="stylesheet" href="{% static 'css/nav.css' %}">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+{% block content %}
+<div id="navbar">
+	<div id="title">staphd.com</div>
+	<div id="user">
+		user: {{ user.get_username }}, <a href="{% url 'logout'%}">Log out</a>
+	</div>
+	<ul id="links">
+		<li><a href="{% url 'schedules:home'%}">Home</a></li>
+		<li><a href="{% url 'schedules:staphers'%}">Staphers</a></li>
+		<li><a href="{% url 'schedules:shifts'%}">Shifts</a></li>
+	</ul>
+</div>
+{% block page %}
+<!-- page content -->
+{% endblock %}
+
+{% endblock %}
+

@@ -1,0 +1,61 @@
+#navbar {
+    background-color: silver;
+    width: 100%;
+    height: 60px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+}
+
+#title {
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    font-size: 2.7em;
+    margin-left: 20px;
+}
+
+#user {
+    position: absolute;
+    left: 50%;
+    height: 50%;
+    width: 50%;
+    text-align: right;
+    font-size: 0.8em;
+}
+#user a{
+    margin-right: 5px;
+    color: black;
+}
+
+#links {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    left: 50%;
+    top: 50%;
+    text-align: right;
+}
+
+#links li{
+    display: inline-block;
+    height: 100%;
+    text-align: center;
+}
+
+#links li:hover{
+    background-color: grey;
+}
+
+#links a{
+    text-decoration: none;
+    font-size: 1.4em;
+    width: 20%;
+    height: 100%;
+    width: 20%;
+    color: white;
+    margin-right: 15px;
+    margin-left: 15px;
+}
+

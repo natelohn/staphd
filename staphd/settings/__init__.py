@@ -1,8 +1,8 @@
 from .base import *
 
-from .production import *
+# from .production_settings import *
 
-try:
-   from .local import *
-except:
-   pass
+# try:
+#    from .local_settings import *
+# except:
+#    pass
