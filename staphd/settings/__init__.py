@@ -1,4 +1,4 @@
-from .base import *
+from .local_settings import *
 
 # from .production_settings import *
 

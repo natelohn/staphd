@@ -1,14 +1,18 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import TemplateView
+from django.views.generic import ListView, TemplateView
 
-
+from .models import Stapher
 
 class HomeView(LoginRequiredMixin, TemplateView):
-    template_name = 'pages/home.html'
+    template_name = 'schedules/home.html'
 
-class StapherView(TemplateView):
-	template_name = 'pages/staphers.html'
+class StapherListView(LoginRequiredMixin,ListView):
+	template_name = 'schedules/stapher_list.html'
+	def get_queryset(self):
+		queryset = Stapher.objects.all()
 
-class ShiftView(TemplateView):
-	template_name = 'pages/shifts.html'
+class ShiftView(LoginRequiredMixin, TemplateView):
+	template_name = 'schedules/shifts.html'
+
+
 
