@@ -4,8 +4,9 @@
 	<h1>STAPHERS PAGE!!! </h1>
 	<ul>
 		{% for obj in object_list %}
-		<li><a href="/staphers/{{obj.id}}">{{ obj }}</a></li>
+		<li><a href='{{ obj.get_absolute_url }}'>{{ obj }}</a></li>
 		{% endfor %}
 	</ul>
+	<a href="{% url 'schedules:stapher-create'%}">New Stapher</a>
 </div>
 {% endblock %}

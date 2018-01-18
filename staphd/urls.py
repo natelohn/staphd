@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from schedules import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include('django.contrib.auth.urls')), # Django auth urls for login/out & pw management
-    url(r'^', include('schedules.urls'))
+    url(r'^', include('schedules.urls')),
+    url(r'^$', views.HomeView.as_view(), name='home')
 ]
