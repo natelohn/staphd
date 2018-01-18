@@ -6,6 +6,9 @@
 	<h5>Age: {{object.age}}, Class: {{object.class_year}}, Summers: {{object.summers_worked}}</h5>
 	<p>Qualifications:</p>
 	<p>{{object.qualifications}}</p>
-	<a href="{% url 'schedules:stapher-update' pk=object.id%}">Edit</a>
+	<div>
+		<a href="{% url 'schedules:stapher-delete' pk=object.id%}">Delete</a>
+		<a href="{% url 'schedules:stapher-update' pk=object.id%}">Edit</a>
+	</div>
 </div>
 {% endblock %}
