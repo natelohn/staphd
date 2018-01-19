@@ -1,0 +1,16 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+<div id="page">
+	<h1>{{title}}</h1>
+	<form method='GET' action='.'>
+			<input type='text' placeholder="Search..." name='q' value='{{ request.GET.q }}'>
+			<button type='submit'>Search</button>
+	</form>
+	<ul>
+		{% for obj in object_list %}
+		<li><a href='{{ obj.get_absolute_url }}'>{{ obj }}</a></li>
+		{% endfor %}
+	</ul>
+	<a type=button href="{% url link %}">New</a>
+</div>
+{% endblock %}
