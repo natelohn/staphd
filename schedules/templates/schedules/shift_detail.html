@@ -1,0 +1,14 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+<div id="page">
+	<h1>{{ object.title }}</h1>
+	<h3>{{ object.start }} - {{ object.end }} </h3>
+	<h5> Staphers Needed: {{ object.workers_needed }} </h5>
+	<p>Qualifications:</p>
+	<p>{{object.qualifications}}</p>
+	<div>
+		<a href="{% url 'schedules:shift-delete' pk=object.id%}">Delete</a>
+		<a href="{% url 'schedules:shift-update' pk=object.id%}">Edit</a>
+	</div>
+</div>
+{% endblock %}

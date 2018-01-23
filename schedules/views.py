@@ -4,8 +4,8 @@ from django.db.models.functions import Lower
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .models import Stapher
-from .forms import StapherCreateForm
+from .models import Stapher, Shift
+from .forms import StapherCreateForm, ShiftCreateForm
 
 class Home(LoginRequiredMixin, TemplateView):
     template_name = 'home.html'
@@ -45,7 +45,7 @@ class StapherDetail(LoginRequiredMixin,DetailView):
 		return context
 
 class StapherCreate(LoginRequiredMixin, CreateView):
-	template_name = 'schedules/schedules_form.html'
+	template_name = 'schedules/form.html'
 	form_class = StapherCreateForm
 
 	def get_context_data(self, *args, **kwargs):
@@ -60,27 +60,81 @@ class StapherCreate(LoginRequiredMixin, CreateView):
 
 
 class StapherUpdate(LoginRequiredMixin, UpdateView):
-	template_name = 'schedules/schedules_form.html'
+	template_name = 'schedules/form.html'
 	form_class = StapherCreateForm
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherUpdate, self).get_context_data(*args, **kwargs)
-		name = self.get_object().first_name + ' ' + self.get_object().last_name
-		context['title'] = f'Edit - {name} '
+		context['title'] = f'Edit - {self.get_object()} '
 		return context
 
 	def get_queryset(self):
 		return Stapher.objects.filter(user=self.request.user)
 
 class StapherDelete(DeleteView):
-	template_name = 'schedules/schedules_delete.html'
+	template_name = 'schedules/delete.html'
 	model = Stapher
-	success_url = reverse_lazy('schedules:staphers-list')
+	success_url = reverse_lazy('schedules:stapher-list')
 
 
 
-class Shift(LoginRequiredMixin, TemplateView):
-	template_name = 'schedules/shifts.html'
+class ShiftList(LoginRequiredMixin, ListView):
+	template_name = 'schedules/list.html'
+	def get_queryset(self):
+		queryset = Shift.objects.all()
+		query = self.request.GET.get('q')
+		if query:
+			queryset = queryset.filter(
+				Q(title__icontains=query) |
+				Q(flag__icontains=query)
+			)
+		return queryset
+		
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ShiftList, self).get_context_data(*args, **kwargs)
+		context['title'] = 'Shifts'
+		context['link'] = 'schedules:shift-create'
+		return context
 
 
+class ShiftDetail(LoginRequiredMixin,DetailView):
+	queryset = Shift.objects.all()
 
+	def get_context_data(self, *args, **kwargs):
+		context = super(ShiftDetail, self).get_context_data(*args, **kwargs)
+		return context
+
+
+class ShiftCreate(LoginRequiredMixin, CreateView):
+	template_name = 'schedules/form.html'
+	form_class = ShiftCreateForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ShiftCreate, self).get_context_data(*args, **kwargs)
+		context['title'] = 'Add Shift:'
+		return context
+
+	def form_valid(self, form):
+		instance = form.save(commit=False)
+		instance.user = self.request.user
+		return super(ShiftCreate, self).form_valid(form)
+
+
+class ShiftUpdate(LoginRequiredMixin, UpdateView):
+	template_name = 'schedules/form.html'
+	form_class = ShiftCreateForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ShiftUpdate, self).get_context_data(*args, **kwargs)
+		title = self.get_object().title
+		context['title'] = f'Edit - {self.get_object()} '
+		return context
+
+	def get_queryset(self):
+		return Shift.objects.filter(user=self.request.user)
+
+class ShiftDelete(DeleteView):
+	template_name = 'schedules/delete.html'
+	model = Shift
+	success_url = reverse_lazy('schedules:shift-list')

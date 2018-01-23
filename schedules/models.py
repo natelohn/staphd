@@ -12,8 +12,8 @@ class Stapher(models.Model):
 	first_name 		= models.CharField(max_length=100, default='FIRST')
 	last_name 		= models.CharField(max_length=100, default='LAST')
 	title 			= models.CharField(max_length=100, default='DEFAULT')
-	gender 			= models.CharField(max_length=100, default='')
-	qualifications	= models.TextField(default='') # Should this be it's own model??
+	gender 			= models.CharField(max_length=100, default='none')
+	qualifications	= models.TextField(default='none') # Should this be it's own model??
 	age 			= models.IntegerField(default=18)
 	class_year 		= models.IntegerField(default=dt.datetime.today().year)
 	summers_worked 	= models.IntegerField(default=0)
@@ -49,4 +49,7 @@ class Shift(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	def get_absolute_url(self):
+		return reverse('schedules:shift-detail', kwargs={'pk': self.id})
 

@@ -1,5 +1,5 @@
 <form method='POST'> {% csrf_token %}
     {{ form.as_p }}
-    <input type=button value="Cancel" onClick="window.history.back();return false;">
+    <a href="{% url 'home'%}">Cancel</a>
     <button type='submit'>Save</button>
 </form>
