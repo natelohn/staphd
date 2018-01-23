@@ -86,17 +86,12 @@ class ShiftCreateForm(forms.ModelForm):
 		fields = [
 			'title',
 			'flag',
+			'day',
 			'start',
 			'end',
 			'qualifications',
 			'workers_needed',
-			'difficult',
-			'on_sunday',
-			'on_monday',
-			'on_tuesday',
-			'on_wednesday',
-			'on_thursday',
-			'on_friday',
-			'on_saturday'
+			'difficult'
 		]
+
 

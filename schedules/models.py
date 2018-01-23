@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 
+from . import fields
 
 User = settings.AUTH_USER_MODEL
 
@@ -29,22 +30,14 @@ class Stapher(models.Model):
 class Shift(models.Model):
 	user 			= models.ForeignKey(User, default=1)
 	title 			= models.CharField(max_length=100,default='DEFAULT')
-	flag 			= models.CharField(max_length=100, default='')
-	start			= models.DateTimeField(default=dt.datetime.now)
-	end		 		= models.DateTimeField(default=dt.datetime.now)
-	qualifications 	= models.TextField(default='') # Should this be it's own model??
+	flag 			= models.CharField(max_length=100, default='flag')
+	day 			= fields.DayOfTheWeekField(default=0)
+	start			= models.TimeField(default=dt.datetime.now)
+	end		 		= models.TimeField(default=dt.datetime.now)
+	qualifications 	= models.TextField(default='none') # Should this be it's own model??
 	workers_needed	= models.IntegerField(default=0)
 	difficult		= models.BooleanField(default=False)
-	# Could change to below fields to a repeating value 
-	# (ie. repeats daily, weekly, etc) and only use DateTime from start and end.
-	on_sunday 		= models.BooleanField(default=False)
-	on_monday 		= models.BooleanField(default=False)
-	on_tuesday 		= models.BooleanField(default=False)
-	on_wednesday 	= models.BooleanField(default=False)
-	on_thursday 	= models.BooleanField(default=False)
-	on_friday 		= models.BooleanField(default=False)
-	on_saturday 	= models.BooleanField(default=False)
-	# Need to show staphers covering the shifts...
+	# Need to show stapher(s) covering the shifts...
 	# OneToManyField ??
 
 	def __str__(self):
