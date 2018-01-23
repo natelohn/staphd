@@ -4,8 +4,14 @@
 	<h1>{{ object.first_name }} {{ object.last_name }}</h1>
 	<h3>{{ object.title }}</h3>
 	<h5>Age: {{object.age}}, Class: {{object.class_year}}, Summers: {{object.summers_worked}}</h5>
+	{% if object.qualifications %}
 	<p>Qualifications:</p>
-	<p>{{object.qualifications}}</p>
+	<ul>
+		{% for qualification in object.qualifications.all %}
+		<li>{{qualification.title}}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
 	<div>
 		<a href="{% url 'schedules:stapher-delete' pk=object.id%}">Delete</a>
 		<a href="{% url 'schedules:stapher-update' pk=object.id%}">Edit</a>

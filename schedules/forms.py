@@ -1,7 +1,7 @@
 import datetime as dt
 from django import forms
 
-from .models import Stapher, Shift
+from .models import Flag, Stapher, Shift, Qualification
 
 
 class StapherCreateForm(forms.ModelForm):
@@ -12,10 +12,10 @@ class StapherCreateForm(forms.ModelForm):
 			'last_name',
 			'title',
 			'gender',
-			'qualifications',
 			'age',
 			'class_year',
-			'summers_worked'
+			'summers_worked',
+			'qualifications'
 		]
 
 	def clean_first_name(self):
@@ -30,14 +30,7 @@ class StapherCreateForm(forms.ModelForm):
 		just_chars = name.replace(' ', '').replace('-', '')
 		if not just_chars.isalpha():
 			raise forms.ValidationError("Must use only alphanumeric characters.")
-		return name
-
-	def clean_gender(self):
-		gender = self.cleaned_data.get("gender")
-		just_chars = gender.replace(' ', '')
-		if not just_chars.isalpha():
-			raise forms.ValidationError("Gender is non-binary so, please only use alphanumeric characters.")
-		return gender		
+		return name		
 
 	def clean_age(self):
 		age = self.cleaned_data.get("age")
@@ -89,9 +82,26 @@ class ShiftCreateForm(forms.ModelForm):
 			'day',
 			'start',
 			'end',
-			'qualifications',
 			'workers_needed',
-			'difficult'
+			'difficult',
+			'qualifications'
 		]
+
+class QualificationCreateForm(forms.ModelForm):
+	class Meta:
+		model = Qualification
+		fields = [
+			'title'
+		]
+
+
+class FlagCreateForm(forms.ModelForm):
+	class Meta:
+		model = Flag
+		fields = [
+			'title'
+		]
+
+
 
 

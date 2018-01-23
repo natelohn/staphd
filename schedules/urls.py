@@ -17,4 +17,8 @@ urlpatterns = [
     url(r'^shifts/(?P<pk>[\w-]+)/$', views.ShiftDetail.as_view(), name='shift-detail'),
     url(r'^shifts/(?P<pk>[\w-]+)/edit$', views.ShiftUpdate.as_view(), name='shift-update'),
     url(r'^shifts/(?P<pk>[\w-]+)/delete$', views.ShiftDelete.as_view(), name='shift-delete'),
+    url(r'^qualification/create/$', views.QualificationCreate.as_view(), name='qualification-create'),
+    url(r'^qualification/(?P<pk>[\w-]+)/delete$', views.QualificationDelete.as_view(), name='qualification-delete'),
+    url(r'^flag/create/$', views.FlagCreate.as_view(), name='flag-create'),
+    url(r'^flag/(?P<pk>[\w-]+)/delete$', views.FlagDelete.as_view(), name='flag-delete'),
 ]

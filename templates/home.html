@@ -2,5 +2,6 @@
 {% block page %}
 <div id="page">
 	<h1>Welcome to staphd.com {{user.username}}! I hope you like it! </h1>
+	<a href="{% url 'settings' %}">Settings</a>
 </div>
 {% endblock %}

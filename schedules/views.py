@@ -4,11 +4,20 @@ from django.db.models.functions import Lower
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .models import Stapher, Shift
-from .forms import StapherCreateForm, ShiftCreateForm
+from .models import Flag, Stapher, Shift, Qualification
+from .forms import FlagCreateForm, StapherCreateForm, ShiftCreateForm, QualificationCreateForm
 
 class Home(LoginRequiredMixin, TemplateView):
     template_name = 'home.html'
+
+class Settings(LoginRequiredMixin, TemplateView):
+    template_name = 'settings.html'
+
+    def get_context_data(self, *args, **kwargs):
+    	context = super(Settings, self).get_context_data(*args, **kwargs)
+    	context['qualifications'] = Qualification.objects.filter(user=self.request.user).order_by(Lower('title'))
+    	context['flags'] = Flag.objects.filter(user=self.request.user).order_by(Lower('title'))
+    	return context
 
 class StapherList(LoginRequiredMixin,ListView):
 	template_name = 'schedules/list.html'
@@ -51,6 +60,7 @@ class StapherCreate(LoginRequiredMixin, CreateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherCreate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Add Stapher:'
+		context['cancel_url'] = 'schedules:stapher-list'
 		return context
 
 	def form_valid(self, form):
@@ -71,7 +81,7 @@ class StapherUpdate(LoginRequiredMixin, UpdateView):
 	def get_queryset(self):
 		return Stapher.objects.filter(user=self.request.user)
 
-class StapherDelete(DeleteView):
+class StapherDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
 	model = Stapher
 	success_url = reverse_lazy('schedules:stapher-list')
@@ -113,6 +123,7 @@ class ShiftCreate(LoginRequiredMixin, CreateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftCreate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Add Shift:'
+		context['cancel_url'] = 'schedules:shift-list'
 		return context
 
 	def form_valid(self, form):
@@ -134,7 +145,48 @@ class ShiftUpdate(LoginRequiredMixin, UpdateView):
 	def get_queryset(self):
 		return Shift.objects.filter(user=self.request.user)
 
-class ShiftDelete(DeleteView):
+class ShiftDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
 	model = Shift
 	success_url = reverse_lazy('schedules:shift-list')
+
+
+class QualificationCreate(LoginRequiredMixin, CreateView):
+	template_name = 'schedules/form.html'
+	form_class = QualificationCreateForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(QualificationCreate, self).get_context_data(*args, **kwargs)
+		context['title'] = 'Add Qualification:'
+		context['cancel_url'] = 'settings'
+		return context
+
+	def form_valid(self, form):
+		instance = form.save(commit=False)
+		instance.user = self.request.user
+		return super(QualificationCreate, self).form_valid(form)
+
+class QualificationDelete(LoginRequiredMixin, DeleteView):
+	template_name = 'schedules/delete.html'
+	model = Qualification
+	success_url = reverse_lazy('settings')
+
+class FlagCreate(LoginRequiredMixin, CreateView):
+	template_name = 'schedules/form.html'
+	form_class = FlagCreateForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(FlagCreate, self).get_context_data(*args, **kwargs)
+		context['title'] = 'Add Flag:'
+		context['cancel_url'] = 'settings'
+		return context
+
+	def form_valid(self, form):
+		instance = form.save(commit=False)
+		instance.user = self.request.user
+		return super(FlagCreate, self).form_valid(form)
+
+class FlagDelete(LoginRequiredMixin, DeleteView):
+	template_name = 'schedules/delete.html'
+	model = Flag
+	success_url = reverse_lazy('settings')
