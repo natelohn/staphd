@@ -1,5 +1,9 @@
 <form method='POST'> {% csrf_token %}
     {{ form.as_p }}
-    <a href="{% url cancel_url %}">Cancel</a>
+    {% if object.get_absolute_url %}
+    <a href='{{ object.get_absolute_url }}'>Abs Cancel</a>
+    {% else %}
+    <a href='{% url cancel_url %}'>Cancel</a>
+    {% endif %}
     <button type='submit'>Save</button>
 </form>

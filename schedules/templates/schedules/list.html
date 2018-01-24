@@ -11,6 +11,6 @@
 		<li><a href='{{ obj.get_absolute_url }}'>{{ obj }}</a></li>
 		{% endfor %}
 	</ul>
-	<a type=button href="{% url link %}">New</a>
+	<a type=button href="{% url link %}">{{link_title}}</a>
 </div>
 {% endblock %}

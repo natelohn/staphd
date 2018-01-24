@@ -9,8 +9,8 @@ User = settings.AUTH_USER_MODEL
 
 
 class Qualification(models.Model):
-	user 			= models.ForeignKey(User, default=1)
-	title 			= models.CharField(max_length=100,default='QUALIFICATION')
+	user 			= models.ForeignKey(User, default=1, on_delete=models.CASCADE)
+	title 			= models.CharField(max_length=100, unique=True, default='QUALIFICATION')
 
 	def __str__(self):
 		return "%s" % (self.title)
@@ -20,8 +20,8 @@ class Qualification(models.Model):
 
 
 class Flag(models.Model):
-	user 			= models.ForeignKey(User, default=1)
-	title 			= models.CharField(max_length=100,default='TYPE OF SHIFT')
+	user 			= models.ForeignKey(User, default=1, on_delete=models.CASCADE)
+	title 			= models.CharField(max_length=100, unique=True,default='TYPE OF SHIFT')
 
 	def __str__(self):
 		return "%s" % (self.title)
@@ -30,7 +30,7 @@ class Flag(models.Model):
 		return reverse('settings')
 
 class Stapher(models.Model):
-	user 			= models.ForeignKey(User, default=1)
+	user 			= models.ForeignKey(User, default=1, on_delete=models.CASCADE)
 	first_name 		= models.CharField(max_length=100, default='FIRST NAME')
 	last_name 		= models.CharField(max_length=100, default='LAST NAME')
 	title 			= models.CharField(max_length=100, default='JOB TITLE')
@@ -62,9 +62,9 @@ def get_default_end_time():
 
 
 class Shift(models.Model):
-	user 			= models.ForeignKey(User, default=1)
+	user 			= models.ForeignKey(User, default=1, on_delete=models.CASCADE)
 	title 			= models.CharField(max_length=100,default='NAME OF SHIFT')
-	flag 			= models.ForeignKey(Flag, default=1)
+	flag 			= models.ForeignKey(Flag, default=1, null=True, on_delete=models.SET_NULL)
 	day 			= fields.DayOfTheWeekField(default=0)
 	start			= models.TimeField(default=get_default_start_time)
 	end		 		= models.TimeField(default=get_default_end_time)

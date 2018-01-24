@@ -44,6 +44,7 @@ class StapherList(LoginRequiredMixin,ListView):
 		context = super(StapherList, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Staphers'
 		context['link'] = 'schedules:stapher-create'
+		context['link_title'] = 'New Stapher'
 		return context
 
 class StapherDetail(LoginRequiredMixin,DetailView):
@@ -105,6 +106,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 		context = super(ShiftList, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Shifts'
 		context['link'] = 'schedules:shift-create'
+		context['link_title'] = 'New Shift'
 		return context
 
 
@@ -130,6 +132,11 @@ class ShiftCreate(LoginRequiredMixin, CreateView):
 		instance = form.save(commit=False)
 		instance.user = self.request.user
 		return super(ShiftCreate, self).form_valid(form)
+	
+	def get_form_kwargs(self):
+		kwargs = super(ShiftCreate, self).get_form_kwargs()
+		kwargs['user_id'] = self.request.user.id
+		return kwargs
 
 
 class ShiftUpdate(LoginRequiredMixin, UpdateView):
@@ -144,6 +151,11 @@ class ShiftUpdate(LoginRequiredMixin, UpdateView):
 
 	def get_queryset(self):
 		return Shift.objects.filter(user=self.request.user)
+
+	def get_form_kwargs(self):
+		kwargs = super(ShiftCreate, self).get_form_kwargs()
+		kwargs['user_id'] = self.request.user.id
+		return kwargs
 
 class ShiftDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'

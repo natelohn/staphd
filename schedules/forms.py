@@ -87,6 +87,27 @@ class ShiftCreateForm(forms.ModelForm):
 			'qualifications'
 		]
 
+	def __init__(self, user_id, *args, **kwargs):
+		super(ShiftCreateForm, self).__init__(*args, **kwargs)
+		self.user_id = user_id
+
+	def clean_end(self):
+		start = self.cleaned_data.get("start")
+		end = self.cleaned_data.get("end")
+		if start >= end:
+			raise forms.ValidationError("Shift must end after it starts.")
+		return end
+
+	def clean_workers_needed(self):
+		workers_needed = self.cleaned_data.get("workers_needed")
+		min_workers = 0
+		max_availible_workers = Stapher.objects.filter(user=self.user_id).count()
+		if workers_needed <= min_workers:
+			raise forms.ValidationError("Shifts require at least 1 worker.")
+		if workers_needed > max_availible_workers:
+			raise forms.ValidationError(f'You have {max_availible_workers} workers! Shifts cannot require more workers than you have.')
+		return workers_needed
+
 class QualificationCreateForm(forms.ModelForm):
 	class Meta:
 		model = Qualification
