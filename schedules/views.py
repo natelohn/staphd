@@ -21,6 +21,7 @@ class Settings(LoginRequiredMixin, TemplateView):
 
 class StapherList(LoginRequiredMixin,ListView):
 	template_name = 'schedules/list.html'
+
 	def get_queryset(self):
 		queryset = Stapher.objects.filter(user=self.request.user).order_by(Lower('first_name'), Lower('last_name'))
 		query = self.request.GET.get('q')
@@ -49,7 +50,7 @@ class StapherList(LoginRequiredMixin,ListView):
 
 class StapherDetail(LoginRequiredMixin,DetailView):
 	queryset = Stapher.objects.all()
-
+	
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherDetail, self).get_context_data(*args, **kwargs)
 		return context
@@ -76,7 +77,7 @@ class StapherUpdate(LoginRequiredMixin, UpdateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherUpdate, self).get_context_data(*args, **kwargs)
-		context['title'] = f'Edit - {self.get_object()} '
+		context['title'] = f'Edit - {self.get_object()}'
 		return context
 
 	def get_queryset(self):
@@ -146,14 +147,14 @@ class ShiftUpdate(LoginRequiredMixin, UpdateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftUpdate, self).get_context_data(*args, **kwargs)
 		title = self.get_object().title
-		context['title'] = f'Edit - {self.get_object()} '
+		context['title'] = f'Edit - {title}'
 		return context
 
 	def get_queryset(self):
 		return Shift.objects.filter(user=self.request.user)
 
 	def get_form_kwargs(self):
-		kwargs = super(ShiftCreate, self).get_form_kwargs()
+		kwargs = super(ShiftUpdate, self).get_form_kwargs()
 		kwargs['user_id'] = self.request.user.id
 		return kwargs
 

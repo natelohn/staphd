@@ -78,7 +78,7 @@ class ShiftCreateForm(forms.ModelForm):
 		model = Shift
 		fields = [
 			'title',
-			'flag',
+			'flags',
 			'day',
 			'start',
 			'end',
@@ -100,10 +100,10 @@ class ShiftCreateForm(forms.ModelForm):
 
 	def clean_workers_needed(self):
 		workers_needed = self.cleaned_data.get("workers_needed")
-		min_workers = 0
+		min_workers = 1
 		max_availible_workers = Stapher.objects.filter(user=self.user_id).count()
-		if workers_needed <= min_workers:
-			raise forms.ValidationError("Shifts require at least 1 worker.")
+		if workers_needed < min_workers:
+			raise forms.ValidationError(f"Shifts require at least {min_workers} worker.")
 		if workers_needed > max_availible_workers:
 			raise forms.ValidationError(f'You have {max_availible_workers} workers! Shifts cannot require more workers than you have.')
 		return workers_needed

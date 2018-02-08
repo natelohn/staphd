@@ -1,7 +1,7 @@
 <form method='POST'> {% csrf_token %}
     {{ form.as_p }}
     {% if object.get_absolute_url %}
-    <a href='{{ object.get_absolute_url }}'>Abs Cancel</a>
+    <a href='{{ object.get_absolute_url }}'>Cancel</a>
     {% else %}
     <a href='{% url cancel_url %}'>Cancel</a>
     {% endif %}

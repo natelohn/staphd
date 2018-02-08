@@ -1,0 +1,856 @@
+[
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"A.J.",
+			"last_name":"Aldana",
+			"title":"Munchkins Counselor",
+			"gender":"1",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[134,126,143,136,125,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Anne",
+			"last_name":"Bertram",
+			"title":"Individual Instructor Coordinator",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[114,113,112,143,136,121,106,138,141,147,149,154,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Alec",
+			"last_name":"Villagomez",
+			"title":"Chicken",
+			"gender":"1",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"0",
+			"qualifications":[134,116,143,136,113,125,130,138,147,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Alida",
+			"last_name":"Ratteray",
+			"title":"Midorees Counselor",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[114,135,136,121,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Ali",
+			"last_name":"Black",
+			"title":"Arts Instructor",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[114,118,143,136,109,125]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Ariel",
+			"last_name":"Bong",
+			"title":"Suaves Counselor",
+			"gender":"1",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[134,157,136,125,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Austin",
+			"last_name":"Jones",
+			"title":"Ski Dock",
+			"gender":"1",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[134,151,143,136,121,125,138,141,149,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Brooke",
+			"last_name":"Hale",
+			"title":"Music Instructor",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[114,128,136,109,110,125,138,144,155]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Caleb",
+			"last_name":"Martin",
+			"title":"Office Assistant",
+			"gender":"1",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[134,133,143,136,125,127,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Ben",
+			"last_name":"Josie",
+			"title":"Chicken",
+			"gender":"1",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[134,116,143,136,121,125,138,149,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Callie",
+			"last_name":"Heiderscheit",
+			"title":"Menehunes",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[114,111,143,136,121,125,138,147,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Carinne",
+			"last_name":"Gale",
+			"title":"Snoopers Counselor",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"2",
+			"qualifications":[114,137,136,121,113,125,138,149,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Carlie",
+			"last_name":"Tenenbaum",
+			"title":"Chicken",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"0",
+			"qualifications":[114,116,125,130,138,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Carter",
+			"last_name":"Kremer",
+			"title":"Snoopers Counselor",
+			"gender":"1",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[134,137,143,136,121,117,125,131,138,149,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Cody",
+			"last_name":"Hankins",
+			"title":"Ski Dock",
+			"gender":"1",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"0",
+			"qualifications":[134,151,143,136,125,138,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Daniel",
+			"last_name":"Henry",
+			"title":"Sailing Instructor",
+			"gender":"1",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[134,145,143,124,136,110,125,138,147,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Danny",
+			"last_name":"LaPorte",
+			"title":"Menehunes Counselor",
+			"gender":"1",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"1",
+			"qualifications":[134,111,143,136,121,132,125,138,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"DeMarcus",
+			"last_name":"Miller",
+			"title":"Midorees Counselor",
+			"gender":"1",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[134,135,125,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Dylan",
+			"last_name":"Harding",
+			"title":"Ski Dock",
+			"gender":"0",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[114,151,143,136,125,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Elena",
+			"last_name":"Press",
+			"title":"Kid's Naturalist",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[114,131,140,143,136,106,115,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Emily",
+			"last_name":"Ruan",
+			"title":"Yoga Instructor",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[114,119,143,136,124,125,131,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Elie",
+			"last_name":"Kuppermann",
+			"title":"Snoopers Counselor",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[114,137,143,136,125,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Erika",
+			"last_name":"Noble",
+			"title":"Climbing Instructor",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[114,139,143,136,121,124,125,132,138,147,149]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Gabri",
+			"last_name":"Posard",
+			"title":"Midorees Counselor",
+			"gender":"0",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[114,135,143,136,125,138,154]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Gavin",
+			"last_name":"Nelson",
+			"title":"Ski Dock",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"2",
+			"qualifications":[134,151,143,149,136,121,113,125,138,154,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Gracie",
+			"last_name":"Goheen",
+			"title":"Yahoos Counselor",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[114,153,143,136,121,110,117,125,155]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Halle",
+			"last_name":"Payne",
+			"title":"Ski Dock",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[114,151,143,149,136,121,125,130,138,154,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Ian",
+			"last_name":"Jones",
+			"title":"Yahoos Counselor",
+			"gender":"1",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[134,153,143,149,136,121,125,138,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Jaisel",
+			"last_name":"Sandhu",
+			"title":"Yahoos Counselor",
+			"gender":"1",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[134,153,143,136,125,138,147,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"James",
+			"last_name":"Price",
+			"title":"Midorees Counselor",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"2",
+			"qualifications":[134,135,143,136,121,117,125,138,149,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Jonny",
+			"last_name":"Leung",
+			"title":"Ski Dock",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"2",
+			"qualifications":[134,151,143,136,121,123,125,138,141,149,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Julia",
+			"last_name":"Laurence",
+			"title":"Yahoos Counselor",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"2",
+			"qualifications":[134,153,143,136,121,125,138,149,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Kady",
+			"last_name":"Richardson",
+			"title":"Munchkins Counselor",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"0",
+			"qualifications":[114,126,143,136,125,138,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Kate",
+			"last_name":"Roberts",
+			"title":"Naturalist",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"1",
+			"qualifications":[114,146,143,136,121,106,113,115,138,149]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Kaylee",
+			"last_name":"Blevins",
+			"title":"Yahoos Counselor",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[114,153,143,136,121,125,130,138,148,149,154]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Kyle",
+			"last_name":"Laviana",
+			"title":"Teens Counselor",
+			"gender":"1",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[134,142,143,136,121,125,138,149,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Lauren",
+			"last_name":"Seabrooks",
+			"title":"Munchkins Counselor",
+			"gender":"0",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"1",
+			"qualifications":[114,126,136,121,125,138,141,149,155]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Leo",
+			"last_name":"Carney",
+			"title":"Munchkins Counselor",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"2",
+			"qualifications":[134,117,126,121,110,125,130,131,138,149,154,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Marge",
+			"last_name":"Seaton",
+			"title":"Menehunes Counselor",
+			"gender":"0",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[114,111,147,143,136,125,138,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Mark",
+			"last_name":"Ibanez",
+			"title":"Snoopers Counselor",
+			"gender":"1",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[134,137,143,136,121,125,138,141,149,154,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Martin",
+			"last_name":"Alcaraz Jr.",
+			"title":"Chicken",
+			"gender":"1",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[134,116,136,110,125]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Martine",
+			"last_name":"Johannessen",
+			"title":"Suaves Counselor",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"1",
+			"qualifications":[114,157,143,136,121,125,138,141,149]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"McKenzie",
+			"last_name":"Lynch",
+			"title":"Crafts Instructor",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[114,152,143,130,136,121,109,110,125,138,149,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Meg",
+			"last_name":"Enthoven",
+			"title":"Chicken",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[114,116,143,136,117,125,138,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Mel",
+			"last_name":"Huang",
+			"title":"Menehunes Counselor",
+			"gender":"0",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[114,111,143,136,125,130,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Michael",
+			"last_name":"Kim",
+			"title":"Office Assistant",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"0",
+			"qualifications":[134,133,143,136,125,127,138,149,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Michelle",
+			"last_name":"Hull",
+			"title":"Snoopers Counselor",
+			"gender":"0",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[114,137,143,136,125,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Molly",
+			"last_name":"Fogarty",
+			"title":"Volleyball Instructor",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"0",
+			"qualifications":[114,113,150,143,136,129,124,125,138]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Nico",
+			"last_name":"Ponza",
+			"title":"Menehunes Counselor",
+			"gender":"1",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[134,111,121,125,138,149]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Sean",
+			"last_name":"Metzger",
+			"title":"Photographer",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"1",
+			"qualifications":[134,108,143,127,136,121,125,130,138,148,149]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Sophie",
+			"last_name":"Stuber",
+			"title":"Photographer",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[114,108,143,127,136,121,125,138,149]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Susi",
+			"last_name":"Arguello",
+			"title":"Hiking Leader",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[114,120,136,106,110,115,125,138,147,155]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Tara",
+			"last_name":"McCullough",
+			"title":"Teens Counselor",
+			"gender":"0",
+			"age":"22",
+			"class_year":"2016",
+			"summers_worked":"3",
+			"qualifications":[114,142,143,136,121,117,125,138,149]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Taylor",
+			"last_name":"Streaty",
+			"title":"Kids Group Coordinator",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"2",
+			"qualifications":[114,107,136,125,138,141,149]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Tayna",
+			"last_name":"Gonzalez",
+			"title":"Chicken",
+			"gender":"0",
+			"age":"23",
+			"class_year":"2015",
+			"summers_worked":"2",
+			"qualifications":[114,116,121,125,149]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Teo",
+			"last_name":"Camacho",
+			"title":"Tennis Instructor",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"0",
+			"qualifications":[134,122,143,136,124,138,149,154,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Tommy",
+			"last_name":"Meaney",
+			"title":"Teens Counselor",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"1",
+			"qualifications":[134,142,143,136,121,125,138,141,149,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Thomas",
+			"last_name":"Churchill",
+			"title":"Midorees Counselor",
+			"gender":"1",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[134,135,117,143,136,110,125,138,149]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Thomas",
+			"last_name":"Reidy",
+			"title":"Suaves Counselor",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2017",
+			"summers_worked":"2",
+			"qualifications":[134,157,121,138,149,155]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Tony",
+			"last_name":"Moller",
+			"title":"Hiking Leader",
+			"gender":"1",
+			"age":"19",
+			"class_year":"2019",
+			"summers_worked":"1",
+			"qualifications":[134,120,143,136,129,121,115,125,138,147,149,155,156]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"user":"2",
+			"first_name":"Tracy",
+			"last_name":"Roberts",
+			"title":"Suaves Counselor",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2018",
+			"summers_worked":"0",
+			"qualifications":[114,157,143,136,125,138,147,156]
+		}
+	}
+]
