@@ -2,364 +2,312 @@
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"fountain-specialist"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"kids-group-coordinator"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"photo"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"artists"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"play"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"menehunes"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"individual-instructor-coordinator"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"town-run"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"female"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"odo"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"chicken"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"improv"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"arts"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"yoga"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"hiking"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"returner"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"tennis"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"ski-dock-head"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"sports"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"fountain"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"munchkins"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"opho"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"music"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"boat-dock-coordinator"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"astrocruise"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"greeting"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"omelet-bar"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"office"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"male"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"midorees"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"boat-dock"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"snoopers"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"hobart"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"climbing"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"kids-naturalist"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"icom"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"teens"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"lifeguarding"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"theater"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"sailing"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"naturalist"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"rowing"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"mountain-biking"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"meal-head"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"volleyball"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"ski-dock"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"crafts"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"yahoos"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"wine"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"musical"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"boatster"
 		}
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"user":"2",
 			"title":"suaves"
 		}
 	}

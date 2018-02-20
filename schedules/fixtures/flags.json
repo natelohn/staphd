@@ -2,756 +2,648 @@
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"pm-chicken"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"office"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"dance"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"photo"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"staph-ski"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"ski-dock-head"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"town-run"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"meditation"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"rotation"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"lunch-hobart"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"wilderness"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"lm"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"musnoo"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"kids-t-show"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"munchkins"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"snoopers"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"guest-to-guest"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"lunch"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"kids-naturalist"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"campfire-music"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"cherry-house"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"beffa"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"naturalist"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"rowing"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"greeting"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"disco-bingo"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"meal"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"suaves"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"fountain-specialist"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"breakfast-chef"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"social-hike"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"play"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"am-chicken"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"menehunes"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"HK"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"odo"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"chicken"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"special"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"driving"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"bread-bake"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"outside"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"fountain"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"opho"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"teens"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"astrocruise"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"exercise"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"games-day"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"music-hour"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"womens-breakfast"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"hobart"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"shabbat"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"lifeguarding"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"mountain-biking"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"programming"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"ski-dock"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"unpaid"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"dinner"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"social"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"improv"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"hoohune"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"hiking"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"artists"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"staph-v-guest-volleyball"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"ski-show"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"arts"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"basketball"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"kids-group-coordinator"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"tennis"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"linen-bar"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"sports"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"puppet-show"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"music"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"maintenance"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"dinner-hobart"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"book-discussion"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"boat-dock"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"intro-skits"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"plants"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"sailing"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"inside"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"meal-head"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"boatster"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"kids-carnival"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"parking"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"omelet-bar"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"individual-instructor-coordinator"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"volleyball"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"breakfast"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"midorees"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"yoga"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"discussion"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"campfire-smores"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"yahoos"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"story-hour"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"performance"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"boat-dock-coordinator"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"trivia"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"breakfast-hobart"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"crafts"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"boatster-cruise"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"off-day"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"climbing"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"icom"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"theater"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"overnight"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"ski-clinic"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"egg-drop"
 		}
 	},
 	{
 		"model": "schedules.Flag",
 		"fields": {
-			"user":"2",
 			"title":"wine"
 		}
 	}

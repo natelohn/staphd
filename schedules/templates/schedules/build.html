@@ -1,0 +1,11 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+<div id="page">
+	<h1>Build Schedules</h1>
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	<form action="{% url 'schedules:building' %}" method="post">
+	{% csrf_token %}
+	<input type="submit" value="Build">
+	</form>
+</div>
+{% endblock %}

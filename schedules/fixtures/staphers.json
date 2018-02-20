@@ -2,7 +2,6 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"A.J.",
 			"last_name":"Aldana",
 			"title":"Munchkins Counselor",
@@ -10,13 +9,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[30,22,39,32,21,34]
+			"qualifications":[29,21,38,31,20,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Anne",
 			"last_name":"Bertram",
 			"title":"Individual Instructor Coordinator",
@@ -24,13 +22,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[10,9,8,39,32,17,2,34,37,43,45,50,52]
+			"qualifications":[9,8,7,38,31,16,1,33,36,42,44,49,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Alec",
 			"last_name":"Villagomez",
 			"title":"Chicken",
@@ -38,13 +35,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"0",
-			"qualifications":[30,12,39,32,9,21,26,34,43,52]
+			"qualifications":[29,11,38,31,8,20,25,33,42,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Alida",
 			"last_name":"Ratteray",
 			"title":"Midorees Counselor",
@@ -52,13 +48,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[10,31,32,17,34]
+			"qualifications":[9,30,31,16,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Ali",
 			"last_name":"Black",
 			"title":"Arts Instructor",
@@ -66,13 +61,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[10,14,39,32,5,21]
+			"qualifications":[9,13,51,38,31,4,20]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Ariel",
 			"last_name":"Bong",
 			"title":"Suaves Counselor",
@@ -80,13 +74,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[30,53,32,21,34]
+			"qualifications":[29,52,31,20,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Austin",
 			"last_name":"Jones",
 			"title":"Ski Dock",
@@ -94,13 +87,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[30,47,39,32,17,21,34,37,45,51,52]
+			"qualifications":[29,46,38,31,16,20,33,36,44,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Brooke",
 			"last_name":"Hale",
 			"title":"Music Instructor",
@@ -108,13 +100,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[10,24,32,5,6,21,34,40,51]
+			"qualifications":[9,23,31,4,5,20,33,39,50]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Caleb",
 			"last_name":"Martin",
 			"title":"Office Assistant",
@@ -122,13 +113,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[30,29,39,32,21,23,34]
+			"qualifications":[29,28,38,31,20,22,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Ben",
 			"last_name":"Josie",
 			"title":"Chicken",
@@ -136,13 +126,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[30,12,39,32,17,21,34,45,51,52]
+			"qualifications":[29,11,38,31,16,20,33,44,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Callie",
 			"last_name":"Heiderscheit",
 			"title":"Menehunes",
@@ -150,13 +139,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[10,7,39,32,17,21,34,43,51,52]
+			"qualifications":[9,6,38,31,16,20,33,42,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Carinne",
 			"last_name":"Gale",
 			"title":"Snoopers Counselor",
@@ -164,13 +152,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[10,33,32,17,9,21,34,45,52]
+			"qualifications":[9,32,31,16,8,20,33,44,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Carlie",
 			"last_name":"Tenenbaum",
 			"title":"Chicken",
@@ -178,13 +165,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"0",
-			"qualifications":[10,12,21,26,34,52]
+			"qualifications":[9,11,20,25,33,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Carter",
 			"last_name":"Kremer",
 			"title":"Snoopers Counselor",
@@ -192,13 +178,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[30,33,39,32,17,13,21,27,34,45,51,52]
+			"qualifications":[29,32,38,31,16,12,20,26,33,44,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Cody",
 			"last_name":"Hankins",
 			"title":"Ski Dock",
@@ -206,13 +191,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"0",
-			"qualifications":[30,47,39,32,21,34,52]
+			"qualifications":[29,46,38,31,20,33,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Daniel",
 			"last_name":"Henry",
 			"title":"Sailing Instructor",
@@ -220,13 +204,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[30,41,39,20,32,6,21,34,43,51,52]
+			"qualifications":[29,40,38,19,31,5,20,33,42,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Danny",
 			"last_name":"LaPorte",
 			"title":"Menehunes Counselor",
@@ -234,13 +217,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"1",
-			"qualifications":[30,7,39,32,17,28,21,34,51,52]
+			"qualifications":[29,6,38,31,16,27,20,33,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"DeMarcus",
 			"last_name":"Miller",
 			"title":"Midorees Counselor",
@@ -248,13 +230,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[30,31,21,34]
+			"qualifications":[29,30,20,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Dylan",
 			"last_name":"Harding",
 			"title":"Ski Dock",
@@ -262,13 +243,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[10,47,39,32,21,34]
+			"qualifications":[9,46,38,31,20,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Elena",
 			"last_name":"Press",
 			"title":"Kid's Naturalist",
@@ -276,13 +256,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[10,27,36,39,32,2,11,34]
+			"qualifications":[9,26,35,38,31,1,10,33,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Emily",
 			"last_name":"Ruan",
 			"title":"Yoga Instructor",
@@ -290,13 +269,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[10,15,39,32,20,21,27,34]
+			"qualifications":[9,14,38,31,19,20,26,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Elie",
 			"last_name":"Kuppermann",
 			"title":"Snoopers Counselor",
@@ -304,13 +282,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[10,33,39,32,21,34]
+			"qualifications":[9,32,38,31,20,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Erika",
 			"last_name":"Noble",
 			"title":"Climbing Instructor",
@@ -318,13 +295,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[10,35,39,32,17,20,21,28,34,43,45]
+			"qualifications":[9,34,38,31,16,19,20,27,33,42,44]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Gabri",
 			"last_name":"Posard",
 			"title":"Midorees Counselor",
@@ -332,13 +308,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[10,31,39,32,21,34,50]
+			"qualifications":[9,30,38,31,20,33,49]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Gavin",
 			"last_name":"Nelson",
 			"title":"Ski Dock",
@@ -346,13 +321,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[30,47,39,45,32,17,9,21,34,50,52]
+			"qualifications":[29,46,38,44,31,16,8,20,33,49,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Gracie",
 			"last_name":"Goheen",
 			"title":"Yahoos Counselor",
@@ -360,13 +334,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[10,49,39,32,17,6,13,21,51]
+			"qualifications":[9,48,38,31,16,5,12,20,50]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Halle",
 			"last_name":"Payne",
 			"title":"Ski Dock",
@@ -374,13 +347,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[10,47,39,45,32,17,21,26,34,50,51,52]
+			"qualifications":[9,46,38,44,31,16,20,25,33,49,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Ian",
 			"last_name":"Jones",
 			"title":"Yahoos Counselor",
@@ -388,13 +360,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[30,49,39,45,32,17,21,34,51,52]
+			"qualifications":[29,48,38,44,31,16,20,33,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Jaisel",
 			"last_name":"Sandhu",
 			"title":"Yahoos Counselor",
@@ -402,13 +373,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[30,49,39,32,21,34,43,52]
+			"qualifications":[29,48,38,31,20,33,42,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"James",
 			"last_name":"Price",
 			"title":"Midorees Counselor",
@@ -416,13 +386,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[30,31,39,32,17,13,21,34,45,52]
+			"qualifications":[29,30,38,31,16,12,20,33,44,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Jonny",
 			"last_name":"Leung",
 			"title":"Ski Dock",
@@ -430,13 +399,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[30,47,39,32,17,19,21,34,37,45,52]
+			"qualifications":[29,46,38,31,16,18,20,33,36,44,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Julia",
 			"last_name":"Laurence",
 			"title":"Yahoos Counselor",
@@ -444,13 +412,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[30,49,39,32,17,21,34,45,52]
+			"qualifications":[29,48,38,31,16,20,33,44,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Kady",
 			"last_name":"Richardson",
 			"title":"Munchkins Counselor",
@@ -458,13 +425,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"0",
-			"qualifications":[10,22,39,32,21,34,52]
+			"qualifications":[9,21,38,31,20,33,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Kate",
 			"last_name":"Roberts",
 			"title":"Naturalist",
@@ -472,13 +438,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"1",
-			"qualifications":[10,42,39,32,17,2,9,11,34,45]
+			"qualifications":[9,41,38,31,16,1,8,10,33,44,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Kaylee",
 			"last_name":"Blevins",
 			"title":"Yahoos Counselor",
@@ -486,13 +451,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[10,49,39,32,17,21,26,34,44,45,50]
+			"qualifications":[9,48,38,31,16,20,25,33,43,44,49]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Kyle",
 			"last_name":"Laviana",
 			"title":"Teens Counselor",
@@ -500,13 +464,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[30,38,39,32,17,21,34,45,51,52]
+			"qualifications":[29,37,38,31,16,20,33,44,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Lauren",
 			"last_name":"Seabrooks",
 			"title":"Munchkins Counselor",
@@ -514,13 +477,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"1",
-			"qualifications":[10,22,32,17,21,34,37,45,51]
+			"qualifications":[9,21,31,16,20,33,36,44,50]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Leo",
 			"last_name":"Carney",
 			"title":"Munchkins Counselor",
@@ -528,13 +490,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[30,13,22,17,6,21,26,27,34,45,50,52]
+			"qualifications":[29,12,21,16,5,20,25,26,33,44,49,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Marge",
 			"last_name":"Seaton",
 			"title":"Menehunes Counselor",
@@ -542,13 +503,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[10,7,43,39,32,21,34,52]
+			"qualifications":[9,6,42,38,31,20,33,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Mark",
 			"last_name":"Ibanez",
 			"title":"Snoopers Counselor",
@@ -556,13 +516,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[30,33,39,32,17,21,34,37,45,50,52]
+			"qualifications":[29,32,38,31,16,20,33,36,44,49,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Martin",
 			"last_name":"Alcaraz Jr.",
 			"title":"Chicken",
@@ -570,13 +529,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[30,12,32,6,21]
+			"qualifications":[29,11,31,5,20]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Martine",
 			"last_name":"Johannessen",
 			"title":"Suaves Counselor",
@@ -584,13 +542,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"1",
-			"qualifications":[10,53,39,32,17,21,34,37,45]
+			"qualifications":[9,52,38,31,16,20,33,36,44]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"McKenzie",
 			"last_name":"Lynch",
 			"title":"Crafts Instructor",
@@ -598,13 +555,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[10,48,39,26,32,17,5,6,21,34,45,51,52]
+			"qualifications":[9,47,38,25,31,16,4,5,20,33,44,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Meg",
 			"last_name":"Enthoven",
 			"title":"Chicken",
@@ -612,13 +568,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[10,12,39,32,13,21,34,51,52]
+			"qualifications":[9,11,38,31,12,20,33,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Mel",
 			"last_name":"Huang",
 			"title":"Menehunes Counselor",
@@ -626,13 +581,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[10,7,39,32,21,26,34]
+			"qualifications":[9,6,38,31,20,25,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Michael",
 			"last_name":"Kim",
 			"title":"Office Assistant",
@@ -640,13 +594,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"0",
-			"qualifications":[30,29,39,32,21,23,34,45,52]
+			"qualifications":[29,28,38,31,20,22,33,44,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Michelle",
 			"last_name":"Hull",
 			"title":"Snoopers Counselor",
@@ -654,13 +607,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[10,33,39,32,21,34]
+			"qualifications":[9,32,38,31,20,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Molly",
 			"last_name":"Fogarty",
 			"title":"Volleyball Instructor",
@@ -668,13 +620,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"0",
-			"qualifications":[10,9,46,39,32,25,20,21,34]
+			"qualifications":[9,8,45,38,31,24,19,20,33]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Nico",
 			"last_name":"Ponza",
 			"title":"Menehunes Counselor",
@@ -682,13 +633,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[30,7,17,21,34,45]
+			"qualifications":[29,6,16,20,33,44]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Sean",
 			"last_name":"Metzger",
 			"title":"Photographer",
@@ -696,13 +646,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"1",
-			"qualifications":[30,4,39,23,32,17,21,26,34,44,45]
+			"qualifications":[29,3,38,22,31,16,20,25,33,43,44]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Sophie",
 			"last_name":"Stuber",
 			"title":"Photographer",
@@ -710,13 +659,12 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[10,4,39,23,32,17,21,34,45]
+			"qualifications":[9,3,38,22,31,16,20,33,44]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Susi",
 			"last_name":"Arguello",
 			"title":"Hiking Leader",
@@ -724,13 +672,12 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[10,16,32,2,6,11,21,34,43,51]
+			"qualifications":[9,15,31,1,5,10,20,33,42,50]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Tara",
 			"last_name":"McCullough",
 			"title":"Teens Counselor",
@@ -738,13 +685,12 @@
 			"age":"22",
 			"class_year":"2016",
 			"summers_worked":"3",
-			"qualifications":[10,38,39,32,17,13,21,34,45]
+			"qualifications":[9,37,38,31,16,12,20,33,44]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Taylor",
 			"last_name":"Streaty",
 			"title":"Kids Group Coordinator",
@@ -752,13 +698,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[10,3,32,21,34,37,45]
+			"qualifications":[9,2,31,20,33,36,44]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Tayna",
 			"last_name":"Gonzalez",
 			"title":"Chicken",
@@ -766,13 +711,12 @@
 			"age":"23",
 			"class_year":"2015",
 			"summers_worked":"2",
-			"qualifications":[10,12,17,21,45]
+			"qualifications":[9,11,16,20,44]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Teo",
 			"last_name":"Camacho",
 			"title":"Tennis Instructor",
@@ -780,13 +724,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"0",
-			"qualifications":[30,18,39,32,20,34,45,50,52]
+			"qualifications":[29,17,38,31,19,33,44,49,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Tommy",
 			"last_name":"Meaney",
 			"title":"Teens Counselor",
@@ -794,13 +737,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"1",
-			"qualifications":[30,38,39,32,17,21,34,37,45,51,52]
+			"qualifications":[29,37,38,31,16,20,33,36,44,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Thomas",
 			"last_name":"Churchill",
 			"title":"Midorees Counselor",
@@ -808,13 +750,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[30,31,13,39,32,6,21,34,45]
+			"qualifications":[29,30,12,38,31,5,20,33,44]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Thomas",
 			"last_name":"Reidy",
 			"title":"Suaves Counselor",
@@ -822,13 +763,12 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[30,53,17,34,45,51]
+			"qualifications":[29,52,16,33,44,50]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Tony",
 			"last_name":"Moller",
 			"title":"Hiking Leader",
@@ -836,13 +776,12 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"1",
-			"qualifications":[30,16,39,32,25,17,11,21,34,43,45,51,52]
+			"qualifications":[29,15,38,31,24,16,10,20,33,42,44,50,51]
 		}
 	},
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"user":"2",
 			"first_name":"Tracy",
 			"last_name":"Roberts",
 			"title":"Suaves Counselor",
@@ -850,7 +789,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"0",
-			"qualifications":[10,53,39,32,21,34,43,52]
+			"qualifications":[9,52,38,31,20,33,42,51]
 		}
 	}
 ]

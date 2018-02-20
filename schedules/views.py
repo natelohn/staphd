@@ -1,29 +1,41 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.db.models.functions import Lower
-from django.urls import reverse_lazy
+from django.shortcuts import get_object_or_404, render
+from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .models import Flag, Stapher, Shift, Qualification
 from .forms import FlagCreateForm, StapherCreateForm, ShiftCreateForm, QualificationCreateForm
+from .build import build_schedules
 
 class Home(LoginRequiredMixin, TemplateView):
     template_name = 'home.html'
+
+class BuildView(LoginRequiredMixin, TemplateView):
+    template_name = 'schedules/build.html'
+ 
+@login_required
+def building(request):
+	schedule = build_schedules()
+	return HttpResponseRedirect(reverse('schedules:build'))
 
 class Settings(LoginRequiredMixin, TemplateView):
     template_name = 'settings.html'
 
     def get_context_data(self, *args, **kwargs):
     	context = super(Settings, self).get_context_data(*args, **kwargs)
-    	context['qualifications'] = Qualification.objects.filter(user=self.request.user).order_by(Lower('title'))
-    	context['flags'] = Flag.objects.filter(user=self.request.user).order_by(Lower('title'))
+    	context['qualifications'] = Qualification.objects.all().order_by(Lower('title'))
+    	context['flags'] = Flag.objects.all().order_by(Lower('title'))
     	return context
 
 class StapherList(LoginRequiredMixin,ListView):
 	template_name = 'schedules/list.html'
 
 	def get_queryset(self):
-		queryset = Stapher.objects.filter(user=self.request.user).order_by(Lower('first_name'), Lower('last_name'))
+		queryset = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
 		query = self.request.GET.get('q')
 		if query:
 			if query.lower() in 'returner':
@@ -81,7 +93,7 @@ class StapherUpdate(LoginRequiredMixin, UpdateView):
 		return context
 
 	def get_queryset(self):
-		return Stapher.objects.filter(user=self.request.user)
+		return Stapher.objects.all()
 
 class StapherDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
@@ -151,7 +163,7 @@ class ShiftUpdate(LoginRequiredMixin, UpdateView):
 		return context
 
 	def get_queryset(self):
-		return Shift.objects.filter(user=self.request.user)
+		return Shift.objects.all()
 
 	def get_form_kwargs(self):
 		kwargs = super(ShiftUpdate, self).get_form_kwargs()
