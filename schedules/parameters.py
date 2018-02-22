@@ -26,6 +26,30 @@ def get_parameter_funtion(id):
 	}
 	return parameter_funtions[id]
 
+def less_than(a, b):
+	if a < b:
+		return a
+	else:
+		return b
+
+def greater_than(a, b):
+	if a > b:
+		return a
+	else:
+		return b
+
+def get_cmp_funtion(id):
+	cmp_funtions = {
+		1: less_than,
+		2: less_than,
+		3: less_than,
+		4: less_than,
+		5: less_than,
+		6: greater_than
+	}
+	return cmp_funtions[id]
+
+
 
 def get_parameter_scores(stapher, shift, staphings, parameters):
 	scores = []
@@ -35,5 +59,9 @@ def get_parameter_scores(stapher, shift, staphings, parameters):
 		scores.append(score)
 	return scores
 
-def get_best_scores(parameter_scores, reccomendation_info):
-	return -1
+def get_best_scores(parameters, new_scores, best_scores):
+	for parameter in parameters:
+		cmp_funtion = get_cmp_funtion(parameter.function_id)
+		for i, score in enumerate(new_scores):
+			best_scores[i] = cmp_funtion(score, best_scores[i])
+	return best_scores

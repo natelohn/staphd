@@ -169,6 +169,15 @@ class Settings(models.Model):
 	def __str__(self):
 		return 'Default Settings'
 
+	def break_ties_randomly(self):
+		return self.tie_breaker == 0
+
+	def ranked_wins_break_ties(self):
+		return self.tie_breaker == 1
+
+	def user_breaks_ties(self):
+		return self.tie_breaker == 2
+
 
 
 

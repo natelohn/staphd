@@ -49,7 +49,7 @@ def get_shift_info_array(shift_dict, stapher_dict):
 			shifts_info.append([ratio, shift, qualified_staphers])
 	return shifts_info
 
-def getRatio(item):
+def get_ratio(item):
 	return item[0]
 
 def get_sorted_shifts():
@@ -64,6 +64,6 @@ def get_sorted_shifts():
 	stapher_dict = get_stapher_dict(all_staphers, qual_dict)
 	# Now we need to find how many staphers can work each shift
 	shift_info_array = get_shift_info_array(shift_dict, stapher_dict)
-	shift_info_array.sort(reverse=True, key=getRatio)
+	shift_info_array.sort(reverse=True, key=get_ratio)
 	return shift_info_array
 
