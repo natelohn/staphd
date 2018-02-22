@@ -51,25 +51,24 @@ class Stapher(models.Model):
 				return False
 		return True
 
-	def is_free(self, shift, schedule):
-		staphings = Staphing.objects.filter(stapher__id = self.id, schedule__id = schedule.id)
+	def is_free(self, staphings, shift):
 		for staphing in staphings:
-			if staphing.shift.overlaps(shift):
+			if staphing.stapher is self and staphing.shift.overlaps(shift):
 				return False
 		return True
 
-	def hours_in_day(self, schedule, day):
-		staphings = Staphing.objects.filter(schedule__id=schedule.id, stapher__id=self.id, shift__day=day)
+	def hours_in_day(self, staphings, day):
 		hours = datetime.timedelta()
 		for staphing in staphings:
-			hours += staphing.shift.length()
+			if staphing.stapher is self and staphing.shift.day == day:
+				hours += staphing.shift.length()
 		return hours
 
-	def total_hours(self, schedule):
-		staphings = Staphing.objects.filter(schedule__id=schedule.id, stapher__id=self.id)
+	def total_hours(self, staphings):
 		hours = datetime.timedelta()
 		for staphing in staphings:
-			hours += staphing.shift.length()
+			if staphing.stapher is self:
+				hours += staphing.shift.length()
 		return hours
 
 
@@ -104,17 +103,23 @@ class Shift(models.Model):
 		return int(self.day) == int(shift.day) and self.start < shift.end and self.end > shift.start
 
 	def is_covered(self, staphings):
-		staphings = Staphing.objects.filter(shift__id = self.id, schedule__id = schedule.id)
-		return len(staphings) == self.workers_needed
+		count_of_workers = 0
+		for staphing in staphings:
+			if self is staphing.shift:
+				count_of_workers += 1
+		return count_of_workers == self.workers_needed
 
 	def length(self):
 		start_td = datetime.timedelta(hours = self.start.hour, minutes = self.start.minute)
 		end_td = datetime.timedelta(hours = self.end.hour, minutes = self.end.minute)
 		return end_td - start_td
 
-	def left_to_cover(self, schedule):
-		count_of_covered = Staphing.objects.filter(shift__id = self.id, schedule__id = schedule.id).count()
-		return self.workers_needed - count_of_covered
+	def left_to_cover(self, staphings):
+		count_of_workers = 0
+		for staphing in staphings:
+			if self is staphing.shift:
+				count_of_workers += 1
+		return self.workers_needed - count_of_workers
 
 
 

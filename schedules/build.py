@@ -2,14 +2,10 @@ from .models import Schedule, Staphing, Shift, Settings
 from .sort import get_sorted_shifts
 from .recommend import get_recommended_stapher
 
-def add_shift(stapher, shift, schedule):
-	staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
-	staphing.save()
-
-def get_free_staphers(staphers, shift, schedule):
+def get_free_staphers(staphers, shift, staphings):
 	free_staphers = []
 	for stapher in staphers:
-		if stapher.is_free(shift, schedule):
+		if stapher.is_free(staphings, shift):
 			free_staphers.append(stapher)
 	return free_staphers 
 
@@ -24,14 +20,14 @@ def build_schedules():
 		ratio = shift_info[0]
 		shift = shift_info[1]
 		qualified_staphers = shift_info[2]
-		free_and_qualified = get_free_staphers(qualified_staphers, shift, schedule)
-		if len(free_and_qualified) == shift.left_to_cover(schedule):
+		free_and_qualified = get_free_staphers(qualified_staphers, shift, staphings)
+		if len(free_and_qualified) == shift.left_to_cover(staphings):
 			for stapher in free_and_qualified:
 				staphings.append(Staphing(stapher = stapher, shift = shift, schedule = schedule))
 		else:
-			stapher = get_recommended_stapher(free_and_qualified, shift, schedule, settings)
+			stapher = get_recommended_stapher(free_and_qualified, shift, staphings, settings)
 			if stapher:
-				add_shift(stapher, shift, schedule)
+				staphings.append(Staphing(stapher = stapher, shift = shift, schedule = schedule))
 	for staphing in staphings:
 		staphing.save()
 	print('+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=++=+=+=+=+')
