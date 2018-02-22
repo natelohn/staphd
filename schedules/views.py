@@ -1,3 +1,4 @@
+import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
@@ -19,7 +20,10 @@ class BuildView(LoginRequiredMixin, TemplateView):
  
 @login_required
 def building(request):
+	start_time = datetime.datetime.now()
 	schedule = build_schedules()
+	end_time = datetime.datetime.now()
+	print(f'==========================\nTime to build: {end_time - start_time}\n==========================')
 	return HttpResponseRedirect(reverse('schedules:build'))
 
 class Settings(LoginRequiredMixin, TemplateView):
@@ -44,12 +48,12 @@ class StapherList(LoginRequiredMixin,ListView):
 				queryset = queryset.filter(summers_worked__iexact=0)
 			else:
 				queryset = queryset.filter(
-					Q(first_name__icontains=query) |
-					Q(last_name__icontains=query) |
-					Q(title__iexact=query) |
-					Q(gender__iexact=query) |
-					Q(age__iexact=query) |
-					Q(class_year__iexact=query)
+					Q(first_name__icontains = query) |
+					Q(last_name__icontains = query) |
+					Q(title__iexact = query) |
+					Q(gender__iexact = query) |
+					Q(age__iexact = query) |
+					Q(class_year__iexact = query)
 				)
 		return queryset
 
@@ -104,13 +108,13 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 
 class ShiftList(LoginRequiredMixin, ListView):
 	template_name = 'schedules/list.html'
+	
 	def get_queryset(self):
 		queryset = Shift.objects.all()
 		query = self.request.GET.get('q')
 		if query:
 			queryset = queryset.filter(
-				Q(title__icontains=query) |
-				Q(flag__icontains=query)
+				Q(title__icontains = query)
 			)
 		return queryset
 		

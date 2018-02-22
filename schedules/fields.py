@@ -19,6 +19,11 @@ GENDER = {
     '3' : 'Other'
 }
 
+TIE_OPTIONS = {
+    '0' : 'Choose one of the people who tied at random.',
+    '1' : 'Pick whoever won highest ranked parmeter.',
+}
+
 class DayOfTheWeekField(models.CharField):
     def __init__(self, *args, **kwargs):
         kwargs['choices']       = tuple(sorted(DAY_OF_THE_WEEK.items()))
@@ -30,4 +35,11 @@ class GenderField(models.CharField):
     def __init__(self, *args, **kwargs):
         kwargs['choices']       = tuple(sorted(GENDER.items()))
         kwargs['max_length']    = 1 
-        super(GenderField,self).__init__(*args, **kwargs)
+        super(GenderField, self).__init__(*args, **kwargs)
+
+
+class TieBreakerField(models.CharField):
+    def __init__(self, *args, **kwargs):
+        kwargs['choices']       = tuple(sorted(TIE_OPTIONS.items()))
+        kwargs['max_length']    = 1
+        super(TieBreakerField, self).__init__(*args, **kwargs)

@@ -1,0 +1,71 @@
+[
+	{
+		"model": "schedules.Parameter",
+		"fields": {
+			"title":"Least Hours in Day",
+			"description":"Selects the person who has the least number of hours scheduled on the same day as the shift to be scheduled.",
+			"use":true,
+			"rank":"1",
+			"function_id":"1"
+		}
+	},
+	{
+		"model": "schedules.Parameter",
+		"fields": {
+			"title":"Least Total Hours",
+			"description":"Selects the person who has the least number of total hours scheduled.",
+			"use":true,
+			"rank":"2",
+			"function_id":"2"
+		}
+	},
+	{
+		"model": "schedules.Parameter",
+		"fields": {
+			"title":"Least Shifts with Any Flags Matching",
+			"description":"Selects the person who has the least number of shifts that have any of the same flags as the shift to be scheduled.",
+			"use":true,
+			"rank":"3",
+			"function_id":"3"
+		}
+	},
+	{
+		"model": "schedules.Parameter",
+		"fields": {
+			"title":"Least Shifts with All Flags Matching",
+			"description":"Selects the person who has the least number of shifts that have the same exact flags as the shift to be scheduled.",
+			"use":true,
+			"rank":"4",
+			"function_id":"4"
+		}
+	},
+	{
+		"model": "schedules.Parameter",
+		"fields": {
+			"title":"Largest Window Between Shifts",
+			"description":"Selects the person who has the most time in their schedule before and after the shift to be scheduled.",
+			"use":true,
+			"rank":"5",
+			"function_id":"5"
+		}
+	},
+	{
+		"model": "schedules.Parameter",
+		"fields": {
+			"title":"Smallest Window Between Shifts",
+			"description":"Selects the person who has the least time in their schedule before and after the shift to be scheduled.",
+			"use":true,
+			"rank":"6",
+			"function_id":"6"
+		}
+	},
+	{
+		"model": "schedules.Settings",
+		"fields": {
+			"parameters":[1,2,3,4,5,6],
+			"auto_schedule":true,
+			"auto_threshold":1,
+			"tie_breaker":0
+		}
+	}
+]

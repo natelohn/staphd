@@ -1,13 +1,14 @@
-from .models import Staphing
+from .parameters import get_parameter_scores, get_best_scores
 
-def foo():
-	print('foo')
-
-def bar():
-	print('bar')
-
-def get_recommended_staphers(staphers, shift, schedule):
-	func_arr = [foo, bar]
-	for f in func_arr:
-		f()
-	return []
+# Return the stapher that is reccomended based on the settings.
+def get_recommended_stapher(staphers, shift, schedule, settings):
+	parameters = settings.parameters.filter(use=True).order_by('rank')
+	reccomendation_info = []
+	for stapher in staphers:
+		stapher_rec_info = [stapher]
+		parameter_scores = get_parameter_scores(stapher, shift, schedule, parameters)
+		stapher_rec_info.append(parameter_scores)
+		reccomendation_info.append(stapher_rec_info)
+	# for info in reccomendation_info:
+	# 	print(info)
+	# best_scores = get_best_scores(parameter_scores, reccomendation_info)
