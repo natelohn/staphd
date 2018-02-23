@@ -2,8 +2,8 @@ import datetime
 from django.conf import settings
 from django.test import TestCase
 
-from .build import add_shift, get_free_staphers
-from .models import Stapher, Shift, Qualification, Schedule, Staphing
+from .build import get_free_staphers
+from .models import Stapher, Shift, Qualification, Schedule, Staphing, Settings, Parameter
 from .sort import get_qual_and_shifts_dicts, get_stapher_dict, get_sorted_shifts
 from .recommend import get_recommended_staphers
 
@@ -95,8 +95,7 @@ class StapherModelTests(TestCase):
         schedule = Schedule()
         schedule.save()
         staphing = Staphing(stapher = stapher, shift = shift1, schedule = schedule)
-        staphing.save()
-        self.assertFalse(stapher.is_free(shift2, schedule))
+        self.assertFalse(stapher.is_free([staphing], shift2))
 
 
     def test_is_free_stapher_not_free_same_shift(self):
@@ -108,19 +107,14 @@ class StapherModelTests(TestCase):
         schedule = Schedule()
         schedule.save()
         staphing = Staphing(stapher = stapher, shift = shift1, schedule = schedule)
-        staphing.save()
-        self.assertFalse(stapher.is_free(shift1, schedule))
+        self.assertFalse(stapher.is_free([staphing], shift1))
 
 
     def test_is_free_stapher_has_no_shifts(self):
         # Make sure is_free is working when the stapher has no shifts
         stapher = Stapher()
-        stapher.save()
         shift1 = Shift(start = datetime.time(hour = 9), end = datetime.time(hour = 10))
-        shift1.save()
-        schedule = Schedule()
-        schedule.save()
-        self.assertTrue(stapher.is_free(shift1, schedule))
+        self.assertTrue(stapher.is_free([], shift1))
 
     def test_is_free_stapher_is_free(self):
         # Make sure is_free is working when the stapher has a shift that doesn't overlap scheduled
@@ -133,8 +127,7 @@ class StapherModelTests(TestCase):
         schedule = Schedule()
         schedule.save()
         staphing = Staphing(stapher = stapher, shift = shift1, schedule = schedule)
-        staphing.save()
-        self.assertTrue(stapher.is_free(shift2, schedule))
+        self.assertTrue(stapher.is_free([staphing], shift2))
     
     def test_is_free_stapher_has_two_overlaping_shifts(self):
         # Make sure is_free is working when the stapher has two shifts that overlap
@@ -149,10 +142,8 @@ class StapherModelTests(TestCase):
         schedule = Schedule()
         schedule.save()
         staphing1 = Staphing(stapher = stapher, shift = shift1, schedule = schedule)
-        staphing1.save()
         staphing2 = Staphing(stapher = stapher, shift = shift2, schedule = schedule)
-        staphing2.save()
-        self.assertFalse(stapher.is_free(shift3, schedule))
+        self.assertFalse(stapher.is_free([staphing1, staphing2], shift3))
 
     def test_is_free_stapher_has_overlaping_shift_on_different_day(self):
         # Make sure is_free is working when the stapher has a shift at the same time on a different day
@@ -165,34 +156,89 @@ class StapherModelTests(TestCase):
         schedule = Schedule()
         schedule.save()
         staphing = Staphing(stapher = stapher, shift = shift1, schedule = schedule)
-        staphing.save()
-        self.assertTrue(stapher.is_free(shift2, schedule))
-
-
-    def test_is_free_stapher_has_overlaping_shift_on_different_schedule(self):
-        # Make sure is_free is working when the stapher has a staphing at the same time, but different schedule
-        stapher = Stapher()
-        stapher.save()
-        shift = Shift(start = datetime.time(hour = 8), end = datetime.time(hour = 10))
-        shift.save()
-        schedule1 = Schedule()
-        schedule1.save()
-        schedule2 = Schedule()
-        schedule2.save()
-        staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule1)
-        staphing.save()
-        self.assertTrue(stapher.is_free(shift, schedule2))
+        self.assertTrue(stapher.is_free([staphing], shift2))
 
 # ============================================================================
 # ------------------------   STAPHER HOURS_IN_DAY  ---------------------------
 # ============================================================================
-# Need to implement...
+    def test_hours_in_day_no_shifts(self):
+        stapher = Stapher()
+        self.assertEquals(stapher.hours_in_day([], 0).seconds, 0)
+
+    def test_hours_in_day_one_hour_shifts(self):
+        stapher = Stapher()
+        shift = Shift()
+        schedule = Schedule()
+        staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+        seconds_in_hour = 60 * 60
+        self.assertEquals(stapher.hours_in_day([staphing], 0).seconds, seconds_in_hour)
+
+    def test_hours_in_day_two_one_hour_shifts(self):
+        stapher = Stapher()
+        shift1 = Shift()
+        shift2 = Shift()
+        schedule = Schedule()
+        staphing1 = Staphing(stapher = stapher, shift = shift1, schedule = schedule)
+        staphing2 = Staphing(stapher = stapher, shift = shift2, schedule = schedule)
+        seconds_in_hour = 60 * 60
+        self.assertEquals(stapher.hours_in_day([staphing1, staphing2], 0).seconds, seconds_in_hour * 2)
+
+    def test_hours_in_day_two_one_hour_shifts_different_days(self):
+        stapher = Stapher()
+        shift1 = Shift()
+        shift2 = Shift(day=1)
+        schedule = Schedule()
+        staphing1 = Staphing(stapher = stapher, shift = shift1, schedule = schedule)
+        staphing2 = Staphing(stapher = stapher, shift = shift2, schedule = schedule)
+        seconds_in_hour = 60 * 60
+        self.assertEquals(stapher.hours_in_day([staphing1, staphing2], 0).seconds, seconds_in_hour)
 
 # ============================================================================
-# ------------------------   STAPHER TOTAL_HOURS  ----------------------------
+# -------------------------   STAPHER TOTAL_HOURS  ---------------------------
 # ============================================================================
-# Need to implement...
+    def test_total_hours_no_shifts(self):
+        stapher = Stapher()
+        self.assertEquals(stapher.total_hours([]).seconds, 0)
 
+    def test_total_hours_one_hour_shifts(self):
+        stapher = Stapher()
+        shift = Shift()
+        schedule = Schedule()
+        staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+        seconds_in_hour = 60 * 60
+        self.assertEquals(stapher.total_hours([staphing]).seconds, seconds_in_hour)
+
+    def test_total_hours_two_one_hour_shifts(self):
+        stapher = Stapher()
+        shift1 = Shift()
+        shift2 = Shift()
+        schedule = Schedule()
+        staphing1 = Staphing(stapher = stapher, shift = shift1, schedule = schedule)
+        staphing2 = Staphing(stapher = stapher, shift = shift2, schedule = schedule)
+        seconds_in_hour = 60 * 60
+        self.assertEquals(stapher.total_hours([staphing1, staphing2]).seconds, seconds_in_hour * 2)
+
+    def test_total_hours_two_one_hour_shifts_different_days(self):
+        stapher = Stapher()
+        shift1 = Shift()
+        shift2 = Shift(day=1)
+        schedule = Schedule()
+        staphing1 = Staphing(stapher = stapher, shift = shift1, schedule = schedule)
+        staphing2 = Staphing(stapher = stapher, shift = shift2, schedule = schedule)
+        seconds_in_hour = 60 * 60
+        self.assertEquals(stapher.total_hours([staphing1, staphing2]).seconds, seconds_in_hour * 2)
+
+    def test_total_hours_three_one_hour_shifts_different_days(self):
+        stapher = Stapher()
+        shift1 = Shift()
+        shift2 = Shift(day=1)
+        shift3 = Shift(day=2)
+        schedule = Schedule()
+        staphing1 = Staphing(stapher = stapher, shift = shift1, schedule = schedule)
+        staphing2 = Staphing(stapher = stapher, shift = shift2, schedule = schedule)
+        staphing3 = Staphing(stapher = stapher, shift = shift3, schedule = schedule)
+        seconds_in_hour = 60 * 60
+        self.assertEquals(stapher.total_hours([staphing1, staphing2, staphing3]).seconds, seconds_in_hour * 3)
 
 class ShiftModelTests(TestCase):
 # ============================================================================
@@ -343,8 +389,7 @@ class ShiftModelTests(TestCase):
         schedule = Schedule()
         schedule.save()
         staphing = Staphing(shift = shift, stapher = stapher, schedule = schedule)
-        staphing.save()
-        self.assertTrue(shift.is_covered(schedule))
+        self.assertTrue(shift.is_covered([staphing]))
 
     def test_is_covered_shift_that_needs_three_is_covered(self):
         # Test to make sure is_covered is working when shift that needs 3 workers has 3 workers
@@ -359,20 +404,15 @@ class ShiftModelTests(TestCase):
         schedule = Schedule()
         schedule.save()
         staphing1 = Staphing(shift = shift, stapher = stapher1, schedule = schedule)
-        staphing1.save()
         staphing2 = Staphing(shift = shift, stapher = stapher2, schedule = schedule)
-        staphing2.save()
         staphing3 = Staphing(shift = shift, stapher = stapher3, schedule = schedule)
-        staphing3.save()
-        self.assertTrue(shift.is_covered(schedule))
+        self.assertTrue(shift.is_covered([staphing1, staphing2, staphing3]))
 
     def test_is_covered_shift_is_not_covered(self):
         # Test to make sure is_covered is working when shift that needs 1 worker has 0 workers
         shift = Shift(workers_needed = 1)
         shift.save()
-        schedule = Schedule()
-        schedule.save()
-        self.assertFalse(shift.is_covered(schedule))
+        self.assertFalse(shift.is_covered([]))
 
     def test_is_covered_shift_that_needs_three_is_not_covered(self):
         # Test to make sure is_covered is working when shift that needs 3 workers has 2 workers
@@ -385,37 +425,146 @@ class ShiftModelTests(TestCase):
         schedule = Schedule()
         schedule.save()
         staphing1 = Staphing(shift = shift, stapher = stapher1, schedule = schedule)
-        staphing1.save()
         staphing2 = Staphing(shift = shift, stapher = stapher2, schedule = schedule)
-        staphing2.save()
-        self.assertFalse(shift.is_covered(schedule))
-
-    def test_is_covered_shift_is_covered_on_different_schedule(self):
-        # Test to make sure is_covered is working when shift that needs 3 workers has 3 workers
-        shift = Shift(workers_needed = 3)
-        shift.save()
-        stapher1 = Stapher()
-        stapher1.save()
-        stapher2 = Stapher()
-        stapher2.save()
-        stapher3 = Stapher()
-        stapher3.save()
-        schedule1 = Schedule()
-        schedule1.save()
-        staphing1 = Staphing(shift = shift, stapher = stapher1, schedule = schedule1)
-        staphing1.save()
-        staphing2 = Staphing(shift = shift, stapher = stapher2, schedule = schedule1)
-        staphing2.save()
-        staphing3 = Staphing(shift = shift, stapher = stapher3, schedule = schedule1)
-        staphing3.save()
-        schedule2 = Schedule()
-        schedule2.save()
-        self.assertFalse(shift.is_covered(schedule2))
+        self.assertFalse(shift.is_covered([staphing1, staphing2]))
 
 # ============================================================================
 # ----------------------------   SHIFT LENGTH  -------------------------------
 # ============================================================================
-# Need to implement...
+    def test_length_as_default(self):
+        shift = Shift()
+        seconds_in_hour = 60 * 60
+        self.assertEquals(shift.length().seconds , seconds_in_hour)
+
+    def test_length_day_is_zero(self):
+        shift = Shift(day = 4)
+        self.assertEquals(shift.length().days, 0)
+
+    def test_length_day_is_zero_as_default(self):
+        shift = Shift()
+        self.assertEquals(shift.length().days, 0)
+
+    def test_length_long_shift(self):
+        shift = Shift(start = datetime.time(1, 0, 0, 0), end = datetime.time(21, 0, 0, 0))
+        seconds_in_hour = 60 * 60
+        self.assertEquals(shift.length().seconds, seconds_in_hour * 20)
+
+    def test_length_15_minutes(self):
+        shift = Shift(start = datetime.time(1, 0, 0, 0), end = datetime.time(1, 15, 0, 0))
+        seconds_in_hour = 60 * 60 
+        self.assertEquals(shift.length().seconds, seconds_in_hour * 0.25)
+
+    def test_length_20_minutes(self):
+        shift = Shift(start = datetime.time(1, 0, 0, 0), end = datetime.time(1, 20, 0, 0))
+        seconds_in_hour = 60 * 60 
+        self.assertEquals(shift.length().seconds, seconds_in_hour * (1/3))
+
+    def test_length_30_minutes(self):
+        shift = Shift(start = datetime.time(1, 0, 0, 0), end = datetime.time(1, 30, 0, 0))
+        seconds_in_hour = 60 * 60 
+        self.assertEquals(shift.length().seconds, seconds_in_hour * 0.5)
+
+    def test_length_40_minutes(self):
+        shift = Shift(start = datetime.time(1, 0, 0, 0), end = datetime.time(1, 40, 0, 0))
+        seconds_in_hour = 60 * 60 
+        self.assertEquals(shift.length().seconds, seconds_in_hour * (2/3))
+
+    def test_length_45_minutes(self):
+        shift = Shift(start = datetime.time(1, 0, 0, 0), end = datetime.time(1, 45, 0, 0))
+        seconds_in_hour = 60 * 60 
+        self.assertEquals(shift.length().seconds, seconds_in_hour * 0.75)
+
+    def test_length_start_end_at_half_hour(self):
+        shift = Shift(start = datetime.time(1, 30, 0, 0), end = datetime.time(2, 30, 0, 0))
+        seconds_in_hour = 60 * 60 
+        self.assertEquals(shift.length().seconds, seconds_in_hour)
+
+    def test_length_start_min_more_than_end_min(self):
+        shift = Shift(start = datetime.time(1, 45, 0, 0), end = datetime.time(2, 15, 0, 0))
+        seconds_in_hour = 60 * 60 
+        self.assertEquals(shift.length().seconds, seconds_in_hour * (1/2))
+
+    def test_length_comparing(self):
+        shift1 = Shift(start = datetime.time(1, 0, 0, 0), end = datetime.time(2, 0, 0, 0))
+        shift2 = Shift(start = datetime.time(1, 0, 0, 0), end = datetime.time(3, 0, 0, 0))
+        shift3 = Shift(start = datetime.time(2, 0, 0, 0), end = datetime.time(3, 0, 0, 0))
+        self.assertTrue(shift1.length() < shift2.length())
+        self.assertFalse(shift1.length() > shift2.length())
+        self.assertTrue(shift1.length() == shift3.length())
+
+# ============================================================================
+# ------------------------   SHIFT LEFT_TO_COVER  ----------------------------
+# ============================================================================
+
+    def test_left_to_cover_non_covered(self):
+        shift = Shift()
+        self.assertEquals(shift.workers_needed, shift.left_to_cover([]))
+
+    def test_left_to_cover_is_covered(self):
+        shift = Shift(workers_needed = 1)
+        stapher = Stapher()
+        schedule = Schedule()
+        shift.save()
+        stapher.save()
+        schedule.save()
+        staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+        self.assertTrue(shift.left_to_cover([staphing]) == 0)
+
+    def test_left_to_cover_partially_covered(self):
+        shift = Shift(workers_needed = 2)
+        stapher = Stapher()
+        schedule = Schedule()
+        shift.save()
+        stapher.save()
+        schedule.save()
+        staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+        self.assertTrue(shift.left_to_cover([staphing]) == 1) 
+
+class SettingsModelTests(TestCase):
+# ============================================================================
+# --------------------   SETTINGS BREAK_TIES_RANDOMLY  -----------------------
+# ============================================================================
+    def test_break_ties_randomly_true_as_default(self):
+        settings = Settings()
+        self.assertTrue(settings.break_ties_randomly())
+
+    def test_break_ties_randomly_false(self):
+        settings = Settings(tie_breaker = 1)
+        self.assertFalse(settings.break_ties_randomly())
+
+    def test_break_ties_randomly_true(self):
+        settings = Settings(tie_breaker = 0)
+        self.assertTrue(settings.break_ties_randomly())
+
+# ============================================================================
+# -------------------   SETTINGS RANKED_WINS_BREAK_TIES  ---------------------
+# ============================================================================
+    def test_ranked_wins_break_ties_false_as_default(self):
+        settings = Settings()
+        self.assertFalse(settings.ranked_wins_break_ties())
+
+    def test_ranked_wins_break_ties_false(self):
+        settings = Settings(tie_breaker = 0)
+        self.assertFalse(settings.ranked_wins_break_ties())
+
+    def test_ranked_wins_break_ties_true(self):
+        settings = Settings(tie_breaker = 1)
+        self.assertTrue(settings.ranked_wins_break_ties())
+
+# ============================================================================
+# ----------------------   SETTINGS USER_BREAK_TIES  -------------------------
+# ============================================================================
+    def test_user_breaks_ties_false_as_default(self):
+        settings = Settings()
+        self.assertFalse(settings.user_breaks_ties())
+
+    def test_user_breaks_ties_false(self):
+        settings = Settings(tie_breaker = 0)
+        self.assertFalse(settings.user_breaks_ties())
+
+    def test_user_breaks_ties_true(self):
+        settings = Settings(tie_breaker = 2)
+        self.assertTrue(settings.user_breaks_ties())
 
 class SortTests(TestCase):
     fixtures = [
@@ -538,21 +687,6 @@ class SortTests(TestCase):
 
 class BuildTests(TestCase):
 # ============================================================================
-# ----------------------------   add_shift  ----------------------------------
-# ============================================================================
-
-    def test_add_shift_staphing_was_added(self):
-        stapher = Stapher()
-        stapher.save()
-        shift = Shift()
-        shift.save()
-        schedule = Schedule()
-        schedule.save()
-        add_shift(stapher, shift, schedule)
-        qs = Staphing.objects.filter(schedule__id = schedule.id)
-        self.assertNotEqual(qs, [])
-
-# ============================================================================
 # ------------------------   get_free_staphers  ------------------------------
 # ============================================================================
     
@@ -565,7 +699,7 @@ class BuildTests(TestCase):
         shift.save()
         schedule = Schedule()
         schedule.save()
-        add_shift(stapher1, shift, schedule)
+        # add_shift(stapher1, shift, schedule)
         staphers = [stapher1, stapher2]
         free_staphers = get_free_staphers(staphers, shift, schedule)
         self.assertEqual(free_staphers, [stapher2])

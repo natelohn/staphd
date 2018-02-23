@@ -98,7 +98,8 @@ def build_schedules():
 	schedule.print()
 	print(f'{len(staphings)} shifts covered.')
 	Schedule.objects.all().delete()
-	print(f'Current Schedules in DB: {Schedule.objects.all()}')
+	print(f'Current Schedules in DB: {Schedule.objects.all().count()}')
+	print(f'Current Staphings in DB: {Staphing.objects.all().count()}')
 	
 	return True
 

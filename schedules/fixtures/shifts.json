@@ -2841,7 +2841,7 @@
 			"flags":[103,22],
 			"start":"12:00",
 			"end":"12:30",
-			"workers_needed":"7",
+			"workers_needed":"8",
 			"qualifications":[36],
 			"difficult":false
 		}
@@ -5194,19 +5194,6 @@
 			"flags":[54,67],
 			"start":"9:15",
 			"end":"10:45",
-			"workers_needed":"1",
-			"qualifications":[2],
-			"difficult":false
-		}
-	},
-	{
-		"model": "schedules.Shift",
-		"fields": {
-			"day":"5",
-			"title":"ICOM BEFFA",
-			"flags":[54,22,67],
-			"start":"12:00",
-			"end":"12:30",
 			"workers_needed":"1",
 			"qualifications":[2],
 			"difficult":false
@@ -7815,19 +7802,6 @@
 	{
 		"model": "schedules.Shift",
 		"fields": {
-			"day":"5",
-			"title":"ICOM BEFFA",
-			"flags":[6,22],
-			"start":"12:00",
-			"end":"12:30",
-			"workers_needed":"1",
-			"qualifications":[18],
-			"difficult":false
-		}
-	},
-	{
-		"model": "schedules.Shift",
-		"fields": {
 			"day":"6",
 			"title":"Manager's Meeting",
 			"flags":[54,6],
@@ -9978,7 +9952,7 @@
 			"flags":[85,38],
 			"start":"6:45",
 			"end":"9:30",
-			"workers_needed":"2",
+			"workers_needed":"1",
 			"qualifications":[27],
 			"difficult":false
 		}
@@ -9991,7 +9965,7 @@
 			"flags":[85,38],
 			"start":"6:45",
 			"end":"9:30",
-			"workers_needed":"2",
+			"workers_needed":"1",
 			"qualifications":[27],
 			"difficult":false
 		}
