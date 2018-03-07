@@ -36,7 +36,7 @@ def building(request):
 		all_staphers = Stapher.objects.all()
 		all_shifts = Shift.objects.all()
 		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
-		sorted_shifts = cache.set('sorted_shifts', sorted_shifts, None)
+		cache.set('sorted_shifts', sorted_shifts, None)
 		cache.set('resort', False, None)
 
 	settings = ScheduleSettings.objects.get(pk = 1)
