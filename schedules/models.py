@@ -1,5 +1,6 @@
 import datetime
 from django.conf import settings
+from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from django.db import models
 
@@ -42,6 +43,15 @@ class Stapher(models.Model):
 	def __str__(self):
 		return f'{self.first_name} {self.last_name}'
 
+	def save(self, *args, **kwargs):
+		cache.set('resort', True, None)
+		super(Stapher, self).save(*args, **kwargs)
+			
+
+	def delete(self, *args, **kwargs):
+		cache.set('resort', True, None)
+		super(Stapher, self).delete(*args, **kwargs)
+
 	def get_absolute_url(self):
 		return reverse('schedules:stapher-detail', kwargs={'pk': self.id})
 
@@ -53,28 +63,28 @@ class Stapher(models.Model):
 
 	def is_free(self, staphings, shift):
 		for staphing in staphings:
-			if staphing.stapher is self and staphing.shift.overlaps(shift):
+			if staphing.stapher.id == self.id and staphing.shift.overlaps(shift):
 				return False
 		return True
 
 	def hours_in_day(self, staphings, day):
 		hours = datetime.timedelta()
 		for staphing in staphings:
-			if staphing.stapher is self and staphing.shift.day == day:
+			if staphing.stapher.id == self.id and staphing.shift.day == day:
 				hours += staphing.shift.length()
 		return hours
 
 	def total_hours(self, staphings):
 		hours = datetime.timedelta()
 		for staphing in staphings:
-			if staphing.stapher is self:
+			if staphing.stapher.id == self.id:
 				hours += staphing.shift.length()
 		return hours
 
 
 class Shift(models.Model):
 	active			= models.BooleanField(default = True)
-	title 			= models.CharField(max_length = 100,default = 'NAME OF SHIFT')
+	title 			= models.CharField(max_length = 100, default = 'NAME OF SHIFT')
 	flags 			= models.ManyToManyField(Flag, blank = False)
 	day 			= fields.DayOfTheWeekField(default = 0)
 	start			= models.TimeField(default = datetime.time(11, 0, 0, 0))
@@ -92,20 +102,28 @@ class Shift(models.Model):
 	def save(self, *args, **kwargs):
 		# Start of shift must be before the end of shift and day must be between 0 and 6 (Sun-Sat)
 		if self.start < self.end and self.day in range(0,6):
+			cache.set('resort', True, None)
 			super(Shift, self).save(*args, **kwargs)
 		else:
 			return
 
+	def delete(self, *args, **kwargs):
+		cache.set('resort', True, None)
+		super(Shift, self).delete(*args, **kwargs)
+			
+
 	def get_absolute_url(self):
 		return reverse('schedules:shift-detail', kwargs = {'pk': self.id})
+
 
 	def overlaps(self, shift):
 		return int(self.day) == int(shift.day) and self.start < shift.end and self.end > shift.start
 
+
 	def is_covered(self, staphings):
 		count_of_workers = 0
 		for staphing in staphings:
-			if self is staphing.shift:
+			if self.id == staphing.shift.id:
 				count_of_workers += 1
 		return count_of_workers == self.workers_needed
 
@@ -117,7 +135,7 @@ class Shift(models.Model):
 	def left_to_cover(self, staphings):
 		count_of_workers = 0
 		for staphing in staphings:
-			if self is staphing.shift:
+			if self.id == staphing.shift.id:
 				count_of_workers += 1
 		return self.workers_needed - count_of_workers
 
@@ -126,7 +144,7 @@ class Shift(models.Model):
 # A class representing all shift/staph pairs for a user - this will allow for multiple schedules
 class Schedule(models.Model):
 	active			= models.BooleanField(default = True)
-	title 			= models.CharField(max_length = 100,default = 'NAME OF SCHEDULE')
+	title 			= models.CharField(max_length = 100, default = 'NAME OF SCHEDULE')
 
 	def __str__(self):
 		return f'{self.title}'
@@ -139,6 +157,16 @@ class Schedule(models.Model):
 			staphings = Staphing.objects.filter(schedule__id = self.id, stapher__id = stapher.id).order_by('shift__day', 'shift__start')
 			for staphing in staphings:
 				print('	' + str(staphing.shift))
+
+	def print_overlaping_qualifiers(self, shift):
+		staphers = Stapher.objects.all()
+		for stapher in staphers:
+			if stapher.is_qualified(shift):
+				print(stapher)
+				staphings = Staphing.objects.filter(schedule__id = self.id, stapher__id = stapher.id).order_by('shift__day', 'shift__start')
+				for staphing in staphings:
+					if shift.overlaps(staphing.shift):
+						print('	' + str(staphing.shift))
 
 
 # A class representing a single pair of Shift & Stapher in a specific schedule

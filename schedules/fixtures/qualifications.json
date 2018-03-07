@@ -310,5 +310,35 @@
 		"fields": {
 			"title":"suaves"
 		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"sumo"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"motue"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"tueway"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"wethur"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"stirfry"
+		}
 	}
 ]

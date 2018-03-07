@@ -9,7 +9,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[29,21,38,31,20,33]
+			"qualifications":[139,131,148,141,130,143,167]
 		}
 	},
 	{
@@ -22,7 +22,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[9,8,7,38,31,16,1,33,36,42,44,49,51]
+			"qualifications":[119,118,117,148,141,126,111,143,146,152,154,159,161,166]
 		}
 	},
 	{
@@ -35,7 +35,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"0",
-			"qualifications":[29,11,38,31,8,20,25,33,42,51]
+			"qualifications":[139,121,148,141,118,130,135,143,152,161,164]
 		}
 	},
 	{
@@ -48,7 +48,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[9,30,31,16,33]
+			"qualifications":[119,140,141,126,143,165]
 		}
 	},
 	{
@@ -61,7 +61,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[9,13,51,38,31,4,20]
+			"qualifications":[119,123,161,148,141,114,130,163]
 		}
 	},
 	{
@@ -74,7 +74,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[29,52,31,20,33]
+			"qualifications":[139,162,141,130,143,165]
 		}
 	},
 	{
@@ -87,7 +87,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[29,46,38,31,16,20,33,36,44,50,51]
+			"qualifications":[139,156,148,141,126,130,143,146,154,160,161,163]
 		}
 	},
 	{
@@ -100,7 +100,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[9,23,31,4,5,20,33,39,50]
+			"qualifications":[119,133,141,114,115,130,143,149,160,164]
 		}
 	},
 	{
@@ -113,7 +113,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[29,28,38,31,20,22,33]
+			"qualifications":[139,138,148,141,130,132,143,166]
 		}
 	},
 	{
@@ -126,7 +126,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[29,11,38,31,16,20,33,44,50,51]
+			"qualifications":[139,121,148,141,126,130,143,154,160,161,167]
 		}
 	},
 	{
@@ -139,7 +139,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[9,6,38,31,16,20,33,42,50,51]
+			"qualifications":[119,116,148,141,126,130,143,152,160,161,163]
 		}
 	},
 	{
@@ -152,7 +152,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[9,32,31,16,8,20,33,44,51]
+			"qualifications":[119,142,141,126,118,130,143,154,161,163]
 		}
 	},
 	{
@@ -165,7 +165,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"0",
-			"qualifications":[9,11,20,25,33,51]
+			"qualifications":[119,121,130,135,143,161,166]
 		}
 	},
 	{
@@ -178,7 +178,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[29,32,38,31,16,12,20,26,33,44,50,51]
+			"qualifications":[139,142,148,141,126,122,130,136,143,154,160,161,167]
 		}
 	},
 	{
@@ -191,7 +191,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"0",
-			"qualifications":[29,46,38,31,20,33,51]
+			"qualifications":[139,156,148,141,130,143,161,166]
 		}
 	},
 	{
@@ -204,7 +204,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[29,40,38,19,31,5,20,33,42,50,51]
+			"qualifications":[139,150,148,129,141,115,130,143,152,160,161,164]
 		}
 	},
 	{
@@ -217,7 +217,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"1",
-			"qualifications":[29,6,38,31,16,27,20,33,50,51]
+			"qualifications":[139,116,148,141,126,137,130,143,160,161,167]
 		}
 	},
 	{
@@ -230,7 +230,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[29,30,20,33]
+			"qualifications":[139,140,130,143,167]
 		}
 	},
 	{
@@ -243,7 +243,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[9,46,38,31,20,33]
+			"qualifications":[119,156,148,141,130,143,167]
 		}
 	},
 	{
@@ -256,7 +256,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[9,26,35,38,31,1,10,33,51]
+			"qualifications":[119,136,145,148,141,111,120,143,161,165]
 		}
 	},
 	{
@@ -269,7 +269,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[9,14,38,31,19,20,26,33]
+			"qualifications":[119,124,148,141,129,130,136,143,167]
 		}
 	},
 	{
@@ -282,7 +282,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[9,32,38,31,20,33]
+			"qualifications":[119,142,148,141,130,143,165]
 		}
 	},
 	{
@@ -295,7 +295,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[9,34,38,31,16,19,20,27,33,42,44]
+			"qualifications":[119,144,148,141,126,129,130,137,143,152,154,166]
 		}
 	},
 	{
@@ -308,7 +308,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[9,30,38,31,20,33,49]
+			"qualifications":[119,140,148,141,130,143,159,163]
 		}
 	},
 	{
@@ -321,7 +321,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[29,46,38,44,31,16,8,20,33,49,51]
+			"qualifications":[139,156,148,154,141,126,118,130,143,159,161,163]
 		}
 	},
 	{
@@ -334,7 +334,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[9,48,38,31,16,5,12,20,50]
+			"qualifications":[119,158,148,141,126,115,122,130,160,163]
 		}
 	},
 	{
@@ -347,7 +347,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[9,46,38,44,31,16,20,25,33,49,50,51]
+			"qualifications":[119,156,148,154,141,126,130,135,143,159,160,161,167]
 		}
 	},
 	{
@@ -360,7 +360,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[29,48,38,44,31,16,20,33,50,51]
+			"qualifications":[139,158,148,154,141,126,130,143,160,161,166]
 		}
 	},
 	{
@@ -373,7 +373,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[29,48,38,31,20,33,42,51]
+			"qualifications":[139,158,148,141,130,143,152,161,165]
 		}
 	},
 	{
@@ -386,7 +386,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[29,30,38,31,16,12,20,33,44,51]
+			"qualifications":[139,140,148,141,126,122,130,143,154,161,166]
 		}
 	},
 	{
@@ -399,7 +399,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[29,46,38,31,16,18,20,33,36,44,51]
+			"qualifications":[139,156,148,141,126,128,130,143,146,154,161,164]
 		}
 	},
 	{
@@ -412,7 +412,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[29,48,38,31,16,20,33,44,51]
+			"qualifications":[139,158,148,141,126,130,143,154,161,164]
 		}
 	},
 	{
@@ -425,7 +425,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"0",
-			"qualifications":[9,21,38,31,20,33,51]
+			"qualifications":[119,131,148,141,130,143,161,166]
 		}
 	},
 	{
@@ -438,7 +438,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"1",
-			"qualifications":[9,41,38,31,16,1,8,10,33,44,51]
+			"qualifications":[119,151,148,141,126,111,118,120,143,154,161,166]
 		}
 	},
 	{
@@ -451,7 +451,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[9,48,38,31,16,20,25,33,43,44,49]
+			"qualifications":[119,158,148,141,126,130,135,143,153,154,159,167]
 		}
 	},
 	{
@@ -464,7 +464,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[29,37,38,31,16,20,33,44,50,51]
+			"qualifications":[139,147,148,141,126,130,143,154,160,161,165]
 		}
 	},
 	{
@@ -477,7 +477,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"1",
-			"qualifications":[9,21,31,16,20,33,36,44,50]
+			"qualifications":[119,131,141,126,130,143,146,154,160,164]
 		}
 	},
 	{
@@ -490,7 +490,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[29,12,21,16,5,20,25,26,33,44,49,51]
+			"qualifications":[139,122,131,126,115,130,135,136,143,154,159,161,163]
 		}
 	},
 	{
@@ -503,7 +503,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[9,6,42,38,31,20,33,51]
+			"qualifications":[119,116,152,148,141,130,143,161,164]
 		}
 	},
 	{
@@ -516,7 +516,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[29,32,38,31,16,20,33,36,44,49,51]
+			"qualifications":[139,142,148,141,126,130,143,146,154,159,161,166]
 		}
 	},
 	{
@@ -529,7 +529,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[29,11,31,5,20]
+			"qualifications":[139,121,141,115,130,164]
 		}
 	},
 	{
@@ -542,7 +542,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"1",
-			"qualifications":[9,52,38,31,16,20,33,36,44]
+			"qualifications":[119,162,148,141,126,130,143,146,154,164]
 		}
 	},
 	{
@@ -555,7 +555,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[9,47,38,25,31,16,4,5,20,33,44,50,51]
+			"qualifications":[119,157,148,135,141,126,114,115,130,143,154,160,161,164]
 		}
 	},
 	{
@@ -568,7 +568,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[9,11,38,31,12,20,33,50,51]
+			"qualifications":[119,121,148,141,122,130,143,160,161,163]
 		}
 	},
 	{
@@ -581,7 +581,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[9,6,38,31,20,25,33]
+			"qualifications":[119,116,148,141,130,135,143,166]
 		}
 	},
 	{
@@ -594,7 +594,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"0",
-			"qualifications":[29,28,38,31,20,22,33,44,51]
+			"qualifications":[139,138,148,141,130,132,143,154,161,163]
 		}
 	},
 	{
@@ -607,7 +607,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[9,32,38,31,20,33]
+			"qualifications":[119,142,148,141,130,143,164]
 		}
 	},
 	{
@@ -620,7 +620,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"0",
-			"qualifications":[9,8,45,38,31,24,19,20,33]
+			"qualifications":[119,118,155,148,141,134,129,130,143,166]
 		}
 	},
 	{
@@ -633,7 +633,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[29,6,16,20,33,44]
+			"qualifications":[139,116,126,130,143,154,165]
 		}
 	},
 	{
@@ -646,7 +646,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"1",
-			"qualifications":[29,3,38,22,31,16,20,25,33,43,44]
+			"qualifications":[139,113,148,132,141,126,130,135,143,153,154,164]
 		}
 	},
 	{
@@ -659,7 +659,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"1",
-			"qualifications":[9,3,38,22,31,16,20,33,44]
+			"qualifications":[119,113,148,132,141,126,130,143,154,163]
 		}
 	},
 	{
@@ -672,7 +672,7 @@
 			"age":"18",
 			"class_year":"2020",
 			"summers_worked":"0",
-			"qualifications":[9,15,31,1,5,10,20,33,42,50]
+			"qualifications":[119,125,141,111,115,120,130,143,152,160,167]
 		}
 	},
 	{
@@ -685,7 +685,7 @@
 			"age":"22",
 			"class_year":"2016",
 			"summers_worked":"3",
-			"qualifications":[9,37,38,31,16,12,20,33,44]
+			"qualifications":[119,147,148,141,126,122,130,143,154,166]
 		}
 	},
 	{
@@ -698,7 +698,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[9,2,31,20,33,36,44]
+			"qualifications":[119,112,141,130,143,146,154,165]
 		}
 	},
 	{
@@ -711,7 +711,7 @@
 			"age":"23",
 			"class_year":"2015",
 			"summers_worked":"2",
-			"qualifications":[9,11,16,20,44]
+			"qualifications":[119,121,126,130,154,165]
 		}
 	},
 	{
@@ -724,7 +724,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"0",
-			"qualifications":[29,17,38,31,19,33,44,49,51]
+			"qualifications":[139,127,148,141,129,143,154,159,161,167]
 		}
 	},
 	{
@@ -737,7 +737,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"1",
-			"qualifications":[29,37,38,31,16,20,33,36,44,50,51]
+			"qualifications":[139,147,148,141,126,130,143,146,154,160,161,165]
 		}
 	},
 	{
@@ -750,7 +750,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"0",
-			"qualifications":[29,30,12,38,31,5,20,33,44]
+			"qualifications":[139,140,122,148,141,115,130,143,154,164]
 		}
 	},
 	{
@@ -763,7 +763,7 @@
 			"age":"21",
 			"class_year":"2017",
 			"summers_worked":"2",
-			"qualifications":[29,52,16,33,44,50]
+			"qualifications":[139,162,126,143,154,160,163]
 		}
 	},
 	{
@@ -776,7 +776,7 @@
 			"age":"19",
 			"class_year":"2019",
 			"summers_worked":"1",
-			"qualifications":[29,15,38,31,24,16,10,20,33,42,44,50,51]
+			"qualifications":[139,125,148,141,134,126,120,130,143,152,154,160,161,163]
 		}
 	},
 	{
@@ -789,7 +789,7 @@
 			"age":"20",
 			"class_year":"2018",
 			"summers_worked":"0",
-			"qualifications":[9,52,38,31,20,33,42,51]
+			"qualifications":[119,162,148,141,130,143,152,161,165]
 		}
 	}
 ]

@@ -1,6 +1,7 @@
 import datetime
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.core.cache import cache
 from django.http import HttpResponseRedirect
 from django.db.models import Q
 from django.db.models.functions import Lower
@@ -8,22 +9,44 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from .models import Flag, Stapher, Shift, Qualification
-from .forms import FlagCreateForm, StapherCreateForm, ShiftCreateForm, QualificationCreateForm
 from .build import build_schedules
+from .forms import FlagCreateForm, StapherCreateForm, ShiftCreateForm, QualificationCreateForm
+from .models import Flag, Stapher, Shift, Qualification
+from .models import Settings as ScheduleSettings
+from .sort import get_sorted_shifts
+
+
 
 class Home(LoginRequiredMixin, TemplateView):
     template_name = 'home.html'
 
 class BuildView(LoginRequiredMixin, TemplateView):
     template_name = 'schedules/build.html'
+
+    # cache.set('sorted_shifts', sorted_shifts, None)
  
 @login_required
 def building(request):
+	################ For testing...  ################
 	start_time = datetime.datetime.now()
-	schedule = build_schedules()
-	end_time = datetime.datetime.now()
-	print(f'==========================\nTime to build: {end_time - start_time}\n==========================')
+	#################################################
+
+	sorted_shifts = cache.get('sorted_shifts')
+	if cache.get('resort') or not sorted_shifts:
+		all_staphers = Stapher.objects.all()
+		all_shifts = Shift.objects.all()
+		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
+		sorted_shifts = cache.set('sorted_shifts', sorted_shifts, None)
+		cache.set('resort', False, None)
+
+	settings = ScheduleSettings.objects.get(pk = 1)
+	schedule = build_schedules(sorted_shifts, settings)
+	
+
+	################ For testing...  ################
+	end_time = datetime.datetime.now() 
+	print(f'==========================\nTime Elapsed: {end_time - start_time}\n==========================')
+	#################################################
 	return HttpResponseRedirect(reverse('schedules:build'))
 
 class Settings(LoginRequiredMixin, TemplateView):
@@ -116,7 +139,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 			queryset = queryset.filter(
 				Q(title__icontains = query)
 			)
-		return queryset
+		return queryset.order_by('day','start')
 		
 
 	def get_context_data(self, *args, **kwargs):
