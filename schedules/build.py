@@ -1,4 +1,6 @@
+from operator import itemgetter
 from random import shuffle
+
 
 from .models import Schedule, Staphing
 from .recommend import get_recommended_staphers
@@ -29,6 +31,7 @@ def get_higher_ranked_wins(item):
 			
 
 
+
 def resolve_ties(settings, recommendations, tied_recs):
 	beat_tied_recs = []
 	for i, rec in enumerate(recommendations):
@@ -48,35 +51,37 @@ def resolve_ties(settings, recommendations, tied_recs):
 	else:
 		non_tied_losers = recommendations[end_of_tie + 1:]
 	return new_recommendations + non_tied_losers
+	
 
-# Returns True if all shifts are covered, and a Recomendation if all shifts can not be covered.
+# Returns a schedule of given the staphers, shifts and settings.
+# Currently is not guarenteed to cover every shift.
+# Covering 99% of shift w/ the 2017 shifts and staphers.
 def build_schedules(sorted_shifts, settings):
 	schedule = Schedule()
 	schedule.save()
 	staphings = []
-	for ratio, length, shift, qualified_staphers in sorted_shifts:
-		# print(f'Ratio: {ratio}. Length: {length}\n{shift}\n{shift.workers_needed} needed, {len(qualified_staphers)} qualified.\n===========================')
+	count_of_shifts = len(sorted_shifts)
+	counter = 0
+	for shift, qualified_staphers in sorted_shifts:
+		print(f'{round(((counter / count_of_shifts) * 100), 2)}% of shifts seen. Current Shift: {shift}...')
 		if not shift.is_covered(staphings):
 			free_and_qualified = get_free_staphers(qualified_staphers, shift, staphings)
 
 			# Fail case, not enough qualified staphers to cover the shift
 			if len(free_and_qualified) < shift.left_to_cover(staphings):
-				for staphing in staphings:
-					staphing.save()
-				print('\n\n**************************************************************\n*************************** FAILED ***************************\n**************************************************************')
-				print(f'	{shift}')
-				print(f'	{len(free_and_qualified)} free and qualified, {shift.workers_needed} needed, {shift.left_to_cover(staphings)} left.')
-				schedule.save()
-				schedule.print_overlaping_qualifiers(shift)
-				print('=======================================================================')
-				# return
+				for stapher in free_and_qualified:
+					staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+					staphings.append(staphing)
+					print(f'---> Auto Schedule: {staphing}. (shift not fully scheudled)')
+					staphings.append(Staphing(stapher = stapher, shift = shift, schedule = schedule))
+				# staphings = find_easiest_fix(shift, qualified_staphers, staphings)
 
 			# In this system, all shifts that have no other options of people to cover them will be automatically scheduled.
 			elif len(free_and_qualified) == shift.left_to_cover(staphings):
-				# print(f'Auto Schedule: {shift}')
 				for stapher in free_and_qualified:
-					staphings.append(Staphing(stapher = stapher, shift = shift, schedule = schedule))
-
+					staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+					staphings.append(staphing)
+					print(f'---> Auto Schedule: {staphing}')
 			# If the shift can be covered and there are more than just enough staphers to cover it, we make recommendations as to who should cover it
 			# Depending on the settings, we either auto-schedule those recommendations or return them.
 			else:
@@ -94,25 +99,15 @@ def build_schedules(sorted_shifts, settings):
 					for stapher, scores, wins_losses in recommendations:
 						wins = wins_losses.count(True)
 						if wins >= settings.auto_threshold and not shift.is_covered(staphings):
-							# print(f'	Recomended Staphing Made: {stapher} takes {shift}')
-							staphings.append(Staphing(stapher = stapher, shift = shift, schedule = schedule))
+							staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+							staphings.append(staphing)
+							print(f'---> Recomended Staphing Made: {staphing}')
 							recommendations_used += 1
 					recommendations = recommendations[recommendations_used:]
-	print('+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=++=+=+=+=+')
-	uncovered_shifts = 0
-	uncovered_staphings = 0
-	total_staphings = 0
-	for info in sorted_shifts:
-		shift = info[2]
-		if not shift.is_covered(staphings):
-			uncovered_shifts += 1
-			uncovered_staphings += shift.workers_needed
-		total_staphings += shift.workers_needed
+		counter += 1
 
-	print(f'{uncovered_staphings / total_staphings}% staphings uncovered.')
-	print(f'{ uncovered_shifts / len(sorted_shifts)}% shifts uncovered.')
-	Schedule.objects.all().delete()
-	print(f'Current Schedules in DB: {Schedule.objects.all().count()}')
-	print(f'Current Staphings in DB: {Staphing.objects.all().count()}')
-	return True
+	# Finally we save all the staphings that were made and return the Scheudle
+	for staphing in staphings:
+		staphing.save()
+	return schedule
 

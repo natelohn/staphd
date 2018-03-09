@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from django.db import models
+from operator import attrgetter
 
 from . import fields
 
@@ -81,6 +82,45 @@ class Stapher(models.Model):
 				hours += staphing.shift.length()
 		return hours
 
+	def overlapping_staphings(self, shift, staphings):
+		overlapping_staphings = []
+		for staphing in staphings:
+			if staphing.stapher.id == self.id and staphing.shift.overlaps(shift):
+				overlapping_staphings.append(staphing)
+		return overlapping_staphings
+
+	def get_previous_shift(self, shift, staphings):
+		all_shifts = []
+		for staphing in staphings:
+			if self == staphing.stapher:
+				all_shifts.append(staphing.shift)
+		all_shifts = sorted(all_shifts, key=attrgetter('day', 'start'))
+		for i in range(1, len(all_shifts)):
+			s1 = all_shifts[i - 1]
+			s2 = all_shifts[i]
+			s1_before = s1.end <= shift.start and s1.day <= shift.day
+			s2_after = shift.end >= s2.start and shift.day >= s2.day
+			if s1_before and s2_after:
+				return s1
+		return None
+
+	def get_next_shift(self, shift, staphings):
+		all_shifts = []
+		for staphing in staphings:
+			if self == staphing.stapher:
+				all_shifts.append(staphing.shift)
+		all_shifts = sorted(all_shifts, key=attrgetter('day', 'start'))
+		for i in range(1, len(all_shifts)):
+			s1 = all_shifts[i - 1]
+			s2 = all_shifts[i]
+			s1_before = s1.end <= shift.start and s1.day <= shift.day
+			s2_after = shift.end >= s2.start and shift.day >= s2.day
+			if s1_before and s2_after:
+				return s2
+		return None
+
+
+
 
 class Shift(models.Model):
 	active			= models.BooleanField(default = True)
@@ -139,6 +179,13 @@ class Shift(models.Model):
 				count_of_workers += 1
 		return self.workers_needed - count_of_workers
 
+	def has_matching_flags(self, shift):
+		return bool(set(self.flags.all()) & set(shift.flags.all()))
+
+
+	def has_exact_flags(self, shift):
+		return set(self.flags.all()) == set(shift.flags.all())
+		
 
 
 # A class representing all shift/staph pairs for a user - this will allow for multiple schedules

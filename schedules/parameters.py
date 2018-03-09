@@ -1,3 +1,5 @@
+import datetime
+
 
 def get_scheduled_hours_in_shifts_day(stapher, shift, staphings):
 	return stapher.hours_in_day(staphings, shift.day)
@@ -6,13 +8,41 @@ def get_total_scheduled_hours_in_schedule(stapher, shift, staphings):
 	return stapher.total_hours(staphings)
 
 def get_number_of_shifts_with_any_matching_flags(stapher, shift, staphings):
-	return 0
+	count_of_any_matching_flags = 0
+	for staphing in staphings:
+		if stapher == staphing.stapher and shift.has_matching_flags(staphing.shift):
+			count_of_any_matching_flags += 1
+	return count_of_any_matching_flags
 
 def get_number_of_shifts_with_all_matching_flags(stapher, shift, staphings):
-	return 0
+	count_of_all_matching_flags = 0
+	for staphing in staphings:
+		if stapher == staphing.stapher and shift.has_exact_flags(staphing.shift):
+			count_of_all_matching_flags += 1
+	return count_of_all_matching_flags
 
+# Return the size of the length of time from the end of the shift before the given shift 
+# 	and the start of the shift after the given shift.
 def get_time_between_last_and_next_shift(stapher, shift, staphings):
-	return 0
+	previous_shift = stapher.get_previous_shift(shift, staphings)
+	next_shift = stapher.get_next_shift(shift, staphings)
+
+	# If the shift before/after this shift is not on the same day or there is no shift scheduled before/after this one,
+	# 	we will keep the time at the earliest/latest possible time in the day.
+	start_of_window = datetime.time.min
+	end_of_window = datetime.time.max
+	if bool(previous_shift) and previous_shift.day == shift.day:
+		start_of_window = previous_shift.end
+
+	if bool(next_shift) and next_shift.day == shift.day:
+		end_of_window = next_shift.start
+
+
+	# We then covert the time object to timedelt and return the difference.
+	start_td = datetime.timedelta(hours = start_of_window.hour, minutes = start_of_window.minute)
+	end_td = datetime.timedelta(hours = end_of_window.hour, minutes = end_of_window.minute)
+	return end_td - start_td
+
 
 
 def get_parameter_funtion(id):

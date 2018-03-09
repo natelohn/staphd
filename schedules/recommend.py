@@ -9,12 +9,13 @@ def get_win_loss_info(best_scores, stapher_scores):
 def get_wins(item):
 	return item[2].count(True)
 
-# Return the stapher that is reccomended based on the settings.
+# Returns a list of staphers that is reccomended based on the settings.
 def get_recommended_staphers(staphers, shift, staphings, settings):
-	parameters = settings.parameters.filter(use=True).order_by('rank')[:1]
+	parameters = settings.parameters.filter(use = True).order_by('rank')
 	all_scores = []
 	best_scores = []
-	# First we loop to determine everyones scores and what the best scores are...
+
+	# First we loop to determine everyones scores and what the best scores are.
 	for stapher in staphers:
 		parameter_scores = get_parameter_scores(stapher, shift, staphings, parameters)
 		if best_scores == []:
@@ -22,10 +23,13 @@ def get_recommended_staphers(staphers, shift, staphings, settings):
 		else:
 			best_scores = get_best_scores(parameters, parameter_scores, best_scores)
 		all_scores.append([stapher, parameter_scores])
-	# Next we loop to determine which staphers have the best scores...
+
+	# Next we loop to determine which staphers have the best scores.
 	reccomendations = []
 	for stapher, scores in all_scores:
 		wins_losses = get_win_loss_info(best_scores, scores)
 		reccomendations.append([stapher, scores, wins_losses])
-	reccomendations.sort(reverse=True, key=get_wins)
+
+	# Finally, we return a list of staphers, scores, and wins/losses with the stapher with the most wins at the front.
+	reccomendations.sort(reverse = True, key = get_wins)
 	return reccomendations

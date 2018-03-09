@@ -11,7 +11,7 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 
 from .build import build_schedules
 from .forms import FlagCreateForm, StapherCreateForm, ShiftCreateForm, QualificationCreateForm
-from .models import Flag, Stapher, Shift, Qualification
+from .models import Flag, Stapher, Shift, Qualification, Staphing
 from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
 
@@ -31,19 +31,32 @@ def building(request):
 	start_time = datetime.datetime.now()
 	#################################################
 
+
 	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:
-		all_staphers = Stapher.objects.all()
 		all_shifts = Shift.objects.all()
+		all_staphers = Stapher.objects.all()
 		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
 		cache.set('sorted_shifts', sorted_shifts, None)
 		cache.set('resort', False, None)
 
 	settings = ScheduleSettings.objects.get(pk = 1)
 	schedule = build_schedules(sorted_shifts, settings)
-	
 
 	################ For testing...  ################
+	staphings = Staphing.objects.filter(schedule__id = schedule.id)
+	uncovered_shifts = 0
+	uncovered_staphings = 0
+	staphings_made = len(staphings)
+	total_shifts = len(sorted_shifts)
+	for info in sorted_shifts:
+		shift = info[0]
+		if not shift.is_covered(staphings):
+			uncovered_shifts += 1
+			uncovered_staphings += shift.left_to_cover(staphings)
+
+	print(f'-------------------------\n{100 - (uncovered_shifts / total_shifts)}% of shifts covered.')
+	print(f'{round(100 - (uncovered_staphings / (uncovered_staphings + staphings_made)), 3)}% of staphings made.\n-------------------------')
 	end_time = datetime.datetime.now() 
 	print(f'==========================\nTime Elapsed: {end_time - start_time}\n==========================')
 	#################################################

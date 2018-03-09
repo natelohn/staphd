@@ -7,13 +7,16 @@ def get_qual_and_shifts_dicts(all_shifts):
 	qualification_set_shift_dict = {}
 	for shift in all_shifts:
 		qual_set = frozenset(shift.qualifications.all())
+
 		# We have seen the set before
 		if qual_set in all_qualification_sets:
+
 			# Get the right Set ID
 			for i in range(0,set_id):
 				if qualification_set_qual_dict[i] == qual_set:
 					break
 			qualification_set_shift_dict[i].append(shift)
+
 		# Our first time seeing the set
 		else:
 			qualification_set_qual_dict[set_id] = qual_set
@@ -21,7 +24,6 @@ def get_qual_and_shifts_dicts(all_shifts):
 			all_qualification_sets.add(qual_set)
 			set_id += 1
 	return [qualification_set_qual_dict, qualification_set_shift_dict]
-
 
 def get_stapher_dict(all_staphers, qual_dict):
 	qualification_set_stapher_dict = {}
@@ -69,6 +71,7 @@ def get_seconds_from_day_and_time(day, time):
 def get_sorted_shifts(staphers, shifts):
 	print('Sorting Shifts in get_sorted_shifts...')
 	sorted_shifts = []
+	
 	# First we get dictionaries mapping shifts with certain qualification sets to staphers who can cover those shifts.
 	shift_and_qual_dicts = get_qual_and_shifts_dicts(shifts)
 	qual_dict = shift_and_qual_dicts[0]
@@ -142,11 +145,9 @@ def get_sorted_shifts(staphers, shifts):
 						if stapher not in maxed_out_staphers:
 							available_staphers.append(stapher)
 
-
-
 				# We then use these ammounts to make a ratio used for sorting the shifts. The higher the ratio, the sooner it is scheduled.
-				percent_of_staph_qualified = (staphers.count() - len(available_staphers)) / staphers.count()
-				ratio = (total_needed / len(available_staphers)) * percent_of_staph_qualified
+				percent_of_staph_unavailable = 1 - (len(available_staphers) / staphers.count())
+				ratio = (total_needed / len(available_staphers)) * percent_of_staph_unavailable
 
 				# Now we will check to see if the ratio is higher than the last ratio.
 				# If so, we will remove that shift from the array and replace it with the new ratio and save it for laster.
@@ -163,7 +164,7 @@ def get_sorted_shifts(staphers, shifts):
 		sorted_shifts.append(ids_to_ratio[key])
 
 	# Finally, we return the shifts, sorted by ratio, then by length.
-	return sorted(sorted_shifts, key = itemgetter(0,1), reverse = True)
+	return [[info[2], info[3]] for info in sorted(sorted_shifts, key = itemgetter(0,1), reverse = True)]
 
 
 					
