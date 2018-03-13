@@ -23,16 +23,14 @@ class Home(LoginRequiredMixin, TemplateView):
 
 class BuildView(LoginRequiredMixin, TemplateView):
     template_name = 'schedules/build.html'
-
-    # cache.set('sorted_shifts', sorted_shifts, None)
  
 @login_required
 def building_schedules(request):
 	################ For testing...  ################
 	# start_time = datetime.datetime.now()
-	#################################################
 	Schedule.objects.all().delete()
 	Staphing.objects.all().delete()
+	#################################################
 
 	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:
@@ -65,7 +63,7 @@ def building_schedules(request):
 	# 	print(f'	{shift.left_to_cover(staphings)} still needed for {shift}.')
 	# end_time = datetime.datetime.now()
 
-	# print(f'==========================\nTime Elapsed: {end_time - start_time}\n==========================')
+	# print(f'==========================\nTime Elapsed Building: {end_time - start_time}\n==========================')
 	# parameters = settings.parameters.filter(use = True).order_by('rank')
 	# print(f'{len(parameters)} parameters used:')
 	# for p in parameters:
@@ -76,14 +74,20 @@ def building_schedules(request):
  
 @login_required
 def updating_files(request):
+	################ For testing...  ################
+	start_time = datetime.datetime.now()
+	#################################################
 	schedule_id = cache.get('schedule_id')
 	if schedule_id:
 		staphings = Staphing.objects.filter(schedule__id = schedule_id)
-		all_staphers = Stapher.objects.all()
+		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
 		update_individual_excel_files(all_staphers, staphings)
 	else:
 		print('NO SCHEDULE U DUM FUK :(')
 		exit()
+	############### For testing...  ################
+	print(f'==========================\nTime Elapsed Updating: {datetime.datetime.now() - start_time}\n==========================')
+	################################################
 	return HttpResponseRedirect(reverse('schedules:build'))
 
 class Settings(LoginRequiredMixin, TemplateView):
@@ -146,7 +150,6 @@ class StapherCreate(LoginRequiredMixin, CreateView):
 		instance.user = self.request.user
 		return super(StapherCreate, self).form_valid(form)
 
-
 class StapherUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/form.html'
 	form_class = StapherCreateForm
@@ -163,7 +166,6 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
 	model = Stapher
 	success_url = reverse_lazy('schedules:stapher-list')
-
 
 
 class ShiftList(LoginRequiredMixin, ListView):
@@ -186,14 +188,12 @@ class ShiftList(LoginRequiredMixin, ListView):
 		context['link_title'] = 'New Shift'
 		return context
 
-
 class ShiftDetail(LoginRequiredMixin,DetailView):
 	queryset = Shift.objects.all()
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftDetail, self).get_context_data(*args, **kwargs)
 		return context
-
 
 class ShiftCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/form.html'
@@ -214,7 +214,6 @@ class ShiftCreate(LoginRequiredMixin, CreateView):
 		kwargs = super(ShiftCreate, self).get_form_kwargs()
 		kwargs['user_id'] = self.request.user.id
 		return kwargs
-
 
 class ShiftUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/form.html'
@@ -259,6 +258,7 @@ class QualificationDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
 	model = Qualification
 	success_url = reverse_lazy('settings')
+
 
 class FlagCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/form.html'

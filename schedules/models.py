@@ -56,6 +56,9 @@ class Stapher(models.Model):
 	def get_absolute_url(self):
 		return reverse('schedules:stapher-detail', kwargs={'pk': self.id})
 
+	def full_name(self):
+		return f'{self.first_name} {self.last_name}'
+
 	# This method only works for SSC staph.
 	def get_off_day(self):
 		mon = Qualification.objects.get(title = 'sumo')
