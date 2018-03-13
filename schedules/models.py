@@ -56,6 +56,26 @@ class Stapher(models.Model):
 	def get_absolute_url(self):
 		return reverse('schedules:stapher-detail', kwargs={'pk': self.id})
 
+	# This method only works for SSC staph.
+	def get_off_day(self):
+		mon = Qualification.objects.get(title = 'sumo')
+		tue = Qualification.objects.get(title = 'motue')
+		wed = Qualification.objects.get(title = 'tueway')
+		thu = Qualification.objects.get(title = 'wethur')
+		fri = Qualification.objects.get(title = 'stirfry')
+		quals = self.qualifications.all()
+		if mon in quals:
+			return 1
+		elif tue in quals:
+			return 2
+		elif wed in quals:
+			return 3
+		elif thu in quals:
+			return 4
+		elif fri in quals:
+			return 5
+		return -1
+
 	def is_qualified(self, shift):
 		for qualification in shift.qualifications.all():
 			if qualification not in self.qualifications.all():
@@ -67,6 +87,9 @@ class Stapher(models.Model):
 			if staphing.stapher.id == self.id and staphing.shift.overlaps(shift):
 				return False
 		return True
+
+	def can_cover(self, shift, staphings):
+		return self.is_qualified(shift) and self.is_free(staphings, shift)
 
 	def hours_in_day(self, staphings, day):
 		hours = datetime.timedelta()
@@ -89,37 +112,65 @@ class Stapher(models.Model):
 				overlapping_staphings.append(staphing)
 		return overlapping_staphings
 
+
 	def get_previous_shift(self, shift, staphings):
-		all_shifts = []
-		for staphing in staphings:
-			if self == staphing.stapher:
-				all_shifts.append(staphing.shift)
+		all_shifts = self.all_shifts(staphings)
+		if not all_shifts:
+			return None
+		all_shifts.append(shift)
 		all_shifts = sorted(all_shifts, key=attrgetter('day', 'start'))
-		for i in range(1, len(all_shifts)):
-			s1 = all_shifts[i - 1]
-			s2 = all_shifts[i]
-			s1_before = s1.end <= shift.start and s1.day <= shift.day
-			s2_after = shift.end >= s2.start and shift.day >= s2.day
-			if s1_before and s2_after:
-				return s1
-		return None
+		for i in range(0, len(all_shifts)):
+			if all_shifts[i] == shift:
+				if i == 0:
+					return all_shifts[len(all_shifts) - 1]
+				else:
+					return all_shifts[i - 1]
 
 	def get_next_shift(self, shift, staphings):
+		all_shifts = self.all_shifts(staphings)
+		if not all_shifts:
+			return None
+		all_shifts.append(shift)
+		all_shifts = sorted(all_shifts, key=attrgetter('day', 'start'))
+		for i in range(0, len(all_shifts)):
+			if all_shifts[i] == shift:
+				if i == len(all_shifts) - 1:
+					return all_shifts[0]
+				else:
+					return all_shifts[i + 1]
+
+
+	# This returns a list of the person's shifts 
+	def all_shifts(self, staphings):
 		all_shifts = []
 		for staphing in staphings:
-			if self == staphing.stapher:
+			if self.id == staphing.stapher.id:
 				all_shifts.append(staphing.shift)
-		all_shifts = sorted(all_shifts, key=attrgetter('day', 'start'))
-		for i in range(1, len(all_shifts)):
-			s1 = all_shifts[i - 1]
-			s2 = all_shifts[i]
-			s1_before = s1.end <= shift.start and s1.day <= shift.day
-			s2_after = shift.end >= s2.start and shift.day >= s2.day
-			if s1_before and s2_after:
-				return s2
-		return None
+		return all_shifts
 
+	# This returns a list of the person's shifts ordered chronologically.
+	def ordered_shifts(self, staphings):
+		all_shifts = []
+		for staphing in staphings:
+			if self.id == staphing.stapher.id:
+				all_shifts.append(staphing.shift)
+		return sorted(all_shifts, key=attrgetter('day', 'start'))
 
+	# This returns a dictionary of ints (days) to the person's shifts for that day of the week ordered chronologically.
+	def shifts_by_day(self, staphings):
+		shifts_by_day = {}
+		for staphing in staphings:
+			if self.id == staphing.stapher.id:
+				if staphing.shift.day not in shifts_by_day:
+					shifts_by_day[staphing.shift.day] = [staphing.shift]
+				else:
+					shifts_by_day[staphing.shift.day].append(staphing.shift)
+		for day in range(0, 7):
+			if day in shifts_by_day:
+				shifts_by_day[day] = sorted(shifts_by_day[day], key=attrgetter('start'))
+			else:
+				shifts_by_day[day] = []
+		return shifts_by_day
 
 
 class Shift(models.Model):
@@ -137,9 +188,13 @@ class Shift(models.Model):
 		days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 		start_str = self.start.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
 		end_str = self.end.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
-		return f'{self.title} on {days[int(self.day)]}, {start_str}-{end_str}'
+		return f'{self.title} on {days[self.day]}, {start_str}-{end_str}'
 
 	def save(self, *args, **kwargs):
+		if isinstance(self.day, str):
+			print('its a str...')
+			self.day = 1
+			super(Shift, self).save(*args, **kwargs)
 		# Start of shift must be before the end of shift and day must be between 0 and 6 (Sun-Sat)
 		if self.start < self.end and self.day in range(0,6):
 			cache.set('resort', True, None)
@@ -157,7 +212,7 @@ class Shift(models.Model):
 
 
 	def overlaps(self, shift):
-		return int(self.day) == int(shift.day) and self.start < shift.end and self.end > shift.start
+		return self.day == shift.day and self.start < shift.end and self.end > shift.start
 
 
 	def is_covered(self, staphings):
@@ -172,6 +227,17 @@ class Shift(models.Model):
 		end_td = datetime.timedelta(hours = self.end.hour, minutes = self.end.minute)
 		return end_td - start_td
 
+	def previous_day(self):
+		if self.day == 0:
+			return 6
+		return self.day - 1
+
+	def next_day(self):
+		if self.day == 6:
+			return 0
+		return self.day + 1
+
+
 	def left_to_cover(self, staphings):
 		count_of_workers = 0
 		for staphing in staphings:
@@ -185,8 +251,7 @@ class Shift(models.Model):
 
 	def has_exact_flags(self, shift):
 		return set(self.flags.all()) == set(shift.flags.all())
-		
-
+	
 
 # A class representing all shift/staph pairs for a user - this will allow for multiple schedules
 class Schedule(models.Model):
@@ -228,7 +293,7 @@ class Staphing(models.Model):
 class Parameter(models.Model):
 	title 			= models.CharField(max_length = 100, default = 'PARAMETER TITLE')
 	description 	= models.CharField(max_length = 500, default = 'PARAMETER DESCRIPTION')
-	use 			= models.BooleanField(default = True)
+	use 			= models.BooleanField(default = False)
 	rank			= models.IntegerField(unique = True, default = 1)
 	function_id		= models.IntegerField(unique = True, default = 1)
 

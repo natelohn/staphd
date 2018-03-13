@@ -102,7 +102,7 @@ def get_sorted_shifts(staphers, shifts):
 				all_workers_needed = 0
 				overlapping_shifts = []
 				for shift in shift_dict[key]:
-					if int(day) == int(shift.day) and start < shift.end and end > shift.start:
+					if day == shift.day and start < shift.end and end > shift.start:
 						ids_to_keys[shift.id] = key
 						all_workers_needed += shift.workers_needed
 						overlapping_shifts.append(shift)

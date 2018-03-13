@@ -10,10 +10,11 @@ from django.urls import reverse, reverse_lazy
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .build import build_schedules
-from .forms import FlagCreateForm, StapherCreateForm, ShiftCreateForm, QualificationCreateForm
-from .models import Flag, Stapher, Shift, Qualification, Staphing
+from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
+from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification
 from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
+from .excel import update_individual_excel_files
 
 
 
@@ -26,11 +27,12 @@ class BuildView(LoginRequiredMixin, TemplateView):
     # cache.set('sorted_shifts', sorted_shifts, None)
  
 @login_required
-def building(request):
+def building_schedules(request):
 	################ For testing...  ################
-	start_time = datetime.datetime.now()
+	# start_time = datetime.datetime.now()
 	#################################################
-
+	Schedule.objects.all().delete()
+	Staphing.objects.all().delete()
 
 	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:
@@ -40,26 +42,48 @@ def building(request):
 		cache.set('sorted_shifts', sorted_shifts, None)
 		cache.set('resort', False, None)
 
-	settings = ScheduleSettings.objects.get(pk = 1)
+	settings = ScheduleSettings.objects.get()
 	schedule = build_schedules(sorted_shifts, settings)
+	cache.set('schedule_id', schedule.id, None)
 
-	################ For testing...  ################
-	staphings = Staphing.objects.filter(schedule__id = schedule.id)
-	uncovered_shifts = 0
-	uncovered_staphings = 0
-	staphings_made = len(staphings)
-	total_shifts = len(sorted_shifts)
-	for info in sorted_shifts:
-		shift = info[0]
-		if not shift.is_covered(staphings):
-			uncovered_shifts += 1
-			uncovered_staphings += shift.left_to_cover(staphings)
+	############### For testing...  ################
+	# staphings = Staphing.objects.filter(schedule__id = schedule.id)
+	# uncovered_shifts = []
+	# uncovered_staphings = 0
+	# staphings_made = len(staphings)
+	# total_shifts = len(sorted_shifts)
 
-	print(f'-------------------------\n{100 - (uncovered_shifts / total_shifts)}% of shifts covered.')
-	print(f'{round(100 - (uncovered_staphings / (uncovered_staphings + staphings_made)), 3)}% of staphings made.\n-------------------------')
-	end_time = datetime.datetime.now() 
-	print(f'==========================\nTime Elapsed: {end_time - start_time}\n==========================')
-	#################################################
+	# for info in sorted_shifts:
+	# 	shift = info[0]
+	# 	if not shift.is_covered(staphings):
+	# 		uncovered_shifts.append(shift)
+	# 		uncovered_staphings += shift.left_to_cover(staphings)
+	# print(f'-------------------------\n{100 * round((1 - (len(uncovered_shifts) / total_shifts)), 4)}% of shifts covered.')
+	# print(f'{100 * round(1 - (uncovered_staphings / (uncovered_staphings + staphings_made)), 4)}% of staphings made.\n-------------------------')
+	# print(f'Uncovered Shifts:')
+	# for shift in uncovered_shifts:
+	# 	print(f'	{shift.left_to_cover(staphings)} still needed for {shift}.')
+	# end_time = datetime.datetime.now()
+
+	# print(f'==========================\nTime Elapsed: {end_time - start_time}\n==========================')
+	# parameters = settings.parameters.filter(use = True).order_by('rank')
+	# print(f'{len(parameters)} parameters used:')
+	# for p in parameters:
+	# 	print(f'	{p}')
+	################################################
+	return HttpResponseRedirect(reverse('schedules:build'))
+
+ 
+@login_required
+def updating_files(request):
+	schedule_id = cache.get('schedule_id')
+	if schedule_id:
+		staphings = Staphing.objects.filter(schedule__id = schedule_id)
+		all_staphers = Stapher.objects.all()
+		update_individual_excel_files(all_staphers, staphings)
+	else:
+		print('NO SCHEDULE U DUM FUK :(')
+		exit()
 	return HttpResponseRedirect(reverse('schedules:build'))
 
 class Settings(LoginRequiredMixin, TemplateView):

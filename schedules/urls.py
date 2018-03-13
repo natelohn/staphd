@@ -8,7 +8,8 @@ from django.views.generic import TemplateView
 app_name = 'schedules'
 urlpatterns = [
     url(r'^schedules/$', views.BuildView.as_view(), name='build'),
-    url(r'^schedules/building$', views.building, name='building'),
+    url(r'^schedules/building$', views.building_schedules, name='building-schedules'),
+    url(r'^schedules/update$', views.updating_files, name='updating-files'),
     url(r'^staphers/$', views.StapherList.as_view(), name='stapher-list'),
     url(r'^staphers/create/$', views.StapherCreate.as_view(), name='stapher-create'),
     url(r'^staphers/(?P<pk>[\w-]+)/$', views.StapherDetail.as_view(), name='stapher-detail'),

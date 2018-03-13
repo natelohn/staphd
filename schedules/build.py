@@ -62,6 +62,7 @@ def build_schedules(sorted_shifts, settings):
 	staphings = []
 	count_of_shifts = len(sorted_shifts)
 	counter = 0
+	all_shifts = [shift[0] for shift in sorted_shifts]
 	for shift, qualified_staphers in sorted_shifts:
 		print(f'{round(((counter / count_of_shifts) * 100), 2)}% of shifts seen. Current Shift: {shift}...')
 		if not shift.is_covered(staphings):
@@ -70,22 +71,19 @@ def build_schedules(sorted_shifts, settings):
 			# Fail case, not enough qualified staphers to cover the shift
 			if len(free_and_qualified) < shift.left_to_cover(staphings):
 				for stapher in free_and_qualified:
-					staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
-					staphings.append(staphing)
-					print(f'---> Auto Schedule: {staphing}. (shift not fully scheudled)')
+					# print(f'---> Auto Schedule: {Staphing(stapher = stapher, shift = shift, schedule = schedule)}. (shift not fully scheudled)')
 					staphings.append(Staphing(stapher = stapher, shift = shift, schedule = schedule))
 				# staphings = find_easiest_fix(shift, qualified_staphers, staphings)
 
 			# In this system, all shifts that have no other options of people to cover them will be automatically scheduled.
 			elif len(free_and_qualified) == shift.left_to_cover(staphings):
 				for stapher in free_and_qualified:
-					staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
-					staphings.append(staphing)
-					print(f'---> Auto Schedule: {staphing}')
+					staphings.append(Staphing(stapher = stapher, shift = shift, schedule = schedule))
+					# print(f'---> Auto Schedule: {Staphing(stapher = stapher, shift = shift, schedule = schedule)}')
 			# If the shift can be covered and there are more than just enough staphers to cover it, we make recommendations as to who should cover it
 			# Depending on the settings, we either auto-schedule those recommendations or return them.
 			else:
-				recommendations = get_recommended_staphers(free_and_qualified, shift, staphings, settings)
+				recommendations = get_recommended_staphers(free_and_qualified, shift, staphings, settings, all_shifts)
 				if not settings.auto_schedule:
 					break
 				else:
@@ -99,9 +97,8 @@ def build_schedules(sorted_shifts, settings):
 					for stapher, scores, wins_losses in recommendations:
 						wins = wins_losses.count(True)
 						if wins >= settings.auto_threshold and not shift.is_covered(staphings):
-							staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
-							staphings.append(staphing)
-							print(f'---> Recomended Staphing Made: {staphing}')
+							staphings.append(Staphing(stapher = stapher, shift = shift, schedule = schedule))
+							# print(f'---> Recomended Staphing Made: {Staphing(stapher = stapher, shift = shift, schedule = schedule)}')
 							recommendations_used += 1
 					recommendations = recommendations[recommendations_used:]
 		counter += 1
