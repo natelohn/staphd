@@ -105,7 +105,7 @@ class Stapher(models.Model):
 		unpaid = Flag.objects.get(title = 'unpaid')
 		hours = datetime.timedelta()
 		for staphing in staphings:
-			if staphing.stapher.id == self.id and unpaid not in staphing.shift.flags.all():
+			if staphing.stapher.id == self.id and not staphing.shift.is_unpaid():
 				hours += staphing.shift.length()
 		return hours
 
@@ -255,6 +255,21 @@ class Shift(models.Model):
 
 	def has_exact_flags(self, shift):
 		return set(self.flags.all()) == set(shift.flags.all())
+
+	def get_excel_str(self):
+		start_str = self.start.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
+		end_str = self.end.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
+		return f'{self.title} ({start_str} - {end_str})'
+
+	def has_flag(self, title):
+		flag = Flag.objects.get(title = title)
+		return flag in self.flags.all()
+
+	def is_unpaid(self):
+		return self.has_flag('unpaid')
+
+	def is_programming(self):
+		return self.has_flag('programming')
 	
 
 # A class representing all shift/staph pairs for a user - this will allow for multiple schedules
@@ -344,7 +359,12 @@ class Settings(models.Model):
 	def user_breaks_ties(self):
 		return int(self.tie_breaker) == 2
 
+class Master(models.Model):
+	title 			= models.CharField(max_length = 100, default = 'NAME OF MASTER')
+	flags 			= models.ManyToManyField(Flag, blank = False)
+	template		= models.CharField(max_length = 100, default = 'TEMPLATE')
 
-
+	def __str__(self):
+		return title
 
 
