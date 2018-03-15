@@ -27,9 +27,14 @@ class BuildView(LoginRequiredMixin, TemplateView):
 @login_required
 def building_schedules(request):
 	################ For testing...  ################
-	# start_time = datetime.datetime.now()
+	start_time = datetime.datetime.now()
 	Schedule.objects.all().delete()
 	Staphing.objects.all().delete()
+	# settings = ScheduleSettings.objects.get()
+	# parameters = settings.parameters.filter(use = True).order_by('rank')
+	# print(f'{len(parameters)} parameters used:')
+	# for p in parameters:
+	# 	print(f'	{p}')
 	#################################################
 
 	sorted_shifts = cache.get('sorted_shifts')
@@ -63,7 +68,13 @@ def building_schedules(request):
 	# 	print(f'	{shift.left_to_cover(staphings)} still needed for {shift}.')
 	# end_time = datetime.datetime.now()
 
-	# print(f'==========================\nTime Elapsed Building: {end_time - start_time}\n==========================')
+	# print(f'====================================================\nTime Elapsed Building: {end_time - start_time}\n====================================================')
+	# schedule.print()
+	# print('=================================================')
+	# if settings.ranked_wins_break_ties():
+	# 	print(f'Resolving ties by Rank.')
+	# elif settings.break_ties_randomly():
+	# 	print(f'Resolving Ties Randomly.')
 	# parameters = settings.parameters.filter(use = True).order_by('rank')
 	# print(f'{len(parameters)} parameters used:')
 	# for p in parameters:

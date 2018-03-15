@@ -15,16 +15,16 @@ DAY_OF_THE_WEEK = {
 }
 
 GENDER = {
-    '0' : 'Female',
-    '1' : 'Male',
-    '2' : 'Non-Binary',
-    '3' : 'Other'
+    0 : 'Female',
+    1 : 'Male',
+    2 : 'Non-Binary',
+    3 : 'Other'
 }
 
 TIE_OPTIONS = {
-    '0' : 'Choose one of the people who tied at random.',
-    '1' : 'Pick whoever won highest ranked parmeter.',
-    '2' : 'I want to choose whenever there is a tie.'
+    0 : 'Choose one of the people who tied at random.',
+    1 : 'Pick whoever won highest ranked parmeter.',
+    2 : 'I want to choose whenever there is a tie.'
 }
 
 class DayOfTheWeekField(models.IntegerField):
@@ -34,15 +34,13 @@ class DayOfTheWeekField(models.IntegerField):
 
 
 
-class GenderField(models.CharField):
+class GenderField(models.IntegerField):
     def __init__(self, *args, **kwargs):
         kwargs['choices']       = tuple(sorted(GENDER.items()))
-        kwargs['max_length']    = 1 
         super(GenderField, self).__init__(*args, **kwargs)
 
 
-class TieBreakerField(models.CharField):
+class TieBreakerField(models.IntegerField):
     def __init__(self, *args, **kwargs):
         kwargs['choices']       = tuple(sorted(TIE_OPTIONS.items()))
-        kwargs['max_length']    = 1
         super(TieBreakerField, self).__init__(*args, **kwargs)

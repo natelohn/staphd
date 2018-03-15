@@ -1,10 +1,13 @@
 from operator import itemgetter
-from random import shuffle
+from random import random
 
 
 from .models import Schedule, Staphing
 from .recommend import get_recommended_staphers
 
+
+def recommendation_wins(rec):
+	return rec[2].count(True)
 
 def get_free_staphers(staphers, shift, staphings):
 	free_staphers = []
@@ -13,45 +16,35 @@ def get_free_staphers(staphers, shift, staphings):
 			free_staphers.append(stapher)
 	return free_staphers 
 
-def get_tied_recs(recommendations, last_rec_loc):
-	lowest_recommended = recommendations[last_rec_loc]
-	lowest_recommended_wins = lowest_recommended[2].count(True)
-	tied_recs = []
+# This returns True if there are any recommended staphers in the array passed in that have the same ammount of wins 
+def do_ties_exist(recommendations, left_to_cover):
+	for i in range(1, left_to_cover + 1):
+		last_wins = recommendation_wins(recommendations[i - 1])
+		next_wins = recommendation_wins(recommendations[i])
+		if last_wins == next_wins:
+			return True
+	return False
+
+# This returns the position of the highest ranked win 
+def highest_ranked_win(rec):
+	if True in rec[2]:
+		return rec[2].index(True)
+	return len(rec[2])
+
+# Returns the same list of staphers, but reordered based on the given settings to break ties.
+def resolve_ties(settings, recommendations):
 	for rec in recommendations:
-		wins = rec[2].count(True)
-		if wins == lowest_recommended_wins:
-			tied_recs.append(rec)
-	return tied_recs
-
-def get_higher_ranked_wins(item):
-	for rank, win in enumerate(item[2]):
-		if win:
-			return rank
-	return len(item[2])
-			
-
-
-
-def resolve_ties(settings, recommendations, tied_recs):
-	beat_tied_recs = []
-	for i, rec in enumerate(recommendations):
-		if rec in tied_recs:
-			break
-		beat_tied_recs = recommendations[:i]
-	start_of_tie = len(beat_tied_recs)
-	end_of_tie = start_of_tie + len(tied_recs) - 1
-	reordered_staphers = recommendations[start_of_tie:end_of_tie]
-	if settings.break_ties_randomly():
-		shuffle(reordered_staphers)
-	elif settings.ranked_wins_break_ties():
-		reordered_staphers.sort(key=get_higher_ranked_wins)
-	new_recommendations = beat_tied_recs + reordered_staphers
-	if len(new_recommendations) == len(recommendations):
-		non_tied_losers = []
-	else:
-		non_tied_losers = recommendations[end_of_tie + 1:]
-	return new_recommendations + non_tied_losers
-	
+		win_count = recommendation_wins(rec)
+		if settings.break_ties_randomly():
+			tie_breaker = random()
+		elif settings.ranked_wins_break_ties():
+			tie_breaker = highest_ranked_win(rec)
+		else:
+			tie_breaker = 0
+		sorting_info = [(win_count * - 1), tie_breaker]
+		rec.extend(sorting_info)
+	recommendations = sorted(recommendations, key = itemgetter(3,4))
+	return [[info[0], info[1], info[2]] for info in recommendations]
 
 # Returns a schedule of given the staphers, shifts and settings.
 # Currently is not guarenteed to cover every shift.
@@ -87,12 +80,15 @@ def build_schedules(sorted_shifts, settings):
 				if not settings.auto_schedule:
 					break
 				else:
-					tied_recs = get_tied_recs(recommendations, shift.left_to_cover(staphings) - 1)
-					if len(tied_recs) != 0:
+					ties_exist = do_ties_exist(recommendations, shift.left_to_cover(staphings))
+					# print(f'{shift.left_to_cover(staphings)} to cover.\n\n{recommendations}\n\nTies:{ties_exist}\n------------------------------------------------')
+					if ties_exist:
 						if settings.user_breaks_ties():
 							break
 						else:
-							recommendations = resolve_ties(settings, recommendations, tied_recs)
+							# print(f'	Tie!\n 	{[[r[0].first_name, r[1][0].total_seconds(),r[2].count(True)] for r in recommendations]}')
+							recommendations = resolve_ties(settings, recommendations)
+							# print(f'	=>>{[[r[0].first_name, r[2].count(True)] for r in recommendations[:shift.left_to_cover(staphings)]]}')
 					recommendations_used = 0
 					for stapher, scores, wins_losses in recommendations:
 						wins = wins_losses.count(True)

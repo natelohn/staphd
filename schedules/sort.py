@@ -1,4 +1,5 @@
 from operator import itemgetter
+from random import shuffle
 
 def get_qual_and_shifts_dicts(all_shifts):
 	all_qualification_sets = set()
@@ -144,6 +145,10 @@ def get_sorted_shifts(staphers, shifts):
 					for stapher in qualified_staphers:
 						if stapher not in maxed_out_staphers:
 							available_staphers.append(stapher)
+
+				# ** TEMP ** Used to improve schedules being front loaded.
+				# TODO: Check to see why stapher order in the list matters when there are ties.
+				shuffle(available_staphers)
 
 				# We then use these ammounts to make a ratio used for sorting the shifts. The higher the ratio, the sooner it is scheduled.
 				percent_of_staph_unavailable = 1 - (len(available_staphers) / staphers.count())

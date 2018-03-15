@@ -102,9 +102,10 @@ class Stapher(models.Model):
 		return hours
 
 	def total_hours(self, staphings):
+		unpaid = Flag.objects.get(title = 'unpaid')
 		hours = datetime.timedelta()
 		for staphing in staphings:
-			if staphing.stapher.id == self.id:
+			if staphing.stapher.id == self.id and unpaid not in staphing.shift.flags.all():
 				hours += staphing.shift.length()
 		return hours
 
@@ -125,7 +126,7 @@ class Stapher(models.Model):
 		for i in range(0, len(all_shifts)):
 			if all_shifts[i] == shift:
 				if i == 0:
-					return all_shifts[len(all_shifts) - 1]
+					return all_shifts[- 1]
 				else:
 					return all_shifts[i - 1]
 
@@ -267,11 +268,33 @@ class Schedule(models.Model):
 	# TEMP!
 	def print(self):
 		staphers = Stapher.objects.all()
+		days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat']
+		count_out_of_zone = 0
+		count_in_zone = 0
 		for stapher in staphers:
-			print(stapher)
 			staphings = Staphing.objects.filter(schedule__id = self.id, stapher__id = stapher.id).order_by('shift__day', 'shift__start')
-			for staphing in staphings:
-				print('	' + str(staphing.shift))
+			totsec = stapher.total_hours(staphings).total_seconds()
+			h = totsec // 3600
+			m = (totsec % 3600) // 60
+			if h <= 44 or h >= 52:
+				print(f'{stapher} - {h} hrs {m} mins')
+				count_out_of_zone += 1
+			else:
+				count_in_zone += 1
+		print(f'{count_in_zone} good schedules. {count_out_of_zone} bad schedules.')
+			# last_day = 0
+			# staphings_for_day = []
+			# for staphing in staphings:
+			# 	if staphing.shift.day != last_day:
+			# 		totsec = stapher.total_hours(staphings_for_day).total_seconds()
+			# 		h = totsec // 3600
+			# 		m = (totsec % 3600) // 60
+			# 		print(f'	{days[last_day]} - {h} hrs {m} mins')
+			# 		for day_staphing in staphings_for_day:
+			# 			print(f'		{str(day_staphing.shift)}')
+			# 		staphings_for_day = []
+			# 	last_day = staphing.shift.day
+			# 	staphings_for_day.append(staphing)
 
 	def print_overlaping_qualifiers(self, shift):
 		staphers = Stapher.objects.all()
@@ -313,13 +336,13 @@ class Settings(models.Model):
 		return 'Default Settings'
 
 	def break_ties_randomly(self):
-		return self.tie_breaker == 0
+		return int(self.tie_breaker) == 0
 
 	def ranked_wins_break_ties(self):
-		return self.tie_breaker == 1
+		return int(self.tie_breaker) == 1
 
 	def user_breaks_ties(self):
-		return self.tie_breaker == 2
+		return int(self.tie_breaker) == 2
 
 
 

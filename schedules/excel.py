@@ -12,7 +12,8 @@ def update_individual_excel_files(staphers, staphings):
 	template_ws = schedule_wb.active
 
 	# Loop the staphers:
-	for stapher in staphers:
+	shuffle(staphers)
+	for stapher in staphers[:1]:
 		stapher_ws = schedule_wb.copy_worksheet(template_ws)
 		stapher_ws.title = stapher.full_name()
 		stapher_ws['A1'] = 'Name: ' + stapher.full_name()
