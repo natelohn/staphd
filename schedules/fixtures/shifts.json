@@ -784,7 +784,7 @@
 		"fields": {
 			"day":0,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -797,7 +797,7 @@
 		"fields": {
 			"day":1,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -810,7 +810,7 @@
 		"fields": {
 			"day":2,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -823,7 +823,7 @@
 		"fields": {
 			"day":3,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -836,7 +836,7 @@
 		"fields": {
 			"day":4,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -849,7 +849,7 @@
 		"fields": {
 			"day":5,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -862,7 +862,7 @@
 		"fields": {
 			"day":6,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -875,7 +875,7 @@
 		"fields": {
 			"day":0,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -888,7 +888,7 @@
 		"fields": {
 			"day":1,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -901,7 +901,7 @@
 		"fields": {
 			"day":2,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -914,7 +914,7 @@
 		"fields": {
 			"day":3,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -927,7 +927,7 @@
 		"fields": {
 			"day":4,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -940,7 +940,7 @@
 		"fields": {
 			"day":5,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -953,7 +953,7 @@
 		"fields": {
 			"day":0,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -966,7 +966,7 @@
 		"fields": {
 			"day":1,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -979,7 +979,7 @@
 		"fields": {
 			"day":2,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -992,7 +992,7 @@
 		"fields": {
 			"day":3,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -1005,7 +1005,7 @@
 		"fields": {
 			"day":4,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -1018,7 +1018,7 @@
 		"fields": {
 			"day":5,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -1031,7 +1031,7 @@
 		"fields": {
 			"day":6,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -4060,7 +4060,7 @@
 		"fields": {
 			"day":1,
 			"title":"Morning SUP",
-			"flags":[96,54],
+			"flags":[96,76,54],
 			"start":"7:30",
 			"end":"8:30",
 			"workers_needed":"1",
@@ -4073,7 +4073,7 @@
 		"fields": {
 			"day":2,
 			"title":"Boat Dock Maint",
-			"flags":[96,54],
+			"flags":[96,76,54],
 			"start":"17:30",
 			"end":"18:30",
 			"workers_needed":"1",
@@ -4086,7 +4086,7 @@
 		"fields": {
 			"day":3,
 			"title":"Boat Dock Maint",
-			"flags":[96,54],
+			"flags":[96,76,54],
 			"start":"10:30",
 			"end":"11:30",
 			"workers_needed":"1",
@@ -4099,7 +4099,7 @@
 		"fields": {
 			"day":6,
 			"title":"Boat Dock",
-			"flags":[96,54],
+			"flags":[96,76,54],
 			"start":"15:00",
 			"end":"17:00",
 			"workers_needed":"2",
@@ -4801,7 +4801,7 @@
 		"fields": {
 			"day":5,
 			"title":"Fountain Wks 2/5/8/11",
-			"flags":[29,9,54],
+			"flags":[29,42,9,54],
 			"start":"21:00",
 			"end":"23:15",
 			"workers_needed":"1",
@@ -4814,7 +4814,7 @@
 		"fields": {
 			"day":5,
 			"title":"Fountain Wks 3/6/9/12",
-			"flags":[29,9,54],
+			"flags":[29,42,9,54],
 			"start":"21:00",
 			"end":"23:15",
 			"workers_needed":"1",
@@ -4827,7 +4827,7 @@
 		"fields": {
 			"day":5,
 			"title":"Fountain Wks 4/7/10/13",
-			"flags":[29,9,54],
+			"flags":[29,42,9,54],
 			"start":"21:00",
 			"end":"23:15",
 			"workers_needed":"1",
@@ -10253,6 +10253,58 @@
 			"end":"19:30",
 			"workers_needed":"1",
 			"qualifications":[49],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Trees",
+			"flags":[56,41,38],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Birds",
+			"flags":[56,41,38],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Water",
+			"flags":[56,41,38],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Bears",
+			"flags":[56,41,38],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
 			"difficult":false
 		}
 	}

@@ -20,14 +20,6 @@ def create_new_workbook(staphers):
 	schedule_wb.save("../output/schedules.xlsx")
 	return '../output/schedules.xlsx'
 
-def get_shift_dict(staphings):
-	shift_dict = {}
-	for staphing in staphings:
-		if staphing.stapher.id in shift_dict:
-			shift_dict[staphing.stapher.id].append(staphing.shift)
-		else:
-			shift_dict[staphing.stapher.id] = [staphing.shift]
-	return shift_dict
 
 def get_row_from_day(day):
 	return 5 + (day * 4)
@@ -40,11 +32,9 @@ def get_end_col_from_time(time):
 
 # This function takes in a list of staphers and staphings and makes a readable xl file for each stapher.
 def update_individual_excel_files(staphers, staphings):
-	wb_str = create_new_workbook(staphers)
-	schedule_wb = load_workbook(wb_str)
+	# wb_str = create_new_workbook(staphers)
+	# schedule_wb = load_workbook(wb_str)
 
-	# Get the information needed before opening excel files.
-	shift_dict = get_shift_dict(staphings)
 	seconds_in_hour = 60 * 60
 
 	for stapher in staphers:
@@ -52,8 +42,9 @@ def update_individual_excel_files(staphers, staphings):
 		stapher_ws = schedule_wb[stapher.full_name()]
 		stapher_ws['A1'] = 'Name: ' + stapher.full_name()
 		stapher_ws['AE1'] = 'Postion: ' + stapher.title
-		shifts = sorted(shift_dict[stapher.id], key = attrgetter('day', 'start'))
+		shifts = stapher.ordered_shifts(staphings)
 		for shift in shifts:
+			print(f'	{shift}')
 			row = get_row_from_day(shift.day)
 			start_col = get_start_col_from_time(shift.start)
 			end_col = get_end_col_from_time(shift.end)
@@ -88,3 +79,15 @@ def update_individual_excel_files(staphers, staphings):
 			
 	print('Saving schedules.xlsx file...')
 	schedule_wb.save("../output/schedules.xlsx")
+
+
+
+def update_masters(masters, staphings):
+	types_of_programming = set()
+	for staphing in staphings:
+		if staphing.shift.is_programming():
+			for flag in staphing.shift.flags.all():
+				csv_str = f'{flag.title.capitalize()},master-template,{flag.title}'
+				types_of_programming.add(csv_str)
+	for s in types_of_programming:
+		print(s)

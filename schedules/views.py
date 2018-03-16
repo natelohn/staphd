@@ -14,7 +14,7 @@ from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, Qualifica
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification
 from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
-from .excel import update_individual_excel_files
+from .excel import update_individual_excel_files, update_masters
 
 
 
@@ -92,7 +92,8 @@ def updating_files(request):
 	if schedule_id:
 		staphings = Staphing.objects.filter(schedule__id = schedule_id)
 		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
-		# update_individual_excel_files(all_staphers, staphings)
+		update_individual_excel_files(all_staphers, staphings)
+		# update_masters(staphings)
 	else:
 		print('NO SCHEDULE U DUM FUK :(')
 		exit()

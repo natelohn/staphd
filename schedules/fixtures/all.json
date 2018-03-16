@@ -2567,7 +2567,7 @@
 		"fields": {
 			"day":0,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -2580,7 +2580,7 @@
 		"fields": {
 			"day":1,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -2593,7 +2593,7 @@
 		"fields": {
 			"day":2,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -2606,7 +2606,7 @@
 		"fields": {
 			"day":3,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -2619,7 +2619,7 @@
 		"fields": {
 			"day":4,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -2632,7 +2632,7 @@
 		"fields": {
 			"day":5,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -2645,7 +2645,7 @@
 		"fields": {
 			"day":6,
 			"title":"Breakfast Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,88],
 			"start":"6:45",
 			"end":"10:15",
 			"workers_needed":"1",
@@ -2658,7 +2658,7 @@
 		"fields": {
 			"day":0,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -2671,7 +2671,7 @@
 		"fields": {
 			"day":1,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -2684,7 +2684,7 @@
 		"fields": {
 			"day":2,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -2697,7 +2697,7 @@
 		"fields": {
 			"day":3,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -2710,7 +2710,7 @@
 		"fields": {
 			"day":4,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -2723,7 +2723,7 @@
 		"fields": {
 			"day":5,
 			"title":"Lunch Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,18],
 			"start":"11:15",
 			"end":"14:00",
 			"workers_needed":"1",
@@ -2736,7 +2736,7 @@
 		"fields": {
 			"day":0,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -2749,7 +2749,7 @@
 		"fields": {
 			"day":1,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -2762,7 +2762,7 @@
 		"fields": {
 			"day":2,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -2775,7 +2775,7 @@
 		"fields": {
 			"day":3,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -2788,7 +2788,7 @@
 		"fields": {
 			"day":4,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -2801,7 +2801,7 @@
 		"fields": {
 			"day":5,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -2814,7 +2814,7 @@
 		"fields": {
 			"day":6,
 			"title":"Dinner Head",
-			"flags":[81,80,27],
+			"flags":[81,80,27,57],
 			"start":"17:15",
 			"end":"20:00",
 			"workers_needed":"1",
@@ -5843,7 +5843,7 @@
 		"fields": {
 			"day":1,
 			"title":"Morning SUP",
-			"flags":[96,54],
+			"flags":[96,76,54],
 			"start":"7:30",
 			"end":"8:30",
 			"workers_needed":"1",
@@ -5856,7 +5856,7 @@
 		"fields": {
 			"day":2,
 			"title":"Boat Dock Maint",
-			"flags":[96,54],
+			"flags":[96,76,54],
 			"start":"17:30",
 			"end":"18:30",
 			"workers_needed":"1",
@@ -5869,7 +5869,7 @@
 		"fields": {
 			"day":3,
 			"title":"Boat Dock Maint",
-			"flags":[96,54],
+			"flags":[96,76,54],
 			"start":"10:30",
 			"end":"11:30",
 			"workers_needed":"1",
@@ -5882,7 +5882,7 @@
 		"fields": {
 			"day":6,
 			"title":"Boat Dock",
-			"flags":[96,54],
+			"flags":[96,76,54],
 			"start":"15:00",
 			"end":"17:00",
 			"workers_needed":"2",
@@ -6584,7 +6584,7 @@
 		"fields": {
 			"day":5,
 			"title":"Fountain Wks 2/5/8/11",
-			"flags":[29,9,54],
+			"flags":[29,42,9,54],
 			"start":"21:00",
 			"end":"23:15",
 			"workers_needed":"1",
@@ -6597,7 +6597,7 @@
 		"fields": {
 			"day":5,
 			"title":"Fountain Wks 3/6/9/12",
-			"flags":[29,9,54],
+			"flags":[29,42,9,54],
 			"start":"21:00",
 			"end":"23:15",
 			"workers_needed":"1",
@@ -6610,7 +6610,7 @@
 		"fields": {
 			"day":5,
 			"title":"Fountain Wks 4/7/10/13",
-			"flags":[29,9,54],
+			"flags":[29,42,9,54],
 			"start":"21:00",
 			"end":"23:15",
 			"workers_needed":"1",
@@ -12040,6 +12040,58 @@
 		}
 	},
 	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Trees",
+			"flags":[56,41,38],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Birds",
+			"flags":[56,41,38],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Water",
+			"flags":[56,41,38],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Bears",
+			"flags":[56,41,38],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
 		"model": "schedules.Parameter",
 		"fields": {
 			"title":"Even Days",
@@ -12206,6 +12258,262 @@
 			"auto_schedule":true,
 			"auto_threshold":0,
 			"tie_breaker":0
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Hobart",
+			"template":"Hobart",
+			"flags":[50]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Lifeguarding",
+			"template":"Lifeguarding",
+			"flags":[52]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Entertainment",
+			"template":"Entertainment",
+			"flags":[94,26,47,92,20,48,104]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Town Run",
+			"template":"Town Run",
+			"flags":[7]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Boating",
+			"template":"Boating",
+			"flags":[24,82]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Maintenance",
+			"template":"Maintenance",
+			"flags":[12,78,73]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Fountain",
+			"template":"Fountain",
+			"flags":[42,29]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Boat Dock",
+			"template":"Boat Dock",
+			"flags":[76]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Breakfast",
+			"template":"Breakfast",
+			"flags":[88,98]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Lunch",
+			"template":"Lunch",
+			"flags":[18,10]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Dinner",
+			"template":"Dinner",
+			"flags":[57,74]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"KGC",
+			"template":"KGC",
+			"flags":[67]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Wilderness",
+			"template":"Wilderness",
+			"flags":[11,105]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Boat-dock-coordinator",
+			"template":"Boat-dock-coordinator",
+			"flags":[96]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Snoopers",
+			"template":"Snoopers",
+			"flags":[16]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Chicken",
+			"template":"Chicken",
+			"flags":[37]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Arts",
+			"template":"Arts",
+			"flags":[99,72,104]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Outdoors",
+			"template":"Outdoors",
+			"flags":[61,23,19]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Athletics",
+			"template":"Athletics",
+			"flags":[68,90,87,102,79]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Ski Dock",
+			"template":"Ski Dock",
+			"flags":[6,64,55,5]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Menehunes",
+			"template":"Menehunes",
+			"flags":[34]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Suaves",
+			"template":"Suaves",
+			"flags":[28]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Office",
+			"template":"Office",
+			"flags":[2]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Photo",
+			"template":"Photo",
+			"flags":[4]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Midorees",
+			"template":"Midorees",
+			"flags":[89]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Rotating",
+			"template":"Rotating",
+			"flags":[9]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Yahoos",
+			"template":"Yahoos",
+			"flags":[93]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Teens",
+			"template":"Teens",
+			"flags":[44]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"IIC",
+			"template":"IIC",
+			"flags":[86]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Beffas",
+			"template":"Beffas",
+			"flags":[22]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Cars",
+			"template":"Cars",
+			"flags":[39]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Munchkins",
+			"template":"Munchkins",
+			"flags":[15]
 		}
 	}
 ]

@@ -146,19 +146,11 @@ class Stapher(models.Model):
 
 	# This returns a list of the person's shifts 
 	def all_shifts(self, staphings):
-		all_shifts = []
-		for staphing in staphings:
-			if self.id == staphing.stapher.id:
-				all_shifts.append(staphing.shift)
-		return all_shifts
+		return [staphing.shift for staphing in staphings.filter(stapher__id = self.id)]
 
 	# This returns a list of the person's shifts ordered chronologically.
 	def ordered_shifts(self, staphings):
-		all_shifts = []
-		for staphing in staphings:
-			if self.id == staphing.stapher.id:
-				all_shifts.append(staphing.shift)
-		return sorted(all_shifts, key=attrgetter('day', 'start'))
+		return sorted(self.all_shifts(staphings), key=attrgetter('day', 'start'))
 
 	# This returns a dictionary of ints (days) to the person's shifts for that day of the week ordered chronologically.
 	def shifts_by_day(self, staphings):
@@ -361,10 +353,10 @@ class Settings(models.Model):
 
 class Master(models.Model):
 	title 			= models.CharField(max_length = 100, default = 'NAME OF MASTER')
-	flags 			= models.ManyToManyField(Flag, blank = False)
 	template		= models.CharField(max_length = 100, default = 'TEMPLATE')
+	flags 			= models.ManyToManyField(Flag, blank = False)
 
 	def __str__(self):
-		return title
+		return self.title
 
 
