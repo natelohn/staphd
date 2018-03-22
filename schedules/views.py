@@ -11,10 +11,10 @@ from django.views.generic import TemplateView, ListView, DetailView, CreateView,
 
 from .build import build_schedules
 from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
-from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification
+from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
 from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
-from .excel import update_individual_excel_files, update_masters
+from .excel import update_individual_excel_files, update_masters, update_analytics
 
 
 
@@ -30,11 +30,11 @@ def building_schedules(request):
 	start_time = datetime.datetime.now()
 	Schedule.objects.all().delete()
 	Staphing.objects.all().delete()
-	# settings = ScheduleSettings.objects.get()
-	# parameters = settings.parameters.filter(use = True).order_by('rank')
-	# print(f'{len(parameters)} parameters used:')
-	# for p in parameters:
-	# 	print(f'	{p}')
+	settings = ScheduleSettings.objects.get()
+	parameters = settings.parameters.filter(use = True).order_by('rank')
+	print(f'{len(parameters)} parameters used:')
+	for p in parameters:
+		print(f'	{p}')
 	#################################################
 
 	sorted_shifts = cache.get('sorted_shifts')
@@ -50,35 +50,35 @@ def building_schedules(request):
 	cache.set('schedule_id', schedule.id, None)
 
 	############### For testing...  ################
-	# staphings = Staphing.objects.filter(schedule__id = schedule.id)
-	# uncovered_shifts = []
-	# uncovered_staphings = 0
-	# staphings_made = len(staphings)
-	# total_shifts = len(sorted_shifts)
+	end_time = datetime.datetime.now()
+	staphings = Staphing.objects.filter(schedule__id = schedule.id)
+	uncovered_shifts = []
+	uncovered_staphings = 0
+	staphings_made = len(staphings)
+	total_shifts = len(sorted_shifts)
 
-	# for info in sorted_shifts:
-	# 	shift = info[0]
-	# 	if not shift.is_covered(staphings):
-	# 		uncovered_shifts.append(shift)
-	# 		uncovered_staphings += shift.left_to_cover(staphings)
-	# print(f'-------------------------\n{100 * round((1 - (len(uncovered_shifts) / total_shifts)), 4)}% of shifts covered.')
-	# print(f'{100 * round(1 - (uncovered_staphings / (uncovered_staphings + staphings_made)), 4)}% of staphings made.\n-------------------------')
-	# print(f'Uncovered Shifts:')
-	# for shift in uncovered_shifts:
-	# 	print(f'	{shift.left_to_cover(staphings)} still needed for {shift}.')
-	# end_time = datetime.datetime.now()
-
-	# print(f'====================================================\nTime Elapsed Building: {end_time - start_time}\n====================================================')
-	# schedule.print()
-	# print('=================================================')
-	# if settings.ranked_wins_break_ties():
-	# 	print(f'Resolving ties by Rank.')
-	# elif settings.break_ties_randomly():
-	# 	print(f'Resolving Ties Randomly.')
-	# parameters = settings.parameters.filter(use = True).order_by('rank')
-	# print(f'{len(parameters)} parameters used:')
-	# for p in parameters:
-	# 	print(f'	{p}')
+	for info in sorted_shifts:
+		shift = info[0]
+		if not shift.is_covered(staphings):
+			uncovered_shifts.append(shift)
+			uncovered_staphings += shift.left_to_cover(staphings)
+	print(f'-------------------------\n{100 * round((1 - (len(uncovered_shifts) / total_shifts)), 4)}% of shifts covered.')
+	print(f'{100 * round(1 - (uncovered_staphings / (uncovered_staphings + staphings_made)), 4)}% of staphings made.\n-------------------------')
+	print(f'Uncovered Shifts:')
+	for shift in uncovered_shifts:
+		print(f'	{shift.left_to_cover(staphings)} still needed for {shift}.')
+	
+	schedule.print()
+	print('=================================================')
+	if settings.ranked_wins_break_ties():
+		print(f'Resolving ties by Rank.')
+	elif settings.break_ties_randomly():
+		print(f'Resolving Ties Randomly.')
+	parameters = settings.parameters.filter(use = True).order_by('rank')
+	print(f'{len(parameters)} parameters used:')
+	for p in parameters:
+		print(f'	{p}')
+	print(f'====================================================\nTime Elapsed Building: {end_time - start_time}\n====================================================')
 	################################################
 	return HttpResponseRedirect(reverse('schedules:build'))
 
@@ -91,11 +91,12 @@ def updating_files(request):
 	schedule_id = cache.get('schedule_id')
 	if schedule_id:
 		staphings = Staphing.objects.filter(schedule__id = schedule_id)
+		masters = Master.objects.all()
 		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
-		update_individual_excel_files(all_staphers, staphings)
-		# update_masters(staphings)
+		# update_individual_excel_files(all_staphers, staphings)
+		update_masters(masters, staphings)
+		# update_analytics(all_staphers, staphings)
 	else:
-		print('NO SCHEDULE U DUM FUK :(')
 		exit()
 	############### For testing...  ################
 	print(f'==========================\nTime Elapsed Updating: {datetime.datetime.now() - start_time}\n==========================')
@@ -190,7 +191,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 			queryset = queryset.filter(
 				Q(title__icontains = query)
 			)
-		return queryset.order_by('day','start')
+		return queryset.order_by('day','start', 'title')
 		
 
 	def get_context_data(self, *args, **kwargs):

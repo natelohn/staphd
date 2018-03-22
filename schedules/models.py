@@ -30,6 +30,7 @@ class Flag(models.Model):
 		return reverse('settings')
 
 
+
 class Stapher(models.Model):
 	active			= models.BooleanField(default = True)
 	first_name 		= models.CharField(max_length = 100, default = 'FIRST NAME')
@@ -59,7 +60,7 @@ class Stapher(models.Model):
 	def full_name(self):
 		return f'{self.first_name} {self.last_name}'
 
-	# This method only works for SSC staph.
+	# This method only works for SSC Staph.
 	def get_off_day(self):
 		mon = Qualification.objects.get(title = 'sumo')
 		tue = Qualification.objects.get(title = 'motue')
@@ -118,7 +119,7 @@ class Stapher(models.Model):
 
 
 	def get_previous_shift(self, shift, staphings):
-		all_shifts = self.all_shifts(staphings)
+		all_shifts = self.all_shifts_from_list(staphings)
 		if not all_shifts:
 			return None
 		all_shifts.append(shift)
@@ -131,7 +132,7 @@ class Stapher(models.Model):
 					return all_shifts[i - 1]
 
 	def get_next_shift(self, shift, staphings):
-		all_shifts = self.all_shifts(staphings)
+		all_shifts = self.all_shifts_from_list(staphings)
 		if not all_shifts:
 			return None
 		all_shifts.append(shift)
@@ -145,12 +146,15 @@ class Stapher(models.Model):
 
 
 	# This returns a list of the person's shifts 
-	def all_shifts(self, staphings):
+	def all_shifts_from_qs(self, staphings):
 		return [staphing.shift for staphing in staphings.filter(stapher__id = self.id)]
+
+	def all_shifts_from_list(self, staphings):
+		return [staphing.shift for staphing in staphings if self.id == staphing.stapher.id]
 
 	# This returns a list of the person's shifts ordered chronologically.
 	def ordered_shifts(self, staphings):
-		return sorted(self.all_shifts(staphings), key=attrgetter('day', 'start'))
+		return sorted(self.all_shifts_from_qs(staphings), key=attrgetter('day', 'start'))
 
 	# This returns a dictionary of ints (days) to the person's shifts for that day of the week ordered chronologically.
 	def shifts_by_day(self, staphings):
@@ -186,6 +190,8 @@ class Shift(models.Model):
 		end_str = self.end.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
 		return f'{self.title} on {days[self.day]}, {start_str}-{end_str}'
 
+
+
 	def save(self, *args, **kwargs):
 		if isinstance(self.day, str):
 			print('its a str...')
@@ -207,9 +213,13 @@ class Shift(models.Model):
 		return reverse('schedules:shift-detail', kwargs = {'pk': self.id})
 
 
-	def overlaps(self, shift):
-		return self.day == shift.day and self.start < shift.end and self.end > shift.start
+	def is_in_window(self, day, start, end):
+		return self.day == day and self.start < end and self.end > start
 
+
+	def overlaps(self, shift):
+		return self.is_in_window(shift.day, shift.start, shift.end)
+		
 
 	def is_covered(self, staphings):
 		count_of_workers = 0
@@ -288,20 +298,20 @@ class Schedule(models.Model):
 				count_out_of_zone += 1
 			else:
 				count_in_zone += 1
+			last_day = 0
+			staphings_for_day = []
+			for staphing in staphings:
+				if staphing.shift.day != last_day:
+					totsec = stapher.total_hours(staphings_for_day).total_seconds()
+					h = totsec // 3600
+					m = (totsec % 3600) // 60
+					print(f'	{days[last_day]} - {h} hrs {m} mins')
+					for day_staphing in staphings_for_day:
+						print(f'		{str(day_staphing.shift)}')
+					staphings_for_day = []
+				last_day = staphing.shift.day
+				staphings_for_day.append(staphing)
 		print(f'{count_in_zone} good schedules. {count_out_of_zone} bad schedules.')
-			# last_day = 0
-			# staphings_for_day = []
-			# for staphing in staphings:
-			# 	if staphing.shift.day != last_day:
-			# 		totsec = stapher.total_hours(staphings_for_day).total_seconds()
-			# 		h = totsec // 3600
-			# 		m = (totsec % 3600) // 60
-			# 		print(f'	{days[last_day]} - {h} hrs {m} mins')
-			# 		for day_staphing in staphings_for_day:
-			# 			print(f'		{str(day_staphing.shift)}')
-			# 		staphings_for_day = []
-			# 	last_day = staphing.shift.day
-			# 	staphings_for_day.append(staphing)
 
 	def print_overlaping_qualifiers(self, shift):
 		staphers = Stapher.objects.all()
@@ -358,5 +368,31 @@ class Master(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	# Returns a queryset of staphings that are in the master
+	def get_master_staphings(self, staphings):
+		my_flags = [f.id for f in self.flags.all()]
+		return staphings.filter(shift__flags__in = my_flags)
+
+
+	def shifts_at_time(self, staphings, day, time):
+		master_staphings = self.staphings_in_master(staphings)
+		shifts_at_time = master_staphings.filter(shift__day__exact = day, shift__start__lte = time, shift__start__gte = time)
+		return shifts_at_time
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

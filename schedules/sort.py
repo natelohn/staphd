@@ -48,6 +48,7 @@ def get_seconds_from_time(time):
 	return (time.hour * 3600) + (time.minute * 60)
 
 # This is a function designed to return all unique day + time pairs in order of earliest to latest.
+# It is called in excel.py
 def get_ordered_start_and_end_times_by_day(shifts):
 	all_times_by_day = {}
 	for shift in shifts:
@@ -55,7 +56,7 @@ def get_ordered_start_and_end_times_by_day(shifts):
 			all_times_by_day[shift.day].add(shift.start)
 			all_times_by_day[shift.day].add(shift.end)
 		else:
-			all_times_by_day[shift.day] = set()
+			all_times_by_day[shift.day] = set([shift.start, shift.end])
 	for day in all_times_by_day:
 		sorted_list = list(all_times_by_day[day])
 		sorted_list.sort(key = get_seconds_from_time)
@@ -63,6 +64,7 @@ def get_ordered_start_and_end_times_by_day(shifts):
 	return all_times_by_day
 
 # This is a funtion designed to return the seconds passed since sunday at midnight.
+# Also called in excel.py
 def get_seconds_from_day_and_time(day, time):
 	day_seconds = int(day) * 24 * 60 * 60
 	time_seconds = get_seconds_from_time(time)
@@ -103,7 +105,7 @@ def get_sorted_shifts(staphers, shifts):
 				all_workers_needed = 0
 				overlapping_shifts = []
 				for shift in shift_dict[key]:
-					if day == shift.day and start < shift.end and end > shift.start:
+					if shift.is_in_window(day, start, end):
 						ids_to_keys[shift.id] = key
 						all_workers_needed += shift.workers_needed
 						overlapping_shifts.append(shift)
