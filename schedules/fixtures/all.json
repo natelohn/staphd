@@ -12264,7 +12264,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Hobart",
-			"template":"Hobart",
+			"template":"master-template",
 			"flags":[50]
 		}
 	},
@@ -12272,7 +12272,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Lifeguarding",
-			"template":"Lifeguarding",
+			"template":"master-template",
 			"flags":[52]
 		}
 	},
@@ -12280,15 +12280,15 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Entertainment",
-			"template":"Entertainment",
-			"flags":[94,26,47,92,20,48,104]
+			"template":"master-template",
+			"flags":[94,26,47,92,20,48,71,32]
 		}
 	},
 	{
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Town Run",
-			"template":"Town Run",
+			"template":"master-template",
 			"flags":[7]
 		}
 	},
@@ -12296,7 +12296,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Boating",
-			"template":"Boating",
+			"template":"master-template",
 			"flags":[24,82]
 		}
 	},
@@ -12304,7 +12304,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Maintenance",
-			"template":"Maintenance",
+			"template":"master-template",
 			"flags":[12,78,73]
 		}
 	},
@@ -12312,7 +12312,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Fountain",
-			"template":"Fountain",
+			"template":"master-template",
 			"flags":[42,29]
 		}
 	},
@@ -12320,7 +12320,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Boat Dock",
-			"template":"Boat Dock",
+			"template":"master-template",
 			"flags":[76]
 		}
 	},
@@ -12328,7 +12328,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Breakfast",
-			"template":"Breakfast",
+			"template":"breakfast-template",
 			"flags":[88,98]
 		}
 	},
@@ -12336,7 +12336,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Lunch",
-			"template":"Lunch",
+			"template":"lunch-template",
 			"flags":[18,10]
 		}
 	},
@@ -12344,7 +12344,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Dinner",
-			"template":"Dinner",
+			"template":"dinner-template",
 			"flags":[57,74]
 		}
 	},
@@ -12352,7 +12352,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"KGC",
-			"template":"KGC",
+			"template":"master-template",
 			"flags":[67]
 		}
 	},
@@ -12360,7 +12360,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Wilderness",
-			"template":"Wilderness",
+			"template":"master-template",
 			"flags":[11,105]
 		}
 	},
@@ -12368,7 +12368,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Boat-dock-coordinator",
-			"template":"Boat-dock-coordinator",
+			"template":"master-template",
 			"flags":[96]
 		}
 	},
@@ -12376,7 +12376,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Snoopers",
-			"template":"Snoopers",
+			"template":"master-template",
 			"flags":[16]
 		}
 	},
@@ -12384,7 +12384,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Chicken",
-			"template":"Chicken",
+			"template":"master-template",
 			"flags":[37]
 		}
 	},
@@ -12392,7 +12392,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Arts",
-			"template":"Arts",
+			"template":"master-template",
 			"flags":[99,72,104]
 		}
 	},
@@ -12400,7 +12400,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Outdoors",
-			"template":"Outdoors",
+			"template":"master-template",
 			"flags":[61,23,19]
 		}
 	},
@@ -12408,7 +12408,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Athletics",
-			"template":"Athletics",
+			"template":"master-template",
 			"flags":[68,90,87,102,79]
 		}
 	},
@@ -12416,7 +12416,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Ski Dock",
-			"template":"Ski Dock",
+			"template":"master-template",
 			"flags":[6,64,55,5]
 		}
 	},
@@ -12424,7 +12424,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Menehunes",
-			"template":"Menehunes",
+			"template":"master-template",
 			"flags":[34]
 		}
 	},
@@ -12432,7 +12432,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Suaves",
-			"template":"Suaves",
+			"template":"master-template",
 			"flags":[28]
 		}
 	},
@@ -12440,7 +12440,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Office",
-			"template":"Office",
+			"template":"master-template",
 			"flags":[2]
 		}
 	},
@@ -12448,7 +12448,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Photo",
-			"template":"Photo",
+			"template":"master-template",
 			"flags":[4]
 		}
 	},
@@ -12456,7 +12456,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Midorees",
-			"template":"Midorees",
+			"template":"master-template",
 			"flags":[89]
 		}
 	},
@@ -12464,7 +12464,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Rotating",
-			"template":"Rotating",
+			"template":"master-template",
 			"flags":[9]
 		}
 	},
@@ -12472,7 +12472,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Yahoos",
-			"template":"Yahoos",
+			"template":"master-template",
 			"flags":[93]
 		}
 	},
@@ -12480,7 +12480,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Teens",
-			"template":"Teens",
+			"template":"master-template",
 			"flags":[44]
 		}
 	},
@@ -12488,7 +12488,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"IIC",
-			"template":"IIC",
+			"template":"master-template",
 			"flags":[86]
 		}
 	},
@@ -12496,7 +12496,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Beffas",
-			"template":"Beffas",
+			"template":"master-template",
 			"flags":[22]
 		}
 	},
@@ -12504,7 +12504,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Cars",
-			"template":"Cars",
+			"template":"master-template",
 			"flags":[39]
 		}
 	},
@@ -12512,7 +12512,7 @@
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Munchkins",
-			"template":"Munchkins",
+			"template":"master-template",
 			"flags":[15]
 		}
 	}

@@ -1,8 +1,9 @@
+import datetime
 from openpyxl import load_workbook
 from openpyxl.styles import Alignment, Color, PatternFill, Border, Side, Font
 from operator import attrgetter, itemgetter
 
-from .sort import get_ordered_start_and_end_times_by_day, get_seconds_from_day_and_time
+
 
 def create_new_workbook(staphers):
 	# Copy the template workbook.
@@ -153,7 +154,7 @@ def get_and_update_largest_offset(shift, times_to_offset, height):
 def copy_master_template(masters):
 	# Copy the template workbook.
 	print('Creating masters.xlsx file...')
-	template_wb = load_workbook('../output/masters-templates.xlsx')
+	template_wb = load_workbook('../output/masters-template.xlsx')
 	template_wb.save("../output/masters.xlsx")
 	master_wb = load_workbook('../output/masters.xlsx')
 	for master in masters:
@@ -174,37 +175,107 @@ def get_master_end_col_from_time(time):
 	return get_master_start_col_from_time(time) - 1
 
 def master_row(shift):
-	return (shift.day * 11) + 5
+	return (shift.day * 13) + 5
 
-def update_masters(masters, staphings):
-	masters = sorted(masters, key=attrgetter('title'))
+def get_col_range(shift):
+	start_col = get_master_start_col_from_time(shift.start)
+	end_col = get_master_end_col_from_time(shift.end)
+	return [col for col in range(start_col, end_col + 1)]
+
+# This function returns a dictionary of shift id to the height and offset of the shift
+def get_shifts_ids_to_placement(shifts):
+	section_height = 12
+	cols_to_info = {}
+	for shift in shifts:
+		col_range = get_col_range(shift)
+		if shift.day not in cols_to_info:
+			cols_to_info[shift.day] = {}
+		for col in col_range:
+			if col not in cols_to_info[shift.day]:
+				# The first place in the list represents the number of shifts at this time, the second represents the taken rows
+				cols_to_info[shift.day][col] = [0, []] 
+			cols_to_info[shift.day][col][0] = cols_to_info[shift.day][col][0] + 1
+	ids_to_placement = {}
+	shifts = sorted(shifts, key = attrgetter('day', 'start'))
+	# In order to avoid overflowing the excel sheet - we first place the top layer of each day and then the 2nd layer and so on...
+	placed_shifts = []
+	last_shift = shifts[0]
+	while len(placed_shifts) < len(shifts):
+		for shift in shifts:
+			not_seen_before = shift not in placed_shifts
+			should_place_next  = shift.start == last_shift.start or not shift.overlaps(last_shift)
+			have_to_place = len(shifts) == len(placed_shifts) + 1 # Since it is the last shift we have to place it regardless
+			if not_seen_before and (should_place_next or have_to_place):
+				# First we get the height...
+				col_range = get_col_range(shift)
+				most_overlap_in_range = 1
+				for col in col_range:
+					overlap_at_col = cols_to_info[shift.day][col][0]
+					if most_overlap_in_range < overlap_at_col:
+						most_overlap_in_range = overlap_at_col
+				shift_height = int(section_height / most_overlap_in_range)
+				# Now we find the offset by checking for the first availible set of rows 
+				offset = 0
+				solution_found = False
+				while not solution_found:
+					rows_to_occupy = [row for row in range(offset, offset + shift_height)]
+					overlap_found = False
+					for col in col_range:
+						occupied_rows = cols_to_info[shift.day][col][1]
+						if bool(set(rows_to_occupy) & set(occupied_rows)):
+							overlap_found = True
+					if not overlap_found:
+						solution_found = True
+					else:
+						offset += 1
+				for col in col_range:
+					cols_to_info[shift.day][col][1].extend(rows_to_occupy)
+
+				# Now we find the start row/col and end row/col and store that information to the shifts ID
+				start_col = col_range[0]
+				end_col = col_range[-1]
+				start_row = master_row(shift) + offset
+				end_row = start_row + shift_height - 1
+				ids_to_placement[shift.id] = [start_col, start_row, end_col, end_row]
+
+				# If the shifts have the same start time, we don't need to update the shift unless the one we're looking at ends earlier
+				if shift.start != last_shift.start or shift.end < last_shift.end:
+					last_shift = shift
+				placed_shifts.append(shift)
+	return ids_to_placement
+
+def get_length(shift):
+	return shift.length()
+
+def update_standard_masters(masters, staphings):
+	masters =  sorted(masters, key=attrgetter('title'))
 	copy_master_template(masters)
 	master_wb = load_workbook('../output/masters.xlsx')
 	for master in masters:
 		print(f'Updating {master} master...')
 		master_staphings = master.get_master_staphings(staphings)
 		shift_workers = get_shift_workers(master_staphings)
-		master_shifts = set([s.shift for s in master_staphings])
-		shift_info = [[shift, shift.start, (shift.length() * -1)] for shift in master_shifts]
-		sorted_master_shifts = [shift[0] for shift in sorted(shift_info, key=itemgetter(1, 2))]
-		ordered = get_ordered_start_and_end_times_by_day(sorted_master_shifts)
-		times_to_offset = set_times_to_offsets(ordered)
-		ids_to_height = get_shifts_ids_to_height(ordered, sorted_master_shifts)
-		off_set_dict = {}
-		test_info = []
+		master_shifts = list(set([s.shift for s in master_staphings]))
+		master_shifts = [shift[0] for shift in sorted([[shift, shift.start, shift.length()] for shift in master_shifts], key = itemgetter(1, 2))]
+		ids_to_placement = get_shifts_ids_to_placement(master_shifts)
 		master_ws = master_wb[master.title]
 		master_ws['A1'] =  master.title + ' Master'
-		for shift in sorted_master_shifts:
-			height = ids_to_height[shift.id]
-			offset = get_and_update_largest_offset(shift, times_to_offset, height)
-			start_row = master_row(shift) + offset
-			end_row = start_row + height - 1
-			start_col = get_master_start_col_from_time(shift.start)
-			end_col = get_master_end_col_from_time(shift.end)
-			print(f'		{shift}: {height} & {offset} -> ({start_col} right, {start_row} down):({end_col} right, {end_row} down)')
+		for shift in master_shifts:
+			start_col = ids_to_placement[shift.id][0]
+			start_row = ids_to_placement[shift.id][1]
+			end_col = ids_to_placement[shift.id][2]
+			end_row = ids_to_placement[shift.id][3]
 			cell = master_ws.cell(row = start_row, column = start_col)
-			value = shift.get_excel_str() + '\n'
-			for worker in shift_workers[shift.id]:
+			value = shift.title + ':\n'
+			# If the shift is longer than an hour... 
+			if start_col < end_col - 3:
+				value = shift.get_excel_str() + ':\n'
+			# If the shift is 30 min or shorter... 
+			if start_col >= end_col - 1:
+				cell.font = Font(size = 7)
+			else:
+				cell.font = Font(size = 12)
+			for worker in set(shift_workers[shift.id]):
 				value = value + worker.first_name + ', '
 			value = value[:-2]
 			cell.value = value
@@ -214,6 +285,22 @@ def update_masters(masters, staphings):
 	print(f'Saving masters.xlsx...')
 	master_wb.save("../output/masters.xlsx")
 			
+def update_meal_masters(masters, staphings):
+	meal_master_wb = load_workbook('../output/meal_masters.xlsx')
+	for master in masters:
+		print(master)
+
+def update_masters(masters, staphings):
+	standard_masters = []
+	meal_masters = []
+	for master in masters:
+		if master.is_standard():
+			standard_masters.append(master)
+		else:
+			meal_masters.append(master)
+	# update_standard_masters(standard_masters, staphings)
+	update_meal_masters(meal_masters, staphings)
+
 
 
 

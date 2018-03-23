@@ -262,6 +262,7 @@ class Shift(models.Model):
 		start_str = self.start.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
 		end_str = self.end.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
 		return f'{self.title} ({start_str} - {end_str})'
+	
 
 	def has_flag(self, title):
 		flag = Flag.objects.get(title = title)
@@ -273,6 +274,7 @@ class Shift(models.Model):
 	def is_programming(self):
 		return self.has_flag('programming')
 	
+
 
 # A class representing all shift/staph pairs for a user - this will allow for multiple schedules
 class Schedule(models.Model):
@@ -381,7 +383,8 @@ class Master(models.Model):
 		return shifts_at_time
 
 
-
+	def is_standard(self):
+		return self.template == 'master-template'
 
 
 
