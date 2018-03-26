@@ -32,9 +32,6 @@ def building_schedules(request):
 	Staphing.objects.all().delete()
 	settings = ScheduleSettings.objects.get()
 	parameters = settings.parameters.filter(use = True).order_by('rank')
-	print(f'{len(parameters)} parameters used:')
-	for p in parameters:
-		print(f'	{p}')
 	#################################################
 
 	sorted_shifts = cache.get('sorted_shifts')
@@ -68,7 +65,7 @@ def building_schedules(request):
 	for shift in uncovered_shifts:
 		print(f'	{shift.left_to_cover(staphings)} still needed for {shift}.')
 	
-	schedule.print()
+	# schedule.print()
 	print('=================================================')
 	if settings.ranked_wins_break_ties():
 		print(f'Resolving ties by Rank.')

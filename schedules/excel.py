@@ -267,14 +267,18 @@ def update_standard_masters(masters, staphings):
 			end_row = ids_to_placement[shift.id][3]
 			cell = master_ws.cell(row = start_row, column = start_col)
 			value = shift.title + ':\n'
+
 			# If the shift is longer than an hour... 
 			if start_col < end_col - 3:
 				value = shift.get_excel_str() + ':\n'
+
 			# If the shift is 30 min or shorter... 
 			if start_col >= end_col - 1:
 				cell.font = Font(size = 7)
 			else:
 				cell.font = Font(size = 12)
+
+			# Now we add the names of the people working the shift
 			for worker in set(shift_workers[shift.id]):
 				value = value + worker.first_name + ', '
 			value = value[:-2]
@@ -285,10 +289,67 @@ def update_standard_masters(masters, staphings):
 	print(f'Saving masters.xlsx...')
 	master_wb.save("../output/masters.xlsx")
 			
+def get_meal_master_col(shift):
+	return shift.day + 2
+
+def get_meal_master_starting_row(shift):
+	if shift.has_flag('meal-head'):
+		return 3
+	elif shift.has_flag('hobart'):
+		if shift.start == datetime.time(12, 0, 0, 0):
+			return 25
+		elif shift.start == datetime.time(17, 30, 0, 0):
+			return 24
+	elif shift.has_flag('wine'):
+			return 22
+	if shift.start == datetime.time(6, 45, 0, 0):
+		return 5
+	elif shift.start == datetime.time(7, 0, 0, 0):
+		return 20
+	elif shift.start == datetime.time(7, 30, 0, 0):
+		return 8
+	elif shift.start == datetime.time(7, 45, 0, 0):
+		return 12
+	elif shift.start == datetime.time(8, 15, 0, 0):
+		return 16
+	elif shift.start == datetime.time(11, 15, 0, 0):
+		return 5
+	elif shift.start == datetime.time(11, 45, 0, 0):
+		return 10
+	elif shift.start == datetime.time(12, 0, 0, 0):
+		return 19
+	elif shift.start == datetime.time(17, 15, 0, 0):
+		return 4
+	elif shift.start == datetime.time(17, 30, 0, 0):
+		return 13
+	elif shift.start == datetime.time(18, 0, 0, 0):
+		return 15
+
+
+
+
 def update_meal_masters(masters, staphings):
-	meal_master_wb = load_workbook('../output/meal_masters.xlsx')
+	print(f'Loading meal master...')
+	meal_master_wb = load_workbook('../output/meal-master-template.xlsx')
 	for master in masters:
-		print(master)
+		print(f'Updating {master} master...')
+		master_ws = meal_master_wb[master.title]
+		master_staphings = master.get_master_staphings(staphings)
+		shift_workers = get_shift_workers(master_staphings)
+		master_shifts = list(set([s.shift for s in master_staphings]))
+		for shift in master_shifts:
+			col = get_meal_master_col(shift)
+			curr_row = get_meal_master_starting_row(shift)
+			workers = set(shift_workers[shift.id])
+			for worker in workers:
+				cell = master_ws.cell(row = curr_row, column = col)
+				cell.value = worker.full_name()
+				cell.font = Font(size = 12)
+				curr_row += 1
+	print('Saving meal-master.xlsx')
+	meal_master_wb.save("../output/meal-masters.xlsx")
+
+			
 
 def update_masters(masters, staphings):
 	standard_masters = []
@@ -298,7 +359,7 @@ def update_masters(masters, staphings):
 			standard_masters.append(master)
 		else:
 			meal_masters.append(master)
-	# update_standard_masters(standard_masters, staphings)
+	update_standard_masters(standard_masters, staphings)
 	update_meal_masters(meal_masters, staphings)
 
 

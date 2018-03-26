@@ -4,7 +4,7 @@
 		"fields": {
 			"title":"Hobart",
 			"template":"master-template",
-			"flags":[50]
+			"flags":[158]
 		}
 	},
 	{
@@ -12,7 +12,7 @@
 		"fields": {
 			"title":"Lifeguarding",
 			"template":"master-template",
-			"flags":[52]
+			"flags":[160]
 		}
 	},
 	{
@@ -20,7 +20,7 @@
 		"fields": {
 			"title":"Entertainment",
 			"template":"master-template",
-			"flags":[94,26,47,92,20,48,71,32]
+			"flags":[205,134,155,203,128,156,179,140]
 		}
 	},
 	{
@@ -28,7 +28,7 @@
 		"fields": {
 			"title":"Town Run",
 			"template":"master-template",
-			"flags":[7]
+			"flags":[115]
 		}
 	},
 	{
@@ -36,7 +36,7 @@
 		"fields": {
 			"title":"Boating",
 			"template":"master-template",
-			"flags":[24,82]
+			"flags":[132,193]
 		}
 	},
 	{
@@ -44,7 +44,7 @@
 		"fields": {
 			"title":"Maintenance",
 			"template":"master-template",
-			"flags":[12,78,73]
+			"flags":[120,186,181]
 		}
 	},
 	{
@@ -52,7 +52,7 @@
 		"fields": {
 			"title":"Fountain",
 			"template":"master-template",
-			"flags":[42,29]
+			"flags":[150,137]
 		}
 	},
 	{
@@ -60,31 +60,31 @@
 		"fields": {
 			"title":"Boat Dock",
 			"template":"master-template",
-			"flags":[76]
+			"flags":[184]
 		}
 	},
 	{
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Breakfast",
-			"template":"breakfast-template",
-			"flags":[88,98]
+			"template":"meal-template",
+			"flags":[199,209,190]
 		}
 	},
 	{
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Lunch",
-			"template":"lunch-template",
-			"flags":[18,10]
+			"template":"meal-template",
+			"flags":[126,118,191]
 		}
 	},
 	{
 		"model": "schedules.Master",
 		"fields": {
 			"title":"Dinner",
-			"template":"dinner-template",
-			"flags":[57,74]
+			"template":"meal-template",
+			"flags":[165,182,219,192]
 		}
 	},
 	{
@@ -92,7 +92,7 @@
 		"fields": {
 			"title":"KGC",
 			"template":"master-template",
-			"flags":[67]
+			"flags":[175]
 		}
 	},
 	{
@@ -100,7 +100,7 @@
 		"fields": {
 			"title":"Wilderness",
 			"template":"master-template",
-			"flags":[11,105]
+			"flags":[119,216]
 		}
 	},
 	{
@@ -108,7 +108,7 @@
 		"fields": {
 			"title":"Boat-dock-coordinator",
 			"template":"master-template",
-			"flags":[96]
+			"flags":[207]
 		}
 	},
 	{
@@ -116,7 +116,7 @@
 		"fields": {
 			"title":"Snoopers",
 			"template":"master-template",
-			"flags":[16]
+			"flags":[124]
 		}
 	},
 	{
@@ -124,7 +124,7 @@
 		"fields": {
 			"title":"Chicken",
 			"template":"master-template",
-			"flags":[37]
+			"flags":[145]
 		}
 	},
 	{
@@ -132,7 +132,7 @@
 		"fields": {
 			"title":"Arts",
 			"template":"master-template",
-			"flags":[99,72,104]
+			"flags":[210,180,215]
 		}
 	},
 	{
@@ -140,7 +140,7 @@
 		"fields": {
 			"title":"Outdoors",
 			"template":"master-template",
-			"flags":[61,23,19]
+			"flags":[169,131,127]
 		}
 	},
 	{
@@ -148,7 +148,7 @@
 		"fields": {
 			"title":"Athletics",
 			"template":"master-template",
-			"flags":[68,90,87,102,79]
+			"flags":[176,201,198,213,187]
 		}
 	},
 	{
@@ -156,7 +156,7 @@
 		"fields": {
 			"title":"Ski Dock",
 			"template":"master-template",
-			"flags":[6,64,55,5]
+			"flags":[114,172,163,113]
 		}
 	},
 	{
@@ -164,7 +164,7 @@
 		"fields": {
 			"title":"Menehunes",
 			"template":"master-template",
-			"flags":[34]
+			"flags":[142]
 		}
 	},
 	{
@@ -172,7 +172,7 @@
 		"fields": {
 			"title":"Suaves",
 			"template":"master-template",
-			"flags":[28]
+			"flags":[136]
 		}
 	},
 	{
@@ -180,7 +180,7 @@
 		"fields": {
 			"title":"Office",
 			"template":"master-template",
-			"flags":[2]
+			"flags":[110]
 		}
 	},
 	{
@@ -188,7 +188,7 @@
 		"fields": {
 			"title":"Photo",
 			"template":"master-template",
-			"flags":[4]
+			"flags":[112]
 		}
 	},
 	{
@@ -196,7 +196,7 @@
 		"fields": {
 			"title":"Midorees",
 			"template":"master-template",
-			"flags":[89]
+			"flags":[200]
 		}
 	},
 	{
@@ -204,7 +204,7 @@
 		"fields": {
 			"title":"Rotating",
 			"template":"master-template",
-			"flags":[9]
+			"flags":[117]
 		}
 	},
 	{
@@ -212,7 +212,7 @@
 		"fields": {
 			"title":"Yahoos",
 			"template":"master-template",
-			"flags":[93]
+			"flags":[204]
 		}
 	},
 	{
@@ -220,7 +220,7 @@
 		"fields": {
 			"title":"Teens",
 			"template":"master-template",
-			"flags":[44]
+			"flags":[152]
 		}
 	},
 	{
@@ -228,7 +228,7 @@
 		"fields": {
 			"title":"IIC",
 			"template":"master-template",
-			"flags":[86]
+			"flags":[197]
 		}
 	},
 	{
@@ -236,7 +236,7 @@
 		"fields": {
 			"title":"Beffas",
 			"template":"master-template",
-			"flags":[22]
+			"flags":[130]
 		}
 	},
 	{
@@ -244,7 +244,7 @@
 		"fields": {
 			"title":"Cars",
 			"template":"master-template",
-			"flags":[39]
+			"flags":[147]
 		}
 	},
 	{
@@ -252,7 +252,7 @@
 		"fields": {
 			"title":"Munchkins",
 			"template":"master-template",
-			"flags":[15]
+			"flags":[123]
 		}
 	}
 ]

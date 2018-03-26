@@ -488,6 +488,24 @@
 	{
 		"model": "schedules.Flag",
 		"fields": {
+			"title":"breakfast-head"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"lunch-head"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"dinner-head"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
 			"title":"boatster"
 		}
 	},
