@@ -8,131 +8,93 @@ def get_hours_between_times(start, end):
 	end_td = datetime.timedelta(hours = end.hour, minutes = end.minute)
 	return get_hours_from_timedelta(end_td - start_td)
 
-def get_str_from_time(time):
+def get_readable_time(time):
 	return time.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
 
 def get_str_from_td(td):
 	hours = td.seconds//3600
 	minutes = (td.seconds//60)%60
-	return get_str_from_time(datetime.time(hour = hours, minute = minutes))
+	return datetime.time(hour = hours, minute = minutes).strftime("%I:%M %p").lstrip('0')
 
 def get_hours_info(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
+	off_day = stapher.get_off_day()
 	hours_for_days = []
-	for day in range(0, 7):
-		td = stapher.hours_in_day(staphings, day)
-		hours_for_days.append(get_hours_from_timedelta(td))
-	return [sum(hours_for_days)] + hours_for_days
-
-
-def get_most_hours_in_day(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
 	max_hours = 0
+	least_hours = 24
+	length_strs = []
+	shortest_length = 24
+	max_length = 0
 	for day in range(0, 7):
 		td = stapher.hours_in_day(staphings, day)
 		hours = get_hours_from_timedelta(td)
+		hours_for_days.append(hours)
 		if hours > max_hours:
 			max_hours = hours
-	return [max_hours]
-
-def get_least_hours_in_day(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
-	off_day = stapher.get_off_day()
-	least_hours = 24
-	for day in range(0, 7):
 		if day != off_day and day != off_day - 1:
-			td = stapher.hours_in_day(staphings, day)
-			hours = get_hours_from_timedelta(td)
 			if hours < least_hours:
-				least_hours = hours
-	return [least_hours]
-
-def get_length_for_days(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
-	off_day = stapher.get_off_day()
-	length_strs = []
-	for day in range(0, 7):
-		if day != off_day and day != off_day - 1:
+				least_hours = hours	
 			shifts = shifts_by_day[day]
 			first_shift = shifts[0]
 			last_shift = shifts[-1]
-			length_str = f'{get_str_from_time(first_shift.start)} to {get_str_from_time(last_shift.end)}'
-		else:
-			length_str = 'Off Day'
-		length_strs.append(length_str)
-	return length_strs
-
-def get_shortest_day_length(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
-	off_day = stapher.get_off_day()
-	shortest_length = 24
-	for day in range(0, 7):
-		if day != off_day and day != off_day - 1:
-			shifts = shifts_by_day[day]
-			first_shift = shifts[0]
-			last_shift = shifts[-1]
+			length_str = f'{get_readable_time(first_shift.start)} to {get_readable_time(last_shift.end)}'
 			length = get_hours_between_times(first_shift.start, last_shift.end)
 			if length < shortest_length:
 				shortest_length = length
-	return [shortest_length]
-
-def get_longest_day_length(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
-	off_day = stapher.get_off_day()
-	max_length = 0
-	for day in range(0, 7):
-		if day != off_day and day != off_day - 1:
-			shifts = shifts_by_day[day]
-			first_shift = shifts[0]
-			last_shift = shifts[-1]
-			length = get_hours_between_times(first_shift.start, last_shift.end)
 			if length > max_length:
 				max_length = length
-	return [max_length]
+		else:
+			length_str = 'Off Day'
+		length_strs.append(length_str)
+	return [sum(hours_for_days)] + hours_for_days + [max_hours, least_hours] + length_strs + [shortest_length, max_length]
 
 
-def get_average_first_shift_time(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
+def get_average_first_last_info(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
 	off_day = stapher.get_off_day()
 	total_first_shift_time =  datetime.timedelta(0, 0)
+	total_first_shift_time_mid =  datetime.timedelta(0, 0)
+	total_last_shift_time = datetime.timedelta(0, 0)
+	total_last_shift_time_mid = datetime.timedelta(0, 0)
 	for day in range(0, 7):
 		if day != off_day:
 			shifts = shifts_by_day[day]
 			first_shift = shifts[0]
 			total_first_shift_time += datetime.timedelta(hours = first_shift.start.hour, minutes = first_shift.start.minute)
-	avg_first_shift_float = total_first_shift_time / 6	
-	return [get_str_from_td(avg_first_shift_float)]
+			if day in range(2, 5):
+				total_first_shift_time_mid += datetime.timedelta(hours = first_shift.start.hour, minutes = first_shift.start.minute)
+			if day != off_day - 1: 
+				last_shift = shifts[-1]
+				total_last_shift_time += datetime.timedelta(hours = last_shift.end.hour, minutes = last_shift.end.minute)
+				if day in range(2, 5):
+					total_last_shift_time_mid += datetime.timedelta(hours = first_shift.start.hour, minutes = first_shift.start.minute)
+	avg_first_shift = get_str_from_td(total_first_shift_time / 6)
+	avg_last_shift = get_str_from_td(total_last_shift_time / 5)
+	avg_first_shift_mid = get_str_from_td(total_first_shift_time_mid / len(set([2, 3, 4]) - set([off_day])))
+	avg_last_shift_mid = get_str_from_td(total_last_shift_time / len(set([2, 3, 4]) - set([off_day - 1, off_day])))
+	return [avg_first_shift, avg_last_shift, avg_first_shift_mid, avg_last_shift_mid]
 
-
-def get_average_last_shift_time(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
+def get_sleep_windows_info(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
+	full_day = datetime.timedelta(hours = 24, minutes = 0)
 	off_day = stapher.get_off_day()
-	total_last_shift_time = datetime.timedelta(0, 0)
-	for day in range(0, 7):
-		if day != off_day and day != off_day - 1:
-			shifts = shifts_by_day[day]
-			last_shift = shifts[-1]
-			total_last_shift_time += datetime.timedelta(hours = last_shift.end.hour, minutes = last_shift.end.minute)
-	avg_last_shift_float = total_last_shift_time / 5
-	return [get_str_from_td(avg_last_shift_float)]
-
-def get_average_first_shift_time_tu_thu(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
-	off_day = stapher.get_off_day()
-	total_first_shift_time =  datetime.timedelta(0, 0)
-	days_seen = 0
-	for day in range(2, 5):
+	days = [1, 2, 3, 4, 5, 6, 0]
+	last_shift_of_yesterday = shifts_by_day[0][-1]
+	sleep_windows = []
+	window_totals = 0
+	for day in days:
 		if day != off_day:
 			shifts = shifts_by_day[day]
-			first_shift = shifts[0]
-			total_first_shift_time += datetime.timedelta(hours = first_shift.start.hour, minutes = first_shift.start.minute)
-			days_seen += 1
-	avg_first_shift_float = total_first_shift_time / days_seen
-	return [get_str_from_td(avg_first_shift_float)]
+			first_shift_of_today = shifts[0]
+			morning_td = datetime.timedelta(hours = first_shift_of_today.start.hour, minutes = first_shift_of_today.start.hour)
+			night_td = datetime.timedelta(hours = last_shift_of_yesterday.end.hour, minutes = last_shift_of_yesterday.end.hour)
+			window = get_hours_from_timedelta((full_day - night_td) + morning_td)
+			sleep_windows.append(window)
+			window_totals += window
+			last_shift_of_yesterday = shifts[-1]
+		else:
+			sleep_windows.append('Off Day')
+	sleep_windows_avg = round(window_totals / 6, 2)
+	return sleep_windows + [sleep_windows_avg]
 
-def get_average_last_shift_time_tu_thu(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
-	off_day = stapher.get_off_day()
-	total_last_shift_time = datetime.timedelta(0, 0)
-	days_seen = 0
-	for day in range(2, 5):
-		if day != off_day and day != off_day - 1:
-			shifts = shifts_by_day[day]
-			last_shift = shifts[-1]
-			total_last_shift_time += datetime.timedelta(hours = last_shift.end.hour, minutes = last_shift.end.minute)
-			days_seen += 1
-	avg_last_shift_float = total_last_shift_time / days_seen
-	return [get_str_from_td(avg_last_shift_float)]
+
 
 def get_sleep_windows_for_days(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
 	full_day = datetime.timedelta(hours = 24, minutes = 0)
@@ -286,17 +248,8 @@ def get_analytics(staphers, staphings, flags, qualifications):
 	analytics = [initial_row]
 	funtions = [
 		get_hours_info,
-		get_most_hours_in_day,
-		get_least_hours_in_day,
-		get_length_for_days,
-		get_shortest_day_length,
-		get_longest_day_length,
-		get_average_first_shift_time,
-		get_average_last_shift_time,
-		get_average_first_shift_time_tu_thu,
-		get_average_last_shift_time_tu_thu,
-		get_sleep_windows_for_days,
-		get_avg_sleep_window,
+		get_average_first_last_info,
+		get_sleep_windows_info,
 		get_people_not_worked_with,
 		get_total_day_off_time,
 		get_special_shift_success_rate,
