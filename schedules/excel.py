@@ -1,8 +1,9 @@
 import datetime
-from openpyxl import load_workbook
+from openpyxl import load_workbook, Workbook
 from openpyxl.styles import Alignment, Color, PatternFill, Border, Side, Font
 from operator import attrgetter, itemgetter
 
+from .analytics import get_analytics
 
 
 def create_new_workbook(staphers):
@@ -326,8 +327,6 @@ def get_meal_master_starting_row(shift):
 		return 15
 
 
-
-
 def update_meal_masters(masters, staphings):
 	print(f'Loading meal master...')
 	meal_master_wb = load_workbook('../output/meal-master-template.xlsx')
@@ -346,10 +345,9 @@ def update_meal_masters(masters, staphings):
 				cell.value = worker.full_name()
 				cell.font = Font(size = 12)
 				curr_row += 1
-	print('Saving meal-master.xlsx')
+	print('Saving meal-master.xls')
 	meal_master_wb.save("../output/meal-masters.xlsx")
 
-			
 
 def update_masters(masters, staphings):
 	standard_masters = []
@@ -365,20 +363,16 @@ def update_masters(masters, staphings):
 
 
 
-def update_analytics(staphers, staphings):
-	print('Creating analytics.xlsx file...')
-	template_wb = load_workbook('../output/analytics-template.xlsx')
-	template_wb.save("../output/analytics.xlsx")
-	analytics_wb = load_workbook('../output/analytics.xlsx')
-	analytics_ws = analytics_wb['Analytics']
-	stapher_col = 2
-	for stapher in staphers:
-		print(f'Updating analytics for {stapher.full_name()}...')
-		name_cell = analytics_ws.cell(row = 1, column = stapher_col)
-		name_cell.value = stapher.full_name()
-		hour_cell = analytics_ws.cell(row = 2, column = stapher_col)
-		hour_cell.value = stapher.total_hours(staphings)
-		stapher_col += 1
+def update_analytics(staphers, staphings, flags, qualifications):
+	analytics = get_analytics(staphers, staphings, flags, qualifications)
+	print('Updating analytics.xlsx file...')
+	analytics_wb = Workbook()
+	analytics_ws = analytics_wb['Sheet']
+	analytics_ws.title = 'Analytics'
+	for row in range(0, len(analytics)):
+		for col in range(0, len(analytics[row])):
+			cell = analytics_ws.cell(row = row + 1, column = col + 1)
+			cell.value = analytics[row][col]
 	print(f'Savings analytics.xlsx...')
 	analytics_wb.save("../output/analytics.xlsx")
 

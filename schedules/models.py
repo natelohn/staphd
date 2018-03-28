@@ -98,12 +98,11 @@ class Stapher(models.Model):
 	def hours_in_day(self, staphings, day):
 		hours = datetime.timedelta()
 		for staphing in staphings:
-			if staphing.stapher.id == self.id and staphing.shift.day == day:
+			if staphing.stapher.id == self.id and staphing.shift.day == day and not staphing.shift.is_unpaid():
 				hours += staphing.shift.length()
 		return hours
 
 	def total_hours(self, staphings):
-		unpaid = Flag.objects.get(title = 'unpaid')
 		hours = datetime.timedelta()
 		for staphing in staphings:
 			if staphing.stapher.id == self.id and not staphing.shift.is_unpaid():
@@ -127,7 +126,7 @@ class Stapher(models.Model):
 		for i in range(0, len(all_shifts)):
 			if all_shifts[i] == shift:
 				if i == 0:
-					return all_shifts[- 1]
+					return all_shifts[-1]
 				else:
 					return all_shifts[i - 1]
 
@@ -167,7 +166,7 @@ class Stapher(models.Model):
 					shifts_by_day[staphing.shift.day].append(staphing.shift)
 		for day in range(0, 7):
 			if day in shifts_by_day:
-				shifts_by_day[day] = sorted(shifts_by_day[day], key=attrgetter('start'))
+				shifts_by_day[day] = sorted(shifts_by_day[day], key = attrgetter('start'))
 			else:
 				shifts_by_day[day] = []
 		return shifts_by_day
@@ -258,10 +257,13 @@ class Shift(models.Model):
 	def has_exact_flags(self, shift):
 		return set(self.flags.all()) == set(shift.flags.all())
 
-	def get_excel_str(self):
+	def get_time_str(self):
 		start_str = self.start.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
 		end_str = self.end.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
-		return f'{self.title} ({start_str} - {end_str})'
+		return f'{start_str} - {end_str}'
+
+	def get_excel_str(self):
+		return f'{self.title} ({self.get_time_str()})'
 	
 
 	def has_flag(self, title):

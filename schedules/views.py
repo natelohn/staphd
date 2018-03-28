@@ -90,9 +90,11 @@ def updating_files(request):
 		staphings = Staphing.objects.filter(schedule__id = schedule_id)
 		masters = Master.objects.all()
 		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
+		all_flags = Flag.objects.all().order_by('title')
+		all_qualifications = Qualification.objects.all().order_by('title')
 		# update_individual_excel_files(all_staphers, staphings)
-		update_masters(masters, staphings)
-		# update_analytics(all_staphers, staphings)
+		# update_masters(masters, staphings)
+		update_analytics(all_staphers, staphings, all_flags, all_qualifications)
 	else:
 		exit()
 	############### For testing...  ################
