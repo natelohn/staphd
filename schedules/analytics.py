@@ -204,14 +204,14 @@ def get_analytics(staphers, staphings, flags, qualifications):
 	initial_row = [
 		'Name',
 		'Total Hours',
-		'Hours on Sunday',
-		'Hours on Monday',
-		'Hours on Tuesday',
-		'Hours on Wednesday',
-		'Hours on Thursday',
-		'Hours on Friday',
-		'Hours on Saturday',
-		'Most Hours in Day',
+		'Sunday',
+		'Monday',
+		'Tuesday',
+		'Wednesday',
+		'Thursday',
+		'Friday',
+		'Saturday',
+		'Most Hours in one Day',
 		'Least Hours in Day',
 		'Sunday\'s Start to End',
 		'Tuesday\'s Start to End',
@@ -222,38 +222,39 @@ def get_analytics(staphers, staphings, flags, qualifications):
 		'Saturday\'s Start to End',
 		'Shortest Day (First to Last Shift)',
 		'Longest Day (First to Last Shift)',
-		'Average Time First Shift Starts',
-		'Average Time Last Shift Ends',
-		'Average Time First Shift Starts (Tues-Thur)',
-		'Average Time Last Shift Ends (Tue-Thur)',
-		'Hours of Sleep (Sun-Mon)',
-		'Hours of Sleep (Mon-Tue)',
-		'Hours of Sleep (Tue-Wed)',
-		'Hours of Sleep (Wed-Thu)',
-		'Hours of Sleep (Thu-Fri)',
-		'Hours of Sleep (Fri-Sat)',
-		'Hours of Sleep (Sat-Sun)',
-		'Average Hours of Sleep',
+		'Average Starting Time',
+		'Average Ending Time',
+		'Avg. Starting Time (Tues-Thur)',
+		'Avg. Ending Time (Tue-Thur)',
+		'(Sun-Mon)',
+		'(Mon-Tue)',
+		'(Tue-Wed)',
+		'(Wed-Thu)',
+		'(Thu-Fri)',
+		'(Fri-Sat)',
+		'(Sat-Sun)',
+		'Average',
+		'Average Hours Between Shifts',
 		'# of People You\'re Not Scheduled With',
 		'People You\'re Not Scheduled With',
 		'Total Time of Off Day',
 		'# of Top 3 Special Shifts on Schedule',
 		'# of Top 5 Special Shifts on Schedule',
-		'Average Hours Between Shifts',
+		
 	]
 	for flag in flags:
-		initial_row.append(f'Hours with {flag} flag.')
+		initial_row.append(flag.title.replace('-',' ').capitalize())
 	for qual in qualifications:
-		initial_row.append(f'Hours with {qual} qualification.')
+		initial_row.append(qual.title.replace('-',' ').capitalize())
 	analytics = [initial_row]
 	funtions = [
 		get_hours_info,
 		get_average_first_last_info,
 		get_sleep_windows_info,
+		get_average_window_between_shifts,
 		get_people_not_worked_with,
 		get_total_day_off_time,
 		get_special_shift_success_rate,
-		get_average_window_between_shifts,
 		get_flag_information,
 		get_qualification_information
 	]

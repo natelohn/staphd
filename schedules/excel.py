@@ -361,18 +361,20 @@ def update_masters(masters, staphings):
 	update_meal_masters(meal_masters, staphings)
 
 
-
-
 def update_analytics(staphers, staphings, flags, qualifications):
 	analytics = get_analytics(staphers, staphings, flags, qualifications)
 	print('Updating analytics.xlsx file...')
-	analytics_wb = Workbook()
-	analytics_ws = analytics_wb['Sheet']
+	analytics_wb = load_workbook('../output/analytics-template.xlsx')
+	analytics_ws = analytics_wb['Analytics']
 	analytics_ws.title = 'Analytics'
 	for row in range(0, len(analytics)):
 		for col in range(0, len(analytics[row])):
-			cell = analytics_ws.cell(row = row + 1, column = col + 1)
+			cell = analytics_ws.cell(row = row + 2, column = col + 1)
 			cell.value = analytics[row][col]
+			if row == 0:
+				cell.font = Font(size = 12)
+				cell.alignment = Alignment(shrinkToFit = True, wrapText = True, horizontal = 'center', vertical = 'top')
+				cell.border = Border(left = Side(style = 'thin'), right = Side(style = 'thin'), top = Side(style = 'thin'), bottom = Side(style = 'thin'))
 	print(f'Savings analytics.xlsx...')
 	analytics_wb.save("../output/analytics.xlsx")
 

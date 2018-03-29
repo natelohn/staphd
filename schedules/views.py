@@ -23,17 +23,17 @@ class Home(LoginRequiredMixin, TemplateView):
 
 class BuildView(LoginRequiredMixin, TemplateView):
     template_name = 'schedules/build.html'
+
+class DownloadView(LoginRequiredMixin, TemplateView):
+    template_name = 'schedules/download.html'
+
+
+@login_required
+def download_individual(request):
+	return HttpResponseRedirect(reverse('schedules:download'))
  
 @login_required
 def building_schedules(request):
-	################ For testing...  ################
-	start_time = datetime.datetime.now()
-	Schedule.objects.all().delete()
-	Staphing.objects.all().delete()
-	settings = ScheduleSettings.objects.get()
-	parameters = settings.parameters.filter(use = True).order_by('rank')
-	#################################################
-
 	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:
 		all_shifts = Shift.objects.all()
@@ -41,65 +41,27 @@ def building_schedules(request):
 		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
 		cache.set('sorted_shifts', sorted_shifts, None)
 		cache.set('resort', False, None)
-
 	settings = ScheduleSettings.objects.get()
 	schedule = build_schedules(sorted_shifts, settings)
 	cache.set('schedule_id', schedule.id, None)
-
-	############### For testing...  ################
-	end_time = datetime.datetime.now()
-	staphings = Staphing.objects.filter(schedule__id = schedule.id)
-	uncovered_shifts = []
-	uncovered_staphings = 0
-	staphings_made = len(staphings)
-	total_shifts = len(sorted_shifts)
-
-	for info in sorted_shifts:
-		shift = info[0]
-		if not shift.is_covered(staphings):
-			uncovered_shifts.append(shift)
-			uncovered_staphings += shift.left_to_cover(staphings)
-	print(f'-------------------------\n{100 * round((1 - (len(uncovered_shifts) / total_shifts)), 4)}% of shifts covered.')
-	print(f'{100 * round(1 - (uncovered_staphings / (uncovered_staphings + staphings_made)), 4)}% of staphings made.\n-------------------------')
-	print(f'Uncovered Shifts:')
-	for shift in uncovered_shifts:
-		print(f'	{shift.left_to_cover(staphings)} still needed for {shift}.')
-	
-	# schedule.print()
-	print('=================================================')
-	if settings.ranked_wins_break_ties():
-		print(f'Resolving ties by Rank.')
-	elif settings.break_ties_randomly():
-		print(f'Resolving Ties Randomly.')
-	parameters = settings.parameters.filter(use = True).order_by('rank')
-	print(f'{len(parameters)} parameters used:')
-	for p in parameters:
-		print(f'	{p}')
-	print(f'====================================================\nTime Elapsed Building: {end_time - start_time}\n====================================================')
-	################################################
 	return HttpResponseRedirect(reverse('schedules:build'))
 
  
 @login_required
-def updating_files(request):
-	################ For testing...  ################
-	start_time = datetime.datetime.now()
-	#################################################
+def update_files(request):
 	schedule_id = cache.get('schedule_id')
 	if schedule_id:
 		staphings = Staphing.objects.filter(schedule__id = schedule_id)
 		masters = Master.objects.all()
 		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
-		all_flags = Flag.objects.all().order_by('title')
-		all_qualifications = Qualification.objects.all().order_by('title')
+		all_flags = Flag.objects.all().order_by(Lower('title'))
+		all_qualifications = Qualification.objects.all().order_by(Lower('title'))
 		# update_individual_excel_files(all_staphers, staphings)
 		# update_masters(masters, staphings)
 		update_analytics(all_staphers, staphings, all_flags, all_qualifications)
 	else:
+		# TODO: Add appropritate Error...
 		exit()
-	############### For testing...  ################
-	print(f'==========================\nTime Elapsed Updating: {datetime.datetime.now() - start_time}\n==========================')
-	################################################
 	return HttpResponseRedirect(reverse('schedules:build'))
 
 class Settings(LoginRequiredMixin, TemplateView):
