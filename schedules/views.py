@@ -1,37 +1,43 @@
 import datetime
+import json
+
+from celery.result import AsyncResult
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.db.models import Q
 from django.db.models.functions import Lower
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from django.template import RequestContext
 from django.urls import reverse, reverse_lazy
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
+
 
 from .build import build_schedules
 from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
 from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
-from .excel import update_individual_excel_files, update_masters, update_analytics
+from .tasks import update_files_task
+
 
 
 
 class Home(LoginRequiredMixin, TemplateView):
     template_name = 'home.html'
 
-class BuildView(LoginRequiredMixin, TemplateView):
-    template_name = 'schedules/build.html'
-
 class DownloadView(LoginRequiredMixin, TemplateView):
-    template_name = 'schedules/download.html'
+	template_name = 'schedules/download.html'
 
+class BuildView(LoginRequiredMixin, TemplateView):
+	template_name = 'schedules/schedule.html'
 
 @login_required
 def download_individual(request):
 	return HttpResponseRedirect(reverse('schedules:download'))
- 
+
 @login_required
 def building_schedules(request):
 	sorted_shifts = cache.get('sorted_shifts')
@@ -46,23 +52,41 @@ def building_schedules(request):
 	cache.set('schedule_id', schedule.id, None)
 	return HttpResponseRedirect(reverse('schedules:build'))
 
- 
 @login_required
-def update_files(request):
+@csrf_exempt
+def track_state(request, *args, **kwargs):
+	""" A view to report the progress of a task to the user """
+	print('Track!')
+	data = 'Fail'
+	if request.is_ajax():
+		print(f'Keys: {request.POST.keys()}')
+		if 'task_id' in request.POST.keys() and request.POST['task_id']:
+			task_id = request.POST['task_id']
+			task = AsyncResult(task_id)
+			data = task.result or task.state
+		else:
+			data = 'No task_id in the request'
+	else:
+		data = 'This is not an ajax request'
+	json_data = json.dumps(data)
+	return HttpResponse(json_data, content_type='application/json')
+
+@login_required
+@csrf_exempt
+def update_files(request, *args, **kwargs):
 	schedule_id = cache.get('schedule_id')
 	if schedule_id:
-		staphings = Staphing.objects.filter(schedule__id = schedule_id)
-		masters = Master.objects.all()
-		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
-		all_flags = Flag.objects.all().order_by(Lower('title'))
-		all_qualifications = Qualification.objects.all().order_by(Lower('title'))
-		# update_individual_excel_files(all_staphers, staphings)
-		# update_masters(masters, staphings)
-		update_analytics(all_staphers, staphings, all_flags, all_qualifications)
+		print('Called!')
+		task = update_files_task.delay(schedule_id)
+		task_id = task.task_id
+		request.session['task_id'] = task_id
+		context = {'task_id':task_id}
+		return render(request,'schedules/progress.html', context)
 	else:
-		# TODO: Add appropritate Error...
-		exit()
-	return HttpResponseRedirect(reverse('schedules:build'))
+		# TODO: Create an appropriate error message
+		print('No schedule!')
+		return HttpResponseRedirect(reverse('schedules:schedule'))
+
 
 class Settings(LoginRequiredMixin, TemplateView):
     template_name = 'settings.html'
@@ -72,6 +96,7 @@ class Settings(LoginRequiredMixin, TemplateView):
     	context['qualifications'] = Qualification.objects.all().order_by(Lower('title'))
     	context['flags'] = Flag.objects.all().order_by(Lower('title'))
     	return context
+
 
 class StapherList(LoginRequiredMixin,ListView):
 	template_name = 'schedules/list.html'
