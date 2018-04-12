@@ -1,0 +1,79 @@
+.splash-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%; 
+  overflow: hidden;
+  z-index:-1;
+  background-attachment: fixed;  
+}
+
+.splash-bg__video {
+  /* Make video to at least 100% wide and tall */
+  min-width: 100%; 
+  min-height: 100%; 
+
+  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  width: auto;
+  height: auto;
+
+  /* Center the video */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background-attachment: fixed;  
+}
+
+.splash-header {
+	width: 360px;
+	margin: auto;
+	width: auto;
+	height: auto;
+	text-align: center;
+}
+
+
+.splash-header h1{
+	font-size: 6em;
+	font-family: "Roboto", sans-serif;
+	color: white;
+	text-shadow: 1px 1px #000000
+}
+
+.splash-page {
+	width: 360px;
+	margin: auto;
+}
+.splash-message {
+	position: relative;
+	z-index: 1;
+	max-width: 360px;
+	margin: 0 auto 100px;
+	padding: 45px;
+	text-align: center;
+	font-family: "Roboto", sans-serif;
+}
+.splash-message input {
+	outline: 0;
+	background: #f2f2f2;
+	width: 100%;
+	border: 0;
+	margin: 0 0 15px;
+	padding: 15px;
+	box-sizing: border-box;
+	font-size: 14px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.splash-message input[type="submit"]:hover {
+    border: 1px solid #999;
+    color: #000000;
+}
+
+
+.splash-message h1, a{
+	color: white;
+	text-shadow: 1px 1px #000000
+}
