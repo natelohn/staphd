@@ -1,15 +1,14 @@
 {% extends "schedules/schedule.html" %}
 {% block progress %}
 <div>
-	<h1 id='progress-message'>Waiting</h1>
+	<h1 id='progress-message'>Waiting...</h1>
+	<p id='refresh-message'>If this message is still here after 1 minute, please refresh the page.</p>
 	<div id="progress-bar-outer">
 		<div id="progress-bar-inner"></div>
 	</div>
 </div>
 {% if task_id %}
 <script type="text/javascript">
-	console.log('Task Began');
-	console.log('{{ task_id }}');
 	jQuery(document).ready(function() {
 		var check_state_again = true;
 		// pole state of the current task
@@ -19,15 +18,11 @@
 				type: "POST",
 				data: "task_id=" + task_id,
 			}).done(function(task){
-				console.log(task);
-				if (task.process_percent) {
-					console.log(task.message)
-					console.log(task.process_percent)
+				if (task.running) {
 					jQuery('#progress-bar-inner').css({'width': task.process_percent + '%'});
-
-					jQuery('#progress-message').html(task.message + ': ' + task.process_percent + '%')
+					jQuery('#progress-message').html('Update ' + task.process_percent + '% Complete: ' + task.message)
+					jQuery('#refresh-message').html('Please wait as this can take up to 10 minutes.')
 				} else {
-					console.log('Task Complete');
 					check_state_again = false;
 				};
 				
@@ -36,7 +31,7 @@
 				if (check_state_again) {
 					PollState(task_id);
 				} else {
-					// window.location = "{% url 'schedules:schedule' %}"
+					window.location = "{% url 'schedules:schedule' %}"
 				}
 			});
 		}

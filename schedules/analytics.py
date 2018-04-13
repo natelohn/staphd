@@ -200,7 +200,6 @@ def get_qualification_information(stapher, staphers, staphings, shifts_by_day, f
 	return [qual_ids_to_hours[qual.id] for qual in qualifications]
 
 def get_analytics(staphers, staphings, flags, qualifications):
-	print('Generating Analytics...')
 	initial_row = [
 		'Name',
 		'Total Hours',
@@ -259,7 +258,6 @@ def get_analytics(staphers, staphings, flags, qualifications):
 		get_qualification_information
 	]
 	for stapher in staphers:
-		print(f'Updating analytics for {stapher.full_name()}...')
 		stapher_analytics = [stapher.full_name()]
 		shifts_by_day = stapher.shifts_by_day(staphings)
 		for function in funtions:

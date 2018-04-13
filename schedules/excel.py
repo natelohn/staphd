@@ -1,54 +1,91 @@
 import datetime
+from celery import current_task
+from django.core.cache import cache
 from openpyxl import load_workbook, Workbook
 from openpyxl.styles import Alignment, Color, PatternFill, Border, Side, Font
 from operator import attrgetter, itemgetter
 
 from .analytics import get_analytics
 
+# TODO: remove file names from these methods
 
+# current_task update helper (used for readability)
+def get_percent(current_actions, total_actions):
+	return int((current_actions / total_actions) * 100)
+
+# Duplicate the template making a new sheet for each stapher passed in
 def create_new_workbook(staphers):
+	# Setting the initial state to send to the frontend and update the progress bar
+	num_actions_made = cache.get('num_actions_made') or 0
+	total_actions = cache.get('num_total_actions') or len(staphers)
+	meta = {'message':'Creating New Schedule Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
+	current_task.update_state(meta = meta)
+
 	# Copy the template workbook.
-	print('Creating schedules.xlsx file...')
-	template_wb = load_workbook('../output/template.xlsx')
+	template_wb = load_workbook('../output/schedules-template.xlsx')
 	template_wb.save("../output/schedules.xlsx")
 	schedule_wb = load_workbook('../output/schedules.xlsx')
 	template_ws = schedule_wb['TEMPLATE']
-	for stapher in staphers:
-		print(f'Making excel worksheet for {stapher.full_name()}...')
 
+	for i, stapher in enumerate(staphers):
+		# Update the state of progress for the front end
+		message = f'Creating Excel Worksheet for {stapher.full_name()}'
+		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i, total_actions)}
+		current_task.update_state(meta = meta)
+		
 		# We copy the template worksheet for each Stapher.
 		stapher_ws = schedule_wb.copy_worksheet(template_ws)
 		stapher_ws.title = stapher.full_name()
 	schedule_wb.remove(template_ws)
+
+	# Updating the state to send to the frontend and update the progress bar
+	meta = {'message':'Saving New Schedule Workbook', 'process_percent':get_percent(len(staphers), total_actions)}
+	current_task.update_state(meta = meta)
+	cache.set('num_actions_made', num_actions_made + len(staphers), None)
+
+	# Save the workbook and return it's destination
 	schedule_wb.save("../output/schedules.xlsx")
 	return '../output/schedules.xlsx'
 
-
+# update_individual_excel_files helper
 def get_row_from_day(day):
 	return 5 + (day * 4)
 
+# update_individual_excel_files helper
 def get_start_col_from_time(time):
 	return 3 + ((time.hour - 6) * 4) + int((time.minute / 60) * 4)
 
+# update_individual_excel_files helper
 def get_end_col_from_time(time):
 	return get_start_col_from_time(time) - 1
 
 # This function takes in a list of staphers and staphings and makes a readable xl file for each stapher.
 def update_individual_excel_files(staphers, staphings):
+	# Copy the template workbook
 	wb_str = create_new_workbook(staphers)
 
+	# Setting the initial state to send to the frontend and update the progress bar
+	num_actions_made = cache.get('num_actions_made') or 0
+	total_actions = cache.get('num_total_actions') or len(staphers)
+	meta = {'message':'Loading Schedule Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
+	current_task.update_state(meta = meta)
+
 	schedule_wb = load_workbook("../output/schedules.xlsx")
-
 	seconds_in_hour = 60 * 60
-
-	for stapher in staphers:
-		print(f'Populating excel worksheet for {stapher.full_name()}...')
+	for i, stapher in enumerate(staphers):
+		# Update the state of progress for the front end
+		message = f'Populating Excel Worksheet for {stapher.full_name()}'
+		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i, total_actions)}
+		current_task.update_state(meta = meta)
+		
+		# Load the worksheet for the stapher
 		stapher_ws = schedule_wb[stapher.full_name()]
 		stapher_ws['A1'] = 'Name: ' + stapher.full_name()
 		stapher_ws['AE1'] = 'Postion: ' + stapher.title
+
+		# Edit the excel sheet for each scheduled shift
 		shifts = stapher.ordered_shifts(staphings)
 		for shift in shifts:
-			print(f'	{shift}')
 			row = get_row_from_day(shift.day)
 			start_col = get_start_col_from_time(shift.start)
 			end_col = get_end_col_from_time(shift.end)
@@ -80,10 +117,15 @@ def update_individual_excel_files(staphers, staphings):
 					time_cell.value = '1'
 
 			stapher_ws.merge_cells(start_row = row, start_column = start_col, end_row = row, end_column = end_col)
-			
-	print('Saving schedules.xlsx file...')
-	schedule_wb.save("../output/schedules.xlsx")
+	
 
+	# Updating the state to send to the frontend and update the progress bar
+	meta = {'message':'Saving New Schedule Workbook', 'process_percent':get_percent(num_actions_made + len(staphers), total_actions)}
+	current_task.update_state(meta = meta)
+	cache.set('num_actions_made', num_actions_made + len(staphers), None)
+
+	# Save the workbook
+	schedule_wb.save("../output/schedules.xlsx")
 
 # This function takes in a set of staphings and returns a list of the staphers working them 
 def get_shift_workers(staphings):
@@ -118,8 +160,6 @@ def get_shifts_ids_to_height(ordered, shifts):
 					ids_to_height[shift.id] = height
 	return ids_to_height
 
-
-
 def set_times_to_offsets(ordered):
 	times_to_offsets = {}
 	for day in ordered:
@@ -153,18 +193,35 @@ def get_and_update_largest_offset(shift, times_to_offset, height):
 
 # TODO: DRY with create_new_workbook method
 def copy_master_template(masters):
+	# Set the progress for the frontend 
+	num_actions_made = cache.get('num_actions_made') or 0
+	total_actions = cache.get('num_total_actions') or len(masters)
+	meta = {'message':'Copying Master Template', 'process_percent':get_percent(num_actions_made, total_actions)}
+	current_task.update_state(meta = meta)
+
 	# Copy the template workbook.
-	print('Creating masters.xlsx file...')
 	template_wb = load_workbook('../output/masters-template.xlsx')
 	template_wb.save("../output/masters.xlsx")
 	master_wb = load_workbook('../output/masters.xlsx')
-	for master in masters:
-		template_ws = master_wb['TEMPLATE']
-		print(f'Making excel worksheet for {master.title}...')
+	for i, master in enumerate(masters):
+		# Update the progress for each master
+		num_actions_made = cache.get('num_actions_made') or 0
+		total_actions = cache.get('num_total_actions') or len(masters)
+		message = f'Creating Master Worksheet for {master}'
+		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i, total_actions)}
+		current_task.update_state(meta = meta)
 
 		# We copy the template worksheet for each master.
+		template_ws = master_wb['TEMPLATE']	
 		master_ws = master_wb.copy_worksheet(template_ws)
 		master_ws.title = master.title
+
+	# Update actions made in the cache
+	meta = {'message':'Saving New Master Workbook', 'process_percent':get_percent(num_actions_made + len(masters), total_actions)}
+	current_task.update_state(meta = meta)
+	cache.set('num_actions_made', num_actions_made + len(masters), None)
+
+	# Save the workbook
 	master_wb.remove(template_ws)
 	master_wb.save("../output/masters.xlsx")
 
@@ -249,11 +306,25 @@ def get_length(shift):
 	return shift.length()
 
 def update_standard_masters(masters, staphings):
+	# Copy the master template
 	masters =  sorted(masters, key=attrgetter('title'))
 	copy_master_template(masters)
+	
+
+	# Set the ammount of actions taken / needed to be take to send to the front end
+	num_actions_made = cache.get('num_actions_made') or 0
+	total_actions = cache.get('num_total_actions') or len(masters)
+	meta = {'message':'Loading New Master Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
+	current_task.update_state(meta = meta)
+
+	# Load the new master workbook
 	master_wb = load_workbook('../output/masters.xlsx')
-	for master in masters:
-		print(f'Updating {master} master...')
+
+	# Update the masters
+	for i, master in enumerate(masters):
+		message = f'Updating Master Worksheet for {master}'
+		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i,total_actions)}
+		current_task.update_state(meta = meta)
 		master_staphings = master.get_master_staphings(staphings)
 		shift_workers = get_shift_workers(master_staphings)
 		master_shifts = list(set([s.shift for s in master_staphings]))
@@ -287,7 +358,13 @@ def update_standard_masters(masters, staphings):
 			cell.alignment = Alignment(shrinkToFit = True, wrapText = True, horizontal = 'center', vertical = 'center')
 			cell.border = Border(left = Side(style = 'thin'), right = Side(style = 'thin'), top = Side(style = 'thin'), bottom = Side(style = 'thin'))
 			master_ws.merge_cells(start_row = start_row, start_column = start_col, end_row = end_row, end_column = end_col)
-	print(f'Saving masters.xlsx...')
+	
+	# Reset the cache and send the final message to the front end
+	cache.set('num_actions_made', num_actions_made + len(masters))
+	meta = {'message':'Saving New Master Workbook', 'process_percent':get_percent(num_actions_made + len(masters), total_actions)}
+	current_task.update_state(meta = meta)
+
+	# Save the new master workbook
 	master_wb.save("../output/masters.xlsx")
 			
 def get_meal_master_col(shift):
@@ -328,24 +405,47 @@ def get_meal_master_starting_row(shift):
 
 
 def update_meal_masters(masters, staphings):
-	print(f'Loading meal master...')
+	# Set the ammount of actions taken / needed to be take to send to the front end
+	num_actions_made = cache.get('num_actions_made') or 0
+	total_actions = cache.get('num_total_actions') or len(masters)
+	meta = {'message':'Creating New Master Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
+	current_task.update_state(meta = meta)
+	
+	# Load the meal master workbook
 	meal_master_wb = load_workbook('../output/meal-master-template.xlsx')
-	for master in masters:
-		print(f'Updating {master} master...')
+
+	# Update the workbook
+	for i, master in enumerate(masters):
+		# Update the progress and send to the front end
+		message = f'Updating {master} Master'
+		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i, total_actions)}
+		current_task.update_state(meta = meta)
+
+		# Get the correct worksheet for each master 
 		master_ws = meal_master_wb[master.title]
 		master_staphings = master.get_master_staphings(staphings)
 		shift_workers = get_shift_workers(master_staphings)
 		master_shifts = list(set([s.shift for s in master_staphings]))
+
+		# Place each shift in its proper group of cells
 		for shift in master_shifts:
 			col = get_meal_master_col(shift)
 			curr_row = get_meal_master_starting_row(shift)
 			workers = set(shift_workers[shift.id])
+
+			# Add the worker's names to the cell
 			for worker in workers:
 				cell = master_ws.cell(row = curr_row, column = col)
 				cell.value = worker.full_name()
 				cell.font = Font(size = 12)
 				curr_row += 1
-	print('Saving meal-master.xls')
+
+	# Reset the cache and send the final message to the front end
+	cache.set('num_actions_made', num_actions_made + len(masters))
+	meta = {'message':'Saving New Meal Master Workbook', 'process_percent':get_percent(num_actions_made + len(masters), total_actions)}
+	current_task.update_state(meta = meta)
+
+	# Save the meal master workbook
 	meal_master_wb.save("../output/meal-masters.xlsx")
 
 
@@ -360,14 +460,29 @@ def update_masters(masters, staphings):
 	update_standard_masters(standard_masters, staphings)
 	update_meal_masters(meal_masters, staphings)
 
-
+# Get the analytics for the given schedule and place them into an excel spreadsheet
 def update_analytics(staphers, staphings, flags, qualifications):
+	# Set the values and update the progress for the front end
+	num_actions_made = cache.get('num_actions_made') or 0
+	total_actions = cache.get('num_total_actions') or 2
+	meta = {'message':'Retrieving Analytics', 'process_percent':get_percent(num_actions_made + 1, total_actions)}
+	current_task.update_state(meta = meta)
+
+	# Retrieve the analytics
 	analytics = get_analytics(staphers, staphings, flags, qualifications)
-	print('Updating analytics.xlsx file...')
+
+	#Load/Update the workbook
 	analytics_wb = load_workbook('../output/analytics-template.xlsx')
 	analytics_ws = analytics_wb['Analytics']
 	analytics_ws.title = 'Analytics'
+
+	# Update the progress of the task and send it to the front end
+	meta = {'message':'Updating Analytics Workbook', 'process_percent':get_percent(num_actions_made + 2, total_actions)}
+	current_task.update_state(meta = meta)
+
+	# For each analytics, update the worksheet
 	for row in range(0, len(analytics)):
+		
 		for col in range(0, len(analytics[row])):
 			cell = analytics_ws.cell(row = row + 2, column = col + 1)
 			cell.value = analytics[row][col]
@@ -375,7 +490,13 @@ def update_analytics(staphers, staphings, flags, qualifications):
 				cell.font = Font(size = 12)
 				cell.alignment = Alignment(shrinkToFit = True, wrapText = True, horizontal = 'center', vertical = 'top')
 				cell.border = Border(left = Side(style = 'thin'), right = Side(style = 'thin'), top = Side(style = 'thin'), bottom = Side(style = 'thin'))
-	print(f'Savings analytics.xlsx...')
+
+	# Update the front end progress and reset the cached number of actions taken
+	meta = {'message':'Saving Analytics Workbook', 'process_percent':get_percent(num_actions_made + 3, total_actions)}
+	current_task.update_state(meta = meta)
+	cache.set('num_actions_made', num_actions_made + 3, None)
+
+	# Save the workbook
 	analytics_wb.save("../output/analytics.xlsx")
 
 

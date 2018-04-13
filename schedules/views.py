@@ -20,7 +20,7 @@ from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, Qualifica
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
 from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
-from .tasks import update_files_task
+from .tasks import build_schedules_task, update_files_task
 
 
 
@@ -47,23 +47,25 @@ def building_schedules(request):
 		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
 		cache.set('sorted_shifts', sorted_shifts, None)
 		cache.set('resort', False, None)
-	settings = ScheduleSettings.objects.get()
-	schedule = build_schedules(sorted_shifts, settings)
-	cache.set('schedule_id', schedule.id, None)
+	task = task.delay(sorted_shifts)
+	task_id = task.task_id
+	request.session['task_id'] = task_id
+	context = {'task_id':task_id}
 	return HttpResponseRedirect(reverse('schedules:build'))
 
 @login_required
 @csrf_exempt
 def track_state(request, *args, **kwargs):
 	""" A view to report the progress of a task to the user """
-	print('Track!')
 	data = 'Fail'
 	if request.is_ajax():
-		print(f'Keys: {request.POST.keys()}')
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
 			task_id = request.POST['task_id']
 			task = AsyncResult(task_id)
 			data = task.result or task.state
+			task_running = not task.ready()
+			if task_running:
+				data['running'] = task_running
 		else:
 			data = 'No task_id in the request'
 	else:
