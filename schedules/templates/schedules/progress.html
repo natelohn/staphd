@@ -20,7 +20,7 @@
 			}).done(function(task){
 				if (task.running) {
 					jQuery('#progress-bar-inner').css({'width': task.process_percent + '%'});
-					jQuery('#progress-message').html('Update ' + task.process_percent + '% Complete: ' + task.message)
+					jQuery('#progress-message').html('Current Task ' + task.process_percent + '% Complete: ' + task.message)
 					jQuery('#refresh-message').html('Please wait as this can take up to 10 minutes.')
 				} else {
 					check_state_again = false;

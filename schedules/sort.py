@@ -72,7 +72,6 @@ def get_seconds_from_day_and_time(day, time):
 
 # A function that returns the shifts in the order we would like to schedule them.
 def get_sorted_shifts(staphers, shifts):
-	print('Sorting Shifts in get_sorted_shifts...')
 	sorted_shifts = []
 	
 	# First we get dictionaries mapping shifts with certain qualification sets to staphers who can cover those shifts.

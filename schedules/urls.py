@@ -7,10 +7,10 @@ from django.views.generic import TemplateView
 
 app_name = 'schedules'
 urlpatterns = [
-    url(r'^schedules/$', views.BuildView.as_view(), name='schedule'),
-    url(r'^schedules/building$', views.building_schedules, name='building'),
+    url(r'^schedules/$', views.build_view, name='schedule'),
+    url(r'^schedules/building$', views.build_schedules, name='building'),
     url(r'^schedules/update$', views.update_files, name='update'),
-    url(r'^schedules/track$', views.track_state, name='track-state'),
+    url(r'^schedules/track$', views.track_state, name='track'),
 
     url(r'^download/$', views.DownloadView.as_view(), name='download'),
     url(r'^download/individual$', views.download_individual, name='download-individual'),

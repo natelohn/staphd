@@ -5,8 +5,11 @@ from django.db.models.functions import Lower
 from staphd.celery import app
 import time
 
+from .build import build_schedules
 from .excel import update_individual_excel_files, update_masters, update_analytics
 from .models import Flag, Stapher, Staphing, Qualification, Master
+from .models import Settings as ScheduleSettings
+from .sort import get_sorted_shifts
 
 
 @app.task(bind=True, track_started=True)
@@ -32,16 +35,39 @@ def update_files_task(self, schedule_id):
 	# Delete the amount of actions from the cache
 	cache.set('num_actions_made', None, 0)
 	cache.set('num_total_actions', None, 0)
+	cache.set('current_task_id', None, 0)
 
 
 @app.task(bind=True, track_started=True)
 @shared_task(bind=True)
-def build_schedules_task(self, sorted_shifts):
+def build_schedules_task(self):
+	sorted_shifts = cache.get('sorted_shifts')
+	if cache.get('resort') or not sorted_shifts:
+		# Set the message for the front end
+		current_task.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
+		# Get the necessary info from the DB
+		all_shifts = Shift.objects.all()
+		all_staphers = Stapher.objects.all()
+		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
+		cache.set('sorted_shifts', sorted_shifts, None)
+		cache.set('resort', False, None)
+
+	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
+
+
+	# Get the necessary info from the DB
 	settings = ScheduleSettings.objects.get()
-	schedule = build_schedules(sorted_shifts)
+
+	# Do the task
+	schedule = build_schedules(sorted_shifts, settings)
 	cache.set('schedule_id', schedule.id, None)
 
+	# Delete the values needed to track progress
+	cache.set('num_total_actions', None, 0)
+	cache.set('current_task_id', None, 0)
 
+	
+	
 
 
 

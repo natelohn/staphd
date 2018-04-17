@@ -1,6 +1,7 @@
 import datetime
 import json
 
+from celery import current_task
 from celery.result import AsyncResult
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -15,14 +16,9 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 
 
-from .build import build_schedules
 from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
-from .models import Settings as ScheduleSettings
-from .sort import get_sorted_shifts
 from .tasks import build_schedules_task, update_files_task
-
-
 
 
 class Home(LoginRequiredMixin, TemplateView):
@@ -31,39 +27,45 @@ class Home(LoginRequiredMixin, TemplateView):
 class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
 
-class BuildView(LoginRequiredMixin, TemplateView):
-	template_name = 'schedules/schedule.html'
+@login_required
+def build_view(request):
+	task_id = cache.get('current_task_id')
+	if task_id:
+		task = AsyncResult(task_id)
+		data = task.result or task.state
+		if 'PENDING' not in data:
+			return render(request,'schedules/progress.html', {'task_id':task_id})
+		task_id = cache.set('current_task_id', None, 0)
+	return render(request, 'schedules/schedule.html', {})
 
 @login_required
 def download_individual(request):
 	return HttpResponseRedirect(reverse('schedules:download'))
 
 @login_required
-def building_schedules(request):
-	sorted_shifts = cache.get('sorted_shifts')
-	if cache.get('resort') or not sorted_shifts:
-		all_shifts = Shift.objects.all()
-		all_staphers = Stapher.objects.all()
-		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
-		cache.set('sorted_shifts', sorted_shifts, None)
-		cache.set('resort', False, None)
-	task = task.delay(sorted_shifts)
-	task_id = task.task_id
+@csrf_exempt
+def build_schedules(request):
+	task_id = cache.get('current_task_id')
+	if not task_id:
+		task = build_schedules_task.delay()
+		task_id = task.task_id
+		cache.set('current_task_id', task_id, None)
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
-	return HttpResponseRedirect(reverse('schedules:build'))
+	return render(request,'schedules/progress.html', context)
 
 @login_required
 @csrf_exempt
 def track_state(request, *args, **kwargs):
 	""" A view to report the progress of a task to the user """
 	data = 'Fail'
+	task_id = cache.get('current_task_id')
 	if request.is_ajax():
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
 			task_id = request.POST['task_id']
 			task = AsyncResult(task_id)
 			data = task.result or task.state
-			task_running = not task.ready()
+			task_running = not task.ready() and not isinstance(data, str)
 			if task_running:
 				data['running'] = task_running
 		else:
@@ -78,9 +80,11 @@ def track_state(request, *args, **kwargs):
 def update_files(request, *args, **kwargs):
 	schedule_id = cache.get('schedule_id')
 	if schedule_id:
-		print('Called!')
-		task = update_files_task.delay(schedule_id)
-		task_id = task.task_id
+		task_id = cache.get('current_task_id')
+		if not task_id:
+			task = update_files_task.delay(schedule_id)
+			task_id = task.task_id
+			cache.set('current_task_id', task_id, None)
 		request.session['task_id'] = task_id
 		context = {'task_id':task_id}
 		return render(request,'schedules/progress.html', context)
