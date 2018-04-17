@@ -2,10 +2,12 @@
 {% block page %}
 <div id="page">
 	<h1>Download Excel</h1>
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-	<form action="{% url 'schedules:download-individual' %}" method="post">
-	{% csrf_token %}
-	<input type="submit" value="Download Individual Schedules">
-	</form>
+	<ul>
+		<li><a href="{% url 'schedules:download-individual' %}">Download Indiviual Schedules</a></li>
+		<li><a href="{% url 'schedules:download-masters' %}">Download Masters</a></li>
+		<li><a href="{% url 'schedules:download-meals' %}">Download Meal Masters</a></li>
+		<li><a href="{% url 'schedules:download-analytics' %}">Download Indiviual Schedule Analytics</a></li>
+	</ul>
+	
 </div>
 {% endblock %}

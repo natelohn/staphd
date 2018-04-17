@@ -14,9 +14,9 @@ urlpatterns = [
 
     url(r'^download/$', views.DownloadView.as_view(), name='download'),
     url(r'^download/individual$', views.download_individual, name='download-individual'),
-    # url(r'^download/masters$', views.download_masters, name='download-masters'),
-    # url(r'^download/meals$', views.download_meals, name='download-meals'),
-    # url(r'^download/analytics$', views.download_analytics, name='download-analytics'),
+    url(r'^download/masters$', views.download_masters, name='download-masters'),
+    url(r'^download/meals$', views.download_meals, name='download-meals'),
+    url(r'^download/analytics$', views.download_analytics, name='download-analytics'),
 
     url(r'^staphers/$', views.StapherList.as_view(), name='stapher-list'),
     url(r'^staphers/create/$', views.StapherCreate.as_view(), name='stapher-create'),

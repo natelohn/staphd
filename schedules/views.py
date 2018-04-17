@@ -1,12 +1,13 @@
 import datetime
 import json
+import os
 
 from celery import current_task
 from celery.result import AsyncResult
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.db.models import Q
 from django.db.models.functions import Lower
 from django.shortcuts import get_object_or_404, render, redirect
@@ -38,9 +39,38 @@ def build_view(request):
 		task_id = cache.set('current_task_id', None, 0)
 	return render(request, 'schedules/schedule.html', {})
 
+
+def download_file(request, filename):
+	# TODO: add MEDIA ROOT for production
+	# file_path = os.path.join(settings.MEDIA_ROOT, path)
+	
+	file_path = '../output/' + filename
+	if os.path.exists(file_path):
+		with open(file_path, 'rb') as file:
+			# TODO: add MEDIA ROOT for production
+			# response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+
+			response = HttpResponse(file.read(), content_type="application/xlsx")
+			response['Content-Disposition'] = 'inline; filename=' + filename
+			return response
+	raise Http404
+
 @login_required
 def download_individual(request):
-	return HttpResponseRedirect(reverse('schedules:download'))
+	return download_file(request, 'schedules.xlsx')
+
+@login_required
+def download_masters(request):
+	return download_file(request, 'masters.xlsx')
+
+@login_required
+def download_meals(request):
+	return download_file(request, 'meal-masters.xlsx')
+
+@login_required
+def download_analytics(request):
+	return download_file(request, 'analytics.xlsx')
+
 
 @login_required
 @csrf_exempt
