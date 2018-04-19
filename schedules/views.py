@@ -147,32 +147,73 @@ class StapherList(LoginRequiredMixin,ListView):
 	template_name = 'schedules/list.html'
 
 	def get_queryset(self):
-		queryset = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
+		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
+		qual_titles = [q.title for q in Qualification.objects.all()]
 		query = self.request.GET.get('q')
+		filtered_query_set = all_staphers
 		if query:
-			if query.lower() in 'returner':
-				queryset = queryset.filter(summers_worked__gt=0)
-			elif query.lower() in 'new':
-				queryset = queryset.filter(summers_worked__iexact=0)
-			else:
-				queryset = queryset.filter(
-					Q(first_name__icontains = query) |
-					Q(last_name__icontains = query) |
-					Q(title__iexact = query) |
-					Q(gender__iexact = query) |
-					Q(age__iexact = query) |
-					Q(class_year__iexact = query)
-				)
-		return queryset
+			query_explanation = "Search results showing staphers that"
+			querylist = query.split(',')
+			for query in querylist:
+				query = query.lower().strip()
+				if query == 'returners':
+					queryset = all_staphers.filter(summers_worked__gt = 0)
+					query_explanation += ' are returners,'
+				elif query == 'new':
+					queryset = all_staphers.filter(summers_worked__exact = 0)
+					query_explanation += ' are new,'
+				elif query == 'male':
+					queryset = all_staphers.filter(gender__exact = 1)
+					query_explanation += ' are male,'
+				elif query == 'female':
+					queryset = all_staphers.filter(gender__exact = 0)
+					query_explanation += ' are female,'
+				elif query == 'non-binary':
+					queryset = all_staphers.filter(gender__exact = 2)
+					query_explanation += ' are non-binary,'
+				elif query in qual_titles:
+					queryset = [stapher for stapher in all_staphers if stapher.has_qualification(query)]
+					query_explanation += f' have the {query} qualification,'
+				else:
+					names_contain = all_staphers.filter( Q(first_name__icontains = query) | Q(last_name__icontains = query))
+					if names_contain:
+						query_explanation += f' have name\'s containing {query},'
+
+					title_exact = all_staphers.filter(title__iexact = query)
+					if title_exact:
+						query_explanation += f' have the {query} title,'
+
+					class_year_exact = all_staphers.filter(class_year__iexact = query)
+					if class_year_exact:
+						query_explanation += f' graduate in {query},'
+
+					age_exact = all_staphers.filter(age__iexact = query)
+					if age_exact:
+						query_explanation += f' are {query} years old,'
+
+					summers_exact = all_staphers.filter(summers_worked__iexact = query)
+					if summers_exact:
+						query_explanation += f' have worked {query} summer(s),'
+
+					queryset = list(names_contain) + list(title_exact) + list(class_year_exact) + list(age_exact) + list(summers_exact)
+				if len(querylist) > 1 and query == querylist[-2].lower().strip():
+					query_explanation = query_explanation[:-1] + ' and'
+				filtered_query_set = list(set(filtered_query_set) & set(queryset))
+			cache.set('query_explanation', query_explanation[:-1], None)
+			print(f'query_explanation = {query_explanation[:-1]}')
+		else:
+			cache.set('query_explanation', None, 0)
+		return filtered_query_set
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherList, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Staphers'
 		context['link'] = 'schedules:stapher-create'
 		context['link_title'] = 'New Stapher'
+		context['query_explanation'] = cache.get('query_explanation')
 		return context
 
-class StapherDetail(LoginRequiredMixin,DetailView):
+class StapherDetail(LoginRequiredMixin, DetailView):
 	queryset = Stapher.objects.all()
 	
 	def get_context_data(self, *args, **kwargs):

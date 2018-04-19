@@ -80,6 +80,13 @@ class Stapher(models.Model):
 			return 5
 		return -1
 
+	# Returns true if the stapher has a qualification w/ the same title as the string that was passed in
+	def has_qualification(self, qual_title_string):
+		for qualification in self.qualifications.all():
+			if qualification.title.lower() == qual_title_string.lower():
+				return True
+		return False
+
 	def is_qualified(self, shift):
 		for qualification in shift.qualifications.all():
 			if qualification not in self.qualifications.all():

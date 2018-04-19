@@ -9,10 +9,19 @@
 		</form>
 		<a class="link_btn" type=button href="{% url link %}">{{link_title}}</a>	
 	</div>
+	
 	<div class="list">
+		{% if object_list %}
+		{% if query_explanation %}
+		<p>{{query_explanation}}</p>
+		{% endif %}
 		{% for obj in object_list %}
 		<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
 		{% endfor %}
+		{% else %}
+		<p id="list-empty-msg"> No {{title}} found. Select "{{link_title}}" or edit your search.</p>
+		{% endif %}
 	</div>
+
 </div>
 {% endblock %}
