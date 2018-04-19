@@ -22,8 +22,18 @@ from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Mas
 from .tasks import build_schedules_task, update_files_task
 
 
-class Home(LoginRequiredMixin, TemplateView):
-    template_name = 'home.html'
+class HomeView(LoginRequiredMixin, TemplateView):
+	template_name = 'home.html'
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(HomeView, self).get_context_data(*args, **kwargs)
+		percent = 0
+		schedule_id = cache.get('schedule_id')
+		if schedule_id:
+			schedule = Schedule.objects.get(id = schedule_id)
+			percent = schedule.get_percent_complete()
+		context['percent_complete'] = percent
+		return context
 
 class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
@@ -70,7 +80,6 @@ def download_meals(request):
 @login_required
 def download_analytics(request):
 	return download_file(request, 'analytics.xlsx')
-
 
 @login_required
 @csrf_exempt

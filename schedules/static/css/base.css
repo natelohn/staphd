@@ -1,15 +1,13 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 *, html {
+	/* Positioning */
     margin: 0;
     padding: 0;
     border: 0;
+
+    /* Style */
     font-family: "Roboto", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale; 
-}
-
-#page {
-	top: 60px;
-	position: relative;
-}
+	-moz-osx-font-smoothing: grayscale;
+}	

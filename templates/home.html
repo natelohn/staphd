@@ -1,7 +1,10 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<h1>Welcome to staphd.com {{user.username}}! I hope you like it! </h1>
-	<a href="{% url 'settings' %}">Settings</a>
+	<div id="home-msg">
+		<h1>Welcome to staphd.com {{user.username}}!</h1>
+		<h3>Your current schedule is {{ percent_complete }}% complete</h3>
+		<a href="{% url 'schedules:shift-list'%}" class="button">View Unscheduled Shifts</a>
+	</div>
 </div>
 {% endblock %}

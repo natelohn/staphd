@@ -276,8 +276,6 @@ class Shift(models.Model):
 	def is_programming(self):
 		return self.has_flag('programming')
 	
-
-
 # A class representing all shift/staph pairs for a user - this will allow for multiple schedules
 class Schedule(models.Model):
 	active			= models.BooleanField(default = True)
@@ -326,6 +324,14 @@ class Schedule(models.Model):
 				for staphing in staphings:
 					if shift.overlaps(staphing.shift):
 						print('	' + str(staphing.shift))
+
+	def get_percent_complete(self):
+		all_shifts = Shift.objects.all()
+		staphings = Staphing.objects.filter(schedule__id = self.id)
+		total_needed = 0
+		for shift in all_shifts:
+			total_needed += shift.workers_needed
+		return int((len(staphings) / total_needed)  * 100)
 
 
 # A class representing a single pair of Shift & Stapher in a specific schedule

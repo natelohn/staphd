@@ -1,16 +1,18 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<h1>{{title}}</h1>
-	<form method='GET' action='.'>
-			<input type='text' placeholder="Search..." name='q' value='{{ request.GET.q }}'>
-			<button type='submit'>Search</button>
-	</form>
-	<ul>
+	<div class="list_header">
+		<h1>{{title}}</h1>
+		<form method='GET' action='.'>
+			<input type='text' placeholder="Search... " name='q' value='{{ request.GET.q }}'>
+			<button class="button" type='submit'>Search</button>
+		</form>
+		<a class="link_btn" type=button href="{% url link %}">{{link_title}}</a>	
+	</div>
+	<div class="list">
 		{% for obj in object_list %}
-		<li><a href='{{ obj.get_absolute_url }}'>{{ obj }}</a></li>
+		<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
 		{% endfor %}
-	</ul>
-	<a type=button href="{% url link %}">{{link_title}}</a>
+	</div>
 </div>
 {% endblock %}
