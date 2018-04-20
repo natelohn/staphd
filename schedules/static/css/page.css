@@ -81,15 +81,32 @@
     vertical-align: initial;
 }
 
-.list {
+.lists {
 	/* Positioning */
 	position: relative;
-	width: 95%;
-	left: 2.5%;
+	width: 85%;
+	left: 7.5%;
 	top: 25px;
 
 	/* Style */
 	list-style-type: none;
+}
+
+.left_list {
+	/* Positioning */
+	position: absolute;
+	width: 25%;
+
+	/* Style */
+}
+
+.right_list {
+	/* Positioning */
+	position: absolute;
+	width: 60%;
+	left: 30%;
+
+	/* Style */
 }
 
 .button, .link_btn, .list_btn {
@@ -120,7 +137,7 @@
 
 .list_btn {
 	display: block;
-	width: 40%;
+	width: 100%;
 	margin-bottom: 2.5px;
 	/* Style */
 	/*background-color: purple;*/

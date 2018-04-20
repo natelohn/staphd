@@ -14,7 +14,7 @@ def get_readable_time(time):
 def get_str_from_td(td):
 	hours = td.seconds//3600
 	minutes = (td.seconds//60)%60
-	return datetime.time(hour = hours, minute = minutes).strftime("%I:%M %p").lstrip('0')
+	return datetime.time(hour = hours, minute = minutes).strftime("%I:%M%p").lstrip('0')
 
 def get_hours_info(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
 	off_day = stapher.get_off_day()

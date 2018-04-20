@@ -1,0 +1,43 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+<div id="page">
+	<div class="list_header">
+		<h1>{{title}}</h1>
+		<form method='GET' action='.'>
+			<input type='text' placeholder="Search... " name='q' value='{{ request.GET.q }}'>
+			<button class="button" type='submit'>Search</button>
+		</form>
+		<a class="link_btn" type=button href="{% url link %}">{{link_title}}</a>	
+	</div>
+	
+	<div class="lists">
+		<div class="left_list">
+			{% if shift_sort_options %}
+			<h2>Sort Shifts by:</h2>
+				{% for option in shift_sort_options %}
+					<a class="list_btn" href="{% url 'schedules:shift-list-sort' sort=option.link key='' %}" >{{ option.name }}</a>
+				{% endfor %}
+			{% endif %}
+
+			{% if shift_sort_keys %}
+				<h2>{{key_msg}}</h2>
+				{% for key in shift_sort_keys %}	
+					<a class="list_btn" href="{% url 'schedules:shift-list-sort' sort=key.sort  key=key.value  %}" >{{ key.title }}</a>
+				{% endfor %}
+			{% endif %}
+		</div>
+		<div class="right_list">
+			{% if object_list %}
+				<h2>{{shift_displayed_msg}}</h2>
+				{% for obj in object_list %}
+					<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+				{% endfor %}
+			{% else %}
+				<h3> No {{title}} found.</h3><br>
+				<p>Select "{{link_title}}"or edit your search.</p>
+			{% endif %}
+		</div>
+	</div>
+
+</div>
+{% endblock %}

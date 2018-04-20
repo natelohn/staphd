@@ -29,18 +29,17 @@ TIE_OPTIONS = {
 
 class DayOfTheWeekField(models.IntegerField):
     def __init__(self, *args, **kwargs):
-        kwargs['choices']       = tuple(sorted(DAY_OF_THE_WEEK.items()))
+        kwargs['choices'] = tuple(sorted(DAY_OF_THE_WEEK.items()))
         super(DayOfTheWeekField, self).__init__(*args, **kwargs)
-
 
 
 class GenderField(models.IntegerField):
     def __init__(self, *args, **kwargs):
-        kwargs['choices']       = tuple(sorted(GENDER.items()))
+        kwargs['choices'] = tuple(sorted(GENDER.items()))
         super(GenderField, self).__init__(*args, **kwargs)
 
 
 class TieBreakerField(models.IntegerField):
     def __init__(self, *args, **kwargs):
-        kwargs['choices']       = tuple(sorted(TIE_OPTIONS.items()))
+        kwargs['choices'] = tuple(sorted(TIE_OPTIONS.items()))
         super(TieBreakerField, self).__init__(*args, **kwargs)

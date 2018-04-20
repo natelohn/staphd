@@ -82,6 +82,7 @@ class Stapher(models.Model):
 
 	# Returns true if the stapher has a qualification w/ the same title as the string that was passed in
 	def has_qualification(self, qual_title_string):
+		print(f'qual_title_string = {qual_title_string}')
 		for qualification in self.qualifications.all():
 			if qualification.title.lower() == qual_title_string.lower():
 				return True
@@ -277,6 +278,11 @@ class Shift(models.Model):
 		flag = Flag.objects.get(title = title)
 		return flag in self.flags.all()
 
+	def has_qualification(self, title):
+		qualification = Qualification.objects.get(title = title)
+		return qualification in self.qualifications.all()
+
+	has_qualification
 	def is_unpaid(self):
 		return self.has_flag('unpaid')
 
