@@ -4,7 +4,7 @@ import os
 
 from celery import current_task
 from celery.result import AsyncResult
-# from dateutil.parser import parse
+from dateutil.parser import parse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
@@ -145,13 +145,14 @@ class StapherList(LoginRequiredMixin,ListView):
 	template_name = 'schedules/stapher_list.html'
 
 	def get_queryset(self):
-		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
-		qual_titles = [q.title for q in Qualification.objects.all()]
+		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))	
 		query = self.request.GET.get('q')
 		filtered_query_set = all_staphers
 		if query:
+			qual_titles = [q.title.lower() for q in Qualification.objects.all()]
 			query_explanation = "Search results showing staphers that"
-			querylist = query.split(',')
+			querylist = list(filter(bool, [q.strip() for q in query.split(',')])) #Removes all empty space queries
+			query_explanation = "Search results showing staphers that" if querylist else ''
 			for query in querylist:
 				query = query.lower().strip()
 				if query == 'returners':
@@ -213,6 +214,11 @@ class StapherDetail(LoginRequiredMixin, DetailView):
 	
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherDetail, self).get_context_data(*args, **kwargs)
+		stapher = kwargs['object']
+		suffixes = ['st', 'nd', 'rd', 'th']
+		summers = stapher.summers_worked if stapher.summers_worked <= 3 else 3
+		suffix = suffixes[summers]
+		context['readable_summer'] = str(stapher.summers_worked + 1) + suffix
 		return context
 
 class StapherCreate(LoginRequiredMixin, CreateView):
@@ -250,10 +256,16 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 class ShiftList(LoginRequiredMixin, ListView):
 	template_name = 'schedules/shift_list.html'
 	
-	# def get_time_from_string(self, time_string):
-	# 	time = parse(time_string)
-	# 	print(f'{time_string} -> {time}')
-
+	def get_time_from_string(self, time_string):
+		try:
+			if ':' in time_string or 'am' in time_string or 'pm' in time_string:
+				string_dt = parse(time_string)
+				time = datetime.time(string_dt.hour, string_dt.minute, 0, 0)
+			else:
+				raise Exception
+		except:
+			time =  None
+		return time
 
 	def get_queryset(self, *args, **kwargs):	
 		all_shifts = Shift.objects.all()
@@ -262,36 +274,72 @@ class ShiftList(LoginRequiredMixin, ListView):
 			filtered_shifts = all_shifts
 			all_staphings = Staphing.objects.all()
 			qual_titles = [q.title for q in Qualification.objects.all()]
-			query_explanation = "Showing shifts that"
-			querylist = query.split(',')
+			flag_titles = [f.title for f in Flag.objects.all()]
+			query_explanation = ["Showing shifts that:"]
+			querylist = list(filter(bool, [q.strip() for q in query.split(',')])) #Removes all empty space queries
 			for query in querylist:
-				query = query.lower().strip()
+				negate_query = True if '!' == query[0] and len(query) > 1 else False
+				query = query[1:] if negate_query else query
+				print(f'{query} {negate_query}')
+				upper_query = query
+				query = query.lower()
+				
 				if query == 'covered':
 					queryset = [shift for shift in all_shifts if shift.is_covered(all_staphings)]
-					query_explanation += ' are covered,'
+					explanation_str =  '- are not covered' if negate_query else '- are covered'
+					query_explanation.append(explanation_str)
 				elif query == 'uncovered':
 					queryset = [shift for shift in all_shifts if not shift.is_covered(all_staphings)]
-					query_explanation += ' are not covered,'
+					explanation_str = '- are not not covered' if negate_query else '- are not covered'
+					query_explanation.append(explanation_str)
+				elif '*' in query:
+					# To solve for shifts w/ both qualifications and flags always showing up
+					if '*q' in query:
+						upper_query = upper_query.replace('*q', '').strip()
+						queryset = [s for s in filtered_shifts if s.has_qualification(upper_query)] if upper_query in qual_titles else []
+						explanation_str = f'- do not have the \'{upper_query}\' qualification' if negate_query else f'- have the \'{upper_query}\' qualification'
+					elif '*f' in query:
+						upper_query = upper_query.replace('*f', '').strip()
+						queryset = [s for s in filtered_shifts if s.has_flag(upper_query)] if upper_query in flag_titles else []
+						explanation_str = f'- do not have the \'{upper_query}\' flag' if negate_query else f'- have the \'{upper_query}\' flag'
+					if queryset: query_explanation.append(explanation_str)
 				else:
+					# Search by Titles
 					title_contains = all_shifts.filter(title__icontains = query)
-					if title_contains: query_explanation += f' have titles containing \'{query}\','
+					explanation_str = f'	- do not have titles containing \'{query}\'' if negate_query else f'- have titles containing \'{query}\''
+					if title_contains: query_explanation.append(explanation_str)
 
+					# Search by Days
 					days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 					day = days.index(query) if query in days else -1
 					day_exact = all_shifts.filter(day__exact = day) #Index returns -1 when it is not in the list
-					if day_exact: query_explanation += f' are on {query.capitalize()},'
+					explanation_str = f'- are not on {query.capitalize()}' if negate_query else f'- are on {query.capitalize()}'
+					if day_exact: query_explanation.append(explanation_str)
 
-					# time = self.get_time_from_string(query)
+					# Search by Time
+					time = self.get_time_from_string(query) 
+					during_time = [s for s in filtered_shifts if s.is_during_time(time)] if time else []
+					explanation_str = f'- are not during {query}' if negate_query else f'- are during {query}'
+					if during_time: query_explanation.append(explanation_str)
 					
+					# Search by Qualification
+					qual_match = [s for s in filtered_shifts if s.has_qualification(upper_query)] if upper_query in qual_titles else []
+					explanation_str = f'- do not have the \'{upper_query}\' qualification' if negate_query else f'- have the \'{upper_query}\' qualification'
+					if qual_match: query_explanation.append(explanation_str)
 
-					queryset = list(title_contains) + list(day_exact)
+					# Search by Flag
+					flag_match = [s for s in filtered_shifts if s.has_flag(upper_query)] if upper_query in flag_titles else []
+					explanation_str = f'- do not have the \'{upper_query}\' flag' if negate_query else f'- have the \'{upper_query}\' flag'
+					if flag_match: query_explanation.append(explanation_str)
+
+
+					queryset = list(title_contains) + list(day_exact) + during_time + qual_match + flag_match
+					if negate_query:
+						queryset = list(set(all_shifts) - set(queryset))
 				filtered_shifts = list(set(filtered_shifts) & set(queryset))
 
-				# Used for the query_explanation
-				if len(querylist) > 1 and query == querylist[-2].lower().strip():
-					query_explanation = query_explanation[:-1] + ' and'
 			all_shifts = filtered_shifts
-			cache.set('query_explanation', query_explanation[:-1], None)
+			cache.set('query_explanation', query_explanation, None)
 		
 		# If there is no query then we see if they have sorted the shifts and return the appr
 		else:
@@ -312,33 +360,23 @@ class ShiftList(LoginRequiredMixin, ListView):
 						stapher_staphings = Staphing.objects.filter(stapher__id = key)
 						all_shifts = [s.shift for s in stapher_staphings]
 		return sorted(all_shifts, key = attrgetter('day', 'start'))
-		
-
 	
 	def get_sort_options(self):
-		options_txt = ['Days', 'Qualifications', 'Flags', 'Staphers']
+		options_txt = ['Qualifications', 'Flags','Days','Staphers']
 		options = []
 		for i, txt in enumerate(options_txt):
 			obj = {'name':txt, 'link':txt.lower()}
 			options.append(obj)
 		return options
 
-	def readable(self, text):
-		text_array = [txt for txt in text.split('-')]
-		readable_txt = ''
-		for txt in text_array:
-			readable_txt += txt.capitalize() + ' '
-		return readable_txt[:-1]
-
 	def get_sort_keys(self):
 		day_titles = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 		days = [{'title':day, 'sort':'days', 'value':i} for i, day in enumerate(day_titles)]
-		qualifications = [{'title':self.readable(q.title), 'sort':'qualifications', 'value':q.id} for q in Qualification.objects.all().order_by('title')]
-		flags = [{'title':self.readable(f.title), 'sort':'flags', 'value':f.id} for f in Flag.objects.all().order_by('title')]
+		qualifications = [{'title':q.title, 'sort':'qualifications', 'value':q.id} for q in Qualification.objects.all().order_by('title')]
+		flags = [{'title':f.title, 'sort':'flags', 'value':f.id} for f in Flag.objects.all().order_by('title')]
 		staph = [{'title':s.full_name(), 'sort':'staphers', 'value':s.id} for s in Stapher.objects.all().order_by('first_name')]
 		key_dict = {'days':days, 'qualifications':qualifications, 'flags':flags, 'staphers':staph}
 		return key_dict
-
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftList, self).get_context_data(*args, **kwargs)
@@ -347,7 +385,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 		context['link_title'] = 'New Shift'
 		context['query_explanation'] = cache.get('query_explanation')
 		context['shift_sort_options'] = self.get_sort_options()
-		context['shift_displayed_msg'] = 'All Shifts'
+		context['shift_displayed_msg'] = ['All Shifts']
 		query_explanation = cache.get('query_explanation')
 		if query_explanation:
 			context['shift_displayed_msg'] = query_explanation
@@ -363,7 +401,11 @@ class ShiftList(LoginRequiredMixin, ListView):
 					for key in keys:
 						obj_key = key['value']
 						if int(url_key) == obj_key:
-							context['shift_displayed_msg'] = key['title'] + ' Shifts'
+							if sort_type in ['flags', 'qualifications']:
+								msg = 'Shifts with the \'' + key['title'] + '\' ' + sort_type[:-1] 
+							else:
+								msg = key['title'] + '\'s Shifts'
+							context['shift_displayed_msg'] = [msg]
 		return context
 
 class ShiftDetail(LoginRequiredMixin, DetailView):

@@ -81,12 +81,12 @@ class Stapher(models.Model):
 		return -1
 
 	# Returns true if the stapher has a qualification w/ the same title as the string that was passed in
-	def has_qualification(self, qual_title_string):
-		print(f'qual_title_string = {qual_title_string}')
-		for qualification in self.qualifications.all():
-			if qualification.title.lower() == qual_title_string.lower():
-				return True
-		return False
+	def has_qualification(self, title):
+		try:
+			qualification = Qualification.objects.get(title = title)
+			return qualification in self.qualifications.all()
+		except:
+			return False
 
 	def is_qualified(self, shift):
 		for qualification in shift.qualifications.all():
@@ -201,7 +201,6 @@ class Shift(models.Model):
 
 	def save(self, *args, **kwargs):
 		if isinstance(self.day, str):
-			print('its a str...')
 			self.day = 1
 			super(Shift, self).save(*args, **kwargs)
 		# Start of shift must be before the end of shift and day must be between 0 and 6 (Sun-Sat)
@@ -219,8 +218,11 @@ class Shift(models.Model):
 	def get_absolute_url(self):
 		return reverse('schedules:shift-detail', kwargs = {'pk': self.id})
 
+	def is_during_time(self, time):
+		return self.start <= time and self.end > time
 
 	def is_in_window(self, day, start, end):
+		# TODO: check to see if start should be <= end?
 		return self.day == day and self.start < end and self.end > start
 
 
@@ -261,7 +263,6 @@ class Shift(models.Model):
 	def has_matching_flags(self, shift):
 		return bool(set(self.flags.all()) & set(shift.flags.all()))
 
-
 	def has_exact_flags(self, shift):
 		return set(self.flags.all()) == set(shift.flags.all())
 
@@ -273,16 +274,21 @@ class Shift(models.Model):
 	def get_excel_str(self):
 		return f'{self.title} ({self.get_time_str()})'
 	
-
+	# Using these with a non-flag-title will cause a crash
 	def has_flag(self, title):
-		flag = Flag.objects.get(title = title)
-		return flag in self.flags.all()
+		try:
+			flag = Flag.objects.get(title = title)
+			return flag in self.flags.all()
+		except:
+			return False
 
 	def has_qualification(self, title):
-		qualification = Qualification.objects.get(title = title)
-		return qualification in self.qualifications.all()
+		try:
+			qualification = Qualification.objects.get(title = title)
+			return qualification in self.qualifications.all()
+		except:
+			return False
 
-	has_qualification
 	def is_unpaid(self):
 		return self.has_flag('unpaid')
 

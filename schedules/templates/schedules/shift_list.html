@@ -28,7 +28,9 @@
 		</div>
 		<div class="right_list">
 			{% if object_list %}
-				<h2>{{shift_displayed_msg}}</h2>
+				{% for msg in shift_displayed_msg %}
+					<h2>{{msg}}</h2>
+				{% endfor %}
 				{% for obj in object_list %}
 					<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
 				{% endfor %}

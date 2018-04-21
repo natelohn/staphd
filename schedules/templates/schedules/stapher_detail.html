@@ -1,20 +1,32 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<h1>{{ object.first_name }} {{ object.last_name }}</h1>
-	<h3>{{ object.title }}</h3>
-	<h5>Age: {{object.age}}, Class: {{object.class_year}}, Summers: {{object.summers_worked}}</h5>
-	{% if object.qualifications %}
-	<p>Qualifications:</p>
-	<ul>
-		{% for qualification in object.qualifications.all %}
-		<li>{{qualification.title}}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-	<div>
-		<a href="{% url 'schedules:stapher-delete' pk=object.id%}">Delete</a>
-		<a href="{% url 'schedules:stapher-update' pk=object.id%}">Edit</a>
+	<div id="detail_header">
+		<h1>{{ object.first_name }} {{ object.last_name }}</h1>
+	</div>
+	<div id="detail_body">
+		<div id="detail_body_left">
+			<h4>{{ object.title }}</h4>
+			<h5>Age: {{object.age}}</h5>
+			<h5>Class: {{object.class_year}}</h5>
+			<h5>{{readable_summer}} Summer</h5>
+		</div>
+		<div id="detail_body_right">
+			{% if object.qualifications %}
+				<h5>Qualifications:</h5>
+				<ul>
+				{% for qualification in object.qualifications.all %}
+					<li>{{qualification.title}}</li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<h5>No Qualifications</h5>
+			{% endif %}
+		</div>
+	</div>
+	<div id="detail_footer">
+		<a class="delete_button" href="{% url 'schedules:stapher-delete' pk=object.id%}">Delete</a>
+		<a class="button" href="{% url 'schedules:stapher-update' pk=object.id%}">Edit</a>
 	</div>
 </div>
 {% endblock %}
