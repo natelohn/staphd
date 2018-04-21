@@ -12,10 +12,10 @@
 			<h5>{{readable_summer}} Summer</h5>
 		</div>
 		<div id="detail_body_right">
-			{% if object.qualifications %}
+			{% if qualifications %}
 				<h5>Qualifications:</h5>
 				<ul>
-				{% for qualification in object.qualifications.all %}
+				{% for qualification in qualifications %}
 					<li>{{qualification.title}}</li>
 				{% endfor %}
 				</ul>

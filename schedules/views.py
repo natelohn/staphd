@@ -219,6 +219,7 @@ class StapherDetail(LoginRequiredMixin, DetailView):
 		summers = stapher.summers_worked if stapher.summers_worked <= 3 else 3
 		suffix = suffixes[summers]
 		context['readable_summer'] = str(stapher.summers_worked + 1) + suffix
+		context['qualifications'] = sorted(stapher.qualifications.all(), key = attrgetter('title'))
 		return context
 
 class StapherCreate(LoginRequiredMixin, CreateView):
@@ -413,6 +414,13 @@ class ShiftDetail(LoginRequiredMixin, DetailView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftDetail, self).get_context_data(*args, **kwargs)
+		shift = kwargs['object']
+		context['day'] = shift.get_day_string()
+		worker_str = ' Workers Needed' if shift.workers_needed > 1 else ' Worker Needed'
+		context['needed_msg'] = str(shift.workers_needed) + worker_str
+		context['qualifications'] = sorted(shift.qualifications.all(), key = attrgetter('title'))
+		context['flags'] = sorted(shift.flags.all(), key = attrgetter('title'))
+
 		return context
 
 class ShiftCreate(LoginRequiredMixin, CreateView):

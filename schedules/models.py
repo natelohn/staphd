@@ -294,6 +294,9 @@ class Shift(models.Model):
 
 	def is_programming(self):
 		return self.has_flag('programming')
+
+	def get_day_string(self):
+		return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][self.day]
 	
 # A class representing all shift/staph pairs for a user - this will allow for multiple schedules
 class Schedule(models.Model):

@@ -1,20 +1,43 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<h1>{{ object.title }}</h1>
-	<h3>{{ object.start }}-{{ object.end }}</h3>
-	<h5> Staphers Needed: {{ object.workers_needed }} </h5>
-	{% if object.qualifications.all %}
-	<p>Qualifications:</p>
-	<ul>
-		{% for qualification in object.qualifications.all %}
-		<li>{{qualification.title}}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
-	<div>
-		<a href="{% url 'schedules:shift-delete' pk=object.id%}">Delete</a>
-		<a href="{% url 'schedules:shift-update' pk=object.id%}">Edit</a>
+	<div id="detail_header">
+		<h1>{{ object.title }}</h1>
+	</div>
+	<div id="detail_body">
+		<div id="detail_body_left">
+			<h3>{{ day }}</h3>
+			<h4>{{object.start}} - {{object.end}} </h5>
+			<h5>{{needed_msg}} </h5>
+		</div>
+		<div id="detail_body_flags">
+			{% if flags %}
+				<h5>Flags:</h5>
+				<ul>
+				{% for flag in flags %}
+					<li>{{flag.title}}</li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<h5>No Flags</h5>
+			{% endif %}
+		</div>
+		<div id="detail_body_qualifications">
+			{% if qualifications %}
+				<h5>Qualifications:</h5>
+				<ul>
+				{% for qualification in qualifications %}
+					<li>{{qualification.title}}</li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<h5>No Qualifications</h5>
+			{% endif %}
+		</div>
+	</div>
+	<div id="detail_footer">
+		<a class="delete_button" href="{% url 'schedules:shift-delete' pk=object.id%}">Delete</a>
+		<a class="button" href="{% url 'schedules:shift-update' pk=object.id%}">Edit</a>
 	</div>
 </div>
 {% endblock %}

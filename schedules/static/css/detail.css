@@ -28,18 +28,35 @@
 	top: 75px;
 }
 
-#detail_body_right li{
+
+#detail_body_qualifications, #detail_body_flags{
+	position: absolute;
+	top: 75px;
+}
+
+#detail_body_flags {
+	width: 30%;
+	left: 31%;
+	border-style: solid;
+	border-width: 0px 1px 0px 0px;
+	height: 55%;
+}
+
+#detail_body_qualifications {
+	width: 30%;
+	left: 62%;
+}
+
+#detail_body_right li, #detail_body_qualifications li , #detail_body_flags li{
 	/* Style */
 	font-size: 0.75em;
 	background-color: #E2E0E0;
 	border-radius: 5px;
 	padding: 3px;
 	margin: 3px;
-}
-
-#detail_body_right li{
 	display: inline-block;
 }
+
 
 #detail_footer{
 	border-style: solid;
