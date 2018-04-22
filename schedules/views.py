@@ -39,6 +39,16 @@ class HomeView(LoginRequiredMixin, TemplateView):
 class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
 
+class Settings(LoginRequiredMixin, TemplateView):
+    template_name = 'settings.html'
+
+    def get_context_data(self, *args, **kwargs):
+    	context = super(Settings, self).get_context_data(*args, **kwargs)
+    	context['qualifications'] = Qualification.objects.all().order_by(Lower('title'))
+    	context['flags'] = Flag.objects.all().order_by(Lower('title'))
+    	return context
+
+
 @login_required
 def build_view(request):
 	task_id = cache.get('current_task_id')
@@ -50,6 +60,8 @@ def build_view(request):
 		task_id = cache.set('current_task_id', None, 0)
 	return render(request, 'schedules/schedule.html', {})
 
+# Download Based Views
+@login_required
 def download_file(request, filename):
 	# TODO: add MEDIA ROOT for production
 	# file_path = os.path.join(settings.MEDIA_ROOT, path)
@@ -81,6 +93,7 @@ def download_meals(request):
 def download_analytics(request):
 	return download_file(request, 'analytics.xlsx')
 
+# Schedule Building based Views
 @login_required
 @csrf_exempt
 def build_schedules(request):
@@ -132,15 +145,8 @@ def update_files(request, *args, **kwargs):
 		print('No schedule!')
 		return HttpResponseRedirect(reverse('schedules:schedule'))
 
-class Settings(LoginRequiredMixin, TemplateView):
-    template_name = 'settings.html'
 
-    def get_context_data(self, *args, **kwargs):
-    	context = super(Settings, self).get_context_data(*args, **kwargs)
-    	context['qualifications'] = Qualification.objects.all().order_by(Lower('title'))
-    	context['flags'] = Flag.objects.all().order_by(Lower('title'))
-    	return context
-
+# Stapher based views
 class StapherList(LoginRequiredMixin,ListView):
 	template_name = 'schedules/stapher_list.html'
 
@@ -254,6 +260,7 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 	model = Stapher
 	success_url = reverse_lazy('schedules:stapher-list')
 
+# Shift based views
 class ShiftList(LoginRequiredMixin, ListView):
 	template_name = 'schedules/shift_list.html'
 	
@@ -285,6 +292,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 				upper_query = query
 				query = query.lower()
 				
+				# Special Queries (covered/uncovered, just flag, just qualification)
 				if query == 'covered':
 					queryset = [shift for shift in all_shifts if shift.is_covered(all_staphings)]
 					explanation_str =  '- are not covered' if negate_query else '- are covered'
@@ -305,6 +313,16 @@ class ShiftList(LoginRequiredMixin, ListView):
 						explanation_str = f'- do not have the \'{upper_query}\' flag' if negate_query else f'- have the \'{upper_query}\' flag'
 					if queryset: query_explanation.append(explanation_str)
 				else:
+					# Search by Name of Stapher Scheduled
+					name_contains = []
+					explanations = set()
+					for s in all_staphings:
+						if query == s.stapher.first_name.lower() or query == s.stapher.last_name.lower() or query == s.stapher.full_name().lower():
+							name_contains.append(s.shift)
+							explanation_str = f'	- {s.stapher.full_name()} is not working' if negate_query else f'- {s.stapher.full_name()} is working'
+							explanations.add(explanation_str)
+					if name_contains: query_explanation.extend(list(explanations))
+
 					# Search by Titles
 					title_contains = all_shifts.filter(title__icontains = query)
 					explanation_str = f'	- do not have titles containing \'{query}\'' if negate_query else f'- have titles containing \'{query}\''
@@ -334,9 +352,10 @@ class ShiftList(LoginRequiredMixin, ListView):
 					if flag_match: query_explanation.append(explanation_str)
 
 
-					queryset = list(title_contains) + list(day_exact) + during_time + qual_match + flag_match
-					if negate_query:
-						queryset = list(set(all_shifts) - set(queryset))
+					queryset = name_contains + list(title_contains) + list(day_exact) + during_time + qual_match + flag_match 
+					if negate_query: queryset = list(set(all_shifts) - set(queryset))
+					print(queryset)
+
 				filtered_shifts = list(set(filtered_shifts) & set(queryset))
 
 			all_shifts = filtered_shifts
@@ -466,7 +485,7 @@ class ShiftDelete(LoginRequiredMixin, DeleteView):
 	model = Shift
 	success_url = reverse_lazy('schedules:shift-list')
 
-
+# Qualification Based Views
 class QualificationCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/form.html'
 	form_class = QualificationCreateForm
@@ -487,7 +506,7 @@ class QualificationDelete(LoginRequiredMixin, DeleteView):
 	model = Qualification
 	success_url = reverse_lazy('settings')
 
-
+# Flag Based Views
 class FlagCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/form.html'
 	form_class = FlagCreateForm

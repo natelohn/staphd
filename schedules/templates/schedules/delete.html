@@ -1,10 +1,12 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<form action="" method="post">{% csrf_token %}
-	    <p>Are you sure you want to delete "{{ object }}"?</p>
-	    <a href='{{ object.get_absolute_url }}'>Cancel</a>
-	    <input type="submit" value="Confirm" />
+	<form id='delete_form' action="" method="post">{% csrf_token %}
+		<h1>Are you sure you want to delete:<br>"{{ object }}"?</h1>
+		<div id='delete_form_btns'>
+			<a class="link_btn" href='{{ object.get_absolute_url }}'>Cancel</a>
+			<input class="final_delete_btn" type="submit" value="Delete" />
+		</div>
 	</form>
 </div>
 {% endblock %}

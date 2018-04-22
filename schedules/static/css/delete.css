@@ -1,0 +1,17 @@
+#delete_form{
+	position: relative;
+	width: 70%;
+	left: 15%;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+#delete_form_btns{
+	padding-top: 10px;
+	text-align: center;
+}
+
+#delete_form_btns a {
+	padding: 2px;
+	text-align: center;
+}
