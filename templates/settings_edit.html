@@ -1,0 +1,14 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+<div id="page">
+	<br>
+	<a class="button" href="{% url create_link %}">New {{object_name}}</a>
+	<br>
+	<br>
+	<ul>
+		{% for obj in list %}
+			<a class="delete_button" href="{% url delete_link pk=obj.id%}">Delete '{{obj}}' {{object_name}}</a><br><br>
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}

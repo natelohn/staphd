@@ -1,20 +1,10 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<h1>Settings</h1>
-	<h3>Qualifications:</h3>
-	<ul>
-		{% for qualification in qualifications %}
-		<li>{{qualification}} - <a href="{% url 'schedules:qualification-delete' pk=qualification.id%}">Delete</a></li>
-		{% endfor %}
-	</ul>
-	<a href="{% url 'schedules:qualification-create' %}">New Qualification</a>
-	<h3>Flags:</h3>
-	<ul>
-		{% for flag in flags %}
-		<li>{{flag}} - <a href="{% url 'schedules:flag-delete' pk=flag.id%}">Delete</a></li>
-		{% endfor %}
-	</ul>
-	<a href="{% url 'schedules:flag-create' %}">New Flag</a>
+	<br>
+	<a class="button" href="{% url 'schedules:flag-settings' %}">Edit Flags</a>
+	<br>
+	<br>
+	<a class="button" href="{% url 'schedules:qualification-settings' %}">Edit Qualifications</a>
 </div>
 {% endblock %}

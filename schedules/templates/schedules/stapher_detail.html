@@ -2,7 +2,7 @@
 {% block page %}
 <div id="page">
 	<div id="detail_header">
-		<h1>{{ object.first_name }} {{ object.last_name }}</h1>
+		<h1>{{ name }}</h1>
 	</div>
 	<div id="detail_body">
 		<div id="detail_body_left">
@@ -10,6 +10,7 @@
 			<h5>Age: {{object.age}}</h5>
 			<h5>Class: {{object.class_year}}</h5>
 			<h5>{{readable_summer}} Summer</h5>
+			<a class="button" href="{% url 'schedules:shift-list' %}?q={{name}}">View {{object.first_name }}'s Scheduled Shifts</a>
 		</div>
 		<div id="detail_body_right">
 			{% if qualifications %}

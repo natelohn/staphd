@@ -19,12 +19,12 @@
 		user: {{ user.get_username }}, <a href="{% url 'logout'%}">Log out</a>
 	</div>
 	<ul id="links">
-		<li><a href="{% url 'home'%}">Home</a></li>
+		<li><a href="{% url 'schedules:home'%}">Home</a></li>
 		<li><a href="{% url 'schedules:stapher-list'%}">Staphers</a></li>
 		<li><a href="{% url 'schedules:shift-list' %}">Shifts</a></li>
 		<li><a href="{% url 'schedules:schedule'%}">Build Schedules</a></li>
 		<li><a href="{% url 'schedules:download'%}">Download Files</a></li>
-		<li><a href="{% url 'settings' %}">Settings</a></li>
+		<li><a href="{% url 'schedules:settings' %}">Settings</a></li>
 	</ul>
 </div>
 {% block page %}

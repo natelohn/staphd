@@ -8,6 +8,7 @@ def get_hours_between_times(start, end):
 	end_td = datetime.timedelta(hours = end.hour, minutes = end.minute)
 	return get_hours_from_timedelta(end_td - start_td)
 
+# Used in views.py
 def get_readable_time(time):
 	return time.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
 

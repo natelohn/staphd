@@ -7,8 +7,14 @@
 	<div id="detail_body">
 		<div id="detail_body_left">
 			<h3>{{ day }}</h3>
-			<h4>{{object.start}} - {{object.end}} </h5>
-			<h5>{{needed_msg}} </h5>
+			<h4>{{time_msg}} </h5>
+			<h5>{{needed_msg}}</h5>
+			<h5>{{working_msg}}</h5>
+			{% for worker in working_shift %}
+				<ul>
+					<li><a class='button' href='{{ worker.get_absolute_url }}'>{{ worker }}</a></li>
+				</ul>
+			{% endfor %}
 		</div>
 		<div id="detail_body_flags">
 			{% if flags %}

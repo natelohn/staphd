@@ -18,9 +18,17 @@
 	font-size: 1.25em;
 }
 
+#progress{
+	position: relative;
+	top: 150px;
+	left:15%;
+	width:70%;
+	text-align: center;
+}
+
 #progress-bar-outer {
-	width:50%;
-	background-color:yellow;
+	width:100%;
+	background-color:grey;
 }
 #progress-bar-inner {
 	height:15px;

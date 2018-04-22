@@ -18,6 +18,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from operator import attrgetter
 
+from .analytics import get_readable_time
 from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
 from .tasks import build_schedules_task, update_files_task
@@ -42,11 +43,29 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 class Settings(LoginRequiredMixin, TemplateView):
     template_name = 'settings.html'
 
-    def get_context_data(self, *args, **kwargs):
-    	context = super(Settings, self).get_context_data(*args, **kwargs)
-    	context['qualifications'] = Qualification.objects.all().order_by(Lower('title'))
-    	context['flags'] = Flag.objects.all().order_by(Lower('title'))
-    	return context
+class FlagSettings(LoginRequiredMixin, TemplateView):
+	template_name = 'settings_edit.html'
+	
+	def get_context_data(self, *args, **kwargs):
+		context = super(FlagSettings, self).get_context_data(*args, **kwargs)
+		context['list'] = Flag.objects.all().order_by(Lower('title'))
+		context['delete_link'] = 'schedules:flag-delete'
+		context['create_link'] = 'schedules:flag-create'
+		context['object_name'] = 'Flag'
+		print(context)
+		return context
+
+class QualificationSettings(LoginRequiredMixin, TemplateView):
+	template_name = 'settings_edit.html'
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(QualificationSettings, self).get_context_data(*args, **kwargs)
+		context['list'] = Qualification.objects.all().order_by(Lower('title'))
+		context['delete_link'] = 'schedules:qualification-delete'
+		context['create_link'] = 'schedules:qualification-create'
+		context['object_name'] = 'Qualification'
+		print(context)
+		return context
 
 
 @login_required
@@ -220,6 +239,7 @@ class StapherDetail(LoginRequiredMixin, DetailView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherDetail, self).get_context_data(*args, **kwargs)
 		stapher = kwargs['object']
+		context['name'] = stapher.full_name()
 		suffixes = ['st', 'nd', 'rd', 'th']
 		summers = stapher.summers_worked if stapher.summers_worked <= 3 else 3
 		suffix = suffixes[summers]
@@ -286,8 +306,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 			querylist = list(filter(bool, [q.strip() for q in query.split(',')])) #Removes all empty space queries
 			for query in querylist:
 				negate_query = True if '!' == query[0] and len(query) > 1 else False
-				query = query[1:] if negate_query else query
-				print(f'{query} {negate_query}')
+				if negate_query: query = query[1:]
 				upper_query = query
 				query = query.lower()
 				
@@ -310,6 +329,8 @@ class ShiftList(LoginRequiredMixin, ListView):
 						upper_query = upper_query.replace('*f', '').strip()
 						queryset = [s for s in filtered_shifts if s.has_flag(upper_query)] if upper_query in flag_titles else []
 						explanation_str = f'- do not have the \'{upper_query}\' flag' if negate_query else f'- have the \'{upper_query}\' flag'
+					else:
+						queryset = []
 					if queryset: query_explanation.append(explanation_str)
 				else:
 					# Search by Name of Stapher Scheduled
@@ -432,8 +453,12 @@ class ShiftDetail(LoginRequiredMixin, DetailView):
 		context = super(ShiftDetail, self).get_context_data(*args, **kwargs)
 		shift = kwargs['object']
 		context['day'] = shift.get_day_string()
+		context['time_msg'] = get_readable_time(shift.start) + '-' + get_readable_time(shift.end)
 		worker_str = ' Workers Needed' if shift.workers_needed > 1 else ' Worker Needed'
 		context['needed_msg'] = str(shift.workers_needed) + worker_str
+		working_shift = [s.stapher for s in Staphing.objects.all() if s.shift == shift]
+		context['working_shift'] = sorted(working_shift, key = attrgetter('first_name'))
+		context['working_msg'] = str(len(working_shift))+ ' Workers Scheduled:' if working_shift else 'No Workers Scheduled.'
 		context['qualifications'] = sorted(shift.qualifications.all(), key = attrgetter('title'))
 		context['flags'] = sorted(shift.flags.all(), key = attrgetter('title'))
 
