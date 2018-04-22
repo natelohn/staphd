@@ -211,7 +211,6 @@ class StapherList(LoginRequiredMixin,ListView):
 		context = super(StapherList, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Staphers'
 		context['link'] = 'schedules:stapher-create'
-		context['link_title'] = 'New Stapher'
 		context['query_explanation'] = cache.get('query_explanation')
 		return context
 
@@ -353,9 +352,8 @@ class ShiftList(LoginRequiredMixin, ListView):
 
 
 					queryset = name_contains + list(title_contains) + list(day_exact) + during_time + qual_match + flag_match 
-					if negate_query: queryset = list(set(all_shifts) - set(queryset))
-					print(queryset)
 
+				if negate_query: queryset = list(set(all_shifts) - set(queryset))
 				filtered_shifts = list(set(filtered_shifts) & set(queryset))
 
 			all_shifts = filtered_shifts
@@ -402,7 +400,6 @@ class ShiftList(LoginRequiredMixin, ListView):
 		context = super(ShiftList, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Shifts'
 		context['link'] = 'schedules:shift-create'
-		context['link_title'] = 'New Shift'
 		context['query_explanation'] = cache.get('query_explanation')
 		context['shift_sort_options'] = self.get_sort_options()
 		context['shift_displayed_msg'] = ['All Shifts']

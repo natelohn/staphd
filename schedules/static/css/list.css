@@ -82,6 +82,11 @@
     list-style-type: none;
 }
 
+#stapher_list {
+    /* Positioning */
+    width: 40%;
+}
+
 .left_list {
 	/* Positioning */
 	position: absolute;

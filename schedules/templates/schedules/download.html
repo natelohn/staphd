@@ -1,13 +1,11 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<h1>Download Excel</h1>
-	<ul>
-		<li><a href="{% url 'schedules:download-individual' %}">Download Indiviual Schedules</a></li>
-		<li><a href="{% url 'schedules:download-masters' %}">Download Masters</a></li>
-		<li><a href="{% url 'schedules:download-meals' %}">Download Meal Masters</a></li>
-		<li><a href="{% url 'schedules:download-analytics' %}">Download Indiviual Schedule Analytics</a></li>
+	<ul id="download_list">
+		<li><a class='list_btn' href="{% url 'schedules:download-individual' %}">Download Indiviual Schedules</a></li>
+		<li><a class='list_btn' href="{% url 'schedules:download-masters' %}">Download Masters</a></li>
+		<li><a class='list_btn' href="{% url 'schedules:download-meals' %}">Download Meal Masters</a></li>
+		<li><a class='list_btn' href="{% url 'schedules:download-analytics' %}">Download Indiviual Schedule Analytics</a></li>
 	</ul>
-	
 </div>
 {% endblock %}

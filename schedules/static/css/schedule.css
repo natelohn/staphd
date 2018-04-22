@@ -1,0 +1,30 @@
+#build_schedule_form {
+	position: relative;
+	top: 150px;
+	text-align: center;
+}
+
+#build_schedule_form input{
+	font-size: 4em;
+}
+
+#update_excel_form{
+	position: relative;
+	top: -50px;
+	text-align: right;
+}
+
+#update_excel_form input{
+	font-size: 1.25em;
+}
+
+#progress-bar-outer {
+	width:50%;
+	background-color:yellow;
+}
+#progress-bar-inner {
+	height:15px;
+	width:0%;
+	background-color:tomato;
+	text-align:right;
+}
