@@ -3,11 +3,11 @@
 <div id="page">
 	<br>
 	<a class="button" href="{% url create_link %}">New {{object_name}}</a>
-	<br>
+	<hr style="background-color: grey; height:1px; margin-top: 10px;">
 	<br>
 	<ul>
 		{% for obj in list %}
-			<a class="delete_button" href="{% url delete_link pk=obj.id%}">Delete '{{obj}}' {{object_name}}</a><br><br>
+			<a class="delete_button" href="{% url delete_link pk=obj.id%}">Delete the '{{obj}}' {{object_name}}</a><br><br>
 		{% endfor %}
 	</ul>
 </div>
