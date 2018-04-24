@@ -1,3 +1,6 @@
+/*************************************************/
+/***************** ALL FORMS *********************/
+/*************************************************/
 label {
     display: none;
 }
@@ -7,15 +10,40 @@ label {
 	border-width: 1px 1px 1px 1px;
 }
 
-#form_buttons{
-	position: relative;
-	top: 275px;
+#form_header *{
+	display: inline-block;
 }
 
-#id_first_name,  #id_last_name {
+#form_header{
+	margin-bottom: 10px;
+}
+
+.errorlist{
+	display: none;
+}
+
+#form_errors {
+	position: relative;
+	top:60px;
+	left: 20px;
+	color: red;
+}
+
+/* Flag and Qualification Create Views */
+label[for=id_title], #id_title {
+	font-size: 3em;
+	display: inline-block;
+	margin: 5px;
+}
+
+
+/************************************************************/
+/***************** STAPHER & SHIFT FORMS *********************/
+/************************************************************/
+
+#stapher_first_name,  #stapher_last_name , #shift_title{
 	/* position */
 	position: absolute;
-	top: 40px;
 
 	/* size */
 	height: 50px;
@@ -24,168 +52,34 @@ label {
 	font-size: 2em;
 }
 
-
-#id_first_name {
-	/* size */
-	width: 225px;
-
-}
-
-#id_last_name {
-	/* position */
-	left: 230px;
-
-	/* size */
-	width: 275px;
-}
-
-#id_title {
+#stapher_title, #shift_day, #shift_start, #shift_end{
 	/* position */
 	position: absolute;
-	top: 95px;
+	top: 110px;
 
 	/* size */
 	height: 50px;
-	width: 505px;
+	
 
 	/* style */
 	font-size: 1.75em;
 }
-
-label[for=id_age], #id_age, 
-label[for=id_class_year], #id_class_year, 
-label[for=id_summers_worked], #id_summers_worked,
-label[for=id_gender], #id_gender {
-	font-size: 1.5em;
+label[for=stapher_age], #stapher_age, 
+label[for=stapher_class_year], #stapher_class_year, 
+label[for=stapher_summers_worked], #stapher_summers_worked,
+label[for=stapher_gender], #stapher_gender {
+	font-size: 1.75em;
 	display: block;
 }
 
 
-label[for=id_age], #id_age {
+label[for=stapher_age], #stapher_age, #shift_workers_needed, label[for=shift_workers_needed]{
 	/* position */
 	position: absolute;
-	top: 150px;
-
+	top: 165px;
 }
 
-label[for=id_age] {
-	/* position */
-	left: 0px;
-}
-
-#id_age {
-	/* position */
-	left: 50px;
-
-	/* size */
-	width: 50px;
-
-	/* style */
-	text-align: center;
-}
-
-
-label[for=id_class_year], #id_class_year {
-	/* position */
-	position: absolute;
-	top: 185px;
-}
-
-label[for=id_class_year] {
-	/* position */
-	left: 0px;
-}
-
-#id_class_year {
-	/* position */
-	position: absolute;
-	left: 120px;
-
-	/* size */
-	width: 80px;
-
-	/* style */
-	text-align: center;
-}
-
-
-label[for=id_summers_worked], #id_summers_worked {
-	/* position */
-	position: absolute;
-	top: 225px;
-}
-
-label[for=id_summers_worked] {
-	/* position */
-	left: 0px;
-}
-
-#id_summers_worked {
-	/* position */
-	position: absolute;
-	left: 195px;
-
-	/* size */
-	width: 40px;
-
-	/* style */
-	text-align: center;
-}
-
-label[for=id_gender], #id_gender {
-	/* position */
-	position: absolute;
-	top: 260px;
-}
-
-label[for=id_gender] {
-	/* position */
-	left: 0px;
-}
-
-#id_gender {
-	/* position */
-	position: absolute;
-	left: 85px;
-
-	/* style */
-	text-align: center;
-}
-
-label[for=qualifications_hardcoded], #id_qualifications {
-	/* position */
-	position: absolute;
-	left: 525px;
-}
-
-label[for=qualifications_hardcoded] {
-	/* position */
-	font-size: 2em;
-	top: 0px;
-	display: block;
-}
-
-#form_div li label{
-	display: block;
-}
-
-
-#id_qualifications {
-	/* position */
-	position: absolute;
-	
-	/* size */
-	width: 55%;
-	height: 300px;
-
-
-	/* style */
-	text-align: left;
-	font-size: 1.4em;
-	top: 40px;
-}
-
-#id_qualifications li {
+#stapher_qualifications li, #shift_qualifications li, #shift_flags li{
 	/* position */
 	position: relative;
 
@@ -203,8 +97,232 @@ label[for=qualifications_hardcoded] {
 	
 }
 
+label[for=shift_flags_hardcoded] a, label[for=shift_qualifications_hardcoded] a, 
+label[for=stapher_qualifications_hardcoded] a {
+	font-size: 0.75em;
+	bottom: 2px;
+}
+/********************************************************/
+/***************** STAPHER SPECIFIC *********************/
+/********************************************************/
+#stapher_first_name {
+	/* size */
+	width: 225px;
+
+}
+
+#stapher_last_name {
+	/* position */
+	left: 230px;
+
+	/* size */
+	width: 275px;
+}
 
 
+
+#stapher_title{
+	width: 505px;
+}
+
+
+
+
+label[for=stapher_age] {
+	/* position */
+	left: 0px;
+}
+
+#stapher_age {
+	/* position */
+	left: 60px;
+
+	/* size */
+	width: 50px;
+
+	/* style */
+	text-align: center;
+}
+
+
+label[for=stapher_class_year], #stapher_class_year {
+	/* position */
+	position: absolute;
+	top: 205px;
+}
+
+label[for=stapher_class_year] {
+	/* position */
+	left: 0px;
+}
+
+#stapher_class_year {
+	/* position */
+	position: absolute;
+	left: 140px;
+
+	/* size */
+	width: 80px;
+
+	/* style */
+	text-align: center;
+}
+
+
+label[for=stapher_summers_worked], #stapher_summers_worked {
+	/* position */
+	position: absolute;
+	top: 250px;
+}
+
+label[for=stapher_summers_worked] {
+	/* position */
+	left: 0px;
+}
+
+#stapher_summers_worked {
+	/* position */
+	position: absolute;
+	left: 230px;
+
+	/* size */
+	width: 40px;
+
+	/* style */
+	text-align: center;
+}
+
+label[for=stapher_gender], #stapher_gender {
+	/* position */
+	position: absolute;
+	top: 290px;
+}
+
+label[for=stapher_gender] {
+	/* position */
+	left: 0px;
+}
+
+#stapher_gender {
+	/* position */
+	position: absolute;
+	left: 100px;
+
+	/* style */
+	text-align: center;
+}
+
+label[for=stapher_qualifications_hardcoded], #stapher_qualifications {
+	/* position */
+	position: absolute;
+	left: 525px;
+}
+
+label[for=stapher_qualifications_hardcoded] {
+	/* position */
+	font-size: 2em;
+	top: 48px;
+	display: block;
+}
+
+#form_div li label{
+	display: block;
+}
+
+
+#stapher_qualifications {
+	/* position */
+	position: absolute;
+	
+	/* size */
+	width: 55%;
+	height: 300px;
+
+
+	/* style */
+	text-align: left;
+	font-size: 1.4em;
+	top: 85px;
+}
+
+
+
+/*******************************************************/
+/***************** SHIFT SPECIFIC *********************/
+/*******************************************************/
+#shift_title {
+	/* size */
+	width: 435px;
+
+}
+
+#shift_day, #shift_start, #shift_end {
+	/* size */
+	font-size: 1.75em;
+}
+
+#shift_start, #shift_end {
+	width: 125px;
+}
+
+
+#shift_start {
+	/* size */
+	left: 180px;
+}
+
+#shift_end {
+	/* size */
+	left: 310px;
+}
+
+label[for=shift_workers_needed]{
+	font-size: 2.25em;
+	display: block;	
+}
+
+#shift_workers_needed{
+	left: 275px;
+	width: 60px;
+	text-align: center;
+	font-size: 2em;
+}
+
+#shift_qualifications, #shift_flags{
+	border-style: solid;
+	border-width: 1px 1px 1px 1px;
+	font-size: 1.75em;
+}
+
+label[for=shift_qualifications_hardcoded], #shift_qualifications{
+	position: absolute;
+}
+label[for=shift_qualifications_hardcoded] {
+	top: 215px;
+}
+
+#shift_qualifications{
+	top: 250px;
+	width: 435px;
+}
+
+label[for=shift_qualifications_hardcoded], label[for=shift_flags_hardcoded]{
+	display: block;
+	font-size: 1.75em;
+}
+
+label[for=shift_flags_hardcoded], #shift_flags{
+	position: absolute;
+	left: 450px;
+}
+
+label[for=shift_flags_hardcoded]{
+	top: 50px;
+}
+
+ #shift_flags{
+ 	top: 85px;
+ }
 
 
 

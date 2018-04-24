@@ -16,7 +16,7 @@ class Qualification(models.Model):
 		return f'{self.title}'
 
 	def get_absolute_url(self):
-		return reverse('settings')
+		return reverse('schedules:settings')
 
 
 class Flag(models.Model):
@@ -27,7 +27,7 @@ class Flag(models.Model):
 		return f'{self.title}'
 
 	def get_absolute_url(self):
-		return reverse('settings')
+		return reverse('schedules:settings')
 
 
 

@@ -271,6 +271,7 @@ class StapherCreate(LoginRequiredMixin, CreateView):
 		context = super(StapherCreate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'New Stapher'
 		context['cancel_url'] = 'schedules:stapher-list'
+		context['qualification_label_name'] = 'stapher_qualifications_hardcoded'
 		return context
 
 	def form_valid(self, form):
@@ -280,6 +281,7 @@ class StapherCreate(LoginRequiredMixin, CreateView):
 
 	def get_form_kwargs(self):
 		kwargs = super(StapherCreate, self).get_form_kwargs()
+		kwargs['auto_id'] = 'stapher_%s'
 		return kwargs
 
 class StapherUpdate(LoginRequiredMixin, UpdateView):
@@ -289,6 +291,7 @@ class StapherUpdate(LoginRequiredMixin, UpdateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherUpdate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Edit Stapher'
+		context['qualification_label_name'] = 'stapher_qualifications_hardcoded'
 		return context
 
 	# TODO: See if this works (takes from the create form in forms.py)
@@ -299,6 +302,7 @@ class StapherUpdate(LoginRequiredMixin, UpdateView):
 
 	def get_form_kwargs(self):
 		kwargs = super(StapherUpdate, self).get_form_kwargs()
+		kwargs['auto_id'] = 'stapher_%s'
 		return kwargs
 
 	def get_queryset(self):
@@ -502,6 +506,8 @@ class ShiftCreate(LoginRequiredMixin, CreateView):
 		context = super(ShiftCreate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'New Shift'
 		context['cancel_url'] = 'schedules:shift-list'
+		context['qualification_label_name'] = 'shift_qualifications_hardcoded'
+		context['flag_label_name'] = 'shift_flags_hardcoded'
 		return context
 
 	def form_valid(self, form):
@@ -511,7 +517,7 @@ class ShiftCreate(LoginRequiredMixin, CreateView):
 	
 	def get_form_kwargs(self):
 		kwargs = super(ShiftCreate, self).get_form_kwargs()
-		kwargs['user_id'] = self.request.user.id
+		kwargs['auto_id'] = 'shift_%s'
 		return kwargs
 
 class ShiftUpdate(LoginRequiredMixin, UpdateView):
@@ -521,6 +527,8 @@ class ShiftUpdate(LoginRequiredMixin, UpdateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftUpdate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Edit Shift'
+		context['qualification_label_name'] = 'shift_qualifications_hardcoded'
+		context['flag_label_name'] = 'shift_flags_hardcoded'
 		return context
 
 	def get_queryset(self):
@@ -528,7 +536,7 @@ class ShiftUpdate(LoginRequiredMixin, UpdateView):
 
 	def get_form_kwargs(self):
 		kwargs = super(ShiftUpdate, self).get_form_kwargs()
-		kwargs['user_id'] = self.request.user.id
+		kwargs['auto_id'] = 'shift_%s'
 		return kwargs
 
 class ShiftDelete(LoginRequiredMixin, DeleteView):
@@ -543,8 +551,8 @@ class QualificationCreate(LoginRequiredMixin, CreateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(QualificationCreate, self).get_context_data(*args, **kwargs)
-		context['title'] = 'Add Qualification:'
-		context['cancel_url'] = 'settings'
+		context['title'] = 'Add Qualification'
+		context['cancel_url'] = 'schedules:settings'
 		return context
 
 	def form_valid(self, form):
@@ -555,7 +563,7 @@ class QualificationCreate(LoginRequiredMixin, CreateView):
 class QualificationDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
 	model = Qualification
-	success_url = reverse_lazy('settings')
+	success_url = reverse_lazy('schedules:settings')
 
 # Flag Based Views
 class FlagCreate(LoginRequiredMixin, CreateView):
@@ -564,8 +572,8 @@ class FlagCreate(LoginRequiredMixin, CreateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(FlagCreate, self).get_context_data(*args, **kwargs)
-		context['title'] = 'Add Flag:'
-		context['cancel_url'] = 'settings'
+		context['title'] = 'Add Flag'
+		context['cancel_url'] = 'schedules:settings'
 		return context
 
 	def form_valid(self, form):
@@ -576,4 +584,4 @@ class FlagCreate(LoginRequiredMixin, CreateView):
 class FlagDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
 	model = Flag
-	success_url = reverse_lazy('settings')
+	success_url = reverse_lazy('schedules:settings')
