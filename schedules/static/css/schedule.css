@@ -8,14 +8,28 @@
 	font-size: 4em;
 }
 
-#update_excel_form{
-	position: relative;
-	top: -50px;
-	text-align: right;
+#build_schedule_form input:hover{
+	background-color: #52f97f;
 }
 
-#update_excel_form input{
+#update_excel_form{
+	position: relative;
+	top: -15px;
+	text-align: right;
+	width: 50%;
+	left: 50%
+
+}
+
+#update_excel_form input, #delete_schedule_form input{
 	font-size: 1.25em;
+}
+
+
+#delete_schedule_form {
+	position: relative;
+	top: 13px;
+	width: 50%;
 }
 
 #progress{

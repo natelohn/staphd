@@ -5,19 +5,18 @@ from .models import Flag, Stapher, Shift, Qualification
 
 
 class StapherCreateForm(forms.ModelForm):
+	
 	class Meta:
 		model = Stapher
-		fields = [
-			'first_name',
-			'last_name',
-			'title',
-			'gender',
-			'age',
-			'class_year',
-			'summers_worked',
-			'qualifications'
-		]
+		fields = ('first_name','last_name', 'title', 'age', 'class_year', 'summers_worked', 'gender','qualifications')
+		widgets = { 'qualifications': forms.CheckboxSelectMultiple()}
 
+
+	def __init__(self, auto_id, *args, **kwargs):
+		super(StapherCreateForm, self).__init__(*args, **kwargs)
+		self.auto_id = auto_id 
+		self.fields['qualifications'].queryset = Qualification.objects.order_by('title')
+		
 	def clean_first_name(self):
 		first_name = self.cleaned_data.get("first_name")
 		return self.clean_name(first_name)
@@ -71,8 +70,6 @@ class StapherCreateForm(forms.ModelForm):
 
 
 
-
-
 class ShiftCreateForm(forms.ModelForm):
 	class Meta:
 		model = Shift
@@ -87,9 +84,8 @@ class ShiftCreateForm(forms.ModelForm):
 			'qualifications'
 		]
 
-	def __init__(self, user_id, *args, **kwargs):
+	def __init__(self, *args, **kwargs):
 		super(ShiftCreateForm, self).__init__(*args, **kwargs)
-		self.user_id = user_id
 
 	def clean_end(self):
 		start = self.cleaned_data.get("start")

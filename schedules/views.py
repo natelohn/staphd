@@ -52,7 +52,6 @@ class FlagSettings(LoginRequiredMixin, TemplateView):
 		context['delete_link'] = 'schedules:flag-delete'
 		context['create_link'] = 'schedules:flag-create'
 		context['object_name'] = 'Flag'
-		print(context)
 		return context
 
 class QualificationSettings(LoginRequiredMixin, TemplateView):
@@ -64,7 +63,6 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 		context['delete_link'] = 'schedules:qualification-delete'
 		context['create_link'] = 'schedules:qualification-create'
 		context['object_name'] = 'Qualification'
-		print(context)
 		return context
 
 
@@ -74,8 +72,10 @@ def build_view(request):
 	if task_id:
 		task = AsyncResult(task_id)
 		data = task.result or task.state
+		# If there is a current running task show its progress
 		if 'PENDING' not in data:
 			return render(request,'schedules/progress.html', {'task_id':task_id})
+		# Delete the task from the cache
 		task_id = cache.set('current_task_id', None, 0)
 	return render(request, 'schedules/schedule.html', {})
 
@@ -112,18 +112,31 @@ def download_meals(request):
 def download_analytics(request):
 	return download_file(request, 'analytics.xlsx')
 
+@login_required
+def delete_schedule(request):
+	staphings = Staphing.objects.all()
+	if staphings:
+		Staphing.objects.all().delete()
+		return render(request, 'schedules/schedule.html', {'success_message':'Schedule Successfully Deleted'})
+	else:
+		return render(request, 'schedules/schedule.html', {'success_message':'No Schedule to Delete'})
+
 # Schedule Building based Views
 @login_required
 @csrf_exempt
 def build_schedules(request):
-	task_id = cache.get('current_task_id')
-	if not task_id:
-		task = build_schedules_task.delay()
-		task_id = task.task_id
-		cache.set('current_task_id', task_id, None)
-	request.session['task_id'] = task_id
-	context = {'task_id':task_id}
-	return render(request,'schedules/progress.html', context)
+	staphings = Staphing.objects.all()
+	if staphings:
+		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
+	else:
+		task_id = cache.get('current_task_id')
+		if not task_id:
+			task = build_schedules_task.delay()
+			task_id = task.task_id
+			cache.set('current_task_id', task_id, None)
+		request.session['task_id'] = task_id
+		context = {'task_id':task_id}
+		return render(request,'schedules/progress.html', context)
 
 @login_required
 @csrf_exempt
@@ -149,21 +162,24 @@ def track_state(request, *args, **kwargs):
 @login_required
 @csrf_exempt
 def update_files(request, *args, **kwargs):
-	schedule_id = cache.get('schedule_id')
-	if schedule_id:
-		task_id = cache.get('current_task_id')
-		if not task_id:
-			task = update_files_task.delay(schedule_id)
-			task_id = task.task_id
-			cache.set('current_task_id', task_id, None)
-		request.session['task_id'] = task_id
-		context = {'task_id':task_id}
-		return render(request,'schedules/progress.html', context)
+	staphings = Staphing.objects.all()
+	if not staphings:
+		return render(request,'schedules/schedule.html', {'update_error_message':'No Current Schedule - Must Build Schedule First'})
 	else:
-		# TODO: Create an appropriate error message
-		print('No schedule!')
-		return HttpResponseRedirect(reverse('schedules:schedule'))
-
+		schedule_id = cache.get('schedule_id')
+		if schedule_id:
+			task_id = cache.get('current_task_id')
+			if not task_id:
+				task = update_files_task.delay(schedule_id)
+				task_id = task.task_id
+				cache.set('current_task_id', task_id, None)
+			request.session['task_id'] = task_id
+			context = {'task_id':task_id}
+			return render(request,'schedules/progress.html', context)
+		else:
+			# TODO: Create an appropriate error message
+			print('No schedule!')
+			return HttpResponseRedirect(reverse('schedules:schedule'))
 
 # Stapher based views
 class StapherList(LoginRequiredMixin,ListView):
@@ -238,7 +254,7 @@ class StapherDetail(LoginRequiredMixin, DetailView):
 	
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherDetail, self).get_context_data(*args, **kwargs)
-		stapher = kwargs['object']
+		stapher = self.get_object()
 		context['name'] = stapher.full_name()
 		suffixes = ['st', 'nd', 'rd', 'th']
 		summers = stapher.summers_worked if stapher.summers_worked <= 3 else 3
@@ -253,14 +269,20 @@ class StapherCreate(LoginRequiredMixin, CreateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherCreate, self).get_context_data(*args, **kwargs)
-		context['title'] = 'Add Stapher:'
+		context['title'] = 'New Stapher'
 		context['cancel_url'] = 'schedules:stapher-list'
 		return context
 
 	def form_valid(self, form):
-		instance = form.save(commit=False)
+		instance = form.save(commit = False)
 		instance.user = self.request.user
 		return super(StapherCreate, self).form_valid(form)
+
+	def get_form_kwargs(self):
+		kwargs = super(StapherCreate, self).get_form_kwargs()
+		kwargs['auto_id']= 'create_%s'
+		return kwargs
+
 
 class StapherUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/form.html'
@@ -268,8 +290,19 @@ class StapherUpdate(LoginRequiredMixin, UpdateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherUpdate, self).get_context_data(*args, **kwargs)
-		context['title'] = f'Edit - {self.get_object()}'
+		context['title'] = 'Edit Stapher'
 		return context
+
+	# TODO: See if this works (takes from the create form in forms.py)
+	def form_valid(self, form):
+		instance = form.save(commit = False)
+		instance.user = self.request.user
+		return super(StapherUpdate, self).form_valid(form)
+
+	def get_form_kwargs(self):
+		kwargs = super(StapherUpdate, self).get_form_kwargs()
+		kwargs['auto_id']= 'edit_%s'
+		return kwargs
 
 	def get_queryset(self):
 		return Stapher.objects.all()
@@ -451,7 +484,7 @@ class ShiftDetail(LoginRequiredMixin, DetailView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftDetail, self).get_context_data(*args, **kwargs)
-		shift = kwargs['object']
+		shift = self.get_object()
 		context['day'] = shift.get_day_string()
 		context['time_msg'] = get_readable_time(shift.start) + '-' + get_readable_time(shift.end)
 		worker_str = ' Workers Needed' if shift.workers_needed > 1 else ' Worker Needed'
@@ -470,7 +503,7 @@ class ShiftCreate(LoginRequiredMixin, CreateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftCreate, self).get_context_data(*args, **kwargs)
-		context['title'] = 'Add Shift:'
+		context['title'] = 'New Shift'
 		context['cancel_url'] = 'schedules:shift-list'
 		return context
 
@@ -490,8 +523,7 @@ class ShiftUpdate(LoginRequiredMixin, UpdateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftUpdate, self).get_context_data(*args, **kwargs)
-		title = self.get_object().title
-		context['title'] = f'Edit - {title}'
+		context['title'] = 'Edit Shift'
 		return context
 
 	def get_queryset(self):

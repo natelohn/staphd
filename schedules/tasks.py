@@ -41,10 +41,6 @@ def update_files_task(self, schedule_id):
 @app.task(bind=True, track_started=True)
 @shared_task(bind=True)
 def build_schedules_task(self):
-	# TODO: Implement multiple Schedule functionality
-	# Temporary # Temporary # Temporary # Temporary # Temporary
-	Staphing.objects.all().delete() ##### Temporary # Temporary 
-	# Temporary # Temporary # Temporary # Temporary # Temporary
 
 	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:

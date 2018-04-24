@@ -1,12 +1,13 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<div id="build_schedule_form">
+	<div id="delete_schedule_form">
 		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-		<form action="{% url 'schedules:building' %}" method="post">
+		<form action="{% url 'schedules:delete' %}" method="post">
 			{% csrf_token %}
-			<input class="button" type="submit" value="Build Schedules">
+			<input class="delete_button" type="submit" value="Delete Current Schedule">
 		</form>
+		{% if success_message %}<p><strong>{{ success_message }}</strong></p>{% endif %}
 	</div>
 	<div id="update_excel_form">
 		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -14,6 +15,15 @@
 			{% csrf_token %}
 			<input class="button" type="submit" value="Update Excel Files">
 		</form>
+		{% if update_error_message %}<p><strong>{{ update_error_message }}</strong></p>{% endif %}
+	</div>
+	<div id="build_schedule_form">
+		{% if error_message %}<h5><strong>{{ error_message }}</strong></h5>{% endif %}
+		<form action="{% url 'schedules:building' %}" method="post">
+			{% csrf_token %}
+			<input class="button" type="submit" value="Build New Schedule">
+		</form>
+		{% if schedule_error_message %}<p><strong>{{ schedule_error_message }}</strong></p>{% endif %}
 	</div>
 	{% block progress %}{% endblock %}
 </div>

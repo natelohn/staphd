@@ -1,9 +1,15 @@
 <form method='POST'> {% csrf_token %}
-    {{ form.as_p }}
-    {% if object.get_absolute_url %}
-    <a href='{{ object.get_absolute_url }}'>Cancel</a>
-    {% else %}
-    <a href='{% url cancel_url %}'>Cancel</a>
-    {% endif %}
-    <button type='submit'>Save</button>
+	<div id="form_div">
+		{{ form }}
+	</div>
+	<label for="edit_qualifications_hardcoded">Qualifications:</label>
+	<div id="form_buttons">
+		{% if object.get_absolute_url %}
+    		<a class='button' href='{{ object.get_absolute_url }}'>Cancel</a>
+    	{% else %}
+    		<a class='button' href='{% url cancel_url %}'>Cancel</a>
+    	{% endif %}
+    	<button class='button' type='submit'>Save</button>
+
+	</div>
 </form>
