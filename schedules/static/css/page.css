@@ -6,7 +6,7 @@
 	top: 60px;
 }
 
-.button, .link_btn, .list_btn, .delete_button, .final_delete_btn{
+.button, .link_btn, .list_btn, .delete_button, .final_delete_btn, .create_btn{
 	/* Positioning */
 	position: relative;
 
@@ -49,6 +49,10 @@
 .final_delete_btn:hover{
 	background-color: #C50101;
 	color: black;
+}
+
+.create_btn:hover{
+	background-color: #32e535;
 }
 
 

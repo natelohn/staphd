@@ -12,9 +12,8 @@ class StapherCreateForm(forms.ModelForm):
 		widgets = { 'qualifications': forms.CheckboxSelectMultiple()}
 
 
-	def __init__(self, auto_id, *args, **kwargs):
+	def __init__(self, *args, **kwargs):
 		super(StapherCreateForm, self).__init__(*args, **kwargs)
-		self.auto_id = auto_id 
 		self.fields['qualifications'].queryset = Qualification.objects.order_by('title')
 		
 	def clean_first_name(self):

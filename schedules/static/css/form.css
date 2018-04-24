@@ -12,7 +12,7 @@ label {
 	top: 275px;
 }
 
-#edit_first_name,  #edit_last_name {
+#id_first_name,  #id_last_name {
 	/* position */
 	position: absolute;
 	top: 40px;
@@ -25,13 +25,13 @@ label {
 }
 
 
-#edit_first_name {
+#id_first_name {
 	/* size */
 	width: 225px;
 
 }
 
-#edit_last_name {
+#id_last_name {
 	/* position */
 	left: 230px;
 
@@ -39,7 +39,7 @@ label {
 	width: 275px;
 }
 
-#edit_title {
+#id_title {
 	/* position */
 	position: absolute;
 	top: 95px;
@@ -52,28 +52,28 @@ label {
 	font-size: 1.75em;
 }
 
-label[for=edit_age], #edit_age, 
-label[for=edit_class_year], #edit_class_year, 
-label[for=edit_summers_worked], #edit_summers_worked,
-label[for=edit_gender], #edit_gender {
+label[for=id_age], #id_age, 
+label[for=id_class_year], #id_class_year, 
+label[for=id_summers_worked], #id_summers_worked,
+label[for=id_gender], #id_gender {
 	font-size: 1.5em;
 	display: block;
 }
 
 
-label[for=edit_age], #edit_age {
+label[for=id_age], #id_age {
 	/* position */
 	position: absolute;
 	top: 150px;
 
 }
 
-label[for=edit_age] {
+label[for=id_age] {
 	/* position */
 	left: 0px;
 }
 
-#edit_age {
+#id_age {
 	/* position */
 	left: 50px;
 
@@ -85,18 +85,18 @@ label[for=edit_age] {
 }
 
 
-label[for=edit_class_year], #edit_class_year {
+label[for=id_class_year], #id_class_year {
 	/* position */
 	position: absolute;
 	top: 185px;
 }
 
-label[for=edit_class_year] {
+label[for=id_class_year] {
 	/* position */
 	left: 0px;
 }
 
-#edit_class_year {
+#id_class_year {
 	/* position */
 	position: absolute;
 	left: 120px;
@@ -109,18 +109,18 @@ label[for=edit_class_year] {
 }
 
 
-label[for=edit_summers_worked], #edit_summers_worked {
+label[for=id_summers_worked], #id_summers_worked {
 	/* position */
 	position: absolute;
 	top: 225px;
 }
 
-label[for=edit_summers_worked] {
+label[for=id_summers_worked] {
 	/* position */
 	left: 0px;
 }
 
-#edit_summers_worked {
+#id_summers_worked {
 	/* position */
 	position: absolute;
 	left: 195px;
@@ -132,18 +132,18 @@ label[for=edit_summers_worked] {
 	text-align: center;
 }
 
-label[for=edit_gender], #edit_gender {
+label[for=id_gender], #id_gender {
 	/* position */
 	position: absolute;
 	top: 260px;
 }
 
-label[for=edit_gender] {
+label[for=id_gender] {
 	/* position */
 	left: 0px;
 }
 
-#edit_gender {
+#id_gender {
 	/* position */
 	position: absolute;
 	left: 85px;
@@ -152,13 +152,13 @@ label[for=edit_gender] {
 	text-align: center;
 }
 
-label[for=edit_qualifications_hardcoded], #edit_qualifications {
+label[for=qualifications_hardcoded], #id_qualifications {
 	/* position */
 	position: absolute;
 	left: 525px;
 }
 
-label[for=edit_qualifications_hardcoded] {
+label[for=qualifications_hardcoded] {
 	/* position */
 	font-size: 2em;
 	top: 0px;
@@ -170,7 +170,7 @@ label[for=edit_qualifications_hardcoded] {
 }
 
 
-#edit_qualifications {
+#id_qualifications {
 	/* position */
 	position: absolute;
 	
@@ -185,7 +185,7 @@ label[for=edit_qualifications_hardcoded] {
 	top: 40px;
 }
 
-#edit_qualifications li {
+#id_qualifications li {
 	/* position */
 	position: relative;
 

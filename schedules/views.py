@@ -280,9 +280,7 @@ class StapherCreate(LoginRequiredMixin, CreateView):
 
 	def get_form_kwargs(self):
 		kwargs = super(StapherCreate, self).get_form_kwargs()
-		kwargs['auto_id']= 'create_%s'
 		return kwargs
-
 
 class StapherUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/form.html'
@@ -301,7 +299,6 @@ class StapherUpdate(LoginRequiredMixin, UpdateView):
 
 	def get_form_kwargs(self):
 		kwargs = super(StapherUpdate, self).get_form_kwargs()
-		kwargs['auto_id']= 'edit_%s'
 		return kwargs
 
 	def get_queryset(self):
