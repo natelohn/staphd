@@ -7,8 +7,7 @@ from django.views.generic import TemplateView
 
 app_name = 'schedules'
 urlpatterns = [
-    url(r'^$', views.test_view, name='home'),
-    # url(r'^$', views.HomeView.as_view(), name='home'),
+    url(r'^$', views.HomeView.as_view(), name='home'),
 
     url(r'^download/$', views.DownloadView.as_view(), name='download'),
     url(r'^download/individual$', views.download_individual, name='download-individual'),

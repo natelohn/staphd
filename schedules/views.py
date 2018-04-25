@@ -24,11 +24,6 @@ from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Mas
 from .tasks import build_schedules_task, update_files_task
 
 
-def test_view(request):
-	return HttpResponse('The test worked!')
-
-
-
 class HomeView(LoginRequiredMixin, TemplateView):
 	template_name = 'home.html'
 
