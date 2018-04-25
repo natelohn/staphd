@@ -60,7 +60,7 @@ class Stapher(models.Model):
 	def full_name(self):
 		return f'{self.first_name} {self.last_name}'
 
-	# This method only works for SSC Staph.
+	# This method only works for SSC Staph. (those w/ off day qualifications listed below)
 	def get_off_day(self):
 		mon = Qualification.objects.get(title = 'sumo')
 		tue = Qualification.objects.get(title = 'motue')

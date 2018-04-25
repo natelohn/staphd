@@ -151,13 +151,30 @@ def get_people_not_worked_with(stapher, staphers, staphings, shifts_by_day, flag
 		not_worked_with_str = not_worked_with_str[:-2]
 	return [len(people_not_worked_with), not_worked_with_str]
 
+# Presumes the stapher has an off day qualification and 2 scheduled off day shifts. Will return 0 otherwise.
 def get_total_day_off_time(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
 	off_day = stapher.get_off_day()
-	last_shift_before_off_day = shifts_by_day[off_day - 1][-2]
-	first_shift_after_off_day = shifts_by_day[off_day + 1][0]
-	off_time_before = 24 - get_hours_between_times(datetime.time.min, last_shift_before_off_day.end)
-	off_time_after = get_hours_between_times(datetime.time.min, first_shift_after_off_day.start)
-	return [off_time_before + 24 + off_time_after]
+	if off_day >= 0:  # Stapher has an off day qualification
+		if shifts_by_day[off_day] and len(shifts_by_day[off_day]) > 0: # Stapher has 2 scheduled off day shifts
+			if len(shifts_by_day[off_day - 1]) > 1:
+				last_shift_before_off_day = shifts_by_day[off_day - 1][-2]
+			else:
+				last_shift_before_off_day = shifts_by_day[off_day - 1][-2]
+			if shifts_by_day[off_day + 1]:
+				first_shift_after_off_day = shifts_by_day[off_day + 1][0]
+			else:
+				first_shift_after_off_day = None
+
+			if last_shift_before_off_day:
+				off_time_before = 24 - get_hours_between_times(datetime.time.min, last_shift_before_off_day.end)
+			else:
+				off_time_before = 24
+			if first_shift_after_off_day:
+				off_time_after = get_hours_between_times(datetime.time.min, first_shift_after_off_day.start)
+			else:
+				off_time_after = 24
+			return [off_time_before + 24 + off_time_after]
+	return [0]
 
 # TODO: Apply this analytic
 def get_special_shift_success_rate(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
@@ -262,6 +279,7 @@ def get_analytics(staphers, staphings, flags, qualifications):
 		stapher_analytics = [stapher.full_name()]
 		shifts_by_day = stapher.shifts_by_day(staphings)
 		for function in funtions:
+			print(function)
 			stapher_analytics.extend(function(stapher, staphers, staphings, shifts_by_day, flags, qualifications))
 		analytics.append(stapher_analytics)
 	return analytics

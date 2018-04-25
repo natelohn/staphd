@@ -23,6 +23,7 @@ def update_files_task(self, schedule_id):
 	all_qualifications = Qualification.objects.all().order_by(Lower('title'))
 
 	# Set the amount of actions for the task to recieve later to use for percentage
+	# TODO: Dynamically get num_total_actions (?)
 	num_total_actions = (len(all_staphers) * 2) + ((len(all_masters) * 2) - 3) + 3
 	cache.set('num_actions_made', 0, None)
 	cache.set('num_total_actions', num_total_actions, None)
