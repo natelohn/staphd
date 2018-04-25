@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 SECRET_KEY = 'not_my_secret_key*$-%%not_my_secret_key*n&it0xg2lkf9!mz*&not_my_secret_key'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['staphd.herokuapp.com','127.0.0.0']
+ALLOWED_HOSTS = ['*']
 
 # Reccomended Chages from python3 manage.py check --deploy
 SECURE_CONTENT_TYPE_NOSNIFF = True
