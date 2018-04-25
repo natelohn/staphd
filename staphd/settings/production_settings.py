@@ -80,15 +80,13 @@ WSGI_APPLICATION = 'staphd.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'staphddb',
         'USER': 'natelohn',
         'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '',
+        'HOST': 'localhost'
     }
 }
 
@@ -139,7 +137,6 @@ USE_TZ = True
 # PostgreSQL Optimization
 client_encoding: 'UTF8'
 default_transaction_isolation: 'read committed'
-
 timezone: TIME_ZONE
 
 
