@@ -10,6 +10,7 @@
 		{% if success_message %}<p><strong>{{ success_message }}</strong></p>{% endif %}
 	</div>
 	<div id="update_excel_form">
+		<a class="button" href="{% url 'schedules:settings' %}">Settings</a><br></br>
 		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 		<form action="{% url 'schedules:update' %}" method="post">
 			{% csrf_token %}

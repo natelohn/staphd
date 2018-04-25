@@ -372,14 +372,15 @@ class ShiftList(LoginRequiredMixin, ListView):
 					explanations = set()
 					for s in all_staphings:
 						if query == s.stapher.first_name.lower() or query == s.stapher.last_name.lower() or query == s.stapher.full_name().lower():
+							print(s.stapher)
 							name_contains.append(s.shift)
-							explanation_str = f'	- {s.stapher.full_name()} is not working' if negate_query else f'- {s.stapher.full_name()} is working'
+							explanation_str = f'- {s.stapher.full_name()} is not working' if negate_query else f'- {s.stapher.full_name()} is working'
 							explanations.add(explanation_str)
 					if name_contains: query_explanation.extend(list(explanations))
 
 					# Search by Titles
 					title_contains = all_shifts.filter(title__icontains = query)
-					explanation_str = f'	- do not have titles containing \'{query}\'' if negate_query else f'- have titles containing \'{query}\''
+					explanation_str = f'- do not have titles containing \'{query}\'' if negate_query else f'- have titles containing \'{query}\''
 					if title_contains: query_explanation.append(explanation_str)
 
 					# Search by Days
@@ -412,6 +413,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 				filtered_shifts = list(set(filtered_shifts) & set(queryset))
 
 			all_shifts = filtered_shifts
+			if len(query_explanation) == 1: query_explanation = ['Result includes all shifts.'] 
 			cache.set('query_explanation', query_explanation, None)
 		
 		# If there is no query then we see if they have sorted the shifts and return the appr
@@ -445,9 +447,9 @@ class ShiftList(LoginRequiredMixin, ListView):
 	def get_sort_keys(self):
 		day_titles = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 		days = [{'title':day, 'sort':'days', 'value':i} for i, day in enumerate(day_titles)]
-		qualifications = [{'title':q.title, 'sort':'qualifications', 'value':q.id} for q in Qualification.objects.all().order_by('title')]
-		flags = [{'title':f.title, 'sort':'flags', 'value':f.id} for f in Flag.objects.all().order_by('title')]
-		staph = [{'title':s.full_name(), 'sort':'staphers', 'value':s.id} for s in Stapher.objects.all().order_by('first_name')]
+		qualifications = [{'title':q.title, 'sort':'qualifications', 'value':q.id} for q in Qualification.objects.all().order_by(Lower('title'))]
+		flags = [{'title':f.title, 'sort':'flags', 'value':f.id} for f in Flag.objects.all().order_by(Lower('title'))]
+		staph = [{'title':s.full_name(), 'sort':'staphers', 'value':s.id} for s in Stapher.objects.all().order_by(Lower('first_name'))]
 		key_dict = {'days':days, 'qualifications':qualifications, 'flags':flags, 'staphers':staph}
 		return key_dict
 

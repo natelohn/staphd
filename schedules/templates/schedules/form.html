@@ -20,12 +20,12 @@
 		<hr style="background-color: grey; height:1px; margin: 5px;">
 		{% if qualification_label_name %}
 			<label for="{{ qualification_label_name }}">Qualifications:
-				<a class="button" href="{% url 'schedules:qualification-create' %}">New Qualification</a>
+				<a class="button" href="{% url 'schedules:qualification-create' %}">Create New Qualification</a>
 			</label>
 		{% endif %}
 		{% if flag_label_name %}
 			<label for="{{ flag_label_name }}">Flags:
-				<a class="button" href="{% url 'schedules:flag-create' %}">New Flag</a>
+				<a class="button" href="{% url 'schedules:flag-create' %}">Create New Flag</a>
 			</label>
 		{% endif %}
 		<div id="form_div">

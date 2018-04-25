@@ -2,7 +2,7 @@ import datetime as dt
 from django import forms
 from django.db.models.functions import Lower
 
-from .models import Flag, Stapher, Shift, Qualification
+from .models import Flag, Stapher, Shift, Qualification, Staphing
 
 
 class StapherCreateForm(forms.ModelForm):
@@ -75,6 +75,15 @@ class StapherCreateForm(forms.ModelForm):
 		if not gender:
 			gender = 3
 		return gender
+
+	def clean_qualifications(self):
+		qualifications = self.cleaned_data.get("qualifications")
+		for s in Staphing.objects.filter(stapher = self.instance):
+			for q in s.shift.qualifications.all():
+				if q not in qualifications:
+					error_string = f"The {q} qualification is needed for {self.instance}'s scheduled shift {s.shift}. Add the {q} qualification or remove {s.shift} from {self.instance}'s schedule."
+					raise forms.ValidationError(error_string)
+		return qualifications
 
 class ShiftCreateForm(forms.ModelForm):
 	class Meta:
