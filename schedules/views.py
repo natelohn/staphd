@@ -28,8 +28,6 @@ class HomeView(LoginRequiredMixin, TemplateView):
 	template_name = 'home.html'
 
 	def get_context_data(self, *args, **kwargs):
-		cache.set("foo", "bar")
-		print(cache.get("foo"))
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		percent = 0
 		schedule_id = cache.get('schedule_id')
