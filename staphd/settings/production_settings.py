@@ -90,17 +90,9 @@ DATABASES = {
 }
 
 # Cache Configuration
-import urllib.parse
-import bmemcached
-import json
 CACHES = {
     'default': {
-        'BACKEND': 'django_bmemcached.memcached.BMemcached',
-        'LOCATION': os.environ.get('MEMCACHEDCLOUD_SERVERS').split(','),
-        'OPTIONS': {
-                'username': os.environ.get('MEMCACHEDCLOUD_USERNAME'),
-                'password': os.environ.get('MEMCACHEDCLOUD_PASSWORD')
-            }
+        'BACKEND': 'django_bmemcached.memcached.BMemcached'
     }
 }
 
