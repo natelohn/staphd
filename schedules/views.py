@@ -157,11 +157,21 @@ def track_state(request, *args, **kwargs):
 	task_id = cache.get('current_task_id')
 	print(f'Track State for {task_id}')
 	if request.is_ajax():
+		print(f'	Request is Ajax')
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
+			print(f'		Made it here')
 			task_id = request.POST['task_id']
+			print(f'			task_id -> {task_id}')
 			task = AsyncResult(task_id)
+			print(f'			task -> {task}')
 			data = task.result or task.state
+			print(f'			data -> {data}')
 			task_running = not task.ready() and not isinstance(data, str)
+			ntr = not task.ready()
+			nisstr = not isinstance(data, str)
+			print(f'			not task.ready() -> {ntr}')
+			print(f'			not isinstance(data, str) -> {nisstr}')
+			print(f'			task_running -> {task_running}')
 			if task_running:
 				data['running'] = task_running
 		else:
