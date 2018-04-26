@@ -7,11 +7,12 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'staphd.settings')
 
 app = Celery('staphd')
 
-app.conf.update(BROKER_URL=os.environ['REDIS_URL'], CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
-
 app.config_from_object('django.conf:settings')
 
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
+
+app.conf.update(BROKER_URL=os.environ['REDIS_URL'], CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
+print(os.environ['REDIS_URL'])
 
 @app.task(bind=True)
 def debug_task(self):
