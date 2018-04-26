@@ -24,7 +24,6 @@ SECRET_KEY = 'not_my_secret_key*$-%%not_my_secret_key*n&it0xg2lkf9!mz*&not_my_se
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = ['*']
 
 # Reccomended Chages from python3 manage.py check --deploy
