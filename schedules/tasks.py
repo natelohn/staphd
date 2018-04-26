@@ -42,26 +42,31 @@ def update_files_task(self, schedule_id):
 @app.task(bind=True, track_started=True)
 @shared_task(bind=True)
 def build_schedules_task(self):
-
+	print('		build_schedules_task called')
 	sorted_shifts = cache.get('sorted_shifts')
+	print(f'			sorted_shifts = {sorted_shifts}')
 	if cache.get('resort') or not sorted_shifts:
 		# Set the message for the front end
 		current_task.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
 		# Get the necessary info from the DB
 		all_shifts = Shift.objects.all()
 		all_staphers = Stapher.objects.all()
+		print(f'			get_sorted_shifts called')
 		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
 		cache.set('sorted_shifts', sorted_shifts, None)
 		cache.set('resort', False, None)
 
+	
 	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
-
+	print(f'			total_actions')
 
 	# Get the necessary info from the DB
 	settings = ScheduleSettings.objects.get()
 
 	# Do the task
+	print(f'			build_schedules_task called')
 	schedule = build_schedules(sorted_shifts, settings)
+	print(f'			schedule id = {schedule.id}')
 	cache.set('schedule_id', schedule.id, None)
 
 	# Delete the values needed to track progress

@@ -28,7 +28,6 @@ class HomeView(LoginRequiredMixin, TemplateView):
 	template_name = 'home.html'
 
 	def get_context_data(self, *args, **kwargs):
-		print('Test')
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		percent = 0
 		schedule_id = cache.get('schedule_id')
@@ -69,12 +68,15 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 @login_required
 def build_view(request):
+	print('build_view')
 	task_id = cache.get('current_task_id')
 	if task_id:
+		print('		task_id present')
 		task = AsyncResult(task_id)
 		data = task.result or task.state
 		# If there is a current running task show its progress
 		if 'PENDING' not in data:
+			print('		PENDING not in data')
 			return render(request,'schedules/progress.html', {'task_id':task_id})
 		# Delete the task from the cache
 		task_id = cache.set('current_task_id', None, 0)
@@ -126,15 +128,22 @@ def delete_schedule(request):
 @login_required
 @csrf_exempt
 def build_schedules(request):
+	print('build_schedules')
 	staphings = Staphing.objects.all()
 	if staphings:
+		print('		staphings present')
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
 	else:
+		print('		no staphings present')
 		task_id = cache.get('current_task_id')
 		if not task_id:
+			print('		no task_id')
 			task = build_schedules_task.delay()
+			print('		build_schedules_task call complete')
 			task_id = task.task_id
+			print(f'		task_id = {task_id}')
 			cache.set('current_task_id', task_id, None)
+			print(f'		task_id in cache = {cache.get('current_task_id')}')
 		request.session['task_id'] = task_id
 		context = {'task_id':task_id}
 		return render(request,'schedules/progress.html', context)
