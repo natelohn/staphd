@@ -19,6 +19,7 @@ python-dateutil==2.7.2
 python-memcached==1.59
 pytz==2017.3
 rabbitmq==0.2.0
+redis==2.10.6
 six==1.11.0
 tzdata==1.2016.8
 vine==1.1.4
