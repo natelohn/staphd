@@ -90,6 +90,9 @@ DATABASES = {
 }
 
 # Cache Configuration
+import os
+import json
+from urllib.parse import urlparse
 CACHES = {
     'default': {
         'BACKEND': 'django_bmemcached.memcached.BMemcached'
