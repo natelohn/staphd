@@ -90,7 +90,7 @@ DATABASES = {
 }
 
 # Cache Configuration
-import urlparse
+import urllib.parse
 import bmemcached
 import json
 CACHES = {
