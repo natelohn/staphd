@@ -139,11 +139,6 @@ default_transaction_isolation: 'read committed'
 timezone: TIME_ZONE
 
 
-BROKER_URL = 'amqp://guest:guest@localhost//'
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 STATIC_URL = '/static/'
@@ -193,4 +188,10 @@ LOGGING = {
     }
 }
 
+# App Configurations for Celery on Redis
+app.conf.update(BROKER_URL=os.environ['REDIS_URL'],
+                CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
 

@@ -119,7 +119,7 @@ def build_schedules(sorted_shifts, settings):
 							current_task.update_state(meta = meta)
 							
 					recommendations = recommendations[recommendations_used:]
-	print(f'			**all shift looped**')
+	print(f'			** all shift looped **')
 	# Update the frontend
 	percent = get_percent(len(staphings), total_actions)
 	meta = {'message':f'Saving Schedule', 'process_percent':percent}
