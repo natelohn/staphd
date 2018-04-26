@@ -165,6 +165,8 @@ def track_state(request, *args, **kwargs):
 			task = AsyncResult(task_id)
 			print(f'			task -> {task}')
 			data = task.result or task.state
+			print(f'			task.state -> {task.state}')
+			print(f'			task.result -> {task.result}')
 			print(f'			data -> {data}')
 			task_running = not task.ready() and not isinstance(data, str)
 			ntr = not task.ready()
