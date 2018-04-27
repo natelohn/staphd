@@ -3,7 +3,7 @@ import json
 import os
 
 from celery import current_task
-from celery.result import BaseAsyncResult
+from celery.result import AsyncResult
 from dateutil.parser import parse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -72,7 +72,7 @@ def build_view(request):
 	task_id = cache.get('current_task_id')
 	if task_id:
 		print('		task_id present')
-		task = BaseAsyncResult(task_id)
+		task = AsyncResult(task_id)
 		data = task.result or task.state
 		# If there is a current running task show its progress
 		if 'PENDING' not in data:
@@ -139,6 +139,8 @@ def build_schedules(request):
 		if not task_id:
 			print('		no task_id')
 			task = build_schedules_task.delay()
+			get = task.get()
+			print(f'			get from build-> {get}')
 			print('		build_schedules_task call complete')
 			task_id = task.task_id
 			print(f'		task_id = {task_id}')
@@ -162,7 +164,9 @@ def track_state(request, *args, **kwargs):
 			print(f'		Made it here')
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
-			task = BaseAsyncResult(task_id)
+			task = AsyncResult(task_id)
+			get = task.get()
+			print(f'			get -> {get}')
 			print(f'			task -> {task}')
 			data = task.result or task.state
 			print(f'			task.state -> {task.state}')
