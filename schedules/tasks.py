@@ -13,7 +13,7 @@ from .sort import get_sorted_shifts
 
 
 @app.task(bind=True, track_started=True)
-@shared_task(bind=True)
+@shared_task(bind=True, ignore_result=False)
 def update_files_task(self, schedule_id):
 	# Get necessary information from the DB
 	staphings = Staphing.objects.filter(schedule__id = schedule_id)
@@ -40,7 +40,7 @@ def update_files_task(self, schedule_id):
 
 
 @app.task(bind=True, track_started=True)
-@shared_task(bind=True)
+@shared_task(bind=True, ignore_result=False)
 def build_schedules_task(self):
 	print('		build_schedules_task called')
 	sorted_shifts = cache.get('sorted_shifts')
