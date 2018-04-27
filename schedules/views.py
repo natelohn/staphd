@@ -76,7 +76,7 @@ def build_view(request):
 	if False:
 		print('		task_id present')
 		task = app.AsyncResult(task_id)
-		get = task.get()
+		# get = task.get()
 		print(f'			get from build-> {get}')
 		data = task.result or task.state
 		# If there is a current running task show its progress
@@ -168,7 +168,7 @@ def track_state(request, *args, **kwargs):
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
 			task = app.AsyncResult(task_id)
-			get = task.get()
+			# get = task.get()
 			print(f'			get -> {get}')
 			print(f'			task -> {task}')
 			data = task.result or task.state
