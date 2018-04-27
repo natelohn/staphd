@@ -17,6 +17,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from operator import attrgetter
+from staphd.celery import app
 
 from .analytics import get_readable_time
 from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
@@ -72,7 +73,7 @@ def build_view(request):
 	task_id = cache.get('current_task_id')
 	if task_id:
 		print('		task_id present')
-		task = AsyncResult(task_id)
+		task = app.AsyncResult(task_id)
 		get = task.get()
 		print(f'			get from build-> {get}')
 		data = task.result or task.state
@@ -164,7 +165,7 @@ def track_state(request, *args, **kwargs):
 			print(f'		Made it here')
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
-			task = AsyncResult(task_id)
+			task = app.AsyncResult(task_id)
 			get = task.get()
 			print(f'			get -> {get}')
 			print(f'			task -> {task}')
