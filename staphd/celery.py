@@ -12,8 +12,6 @@ app.config_from_object('django.conf:settings')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 app.conf.update(BROKER_URL=os.environ['REDIS_URL'], CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
-print(os.environ['REDIS_URL'])
-print('				oh 			okay...')
 
 @app.task(bind=True)
 def debug_task(self):
