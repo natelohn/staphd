@@ -40,7 +40,7 @@ def update_files_task(self, schedule_id):
 
 
 @app.task(bind=True, track_started=True)
-@shared_task(bind=True, ignore_result=False)
+@shared_task(bind=True, ignore_result=False	)
 def build_schedules_task(self):
 	print('		build_schedules_task called')
 	sorted_shifts = cache.get('sorted_shifts')
