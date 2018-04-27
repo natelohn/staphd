@@ -73,6 +73,8 @@ def build_view(request):
 	if task_id:
 		print('		task_id present')
 		task = AsyncResult(task_id)
+		get = task.get()
+		print(f'			get from build-> {get}')
 		data = task.result or task.state
 		# If there is a current running task show its progress
 		if 'PENDING' not in data:
@@ -139,8 +141,6 @@ def build_schedules(request):
 		if not task_id:
 			print('		no task_id')
 			task = build_schedules_task.delay()
-			get = task.get()
-			print(f'			get from build-> {get}')
 			print('		build_schedules_task call complete')
 			task_id = task.task_id
 			print(f'		task_id = {task_id}')
