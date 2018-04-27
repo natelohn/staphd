@@ -70,7 +70,6 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 @login_required
 def build_view(request):
 	print('build_view')
-	task_id = cache.set('current_task_id', None, 0)
 	task_id = cache.get('current_task_id')
 	if task_id:
 		print('		task_id present')
