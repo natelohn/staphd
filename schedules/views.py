@@ -139,9 +139,10 @@ def build_schedules(request):
 		print('		staphings present')
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
 	else:
-		print('		no staphings present')
-		task_id = cache.get('current_task_id')
-		if not task_id:
+		# TODO: Add the below lines back
+		# print('		no staphings present')
+		# task_id = cache.get('current_task_id')
+		if True:
 			print('		no task_id')
 			task = build_schedules_task.delay()
 			print('		build_schedules_task call complete')
