@@ -12,8 +12,7 @@ from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
 
 
-@app.task(bind=True, track_started=True)
-@shared_task(bind=True, ignore_result=False)
+@app.task
 def test_task(self):
 	print('Task Happened!')
 	for i in range(0, 60):
