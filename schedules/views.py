@@ -159,9 +159,6 @@ def build_schedules(request):
 @login_required
 @csrf_exempt
 def track_state(request, *args, **kwargs):
-	tr = cache.get('test_result')
-	cache.set('test_result', tr + 1, 0)
-
 	""" A view to report the progress of a task to the user """
 	data = 'Fail'
 	task_id = cache.get('current_task_id')

@@ -15,10 +15,11 @@ from .sort import get_sorted_shifts
 @app.task(bind=True, track_started=True)
 @shared_task(bind=True, ignore_result=False)
 def test_task(self):
-	print('Task Worked!')
-	time.sleep(30)
-	cache.set('test_result', 'Avengers Assemble', 0)
-
+	print('Task Happened!')
+	for i in range(0, 60):
+		tr = cache.get('test_result')
+		cache.set('test_result', tr + 1, 0)
+		time.sleep(1)
 
 
 @app.task(bind=True, track_started=True)
