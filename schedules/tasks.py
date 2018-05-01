@@ -17,7 +17,7 @@ from .sort import get_sorted_shifts
 def test_task(self):
 	print('Task Worked!')
 	time.sleep(30)
-	test_result = cache.set('test_result', 'Avengers Assemble', 0)
+	cache.set('test_result', 'Avengers Assemble', 0)
 
 
 

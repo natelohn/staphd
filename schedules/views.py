@@ -158,6 +158,8 @@ def build_schedules(request):
 @login_required
 @csrf_exempt
 def track_state(request, *args, **kwargs):
+	cache.set('test_result', 'Avengers Assemble', 0)
+
 	""" A view to report the progress of a task to the user """
 	data = 'Fail'
 	task_id = cache.get('current_task_id')
