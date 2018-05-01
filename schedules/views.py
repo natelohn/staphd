@@ -70,6 +70,7 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 @login_required
 def build_view(request):
 	print('build_view')
+	cache.set('test_result', 1, 0)
 	# TODO: Add the below back
 	# task_id = cache.get('current_task_id')
 	# if task_id:
@@ -158,7 +159,8 @@ def build_schedules(request):
 @login_required
 @csrf_exempt
 def track_state(request, *args, **kwargs):
-	cache.set('test_result', 'Avengers Assemble', 0)
+	tr = cache.get('test_result')
+	cache.set('test_result', tr + 1, 0)
 
 	""" A view to report the progress of a task to the user """
 	data = 'Fail'
