@@ -9,7 +9,6 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-import djcelery
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -44,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "djcelery"
 ]
 
 MIDDLEWARE = [
@@ -92,7 +90,6 @@ DATABASES = {
 }
 
 # Cache Configuration
-import os
 import json
 from urllib.parse import urlparse
 CACHES = {
@@ -108,7 +105,6 @@ CACHES = {
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -196,22 +192,3 @@ LOGGING = {
         },
     }
 }
-
-
-# App Configurations for Celery on RabbitMB
-djcelery.setup_loader()
-
-
-BROKER_URL = os.environ.get("CLOUDAMQP_URL", "django://")
-BROKER_POOL_LIMIT = 1
-BROKER_CONNECTION_MAX_RETRIES = None
-
-CELERY_TASK_SERIALIZER = "json"
-CELERY_ACCEPT_CONTENT = ["json", "msgpack"]
-CELERY_RESULT_SERIALIZER = 'json'
-CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
-
-if BROKER_URL == "django://":
-    INSTALLED_APPS += ("kombu.transport.django",)
-
-
