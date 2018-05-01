@@ -13,7 +13,7 @@ from .sort import get_sorted_shifts
 
 
 @app.task
-def test_task(self):
+def test_task():
 	print('Task Happened!')
 	for i in range(0, 60):
 		tr = cache.get('test_result')
