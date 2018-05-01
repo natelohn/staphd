@@ -16,8 +16,8 @@ from .sort import get_sorted_shifts
 @shared_task(bind=True, ignore_result=False)
 def test_task(self):
 	print('Task Worked!')
-	time.sleep(10)
-	return 2
+	time.sleep(30)
+	test_result = cache.set('test_result', 'Avengers Assemble', 0)
 
 
 

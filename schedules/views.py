@@ -22,7 +22,7 @@ from staphd.celery import app
 from .analytics import get_readable_time
 from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
-from .tasks import build_schedules_task, update_files_task
+from .tasks import build_schedules_task, update_files_task, test_task
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -144,7 +144,7 @@ def build_schedules(request):
 		# task_id = cache.get('current_task_id')
 		if True:
 			print('		no task_id')
-			task = build_schedules_task.delay()
+			task = test_task.delay()
 			print('		build_schedules_task call complete')
 			task_id = task.task_id
 			print(f'		task_id = {task_id}')
@@ -165,6 +165,10 @@ def track_state(request, *args, **kwargs):
 	if request.is_ajax():
 		print(f'	Request is Ajax')
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
+			test_result = cache.get('test_result')
+			print(f'		test_result = {test_result}')
+
+
 			print(f'		Made it here')
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
