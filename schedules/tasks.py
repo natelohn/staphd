@@ -12,8 +12,8 @@ from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
 
 
-@app.task(bind=True, track_started=True)
-def test_task(self):
+@shared_task()
+def test_task():
 	print('Task Happened!')
 	return 'Hulk Smash'
 
