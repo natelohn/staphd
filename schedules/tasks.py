@@ -13,7 +13,7 @@ from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
 
 
-@shared_task(ignore_result=False)
+@task(bind=True, track_started=True)
 def test_task():
 	for i in range(0, 15):
 		result = 'Hulk Smash: ' + str(i)
