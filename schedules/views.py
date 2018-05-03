@@ -146,7 +146,7 @@ def build_schedules(request):
 		if True:
 			print('		no task_id')
 			task = test_task.delay()
-			print(task.name)
+			print(test_task.name)
 			print('		test_task call complete')
 			# print('		build_schedules_task call complete')
 
