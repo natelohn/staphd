@@ -70,7 +70,8 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 @login_required
 def build_view(request):
 	print('build_view')
-	print(f' 			REDIS URL = {os.environ['REDIS_URL']}')
+	rurl = os.environ['REDIS_URL']
+	print(f' 			REDIS URL = {rurl}')
 	cache.set('test_result', 1, 0)
 	# TODO: Add the below back
 	# task_id = cache.get('current_task_id')
