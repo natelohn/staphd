@@ -15,10 +15,7 @@ from .sort import get_sorted_shifts
 @app.task
 def test_task():
 	print('Task Happened!')
-	for i in range(0, 60):
-		tr = cache.get('test_result')
-		cache.set('test_result', tr + 1, 0)
-		time.sleep(1)
+	return 'Hulk Smash'
 
 
 @app.task(bind=True, track_started=True)
@@ -84,8 +81,4 @@ def build_schedules_task(self):
 
 	
 	
-
-
-
-
 
