@@ -14,7 +14,7 @@ from .sort import get_sorted_shifts
 
 
 @task(bind=True, track_started=True)
-def test_task():
+def test_task(self):
 	for i in range(0, 15):
 		result = 'Hulk Smash: ' + str(i)
 		cache.set('test_result', result, 0)
