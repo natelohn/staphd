@@ -13,7 +13,7 @@ from .sort import get_sorted_shifts
 
 
 @app.task(bind=True)
-def test_task():
+def test_task(self):
 	print('Task Happened!')
 	return 'Hulk Smash'
 
