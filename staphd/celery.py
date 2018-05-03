@@ -1,20 +1,23 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 from celery import Celery
 from django.conf import settings
 import os
 
+# set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'staphd.settings')
 
 app = Celery('staphd')
 
-app.config_from_object('django.conf:settings')
+# Using a string here means the worker don't have to serialize
+# the configuration object to child processes.
+# - namespace='CELERY' means all celery-related configuration keys
+#   should have a `CELERY_` prefix.
+app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
-CELERY_TASK_SERIALIZER = 'json'
-
 # Configuration w/ REDIS
-app.conf.update(BROKER_URL=os.environ['REDIS_URL'], CELERY_RESULT_BACKEND=os.environ['REDIS_URL'])
+#  :::: TODO :::::
 
 @app.task(bind=True)
 def debug_task(self):

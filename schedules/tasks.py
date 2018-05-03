@@ -1,5 +1,6 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 from celery import shared_task, current_task
+from celery.decorators import task
 from django.core.cache import cache
 from django.db.models.functions import Lower
 from staphd.celery import app
@@ -18,7 +19,7 @@ def test_task():
 	return 'Hulk Smash'
 
 
-@app.task(bind=True, track_started=True)
+@task(bind=True, track_started=True)
 @shared_task(bind=True, ignore_result=False)
 def update_files_task(self, schedule_id):
 	# Get necessary information from the DB
@@ -45,7 +46,7 @@ def update_files_task(self, schedule_id):
 	cache.set('current_task_id', None, 0)
 
 
-@app.task(bind=True, track_started=True)
+@task(bind=True, track_started=True)
 @shared_task(bind=True, ignore_result=False	)
 def build_schedules_task(self):
 	print('		build_schedules_task called')
