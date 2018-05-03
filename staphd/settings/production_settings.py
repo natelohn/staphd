@@ -195,10 +195,8 @@ LOGGING = {
 
 
 # Configuration w/ REDIS
-for key in os.environ.keys():
-    print(f'        key = {key}')
-CELERY_BROKER_URL = os.environ['REDIS_URL']
-CELERY_RESULT_BACKEND = os.environ['REDIS_URL']
+CELERY_BROKER_URL = os.environ['HEROKU_REDIS_COPPER_URL']
+CELERY_RESULT_BACKEND = os.environ['HEROKU_REDIS_COPPER_URL']
 
 # Celery Settings
 CELERY_ACCEPT_CONTENT = ['application/json']
