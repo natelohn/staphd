@@ -15,8 +15,10 @@ from .sort import get_sorted_shifts
 
 @shared_task(ignore_result=False)
 def test_task():
-	print('Task Happened!')
-	return 'Hulk Smash'
+	for i in range(0, 15):
+		result = 'Hulk Smash: ' + str(i)
+		cache.set('test_result', result, 0)
+		time.sleep(0.5)
 
 
 @task(bind=True, track_started=True)

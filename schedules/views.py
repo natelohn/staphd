@@ -150,11 +150,6 @@ def build_schedules(request):
 			print('		test_task call complete')
 			# print('		build_schedules_task call complete')
 
-			# FOR TESTING ## FOR TESTING ## FOR TESTING #
-			result = task.get()
-			print(f'		Result = {result}')
-			# FOR TESTING ## FOR TESTING ## FOR TESTING #
-
 			task_id = task.task_id
 			print(f'		task_id = {task_id}')
 			cache.set('current_task_id', task_id, None)
