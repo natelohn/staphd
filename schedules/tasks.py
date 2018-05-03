@@ -12,7 +12,7 @@ from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
 
 
-@shared_task(bind=True, track_started=True)
+@shared_task(ignore_result=False)
 def test_task(self):
 	print('Task Happened!')
 	return 'Hulk Smash'
