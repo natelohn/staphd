@@ -14,11 +14,10 @@ from .sort import get_sorted_shifts
 
 
 @task(bind=True, track_started=True)
+@shared_task(bind=True, ignore_result=False)
 def test_task(self):
-	for i in range(0, 15):
-		result = 'Hulk Smash: ' + str(i)
-		cache.set('test_result', result, 0)
-		time.sleep(0.5)
+	result = 'Hulk Smash: ' + str(i)
+	cache.set('test_result', result, 0)
 
 
 @task(bind=True, track_started=True)
