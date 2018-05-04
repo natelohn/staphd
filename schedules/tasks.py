@@ -13,12 +13,6 @@ from .models import Settings as ScheduleSettings
 from .sort import get_sorted_shifts
 
 
-@task(bind=True, track_started=True)
-@shared_task(bind=True, ignore_result=False)
-def test_task(self):
-	result = 'Hulk Smash:'
-	cache.set('test_result', result, 0)
-
 
 @task(bind=True, track_started=True)
 @shared_task(bind=True, ignore_result=False)

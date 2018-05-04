@@ -22,7 +22,7 @@ from staphd.celery import app
 from .analytics import get_readable_time
 from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
-from .tasks import build_schedules_task, update_files_task, test_task
+from .tasks import build_schedules_task, update_files_task
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -70,15 +70,12 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 @login_required
 def build_view(request):
 	print('build_view')
-	cache.set('test_result', 1, 0)
+	cache.set('test_result', None, 1)
 	# TODO: Add the below back
-	# task_id = cache.get('current_task_id')
-	# if task_id:
-	if False:
+	task_id = cache.get('current_task_id')
+	if task_id:
 		print('		task_id present')
 		task = app.AsyncResult(task_id)
-		# get = task.get()
-		print(f'			get from build-> {get}')
 		data = task.result or task.state
 		# If there is a current running task show its progress
 		if 'PENDING' not in data:
@@ -141,15 +138,12 @@ def build_schedules(request):
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
 	else:
 		# TODO: Add the below lines back
-		# print('		no staphings present')
-		# task_id = cache.get('current_task_id')
-		if True:
+		print('		no staphings present')
+		task_id = cache.get('current_task_id')
+		if not task_id:
 			print('		no task_id')
-			task = test_task.delay()
-			print(test_task.name)
-			print('		test_task call complete')
-			# print('		build_schedules_task call complete')
-
+			task = build_schedules_task.delay()
+			print('		build_schedules_task call complete')
 			task_id = task.task_id
 			print(f'		task_id = {task_id}')
 			cache.set('current_task_id', task_id, None)
@@ -165,7 +159,7 @@ def track_state(request, *args, **kwargs):
 	""" A view to report the progress of a task to the user """
 	data = 'Fail'
 	task_id = cache.get('current_task_id')
-	print(f'Track State for {task_id}')
+	print(f'Track State for Task: {task_id}')
 	if request.is_ajax():
 		print(f'	Request is Ajax')
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
