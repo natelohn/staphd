@@ -72,6 +72,7 @@ def build_schedules_task(self):
 	cache.set('schedule_id', schedule.id, None)
 
 	# Delete the values needed to track progress
+	cache.set('num_actions_made', None, 0)
 	cache.set('num_total_actions', None, 0)
 	cache.set('current_task_id', None, 0)
 
