@@ -1,0 +1,344 @@
+[
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"fountain-specialist"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"kids-group-coordinator"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"photo"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"artists"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"play"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"menehunes"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"individual-instructor-coordinator"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"town-run"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"female"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"odo"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"chicken"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"improv"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"arts"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"yoga"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"hiking"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"returner"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"tennis"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"ski-dock-head"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"sports"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"fountain"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"munchkins"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"opho"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"music"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"boat-dock-coordinator"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"astrocruise"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"greeting"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"omelet-bar"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"office"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"male"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"midorees"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"boat-dock"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"snoopers"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"hobart"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"climbing"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"kids-naturalist"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"icom"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"teens"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"lifeguarding"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"theater"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"sailing"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"naturalist"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"rowing"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"mountain-biking"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"meal-head"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"volleyball"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"ski-dock"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"crafts"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"yahoos"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"wine"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"musical"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"boatster"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"suaves"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"sumo"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"motue"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"tueway"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"wethur"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"stirfry"
+		}
+	}
+]

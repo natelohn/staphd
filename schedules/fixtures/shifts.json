@@ -1,0 +1,10311 @@
+[
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:30",
+			"end":"9:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:45",
+			"end":"9:30",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"8:15",
+			"end":"10:15",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:30",
+			"end":"9:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:45",
+			"end":"9:30",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"8:15",
+			"end":"10:15",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:30",
+			"end":"9:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:45",
+			"end":"9:30",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"8:15",
+			"end":"10:15",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:30",
+			"end":"9:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:45",
+			"end":"9:30",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"8:15",
+			"end":"10:15",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:30",
+			"end":"9:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:45",
+			"end":"9:30",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"8:15",
+			"end":"10:15",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:30",
+			"end":"9:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:45",
+			"end":"9:30",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"8:15",
+			"end":"10:15",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:30",
+			"end":"9:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"7:45",
+			"end":"9:30",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Breakfast",
+			"flags":[428,417,364],
+			"start":"8:15",
+			"end":"10:15",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"11",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"18:00",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"11",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"18:00",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"11",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"18:00",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"11",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"18:00",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"11",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"18:00",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"8",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"17:30",
+			"end":"19:00",
+			"workers_needed":"8",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"18:00",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Dinner",
+			"flags":[394,417,364],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"11",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:45",
+			"end":"13:00",
+			"workers_needed":"8",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"12:00",
+			"end":"14:00",
+			"workers_needed":"5",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:45",
+			"end":"13:00",
+			"workers_needed":"4",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"12:00",
+			"end":"14:00",
+			"workers_needed":"4",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:45",
+			"end":"13:00",
+			"workers_needed":"8",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"12:00",
+			"end":"14:00",
+			"workers_needed":"5",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:45",
+			"end":"13:00",
+			"workers_needed":"8",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"12:00",
+			"end":"14:00",
+			"workers_needed":"5",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:45",
+			"end":"13:00",
+			"workers_needed":"4",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"12:00",
+			"end":"14:00",
+			"workers_needed":"4",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"11:45",
+			"end":"13:00",
+			"workers_needed":"8",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lunch",
+			"flags":[355,417,364],
+			"start":"12:00",
+			"end":"14:00",
+			"workers_needed":"5",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Breakfast Head",
+			"flags":[418,419,417,364,428],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Breakfast Head",
+			"flags":[418,419,417,364,428],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Breakfast Head",
+			"flags":[418,419,417,364,428],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Breakfast Head",
+			"flags":[418,419,417,364,428],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Breakfast Head",
+			"flags":[418,419,417,364,428],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Breakfast Head",
+			"flags":[418,419,417,364,428],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Breakfast Head",
+			"flags":[418,419,417,364,428],
+			"start":"6:45",
+			"end":"10:15",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lunch Head",
+			"flags":[418,420,417,364,355],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lunch Head",
+			"flags":[418,420,417,364,355],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lunch Head",
+			"flags":[418,420,417,364,355],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lunch Head",
+			"flags":[418,420,417,364,355],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lunch Head",
+			"flags":[418,420,417,364,355],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lunch Head",
+			"flags":[418,420,417,364,355],
+			"start":"11:15",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Dinner Head",
+			"flags":[418,421,417,364,394],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dinner Head",
+			"flags":[418,421,417,364,394],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Dinner Head",
+			"flags":[418,421,417,364,394],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Dinner Head",
+			"flags":[418,421,417,364,394],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dinner Head",
+			"flags":[418,421,417,364,394],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dinner Head",
+			"flags":[418,421,417,364,394],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Dinner Head",
+			"flags":[418,421,417,364,394],
+			"start":"17:15",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[217],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Artists Beffa",
+			"flags":[399,359],
+			"start":"16:30",
+			"end":"17:00",
+			"workers_needed":"3",
+			"qualifications":[177],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[211,204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Boat Dock",
+			"flags":[413,378],
+			"start":"19:00",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[204],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"16:00",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"10:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"12:30",
+			"end":"14:30",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"21:00",
+			"end":"22:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"21:15",
+			"end":"22:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"21:00",
+			"end":"22:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"14:30",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"2",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"10:30",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"20:00",
+			"end":"22:15",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"20:15",
+			"end":"21:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:00",
+			"end":"16:30",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:15",
+			"end":"15:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"19:30",
+			"end":"20:15",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"17:15",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:30",
+			"end":"16:30",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"20:15",
+			"end":"22:15",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"21:00",
+			"end":"22:15",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"12:30",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"20:00",
+			"end":"21:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"21:00",
+			"end":"22:15",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:00",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"9:30",
+			"end":"11:15",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"20:30",
+			"end":"22:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"13:00",
+			"end":"14:30",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"17:00",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:30",
+			"end":"16:30",
+			"workers_needed":"2",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"21:45",
+			"end":"22:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"21:00",
+			"end":"22:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"14:15",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"21:00",
+			"end":"22:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"16:45",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"16:30",
+			"end":"17:15",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"16:00",
+			"end":"16:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:30",
+			"end":"16:30",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"21:00",
+			"end":"22:00",
+			"workers_needed":"2",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"21:15",
+			"end":"22:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"17:00",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"16:00",
+			"end":"17:30",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain Wks2/6/10",
+			"flags":[346,379,417],
+			"start":"21:00",
+			"end":"23:15",
+			"workers_needed":"4",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain Wks4/8/12",
+			"flags":[346,379,417],
+			"start":"21:00",
+			"end":"23:15",
+			"workers_needed":"4",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"2",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain Wks5/9/13",
+			"flags":[346,379,417],
+			"start":"21:00",
+			"end":"23:15",
+			"workers_needed":"4",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"14:30",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"14:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain Wks3/7/11",
+			"flags":[346,379,417],
+			"start":"21:00",
+			"end":"23:15",
+			"workers_needed":"5",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"20:45",
+			"end":"23:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"20:45",
+			"end":"22:45",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Fountain",
+			"flags":[417,379],
+			"start":"20:45",
+			"end":"22:00",
+			"workers_needed":"1",
+			"qualifications":[193],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"HK/Staph Meeting",
+			"flags":[372],
+			"start":"9:30",
+			"end":"14:30",
+			"workers_needed":"46",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"HK/Staph Meeting",
+			"flags":[372],
+			"start":"10:30",
+			"end":"14:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"HK/Staph Meeting",
+			"flags":[372],
+			"start":"10:15",
+			"end":"14:30",
+			"workers_needed":"6",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"HK/Staph Meeting",
+			"flags":[372],
+			"start":"11:00",
+			"end":"14:30",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"CSPs/Slunch",
+			"flags":[372],
+			"start":"13:30",
+			"end":"14:30",
+			"workers_needed":"4",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"ICOM BEFFA",
+			"flags":[443,359],
+			"start":"12:00",
+			"end":"12:30",
+			"workers_needed":"8",
+			"qualifications":[209],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Intro Skits",
+			"flags":[417,414],
+			"start":"20:00",
+			"end":"21:00",
+			"workers_needed":"56",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Intro Skits",
+			"flags":[417,414],
+			"start":"20:00",
+			"end":"20:45",
+			"workers_needed":"5",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Lifeguarding",
+			"flags":[378,389],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[211],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"16:00",
+			"end":"17:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"10:00",
+			"end":"11:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"9:45",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"9:45",
+			"end":"10:30",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"10:45",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"16:00",
+			"end":"17:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"14:45",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"10:15",
+			"end":"11:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"10:30",
+			"end":"11:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"15:45",
+			"end":"17:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"10:30",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"LM",
+			"flags":[349,417],
+			"start":"15:45",
+			"end":"17:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Heathers Restock",
+			"flags":[410],
+			"start":"16:00",
+			"end":"16:30",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Faculty Speaker Setup",
+			"flags":[410],
+			"start":"15:30",
+			"end":"15:45",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Munchkins/XR BR Clean",
+			"flags":[410],
+			"start":"9:30",
+			"end":"10:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"RC/Heathers BR Clean",
+			"flags":[410],
+			"start":"9:30",
+			"end":"11:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Faculty Cabin Clean",
+			"flags":[410],
+			"start":"10:30",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Wall Maintenance",
+			"flags":[410],
+			"start":"9:30",
+			"end":"11:30",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Faculty Speaker Setup",
+			"flags":[410],
+			"start":"9:30",
+			"end":"9:45",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"C+R",
+			"flags":[410],
+			"start":"21:30",
+			"end":"22:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Odo Beffa",
+			"flags":[373,359],
+			"start":"8:30",
+			"end":"9:00",
+			"workers_needed":"4",
+			"qualifications":[183],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Opho Beffa",
+			"flags":[359,380],
+			"start":"21:00",
+			"end":"21:30",
+			"workers_needed":"4",
+			"qualifications":[195],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Parking EVEN",
+			"flags":[346,424,378],
+			"start":"14:30",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Parking ODD",
+			"flags":[346,424,378],
+			"start":"14:30",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Parking",
+			"flags":[378,424],
+			"start":"16:00",
+			"end":"17:15",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Parking",
+			"flags":[378,424],
+			"start":"17:15",
+			"end":"18:30",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Athletics Beffa",
+			"flags":[407,359],
+			"start":"8:30",
+			"end":"9:00",
+			"workers_needed":"5",
+			"qualifications":[192],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Off Day",
+			"flags":[441,393],
+			"start":"16:00",
+			"end":"23:30",
+			"workers_needed":"13",
+			"qualifications":[226],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Off Day",
+			"flags":[441,393],
+			"start":"6:00",
+			"end":"23:30",
+			"workers_needed":"13",
+			"qualifications":[226],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Off Day",
+			"flags":[441,393],
+			"start":"16:00",
+			"end":"23:30",
+			"workers_needed":"13",
+			"qualifications":[227],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Off Day",
+			"flags":[441,393],
+			"start":"6:00",
+			"end":"23:30",
+			"workers_needed":"13",
+			"qualifications":[227],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Off Day",
+			"flags":[441,393],
+			"start":"16:00",
+			"end":"23:30",
+			"workers_needed":"11",
+			"qualifications":[228],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Off Day",
+			"flags":[441,393],
+			"start":"6:00",
+			"end":"23:30",
+			"workers_needed":"11",
+			"qualifications":[228],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Off Day",
+			"flags":[441,393],
+			"start":"16:00",
+			"end":"23:30",
+			"workers_needed":"13",
+			"qualifications":[229],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Off Day",
+			"flags":[441,393],
+			"start":"6:00",
+			"end":"23:30",
+			"workers_needed":"13",
+			"qualifications":[229],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Off Day",
+			"flags":[441,393],
+			"start":"16:00",
+			"end":"23:30",
+			"workers_needed":"11",
+			"qualifications":[230],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Off Day",
+			"flags":[441,393],
+			"start":"6:00",
+			"end":"23:30",
+			"workers_needed":"11",
+			"qualifications":[230],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Art Closet Clean",
+			"flags":[402,410],
+			"start":"8:15",
+			"end":"9:15",
+			"workers_needed":"1",
+			"qualifications":[186],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Art",
+			"flags":[402,391],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[186],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Art Boatster",
+			"flags":[402,391,378,422],
+			"start":"13:45",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[186,224],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Art",
+			"flags":[402,391],
+			"start":"9:15",
+			"end":"12:45",
+			"workers_needed":"1",
+			"qualifications":[186],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Art",
+			"flags":[402,391],
+			"start":"13:45",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[186],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Welcome Board EVEN",
+			"flags":[402,391,346],
+			"start":"10:45",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[186],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Family Art",
+			"flags":[402,391],
+			"start":"13:45",
+			"end":"16:15",
+			"workers_needed":"1",
+			"qualifications":[186],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Art",
+			"flags":[402,391],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[186],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Art",
+			"flags":[402,391],
+			"start":"13:45",
+			"end":"16:15",
+			"workers_needed":"1",
+			"qualifications":[186],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Art",
+			"flags":[402,391],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[186],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Art Social",
+			"flags":[402,391],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[186],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Morning SUP",
+			"flags":[436,413,391],
+			"start":"7:30",
+			"end":"8:30",
+			"workers_needed":"1",
+			"qualifications":[197],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boat Dock Maint",
+			"flags":[436,413,391],
+			"start":"17:30",
+			"end":"18:30",
+			"workers_needed":"1",
+			"qualifications":[197],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boat Dock Maint",
+			"flags":[436,413,391],
+			"start":"10:30",
+			"end":"11:30",
+			"workers_needed":"1",
+			"qualifications":[197],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Boat Dock",
+			"flags":[436,413,391],
+			"start":"15:00",
+			"end":"17:00",
+			"workers_needed":"2",
+			"qualifications":[197],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Chicken",
+			"flags":[374,391,417,370],
+			"start":"9:00",
+			"end":"13:30",
+			"workers_needed":"2",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Chicken",
+			"flags":[374,391,417,370],
+			"start":"9:00",
+			"end":"13:30",
+			"workers_needed":"2",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Chicken",
+			"flags":[374,391,417,370],
+			"start":"9:00",
+			"end":"13:30",
+			"workers_needed":"2",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Chicken",
+			"flags":[374,391,417,370],
+			"start":"9:00",
+			"end":"13:30",
+			"workers_needed":"2",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Chicken",
+			"flags":[374,391,417,370],
+			"start":"9:00",
+			"end":"13:30",
+			"workers_needed":"2",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Chicken",
+			"flags":[374,391,417,370],
+			"start":"9:00",
+			"end":"13:30",
+			"workers_needed":"2",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Chicken",
+			"flags":[374,391,417,370],
+			"start":"9:00",
+			"end":"13:30",
+			"workers_needed":"4",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Breakfast Chef",
+			"flags":[374,391,417,367],
+			"start":"7:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Breakfast Chef",
+			"flags":[374,391,417,367],
+			"start":"7:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Breakfast Chef",
+			"flags":[374,391,417,367],
+			"start":"7:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Breakfast Chef",
+			"flags":[374,391,417,367],
+			"start":"7:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Breakfast Chef",
+			"flags":[374,391,417,367],
+			"start":"7:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Breakfast Chef",
+			"flags":[374,391,417,367],
+			"start":"7:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Breakfast Chef",
+			"flags":[374,391,417,367],
+			"start":"7:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Chicken",
+			"flags":[338,374,391,417],
+			"start":"16:30",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Chicken",
+			"flags":[338,374,391,417],
+			"start":"16:30",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Chicken",
+			"flags":[338,374,391,417],
+			"start":"16:30",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Chicken",
+			"flags":[338,374,391,417],
+			"start":"16:30",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Chicken",
+			"flags":[338,374,391,417],
+			"start":"16:30",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Chicken",
+			"flags":[338,374,391,417],
+			"start":"16:30",
+			"end":"20:00",
+			"workers_needed":"3",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Chicken",
+			"flags":[338,374,391,417],
+			"start":"16:30",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Chicken!",
+			"flags":[338,374,391,417],
+			"start":"16:30",
+			"end":"20:00",
+			"workers_needed":"2",
+			"qualifications":[184],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Wall Set Up",
+			"flags":[442,378,410],
+			"start":"9:30",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Open Climb",
+			"flags":[442,378,391],
+			"start":"10:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Suaves Climb",
+			"flags":[442,378,391],
+			"start":"12:45",
+			"end":"14:30",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Yahoos Climb",
+			"flags":[442,378,391],
+			"start":"14:30",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Wall Clean",
+			"flags":[442,378,410],
+			"start":"16:00",
+			"end":"16:30",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Wall Set Up",
+			"flags":[442,378,410],
+			"start":"8:30",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Beginner Climb",
+			"flags":[442,378,391],
+			"start":"9:00",
+			"end":"10:30",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Open Climb",
+			"flags":[442,378,391],
+			"start":"10:30",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Teen Climb",
+			"flags":[442,378,391],
+			"start":"13:00",
+			"end":"14:15",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Wall Clean",
+			"flags":[442,378,410],
+			"start":"14:15",
+			"end":"14:45",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Wall Set Up",
+			"flags":[442,378,410],
+			"start":"10:15",
+			"end":"10:45",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Mido Climb",
+			"flags":[442,378,391],
+			"start":"10:45",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Open Climb",
+			"flags":[442,378,391],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Hunes Climb",
+			"flags":[442,378,391],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Wall Clean",
+			"flags":[442,378,410],
+			"start":"15:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Wall Maintenance",
+			"flags":[442,378,391],
+			"start":"9:30",
+			"end":"11:30",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Wall Set Up",
+			"flags":[442,378,410],
+			"start":"9:30",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Open Climb",
+			"flags":[442,378,391],
+			"start":"10:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Competitive Climbing",
+			"flags":[442,378,391],
+			"start":"13:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Wall Clean",
+			"flags":[442,378,410],
+			"start":"15:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[207],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Art Closet Clean",
+			"flags":[410,439],
+			"start":"8:15",
+			"end":"9:15",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Crafts",
+			"flags":[391,439],
+			"start":"9:15",
+			"end":"11:30",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Snooper Crafts",
+			"flags":[391,439],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Puppet Crafts",
+			"flags":[391,439],
+			"start":"19:30",
+			"end":"21:00",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Crafts",
+			"flags":[391,439],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Welcome Board ODD",
+			"flags":[346,391,439],
+			"start":"17:00",
+			"end":"18:00",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Family Crafts",
+			"flags":[391,439],
+			"start":"13:45",
+			"end":"16:15",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Crafts",
+			"flags":[391,439],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Crafts",
+			"flags":[391,439],
+			"start":"13:45",
+			"end":"16:15",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Munchkin Crafts",
+			"flags":[391,439],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Art Social",
+			"flags":[391,439],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[220],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain Wks 2/5/8/11",
+			"flags":[366,379,346,391],
+			"start":"21:00",
+			"end":"23:15",
+			"workers_needed":"1",
+			"qualifications":[174],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain Wks 3/6/9/12",
+			"flags":[366,379,346,391],
+			"start":"21:00",
+			"end":"23:15",
+			"workers_needed":"1",
+			"qualifications":[174],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Fountain Wks 4/7/10/13",
+			"flags":[366,379,346,391],
+			"start":"21:00",
+			"end":"23:15",
+			"workers_needed":"1",
+			"qualifications":[174],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hiking Meeting",
+			"flags":[378,391,398],
+			"start":"10:30",
+			"end":"11:00",
+			"workers_needed":"2",
+			"qualifications":[188],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Medium Hike",
+			"flags":[378,391,348,398],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[188],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Medium Hike",
+			"flags":[378,391,348,398],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[188],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Orienteering",
+			"flags":[378,391,398],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[188],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Long Hike",
+			"flags":[378,391,348,398],
+			"start":"8:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[188],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Medium Hike",
+			"flags":[378,391,348,398],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[188],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Check-In",
+			"flags":[426,391],
+			"start":"13:00",
+			"end":"13:30",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"IIC",
+			"flags":[426,391],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"DISCO B PHOTO",
+			"flags":[426,391],
+			"start":"19:30",
+			"end":"21:30",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Odo Beffa",
+			"flags":[426,391,359],
+			"start":"8:30",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"IIC",
+			"flags":[426,391],
+			"start":"10:00",
+			"end":"11:30",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"IIC",
+			"flags":[426,391],
+			"start":"13:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"IIC",
+			"flags":[426,391],
+			"start":"13:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Manager's Meeting",
+			"flags":[426,391],
+			"start":"9:00",
+			"end":"9:30",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Athletics Beffa",
+			"flags":[426,391,359],
+			"start":"8:30",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Opho Beffa",
+			"flags":[426,391,359],
+			"start":"21:00",
+			"end":"21:30",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Artists Beffa",
+			"flags":[426,391,359],
+			"start":"16:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[180],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Yahoos Beffa",
+			"flags":[391,359,404],
+			"start":"8:00",
+			"end":"8:30",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hunes Beffa",
+			"flags":[391,359,404],
+			"start":"8:30",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Midos Beffa",
+			"flags":[391,359,404],
+			"start":"9:00",
+			"end":"9:30",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Suaves Beffa",
+			"flags":[391,359,404],
+			"start":"9:30",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Kids",
+			"flags":[391,404],
+			"start":"10:00",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Check-In",
+			"flags":[391,404],
+			"start":"13:00",
+			"end":"13:30",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Kids",
+			"flags":[391,404],
+			"start":"14:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Kids",
+			"flags":[391,404],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Kids",
+			"flags":[391,404],
+			"start":"9:30",
+			"end":"11:15",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Kids",
+			"flags":[391,404],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Kids",
+			"flags":[391,404],
+			"start":"9:15",
+			"end":"10:45",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Manager's Meeting",
+			"flags":[391,404],
+			"start":"9:00",
+			"end":"9:30",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Kids",
+			"flags":[391,404],
+			"start":"20:45",
+			"end":"21:30",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Munch Beffa",
+			"flags":[391,359,404],
+			"start":"18:00",
+			"end":"18:30",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Snoop Beffa",
+			"flags":[391,359,404],
+			"start":"18:30",
+			"end":"19:00",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Teens Beffa",
+			"flags":[391,359,404],
+			"start":"19:00",
+			"end":"19:30",
+			"workers_needed":"1",
+			"qualifications":[175],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hunes Nature",
+			"flags":[356,391],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[208],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Mido Nature",
+			"flags":[356,391],
+			"start":"9:15",
+			"end":"10:30",
+			"workers_needed":"1",
+			"qualifications":[208],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Nature Boatster",
+			"flags":[356,391,378,422],
+			"start":"10:30",
+			"end":"11:30",
+			"workers_needed":"1",
+			"qualifications":[208,224],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Yahoo Nature",
+			"flags":[356,391],
+			"start":"9:30",
+			"end":"10:15",
+			"workers_needed":"1",
+			"qualifications":[208],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Snooper Nature",
+			"flags":[356,391],
+			"start":"10:15",
+			"end":"11:15",
+			"workers_needed":"1",
+			"qualifications":[208],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Munchkins Nature",
+			"flags":[356,391],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[208],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hunes Beffa",
+			"flags":[359,371],
+			"start":"8:30",
+			"end":"9:00",
+			"workers_needed":"5",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:30",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"13:45",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:30",
+			"end":"15:45",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"13:45",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:15",
+			"end":"15:45",
+			"workers_needed":"1",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:30",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:30",
+			"end":"15:45",
+			"workers_needed":"1",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Hunes",
+			"flags":[391,371],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[179],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Midos Beffa",
+			"flags":[429,359],
+			"start":"8:45",
+			"end":"9:30",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Midos Beffa",
+			"flags":[429,359],
+			"start":"9:00",
+			"end":"9:30",
+			"workers_needed":"3",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"9:30",
+			"end":"11:45",
+			"workers_needed":"3",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"13:45",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"3",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"20:00",
+			"end":"21:15",
+			"workers_needed":"3",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"9:30",
+			"end":"15:45",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"13:45",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"20:00",
+			"end":"21:15",
+			"workers_needed":"3",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"9:30",
+			"end":"15:45",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Midorees",
+			"flags":[429,391],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[203],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:00",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:15",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:00",
+			"end":"15:15",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:00",
+			"end":"15:15",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:00",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Munchkins",
+			"flags":[391,352],
+			"start":"9:15",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Munchkins Beffa",
+			"flags":[352,359],
+			"start":"18:00",
+			"end":"18:30",
+			"workers_needed":"4",
+			"qualifications":[194],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Tallacappella",
+			"flags":[409,391],
+			"start":"10:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[196],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Tallacappella",
+			"flags":[409,391],
+			"start":"10:30",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[196],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Tallacappella",
+			"flags":[409,391],
+			"start":"16:15",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[196],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Tallacappella",
+			"flags":[409,391],
+			"start":"16:00",
+			"end":"17:15",
+			"workers_needed":"1",
+			"qualifications":[196],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Snooper Music",
+			"flags":[409,391],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[196],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Tallacappella",
+			"flags":[409,391],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[196],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Music Hour",
+			"flags":[409,391],
+			"start":"17:30",
+			"end":"19:00",
+			"workers_needed":"1",
+			"qualifications":[196],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Tallacapella",
+			"flags":[409,391],
+			"start":"19:15",
+			"end":"20:15",
+			"workers_needed":"1",
+			"qualifications":[196],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Naturalist Hike",
+			"flags":[378,391,348,360],
+			"start":"9:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[214],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Orienteering Training",
+			"flags":[391,360],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[214],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boatster Prep",
+			"flags":[410,360],
+			"start":"10:15",
+			"end":"10:30",
+			"workers_needed":"1",
+			"qualifications":[214],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Nature Boatster",
+			"flags":[378,391,422,360],
+			"start":"10:30",
+			"end":"11:30",
+			"workers_needed":"1",
+			"qualifications":[224,214],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Nature Photo",
+			"flags":[391,360],
+			"start":"14:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[214],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Orienteering",
+			"flags":[391,360],
+			"start":"12:45",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[214],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Bird Hike",
+			"flags":[378,391,348,360],
+			"start":"7:00",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[214],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"8:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"8:00",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Office!",
+			"flags":[417,391,339],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"17:00",
+			"end":"22:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"8:00",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"17:00",
+			"end":"22:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"8:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"8:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Office",
+			"flags":[417,391,339],
+			"start":"8:00",
+			"end":"10:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Office ODD",
+			"flags":[346,391,417,339],
+			"start":"8:00",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Office EVEN",
+			"flags":[346,391,417,339],
+			"start":"8:00",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Office ODD/HK @ 9:30 EVEN",
+			"flags":[346,391,417,339],
+			"start":"9:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Office EVEN/HK @ 9:30 ODD",
+			"flags":[346,391,417,339],
+			"start":"9:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Office ODD",
+			"flags":[346,391,417,339],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Office EVEN",
+			"flags":[346,391,417,339],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[201],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Photo",
+			"flags":[341,391],
+			"start":"10:00",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Photo",
+			"flags":[341,391],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Couples Photo",
+			"flags":[341,391],
+			"start":"17:00",
+			"end":"18:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Family Portraits",
+			"flags":[341,391],
+			"start":"18:30",
+			"end":"19:30",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Photo",
+			"flags":[341,391],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Photo",
+			"flags":[341,391],
+			"start":"14:30",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Photo",
+			"flags":[341,391],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Family Portraits",
+			"flags":[341,391],
+			"start":"16:30",
+			"end":"18:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Ski Show/Games Day Beffa",
+			"flags":[341,359,393],
+			"start":"7:30",
+			"end":"9:30",
+			"workers_needed":"2",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Games Day Photo ODD/Ski Show Photo EVEN",
+			"flags":[341,346,391],
+			"start":"9:45",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Games Day Photo EVEN/Ski Show Photo ODD",
+			"flags":[341,346,391],
+			"start":"9:45",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Photo",
+			"flags":[341,391],
+			"start":"13:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Family Portraits",
+			"flags":[341,391],
+			"start":"17:00",
+			"end":"18:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Campfire Photos",
+			"flags":[341,391],
+			"start":"19:30",
+			"end":"20:45",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Photo",
+			"flags":[341,391],
+			"start":"10:15",
+			"end":"11:30",
+			"workers_needed":"2",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Photo",
+			"flags":[341,391],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Photo",
+			"flags":[341,391],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Rowing Photo",
+			"flags":[341,391],
+			"start":"7:30",
+			"end":"8:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Last Minute Photos",
+			"flags":[341,391],
+			"start":"9:30",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Slideshow Prep",
+			"flags":[341,410],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Slideshow Prep",
+			"flags":[341,410],
+			"start":"13:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Slideshow Prep",
+			"flags":[341,410],
+			"start":"15:00",
+			"end":"18:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Slideshow Set Up",
+			"flags":[341,410],
+			"start":"19:00",
+			"end":"19:30",
+			"workers_needed":"2",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Slideshow",
+			"flags":[341,391],
+			"start":"19:30",
+			"end":"20:45",
+			"workers_needed":"2",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Photo Upload ODD",
+			"flags":[341,346,391],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Photo Upload EVEN",
+			"flags":[341,346,391],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[176],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Advanced Clinic",
+			"flags":[378,391,416],
+			"start":"10:15",
+			"end":"12:15",
+			"workers_needed":"1",
+			"qualifications":[213],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Beginner Clinic",
+			"flags":[378,391,416],
+			"start":"13:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[213],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Family Sail",
+			"flags":[378,391,416],
+			"start":"13:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[213],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Teen Sail",
+			"flags":[378,391,416],
+			"start":"10:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[213],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Bic Open Lessons",
+			"flags":[378,391,416],
+			"start":"14:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[213],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Hobbie Lessons",
+			"flags":[378,391,416],
+			"start":"15:30",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[213],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Sailing Regatta",
+			"flags":[378,391,416],
+			"start":"13:15",
+			"end":"15:45",
+			"workers_needed":"1",
+			"qualifications":[213],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Ski Clinic",
+			"flags":[378,391,392,446],
+			"start":"7:30",
+			"end":"10:00",
+			"workers_needed":"2",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Wakeboard Clinic",
+			"flags":[378,391,392,446],
+			"start":"7:30",
+			"end":"10:00",
+			"workers_needed":"2",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Dock + Gas",
+			"flags":[378,391,392],
+			"start":"10:00",
+			"end":"11:15",
+			"workers_needed":"2",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"12:45",
+			"end":"14:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"7:30",
+			"end":"9:00",
+			"workers_needed":"2",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"8:00",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dock + Gas",
+			"flags":[378,391,392],
+			"start":"10:00",
+			"end":"11:15",
+			"workers_needed":"2",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"12:45",
+			"end":"14:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Dock + Gas",
+			"flags":[378,391,392],
+			"start":"10:00",
+			"end":"11:15",
+			"workers_needed":"2",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"12:45",
+			"end":"14:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"12:45",
+			"end":"14:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"7:30",
+			"end":"9:00",
+			"workers_needed":"2",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"8:00",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dock + Gas",
+			"flags":[378,391,392],
+			"start":"10:00",
+			"end":"11:15",
+			"workers_needed":"2",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"12:45",
+			"end":"14:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"7:30",
+			"end":"9:00",
+			"workers_needed":"2",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"8:00",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dock + Gas",
+			"flags":[378,391,392],
+			"start":"10:00",
+			"end":"11:15",
+			"workers_needed":"2",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"12:45",
+			"end":"14:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dock",
+			"flags":[378,391,392],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"3",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Ski Show Beffa",
+			"flags":[359,392,393,378,401],
+			"start":"8:00",
+			"end":"9:30",
+			"workers_needed":"6",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Ski Show Practice",
+			"flags":[378,401,391,392],
+			"start":"6:15",
+			"end":"8:00",
+			"workers_needed":"6",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Ski Show",
+			"flags":[378,401,391,392],
+			"start":"9:45",
+			"end":"12:00",
+			"workers_needed":"6",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Dock Meeting",
+			"flags":[378,401,391,392],
+			"start":"15:30",
+			"end":"16:30",
+			"workers_needed":"6",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Staph Ski",
+			"flags":[378,342,391,392],
+			"start":"17:45",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Staph Ski",
+			"flags":[378,342,391,392],
+			"start":"18:30",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Gas",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Shuffle/Bills",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"18:30",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Staph Ski",
+			"flags":[378,342,391,392],
+			"start":"17:45",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Staph Ski",
+			"flags":[378,342,391,392],
+			"start":"18:30",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Gas",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Shuffle/Bills",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"18:30",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Staph Ski",
+			"flags":[378,342,391,392],
+			"start":"17:45",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Staph Ski",
+			"flags":[378,342,391,392],
+			"start":"18:30",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Gas",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Shuffle/Bills",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"18:30",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Teen Ski & Shuffle/Bills",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Teen Ski + Gas",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Staph Ski",
+			"flags":[378,342,391,392],
+			"start":"17:45",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Staph Ski",
+			"flags":[378,342,391,392],
+			"start":"18:30",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Gas",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Shuffle/Bills",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"18:30",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Staph Ski",
+			"flags":[378,342,391,392],
+			"start":"17:45",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Staph Ski",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Gas",
+			"flags":[378,342,391,392],
+			"start":"17:30",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[219],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Dock Maintenance",
+			"flags":[391,343],
+			"start":"11:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[191],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Gas",
+			"flags":[391,343],
+			"start":"12:00",
+			"end":"12:20",
+			"workers_needed":"1",
+			"qualifications":[191],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Bills",
+			"flags":[391,343],
+			"start":"8:00",
+			"end":"9:00",
+			"workers_needed":"1",
+			"qualifications":[191],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Manager's Meeting",
+			"flags":[391,343],
+			"start":"9:00",
+			"end":"9:30",
+			"workers_needed":"1",
+			"qualifications":[191],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Shuffle",
+			"flags":[391,343],
+			"start":"21:00",
+			"end":"22:00",
+			"workers_needed":"1",
+			"qualifications":[191],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:15",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:30",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:30",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"13:45",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"3",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:30",
+			"end":"15:45",
+			"workers_needed":"2",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"13:45",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:30",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:15",
+			"end":"15:45",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:30",
+			"end":"15:45",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:15",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:30",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Snoopers",
+			"flags":[353,391],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Snooper Beffa",
+			"flags":[353,359],
+			"start":"18:30",
+			"end":"19:00",
+			"workers_needed":"5",
+			"qualifications":[205],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Suaves Beffa",
+			"flags":[359,365],
+			"start":"9:30",
+			"end":"10:00",
+			"workers_needed":"3",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Suaves",
+			"flags":[391,365],
+			"start":"10:00",
+			"end":"12:00",
+			"workers_needed":"3",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Suaves",
+			"flags":[391,365],
+			"start":"13:00",
+			"end":"15:00",
+			"workers_needed":"2",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Suaves",
+			"flags":[391,365],
+			"start":"13:00",
+			"end":"14:30",
+			"workers_needed":"1",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Suaves",
+			"flags":[391,365],
+			"start":"20:00",
+			"end":"21:15",
+			"workers_needed":"2",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Suaves",
+			"flags":[391,365],
+			"start":"11:00",
+			"end":"15:00",
+			"workers_needed":"2",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Suaves",
+			"flags":[391,365],
+			"start":"11:00",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Suaves",
+			"flags":[391,365],
+			"start":"13:00",
+			"end":"15:00",
+			"workers_needed":"2",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Suave Overnight",
+			"flags":[348,376,391,445,378,365],
+			"start":"13:00",
+			"end":"21:00",
+			"workers_needed":"4",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Suave Overnight Prep",
+			"flags":[378,348,410,365],
+			"start":"12:00",
+			"end":"13:00",
+			"workers_needed":"3",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Suave Overnight",
+			"flags":[348,376,391,445,378,365],
+			"start":"6:00",
+			"end":"9:00",
+			"workers_needed":"3",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Suaves",
+			"flags":[391,365],
+			"start":"13:00",
+			"end":"14:30",
+			"workers_needed":"3",
+			"qualifications":[225],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Teens Overnight Prep",
+			"flags":[381,348,410,378],
+			"start":"9:00",
+			"end":"10:00",
+			"workers_needed":"3",
+			"qualifications":[210],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Teens Overnight",
+			"flags":[376,348,391,445,378,381],
+			"start":"10:00",
+			"end":"21:00",
+			"workers_needed":"3",
+			"qualifications":[210],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Teen Overnight",
+			"flags":[376,348,391,445,378,381],
+			"start":"6:00",
+			"end":"9:00",
+			"workers_needed":"3",
+			"qualifications":[210],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Teens",
+			"flags":[381,391],
+			"start":"13:00",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[210],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Teens",
+			"flags":[381,391],
+			"start":"13:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[210],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Teens",
+			"flags":[381,391],
+			"start":"11:00",
+			"end":"16:00",
+			"workers_needed":"3",
+			"qualifications":[210],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Teens",
+			"flags":[381,391],
+			"start":"10:00",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[210],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Teens",
+			"flags":[381,391],
+			"start":"20:00",
+			"end":"21:30",
+			"workers_needed":"2",
+			"qualifications":[210],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Teens",
+			"flags":[381,391],
+			"start":"10:00",
+			"end":"12:00",
+			"workers_needed":"3",
+			"qualifications":[210],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Teens Beffa",
+			"flags":[381,359],
+			"start":"19:00",
+			"end":"19:30",
+			"workers_needed":"3",
+			"qualifications":[210],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Tennis Clinic",
+			"flags":[378,405,391],
+			"start":"8:45",
+			"end":"10:45",
+			"workers_needed":"1",
+			"qualifications":[190],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Tennis Clinic",
+			"flags":[378,405,391],
+			"start":"9:15",
+			"end":"11:15",
+			"workers_needed":"1",
+			"qualifications":[190],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Munchkin Tennis",
+			"flags":[378,405,391],
+			"start":"11:15",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[190],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Tennis",
+			"flags":[378,405,391],
+			"start":"14:00",
+			"end":"16:15",
+			"workers_needed":"1",
+			"qualifications":[190],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Hunes Tennis",
+			"flags":[378,405,391],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[190],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Tennis",
+			"flags":[378,405,391],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[190],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Wimbledon Wednesday",
+			"flags":[378,405,391],
+			"start":"13:30",
+			"end":"17:15",
+			"workers_needed":"1",
+			"qualifications":[190],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Tennis BR Clean",
+			"flags":[378,405,410],
+			"start":"8:45",
+			"end":"9:15",
+			"workers_needed":"1",
+			"qualifications":[190],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Tennis",
+			"flags":[378,405,391],
+			"start":"9:15",
+			"end":"11:15",
+			"workers_needed":"1",
+			"qualifications":[190],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Hunes Theater",
+			"flags":[444,391],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[212],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"The Brothers Grimm",
+			"flags":[444,391],
+			"start":"20:00",
+			"end":"22:00",
+			"workers_needed":"1",
+			"qualifications":[212],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Kid's Talent Show!",
+			"flags":[444,391],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[212],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Beginner Volleyball",
+			"flags":[378,391,427],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[218],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Adult Social Volleyball",
+			"flags":[378,391,427],
+			"start":"15:30",
+			"end":"16:30",
+			"workers_needed":"1",
+			"qualifications":[218],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Yahoos Volleyball",
+			"flags":[378,391,427],
+			"start":"9:30",
+			"end":"10:30",
+			"workers_needed":"1",
+			"qualifications":[218],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Hunes Volleyball",
+			"flags":[378,391,427],
+			"start":"11:15",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[218],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Competitive Volleyball",
+			"flags":[378,391,427],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[218],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Serving Clinic",
+			"flags":[378,391,427],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[218],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Guest v. Guest",
+			"flags":[378,391,427],
+			"start":"13:00",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[218],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Staph v. Guest",
+			"flags":[378,391,427],
+			"start":"13:00",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[218],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Yahoos Beffa",
+			"flags":[433,359],
+			"start":"8:00",
+			"end":"8:30",
+			"workers_needed":"5",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:30",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"13:45",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:30",
+			"end":"15:45",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"13:45",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:15",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:30",
+			"end":"15:45",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:15",
+			"end":"11:45",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Yahoos",
+			"flags":[391,433],
+			"start":"9:30",
+			"end":"12:00",
+			"workers_needed":"2",
+			"qualifications":[221],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Yoga",
+			"flags":[430,391],
+			"start":"6:45",
+			"end":"8:15",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Twilight Yoga",
+			"flags":[430,391],
+			"start":"19:45",
+			"end":"21:15",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Couples Yoga",
+			"flags":[430,391],
+			"start":"10:15",
+			"end":"11:45",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Yoga",
+			"flags":[430,391],
+			"start":"14:45",
+			"end":"16:15",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Yoga",
+			"flags":[430,391],
+			"start":"6:45",
+			"end":"8:15",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Munchkin Yoga",
+			"flags":[430,391],
+			"start":"10:00",
+			"end":"11:00",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Snooper Yoga",
+			"flags":[430,391],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Yoga",
+			"flags":[430,391],
+			"start":"15:00",
+			"end":"16:15",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Yoga",
+			"flags":[430,391],
+			"start":"14:45",
+			"end":"16:15",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Yoga",
+			"flags":[430,391],
+			"start":"6:45",
+			"end":"8:15",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Yoga",
+			"flags":[430,391],
+			"start":"14:45",
+			"end":"16:00",
+			"workers_needed":"1",
+			"qualifications":[187],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Meditation",
+			"flags":[345,375],
+			"start":"19:30",
+			"end":"20:30",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Plants",
+			"flags":[415,378,375],
+			"start":"17:00",
+			"end":"18:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Plants",
+			"flags":[415,378,375],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Why are All the Black Kid’s Sitting Together in the Cafeteria",
+			"flags":[375,412],
+			"start":"15:15",
+			"end":"17:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"For the Time Being",
+			"flags":[375,412],
+			"start":"16:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Just Mercy",
+			"flags":[375,412],
+			"start":"16:45",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Dance",
+			"flags":[340,375],
+			"start":"16:30",
+			"end":"17:30",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Dance",
+			"flags":[340,375],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Dance",
+			"flags":[340,375],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"LGBTQ+ Discussion",
+			"flags":[431,375],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"ZUMBA!",
+			"flags":[383,375],
+			"start":"13:00",
+			"end":"14:00",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Mountain Biking",
+			"flags":[378,375,390],
+			"start":"14:15",
+			"end":"17:30",
+			"workers_needed":"1",
+			"qualifications":[216],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Mountain Biking",
+			"flags":[378,375,390],
+			"start":"13:15",
+			"end":"16:30",
+			"workers_needed":"1",
+			"qualifications":[216],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Women's Breakfast",
+			"flags":[386,375],
+			"start":"8:00",
+			"end":"8:45",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Astro Cruise",
+			"flags":[378,382,375,422],
+			"start":"21:30",
+			"end":"23:00",
+			"workers_needed":"2",
+			"qualifications":[198,224],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Astro Cruise",
+			"flags":[378,382,375,422],
+			"start":"21:30",
+			"end":"23:00",
+			"workers_needed":"2",
+			"qualifications":[198,224],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Astro Cruise",
+			"flags":[378,382,375,422],
+			"start":"21:30",
+			"end":"23:00",
+			"workers_needed":"2",
+			"qualifications":[198,224],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Astro Cruise",
+			"flags":[378,382,375,422],
+			"start":"21:30",
+			"end":"23:00",
+			"workers_needed":"2",
+			"qualifications":[198,224],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Basketball Tournament",
+			"flags":[403,378,375],
+			"start":"15:00",
+			"end":"17:00",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Boatster",
+			"flags":[440,378,375,435,422],
+			"start":"16:30",
+			"end":"18:15",
+			"workers_needed":"2",
+			"qualifications":[224],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Boatster",
+			"flags":[440,378,375,435,422],
+			"start":"16:30",
+			"end":"18:15",
+			"workers_needed":"2",
+			"qualifications":[224],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Boatster",
+			"flags":[440,378,375,435,422],
+			"start":"16:30",
+			"end":"18:15",
+			"workers_needed":"2",
+			"qualifications":[224],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Boatster",
+			"flags":[440,378,375,435,422],
+			"start":"16:30",
+			"end":"18:15",
+			"workers_needed":"2",
+			"qualifications":[224],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Bread Bake",
+			"flags":[377,375],
+			"start":"14:00",
+			"end":"16:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hobart",
+			"flags":[387,438,417,375],
+			"start":"7:00",
+			"end":"10:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Hobart",
+			"flags":[387,438,417,375],
+			"start":"7:00",
+			"end":"10:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Hobart",
+			"flags":[387,438,417,375],
+			"start":"7:00",
+			"end":"10:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Hobart",
+			"flags":[387,438,417,375],
+			"start":"7:00",
+			"end":"10:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Hobart",
+			"flags":[387,438,417,375],
+			"start":"7:00",
+			"end":"10:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Hobart",
+			"flags":[387,438,417,375],
+			"start":"7:00",
+			"end":"10:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Hobart",
+			"flags":[387,438,417,375],
+			"start":"7:00",
+			"end":"10:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Campfire Music!",
+			"flags":[435,357,378,375],
+			"start":"18:30",
+			"end":"21:00",
+			"workers_needed":"3",
+			"qualifications":[223],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Campfire S'mores!",
+			"flags":[378,432,375],
+			"start":"18:30",
+			"end":"21:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Cherry House",
+			"flags":[358,378,375,395],
+			"start":"16:00",
+			"end":"18:00",
+			"workers_needed":"4",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Cherry House",
+			"flags":[358,378,375,395],
+			"start":"16:30",
+			"end":"18:00",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hobart",
+			"flags":[387,411,417,375],
+			"start":"17:30",
+			"end":"20:00",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Hobart",
+			"flags":[387,411,417,375],
+			"start":"17:30",
+			"end":"20:00",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Hobart",
+			"flags":[387,411,417,375],
+			"start":"17:30",
+			"end":"20:00",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Hobart",
+			"flags":[387,411,417,375],
+			"start":"17:30",
+			"end":"20:00",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Hobart",
+			"flags":[387,411,417,375],
+			"start":"17:30",
+			"end":"20:00",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Hobart",
+			"flags":[387,411,417,375],
+			"start":"17:30",
+			"end":"20:00",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Hobart",
+			"flags":[387,411,417,375],
+			"start":"17:30",
+			"end":"20:00",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Disco Bingo",
+			"flags":[435,417,363,375],
+			"start":"19:00",
+			"end":"21:00",
+			"workers_needed":"5",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Egg Drop",
+			"flags":[378,375,447],
+			"start":"15:45",
+			"end":"17:15",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Games Day Beffa",
+			"flags":[384,359,393,378,375],
+			"start":"7:30",
+			"end":"9:30",
+			"workers_needed":"6",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Games Day",
+			"flags":[384,378,375],
+			"start":"9:45",
+			"end":"12:00",
+			"workers_needed":"6",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Greeting",
+			"flags":[417,362,375],
+			"start":"14:45",
+			"end":"16:30",
+			"workers_needed":"2",
+			"qualifications":[199],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Greeting",
+			"flags":[417,362,375],
+			"start":"16:30",
+			"end":"18:00",
+			"workers_needed":"2",
+			"qualifications":[199],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Guest to Guest",
+			"flags":[417,395,375,354],
+			"start":"18:30",
+			"end":"20:00",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"HooHune Night",
+			"flags":[397,375],
+			"start":"19:45",
+			"end":"21:15",
+			"workers_needed":"4",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"HooHune Night",
+			"flags":[397,375],
+			"start":"19:45",
+			"end":"21:15",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Improv",
+			"flags":[396,375,435],
+			"start":"20:00",
+			"end":"22:00",
+			"workers_needed":"4",
+			"qualifications":[185],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Improv",
+			"flags":[396,375,435],
+			"start":"20:30",
+			"end":"22:00",
+			"workers_needed":"1",
+			"qualifications":[185],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Kid's Carnival",
+			"flags":[423,378,375],
+			"start":"15:00",
+			"end":"16:00",
+			"workers_needed":"5",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Kid's Talent Show!",
+			"flags":[351,375],
+			"start":"14:00",
+			"end":"15:00",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Linen Exchange",
+			"flags":[378,406,375],
+			"start":"8:45",
+			"end":"10:00",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Hobart",
+			"flags":[387,347,417,375],
+			"start":"12:00",
+			"end":"14:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Hobart",
+			"flags":[387,347,417,375],
+			"start":"12:00",
+			"end":"14:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Hobart",
+			"flags":[387,347,417,375],
+			"start":"12:00",
+			"end":"14:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Hobart",
+			"flags":[387,347,417,375],
+			"start":"12:00",
+			"end":"14:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Hobart",
+			"flags":[387,347,417,375],
+			"start":"12:00",
+			"end":"14:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Hobart",
+			"flags":[387,347,417,375],
+			"start":"12:00",
+			"end":"14:30",
+			"workers_needed":"2",
+			"qualifications":[206],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Music Hour",
+			"flags":[435,385,375],
+			"start":"17:30",
+			"end":"19:00",
+			"workers_needed":"5",
+			"qualifications":[223],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"MuSnoo Night",
+			"flags":[350,375],
+			"start":"19:45",
+			"end":"21:15",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Omelette Bar Chef",
+			"flags":[425,375],
+			"start":"6:45",
+			"end":"9:30",
+			"workers_needed":"1",
+			"qualifications":[200],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Omelette Bar Chef",
+			"flags":[425,375],
+			"start":"6:45",
+			"end":"9:30",
+			"workers_needed":"1",
+			"qualifications":[200],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Brothers Grimm",
+			"flags":[435,369,375],
+			"start":"20:00",
+			"end":"22:00",
+			"workers_needed":"5",
+			"qualifications":[178],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Brothers Grimm",
+			"flags":[435,369,375],
+			"start":"20:30",
+			"end":"22:00",
+			"workers_needed":"2",
+			"qualifications":[178],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Puppet Show",
+			"flags":[408,417,375],
+			"start":"19:45",
+			"end":"21:15",
+			"workers_needed":"3",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Rowing",
+			"flags":[361,378,375],
+			"start":"6:15",
+			"end":"8:15",
+			"workers_needed":"2",
+			"qualifications":[215],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Rowing",
+			"flags":[361,378,375],
+			"start":"6:15",
+			"end":"8:15",
+			"workers_needed":"2",
+			"qualifications":[215],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Rowing",
+			"flags":[361,378,375],
+			"start":"6:15",
+			"end":"8:15",
+			"workers_needed":"2",
+			"qualifications":[215],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Rowing",
+			"flags":[361,378,375],
+			"start":"6:15",
+			"end":"8:15",
+			"workers_needed":"2",
+			"qualifications":[215],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Rowing",
+			"flags":[361,378,375],
+			"start":"6:15",
+			"end":"8:15",
+			"workers_needed":"2",
+			"qualifications":[215],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Rowing",
+			"flags":[361,378,375],
+			"start":"6:15",
+			"end":"8:15",
+			"workers_needed":"2",
+			"qualifications":[215],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Shabbat",
+			"flags":[388,375],
+			"start":"16:30",
+			"end":"17:45",
+			"workers_needed":"1",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Social Hike",
+			"flags":[348,368,378,395,375],
+			"start":"16:30",
+			"end":"18:30",
+			"workers_needed":"5",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Story Hour",
+			"flags":[434,375],
+			"start":"16:45",
+			"end":"18:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Story Hour",
+			"flags":[434,375],
+			"start":"16:45",
+			"end":"18:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Story Hour",
+			"flags":[434,375],
+			"start":"16:45",
+			"end":"18:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Story Hour",
+			"flags":[434,375],
+			"start":"16:45",
+			"end":"18:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Story Hour",
+			"flags":[434,375],
+			"start":"16:45",
+			"end":"18:00",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Town Run",
+			"flags":[344,376,375],
+			"start":"9:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[181],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Town Run",
+			"flags":[344,376,375],
+			"start":"9:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[181],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Town Run",
+			"flags":[344,376,375],
+			"start":"9:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[181],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Town Run",
+			"flags":[344,376,375],
+			"start":"9:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[181],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Town Run",
+			"flags":[344,376,375],
+			"start":"9:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[181],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Town Run",
+			"flags":[344,376,375],
+			"start":"9:00",
+			"end":"12:00",
+			"workers_needed":"1",
+			"qualifications":[181],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Trivia",
+			"flags":[435,417,437,375],
+			"start":"21:30",
+			"end":"22:45",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":0,
+			"title":"Wine",
+			"flags":[417,375,448],
+			"start":"17:15",
+			"end":"19:30",
+			"workers_needed":"1",
+			"qualifications":[222],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":1,
+			"title":"Wine",
+			"flags":[417,375,448],
+			"start":"17:15",
+			"end":"19:30",
+			"workers_needed":"1",
+			"qualifications":[222],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":2,
+			"title":"Wine",
+			"flags":[417,375,448],
+			"start":"17:15",
+			"end":"19:30",
+			"workers_needed":"1",
+			"qualifications":[222],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Wine",
+			"flags":[417,375,448],
+			"start":"17:15",
+			"end":"19:30",
+			"workers_needed":"1",
+			"qualifications":[222],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":4,
+			"title":"Wine",
+			"flags":[417,375,448],
+			"start":"17:15",
+			"end":"19:30",
+			"workers_needed":"1",
+			"qualifications":[222],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":5,
+			"title":"Wine",
+			"flags":[417,375,448],
+			"start":"17:15",
+			"end":"19:30",
+			"workers_needed":"1",
+			"qualifications":[222],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":6,
+			"title":"Wine",
+			"flags":[417,375,448],
+			"start":"17:15",
+			"end":"19:30",
+			"workers_needed":"1",
+			"qualifications":[222],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Trees",
+			"flags":[393,378,375],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Birds",
+			"flags":[393,378,375],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Water",
+			"flags":[393,378,375],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	},
+	{
+		"model": "schedules.Shift",
+		"fields": {
+			"day":3,
+			"title":"Bears",
+			"flags":[393,378,375],
+			"start":"14:30",
+			"end":"15:30",
+			"workers_needed":"2",
+			"qualifications":[],
+			"difficult":false
+		}
+	}
+]

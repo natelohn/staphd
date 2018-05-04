@@ -1,0 +1,258 @@
+[
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Hobart",
+			"template":"master-template",
+			"flags":[387]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Lifeguarding",
+			"template":"master-template",
+			"flags":[389]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Entertainment",
+			"template":"master-template",
+			"flags":[434,363,384,432,357,385,408,369]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Town Run",
+			"template":"master-template",
+			"flags":[344]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Boating",
+			"template":"master-template",
+			"flags":[361,422]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Maintenance",
+			"template":"master-template",
+			"flags":[349,415,410]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Fountain",
+			"template":"master-template",
+			"flags":[379,366]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Boat Dock",
+			"template":"master-template",
+			"flags":[413]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Breakfast",
+			"template":"meal-template",
+			"flags":[428,438,419]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Lunch",
+			"template":"meal-template",
+			"flags":[355,347,420]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Dinner",
+			"template":"meal-template",
+			"flags":[394,411,448,421]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"KGC",
+			"template":"master-template",
+			"flags":[404]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Wilderness",
+			"template":"master-template",
+			"flags":[348,445]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Boat-dock-coordinator",
+			"template":"master-template",
+			"flags":[436]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Snoopers",
+			"template":"master-template",
+			"flags":[353]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Chicken",
+			"template":"master-template",
+			"flags":[374]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Arts",
+			"template":"master-template",
+			"flags":[439,409,444]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Outdoors",
+			"template":"master-template",
+			"flags":[398,360,356]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Athletics",
+			"template":"master-template",
+			"flags":[405,430,427,442,416]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Ski Dock",
+			"template":"master-template",
+			"flags":[343,401,392,342]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Menehunes",
+			"template":"master-template",
+			"flags":[371]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Suaves",
+			"template":"master-template",
+			"flags":[365]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Office",
+			"template":"master-template",
+			"flags":[339]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Photo",
+			"template":"master-template",
+			"flags":[341]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Midorees",
+			"template":"master-template",
+			"flags":[429]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Rotating",
+			"template":"master-template",
+			"flags":[346]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Yahoos",
+			"template":"master-template",
+			"flags":[433]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Teens",
+			"template":"master-template",
+			"flags":[381]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"IIC",
+			"template":"master-template",
+			"flags":[426]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Beffas",
+			"template":"master-template",
+			"flags":[359]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Cars",
+			"template":"master-template",
+			"flags":[376]
+		}
+	},
+	{
+		"model": "schedules.Master",
+		"fields": {
+			"title":"Munchkins",
+			"template":"master-template",
+			"flags":[352]
+		}
+	}
+]

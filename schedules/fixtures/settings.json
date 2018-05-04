@@ -1,0 +1,11 @@
+[
+	{
+		"model": "schedules.Settings",
+		"fields": {
+			"parameters":[50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65],
+			"auto_schedule":true,
+			"auto_threshold":0,
+			"tie_breaker":0
+		}
+	}
+]
