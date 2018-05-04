@@ -70,8 +70,6 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 @login_required
 def build_view(request):
 	print('build_view')
-	cache.set('test_result', None, 1)
-	cache.set('current_task_id', None, 1)
 	# TODO: Add the below back
 	task_id = cache.get('current_task_id')
 	if task_id:
@@ -164,10 +162,6 @@ def track_state(request, *args, **kwargs):
 	if request.is_ajax():
 		print(f'	Request is Ajax')
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
-			test_result = cache.get('test_result')
-			print(f'		test_result = {test_result}')
-
-
 			print(f'		Made it here')
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
