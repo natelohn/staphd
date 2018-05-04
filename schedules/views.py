@@ -70,7 +70,7 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 @login_required
 def build_view(request):
 	print('build_view')
-	# TODO: Add the below back
+	task_id = cache.set('current_task_id', None, 0) # TODO: REMOVE THIS LINE
 	task_id = cache.get('current_task_id')
 	if task_id:
 		print('		task_id present')
