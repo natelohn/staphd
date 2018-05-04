@@ -71,6 +71,7 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 def build_view(request):
 	print('build_view')
 	cache.set('test_result', None, 1)
+	cache.set('current_task_id', None, 1)
 	# TODO: Add the below back
 	task_id = cache.get('current_task_id')
 	if task_id:
@@ -171,8 +172,6 @@ def track_state(request, *args, **kwargs):
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
 			task = app.AsyncResult(task_id)
-			# get = task.get()
-			# print(f'			get -> {get}')
 			print(f'			task -> {task}')
 			data = task.result or task.state
 			print(f'			task.state -> {task.state}')
