@@ -26,13 +26,7 @@ from .tasks import build_schedules_task, update_files_task
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
-	template_name = 'home.html'
-	# TODO: Delete
-	cache.set('num_actions_made', None, 0)
-	cache.set('num_total_actions', None, 0)
-	cache.set('current_task_id', None, 0)
-	task_id = cache.get('current_task_id')
-	print(task_id)
+	template_name = 'home.html'	
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
@@ -77,6 +71,13 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 def build_view(request):
 	print('build_view')
 	task_id = cache.get('current_task_id')
+	print(f'Task ID is: {task_id}')
+	# TODO: Delete
+	cache.set('num_actions_made', None, 0)
+	cache.set('num_total_actions', None, 0)
+	cache.set('current_task_id', None, 0)
+	task_id = cache.get('current_task_id')
+	print(f'Task ID reset to: {task_id}... This code needs to be deleted.')
 	if task_id:
 		print('		task_id present')
 		task = app.AsyncResult(task_id)
