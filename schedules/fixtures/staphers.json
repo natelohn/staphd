@@ -2,10 +2,23 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
+			"first_name":"A.J.",
+			"last_name":"Aldana",
+			"title":"Ski Dock",
+			"gender":"1",
+			"age":"19",
+			"class_year":"2020",
+			"summers_worked":"1",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
 			"first_name":"Aidan",
 			"last_name":"Biggar",
 			"title":"Mountain Biking Instructor & Office",
-			"gender":"0",
+			"gender":"1",
 			"age":"21",
 			"class_year":"2018",
 			"summers_worked":"0",
@@ -18,7 +31,7 @@
 			"first_name":"Alex",
 			"last_name":"Bradfield",
 			"title":"Yahoos",
-			"gender":"0",
+			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
 			"summers_worked":"0",
@@ -28,10 +41,10 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"first_name":"Alida",
-			"last_name":"Ratteray",
-			"title":"Midorees",
-			"gender":"1",
+			"first_name":"Ali",
+			"last_name":"Zilversmit",
+			"title":"Snoopers",
+			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
 			"summers_worked":"2",
@@ -41,10 +54,10 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"first_name":"Ali",
-			"last_name":"Zilversmit",
-			"title":"Snoopers",
-			"gender":"1",
+			"first_name":"Alida",
+			"last_name":"Ratteray",
+			"title":"Midorees",
+			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
 			"summers_worked":"2",
@@ -57,7 +70,7 @@
 			"first_name":"Anna",
 			"last_name":"Northrop",
 			"title":"Chicken",
-			"gender":"1",
+			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
 			"summers_worked":"0",
@@ -70,36 +83,10 @@
 			"first_name":"Anne",
 			"last_name":"Bertram",
 			"title":"Photo",
-			"gender":"1",
+			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
 			"summers_worked":"2",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"A.J.",
-			"last_name":"Aldana",
-			"title":"Ski Dock",
-			"gender":"0",
-			"age":"19",
-			"class_year":"2020",
-			"summers_worked":"1",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Trey",
-			"last_name":"Hale",
-			"title":"Midorees",
-			"gender":"0",
-			"age":"21",
-			"class_year":"2018",
-			"summers_worked":"1",
 			"qualifications":[]
 		}
 	},
@@ -109,215 +96,7 @@
 			"first_name":"Austin",
 			"last_name":"Jones",
 			"title":"Ski Dock Head",
-			"gender":"0",
-			"age":"21",
-			"class_year":"2018",
-			"summers_worked":"2",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Blaire",
-			"last_name":"Hunter",
-			"title":"Hiking Leader",
 			"gender":"1",
-			"age":"21",
-			"class_year":"2018",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Callie",
-			"last_name":"Heiderscheit",
-			"title":"Yahoos",
-			"gender":"1",
-			"age":"21",
-			"class_year":"2018",
-			"summers_worked":"2",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Chelsea",
-			"last_name":"Mohl",
-			"title":"Chicken & Volleyball Instructor",
-			"gender":"1",
-			"age":"19",
-			"class_year":"2020",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Christopher",
-			"last_name":"Jackson",
-			"title":"Snoopers",
-			"gender":"0",
-			"age":"19",
-			"class_year":"2020",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Dani",
-			"last_name":"Lyle",
-			"title":"Midorees",
-			"gender":"1",
-			"age":"18",
-			"class_year":"2021",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Deirdre",
-			"last_name":"Francks",
-			"title":"Boat Dock Captain & Kids' Naturalist",
-			"gender":"1",
-			"age":"19",
-			"class_year":"2020",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Dylan",
-			"last_name":"Harding",
-			"title":"Ski Dock",
-			"gender":"1",
-			"age":"20",
-			"class_year":"2019",
-			"summers_worked":"1",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Edward",
-			"last_name":"Malacon",
-			"title":"Menehunes",
-			"gender":"0",
-			"age":"18",
-			"class_year":"2021",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Elle",
-			"last_name":"Wilson",
-			"title":"Fountain Specialist & Yoga Instructor",
-			"gender":"1",
-			"age":"21",
-			"class_year":"2018",
-			"summers_worked":"2",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Erika",
-			"last_name":"Noble",
-			"title":"Fountain Specialist & Individual Instructor Coordinator",
-			"gender":"1",
-			"age":"21",
-			"class_year":"2018",
-			"summers_worked":"2",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Ethan",
-			"last_name":"Cruikshank",
-			"title":"Yahoos",
-			"gender":"0",
-			"age":"19",
-			"class_year":"2020",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Eva",
-			"last_name":"Borgwardt",
-			"title":"Theater Instructor & Yahoos",
-			"gender":"1",
-			"age":"20",
-			"class_year":"2019",
-			"summers_worked":"1",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Gabri",
-			"last_name":"Posard",
-			"title":"Suaves",
-			"gender":"1",
-			"age":"20",
-			"class_year":"2019",
-			"summers_worked":"1",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Hannah",
-			"last_name":"Young",
-			"title":"Naturalist",
-			"gender":"1",
-			"age":"18",
-			"class_year":"2021",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Hannah",
-			"last_name":"Beek",
-			"title":"Ski Dock",
-			"gender":"1",
-			"age":"18",
-			"class_year":"2021",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Ian",
-			"last_name":"Jones",
-			"title":"Ski Dock",
-			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
 			"summers_worked":"2",
@@ -330,6 +109,110 @@
 			"first_name":"Bella",
 			"last_name":"Sullivan",
 			"title":"Munchkins",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2021",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Blaire",
+			"last_name":"Hunter",
+			"title":"Hiking Leader",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2018",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Callie",
+			"last_name":"Heiderscheit",
+			"title":"Yahoos",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2018",
+			"summers_worked":"2",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Chelsea",
+			"last_name":"Mohl",
+			"title":"Chicken & Volleyball Instructor",
+			"gender":"0",
+			"age":"19",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Christopher",
+			"last_name":"Jackson",
+			"title":"Snoopers",
+			"gender":"1",
+			"age":"19",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Dani",
+			"last_name":"Lyle",
+			"title":"Midorees",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2021",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Deirdre",
+			"last_name":"Francks",
+			"title":"Boat Dock Captain & Kids' Naturalist",
+			"gender":"0",
+			"age":"19",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Dylan",
+			"last_name":"Harding",
+			"title":"Ski Dock",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2019",
+			"summers_worked":"1",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Edward",
+			"last_name":"Malacon",
+			"title":"Menehunes",
 			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
@@ -340,10 +223,127 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
+			"first_name":"Elle",
+			"last_name":"Wilson",
+			"title":"Fountain Specialist & Yoga Instructor",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2018",
+			"summers_worked":"2",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Erika",
+			"last_name":"Noble",
+			"title":"Fountain Specialist & Individual Instructor Coordinator",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2018",
+			"summers_worked":"2",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Ethan",
+			"last_name":"Cruikshank",
+			"title":"Yahoos",
+			"gender":"1",
+			"age":"19",
+			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Eva",
+			"last_name":"Borgwardt",
+			"title":"Theater Instructor & Yahoos",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2019",
+			"summers_worked":"1",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Gabri",
+			"last_name":"Posard",
+			"title":"Suaves",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2019",
+			"summers_worked":"1",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Grace",
+			"last_name":"Lucas",
+			"title":"Snoopers",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Hannah",
+			"last_name":"Beek",
+			"title":"Ski Dock",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2021",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Hannah",
+			"last_name":"Young",
+			"title":"Naturalist",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2021",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Ian",
+			"last_name":"Jones",
+			"title":"Ski Dock",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2018",
+			"summers_worked":"2",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
 			"first_name":"Jake",
 			"last_name":"Brooks",
 			"title":"Suaves",
-			"gender":"0",
+			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
 			"summers_worked":"0",
@@ -356,7 +356,7 @@
 			"first_name":"Jeffrey",
 			"last_name":"Propp",
 			"title":"Snoopers",
-			"gender":"0",
+			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
 			"summers_worked":"0",
@@ -369,20 +369,7 @@
 			"first_name":"Johnathan",
 			"last_name":"Bridges",
 			"title":"Suaves",
-			"gender":"0",
-			"age":"18",
-			"class_year":"2021",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Jordan",
-			"last_name":"Llorin",
-			"title":"Chicken & Mountain Biking Instructor",
-			"gender":"0",
+			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
 			"summers_worked":"0",
@@ -395,9 +382,22 @@
 			"first_name":"Jordan",
 			"last_name":"Brinn",
 			"title":"Rock Climbing Instructor",
-			"gender":"1",
+			"gender":"0",
 			"age":"19",
 			"class_year":"2020",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Jordan",
+			"last_name":"Llorin",
+			"title":"Chicken & Mountain Biking Instructor",
+			"gender":"1",
+			"age":"18",
+			"class_year":"2021",
 			"summers_worked":"0",
 			"qualifications":[]
 		}
@@ -408,35 +408,9 @@
 			"first_name":"Julia",
 			"last_name":"Lambert",
 			"title":"Chicken & Sailing Instructor",
-			"gender":"1",
+			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Toots",
-			"last_name":"Lagattuta",
-			"title":"Munchkins",
-			"gender":"1",
-			"age":"21",
-			"class_year":"2018",
-			"summers_worked":"2",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Kat",
-			"last_name":"van Alebeek",
-			"title":"Chicken",
-			"gender":"1",
-			"age":"20",
-			"class_year":"2019",
 			"summers_worked":"0",
 			"qualifications":[]
 		}
@@ -447,7 +421,7 @@
 			"first_name":"Kady",
 			"last_name":"Richardson",
 			"title":"Kids' Group Coordinator",
-			"gender":"1",
+			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
 			"summers_worked":"1",
@@ -457,10 +431,23 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
+			"first_name":"Kat",
+			"last_name":"van Alebeek",
+			"title":"Chicken",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
 			"first_name":"Kyle",
 			"last_name":"Laviana",
 			"title":"Teens",
-			"gender":"0",
+			"gender":"1",
 			"age":"21",
 			"class_year":"2018",
 			"summers_worked":"2",
@@ -473,7 +460,7 @@
 			"first_name":"Lauren",
 			"last_name":"Frost",
 			"title":"Menehunes",
-			"gender":"1",
+			"gender":"0",
 			"age":"20",
 			"class_year":"2019",
 			"summers_worked":"0",
@@ -486,7 +473,7 @@
 			"first_name":"Lav",
 			"last_name":"Mahadevan",
 			"title":"Arts Instructor",
-			"gender":"1",
+			"gender":"0",
 			"age":"19",
 			"class_year":"2020",
 			"summers_worked":"0",
@@ -499,9 +486,22 @@
 			"first_name":"Maddy",
 			"last_name":"Belin",
 			"title":"Chicken",
-			"gender":"1",
+			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Maggie",
+			"last_name":"Gray",
+			"title":"Fountain Specialist & Music Instructor",
+			"gender":"0",
+			"age":"18",
+			"class_year":"2021",
 			"summers_worked":"0",
 			"qualifications":[]
 		}
@@ -512,35 +512,9 @@
 			"first_name":"Marcus",
 			"last_name":"Palsson",
 			"title":"Office",
-			"gender":"0",
+			"gender":"1",
 			"age":"20",
 			"class_year":"2019",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Meg",
-			"last_name":"Enthoven",
-			"title":"Snoopers",
-			"gender":"1",
-			"age":"19",
-			"class_year":"2020",
-			"summers_worked":"1",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Maggie",
-			"last_name":"Gray",
-			"title":"Fountain Specialist & Music Instructor",
-			"gender":"1",
-			"age":"18",
-			"class_year":"2021",
 			"summers_worked":"0",
 			"qualifications":[]
 		}
@@ -551,7 +525,7 @@
 			"first_name":"Matt",
 			"last_name":"Bernstein",
 			"title":"Midorees",
-			"gender":"0",
+			"gender":"1",
 			"age":"19",
 			"class_year":"2020",
 			"summers_worked":"0",
@@ -561,25 +535,12 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"first_name":"Megan",
-			"last_name":"Calfas",
-			"title":"Improv Instructor & Teens",
-			"gender":"1",
-			"age":"21",
-			"class_year":"2018",
-			"summers_worked":"2",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Molly",
-			"last_name":"Fogarty",
-			"title":"Photo",
-			"gender":"1",
-			"age":"20",
-			"class_year":"2019",
+			"first_name":"Meg",
+			"last_name":"Enthoven",
+			"title":"Snoopers",
+			"gender":"0",
+			"age":"19",
+			"class_year":"2020",
 			"summers_worked":"1",
 			"qualifications":[]
 		}
@@ -587,35 +548,9 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"first_name":"Nahla",
-			"last_name":"Gedeon Achi",
-			"title":"Ski Dock",
-			"gender":"1",
-			"age":"20",
-			"class_year":"2019",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Neil",
-			"last_name":"Nathan",
-			"title":"Menehunes",
-			"gender":"0",
-			"age":"20",
-			"class_year":"2019",
-			"summers_worked":"0",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
-			"first_name":"Nico",
-			"last_name":"Ponza",
-			"title":"Midorees",
+			"first_name":"Megan",
+			"last_name":"Calfas",
+			"title":"Improv Instructor & Teens",
 			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
@@ -629,7 +564,7 @@
 			"first_name":"Michelle",
 			"last_name":"Hull",
 			"title":"Munchkins",
-			"gender":"1",
+			"gender":"0",
 			"age":"20",
 			"class_year":"2019",
 			"summers_worked":"1",
@@ -639,10 +574,62 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
+			"first_name":"Molly",
+			"last_name":"Fogarty",
+			"title":"Photo",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2019",
+			"summers_worked":"1",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Nahla",
+			"last_name":"Gedeon Achi",
+			"title":"Ski Dock",
+			"gender":"0",
+			"age":"20",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Neil",
+			"last_name":"Nathan",
+			"title":"Menehunes",
+			"gender":"1",
+			"age":"20",
+			"class_year":"2019",
+			"summers_worked":"0",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Nico",
+			"last_name":"Ponza",
+			"title":"Midorees",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2018",
+			"summers_worked":"2",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
 			"first_name":"Rozy",
 			"last_name":"Eastaugh",
 			"title":"Yahoos",
-			"gender":"1",
+			"gender":"0",
 			"age":"18",
 			"class_year":"2021",
 			"summers_worked":"0",
@@ -655,7 +642,7 @@
 			"first_name":"Sam",
 			"last_name":"Reeve",
 			"title":"Boat Dock Coordinator & Chicken",
-			"gender":"0",
+			"gender":"1",
 			"age":"21",
 			"class_year":"2018",
 			"summers_worked":"0",
@@ -665,23 +652,10 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"first_name":"Grace",
-			"last_name":"Lucas",
-			"title":"Snoopers",
-			"gender":"1",
-			"age":"21",
-			"class_year":"2018",
-			"summers_worked":"1",
-			"qualifications":[]
-		}
-	},
-	{
-		"model": "schedules.Stapher",
-		"fields": {
 			"first_name":"Shahpar",
 			"last_name":"Mirza",
 			"title":"Teens",
-			"gender":"0",
+			"gender":"1",
 			"age":"20",
 			"class_year":"2019",
 			"summers_worked":"0",
@@ -694,7 +668,7 @@
 			"first_name":"Shubhankar",
 			"last_name":"Deo",
 			"title":"Fountain Specialist & Tennis Instructor",
-			"gender":"0",
+			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
 			"summers_worked":"0",
@@ -707,7 +681,7 @@
 			"first_name":"Sofia",
 			"last_name":"Avila",
 			"title":"Crafts Instructor",
-			"gender":"1",
+			"gender":"0",
 			"age":"18",
 			"class_year":"2021",
 			"summers_worked":"0",
@@ -720,7 +694,7 @@
 			"first_name":"Susi",
 			"last_name":"Arguello",
 			"title":"Menehunes",
-			"gender":"1",
+			"gender":"0",
 			"age":"19",
 			"class_year":"2020",
 			"summers_worked":"1",
@@ -731,9 +705,22 @@
 		"model": "schedules.Stapher",
 		"fields": {
 			"first_name":"Thomas",
+			"last_name":"Churchill",
+			"title":"Hiking Leader",
+			"gender":"1",
+			"age":"21",
+			"class_year":"2018",
+			"summers_worked":"1",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Thomas",
 			"last_name":"Thach",
 			"title":"Chicken",
-			"gender":"0",
+			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
 			"summers_worked":"0",
@@ -743,9 +730,22 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"first_name":"Thomas",
-			"last_name":"Churchill",
-			"title":"Hiking Leader",
+			"first_name":"Toots",
+			"last_name":"Lagattuta",
+			"title":"Munchkins",
+			"gender":"0",
+			"age":"21",
+			"class_year":"2018",
+			"summers_worked":"2",
+			"qualifications":[]
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name":"Tracy",
+			"last_name":"Roberts",
+			"title":"Suaves",
 			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
@@ -756,9 +756,9 @@
 	{
 		"model": "schedules.Stapher",
 		"fields": {
-			"first_name":"Tracy",
-			"last_name":"Roberts",
-			"title":"Suaves",
+			"first_name":"Trey",
+			"last_name":"Hale",
+			"title":"Midorees",
 			"gender":"1",
 			"age":"21",
 			"class_year":"2018",
@@ -772,7 +772,7 @@
 			"first_name":"Wes",
 			"last_name":"Annan",
 			"title":"Munchkins",
-			"gender":"0",
+			"gender":"1",
 			"age":"20",
 			"class_year":"2019",
 			"summers_worked":"0",
@@ -785,7 +785,7 @@
 			"first_name":"Zoe",
 			"last_name":"Clute",
 			"title":"Menehunes",
-			"gender":"1",
+			"gender":"0",
 			"age":"19",
 			"class_year":"2020",
 			"summers_worked":"0",

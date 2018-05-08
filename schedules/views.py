@@ -234,13 +234,13 @@ class StapherList(LoginRequiredMixin,ListView):
 					query_explanation += ' are new,'
 				elif query == 'male':
 					queryset = all_staphers.filter(gender__exact = 1)
-					query_explanation += ' are male,'
+					query_explanation += ' identify as male,'
 				elif query == 'female':
 					queryset = all_staphers.filter(gender__exact = 0)
-					query_explanation += ' are female,'
+					query_explanation += ' identify as female,'
 				elif query == 'non-binary':
 					queryset = all_staphers.filter(gender__exact = 2)
-					query_explanation += ' are non-binary,'
+					query_explanation += ' identify as non-binary'
 				elif query in qual_titles:
 					queryset = [stapher for stapher in all_staphers if stapher.has_qualification(query)]
 					query_explanation += f' have the \'{query}\' qualification,'
