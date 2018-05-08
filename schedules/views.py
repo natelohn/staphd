@@ -31,6 +31,8 @@ class HomeView(LoginRequiredMixin, TemplateView):
 	cache.set('num_actions_made', None, 0)
 	cache.set('num_total_actions', None, 0)
 	cache.set('current_task_id', None, 0)
+	task_id = cache.get('current_task_id')
+	print(task_id)
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
