@@ -23,6 +23,8 @@ def create_new_workbook(staphers):
 	print(f'URL = {url}')
 	path = os.path.dirname(os.path.realpath('schedules-template.xlsx'))
 	print(f'PATH = {path}')
+	ls = os.system('ls')
+	print(f'LS = {ls}')
 
 	# Setting the initial state to send to the frontend and update the progress bar
 	num_actions_made = cache.get('num_actions_made') or 0
