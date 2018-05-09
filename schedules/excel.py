@@ -22,9 +22,9 @@ def create_new_workbook(staphers):
 	current_task.update_state(meta = meta)
 
 	# Copy the template workbook.
-	template_wb = load_workbook('/static/schedules-template.xlsx')
-	template_wb.save("/static/schedules.xlsx")
-	schedule_wb = load_workbook('/static/schedules.xlsx')
+	template_wb = load_workbook('/static/xlsx/schedules-template.xlsx')
+	template_wb.save("/static/xlsx/schedules.xlsx")
+	schedule_wb = load_workbook('/static/xlsx/schedules.xlsx')
 	template_ws = schedule_wb['TEMPLATE']
 
 	for i, stapher in enumerate(staphers):
@@ -44,8 +44,8 @@ def create_new_workbook(staphers):
 	cache.set('num_actions_made', num_actions_made + len(staphers), None)
 
 	# Save the workbook and return it's destination
-	schedule_wb.save("/static/schedules.xlsx")
-	return '/static/schedules.xlsx'
+	schedule_wb.save("/static/xlsx/schedules.xlsx")
+	return '/static/xlsx/schedules.xlsx'
 
 # update_individual_excel_files helper
 def get_row_from_day(day):
@@ -70,7 +70,7 @@ def update_individual_excel_files(staphers, staphings):
 	meta = {'message':'Loading Schedule Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
 	current_task.update_state(meta = meta)
 
-	schedule_wb = load_workbook("/static/schedules.xlsx")
+	schedule_wb = load_workbook("/static/xlsx/schedules.xlsx")
 	seconds_in_hour = 60 * 60
 	for i, stapher in enumerate(staphers):
 		# Update the state of progress for the front end
@@ -125,7 +125,7 @@ def update_individual_excel_files(staphers, staphings):
 	cache.set('num_actions_made', num_actions_made + len(staphers), None)
 
 	# Save the workbook
-	schedule_wb.save("/static/schedules.xlsx")
+	schedule_wb.save("/static/xlsx/schedules.xlsx")
 
 # This function takes in a set of staphings and returns a list of the staphers working them 
 def get_shift_workers(staphings):
@@ -200,9 +200,9 @@ def copy_master_template(masters):
 	current_task.update_state(meta = meta)
 
 	# Copy the template workbook.
-	template_wb = load_workbook('/static/masters-template.xlsx')
-	template_wb.save("/static/masters.xlsx")
-	master_wb = load_workbook('/static/masters.xlsx')
+	template_wb = load_workbook('/static/xlsx/masters-template.xlsx')
+	template_wb.save("/static/xlsx/masters.xlsx")
+	master_wb = load_workbook('/static/xlsx/masters.xlsx')
 	for i, master in enumerate(masters):
 		# Update the progress for each master
 		num_actions_made = cache.get('num_actions_made') or 0
@@ -223,7 +223,7 @@ def copy_master_template(masters):
 
 	# Save the workbook
 	master_wb.remove(template_ws)
-	master_wb.save("/static/masters.xlsx")
+	master_wb.save("/static/xlsx/masters.xlsx")
 
 # TODO: DRY with get_start_col_from_time method
 def get_master_start_col_from_time(time):
@@ -318,7 +318,7 @@ def update_standard_masters(masters, staphings):
 	current_task.update_state(meta = meta)
 
 	# Load the new master workbook
-	master_wb = load_workbook('/static/masters.xlsx')
+	master_wb = load_workbook('/static/xlsx/masters.xlsx')
 
 	# Update the masters
 	for i, master in enumerate(masters):
@@ -365,7 +365,7 @@ def update_standard_masters(masters, staphings):
 	current_task.update_state(meta = meta)
 
 	# Save the new master workbook
-	master_wb.save("/static/masters.xlsx")
+	master_wb.save("/static/xlsx/masters.xlsx")
 			
 def get_meal_master_col(shift):
 	return shift.day + 2
@@ -412,7 +412,7 @@ def update_meal_masters(masters, staphings):
 	current_task.update_state(meta = meta)
 	
 	# Load the meal master workbook
-	meal_master_wb = load_workbook('/static/meal-master-template.xlsx')
+	meal_master_wb = load_workbook('/static/xlsx/meal-master-template.xlsx')
 
 	# Update the workbook
 	for i, master in enumerate(masters):
@@ -446,7 +446,7 @@ def update_meal_masters(masters, staphings):
 	current_task.update_state(meta = meta)
 
 	# Save the meal master workbook
-	meal_master_wb.save("/static/meal-masters.xlsx")
+	meal_master_wb.save("/static/xlsx/meal-masters.xlsx")
 
 
 def update_masters(masters, staphings):
@@ -472,7 +472,7 @@ def update_analytics(staphers, staphings, flags, qualifications):
 	analytics = get_analytics(staphers, staphings, flags, qualifications)
 
 	#Load/Update the workbook
-	analytics_wb = load_workbook('/static/analytics-template.xlsx')
+	analytics_wb = load_workbook('/static/xlsx/analytics-template.xlsx')
 	analytics_ws = analytics_wb['Analytics']
 	analytics_ws.title = 'Analytics'
 
@@ -497,7 +497,7 @@ def update_analytics(staphers, staphings, flags, qualifications):
 	cache.set('num_actions_made', num_actions_made + 3, None)
 
 	# Save the workbook
-	analytics_wb.save("/static/analytics.xlsx")
+	analytics_wb.save("/static/xlsx/analytics.xlsx")
 
 
 
