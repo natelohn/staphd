@@ -46,7 +46,6 @@ def update_files_task(self, schedule_id):
 def build_schedules_task(self):
 	print('		build_schedules_task called')
 	sorted_shifts = cache.get('sorted_shifts')
-	print(f'			sorted_shifts = {sorted_shifts}')
 	if cache.get('resort') or not sorted_shifts:
 		# Set the message for the front end
 		current_task.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
