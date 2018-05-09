@@ -1,5 +1,4 @@
 import datetime
-import os # TEMP... TODO Delete <-
 from celery import current_task
 from django.core.cache import cache
 from django.templatetags.static import static
@@ -39,9 +38,12 @@ def create_new_workbook(staphers, xl_dir):
 		current_task.update_state(meta = meta)
 		
 		# We copy the template worksheet for each Stapher.
+		print(f'	copy temp for: {stapher}')
 		stapher_ws = schedule_wb.copy_worksheet(template_ws)
 		stapher_ws.title = stapher.full_name()
+	print(f'new workbook finished...')
 	schedule_wb.remove(template_ws)
+	print(f'removed temp')
 
 	# Updating the state to send to the frontend and update the progress bar
 	meta = {'message':'Saving New Schedule Workbook', 'process_percent':get_percent(len(staphers), total_actions)}
@@ -49,8 +51,10 @@ def create_new_workbook(staphers, xl_dir):
 	cache.set('num_actions_made', num_actions_made + len(staphers), None)
 
 	# Save the workbook and return it's destination
-	schedule_wb.save("/static/xlsx/schedules.xlsx")
-	return '/static/xlsx/schedules.xlsx'
+	print(f'saving!')
+	schedule_wb.save(file)
+	print(f'... done!')
+	return file
 
 # update_individual_excel_files helper
 def get_row_from_day(day):
