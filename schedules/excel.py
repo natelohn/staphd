@@ -16,7 +16,7 @@ def get_percent(current_actions, total_actions):
 	return int((current_actions / total_actions) * 100)
 
 # Duplicate the template making a new sheet for each stapher passed in
-def create_new_workbook(staphers):
+def create_new_workbook(staphers, xl_dir):
 	# Setting the initial state to send to the frontend and update the progress bar
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(staphers)
@@ -24,9 +24,11 @@ def create_new_workbook(staphers):
 	current_task.update_state(meta = meta)
 
 	# Copy the template workbook.
-	template_wb = load_workbook('/app/static/xlsx/schedules-template.xlsx')
-	template_wb.save("/static/xlsx/schedules.xlsx")
-	schedule_wb = load_workbook('/app/static/xlsx/schedules.xlsx')
+	temp_file = xl_dir + 'schedules-template.xlsx'
+	file = xl_dir + 'schedules.xlsx'
+	template_wb = load_workbook(temp_file)
+	template_wb.save(file)
+	schedule_wb = load_workbook(file)
 	template_ws = schedule_wb['TEMPLATE']
 
 	for i, stapher in enumerate(staphers):
@@ -62,9 +64,9 @@ def get_end_col_from_time(time):
 	return get_start_col_from_time(time) - 1
 
 # This function takes in a list of staphers and staphings and makes a readable xl file for each stapher.
-def update_individual_excel_files(staphers, staphings):
+def update_individual_excel_files(staphers, staphings, xl_dir):
 	# Copy the template workbook
-	wb_str = create_new_workbook(staphers)
+	wb_str = create_new_workbook(staphers, xl_dir)
 
 	# Setting the initial state to send to the frontend and update the progress bar
 	num_actions_made = cache.get('num_actions_made') or 0
@@ -72,7 +74,8 @@ def update_individual_excel_files(staphers, staphings):
 	meta = {'message':'Loading Schedule Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
 	current_task.update_state(meta = meta)
 
-	schedule_wb = load_workbook("/static/xlsx/schedules.xlsx")
+	file = xl_dir + 'schedules.xlsx'
+	schedule_wb = load_workbook(file)
 	seconds_in_hour = 60 * 60
 	for i, stapher in enumerate(staphers):
 		# Update the state of progress for the front end
@@ -127,7 +130,7 @@ def update_individual_excel_files(staphers, staphings):
 	cache.set('num_actions_made', num_actions_made + len(staphers), None)
 
 	# Save the workbook
-	schedule_wb.save("/static/xlsx/schedules.xlsx")
+	schedule_wb.save(file)
 
 # This function takes in a set of staphings and returns a list of the staphers working them 
 def get_shift_workers(staphings):
@@ -194,7 +197,7 @@ def get_and_update_largest_offset(shift, times_to_offset, height):
 	return largest_offset
 
 # TODO: DRY with create_new_workbook method
-def copy_master_template(masters):
+def copy_master_template(masters, xl_dir):
 	# Set the progress for the frontend 
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(masters)
@@ -202,9 +205,11 @@ def copy_master_template(masters):
 	current_task.update_state(meta = meta)
 
 	# Copy the template workbook.
-	template_wb = load_workbook('/static/xlsx/masters-template.xlsx')
-	template_wb.save("/static/xlsx/masters.xlsx")
-	master_wb = load_workbook('/static/xlsx/masters.xlsx')
+	temp_file = xl_dir + 'masters-template.xlsx'
+	file = xl_dir + 'masters.xlsx'
+	template_wb = load_workbook(temp_file)
+	template_wb.save(file)
+	master_wb = load_workbook(file)
 	for i, master in enumerate(masters):
 		# Update the progress for each master
 		num_actions_made = cache.get('num_actions_made') or 0
@@ -225,7 +230,7 @@ def copy_master_template(masters):
 
 	# Save the workbook
 	master_wb.remove(template_ws)
-	master_wb.save("/static/xlsx/masters.xlsx")
+	master_wb.save(file)
 
 # TODO: DRY with get_start_col_from_time method
 def get_master_start_col_from_time(time):
@@ -307,10 +312,10 @@ def get_shifts_ids_to_placement(shifts):
 def get_length(shift):
 	return shift.length()
 
-def update_standard_masters(masters, staphings):
+def update_standard_masters(masters, staphings, xl_dir):
 	# Copy the master template
 	masters =  sorted(masters, key=attrgetter('title'))
-	copy_master_template(masters)
+	copy_master_template(masters, xl_dir)
 	
 
 	# Set the ammount of actions taken / needed to be take to send to the front end
@@ -320,7 +325,8 @@ def update_standard_masters(masters, staphings):
 	current_task.update_state(meta = meta)
 
 	# Load the new master workbook
-	master_wb = load_workbook('/static/xlsx/masters.xlsx')
+	file = xl_dir + 'masters.xlsx'
+	master_wb = load_workbook(file)
 
 	# Update the masters
 	for i, master in enumerate(masters):
@@ -367,7 +373,7 @@ def update_standard_masters(masters, staphings):
 	current_task.update_state(meta = meta)
 
 	# Save the new master workbook
-	master_wb.save("/static/xlsx/masters.xlsx")
+	master_wb.save(file)
 			
 def get_meal_master_col(shift):
 	return shift.day + 2
@@ -406,7 +412,7 @@ def get_meal_master_starting_row(shift):
 		return 15
 
 
-def update_meal_masters(masters, staphings):
+def update_meal_masters(masters, staphings, xl_dir):
 	# Set the ammount of actions taken / needed to be take to send to the front end
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(masters)
@@ -414,7 +420,8 @@ def update_meal_masters(masters, staphings):
 	current_task.update_state(meta = meta)
 	
 	# Load the meal master workbook
-	meal_master_wb = load_workbook('/static/xlsx/meal-master-template.xlsx')
+	temp_file = xl_dir + 'meal-master-template.xlsx'
+	meal_master_wb = load_workbook(temp_file)
 
 	# Update the workbook
 	for i, master in enumerate(masters):
@@ -448,10 +455,11 @@ def update_meal_masters(masters, staphings):
 	current_task.update_state(meta = meta)
 
 	# Save the meal master workbook
-	meal_master_wb.save("/static/xlsx/meal-masters.xlsx")
+	file = xl_dir + 'meal-masters.xlsx'
+	meal_master_wb.save(file)
 
 
-def update_masters(masters, staphings):
+def update_masters(masters, staphings, xl_dir):
 	standard_masters = []
 	meal_masters = []
 	for master in masters:
@@ -459,11 +467,11 @@ def update_masters(masters, staphings):
 			standard_masters.append(master)
 		else:
 			meal_masters.append(master)
-	update_standard_masters(standard_masters, staphings)
-	update_meal_masters(meal_masters, staphings)
+	update_standard_masters(standard_masters, staphings, xl_dir)
+	update_meal_masters(meal_masters, staphings, xl_dir)
 
 # Get the analytics for the given schedule and place them into an excel spreadsheet
-def update_analytics(staphers, staphings, flags, qualifications):
+def update_analytics(staphers, staphings, flags, qualifications, xl_dir):
 	# Set the values and update the progress for the front end
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or 2
@@ -474,7 +482,8 @@ def update_analytics(staphers, staphings, flags, qualifications):
 	analytics = get_analytics(staphers, staphings, flags, qualifications)
 
 	#Load/Update the workbook
-	analytics_wb = load_workbook('/static/xlsx/analytics-template.xlsx')
+	temp_file = xl_dir + 'analytics-template.xlsx'
+	analytics_wb = load_workbook(temp_file)
 	analytics_ws = analytics_wb['Analytics']
 	analytics_ws.title = 'Analytics'
 
@@ -499,7 +508,8 @@ def update_analytics(staphers, staphings, flags, qualifications):
 	cache.set('num_actions_made', num_actions_made + 3, None)
 
 	# Save the workbook
-	analytics_wb.save("/static/xlsx/analytics.xlsx")
+	file = xl_dir + 'analytics.xlsx'
+	analytics_wb.save(file)
 
 
 

@@ -31,9 +31,9 @@ def update_files_task(self, schedule_id):
 	cache.set('num_total_actions', num_total_actions, None)
 
 	# Do the task
-	update_individual_excel_files(all_staphers, staphings)
-	update_masters(all_masters, staphings)
-	update_analytics(all_staphers, staphings, all_flags, all_qualifications)
+	update_individual_excel_files(all_staphers, staphings,'/app/static/xlsx/')
+	update_masters(all_masters, staphings,'/app/static/xlsx/')
+	update_analytics(all_staphers, staphings, all_flags, all_qualifications,'/app/static/xlsx/')
 
 	# Delete the amount of actions from the cache
 	cache.set('num_actions_made', None, 0)
