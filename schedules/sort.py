@@ -31,15 +31,14 @@ def get_stapher_dict(all_staphers, qual_dict):
 	for stapher in all_staphers:
 		stapher_qualifications = frozenset(stapher.qualifications.all())
 		for key in qual_dict:
+			# Our first time seeing the set
+			if key not in qualification_set_stapher_dict:
+				qualification_set_stapher_dict[key] = []
 			qual_set = qual_dict[key]
 			# If the stapher is qualified...
 			if qual_set.issubset(stapher_qualifications):
-				# We have seen the set before
-				if key in qualification_set_stapher_dict:
-					qualification_set_stapher_dict[key].append(stapher)
-				# Our first time seeing the set
-				else:
-					qualification_set_stapher_dict[key] = [stapher]
+				qualification_set_stapher_dict[key].append(stapher)
+					
 	return qualification_set_stapher_dict
 
 
@@ -116,8 +115,8 @@ def get_sorted_shifts(staphers, shifts):
 					total_needed_dict[key] = {time_key: all_workers_needed}
 
 				# Get the sum of staphers who can cover those shifts
-				print(f'stapher dict = {stapher_dict}')
 				print(f'key = {key}')
+				print(f'stapher_dict = {stapher_dict}')
 				qualified_staphers = stapher_dict[key]
 
 				# Check to see if the number is equal, if so, those staphers MUST cover those shifts to build a complete schedule.
