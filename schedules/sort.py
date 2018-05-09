@@ -116,6 +116,8 @@ def get_sorted_shifts(staphers, shifts):
 					total_needed_dict[key] = {time_key: all_workers_needed}
 
 				# Get the sum of staphers who can cover those shifts
+				print(f'stapher dict = {stapher_dict}')
+				print(f'key = {key}')
 				qualified_staphers = stapher_dict[key]
 
 				# Check to see if the number is equal, if so, those staphers MUST cover those shifts to build a complete schedule.
@@ -180,15 +182,6 @@ def get_sorted_shifts(staphers, shifts):
 
 
 				
-
-
-
-
-
-	
-
-
-
 
 
 
