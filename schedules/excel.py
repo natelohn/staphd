@@ -1,7 +1,6 @@
 import datetime
 from celery import current_task
 from django.core.cache import cache
-from django.templatetags.static import static
 from openpyxl import load_workbook, Workbook
 from openpyxl.styles import Alignment, Color, PatternFill, Border, Side, Font
 from operator import attrgetter, itemgetter
@@ -16,8 +15,10 @@ def get_percent(current_actions, total_actions):
 
 # Duplicate the template making a new sheet for each stapher passed in
 def create_new_workbook(staphers):
-	url = static('xlsx/schedules.xlsx')
-	print(f'URL = {url}')
+	path = os.path.join(settings.STATIC_ROOT, 'xlsx/schedules-template.xlsx')
+	print(f'PATH = {path}')
+	file = open(path)
+	print(f'FILE = {file}')
 
 	# Setting the initial state to send to the frontend and update the progress bar
 	num_actions_made = cache.get('num_actions_made') or 0
