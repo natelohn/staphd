@@ -115,8 +115,6 @@ def get_sorted_shifts(staphers, shifts):
 					total_needed_dict[key] = {time_key: all_workers_needed}
 
 				# Get the sum of staphers who can cover those shifts
-				print(f'key = {key}')
-				print(f'stapher_dict = {stapher_dict}')
 				qualified_staphers = stapher_dict[key]
 
 				# Check to see if the number is equal, if so, those staphers MUST cover those shifts to build a complete schedule.
@@ -154,7 +152,7 @@ def get_sorted_shifts(staphers, shifts):
 
 				# We then use these ammounts to make a ratio used for sorting the shifts. The higher the ratio, the sooner it is scheduled.
 				percent_of_staph_unavailable = 1 - (len(available_staphers) / staphers.count())
-				ratio = (total_needed / len(available_staphers)) * percent_of_staph_unavailable
+				ratio = (total_needed / len(available_staphers)) * percent_of_staph_unavailable if available_staphers else 0
 
 				# Now we will check to see if the ratio is higher than the last ratio.
 				# If so, we will remove that shift from the array and replace it with the new ratio and save it for laster.
