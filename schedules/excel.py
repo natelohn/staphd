@@ -1,4 +1,5 @@
 import datetime
+import os # TEMP... TODO Delete <-
 from celery import current_task
 from django.core.cache import cache
 from django.templatetags.static import static
@@ -16,10 +17,8 @@ def get_percent(current_actions, total_actions):
 
 # Duplicate the template making a new sheet for each stapher passed in
 def create_new_workbook(staphers):
-	path = static('schedules/schedules-template.xlsx')
-	print(f'PATH = {path}')
-	file = open(path)
-	print(f'FILE = {file}')
+	cwd = os.getcwd()
+	print(f'CWD = {cwd}')
 
 	# Setting the initial state to send to the frontend and update the progress bar
 	num_actions_made = cache.get('num_actions_made') or 0
