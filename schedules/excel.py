@@ -17,15 +17,6 @@ def get_percent(current_actions, total_actions):
 
 # Duplicate the template making a new sheet for each stapher passed in
 def create_new_workbook(staphers):
-	os.chdir('static/xlsx')
-	cwd = os.getcwd()
-	print(f'CWD = {cwd}')
-	url = static('app/schedules-template.xlsx')
-	print(f'URL = {url}')
-	path = os.path.dirname(os.path.realpath('schedules-template.xlsx'))
-	print(f'PATH = {path}')
-	os.system('ls')
-
 	# Setting the initial state to send to the frontend and update the progress bar
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(staphers)
@@ -33,9 +24,9 @@ def create_new_workbook(staphers):
 	current_task.update_state(meta = meta)
 
 	# Copy the template workbook.
-	template_wb = load_workbook('/static/xlsx/schedules-template.xlsx')
+	template_wb = load_workbook('/app/static/xlsx/schedules-template.xlsx')
 	template_wb.save("/static/xlsx/schedules.xlsx")
-	schedule_wb = load_workbook('/static/xlsx/schedules.xlsx')
+	schedule_wb = load_workbook('/app/static/xlsx/schedules.xlsx')
 	template_ws = schedule_wb['TEMPLATE']
 
 	for i, stapher in enumerate(staphers):
