@@ -279,7 +279,6 @@ def get_analytics(staphers, staphings, flags, qualifications):
 		stapher_analytics = [stapher.full_name()]
 		shifts_by_day = stapher.shifts_by_day(staphings)
 		for function in funtions:
-			print(function)
 			stapher_analytics.extend(function(stapher, staphers, staphings, shifts_by_day, flags, qualifications))
 		analytics.append(stapher_analytics)
 	return analytics
