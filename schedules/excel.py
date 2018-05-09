@@ -17,7 +17,7 @@ def get_percent(current_actions, total_actions):
 
 # Duplicate the template making a new sheet for each stapher passed in
 def create_new_workbook(staphers):
-	os.chdir('static')
+	os.chdir('static/xlsx')
 	cwd = os.getcwd()
 	print(f'CWD = {cwd}')
 	url = static('app/schedules-template.xlsx')
