@@ -1,5 +1,6 @@
 import datetime
 import os
+import settings
 from celery import current_task
 from django.core.cache import cache
 from openpyxl import load_workbook, Workbook
