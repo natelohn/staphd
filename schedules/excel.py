@@ -1,8 +1,7 @@
 import datetime
-import os
-import settings
 from celery import current_task
 from django.core.cache import cache
+from django.templatetags.static import static
 from openpyxl import load_workbook, Workbook
 from openpyxl.styles import Alignment, Color, PatternFill, Border, Side, Font
 from operator import attrgetter, itemgetter
@@ -17,7 +16,7 @@ def get_percent(current_actions, total_actions):
 
 # Duplicate the template making a new sheet for each stapher passed in
 def create_new_workbook(staphers):
-	path = os.path.join(settings.STATIC_ROOT, 'xlsx/schedules-template.xlsx')
+	path = static('schedules/schedules-template.xlsx')
 	print(f'PATH = {path}')
 	file = open(path)
 	print(f'FILE = {file}')
