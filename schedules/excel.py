@@ -32,6 +32,7 @@ def create_new_workbook(staphers, xl_dir):
 	template_ws = schedule_wb['TEMPLATE']
 
 	for i, stapher in enumerate(staphers):
+		print(f'	create: {stapher}')
 		# Update the state of progress for the front end
 		message = f'Creating Excel Worksheet for {stapher.full_name()}'
 		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i, total_actions)}
@@ -78,6 +79,7 @@ def update_individual_excel_files(staphers, staphings, xl_dir):
 	schedule_wb = load_workbook(file)
 	seconds_in_hour = 60 * 60
 	for i, stapher in enumerate(staphers):
+		print(f'	update: {stapher}')
 		# Update the state of progress for the front end
 		message = f'Populating Excel Worksheet for {stapher.full_name()}'
 		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i, total_actions)}
