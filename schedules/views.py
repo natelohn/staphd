@@ -152,8 +152,6 @@ def build_schedules(request):
 			task_id = task.task_id
 			print(f'		task_id = {task_id}')
 			cache.set('current_task_id', task_id, None)
-			test = cache.get('current_task_id') # TODO: Delete this line
-			print(f'		task_id in cache = {test}')
 		request.session['task_id'] = task_id
 		context = {'task_id':task_id}
 		return render(request,'schedules/progress.html', context)

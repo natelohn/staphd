@@ -1,4 +1,3 @@
-from celery import current_task
 from django.core.cache import cache
 from operator import itemgetter
 from random import random
