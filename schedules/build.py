@@ -1,3 +1,4 @@
+from celery import current_task
 from django.core.cache import cache
 from operator import itemgetter
 from random import random
@@ -52,10 +53,6 @@ def resolve_ties(settings, recommendations):
 # Currently is not guarenteed to cover every shift.
 # Covering 99% of shift w/ the 2017 shifts and staphers.
 def build_schedules(sorted_shifts, settings):
-	# Get the current task
-	current_task_id = cache.get('current_task_id')
-	current_task = app.AsyncResult(current_task_id)
-
 	print(f'			build_schedules executed')
 	# Initialize the frontend information
 	total_actions = cache.get('num_total_actions') or 1595 # TODO Remove Magic Number

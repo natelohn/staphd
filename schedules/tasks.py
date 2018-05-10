@@ -1,5 +1,5 @@
 from __future__ import absolute_import, unicode_literals
-from celery import shared_task
+from celery import shared_task, current_task
 from celery.decorators import task
 from django.core.cache import cache
 from django.db.models.functions import Lower
@@ -55,9 +55,6 @@ def build_schedules_task(self):
 	if cache.get('resort') or not sorted_shifts:
 		# Set the message for the front end
 		sorted_shifts = cache.get('sorted_shifts')
-		# Get the current task
-		current_task_id = cache.get('current_task_id')
-		current_task = app.AsyncResult(current_task_id)
 		current_task.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
 
 		# Get the necessary info from the DB
