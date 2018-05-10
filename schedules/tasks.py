@@ -49,7 +49,7 @@ def update_files_task(self, schedule_id):
 
 @task(bind=True, track_started=True)
 @shared_task(bind=True, ignore_result=False)
-def build_schedules_task(self, current_task):
+def build_schedules_task(self):
 	print('		build_schedules_task called')
 	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:
