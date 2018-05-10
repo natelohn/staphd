@@ -69,11 +69,15 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 @login_required
 def build_view(request):
+	# TODO: Delete v
+	cache.set('num_actions_made', None, 0)
+	cache.set('num_total_actions', None, 0)
+	cache.set('current_task_id', None, 0)
+	# TODO: Delete ^
+
 	print('build_view')
 	task_id = cache.get('current_task_id')
 	print(f'Task ID is: {task_id}')
-	task_id = cache.get('current_task_id')
-	print(f'Task ID reset to: {task_id}... This code needs to be deleted.')
 	if task_id:
 		print('		task_id present')
 		task = app.AsyncResult(task_id)
@@ -161,8 +165,6 @@ def track_state(request, *args, **kwargs):
 	i = app.control.inspect()
 	print(i.active())
 	# TODO: Delete ^
-
-
 
 
 	""" A view to report the progress of a task to the user """
