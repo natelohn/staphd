@@ -159,7 +159,7 @@ def build_schedules(request):
 def track_state(request, *args, **kwargs):
 	# TODO: Delete v
 	i = app.control.inspect()
-	print(i)
+	print(i.active())
 	# TODO: Delete ^
 
 
