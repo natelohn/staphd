@@ -4,6 +4,7 @@ from django.templatetags.static import static
 from openpyxl import load_workbook, Workbook
 from openpyxl.styles import Alignment, Color, PatternFill, Border, Side, Font
 from operator import attrgetter, itemgetter
+from staphd.celery import app
 
 from .analytics import get_analytics
 
