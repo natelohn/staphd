@@ -69,12 +69,6 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 @login_required
 def build_view(request):
-	# TODO: Delete v
-	cache.set('num_actions_made', None, 0)
-	cache.set('num_total_actions', None, 0)
-	cache.set('current_task_id', None, 0)
-	# TODO: Delete ^
-
 	print('build_view')
 	task_id = cache.get('current_task_id')
 	print(f'Task ID is: {task_id}')
