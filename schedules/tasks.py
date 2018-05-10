@@ -1,5 +1,5 @@
 from __future__ import absolute_import, unicode_literals
-from celery import shared_task, current_task
+from celery import shared_task
 from celery.decorators import task
 from django.core.cache import cache
 from django.db.models.functions import Lower
@@ -48,14 +48,14 @@ def update_files_task(self, schedule_id):
 
 
 @task(bind=True, track_started=True)
-@shared_task(bind=True, ignore_result=False	)
-def build_schedules_task(self):
+@shared_task(bind=True, ignore_result=False)
+def build_schedules_task(self, current_task):
 	print('		build_schedules_task called')
 	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:
 		# Set the message for the front end
 		sorted_shifts = cache.get('sorted_shifts')
-		current_task.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
+		self.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
 
 		# Get the necessary info from the DB
 		all_shifts = Shift.objects.all()
@@ -74,7 +74,7 @@ def build_schedules_task(self):
 
 	# Do the task
 	print(f'			build_schedules_task called')
-	schedule = build_schedules(sorted_shifts, settings)
+	schedule = build_schedules(sorted_shifts, settings, self)
 	print(f'			schedule id = {schedule.id}')
 	cache.set('schedule_id', schedule.id, None)
 
