@@ -31,7 +31,7 @@ def create_new_workbook(staphers, xl_dir, current_task):
 	template_ws = schedule_wb['TEMPLATE']
 
 	for i, stapher in enumerate(staphers):
-		print(f'	create: {stapher}')
+		print(f'	create {i}: {stapher}')
 		# Update the state of progress for the front end
 		message = f'Creating Excel Worksheet for {stapher.full_name()}'
 		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i, total_actions)}
@@ -40,7 +40,9 @@ def create_new_workbook(staphers, xl_dir, current_task):
 		# We copy the template worksheet for each Stapher.
 		print(f'	copy temp for: {stapher}')
 		stapher_ws = schedule_wb.copy_worksheet(template_ws)
+		print(f'	ws: {stapher_ws}')
 		stapher_ws.title = stapher.full_name()
+		print(f'	stapher_ws.title: {stapher_ws.title}')
 	print(f'new workbook finished...')
 	schedule_wb.remove(template_ws)
 	print(f'removed temp')
