@@ -141,6 +141,7 @@ def delete_schedule(request):
 @login_required
 @csrf_exempt
 def build_schedules(request):
+	print('test print')
 	print('build_schedules')
 	staphings = Staphing.objects.all()
 	if staphings:
