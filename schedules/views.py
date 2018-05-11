@@ -78,12 +78,14 @@ def build_view(request):
 	tasks = t.active()
 	for key in tasks:
 		if tasks[key]:
+			print(f'tasks[key]: {tasks[key]}')
 			task = tasks[key]
 			for i in range(0, len(tasks[key])):
+				print(f'task[i]: {tasks[i]}')
 				name = task[i]['name']
 				print(f'Runing Task: {name}')
 				for task_key in task[i]:
-					print(f'	{task_key}: {task[i][task_key]}')
+					print(f'	- {task_key}: {task[i][task_key]}')
 		else:
 			print('No tasks running')
 	# TODO: Delete ^
@@ -178,12 +180,14 @@ def track_state(request, *args, **kwargs):
 	tasks = t.active()
 	for key in tasks:
 		if tasks[key]:
+			print(f'tasks[key]: {tasks[key]}')
 			task = tasks[key]
 			for i in range(0, len(tasks[key])):
+				print(f'task[i]: {tasks[i]}')
 				name = task[i]['name']
 				print(f'Runing Task: {name}')
 				for task_key in task[i]:
-					print(f'	{task_key}: {task[i][task_key]}')
+					print(f'	- {task_key}: {task[i][task_key]}')
 		else:
 			print('No tasks running')
 	# TODO: Delete ^
