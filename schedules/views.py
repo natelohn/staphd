@@ -77,11 +77,14 @@ def build_view(request):
 	i = app.control.inspect()
 	tasks = i.active()
 	for key in tasks:
-		task = tasks[key]
-		print(f'	Task info: {task}')
-		for i in range(0, len(tasks[key])):
-			name = task[i]['name']
-			print(f'	Runing Task: {name}')
+		if tasks[key]:
+			task = tasks[key]
+			for i in range(0, len(tasks[key])):
+				name = task[i]['name']
+				print(f'	Runing Task: {name}')
+		else:
+			print('No tasks running')
+			print(tasks)
 	# TODO: Delete ^
 
 	print('build_view')
