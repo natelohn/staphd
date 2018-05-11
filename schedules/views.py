@@ -74,17 +74,18 @@ def build_view(request):
 	cache.set('num_total_actions', None, 0)
 	cache.set('current_task_id', None, 0)
 	print('Tasks in Cache Cleared...')
-	i = app.control.inspect()
-	tasks = i.active()
+	t = app.control.inspect()
+	tasks = t.active()
 	for key in tasks:
 		if tasks[key]:
 			task = tasks[key]
 			for i in range(0, len(tasks[key])):
 				name = task[i]['name']
-				print(f'	Runing Task: {name}')
+				print(f'Runing Task: {name}')
+				for task_key in task[i]:
+					print(f'	{task_key}: {task[i][task_key]}')
 		else:
 			print('No tasks running')
-			print(tasks)
 	# TODO: Delete ^
 
 	print('build_view')
@@ -173,10 +174,18 @@ def build_schedules(request):
 @csrf_exempt
 def track_state(request, *args, **kwargs):
 	# TODO: Delete v
-	i = app.control.inspect()
-	tasks = i.active()
-	for i, key in enumerate(tasks):
-		print(f'	Runing Task {i}: {tasks[key]}')
+	t = app.control.inspect()
+	tasks = t.active()
+	for key in tasks:
+		if tasks[key]:
+			task = tasks[key]
+			for i in range(0, len(tasks[key])):
+				name = task[i]['name']
+				print(f'Runing Task: {name}')
+				for task_key in task[i]:
+					print(f'	{task_key}: {task[i][task_key]}')
+		else:
+			print('No tasks running')
 	# TODO: Delete ^
 
 
