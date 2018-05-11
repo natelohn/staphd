@@ -43,9 +43,9 @@ def create_new_workbook(staphers, xl_dir, current_task):
 		# print(f'	ws: {stapher_ws}')
 		# stapher_ws.title = stapher.full_name()
 		# print(f'	stapher_ws.title: {stapher_ws.title}')
-	print(f'new workbook finished...')
-	schedule_wb.remove(template_ws)
-	print(f'removed temp')
+	# print(f'new workbook finished...')
+	# schedule_wb.remove(template_ws)
+	# print(f'removed temp')
 
 	# Updating the state to send to the frontend and update the progress bar
 	meta = {'message':'Saving New Schedule Workbook', 'process_percent':get_percent(len(staphers), total_actions)}
