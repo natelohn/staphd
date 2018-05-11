@@ -77,7 +77,8 @@ def build_view(request):
 	i = app.control.inspect()
 	tasks = i.active()
 	for i, key in enumerate(tasks):
-		print(f'	Runing Task: {tasks[key]['name']}')
+		name = tasks[key]['name']
+		print(f'	Runing Task: {name}')
 	# TODO: Delete ^
 
 	print('build_view')
