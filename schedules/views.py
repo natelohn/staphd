@@ -183,7 +183,7 @@ def track_state(request, *args, **kwargs):
 			print(f'tasks[key]: {tasks[key]}')
 			task = tasks[key]
 			for i in range(0, len(tasks[key])):
-				print(f'task[i]: {tasks[i]}')
+				print(f'task[i]: {task[i]}')
 				name = task[i]['name']
 				print(f'Runing Task: {name}')
 				for task_key in task[i]:
