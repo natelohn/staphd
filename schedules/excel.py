@@ -37,12 +37,12 @@ def create_new_workbook(staphers, xl_dir, current_task):
 		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i, total_actions)}
 		current_task.update_state(meta = meta)
 		
-		# We copy the template worksheet for each Stapher.
-		print(f'	copy temp for: {stapher}')
-		stapher_ws = schedule_wb.copy_worksheet(template_ws)
-		print(f'	ws: {stapher_ws}')
-		stapher_ws.title = stapher.full_name()
-		print(f'	stapher_ws.title: {stapher_ws.title}')
+		# # We copy the template worksheet for each Stapher.
+		# print(f'	copy temp for: {stapher}')
+		# stapher_ws = schedule_wb.copy_worksheet(template_ws)
+		# print(f'	ws: {stapher_ws}')
+		# stapher_ws.title = stapher.full_name()
+		# print(f'	stapher_ws.title: {stapher_ws.title}')
 	print(f'new workbook finished...')
 	schedule_wb.remove(template_ws)
 	print(f'removed temp')
