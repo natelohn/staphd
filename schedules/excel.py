@@ -10,12 +10,12 @@ from .analytics import get_analytics
 
 # TODO: remove file names from these methods
 
-# current_task update helper (used for readability)
+# current task update helper (used for readability)
 def get_percent(current_actions, total_actions):
 	return int((current_actions / total_actions) * 100)
 
 # Duplicate the template making a new sheet for each stapher passed in
-def create_new_workbook(staphers, xl_dir):
+def create_new_workbook(staphers, xl_dir, current_task):
 	# Setting the initial state to send to the frontend and update the progress bar
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(staphers)
@@ -69,9 +69,9 @@ def get_end_col_from_time(time):
 	return get_start_col_from_time(time) - 1
 
 # This function takes in a list of staphers and staphings and makes a readable xl file for each stapher.
-def update_individual_excel_files(staphers, staphings, xl_dir):
+def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 	# Copy the template workbook
-	wb_str = create_new_workbook(staphers, xl_dir)
+	wb_str = create_new_workbook(staphers, xl_dir, current_task)
 
 	# Setting the initial state to send to the frontend and update the progress bar
 	num_actions_made = cache.get('num_actions_made') or 0
@@ -203,7 +203,7 @@ def get_and_update_largest_offset(shift, times_to_offset, height):
 	return largest_offset
 
 # TODO: DRY with create_new_workbook method
-def copy_master_template(masters, xl_dir):
+def copy_master_template(masters, xl_dir, current_task):
 	# Set the progress for the frontend 
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(masters)
@@ -318,7 +318,7 @@ def get_shifts_ids_to_placement(shifts):
 def get_length(shift):
 	return shift.length()
 
-def update_standard_masters(masters, staphings, xl_dir):
+def update_standard_masters(masters, staphings, xl_dir, current_task):
 	# Copy the master template
 	masters =  sorted(masters, key=attrgetter('title'))
 	copy_master_template(masters, xl_dir)
@@ -418,7 +418,7 @@ def get_meal_master_starting_row(shift):
 		return 15
 
 
-def update_meal_masters(masters, staphings, xl_dir):
+def update_meal_masters(masters, staphings, xl_dir, current_task):
 	# Set the ammount of actions taken / needed to be take to send to the front end
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(masters)
@@ -465,7 +465,7 @@ def update_meal_masters(masters, staphings, xl_dir):
 	meal_master_wb.save(file)
 
 
-def update_masters(masters, staphings, xl_dir):
+def update_masters(masters, staphings, xl_dir, current_task):
 	standard_masters = []
 	meal_masters = []
 	for master in masters:
@@ -473,11 +473,11 @@ def update_masters(masters, staphings, xl_dir):
 			standard_masters.append(master)
 		else:
 			meal_masters.append(master)
-	update_standard_masters(standard_masters, staphings, xl_dir)
-	update_meal_masters(meal_masters, staphings, xl_dir)
+	update_standard_masters(standard_masters, staphings, xl_dir, current_task)
+	update_meal_masters(meal_masters, staphings, xl_dir, current_task)
 
 # Get the analytics for the given schedule and place them into an excel spreadsheet
-def update_analytics(staphers, staphings, flags, qualifications, xl_dir):
+def update_analytics(staphers, staphings, flags, qualifications, xl_dir, current_task):
 	# Set the values and update the progress for the front end
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or 2

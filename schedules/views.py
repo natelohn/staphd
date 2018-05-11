@@ -69,6 +69,17 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 @login_required
 def build_view(request):
+	# TODO: Delete v
+	cache.set('num_actions_made', None, 0)
+	cache.set('num_total_actions', None, 0)
+	cache.set('current_task_id', None, 0)
+	print('Tasks in Cache Cleared...')
+	i = app.control.inspect()
+	tasks = i.active()
+	for i, key in enumerate(tasks):
+		print(f'	Runing Task {i}: {tasks[key]}')
+	# TODO: Delete ^
+
 	print('build_view')
 	task_id = cache.get('current_task_id')
 	print(f'Task ID is: {task_id}')
@@ -155,7 +166,9 @@ def build_schedules(request):
 def track_state(request, *args, **kwargs):
 	# TODO: Delete v
 	i = app.control.inspect()
-	print(i.active())
+	tasks = i.active()
+	for i, key in enumerate(tasks):
+		print(f'	Runing Task {i}: {tasks[key]}')
 	# TODO: Delete ^
 
 
