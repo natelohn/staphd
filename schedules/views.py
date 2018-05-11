@@ -76,9 +76,12 @@ def build_view(request):
 	print('Tasks in Cache Cleared...')
 	i = app.control.inspect()
 	tasks = i.active()
-	for i, key in enumerate(tasks):
-		name = tasks[key]
-		print(f'	Runing Task: {name}')
+	for key in tasks:
+		task = tasks[key]
+		print(f'	Task info: {task}')
+		for i in range(0, len(tasks[key])):
+			name = task[i]['name']
+			print(f'	Runing Task: {name}')
 	# TODO: Delete ^
 
 	print('build_view')
