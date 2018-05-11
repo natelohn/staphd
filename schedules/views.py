@@ -182,12 +182,19 @@ def track_state(request, *args, **kwargs):
 		if tasks[key]:
 			print(f'tasks[key]: {tasks[key]}')
 			task = tasks[key]
+			print('A')
 			for i in range(0, len(tasks[key])):
+				print('B')
 				print(f'task[i]: {task[i]}')
+				print('C')
 				name = task[i]['name']
+				print('D')
 				print(f'Runing Task: {name}')
+				print('E')
 				for task_key in task[i]:
+					print('F')
 					print(f'	- {task_key}: {task[i][task_key]}')
+					print('G')
 		else:
 			print('No tasks running')
 	# TODO: Delete ^
