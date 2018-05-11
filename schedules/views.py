@@ -76,8 +76,8 @@ def build_view(request):
 	print('Tasks in Cache Cleared...')
 	t = app.control.inspect()
 	tasks = t.active()
-	for key in tasks:
-		if tasks[key]:
+	if tasks:
+		for key in tasks:
 			print(f'tasks[key]: {tasks[key]}')
 			task = tasks[key]
 			for i in range(0, len(tasks[key])):
@@ -86,8 +86,8 @@ def build_view(request):
 				print(f'Runing Task: {name}')
 				for task_key in task[i]:
 					print(f'	- {task_key}: {task[i][task_key]}')
-		else:
-			print('No tasks running')
+	else:
+		print('No tasks running')
 	# TODO: Delete ^
 
 	print('build_view')
