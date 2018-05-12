@@ -70,10 +70,10 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 @login_required
 def build_view(request):
 	# TODO: Delete v
-	cache.set('num_actions_made', None, 0)
-	cache.set('num_total_actions', None, 0)
-	cache.set('current_task_id', None, 0)
-	print('Tasks in Cache Cleared...')
+	# cache.set('num_actions_made', None, 0)
+	# cache.set('num_total_actions', None, 0)
+	# cache.set('current_task_id', None, 0)
+	# print('Tasks in Cache Cleared...')
 	# t = app.control.inspect()
 	# tasks = t.active()
 	# if tasks:
@@ -96,6 +96,8 @@ def build_view(request):
 	if task_id:
 		print('		task_id present')
 		task = app.AsyncResult(task_id)
+		result = task.get()
+		print(f'Result = {result}')
 		data = task.result or task.state
 		# If there is a current running task show its progress
 		if 'PENDING' not in data:
