@@ -196,7 +196,7 @@ def get_total_day_off_time(stapher, staphers, staphings, shifts_by_day, flags, q
 			else:
 				last_shift_before_off_day = None
 
-			if shifts_by_day[off_day + 1]: # Stapher has a shift scheduled after their off day ends
+			if shifts_by_day[off_day + 1]: # Stapher has a shift scheduled on the day after their off day
 				first_shift_after_off_day = shifts_by_day[off_day + 1][0]
 			else:
 				first_shift_after_off_day = None
