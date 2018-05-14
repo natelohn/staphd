@@ -191,11 +191,12 @@ def get_total_day_off_time(stapher, staphers, staphings, shifts_by_day, flags, q
 	off_day = stapher.get_off_day()
 	if off_day >= 0:  # Stapher has an off day qualification
 		if shifts_by_day[off_day] and len(shifts_by_day[off_day]) > 0: # Stapher has 2 scheduled off day shifts
-			if len(shifts_by_day[off_day - 1]) > 1:
+			if len(shifts_by_day[off_day - 1]) > 1: # Stapher has a shift scheduled before their off day starts
 				last_shift_before_off_day = shifts_by_day[off_day - 1][-2]
 			else:
-				last_shift_before_off_day = shifts_by_day[off_day - 1][-2]
-			if shifts_by_day[off_day + 1]:
+				last_shift_before_off_day = None
+
+			if shifts_by_day[off_day + 1]: # Stapher has a shift scheduled after their off day ends
 				first_shift_after_off_day = shifts_by_day[off_day + 1][0]
 			else:
 				first_shift_after_off_day = None
@@ -204,6 +205,7 @@ def get_total_day_off_time(stapher, staphers, staphings, shifts_by_day, flags, q
 				off_time_before = 24 - get_hours_between_times(datetime.time.min, last_shift_before_off_day.end)
 			else:
 				off_time_before = 24
+
 			if first_shift_after_off_day:
 				off_time_after = get_hours_between_times(datetime.time.min, first_shift_after_off_day.start)
 			else:
