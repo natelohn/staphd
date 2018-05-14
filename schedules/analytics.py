@@ -52,14 +52,13 @@ def get_hours_info(stapher, staphers, staphings, shifts_by_day, flags, qualifica
 		length_strs.append(length_str)
 	return [sum(hours_for_days)] + hours_for_days + [max_hours, least_hours] + length_strs + [shortest_length, max_length]
 
-
+# TODO: Clean up this function (Set Start/End Times before the logic of off/mid day to avoid repeating code)
 def get_average_first_last_info(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
 	off_day = stapher.get_off_day()
 	total_first_shift_time =  datetime.timedelta(0, 0)
 	total_first_shift_time_mid =  datetime.timedelta(0, 0)
 	total_last_shift_time = datetime.timedelta(0, 0)
 	total_last_shift_time_mid = datetime.timedelta(0, 0)
-	ammout
 	for day in range(0, 7):
 		if day != off_day:
 			shifts = shifts_by_day[day]
@@ -73,14 +72,15 @@ def get_average_first_last_info(stapher, staphers, staphings, shifts_by_day, fla
 					total_last_shift_time += datetime.timedelta(hours = last_shift.end.hour, minutes = last_shift.end.minute)
 					if day in range(2, 5):
 						total_last_shift_time_mid += datetime.timedelta(hours = first_shift.start.hour, minutes = first_shift.start.minute)
-			# If there are no shifts scheduled for that day then set default start to 10am and end to 6pm
+			# If there are no shifts scheduled for that day 
+			# then set default start to 10am and end to 6pm
 			else:
 				total_first_shift_time = datetime.timedelta(hours = 10)
 				total_last_shift_time = datetime.timedelta(hours = 18)
 				if day in range(2, 5):
 					total_first_shift_time_mid = datetime.timedelta(hours = 10)
-					total_last_shift_time_mid = datetime.timedelta(hours = 18)
-				
+					if day != off_day - 1:
+						total_last_shift_time_mid = datetime.timedelta(hours = 18)
 	avg_first_shift = get_str_from_td(total_first_shift_time / 6)
 	avg_last_shift = get_str_from_td(total_last_shift_time / 5)
 	avg_first_shift_mid = get_str_from_td(total_first_shift_time_mid / len(set([2, 3, 4]) - set([off_day])))
