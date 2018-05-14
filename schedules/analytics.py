@@ -35,10 +35,14 @@ def get_hours_info(stapher, staphers, staphings, shifts_by_day, flags, qualifica
 			if hours < least_hours:
 				least_hours = hours	
 			shifts = shifts_by_day[day]
-			first_shift = shifts[0]
-			last_shift = shifts[-1]
-			length_str = f'{get_readable_time(first_shift.start)} to {get_readable_time(last_shift.end)}'
-			length = get_hours_between_times(first_shift.start, last_shift.end)
+			if shifts:
+				first_shift = shifts[0]
+				last_shift = shifts[-1]
+				length_str = f'{get_readable_time(first_shift.start)} to {get_readable_time(last_shift.end)}'
+				length = get_hours_between_times(first_shift.start, last_shift.end)
+			else:
+				length_str = 'No Shifts'
+				length = 24
 			if length < shortest_length:
 				shortest_length = length
 			if length > max_length:
