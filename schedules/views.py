@@ -77,6 +77,7 @@ def build_view(request):
 	t = app.control.inspect()
 	tasks = t.active()
 	if tasks:
+		print(f'tasks: {tasks}')
 		for key in tasks:
 			print(f'tasks[key]: {tasks[key]}')
 			task = tasks[key]
