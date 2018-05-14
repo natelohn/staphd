@@ -323,7 +323,7 @@ def get_length(shift):
 def update_standard_masters(masters, staphings, xl_dir, current_task):
 	# Copy the master template
 	masters =  sorted(masters, key=attrgetter('title'))
-	copy_master_template(masters, xl_dir)
+	copy_master_template(masters, xl_dir, current_task)
 	
 
 	# Set the ammount of actions taken / needed to be take to send to the front end
