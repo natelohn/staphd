@@ -3,6 +3,9 @@ import datetime
 def get_hours_from_timedelta(time_delta):
 	return (time_delta.days * 24) + round(time_delta.seconds / 3600, 2)
 
+def get_td_from_time(time):
+	return datetime.timedelta(hours = time.hour, minutes = time.minute)
+
 def get_hours_between_times(start, end):
 	start_td = datetime.timedelta(hours = start.hour, minutes = start.minute)
 	end_td = datetime.timedelta(hours = end.hour, minutes = end.minute)
@@ -63,24 +66,22 @@ def get_average_first_last_info(stapher, staphers, staphings, shifts_by_day, fla
 		if day != off_day:
 			shifts = shifts_by_day[day]
 			if shifts:
-				first_shift = shifts[0]
-				total_first_shift_time += datetime.timedelta(hours = first_shift.start.hour, minutes = first_shift.start.minute)
-				if day in range(2, 5):
-					total_first_shift_time_mid += datetime.timedelta(hours = first_shift.start.hour, minutes = first_shift.start.minute)
-				if day != off_day - 1: 
-					last_shift = shifts[-1]
-					total_last_shift_time += datetime.timedelta(hours = last_shift.end.hour, minutes = last_shift.end.minute)
-					if day in range(2, 5):
-						total_last_shift_time_mid += datetime.timedelta(hours = first_shift.start.hour, minutes = first_shift.start.minute)
-			# If there are no shifts scheduled for that day 
-			# then set default start to 10am and end to 6pm
+				first_shift_time = get_td_from_time(shifts[0].start)
+				last_shift_time = get_td_from_time(shifts[-1].end)
 			else:
-				total_first_shift_time = datetime.timedelta(hours = 10)
-				total_last_shift_time = datetime.timedelta(hours = 18)
+				# If there are no shifts scheduled for that day 
+				# 	then set default start to 10am and end to 6pm
+				first_shift_time = datetime.timedelta(hours = 10)
+				last_shift_time = datetime.timedelta(hours = 18)
+
+			total_first_shift_time += first_shift_time
+			if day in range(2, 5):
+				total_first_shift_time_mid += first_shift_time
+			if day != off_day - 1: 
+				total_last_shift_time += last_shift_time
 				if day in range(2, 5):
-					total_first_shift_time_mid = datetime.timedelta(hours = 10)
-					if day != off_day - 1:
-						total_last_shift_time_mid = datetime.timedelta(hours = 18)
+					total_last_shift_time_mid += last_shift_time
+			
 	avg_first_shift = get_str_from_td(total_first_shift_time / 6)
 	avg_last_shift = get_str_from_td(total_last_shift_time / 5)
 	avg_first_shift_mid = get_str_from_td(total_first_shift_time_mid / len(set([2, 3, 4]) - set([off_day])))
@@ -91,19 +92,27 @@ def get_sleep_windows_info(stapher, staphers, staphings, shifts_by_day, flags, q
 	full_day = datetime.timedelta(hours = 24, minutes = 0)
 	off_day = stapher.get_off_day()
 	days = [1, 2, 3, 4, 5, 6, 0]
-	last_shift_of_yesterday = shifts_by_day[0][-1]
+	default_start = datetime.timedelta(hours = 10)
+	default_end = datetime.timedelta(hours = 18)
+	last_shift_end_of_yesterday = get_td_from_time(shifts_by_day[0][-1].end) if shifts_by_day[0] else default_end
 	sleep_windows = []
 	window_totals = 0
 	for day in days:
 		if day != off_day:
+			night_td = last_shift_end_of_yesterday
 			shifts = shifts_by_day[day]
-			first_shift_of_today = shifts[0]
-			morning_td = datetime.timedelta(hours = first_shift_of_today.start.hour, minutes = first_shift_of_today.start.hour)
-			night_td = datetime.timedelta(hours = last_shift_of_yesterday.end.hour, minutes = last_shift_of_yesterday.end.hour)
+			if shifts:
+				morning_td = get_td_from_time(shifts[0].start)
+				last_shift_of_yesterday = get_td_from_time(shifts[-1].end)
+			# If there are no shifts scheduled for this day 
+			# 	then set the default start and end to 10am and 6pm
+			else:
+				morning_td = default_start
+				last_shift_end_of_yesterday = default_end
 			window = get_hours_from_timedelta((full_day - night_td) + morning_td)
 			sleep_windows.append(window)
 			window_totals += window
-			last_shift_of_yesterday = shifts[-1]
+
 		else:
 			sleep_windows.append('Off Day')
 	sleep_windows_avg = round(window_totals / 6, 2)
@@ -115,18 +124,24 @@ def get_sleep_windows_for_days(stapher, staphers, staphings, shifts_by_day, flag
 	full_day = datetime.timedelta(hours = 24, minutes = 0)
 	off_day = stapher.get_off_day()
 	days = [1, 2, 3, 4, 5, 6, 0]
-	last_shift_of_yesterday = shifts_by_day[0][-1]
+	default_start = datetime.timedelta(hours = 10)
+	default_end = datetime.timedelta(hours = 18)
+	last_shift_end_of_yesterday = get_td_from_time(shifts_by_day[0][-1].end) if shifts_by_day[0] else default_end
 	sleep_windows = []
 	for day in days:
 		if day != off_day:
+			night_td = last_shift_end_of_yesterday
 			shifts = shifts_by_day[day]
-			first_shift_of_today = shifts[0]
-			morning_td = datetime.timedelta(hours = first_shift_of_today.start.hour, minutes = first_shift_of_today.start.hour)
-			night_td = datetime.timedelta(hours = last_shift_of_yesterday.end.hour, minutes = last_shift_of_yesterday.end.hour)
+			if shifts:
+				morning_td = get_td_from_time(shifts[0].start)
+				last_shift_end_of_yesterday = get_td_from_time(shifts[-1].end)
+			else:
+				morning_td = default_start
+				last_shift_end_of_yesterday = default_end
+
 			window = get_hours_from_timedelta((full_day - night_td) + morning_td)
 			sleep_windows.append(window)
-			# Bump the last shift forward
-			last_shift_of_yesterday = shifts[-1]
+
 		else:
 			sleep_windows.append('Off Day')
 	return sleep_windows
@@ -135,16 +150,22 @@ def get_avg_sleep_window(stapher, staphers, staphings, shifts_by_day, flags, qua
 	full_day = datetime.timedelta(hours = 24, minutes = 0)
 	off_day = stapher.get_off_day()
 	days = [1, 2, 3, 4, 5, 6, 0]
-	last_shift_of_yesterday = shifts_by_day[0][-1]
+	default_start = datetime.timedelta(hours = 10)
+	default_end = datetime.timedelta(hours = 18)
+	last_shift_end_of_yesterday = get_td_from_time(shifts_by_day[0][-1].end) if shifts_by_day[0] else default_end
 	sleep_windows_total = 0
 	for day in days:
 		if day != off_day:
+			night_td = last_shift_end_of_yesterday
 			shifts = shifts_by_day[day]
-			first_shift_of_today = shifts[0]
-			morning_td = datetime.timedelta(hours = first_shift_of_today.start.hour, minutes = first_shift_of_today.start.hour)
-			night_td = datetime.timedelta(hours = last_shift_of_yesterday.end.hour, minutes = last_shift_of_yesterday.end.hour)
+			if shifts:
+				morning_td = get_td_from_time(shifts[0].start)
+				last_shift_end_of_yesterday = get_td_from_time(shifts[-1].end)
+			else:
+				morning_td = default_start
+				last_shift_end_of_yesterday = default_end
 			sleep_windows_total += get_hours_from_timedelta((full_day - night_td) + morning_td)
-			last_shift_of_yesterday = shifts[-1]
+
 	sleep_windows_avg = round(sleep_windows_total / 6, 2)
 	return [sleep_windows_avg]
 
