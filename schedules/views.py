@@ -96,8 +96,6 @@ def build_view(request):
 	if task_id:
 		print('		task_id present')
 		task = app.AsyncResult(task_id)
-		result = task.get()
-		print(f'Result = {result}')
 		data = task.result or task.state
 		# If there is a current running task show its progress
 		if 'PENDING' not in data:
