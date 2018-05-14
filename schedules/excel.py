@@ -272,7 +272,7 @@ def get_shifts_ids_to_placement(shifts):
 	shifts = sorted(shifts, key = attrgetter('day', 'start'))
 	# In order to avoid overflowing the excel sheet - we first place the top layer of each day and then the 2nd layer and so on...
 	placed_shifts = []
-	last_shift = shifts[0]
+	last_shift = shifts[0] if shifts else None
 	while len(placed_shifts) < len(shifts):
 		for shift in shifts:
 			not_seen_before = shift not in placed_shifts

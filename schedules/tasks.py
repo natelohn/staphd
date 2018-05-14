@@ -32,9 +32,9 @@ def update_files_task(self, schedule_id):
 
 	# Do the task
 	xl_dir = '/app/static/xlsx/'
-	print('update_individual_excel_files...')
-	update_individual_excel_files(all_staphers, staphings, xl_dir, self)
-	print('update_individual_excel_files... complete')
+	# print('update_individual_excel_files...')
+	# update_individual_excel_files(all_staphers, staphings, xl_dir, self)
+	# print('update_individual_excel_files... complete')
 	print('update_masters...')
 	update_masters(all_masters, staphings, xl_dir, self)
 	print('update_masters... complete')
