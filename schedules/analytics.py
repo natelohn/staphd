@@ -227,7 +227,7 @@ def get_average_window_between_shifts(stapher, staphers, staphings, shifts_by_da
 				window_size = get_hours_between_times(last_shift.end, next_shift.start)
 				if window_size:
 					window_sizes.append(window_size)
-	avg = round(sum(window_sizes) / len(window_sizes), 2)
+	avg = round(sum(window_sizes) / len(window_sizes), 2) if window_sizes else 24
 	return [avg]
 
 def get_flag_information(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
