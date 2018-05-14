@@ -69,11 +69,11 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 @login_required
 def build_view(request):
-	# TODO: Delete v
-	# cache.set('num_actions_made', None, 0)
-	# cache.set('num_total_actions', None, 0)
-	# cache.set('current_task_id', None, 0)
-	# print('Tasks in Cache Cleared...')
+	TODO: Delete v
+	cache.set('num_actions_made', None, 0)
+	cache.set('num_total_actions', None, 0)
+	cache.set('current_task_id', None, 0)
+	print('Tasks in Cache Cleared...')
 	# t = app.control.inspect()
 	# tasks = t.active()
 	# if tasks:
@@ -88,7 +88,7 @@ def build_view(request):
 	# 				print(f'	- {task_key}: {task[i][task_key]}')
 	# else:
 	# 	print('No tasks running')
-	# # TODO: Delete ^
+	# TODO: Delete ^
 
 	print('build_view')
 	task_id = cache.get('current_task_id')
