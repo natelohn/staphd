@@ -14,7 +14,7 @@ from .sort import get_sorted_shifts
 
 
 
-@task(bind=True, track_started=True)
+@task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
 def update_files_task(self, schedule_id):
 	# Get necessary information from the DB
