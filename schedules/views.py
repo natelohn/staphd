@@ -236,7 +236,7 @@ def update_files(request, *args, **kwargs):
 		if schedule_id:
 			task_id = cache.get('current_task_id')
 			if not task_id:
-				task = update_files_task.delay(schedule_id)
+				task = update_files_task.delay(schedule_id, timeout = None)
 				task_id = task.task_id
 				cache.set('current_task_id', task_id, None)
 			request.session['task_id'] = task_id
