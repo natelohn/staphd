@@ -90,7 +90,7 @@ def download_file(request, filename):
 	# TODO: add MEDIA ROOT for production
 	# file_path = os.path.join(settings.MEDIA_ROOT, path)
 	
-	file_path = '/static/' + filename
+	file_path = '/app/static/xlsx/' + filename
 	if os.path.exists(file_path):
 		with open(file_path, 'rb') as file:
 			# TODO: add MEDIA ROOT for production
@@ -154,24 +154,6 @@ def build_schedules(request):
 @login_required
 @csrf_exempt
 def track_state(request, *args, **kwargs):
-	# TODO: Delete v
-	# t = app.control.inspect()
-	# tasks = t.active()
-	# if tasks:
-	# 	for key in tasks:
-	# 		# print(f'tasks[key]: {tasks[key]}')
-	# 		task = tasks[key]
-	# 		for i in range(0, len(tasks[key])):
-	# 			# print(f'task[i]: {tasks[i]}')
-	# 			name = task[i]['name']
-	# 			print(f'Runing Task: {name}')
-	# 			for task_key in task[i]:
-	# 				print(f'	- {task_key}: {task[i][task_key]}')
-	# else:
-	# 	print('No tasks running')
-	# TODO: Delete ^
-
-
 	""" A view to report the progress of a task to the user """
 	data = 'Fail'
 	task_id = cache.get('current_task_id')

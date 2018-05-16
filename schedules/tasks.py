@@ -3,8 +3,6 @@ from celery import shared_task
 from celery.decorators import task
 from django.core.cache import cache
 from django.db.models.functions import Lower
-from staphd.celery import app
-import time
 
 from .build import build_schedules
 from .excel import update_individual_excel_files, update_masters, update_analytics
@@ -32,15 +30,9 @@ def update_files_task(self, schedule_id):
 
 	# Do the task
 	xl_dir = '/app/static/xlsx/'
-	print('update_individual_excel_files...')
 	update_individual_excel_files(all_staphers, staphings, xl_dir, self)
-	print('update_individual_excel_files... complete')
-	print('update_masters...')
 	update_masters(all_masters, staphings, xl_dir, self)
-	print('update_masters... complete')
-	print('update_analytics...')
 	update_analytics(all_staphers, staphings, all_flags, all_qualifications, xl_dir, self)
-	print('update_analytics... complete')
 
 	# Delete the amount of actions from the cache
 	cache.set('num_actions_made', None, 0)
@@ -48,10 +40,9 @@ def update_files_task(self, schedule_id):
 	cache.set('current_task_id', None, 0)
 
 
-@task(bind=True, track_started=True)
+@task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
 def build_schedules_task(self):
-	print('		build_schedules_task called')
 	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:
 		# Set the message for the front end
@@ -61,22 +52,18 @@ def build_schedules_task(self):
 		# Get the necessary info from the DB
 		all_shifts = Shift.objects.all()
 		all_staphers = Stapher.objects.all()
-		print(f'			get_sorted_shifts called')
 		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
 		cache.set('sorted_shifts', sorted_shifts, None)
 		cache.set('resort', False, None)
 
 	
 	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
-	print(f'			total_actions')
 
 	# Get the necessary info from the DB
 	settings = ScheduleSettings.objects.get()
 
 	# Do the task
-	print(f'			build_schedules_task called')
 	schedule = build_schedules(sorted_shifts, settings, self)
-	print(f'			schedule id = {schedule.id}')
 	cache.set('schedule_id', schedule.id, None)
 
 	# Delete the values needed to track progress
