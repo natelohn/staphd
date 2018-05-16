@@ -91,7 +91,7 @@ def download_file(request, filename):
 	# file_path = os.path.join(settings.MEDIA_ROOT, path)
 	
 	file_path = '/app/static/xlsx/' + filename
-	cd = os.get_gwd()
+	cd = os.get_cwd()
 	print(f'dir = {cd}')
 	path_to_file = os.path.dirname(os.path.abspath(__file_path__))
 	print(f'path_to_file = {path_to_file}')
