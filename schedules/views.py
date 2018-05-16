@@ -69,15 +69,15 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 @login_required
 def build_view(request):
-	# task_id = cache.get('current_task_id')
-	# if task_id:
-	# 	task = app.AsyncResult(task_id)
-	# 	data = task.result or task.state
-	# 	# If there is a current running task show its progress
-	# 	if 'PENDING' not in data:
-	# 		return render(request,'schedules/progress.html', {'task_id':task_id})
-	# 	# Delete the task from the cache
-	# 	task_id = cache.set('current_task_id', None, 0)
+	task_id = cache.get('current_task_id')
+	if task_id:
+		task = app.AsyncResult(task_id)
+		data = task.result or task.state
+		# If there is a current running task show its progress
+		if 'PENDING' not in data:
+			return render(request,'schedules/progress.html', {'task_id':task_id})
+		# Delete the task from the cache
+		task_id = cache.set('current_task_id', None, 0)
 	return render(request, 'schedules/schedule.html', {})
 
 # Download Based Views
@@ -163,8 +163,9 @@ def build_schedules(request):
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
 	else:
 		# TODO: Add the below lines back
-		task_id = cache.get('current_task_id')
-		if not task_id:
+		# task_id = cache.get('current_task_id')
+		# if not task_id:
+		if True:
 			task = build_schedules_task.delay()
 			task_id = task.task_id
 			cache.set('current_task_id', task_id, None)
