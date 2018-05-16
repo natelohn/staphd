@@ -1,5 +1,6 @@
 import datetime
 import os #TODO: Delete this import
+
 from django.core.cache import cache
 from django.templatetags.static import static
 from openpyxl import load_workbook, Workbook
@@ -49,6 +50,8 @@ def create_new_workbook(staphers, xl_dir, current_task):
 
 	# Save the workbook and return it's destination
 	schedule_wb.save(file)
+
+	# TODO: DELETE v
 	print(f'file = {file}')
 	if os.path.exists(file):
 		print(f'file path exists!')
@@ -56,16 +59,30 @@ def create_new_workbook(staphers, xl_dir, current_task):
 		print('file path does not exist')
 	cd = os.getcwd()
 	print(f'dir = {cd}')
-	os.chdir('static/xlsx')
+	ls = os.listdir()
+	for f in ls:
+		print(f'	- {f}')
+
+	os.chdir('static')
+	cd = os.getcwd()
+	print(f'dir = {cd}')
+	ls = os.listdir()
+	for f in ls:
+		print(f'	- {f}')
+
+	os.chdir('xlsx')
 	cd = os.getcwd()
 	print(f'new dir = {cd}')
 	ls = os.listdir()
 	for f in ls:
-		print(f'	{f}')
+		print(f'	- {f}')
+
 	os.chdir('..')
 	os.chdir('..')
 	cd = os.getcwd()
 	print(f'ending dir = {cd}')
+	# TODO: DELETE ^
+
 	return file
 
 # update_individual_excel_files helper
