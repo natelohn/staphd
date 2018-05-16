@@ -89,6 +89,7 @@ def download_file(request, filename):
 	file_path = '/static/xlsx/' + filename
 	print(f'file_path = {file_path}')
 	if os.path.exists(file_path):
+		print('EXISTS!')
 		with open(file_path, 'rb') as file:
 			# TODO: add MEDIA ROOT for production
 			# response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
@@ -97,8 +98,8 @@ def download_file(request, filename):
 			response['Content-Disposition'] = 'inline; filename=' + filename
 			return response
 	# TODO: DELETE v
-	print(f'file = {file}')
-	if os.path.exists(file):
+	print(f'file = {file_path}')
+	if os.path.exists(file_path):
 		print(f'file path exists!')
 	else:
 		print('file path does not exist')
