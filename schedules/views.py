@@ -93,7 +93,8 @@ def download_file(request, filename):
 	file_path = '/app/static/xlsx/' + filename
 	cd = os.getcwd()
 	print(f'dir = {cd}')
-	os.listdir()
+	ls = os.listdir()
+	print(f'ls = {ls}')
 	if os.path.exists(file_path):
 		with open(file_path, 'rb') as file:
 			# TODO: add MEDIA ROOT for production
