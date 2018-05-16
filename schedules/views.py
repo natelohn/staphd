@@ -69,19 +69,15 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 @login_required
 def build_view(request):
-	print('build_view')
-	task_id = cache.get('current_task_id')
-	print(f'Task ID is: {task_id}')
-	if task_id:
-		print('		task_id present')
-		task = app.AsyncResult(task_id)
-		data = task.result or task.state
-		# If there is a current running task show its progress
-		if 'PENDING' not in data:
-			print('		PENDING not in data')
-			return render(request,'schedules/progress.html', {'task_id':task_id})
-		# Delete the task from the cache
-		task_id = cache.set('current_task_id', None, 0)
+	# task_id = cache.get('current_task_id')
+	# if task_id:
+	# 	task = app.AsyncResult(task_id)
+	# 	data = task.result or task.state
+	# 	# If there is a current running task show its progress
+	# 	if 'PENDING' not in data:
+	# 		return render(request,'schedules/progress.html', {'task_id':task_id})
+	# 	# Delete the task from the cache
+	# 	task_id = cache.set('current_task_id', None, 0)
 	return render(request, 'schedules/schedule.html', {})
 
 # Download Based Views
@@ -100,18 +96,37 @@ def download_file(request, filename):
 			response = HttpResponse(file.read(), content_type="application/xlsx")
 			response['Content-Disposition'] = 'inline; filename=' + filename
 			return response
-	cd = os.getcwd()
-	print(f'dir = {cd}')
-	os.chdir('static/xlsx')
+	# TODO: DELETE v
+	print(f'file = {file}')
+	if os.path.exists(file):
+		print(f'file path exists!')
+	else:
+		print('file path does not exist')
 	cd = os.getcwd()
 	print(f'dir = {cd}')
 	ls = os.listdir()
 	for f in ls:
-		print(f'	{f}')
+		print(f'	- {f}')
+
+	os.chdir('static')
+	cd = os.getcwd()
+	print(f'dir = {cd}')
+	ls = os.listdir()
+	for f in ls:
+		print(f'	- {f}')
+
+	os.chdir('xlsx')
+	cd = os.getcwd()
+	print(f'dir = {cd}')
+	ls = os.listdir()
+	for f in ls:
+		print(f'	- {f}')
+
 	os.chdir('..')
 	os.chdir('..')
 	cd = os.getcwd()
 	print(f'ending dir = {cd}')
+	# TODO: DELETE ^
 	raise Http404
 
 @login_required
@@ -143,22 +158,15 @@ def delete_schedule(request):
 @login_required
 @csrf_exempt
 def build_schedules(request):
-	print('test print')
-	print('build_schedules')
 	staphings = Staphing.objects.all()
 	if staphings:
-		print('		staphings present')
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
 	else:
 		# TODO: Add the below lines back
-		print('		no staphings present')
 		task_id = cache.get('current_task_id')
 		if not task_id:
-			print('		no task_id')
 			task = build_schedules_task.delay()
-			print('		build_schedules_task call complete')
 			task_id = task.task_id
-			print(f'		task_id = {task_id}')
 			cache.set('current_task_id', task_id, None)
 		request.session['task_id'] = task_id
 		context = {'task_id':task_id}

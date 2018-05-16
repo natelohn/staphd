@@ -72,7 +72,7 @@ def create_new_workbook(staphers, xl_dir, current_task):
 
 	os.chdir('xlsx')
 	cd = os.getcwd()
-	print(f'new dir = {cd}')
+	print(f'dir = {cd}')
 	ls = os.listdir()
 	for f in ls:
 		print(f'	- {f}')
