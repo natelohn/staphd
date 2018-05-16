@@ -90,7 +90,7 @@ def download_file(request, filename):
 	# TODO: add MEDIA ROOT for production
 	# file_path = os.path.join(settings.MEDIA_ROOT, path)
 	
-	file_path = '/app/static/xlsx/' + filename
+	file_path = '/static/xlsx/' + filename
 	print(f'file_path = {file_path}')
 	if os.path.exists(file_path):
 		with open(file_path, 'rb') as file:
@@ -108,6 +108,10 @@ def download_file(request, filename):
 	ls = os.listdir()
 	for f in ls:
 		print(f'	{f}')
+	os.chdir('..')
+	os.chdir('..')
+	cd = os.getcwd()
+	print(f'ending dir = {cd}')
 	raise Http404
 
 @login_required

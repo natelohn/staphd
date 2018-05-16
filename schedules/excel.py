@@ -48,6 +48,23 @@ def create_new_workbook(staphers, xl_dir, current_task):
 
 	# Save the workbook and return it's destination
 	schedule_wb.save(file)
+	print(f'file = {file}')
+	if os.path.exists(file):
+		print(f'file path exists!')
+	else:
+		print('file path does not exist')
+	cd = os.getcwd()
+	print(f'dir = {cd}')
+	os.chdir('static/xlsx')
+	cd = os.getcwd()
+	print(f'new dir = {cd}')
+	ls = os.listdir()
+	for f in ls:
+		print(f'	{f}')
+	os.chdir('..')
+	os.chdir('..')
+	cd = os.getcwd()
+	print(f'ending dir = {cd}')
 	return file
 
 # update_individual_excel_files helper
