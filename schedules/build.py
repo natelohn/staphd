@@ -52,7 +52,6 @@ def resolve_ties(settings, recommendations):
 # Currently is not guarenteed to cover every shift.
 # Covering 99% of shift w/ the 2017 shifts and staphers.
 def build_schedules(sorted_shifts, settings, current_task):
-	print(f'			build_schedules executed')
 	# Initialize the frontend information
 	total_actions = cache.get('num_total_actions') or 1595 # TODO Remove Magic Number
 	meta = {'message':'Starting to Build Schedules', 'process_percent':0}
@@ -62,8 +61,9 @@ def build_schedules(sorted_shifts, settings, current_task):
 	schedule.save()
 	staphings = []
 	all_shifts = [shift[0] for shift in sorted_shifts]
+	actions_taken = 0
 	for shift, qualified_staphers in sorted_shifts:
-		print(f'			placing shift: {shift}')
+		actions_taken += shift.workers_needed
 		if not shift.is_covered(staphings):
 			free_and_qualified = get_free_staphers(qualified_staphers, shift, staphings)
 
@@ -74,7 +74,7 @@ def build_schedules(sorted_shifts, settings, current_task):
 					staphings.append(staphing)
 
 					# Update frontend information
-					percent = get_percent(len(staphings), total_actions)
+					percent = get_percent(actions_taken, total_actions)
 					meta = {'message':f'Auto scheduled {staphing}', 'process_percent':percent}
 					current_task.update_state(meta = meta)
 				left = shift.left_to_cover(staphings)
@@ -88,7 +88,7 @@ def build_schedules(sorted_shifts, settings, current_task):
 					staphings.append(staphing)
 
 					# Update frontend information
-					percent = get_percent(len(staphings), total_actions)
+					percent = get_percent(actions_taken, total_actions)
 					meta = {'message':f'Auto scheduled {staphing}', 'process_percent':percent}
 					current_task.update_state(meta = meta)
 
@@ -114,14 +114,13 @@ def build_schedules(sorted_shifts, settings, current_task):
 							recommendations_used += 1
 
 							# Update frontend information
-							percent = get_percent(len(staphings), total_actions)
+							percent = get_percent(actions_taken, total_actions)
 							meta = {'message':f'Scheduled {staphing} on recommendation' , 'process_percent':percent}
 							current_task.update_state(meta = meta)
 							
 					recommendations = recommendations[recommendations_used:]
-	print(f'			** all shift looped **')
 	# Update the frontend
-	percent = get_percent(len(staphings), total_actions)
+	percent = get_percent(actions_taken, total_actions)
 	meta = {'message':f'Saving Schedule', 'process_percent':percent}
 	current_task.update_state(meta = meta)
 
