@@ -31,21 +31,15 @@ def create_new_workbook(staphers, xl_dir, current_task):
 	template_ws = schedule_wb['TEMPLATE']
 
 	for i, stapher in enumerate(staphers):
-		print(f'	create {i}: {stapher}')
 		# Update the state of progress for the front end
 		message = f'Creating Excel Worksheet for {stapher.full_name()}'
 		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i, total_actions)}
 		current_task.update_state(meta = meta)
 		
 		# We copy the template worksheet for each Stapher.
-		print(f'	copy temp for: {stapher}')
 		stapher_ws = schedule_wb.copy_worksheet(template_ws)
-		print(f'	ws: {stapher_ws}')
 		stapher_ws.title = stapher.full_name()
-		print(f'	stapher_ws.title: {stapher_ws.title}')
-	print(f'new workbook finished...')
 	schedule_wb.remove(template_ws)
-	print(f'removed temp')
 
 	# Updating the state to send to the frontend and update the progress bar
 	meta = {'message':'Saving New Schedule Workbook', 'process_percent':get_percent(len(staphers), total_actions)}
@@ -53,9 +47,7 @@ def create_new_workbook(staphers, xl_dir, current_task):
 	cache.set('num_actions_made', num_actions_made + len(staphers), None)
 
 	# Save the workbook and return it's destination
-	print(f'saving!')
 	schedule_wb.save(file)
-	print(f'... done!')
 	return file
 
 # update_individual_excel_files helper
@@ -85,7 +77,6 @@ def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 	schedule_wb = load_workbook(file)
 	seconds_in_hour = 60 * 60
 	for i, stapher in enumerate(staphers):
-		print(f'	update: {stapher}')
 		# Update the state of progress for the front end
 		message = f'Populating Excel Worksheet for {stapher.full_name()}'
 		meta = {'message':message, 'process_percent':get_percent(num_actions_made + i, total_actions)}

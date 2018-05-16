@@ -91,7 +91,13 @@ def download_file(request, filename):
 	# file_path = os.path.join(settings.MEDIA_ROOT, path)
 	
 	file_path = '/app/static/xlsx/' + filename
-	print(file_path)
+	cd = os.get_gwd()
+	print(f'dir = {cd}')
+	path_to_file = os.path.dirname(os.path.abspath(__file_path__))
+	print(f'path_to_file = {path_to_file}')
+	path = os.path.dirname(os.path.abspath(__file__))
+	print(f'path = {path}')
+	os.list_dir()
 	if os.path.exists(file_path):
 		with open(file_path, 'rb') as file:
 			# TODO: add MEDIA ROOT for production
