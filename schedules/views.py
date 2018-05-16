@@ -93,8 +93,6 @@ def download_file(request, filename):
 	file_path = '/app/static/xlsx/' + filename
 	cd = os.getcwd()
 	print(f'dir = {cd}')
-	path_to_file = os.path.dirname(os.path.abspath(__file_path__))
-	print(f'path_to_file = {path_to_file}')
 	path = os.path.dirname(os.path.abspath(__file__))
 	print(f'path = {path}')
 	os.list_dir()
