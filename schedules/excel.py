@@ -472,7 +472,7 @@ def update_meal_masters(masters, staphings, xl_dir, current_task):
 	# Save the meal master workbook
 	key = 'meal-masters.xlsx'
 	file_name = xl_dir + key
-	meal_master_wb.save(file)
+	meal_master_wb.save(file_name)
 
 	# Upload to AWS S3 Bucket
 	s3 = boto3.resource('s3')

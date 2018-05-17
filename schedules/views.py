@@ -74,10 +74,11 @@ def build_view(request):
 		task = app.AsyncResult(task_id)
 		data = task.result or task.state
 		# If there is a current running task show its progress
-		if 'PENDING' not in data:
+		if 'PENDING' not in data and 'FAILURE' not in data:
 			return render(request,'schedules/progress.html', {'task_id':task_id})
-		# Delete the task from the cache
-		task_id = cache.set('current_task_id', None, 0)
+		else:
+			# Delete the task from the cache
+			task_id = cache.set('current_task_id', None, 0)
 	return render(request, 'schedules/schedule.html', {})
 
 # Download Based Views
