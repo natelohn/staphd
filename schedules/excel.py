@@ -516,6 +516,9 @@ def update_analytics(staphers, staphings, flags, qualifications, xl_dir, current
 	# Save the workbook
 	key = 'analytics.xlsx'
 	file_name = xl_dir + key
+	analytics_wb.save(file_name)
+
+	# Upload to AWS S3 Bucket
 	s3 = boto3.resource('s3')
 	s3.Bucket('staphd').upload_file(file_name, key)
 
