@@ -1,5 +1,5 @@
+import boto3
 import datetime
-import os #TODO: Delete this import
 
 from django.core.cache import cache
 from django.templatetags.static import static
@@ -514,8 +514,11 @@ def update_analytics(staphers, staphings, flags, qualifications, xl_dir, current
 	cache.set('num_actions_made', num_actions_made + 3, None)
 
 	# Save the workbook
-	file = xl_dir + 'analytics.xlsx'
-	analytics_wb.save(file)
+	s3 = boto3.resource('s3')
+	s3.Bucket('staphd').upload_file('/xlsx/analytics.xlsx', analytics_wb)
+
+
+
 
 
 

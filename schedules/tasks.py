@@ -30,8 +30,8 @@ def update_files_task(self, schedule_id):
 
 	# Do the task
 	xl_dir = '/app/static/xlsx/'
-	update_individual_excel_files(all_staphers, staphings, xl_dir, self)
-	update_masters(all_masters, staphings, xl_dir, self)
+	# update_individual_excel_files(all_staphers, staphings, xl_dir, self)
+	# update_masters(all_masters, staphings, xl_dir, self)
 	update_analytics(all_staphers, staphings, all_flags, all_qualifications, xl_dir, self)
 
 	# Delete the amount of actions from the cache
