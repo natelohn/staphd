@@ -27,9 +27,10 @@ def create_new_workbook(staphers, xl_dir, current_task):
 	# Copy the template workbook.
 	temp_file = xl_dir + 'schedules-template.xlsx'
 	file = xl_dir + 'schedules.xlsx'
-	template_wb = load_workbook(temp_file)
-	template_wb.save(file)
-	schedule_wb = load_workbook(file)
+	# template_wb = load_workbook(temp_file) # TODO: See if I need this.. 
+	# template_wb.save(file) # TODO: See if I need this.. 
+	# schedule_wb = load_workbook(file) # TODO: See if I need this.. 
+	schedule_wb = load_workbook(temp_file) # TODO: See if this works.. 
 	template_ws = schedule_wb['TEMPLATE']
 
 	for i, stapher in enumerate(staphers):
@@ -235,6 +236,7 @@ def copy_master_template(masters, xl_dir, current_task):
 	cache.set('num_actions_made', num_actions_made + len(masters), None)
 
 	master_wb.remove(template_ws)
+	master_wb.save(file)
 	return master_wb
 
 # TODO: DRY with get_start_col_from_time method
