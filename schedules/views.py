@@ -72,6 +72,7 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 @login_required
 def build_view(request):
 	task_id = cache.get('current_task_id')
+	context = {}
 	if task_id:
 		context['task_id'] = task_id
 	return render(request, 'schedules/schedule.html', context)
