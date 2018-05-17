@@ -71,6 +71,7 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 @login_required
 def build_view(request):
+	task_id = cache.set('current_task_id', None, 0) #TODO: Delete <
 	template = 'schedules/schedule.html'
 	context = {}
 	task_id = cache.get('current_task_id')
