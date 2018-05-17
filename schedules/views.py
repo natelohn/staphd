@@ -91,12 +91,32 @@ def download_file(request, filename):
 		path = 'app/static/xlsx/' + filename
 		print(f'filename = {filename}')
 		print(f'path = {path}')
+
 		cd = os.getcwd()
 		print(f'cd = {cd}')
 		ls = os.listdir()
 		for f in ls:
 			print(f' -{f}')
+
+		os.chdir('static')
+		cd = os.getcwd()
+		print(f'cd = {cd}')
+		ls = os.listdir()
+		for f in ls:
+			print(f' -{f}')
+
+		os.chdir('xlsx')
+		cd = os.getcwd()
+		print(f'cd = {cd}')
+		ls = os.listdir()
+		for f in ls:
+			print(f' -{f}')
+
 		s3.Bucket('staphd').download_file(filename, path)
+		print('No crash.')
+		ls = os.listdir()
+		for f in ls:
+			print(f' -{f}')
 
 		with open(path, 'rb') as file:
 			print('here')
