@@ -236,7 +236,6 @@ def copy_master_template(masters, xl_dir, current_task):
 
 	master_wb.remove(template_ws)
 	master_wb.save(file)
-	return master_wb
 
 # TODO: DRY with get_start_col_from_time method
 def get_master_start_col_from_time(time):
@@ -321,18 +320,17 @@ def get_length(shift):
 def update_standard_masters(masters, staphings, xl_dir, current_task):
 	# Copy the master template
 	masters =  sorted(masters, key=attrgetter('title'))
-	master_wb = copy_master_template(masters, xl_dir, current_task)
+	copy_master_template(masters, xl_dir, current_task)
 	
 
 	# Set the ammount of actions taken / needed to be take to send to the front end
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(masters)
-	# TODO: See if I need the next two lines... 
-	# meta = {'message':'Loading New Master Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
-	# current_task.update_state(meta = meta)
+	meta = {'message':'Loading New Master Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
+	current_task.update_state(meta = meta)
 
 	# Load the new master workbook
-	# master_wb = load_workbook(file) # TODO: See if I need this... 
+	master_wb = load_workbook(file) # TODO: See if I need this... 
 
 	# Update the masters
 	for i, master in enumerate(masters):
