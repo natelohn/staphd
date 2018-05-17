@@ -72,15 +72,21 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 @login_required
 def build_view(request):
 	task_id = cache.get('current_task_id')
+	print(f'task_id = {task_id}')
 	if task_id:
 		task = app.AsyncResult(task_id)
+		print(f'task = {task}')
 		data = task.result or task.state
+		print(f'data = {data}')
 		# If there is a current running task show its progress
 		if 'PENDING' not in data and 'FAILURE' not in data:
+			print('here')
 			return render(request,'schedules/progress.html', {'task_id':task_id})
 		else:
+			print(' or there')
 			# Delete the task from the cache
 			task_id = cache.set('current_task_id', None, 0)
+	print(',,,not there')
 	return render(request, 'schedules/schedule.html', {})
 
 # Download Based Views
@@ -147,24 +153,14 @@ def track_state(request, *args, **kwargs):
 	""" A view to report the progress of a task to the user """
 	data = 'Fail'
 	task_id = cache.get('current_task_id')
-	print(f'Track State for Task: {task_id}')
 	if request.is_ajax():
-		print(f'	Request is Ajax')
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
-			print(f'		Made it here')
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
 			task = app.AsyncResult(task_id)
-			print(f'			task -> {task}')
 			data = task.result or task.state
-			print(f'			task.state -> {task.state}')
-			print(f'			task.result -> {task.result}')
 			print(f'			data -> {data}')
 			task_running = not task.ready() and not isinstance(data, str)
-			ntr = not task.ready()
-			nisstr = not isinstance(data, str)
-			print(f'			not task.ready() -> {ntr}')
-			print(f'			not isinstance(data, str) -> {nisstr}')
 			print(f'			task_running -> {task_running}')
 			if task_running:
 				data['running'] = task_running
