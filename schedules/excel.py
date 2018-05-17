@@ -230,7 +230,7 @@ def copy_master_template(masters, xl_dir, current_task):
 		master_ws.title = master.title
 
 	# Update actions made in the cache
-	meta = {'message':'Saving New Master Workbook', 'process_percent':get_percent(num_actions_made + len(masters), total_actions)}
+	meta = {'message':'Saving Empty Master Workbook', 'process_percent':get_percent(num_actions_made + len(masters), total_actions)}
 	current_task.update_state(meta = meta)
 	cache.set('num_actions_made', num_actions_made + len(masters), None)
 
@@ -330,7 +330,9 @@ def update_standard_masters(masters, staphings, xl_dir, current_task):
 	current_task.update_state(meta = meta)
 
 	# Load the new master workbook
-	master_wb = load_workbook(file) # TODO: See if I need this... 
+	key = 'masters.xlsx'
+	file_name = xl_dir + key
+	master_wb = load_workbook(file_name) # TODO: See if I need this... 
 
 	# Update the masters
 	for i, master in enumerate(masters):
@@ -377,8 +379,6 @@ def update_standard_masters(masters, staphings, xl_dir, current_task):
 	current_task.update_state(meta = meta)
 
 	# Save the new master workbook
-	key = 'masters.xlsx'
-	file_name = xl_dir + key
 	master_wb.save(file_name)
 	
 	# Upload to AWS S3 Bucket
