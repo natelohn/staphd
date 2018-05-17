@@ -88,7 +88,7 @@ def build_view(request):
 def download_file(request, filename):
 	s3 = boto3.resource('s3')
 	try:
-		path = 'app/static/xlsx' + filename
+		path = 'app/static/xlsx/' + filename
 		s3.Bucket('staphd').download_file(filename, path)
 		with open(path, 'rb') as file:
 			response = HttpResponse(file.read(), content_type="application/xlsx")
