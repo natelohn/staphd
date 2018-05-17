@@ -14,8 +14,9 @@ from .sort import get_sorted_shifts
 
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
-def update_files_task(self, staphings):
+def update_files_task(self, schedule_id):
 	# Get necessary information from the DB
+	staphings = Staphing.objects.filter(schedule__id = schedule_id)
 	all_masters = Master.objects.all()
 	all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
 	all_flags = Flag.objects.all().order_by(Lower('title'))
