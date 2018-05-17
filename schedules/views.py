@@ -92,6 +92,13 @@ def download_file(request, filename):
 		print(f'filename = {filename}')
 		print(f'path = {path}')
 		s3.Bucket('staphd').download_file(filename, path)
+		print(f'path = {path}')
+		print(f'{path}')
+		cd = os.getcwd()
+		print(f'cd = {cd}')
+		ls = os.listdir()
+		for f in ls:
+			print(f' -{f}')
 		with open(path, 'rb') as file:
 			print('here')
 			response = HttpResponse(file.read(), content_type="application/xlsx")
