@@ -514,8 +514,10 @@ def update_analytics(staphers, staphings, flags, qualifications, xl_dir, current
 	cache.set('num_actions_made', num_actions_made + 3, None)
 
 	# Save the workbook
+	key = 'analytics.xlsx'
+	file_name = xl_dir + key
 	s3 = boto3.resource('s3')
-	s3.Bucket('staphd').upload_file('/xlsx/analytics.xlsx', analytics_wb)
+	s3.Bucket('staphd').upload_file(file_name, key)
 
 
 
