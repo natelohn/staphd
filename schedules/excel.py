@@ -76,7 +76,7 @@ def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 	# meta = {'message':'Loading Schedule Workbook', 'process_percent':get_percent(num_actions_made, total_actions)} # TODO: See if I need this... 
 	# current_task.update_state(meta = meta) # TODO: See if I need this... 
 
-	file = xl_dir + 'schedules.xlsx'
+	# file = xl_dir + 'schedules.xlsx'
 	# schedule_wb = load_workbook(file) # TODO: See if I need this... 
 	seconds_in_hour = 60 * 60
 	for i, stapher in enumerate(staphers):
@@ -132,7 +132,13 @@ def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 	cache.set('num_actions_made', num_actions_made + len(staphers), None)
 
 	# Save the workbook
-	schedule_wb.save(file)
+	key = 'schedules.xlsx'
+	file_name = xl_dir + key
+	schedule_wb.save(file_name)
+	
+	# Upload to AWS S3 Bucket
+	s3 = boto3.resource('s3')
+	s3.Bucket('staphd').upload_file(file_name, key)
 
 # This function takes in a set of staphings and returns a list of the staphers working them 
 def get_shift_workers(staphings):
@@ -232,9 +238,7 @@ def copy_master_template(masters, xl_dir, current_task):
 	current_task.update_state(meta = meta)
 	cache.set('num_actions_made', num_actions_made + len(masters), None)
 
-	# Save the workbook
 	master_wb.remove(template_ws)
-	master_wb.save(file)
 	return master_wb
 
 # TODO: DRY with get_start_col_from_time method
@@ -331,7 +335,6 @@ def update_standard_masters(masters, staphings, xl_dir, current_task):
 	# current_task.update_state(meta = meta)
 
 	# Load the new master workbook
-	file = xl_dir + 'masters.xlsx'
 	# master_wb = load_workbook(file) # TODO: See if I need this... 
 
 	# Update the masters
@@ -379,7 +382,13 @@ def update_standard_masters(masters, staphings, xl_dir, current_task):
 	current_task.update_state(meta = meta)
 
 	# Save the new master workbook
-	master_wb.save(file)
+	key = 'masters.xlsx'
+	file_name = xl_dir + key
+	master_wb.save(file_name)
+	
+	# Upload to AWS S3 Bucket
+	s3 = boto3.resource('s3')
+	s3.Bucket('staphd').upload_file(file_name, key)
 			
 def get_meal_master_col(shift):
 	return shift.day + 2
@@ -461,8 +470,13 @@ def update_meal_masters(masters, staphings, xl_dir, current_task):
 	current_task.update_state(meta = meta)
 
 	# Save the meal master workbook
-	file = xl_dir + 'meal-masters.xlsx'
+	key = 'meal-masters.xlsx'
+	file_name = xl_dir + key
 	meal_master_wb.save(file)
+
+	# Upload to AWS S3 Bucket
+	s3 = boto3.resource('s3')
+	s3.Bucket('staphd').upload_file(file_name, key)
 
 
 def update_masters(masters, staphings, xl_dir, current_task):
