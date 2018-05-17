@@ -88,7 +88,11 @@ def build_view(request):
 def download_file(request, filename):
 	s3 = boto3.resource('s3')
 	try:
-		s3.Bucket('staphd').download_file(filename, filename)
+		file = s3.Bucket('staphd').download_file(filename, filename)
+		# with open(file_path, 'rb') as file:
+		response = HttpResponse(file.read(), content_type="application/xlsx")
+		response['Content-Disposition'] = 'inline; filename=' + filename
+		return response
 	except botocore.exceptions.ClientError as e:
 		if e.response['Error']['Code'] == "404":
 			print("The object does not exist.")
