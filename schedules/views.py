@@ -129,18 +129,17 @@ def delete_schedule(request):
 @login_required
 @csrf_exempt
 def build_schedules(request):
-	staphings = Staphing.objects.all()
-	if staphings:
-		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
-	else:
-		task_id = cache.get('current_task_id')
-		if not task_id:
-			task = build_schedules_task.delay()
-			task_id = task.task_id
-			cache.set('current_task_id', task_id, None)
-		request.session['task_id'] = task_id
-		context = {'task_id':task_id}
-		return render(request,'schedules/progress.html', context)
+	task_id = cache.get('current_task_id')
+	if not task_id:
+		staphings = Staphing.objects.all()
+		if staphings:
+			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
+		task = build_schedules_task.delay()
+		task_id = task.task_id
+		cache.set('current_task_id', task_id, None)
+	request.session['task_id'] = task_id
+	context = {'task_id':task_id}
+	return render(request,'schedules/progress.html', context)
 
 @login_required
 @csrf_exempt
@@ -179,24 +178,45 @@ def track_state(request, *args, **kwargs):
 @login_required
 @csrf_exempt
 def update_files(request, *args, **kwargs):
-	staphings = Staphing.objects.all()
-	if not staphings:
-		return render(request,'schedules/schedule.html', {'update_error_message':'No Current Schedule - Must Build Schedule First'})
-	else:
-		schedule_id = cache.get('schedule_id')
-		if schedule_id:
-			task_id = cache.get('current_task_id')
-			if not task_id:
-				task = update_files_task.delay(schedule_id)
-				task_id = task.task_id
-				cache.set('current_task_id', task_id, None)
-			request.session['task_id'] = task_id
-			context = {'task_id':task_id}
-			return render(request,'schedules/progress.html', context)
+	context = {}
+	task_id = cache.get('current_task_id')
+	if not task_id:
+		schedule_id = cache.get('schedule_id') #TODO: Update schedule_id to be the only active schedule
+		staphings = Staphing.objects.filter(schedule__id = schedule_id)
+		if not staphings:
+			template = 'schedules/schedule.html'
+			context['update_error_message'] = 'No Shifts Scheduled - Must Schedule Shifts First'
 		else:
-			# TODO: Create an appropriate error message
-			print('No schedule!')
-			return HttpResponseRedirect(reverse('schedules:schedule'))
+			task = update_files_task.delay(staphings)
+			task_id = task.task_id
+			cache.set('current_task_id', task_id, None)
+	else:
+		template = 'schedules/progress.html'
+		context['update_error_message'] = 'Please wait for the current task to complete.'
+
+	request.session['task_id'] = task_id
+	context['task_id'] = task_id
+	return render(request, template, context)
+
+	# schedule_id = cache.get('schedule_id')
+	# context = {}
+	# if schedule_id:
+	# 	task_id = cache.get('current_task_id')
+	# 	if not task_id:
+	# 		staphings = Staphing.objects.all()
+	# 		if not staphings:
+	# 			return render(request,'schedules/schedule.html', {'update_error_message':'No Current Schedule - Must Build Schedule First'})
+	# 		task = update_files_task.delay(schedule_id)
+	# 		task_id = task.task_id
+	# 		cache.set('current_task_id', task_id, None)
+	# 	else:
+
+	# 	request.session['task_id'] = task_id
+	# 	context['task_id'] = task_id
+	# 	template = 'schedules/progress.html'
+	# else:
+	# 	template = 'schedules/schedule.html'
+	# return render(request, template, context)
 
 # Stapher based views
 class StapherList(LoginRequiredMixin,ListView):
