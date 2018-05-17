@@ -27,11 +27,9 @@ def create_new_workbook(staphers, xl_dir, current_task):
 	# Copy the template workbook.
 	temp_file = xl_dir + 'schedules-template.xlsx'
 	file = xl_dir + 'schedules.xlsx'
-	# TODO: Find out if these next three lines are necessary to preserve the file
-	# template_wb = load_workbook(temp_file)
-	# template_wb.save(file)
-	# schedule_wb = load_workbook(file)
-	schedule_wb = load_workbook(temp_file)
+	template_wb = load_workbook(temp_file)
+	template_wb.save(file)
+	schedule_wb = load_workbook(file)
 	template_ws = schedule_wb['TEMPLATE']
 
 	for i, stapher in enumerate(staphers):
@@ -215,11 +213,9 @@ def copy_master_template(masters, xl_dir, current_task):
 	# Copy the template workbook.
 	temp_file = xl_dir + 'masters-template.xlsx'
 	file = xl_dir + 'masters.xlsx'
-	# TODO: See if I need the next three lines... 
-	# template_wb = load_workbook(temp_file) 
-	# template_wb.save(file)
-	# master_wb = load_workbook(file)
-	master_wb = load_workbook(temp_file)
+	template_wb = load_workbook(temp_file) 
+	template_wb.save(file)
+	master_wb = load_workbook(file)
 	for i, master in enumerate(masters):
 		# Update the progress for each master
 		num_actions_made = cache.get('num_actions_made') or 0
