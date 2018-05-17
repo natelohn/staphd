@@ -72,10 +72,16 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 @login_required
 def build_view(request):
 	task_id = cache.get('current_task_id')
-	context = {}
 	if task_id:
-		context['task_id'] = task_id
-	return render(request, 'schedules/schedule.html', context)
+		task = app.AsyncResult(task_id)
+		data = task.result or task.state
+		# If there is a current running task show its progress
+		if 'PENDING' not in data and 'FAILURE' not in data:
+			return render(request,'schedules/progress.html', {'task_id':task_id})
+		else:
+			# Delete the task from the cache
+			task_id = cache.set('current_task_id', None, 0)
+	return render(request, 'schedules/schedule.html', {})
 
 # Download Based Views
 @login_required
@@ -112,19 +118,12 @@ def download_analytics(request):
 
 @login_required
 def delete_schedule(request):
-	task_id = cache.get('current_task_id')
-	if not task_id:
-		staphings = Staphing.objects.all()
-		if staphings:
-			Staphing.objects.all().delete()
-			success_message = 'Schedule Successfully Deleted'
-		else:
-			success_message = 'No Schedule to Delete'
-		
+	staphings = Staphing.objects.all()
+	if staphings:
+		Staphing.objects.all().delete()
+		return render(request, 'schedules/schedule.html', {'success_message':'Schedule Successfully Deleted'})
 	else:
-		success_message = 'Please wait until the current task is complete'
-	return render(request, 'schedules/schedule.html', {'success_message':success_message})
-
+		return render(request, 'schedules/schedule.html', {'success_message':'No Schedule to Delete'})
 
 # Schedule Building based Views
 @login_required
@@ -139,10 +138,9 @@ def build_schedules(request):
 			task = build_schedules_task.delay()
 			task_id = task.task_id
 			cache.set('current_task_id', task_id, None)
-		return HttpResponseRedirect(reverse('schedules:schedule'))
-		# request.session['task_id'] = task_id
-		# context = {'task_id':task_id}
-		# return render(request,'schedules/progress.html', context)
+		request.session['task_id'] = task_id
+		context = {'task_id':task_id}
+		return render(request,'schedules/progress.html', context)
 
 @login_required
 @csrf_exempt
@@ -150,14 +148,24 @@ def track_state(request, *args, **kwargs):
 	""" A view to report the progress of a task to the user """
 	data = 'Fail'
 	task_id = cache.get('current_task_id')
+	print(f'Track State for Task: {task_id}')
 	if request.is_ajax():
+		print(f'	Request is Ajax')
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
+			print(f'		Made it here')
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
 			task = app.AsyncResult(task_id)
+			print(f'			task -> {task}')
 			data = task.result or task.state
+			print(f'			task.state -> {task.state}')
+			print(f'			task.result -> {task.result}')
 			print(f'			data -> {data}')
 			task_running = not task.ready() and not isinstance(data, str)
+			ntr = not task.ready()
+			nisstr = not isinstance(data, str)
+			print(f'			not task.ready() -> {ntr}')
+			print(f'			not isinstance(data, str) -> {nisstr}')
 			print(f'			task_running -> {task_running}')
 			if task_running:
 				data['running'] = task_running
@@ -182,10 +190,9 @@ def update_files(request, *args, **kwargs):
 				task = update_files_task.delay(schedule_id)
 				task_id = task.task_id
 				cache.set('current_task_id', task_id, None)
-			return HttpResponseRedirect(reverse('schedules:schedule'))
-			# request.session['task_id'] = task_id
-			# context = {'task_id':task_id}
-			# return render(request,'schedules/progress.html', context) #ToDo See if we need these lines
+			request.session['task_id'] = task_id
+			context = {'task_id':task_id}
+			return render(request,'schedules/progress.html', context)
 		else:
 			# TODO: Create an appropriate error message
 			print('No schedule!')
