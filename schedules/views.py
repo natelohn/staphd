@@ -83,51 +83,12 @@ def build_view(request):
 # Download Based Views
 @login_required
 def download_file(request, filename):
-	# TODO: add MEDIA ROOT for production
-	# file_path = os.path.join(settings.MEDIA_ROOT, path)
-	
 	file_path = '/static/xlsx/' + filename
-	print(f'file_path = {file_path}')
 	if os.path.exists(file_path):
-		print('EXISTS!')
 		with open(file_path, 'rb') as file:
-			# TODO: add MEDIA ROOT for production
-			# response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
-
 			response = HttpResponse(file.read(), content_type="application/xlsx")
 			response['Content-Disposition'] = 'inline; filename=' + filename
 			return response
-	# TODO: DELETE v
-	print(f'file = {file_path}')
-	if os.path.exists(file_path):
-		print(f'file path exists!')
-	else:
-		print('file path does not exist')
-	cd = os.getcwd()
-	print(f'dir = {cd}')
-	ls = os.listdir()
-	for f in ls:
-		print(f'	- {f}')
-
-	os.chdir('static')
-	cd = os.getcwd()
-	print(f'dir = {cd}')
-	ls = os.listdir()
-	for f in ls:
-		print(f'	- {f}')
-
-	os.chdir('xlsx')
-	cd = os.getcwd()
-	print(f'dir = {cd}')
-	ls = os.listdir()
-	for f in ls:
-		print(f'	- {f}')
-
-	os.chdir('..')
-	os.chdir('..')
-	cd = os.getcwd()
-	print(f'ending dir = {cd}')
-	# TODO: DELETE ^
 	raise Http404
 
 @login_required
@@ -163,10 +124,8 @@ def build_schedules(request):
 	if staphings:
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
 	else:
-		# TODO: Add the below lines back
-		# task_id = cache.get('current_task_id')
-		# if not task_id:
-		if True:
+		task_id = cache.get('current_task_id')
+		if not task_id:
 			task = build_schedules_task.delay()
 			task_id = task.task_id
 			cache.set('current_task_id', task_id, None)

@@ -27,9 +27,11 @@ def create_new_workbook(staphers, xl_dir, current_task):
 	# Copy the template workbook.
 	temp_file = xl_dir + 'schedules-template.xlsx'
 	file = xl_dir + 'schedules.xlsx'
-	template_wb = load_workbook(temp_file)
-	template_wb.save(file)
-	schedule_wb = load_workbook(file)
+	# TODO: Find out if these next three lines are necessary to preserve the file
+	# template_wb = load_workbook(temp_file)
+	# template_wb.save(file)
+	# schedule_wb = load_workbook(file)
+	schedule_wb = load_workbook(temp_file)
 	template_ws = schedule_wb['TEMPLATE']
 
 	for i, stapher in enumerate(staphers):
@@ -44,46 +46,12 @@ def create_new_workbook(staphers, xl_dir, current_task):
 	schedule_wb.remove(template_ws)
 
 	# Updating the state to send to the frontend and update the progress bar
-	meta = {'message':'Saving New Schedule Workbook', 'process_percent':get_percent(len(staphers), total_actions)}
-	current_task.update_state(meta = meta)
+	# meta = {'message':'Saving New Schedule Workbook', 'process_percent':get_percent(len(staphers), total_actions)} # TODO: See if I need this... 
+	# current_task.update_state(meta = meta) # TODO: See if I need this... 
 	cache.set('num_actions_made', num_actions_made + len(staphers), None)
 
-	# Save the workbook and return it's destination
-	schedule_wb.save(file)
-
-	# TODO: DELETE v
-	print(f'file = {file}')
-	if os.path.exists(file):
-		print(f'file path exists!')
-	else:
-		print('file path does not exist')
-	cd = os.getcwd()
-	print(f'dir = {cd}')
-	ls = os.listdir()
-	for f in ls:
-		print(f'	- {f}')
-
-	os.chdir('static')
-	cd = os.getcwd()
-	print(f'dir = {cd}')
-	ls = os.listdir()
-	for f in ls:
-		print(f'	- {f}')
-
-	os.chdir('xlsx')
-	cd = os.getcwd()
-	print(f'dir = {cd}')
-	ls = os.listdir()
-	for f in ls:
-		print(f'	- {f}')
-
-	os.chdir('..')
-	os.chdir('..')
-	cd = os.getcwd()
-	print(f'ending dir = {cd}')
-	# TODO: DELETE ^
-
-	return file
+	# Return the work book
+	return schedule_wb
 
 # update_individual_excel_files helper
 def get_row_from_day(day):
@@ -100,16 +68,16 @@ def get_end_col_from_time(time):
 # This function takes in a list of staphers and staphings and makes a readable xl file for each stapher.
 def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 	# Copy the template workbook
-	wb_str = create_new_workbook(staphers, xl_dir, current_task)
+	schedule_wb = create_new_workbook(staphers, xl_dir, current_task)
 
 	# Setting the initial state to send to the frontend and update the progress bar
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(staphers)
-	meta = {'message':'Loading Schedule Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
-	current_task.update_state(meta = meta)
+	# meta = {'message':'Loading Schedule Workbook', 'process_percent':get_percent(num_actions_made, total_actions)} # TODO: See if I need this... 
+	# current_task.update_state(meta = meta) # TODO: See if I need this... 
 
 	file = xl_dir + 'schedules.xlsx'
-	schedule_wb = load_workbook(file)
+	# schedule_wb = load_workbook(file) # TODO: See if I need this... 
 	seconds_in_hour = 60 * 60
 	for i, stapher in enumerate(staphers):
 		# Update the state of progress for the front end
@@ -241,9 +209,11 @@ def copy_master_template(masters, xl_dir, current_task):
 	# Copy the template workbook.
 	temp_file = xl_dir + 'masters-template.xlsx'
 	file = xl_dir + 'masters.xlsx'
-	template_wb = load_workbook(temp_file)
-	template_wb.save(file)
-	master_wb = load_workbook(file)
+	# TODO: See if I need the next three lines... 
+	# template_wb = load_workbook(temp_file) 
+	# template_wb.save(file)
+	# master_wb = load_workbook(file)
+	master_wb = load_workbook(temp_file)
 	for i, master in enumerate(masters):
 		# Update the progress for each master
 		num_actions_made = cache.get('num_actions_made') or 0
@@ -265,6 +235,7 @@ def copy_master_template(masters, xl_dir, current_task):
 	# Save the workbook
 	master_wb.remove(template_ws)
 	master_wb.save(file)
+	return master_wb
 
 # TODO: DRY with get_start_col_from_time method
 def get_master_start_col_from_time(time):
@@ -349,18 +320,19 @@ def get_length(shift):
 def update_standard_masters(masters, staphings, xl_dir, current_task):
 	# Copy the master template
 	masters =  sorted(masters, key=attrgetter('title'))
-	copy_master_template(masters, xl_dir, current_task)
+	master_wb = copy_master_template(masters, xl_dir, current_task)
 	
 
 	# Set the ammount of actions taken / needed to be take to send to the front end
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(masters)
-	meta = {'message':'Loading New Master Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
-	current_task.update_state(meta = meta)
+	# TODO: See if I need the next two lines... 
+	# meta = {'message':'Loading New Master Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
+	# current_task.update_state(meta = meta)
 
 	# Load the new master workbook
 	file = xl_dir + 'masters.xlsx'
-	master_wb = load_workbook(file)
+	# master_wb = load_workbook(file) # TODO: See if I need this... 
 
 	# Update the masters
 	for i, master in enumerate(masters):
@@ -450,7 +422,7 @@ def update_meal_masters(masters, staphings, xl_dir, current_task):
 	# Set the ammount of actions taken / needed to be take to send to the front end
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(masters)
-	meta = {'message':'Creating New Master Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
+	meta = {'message':'Creating Meal Master Workbook', 'process_percent':get_percent(num_actions_made, total_actions)}
 	current_task.update_state(meta = meta)
 	
 	# Load the meal master workbook
@@ -485,7 +457,7 @@ def update_meal_masters(masters, staphings, xl_dir, current_task):
 
 	# Reset the cache and send the final message to the front end
 	cache.set('num_actions_made', num_actions_made + len(masters))
-	meta = {'message':'Saving New Meal Master Workbook', 'process_percent':get_percent(num_actions_made + len(masters), total_actions)}
+	meta = {'message':'Saving Meal Master Workbook', 'process_percent':get_percent(num_actions_made + len(masters), total_actions)}
 	current_task.update_state(meta = meta)
 
 	# Save the meal master workbook
