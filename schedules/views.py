@@ -126,7 +126,7 @@ def build_schedules(request):
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
 	else:
 		task_id = cache.get('current_task_id')
-		if not task_id:
+		if not task_id or True: #TODO: Delete the or True
 			task = build_schedules_task.delay()
 			task_id = task.task_id
 			cache.set('current_task_id', task_id, None)
