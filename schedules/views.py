@@ -70,7 +70,7 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 
 @login_required
-def build_view(request, context):
+def build_view(request):
 	task_id = cache.get('current_task_id')
 	if task_id:
 		context['task_id'] = task_id
@@ -111,19 +111,18 @@ def download_analytics(request):
 
 @login_required
 def delete_schedule(request):
-	context = {}
 	task_id = cache.get('current_task_id')
 	if not task_id:
 		staphings = Staphing.objects.all()
 		if staphings:
 			Staphing.objects.all().delete()
-			context['success_message'] = 'Schedule Successfully Deleted'
+			success_message = 'Schedule Successfully Deleted'
 		else:
-			context['success_message'] = 'No Schedule to Delete'
-		# return render(request, 'schedules/schedule.html', context)
+			success_message = 'No Schedule to Delete'
+		
 	else:
-		context['success_message'] = 'Please wait until the current task is complete'
-	return build_view(request, context)
+		success_message = 'Please wait until the current task is complete'
+	return render(request, 'schedules/schedule.html', {'success_message':success_message})
 
 
 # Schedule Building based Views
