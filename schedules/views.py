@@ -71,23 +71,13 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 @login_required
 def build_view(request):
+	template = 'schedules/schedule.html'
+	context = {}
 	task_id = cache.get('current_task_id')
-	print(f'task_id = {task_id}')
 	if task_id:
-		task = app.AsyncResult(task_id)
-		print(f'task = {task}')
-		data = task.result or task.state
-		print(f'data = {data}')
-		# If there is a current running task show its progress
-		if 'PENDING' not in data and 'FAILURE' not in data:
-			print('here')
-			return render(request,'schedules/progress.html', {'task_id':task_id})
-		else:
-			print(' or there')
-			# Delete the task from the cache
-			task_id = cache.set('current_task_id', None, 0)
-	print(',,,not there')
-	return render(request, 'schedules/schedule.html', {})
+		template = 'schedules/progress.html'
+		context['task_id'] = task_id
+	return render(request, template, context) 
 
 # Download Based Views
 @login_required
