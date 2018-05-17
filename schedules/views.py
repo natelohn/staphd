@@ -1,3 +1,5 @@
+import boto3
+import botocore
 import datetime
 import json
 import os
@@ -84,13 +86,14 @@ def build_view(request):
 # Download Based Views
 @login_required
 def download_file(request, filename):
-	file_path = '/static/xlsx/' + filename
-	if os.path.exists(file_path):
-		with open(file_path, 'rb') as file:
-			response = HttpResponse(file.read(), content_type="application/xlsx")
-			response['Content-Disposition'] = 'inline; filename=' + filename
-			return response
-	raise Http404
+	s3 = boto3.resource('s3')
+	try:
+		s3.Bucket('staphd').download_file(filename, filename)
+	except botocore.exceptions.ClientError as e:
+		if e.response['Error']['Code'] == "404":
+			print("The object does not exist.")
+		else:
+			raise Http404
 
 @login_required
 def download_individual(request):
@@ -126,7 +129,7 @@ def build_schedules(request):
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
 	else:
 		task_id = cache.get('current_task_id')
-		if not task_id or True: #TODO: Delete the or True
+		if not task_id:
 			task = build_schedules_task.delay()
 			task_id = task.task_id
 			cache.set('current_task_id', task_id, None)
