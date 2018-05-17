@@ -88,29 +88,29 @@ def build_view(request):
 def download_file(request, filename):
 	s3 = boto3.resource('s3')
 	try:
-		path = 'app/static/xlsx/' + filename
+		path = 'static/xlsx/' + filename
 		print(f'filename = {filename}')
 		print(f'path = {path}')
 
-		cd = os.getcwd()
-		print(f'cd = {cd}')
-		ls = os.listdir()
-		for f in ls:
-			print(f' -{f}')
+		# cd = os.getcwd()
+		# print(f'cd = {cd}')
+		# ls = os.listdir()
+		# for f in ls:
+		# 	print(f' -{f}')
 
-		os.chdir('static')
-		cd = os.getcwd()
-		print(f'cd = {cd}')
-		ls = os.listdir()
-		for f in ls:
-			print(f' -{f}')
+		# os.chdir('static')
+		# cd = os.getcwd()
+		# print(f'cd = {cd}')
+		# ls = os.listdir()
+		# for f in ls:
+		# 	print(f' -{f}')
 
-		os.chdir('xlsx')
-		cd = os.getcwd()
-		print(f'cd = {cd}')
-		ls = os.listdir()
-		for f in ls:
-			print(f' -{f}')
+		# os.chdir('xlsx')
+		# cd = os.getcwd()
+		# print(f'cd = {cd}')
+		# ls = os.listdir()
+		# for f in ls:
+		# 	print(f' -{f}')
 
 		s3.Bucket('staphd').download_file(filename, path)
 		print('No crash.')
