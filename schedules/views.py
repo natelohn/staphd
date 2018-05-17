@@ -70,18 +70,11 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 
 @login_required
-def build_view(request):
+def build_view(request, context):
 	task_id = cache.get('current_task_id')
 	if task_id:
-		task = app.AsyncResult(task_id)
-		data = task.result or task.state
-		# If there is a current running task show its progress
-		if 'PENDING' not in data and 'FAILURE' not in data:
-			return render(request,'schedules/progress.html', {'task_id':task_id})
-		else:
-			# Delete the task from the cache
-			task_id = cache.set('current_task_id', None, 0)
-	return render(request, 'schedules/schedule.html', {})
+		context['task_id'] = task_id
+	return render(request, 'schedules/schedule.html', context)
 
 # Download Based Views
 @login_required
@@ -118,12 +111,20 @@ def download_analytics(request):
 
 @login_required
 def delete_schedule(request):
-	staphings = Staphing.objects.all()
-	if staphings:
-		Staphing.objects.all().delete()
-		return render(request, 'schedules/schedule.html', {'success_message':'Schedule Successfully Deleted'})
+	context = {}
+	task_id = cache.get('current_task_id')
+	if not task_id:
+		staphings = Staphing.objects.all()
+		if staphings:
+			Staphing.objects.all().delete()
+			context['success_message'] = 'Schedule Successfully Deleted'
+		else:
+			context['success_message'] = 'No Schedule to Delete'
+		# return render(request, 'schedules/schedule.html', context)
 	else:
-		return render(request, 'schedules/schedule.html', {'success_message':'No Schedule to Delete'})
+		context['success_message'] = 'Please wait until the current task is complete'
+	return build_view(request, context)
+
 
 # Schedule Building based Views
 @login_required
