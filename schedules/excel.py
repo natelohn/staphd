@@ -49,7 +49,7 @@ def create_new_workbook(staphers, xl_dir, current_task):
 	cache.set('num_actions_made', num_actions_made + len(staphers), None)
 
 	# Return the work book
-	return schedule_wb
+	schedule_wb.save(file)
 
 # update_individual_excel_files helper
 def get_row_from_day(day):
@@ -66,16 +66,16 @@ def get_end_col_from_time(time):
 # This function takes in a list of staphers and staphings and makes a readable xl file for each stapher.
 def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 	# Copy the template workbook
-	schedule_wb = create_new_workbook(staphers, xl_dir, current_task)
+	create_new_workbook(staphers, xl_dir, current_task)
 
 	# Setting the initial state to send to the frontend and update the progress bar
 	num_actions_made = cache.get('num_actions_made') or 0
 	total_actions = cache.get('num_total_actions') or len(staphers)
-	# meta = {'message':'Loading Schedule Workbook', 'process_percent':get_percent(num_actions_made, total_actions)} # TODO: See if I need this... 
-	# current_task.update_state(meta = meta) # TODO: See if I need this... 
+	meta = {'message':'Loading Schedule Workbook', 'process_percent':get_percent(num_actions_made, total_actions)} # TODO: See if I need this... 
+	current_task.update_state(meta = meta) # TODO: See if I need this... 
 
-	# file = xl_dir + 'schedules.xlsx'
-	# schedule_wb = load_workbook(file) # TODO: See if I need this... 
+	file = xl_dir + 'schedules.xlsx'
+	schedule_wb = load_workbook(file) # TODO: See if I need this... 
 	seconds_in_hour = 60 * 60
 	for i, stapher in enumerate(staphers):
 		# Update the state of progress for the front end
