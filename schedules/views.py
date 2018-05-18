@@ -607,22 +607,12 @@ class FlagDelete(LoginRequiredMixin, DeleteView):
 
 # Schedule Based Views
 class ScheduleCreate(LoginRequiredMixin, CreateView):
-	template_name = 'schedules/form.html'
+	template_name = 'schedules/schedule_form.html'
 	form_class = ScheduleCreateForm
 
 	def get_context_data(self, *args, **kwargs):
-		context = super(StapherCreate, self).get_context_data(*args, **kwargs)
+		context = super(ScheduleCreate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'New Schedule'
-		context['cancel_url'] = 'schedules:stapher-list'
-		context['qualification_label_name'] = 'stapher_qualifications_hardcoded'
+		context['cancel_url'] = 'schedules:schedule'
 		return context
 
-	def form_valid(self, form):
-		instance = form.save(commit = False)
-		instance.user = self.request.user
-		return super(StapherCreate, self).form_valid(form)
-
-	def get_form_kwargs(self):
-		kwargs = super(StapherCreate, self).get_form_kwargs()
-		kwargs['auto_id'] = 'stapher_%s'
-		return kwargs
