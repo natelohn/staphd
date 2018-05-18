@@ -18,7 +18,7 @@
 			<a class="button" href="{% url 'schedules:home' %}">Select New Schedule</a>
 		{% else %}
 			<h2><strong>No Schedule Available</strong></h2>
-			<a class="button" href="{% url 'schedules:download' %}">New Schedule</a>
+			<a class="button" href="{% url 'schedule-create' %}">New Schedule</a>
 		{% endif %}
 	</div>
 	<div id="build_schedule_form">

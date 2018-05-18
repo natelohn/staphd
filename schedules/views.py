@@ -22,7 +22,7 @@ from operator import attrgetter
 from staphd.celery import app
 
 from .analytics import get_readable_time
-from .forms import FlagCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
+from .forms import FlagCreateForm, ScheduleCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
 from .tasks import build_schedules_task, update_files_task
 
@@ -602,4 +602,24 @@ class FlagDelete(LoginRequiredMixin, DeleteView):
 	model = Flag
 	success_url = reverse_lazy('schedules:settings')
 
+# Schedule Based Views
+class ScheduleCreate(LoginRequiredMixin, CreateView):
+	template_name = 'schedules/form.html'
+	form_class = ScheduleCreateForm
 
+	def get_context_data(self, *args, **kwargs):
+		context = super(StapherCreate, self).get_context_data(*args, **kwargs)
+		context['title'] = 'New Schedule'
+		context['cancel_url'] = 'schedules:stapher-list'
+		context['qualification_label_name'] = 'stapher_qualifications_hardcoded'
+		return context
+
+	def form_valid(self, form):
+		instance = form.save(commit = False)
+		instance.user = self.request.user
+		return super(StapherCreate, self).form_valid(form)
+
+	def get_form_kwargs(self):
+		kwargs = super(StapherCreate, self).get_form_kwargs()
+		kwargs['auto_id'] = 'stapher_%s'
+		return kwargs

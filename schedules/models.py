@@ -20,7 +20,7 @@ class Qualification(models.Model):
 
 class Flag(models.Model):
 	active			= models.BooleanField(default = True)
-	title 			= models.CharField(max_length = 100, unique = True,default = 'TYPE OF SHIFT')
+	title 			= models.CharField(max_length = 100, unique = True, default = 'TYPE OF SHIFT')
 
 	def __str__(self):
 		return f'{self.title}'

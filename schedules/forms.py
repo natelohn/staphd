@@ -139,5 +139,13 @@ class FlagCreateForm(forms.ModelForm):
 		]
 
 
+class ScheduleCreateForm(forms.ModelForm):
+	class Meta:
+		model = Schedule
+		fields = [
+			'title'
+		]
+
+
 
 
