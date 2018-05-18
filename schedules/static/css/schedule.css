@@ -5,7 +5,10 @@
 }
 
 #schedule_information {
-	top: 13px;
+	top: 15px;
+	width: 40%;
+	left: 30%;
+	background: pink;
 }
 
 #build_schedule_form {
@@ -21,14 +24,14 @@
 }
 
 #schedule_settings, #schedule_information a, #update_excel_form{
-	top: 25px;
+	top: 30px;
 }
 
 #update_excel_form{
 	position: absolute;
 	text-align: right;
-	width: 50%;
-	left: 50%;
+	width: 30%;
+	left: 70%;
 }
 
 #update_excel_form input, #schedule_information a, #schedule_settings a{
@@ -38,7 +41,7 @@
 
 #schedule_settings {
 	position: relative;
-	width: 50%;
+	width: 30%;
 }
 
 #progress{
