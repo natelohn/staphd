@@ -2,7 +2,7 @@ import datetime as dt
 from django import forms
 from django.db.models.functions import Lower
 
-from .models import Flag, Stapher, Shift, Qualification, Staphing
+from .models import Flag, Stapher, Shift, Qualification, Staphing, Schedule
 
 
 class StapherCreateForm(forms.ModelForm):
