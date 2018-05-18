@@ -3,7 +3,7 @@
 <div id="page">
 	<div id="home-msg">
 		<h1>Welcome to staphd.com {{user.username}}!</h1>
-		<h3>Your current schedule is {{ percent_complete }}% complete</h3>
+		<h3>You have {{ percent_complete }}% of your current shifts scheduled</h3>
 		<a href="{% url 'schedules:shift-list' %}?q=uncovered" class="button">View Unscheduled Shifts</a>
 	</div>
 </div>

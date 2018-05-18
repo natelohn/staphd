@@ -193,12 +193,7 @@ class Shift(models.Model):
 		end_str = self.end.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
 		return f'{self.title} on {days[self.day]}, {start_str}-{end_str}'
 
-
-
 	def save(self, *args, **kwargs):
-		if isinstance(self.day, str):
-			self.day = 1
-			super(Shift, self).save(*args, **kwargs)
 		# Start of shift must be before the end of shift and day must be between 0 and 6 (Sun-Sat)
 		if self.start < self.end and self.day in range(0,6):
 			cache.set('resort', True, None)
@@ -302,15 +297,8 @@ class Schedule(models.Model):
 	def __str__(self):
 		return f'{self.title}'
 
-	def print_overlaping_qualifiers(self, shift):
-		staphers = Stapher.objects.all()
-		for stapher in staphers:
-			if stapher.is_qualified(shift):
-				print(stapher)
-				staphings = Staphing.objects.filter(schedule__id = self.id, stapher__id = stapher.id).order_by('shift__day', 'shift__start')
-				for staphing in staphings:
-					if shift.overlaps(staphing.shift):
-						print('	' + str(staphing.shift))
+	def get_absolute_url(self):
+		return reverse('schedules:schedule')
 
 	def get_percent_complete(self):
 		all_shifts = Shift.objects.all()
@@ -320,6 +308,7 @@ class Schedule(models.Model):
 			total_needed += shift.workers_needed
 		return int((len(staphings) / total_needed)  * 100)
 
+	
 # A class representing a single pair of Shift & Stapher in a specific schedule
 class Staphing(models.Model):
 	stapher 		= models.ForeignKey(Stapher, on_delete = models.CASCADE)

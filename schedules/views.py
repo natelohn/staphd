@@ -33,9 +33,8 @@ class HomeView(LoginRequiredMixin, TemplateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		percent = 0
-		schedule_id = cache.get('schedule_id')
-		if schedule_id:
-			schedule = Schedule.objects.get(id = schedule_id)
+		try:
+			schedule = Schedule.objects.get(active__exact = True)
 			percent = schedule.get_percent_complete()
 		context['percent_complete'] = percent
 		return context
@@ -76,8 +75,6 @@ def build_view(request):
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
 		context['schedule'] = schedule.title
-	except:
-		print('No active schedule.')
 	task_id = cache.get('current_task_id')
 	if task_id:
 		template = 'schedules/progress.html'
