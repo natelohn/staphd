@@ -4,6 +4,9 @@
 	width: 100%;
 }
 
+#schedule_information {
+	top: 13px;
+}
 
 #build_schedule_form {
 	top: 150px;
@@ -17,8 +20,8 @@
 	background-color: #52f97f;
 }
 
-#schedule_settings, #schedule_information, #update_excel_form{
-	top: 13px;
+#schedule_settings, #schedule_information a, #update_excel_form{
+	top: 25px;
 }
 
 #update_excel_form{
@@ -28,7 +31,7 @@
 	left: 50%;
 }
 
-#update_excel_form input, #schedule_settings a{
+#update_excel_form input, #schedule_information a, #schedule_settings a{
 	font-size: 1.25em;
 }
 
