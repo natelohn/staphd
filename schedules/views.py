@@ -31,6 +31,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 	template_name = 'home.html'	
 
 	def get_context_data(self, *args, **kwargs):
+		cache.set('current_task_id', None, 0) #TODO: Delete <
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		percent = 0
 		schedule_id = cache.get('schedule_id')
@@ -71,21 +72,22 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 
 @login_required
 def build_view(request):
-	task_id = cache.set('current_task_id', None, 0) #TODO: Delete <
 	template = 'schedules/schedule.html'
 	context = {}
 	task_id = cache.get('current_task_id')
 	if task_id:
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
+	print(context)
+	print(template)
 	return render(request, template, context) 
 
 # Download Based Views
 @login_required
 def download_file(request, filename):
+	path = 'static/xlsx/' + filename
 	s3 = boto3.resource('s3')
 	try:
-		path = 'static/xlsx/' + filename
 		s3.Bucket('staphd').download_file(filename, path)
 		with open(path, 'rb') as file:
 			response = HttpResponse(file.read(), content_type="application/xlsx")
@@ -94,8 +96,7 @@ def download_file(request, filename):
 	except botocore.exceptions.ClientError as e:
 		if e.response['Error']['Code'] == "404":
 			print("The object does not exist.")
-		else:
-			raise Http404
+		raise Http404
 
 @login_required
 def download_individual(request):
