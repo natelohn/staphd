@@ -1,8 +1,16 @@
-#build_schedule_form {
+#schedule_information, #build_schedule_form {
 	position: absolute;
-	top: 150px;
-	width: 100%;
 	text-align: center;
+	width: 100%;
+}
+
+#schedule_information {
+	top: 75px;
+	font-size: 2em;
+}
+
+#build_schedule_form {
+	top: 150px;
 }
 
 #build_schedule_form input{

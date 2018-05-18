@@ -73,6 +73,8 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 def build_view(request):
 	template = 'schedules/schedule.html'
 	context = {}
+	schedule = Schedule.objects.filter(active__exact = True)
+	if schedule: context['schedule'] = schedule
 	task_id = cache.get('current_task_id')
 	if task_id:
 		template = 'schedules/progress.html'
@@ -601,15 +603,3 @@ class FlagDelete(LoginRequiredMixin, DeleteView):
 	success_url = reverse_lazy('schedules:settings')
 
 
-# Stapher based views
-class ScheduleList(LoginRequiredMixin,ListView):
-	template_name = 'schedules/stapher_list.html'
-
-	def get_queryset(self):
-		return Schedule.objects.all()
-
-	def get_context_data(self, *args, **kwargs):
-		context = super(ScheduleList, self).get_context_data(*args, **kwargs)
-		context['title'] = 'Schedules'
-		context['link'] = 'schedules:stapher-create'
-		return context

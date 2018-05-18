@@ -2,15 +2,9 @@
 {% block page %}
 <div id="page">
 	<div id="delete_schedule_form">
-		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-		<form action="{% url 'schedules:delete' %}" method="post">
-			{% csrf_token %}
-			<input class="delete_button" type="submit" value="Delete Current Schedule">
-		</form>
-		{% if success_message %}<p><strong>{{ success_message }}</strong></p>{% endif %}
+		<a class="button" href="{% url 'schedules:schedule-list' %}">Schedule Settings</a>
 	</div>
 	<div id="update_excel_form">
-		<a class="button" href="{% url 'schedules:schedule-list' %}">Schedule Settings</a><br></br>
 		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 		<form action="{% url 'schedules:update' %}" method="post">
 			{% csrf_token %}
@@ -18,11 +12,20 @@
 		</form>
 		{% if update_error_message %}<p><strong>{{ update_error_message }}</strong></p>{% endif %}
 	</div>
+	<div id="schedule_information">
+		{% if schedule %}
+			<h5><strong>Current Schedule: {{ schedule }}</strong></h5>
+			<a class="button" href="{% url 'schedules:home' %}">Edit</a>
+		{% else %}
+			<h5><strong>No Schedules</strong></h5>
+			<a class="button" href="{% url 'schedules:download' %}">New Schedule</a>
+		{% endif %}
+	</div>
 	<div id="build_schedule_form">
 		{% if error_message %}<h5><strong>{{ error_message }}</strong></h5>{% endif %}
 		<form action="{% url 'schedules:building' %}" method="post">
 			{% csrf_token %}
-			<input class="button" type="submit" value="Build New Schedule">
+			<input class="button" type="submit" value="Build Schedule">
 		</form>
 		{% if schedule_error_message %}<p><strong>{{ schedule_error_message }}</strong></p>{% endif %}
 	</div>
