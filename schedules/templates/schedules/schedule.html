@@ -2,7 +2,7 @@
 {% block page %}
 <div id="page">
 	<div id="delete_schedule_form">
-		<a class="button" href="{% url 'schedules:schedule-list' %}">Schedule Settings</a>
+		<a class="button" href="{% url 'schedules:settings' %}">Schedule Settings</a>
 	</div>
 	<div id="update_excel_form">
 		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
