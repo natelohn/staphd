@@ -5,10 +5,9 @@
 }
 
 #schedule_information {
-	top: 15px;
+	top: 13px;
 	width: 40%;
 	left: 30%;
-	background: pink;
 }
 
 #build_schedule_form {

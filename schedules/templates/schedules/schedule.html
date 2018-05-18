@@ -17,7 +17,7 @@
 			<h2><strong>Current Schedule: {{ schedule }}</strong></h2>
 			<a class="button" href="{% url 'schedules:home' %}">Edit</a>
 		{% else %}
-			<h2><strong>No Availible Schedules</strong></h2>
+			<h2><strong>No Schedule Available</strong></h2>
 			<a class="button" href="{% url 'schedules:download' %}">New Schedule</a>
 		{% endif %}
 	</div>
