@@ -31,7 +31,6 @@ class HomeView(LoginRequiredMixin, TemplateView):
 	template_name = 'home.html'	
 
 	def get_context_data(self, *args, **kwargs):
-		cache.set('current_task_id', None, 0) #TODO: Delete <
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		percent = 0
 		schedule_id = cache.get('schedule_id')
@@ -116,12 +115,17 @@ def download_analytics(request):
 
 @login_required
 def delete_schedule(request):
-	staphings = Staphing.objects.all()
-	if staphings:
-		Staphing.objects.all().delete()
-		return render(request, 'schedules/schedule.html', {'success_message':'Schedule Successfully Deleted'})
+	task_id = cache.get('current_task_id')
+	if not task_id:
+		staphings = Staphing.objects.all()
+		if staphings:
+			Staphing.objects.all().delete()
+			success_message = 'Schedule Successfully Deleted'
+		else:
+			success_message = 'No Schedule to Delete'
 	else:
-		return render(request, 'schedules/schedule.html', {'success_message':'No Schedule to Delete'})
+		success_message = 'Please wait for the current task to complete.'
+	return render(request, 'schedules/schedule.html', {'success_message':success_message})
 
 # Schedule Building based Views
 @login_required
@@ -186,26 +190,6 @@ def update_files(request, *args, **kwargs):
 	request.session['task_id'] = task_id
 	context['task_id'] = task_id
 	return render(request, template, context)
-
-	# schedule_id = cache.get('schedule_id')
-	# context = {}
-	# if schedule_id:
-	# 	task_id = cache.get('current_task_id')
-	# 	if not task_id:
-	# 		staphings = Staphing.objects.all()
-	# 		if not staphings:
-	# 			return render(request,'schedules/schedule.html', {'update_error_message':'No Current Schedule - Must Build Schedule First'})
-	# 		task = update_files_task.delay(schedule_id)
-	# 		task_id = task.task_id
-	# 		cache.set('current_task_id', task_id, None)
-	# 	else:
-
-	# 	request.session['task_id'] = task_id
-	# 	context['task_id'] = task_id
-	# 	template = 'schedules/progress.html'
-	# else:
-	# 	template = 'schedules/schedule.html'
-	# return render(request, template, context)
 
 # Stapher based views
 class StapherList(LoginRequiredMixin,ListView):
