@@ -82,6 +82,7 @@ def build_view(request):
 	if task_id:
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
+	print('Here...')
 	return render(request, template, context) 
 
 # Download Based Views
