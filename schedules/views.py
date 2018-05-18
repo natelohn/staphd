@@ -127,7 +127,7 @@ def delete_schedule(request):
 	else:
 		template = 'schedules/progress.html'
 		success_message = 'Please wait for the current task to complete.'
-	return render(request, , {'success_message':success_message})
+	return render(request, template, {'success_message':success_message})
 
 # Schedule Building based Views
 @login_required
