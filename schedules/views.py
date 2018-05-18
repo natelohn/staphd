@@ -120,12 +120,12 @@ def delete_schedule(request):
 		staphings = Staphing.objects.all()
 		if staphings:
 			Staphing.objects.all().delete()
-			success_message = 'Schedule Successfully Deleted'
+			context['success_message'] = 'Schedule Successfully Deleted'
 		else:
-			success_message = 'No Schedule to Delete'
+			context['success_message'] = 'No Schedule to Delete'
 	else:
 		template = 'schedules/progress.html'
-		context['success_message'] = = 'Please wait for the current task to complete.'
+		context['success_message'] = 'Please wait for the current task to complete.'
 		context['task_id'] = task_id
 	return render(request, template, context)
 
