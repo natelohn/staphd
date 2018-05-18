@@ -46,7 +46,7 @@ def create_new_workbook(staphers, xl_dir, current_task):
 	# Updating the state to send to the frontend and update the progress bar
 	# meta = {'message':'Saving New Schedule Workbook', 'process_percent':get_percent(len(staphers), total_actions)} # TODO: See if I need this... 
 	# current_task.update_state(meta = meta) # TODO: See if I need this... 
-	cache.set('num_actions_made', num_actions_made + len(staphers), None)
+	cache.set('num_actions_made', num_actions_made + len(staphers), 1500)
 
 	# Return the work book
 	schedule_wb.save(file)
@@ -127,7 +127,7 @@ def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 	# Updating the state to send to the frontend and update the progress bar
 	meta = {'message':'Saving New Schedule Workbook', 'process_percent':get_percent(num_actions_made + len(staphers), total_actions)}
 	current_task.update_state(meta = meta)
-	cache.set('num_actions_made', num_actions_made + len(staphers), None)
+	cache.set('num_actions_made', num_actions_made + len(staphers), 1500)
 
 	# Save the workbook
 	key = 'schedules.xlsx'
@@ -374,7 +374,7 @@ def update_standard_masters(masters, staphings, xl_dir, current_task):
 			master_ws.merge_cells(start_row = start_row, start_column = start_col, end_row = end_row, end_column = end_col)
 	
 	# Reset the cache and send the final message to the front end
-	cache.set('num_actions_made', num_actions_made + len(masters))
+	cache.set('num_actions_made', num_actions_made + len(masters), 1500)
 	meta = {'message':'Saving New Master Workbook', 'process_percent':get_percent(num_actions_made + len(masters), total_actions)}
 	current_task.update_state(meta = meta)
 
@@ -460,7 +460,7 @@ def update_meal_masters(masters, staphings, xl_dir, current_task):
 				curr_row += 1
 
 	# Reset the cache and send the final message to the front end
-	cache.set('num_actions_made', num_actions_made + len(masters))
+	cache.set('num_actions_made', num_actions_made + len(masters), 1500)
 	meta = {'message':'Saving Meal Master Workbook', 'process_percent':get_percent(num_actions_made + len(masters), total_actions)}
 	current_task.update_state(meta = meta)
 
@@ -520,7 +520,7 @@ def update_analytics(staphers, staphings, flags, qualifications, xl_dir, current
 	# Update the front end progress and reset the cached number of actions taken
 	meta = {'message':'Saving Analytics Workbook', 'process_percent':get_percent(num_actions_made + 3, total_actions)}
 	current_task.update_state(meta = meta)
-	cache.set('num_actions_made', num_actions_made + 3, None)
+	cache.set('num_actions_made', num_actions_made + 3, 1500)
 
 	# Save the workbook
 	key = 'analytics.xlsx'

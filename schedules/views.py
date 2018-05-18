@@ -140,7 +140,7 @@ def build_schedules(request):
 			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
 		task = build_schedules_task.delay()
 		task_id = task.task_id
-		cache.set('current_task_id', task_id, None)
+		cache.set('current_task_id', task_id, 1500)
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
 	return render(request,'schedules/progress.html', context)
@@ -184,7 +184,7 @@ def update_files(request, *args, **kwargs):
 			template = 'schedules/progress.html'
 			task = update_files_task.delay(schedule_id)
 			task_id = task.task_id
-			cache.set('current_task_id', task_id, None)
+			cache.set('current_task_id', task_id, 1500)
 	else:
 		template = 'schedules/progress.html'
 		context['update_error_message'] = 'Please wait for the current task to complete.'
@@ -248,7 +248,7 @@ class StapherList(LoginRequiredMixin,ListView):
 				# Used for the query_explanation
 				if len(querylist) > 1 and query == querylist[-2].lower().strip():
 					query_explanation = query_explanation[:-1] + ' and'
-			cache.set('query_explanation', query_explanation[:-1], None)
+			cache.set('query_explanation', query_explanation[:-1], 60)
 		else:
 			cache.set('query_explanation', None, 0)
 
@@ -426,7 +426,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 
 			all_shifts = filtered_shifts
 			if len(query_explanation) == 1: query_explanation = ['Result includes all shifts.'] 
-			cache.set('query_explanation', query_explanation, None)
+			cache.set('query_explanation', query_explanation, 60)
 		
 		# If there is no query then we see if they have sorted the shifts and return the appr
 		else:

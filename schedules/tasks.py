@@ -25,8 +25,8 @@ def update_files_task(self, schedule_id):
 	# Set the amount of actions for the task to recieve later to use for percentage
 	# TODO: Dynamically get num_total_actions (?)
 	num_total_actions = (len(all_staphers) * 2) + ((len(all_masters) * 2) - 3) + 3
-	cache.set('num_actions_made', 0, None)
-	cache.set('num_total_actions', num_total_actions, None)
+	cache.set('num_actions_made', 0, 1500)
+	cache.set('num_total_actions', num_total_actions, 1500)
 
 	# Do the task
 	xl_dir = '/app/static/xlsx/'
@@ -70,7 +70,5 @@ def build_schedules_task(self):
 	cache.set('num_actions_made', None, 0)
 	cache.set('num_total_actions', None, 0)
 	cache.set('current_task_id', None, 0)
-
-	
 	
 
