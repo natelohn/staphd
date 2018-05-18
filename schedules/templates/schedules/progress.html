@@ -20,6 +20,7 @@
 				data: "task_id=" + task_id,
 			}).done(function(task){
 				if (task.running) {
+					jQuery('#build_schedule_form input').css({'background-color':'silver'});
 					jQuery('#build_schedule_form input:hover').css({'background-color':'grey'});
 					jQuery('#progress-bar-inner').css({'width': task.process_percent + '%'});
 					jQuery('#progress_percent_msg').html('Current Task ' + task.process_percent + '% Complete')
