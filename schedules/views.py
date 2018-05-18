@@ -77,8 +77,6 @@ def build_view(request):
 	if task_id:
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
-	print(context)
-	print(template)
 	return render(request, template, context) 
 
 # Download Based Views
@@ -117,6 +115,7 @@ def download_analytics(request):
 def delete_schedule(request):
 	task_id = cache.get('current_task_id')
 	template = 'schedules/schedule.html'
+	context = {}
 	if not task_id:
 		staphings = Staphing.objects.all()
 		if staphings:
@@ -126,8 +125,9 @@ def delete_schedule(request):
 			success_message = 'No Schedule to Delete'
 	else:
 		template = 'schedules/progress.html'
-		success_message = 'Please wait for the current task to complete.'
-	return render(request, template, {'success_message':success_message})
+		context['success_message'] = = 'Please wait for the current task to complete.'
+		context['task_id'] = task_id
+	return render(request, template, context)
 
 # Schedule Building based Views
 @login_required
