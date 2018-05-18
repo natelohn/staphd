@@ -5,9 +5,10 @@
 }
 
 #schedule_information {
-	top: 13px;
+	top: 10px;
 	width: 40%;
 	left: 30%;
+	margin: 3px;
 }
 
 #build_schedule_form {
