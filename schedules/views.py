@@ -73,8 +73,11 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 def build_view(request):
 	template = 'schedules/schedule.html'
 	context = {}
-	schedule = Schedule.objects.get(active__exact = True)
-	if schedule: context['schedule'] = schedule.title
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+		context['schedule'] = schedule.title
+	except:
+		print('No active schedule.')
 	task_id = cache.get('current_task_id')
 	if task_id:
 		template = 'schedules/progress.html'
