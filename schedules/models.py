@@ -18,7 +18,6 @@ class Qualification(models.Model):
 	def get_absolute_url(self):
 		return reverse('schedules:qualification-settings')
 
-
 class Flag(models.Model):
 	active			= models.BooleanField(default = True)
 	title 			= models.CharField(max_length = 100, unique = True,default = 'TYPE OF SHIFT')
@@ -28,8 +27,6 @@ class Flag(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('schedules:flag-settings')
-
-
 
 class Stapher(models.Model):
 	active			= models.BooleanField(default = True)
@@ -179,7 +176,6 @@ class Stapher(models.Model):
 				shifts_by_day[day] = []
 		return shifts_by_day
 
-
 class Shift(models.Model):
 	active			= models.BooleanField(default = True)
 	title 			= models.CharField(max_length = 100, default = 'NAME OF SHIFT')
@@ -306,37 +302,6 @@ class Schedule(models.Model):
 	def __str__(self):
 		return f'{self.title}'
 
-	# TEMP!
-	def print(self):
-		staphers = Stapher.objects.all()
-		days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat']
-		count_out_of_zone = 0
-		count_in_zone = 0
-		for stapher in staphers:
-			staphings = Staphing.objects.filter(schedule__id = self.id, stapher__id = stapher.id).order_by('shift__day', 'shift__start')
-			totsec = stapher.total_hours(staphings).total_seconds()
-			h = totsec // 3600
-			m = (totsec % 3600) // 60
-			if h <= 44 or h >= 52:
-				print(f'{stapher} - {h} hrs {m} mins')
-				count_out_of_zone += 1
-			else:
-				count_in_zone += 1
-			last_day = 0
-			staphings_for_day = []
-			for staphing in staphings:
-				if staphing.shift.day != last_day:
-					totsec = stapher.total_hours(staphings_for_day).total_seconds()
-					h = totsec // 3600
-					m = (totsec % 3600) // 60
-					print(f'	{days[last_day]} - {h} hrs {m} mins')
-					for day_staphing in staphings_for_day:
-						print(f'		{str(day_staphing.shift)}')
-					staphings_for_day = []
-				last_day = staphing.shift.day
-				staphings_for_day.append(staphing)
-		print(f'{count_in_zone} good schedules. {count_out_of_zone} bad schedules.')
-
 	def print_overlaping_qualifiers(self, shift):
 		staphers = Stapher.objects.all()
 		for stapher in staphers:
@@ -354,7 +319,6 @@ class Schedule(models.Model):
 		for shift in all_shifts:
 			total_needed += shift.workers_needed
 		return int((len(staphings) / total_needed)  * 100)
-
 
 # A class representing a single pair of Shift & Stapher in a specific schedule
 class Staphing(models.Model):
