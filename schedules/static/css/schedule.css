@@ -11,6 +11,10 @@
 	margin: 3px;
 }
 
+#schedule_information a{
+	top: 2px;
+}
+
 #build_schedule_form {
 	top: 150px;
 }
@@ -24,7 +28,7 @@
 }
 
 #schedule_settings, #update_excel_form{
-	top: 30px;
+	top: 40px;
 }
 
 #update_excel_form{
