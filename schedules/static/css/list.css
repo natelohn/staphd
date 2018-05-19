@@ -18,11 +18,13 @@
     margin-top: 10px;
 }
 
-.select_header h1{
+.select_header {
     position: absolute;
-    width: 50%;
+}
+
+.select_header h1{
     height: 100%;
-    font-size: 3em;
+    font-size: 2em;
 
     text-align: left;
     margin-left: 10px;
