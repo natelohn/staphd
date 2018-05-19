@@ -10,7 +10,8 @@
 		<div class="select_list">
 			{% if schedule_list %}
 				{% for obj in schedule_list %}
-					<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+					<!-- <a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a> -->
+					<p>obj</p>
 				{% endfor %}
 			{% else %}
 				<h3> No Schedules found.</h3><br>
