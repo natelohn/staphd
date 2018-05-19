@@ -5,6 +5,10 @@
     margin-top: 10px;
 }
 
+.select_list {
+    width: 50%
+}
+
 .list_header {
     /* Positioning */
     position: relative;

@@ -86,9 +86,15 @@ def build_view(request):
 @login_required
 def schedule_selected(request, *args, **kwargs):
 	schedule_id = kwargs['pk']
-	print(kwargs)
-	print(kwargs.keys())
-	print(schedule_id)
+	try:
+		schedule = Schedule.objects.get(id__exact = schedule_id)
+		schedule.active = True
+		schedule.save()
+		for other_schedule in Schedule.objects.exclude(id__exact = schedule.id):
+			other_schedule.active = False
+			other_schedule.save()
+	except:
+		return Http404
 	return build_view(request)
 
 # Download Based Views
@@ -602,14 +608,14 @@ class ScheduleCreate(LoginRequiredMixin, CreateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(ScheduleCreate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'New Schedule'
-		context['cancel_url'] = 'schedules:schedule'
+		context['cancel_url'] = 'schedules:select'
 		return context
 
 class ScheduleList(LoginRequiredMixin, ListView):
 	template_name = 'schedules/schedule_list.html'
 
 	def get_queryset(self):
-		return Schedule.objects.all().order_by(Lower('title'))
+		return Schedule.objects.exclude(active__exact = True).order_by(Lower('title'))
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ScheduleList, self).get_context_data(*args, **kwargs)

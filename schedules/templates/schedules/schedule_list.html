@@ -9,7 +9,7 @@
 	<div class="lists">
 		<div class="select_list">
 			{% if object_list %}
-				<h1>Select New Schedule:</h1>
+				<h2>Select New Schedule:</h2>
 				{% for obj in object_list %}
 					<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
 				{% endfor %}
