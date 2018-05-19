@@ -618,8 +618,10 @@ class ScheduleCreate(LoginRequiredMixin, CreateView):
 class ScheduleList(LoginRequiredMixin, ListView):
 	template_name = 'schedules/schedule_list.html'
 
-	def get_queryset(self, *args, **kwargs):	
-		return Schedule.objects.all().order_by(Lower('title'))
+	def get_queryset(self, *args, **kwargs):
+		all_schedules = Schedule.objects.all().order_by(Lower('title'))
+		print(all_schedules)
+		return all_schedules
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ScheduleList, self).get_context_data(*args, **kwargs)
