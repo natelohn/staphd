@@ -19,13 +19,14 @@ urlpatterns = [
     url(r'^flag/(?P<pk>[\d]+)/delete$', views.FlagDelete.as_view(), name='flag-delete'),
 
     url(r'^schedules/$', views.build_view, name='schedule'),
-    url(r'^schedules/(?P<pk>[\d]+)/$', views.HomeView.as_view(), name='schedule-detail'),
-    url(r'^schedules/select/(?P<pk>[\d]+)/$', views.schedule_selected, name='schedule-selected'),
     url(r'^schedules/building$', views.build_schedules, name='building'),
     url(r'^schedules/update$', views.update_files, name='update'),
     url(r'^schedules/track$', views.track_state, name='track'),
     url(r'^schedules/select$', views.ScheduleList.as_view(), name='select'),
+    url(r'^schedules/select/(?P<pk>[\d]+)/$', views.schedule_selected, name='schedule-selected'),
     url(r'^schedules/create$', views.ScheduleCreate.as_view(), name='schedule-create'),
+    url(r'^schedules/(?P<pk>[\d]+)/$', views.ScheduleDetail.as_view(), name='schedule-detail'),
+    
 
     url(r'^settings/$', views.Settings.as_view(), name='settings'),
     url(r'^settings/flags/$', views.FlagSettings.as_view(), name='flag-settings'),
