@@ -620,3 +620,12 @@ class ScheduleList(LoginRequiredMixin, ListView):
 
 	def get_queryset(self, *args, **kwargs):	
 		return Schedule.objects.all().order_by(Lower('title'))
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ScheduleList, self).get_context_data(*args, **kwargs)
+		try:
+			schedule = Schedule.objects.get(active__exact = True)
+			context = {'schedule':schedule.title}
+		except:
+			context = {'schedule':'No Selected Schedule'}
+		return context
