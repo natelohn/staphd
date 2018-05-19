@@ -624,7 +624,9 @@ class ScheduleList(LoginRequiredMixin, ListView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ScheduleList, self).get_context_data(*args, **kwargs)
-		context['schedule_list'] = Schedule.objects.all().order_by(Lower('title'))
+		s = Schedule.objects.all().order_by(Lower('title'))
+		print(s)
+		context['schedule_list'] = s.list()
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
 			context = {'schedule':schedule.title}
