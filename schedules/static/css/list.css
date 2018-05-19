@@ -5,27 +5,17 @@
     height: 80px;
 }
 
-.list_header h1, .list_header h3{
-    /* Positioning */
-    position: absolute;
+.list_header h1{
+	/* Positioning */
+	position: absolute;
     width: 20%;
     height: 100%;
+    font-size: 4em;
 
     /* Style */
     text-align: left;
     margin-left: 10px;
     margin-top: 10px;
-
-}
-
-.list_header h1 {
-	/* Positioning */
-    font-size: 4em;
-}
-
-.list_header h3{
-    top: 30px;
-    font-size: 2em;
 }
 
 .list_header form {
