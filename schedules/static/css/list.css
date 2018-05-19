@@ -5,7 +5,7 @@
     height: 80px;
 }
 
-.list_header h1{
+.list_header h1, .list_header h3{
 	/* Positioning */
 	position: absolute;
     width: 20%;
