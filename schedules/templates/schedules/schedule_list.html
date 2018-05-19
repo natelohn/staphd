@@ -2,13 +2,14 @@
 {% block page %}
 <div id="page">
 	<div class="select_header">
-		<h1>Current Schedule: {{schedule}}</h1>
-		<a class="link_btn" type=button href="{% url 'schedules:schedule-create' %}">New Schedule</a>
+		<h1>Current Schedule is "{{schedule}}"</h1>
+		<a class="button" type=button href="{% url 'schedules:schedule-create' %}">New Schedule</a>
 		<hr style="background-color: grey; height:1px; margin-top: 10px;">
 	</div>
 	<div class="lists">
 		<div class="select_list">
-			{% if schedule_list %}
+			{% if schedule %}
+				<p>Here</p>
 				{% for obj in schedule_list %}
 					<!-- <a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a> -->
 					<p>obj</p>
