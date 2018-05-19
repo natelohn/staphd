@@ -619,12 +619,12 @@ class ScheduleList(LoginRequiredMixin, ListView):
 	template_name = 'schedules/schedule_list.html'
 
 	def get_queryset(self):
-		s = Schedule.objects.all()
-		print(s)
-		return s
+		return Schedule.objects.all().order_by(Lower('title'))
+		# TODO: Figure out why this is not printing as 'object_list' in html^
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ScheduleList, self).get_context_data(*args, **kwargs)
+		context['schedule_list'] = Schedule.objects.all().order_by(Lower('title'))
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
 			context = {'schedule':schedule.title}

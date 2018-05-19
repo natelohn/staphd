@@ -8,17 +8,13 @@
 	</div>
 	<div class="lists">
 		<div class="select_list">
-			{% if object_list %}
-				{% for obj in object_list %}
+			{% if schedule_list %}
+				{% for obj in schedule_list %}
 					<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
 				{% endfor %}
 			{% else %}
 				<h3> No Schedules found.</h3><br>
-				<p>Select "New" to create a schedule.</p>
-				<p>object_list</p>
-				{% for obj in object_list %}
-					<p>???</p>
-				{% endfor %}
+				<p>Select "New Schedule" to create a schedule.</p>
 			{% endif %}			
 		</div>
 	</div>
