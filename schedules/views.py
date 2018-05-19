@@ -626,7 +626,7 @@ class ScheduleList(LoginRequiredMixin, ListView):
 		context = super(ScheduleList, self).get_context_data(*args, **kwargs)
 		s = Schedule.objects.all().order_by(Lower('title'))
 		print(s)
-		context['schedule_list'] = s.list()
+		context['schedule_list'] = s
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
 			context = {'schedule':schedule.title}
