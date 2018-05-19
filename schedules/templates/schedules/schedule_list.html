@@ -3,15 +3,19 @@
 <div id="page">
 	<div class="select_header">
 		<h1>Current Schedule is "{{schedule}}"</h1>
+		<a class="button" type=button href="{% url 'schedules:schedule-detail' pk=schedule.id %}">View Current Schedule</a>
 		<a class="button" type=button href="{% url 'schedules:schedule-create' %}">New Schedule</a>
 		<hr style="background-color: grey; height:1px; margin-top: 10px;">
 	</div>
 	<div class="lists">
 		<div class="select_list">
 			{% if object_list %}
-				<h2>Select New Schedule:</h2>
+				<h1>Select New Schedule:</h1>
 				{% for obj in object_list %}
-					<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+					<div id="schedule_div">
+						<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+						<a class="list_btn" href="{% url 'schedules:schedule-detail' pk=obj.id %}">View</a>
+					</div>
 				{% endfor %}
 			{% else %}
 				<h3> No Schedules found.</h3><br>

@@ -6,7 +6,12 @@
 }
 
 .select_list {
-    width: 50%
+    width: 100%;
+    text-align: left;
+}
+
+.schedule_div {
+    display: inline-block;
 }
 
 .list_header {
