@@ -22,7 +22,7 @@ urlpatterns = [
     url(r'^schedules/building$', views.build_schedules, name='building'),
     url(r'^schedules/update$', views.update_files, name='update'),
     url(r'^schedules/track$', views.track_state, name='track'),
-    url(r'^schedules/select$', views.ScheduleList.as_view(), name='schedule-list'),
+    url(r'^schedules/select$', views.ScheduleList.as_view(), name='select'),
     url(r'^schedules/create$', views.ScheduleCreate.as_view(), name='schedule-create'),
 
     url(r'^settings/$', views.Settings.as_view(), name='settings'),
