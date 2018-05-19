@@ -298,7 +298,7 @@ class Schedule(models.Model):
 		return f'{self.title}'
 
 	def get_absolute_url(self):
-		return reverse('schedules:schedule')
+		return reverse('schedules:schedule-selected', kwargs={'pk': self.id})
 
 	def get_percent_complete(self):
 		all_shifts = Shift.objects.all()

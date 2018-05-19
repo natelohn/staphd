@@ -83,6 +83,14 @@ def build_view(request):
 		context['task_id'] = task_id
 	return render(request, template, context) 
 
+@login_required
+def schedule_selected(request, *args, **kwargs):
+	schedule_id = kwargs['pk']
+	print(kwargs)
+	print(kwargs.keys())
+	print(schedule_id)
+	return build_view(request)
+
 # Download Based Views
 @login_required
 def download_file(request, filename):
@@ -114,24 +122,6 @@ def download_meals(request):
 @login_required
 def download_analytics(request):
 	return download_file(request, 'analytics.xlsx')
-
-@login_required
-def delete_schedule(request):
-	task_id = cache.get('current_task_id')
-	template = 'schedules/schedule.html'
-	context = {}
-	if not task_id:
-		staphings = Staphing.objects.all()
-		if staphings:
-			Staphing.objects.all().delete()
-			context['success_message'] = 'Schedule Successfully Deleted'
-		else:
-			context['success_message'] = 'No Schedule to Delete'
-	else:
-		template = 'schedules/progress.html'
-		context['success_message'] = 'Please wait for the current task to complete.'
-		context['task_id'] = task_id
-	return render(request, template, context)
 
 # Schedule Building based Views
 @login_required
