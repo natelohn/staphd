@@ -1,0 +1,22 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+<div id="page">
+	<div class="list_header">
+		<h1>Schedules</h1>
+		<h3>Current Schedule: {{schedule}}</h3>
+		<a class="link_btn" type=button href="{% url schedules:schedule-create %}">New Schedule</a>	
+	</div>
+	<div class="lists">
+		<div class="left_list">
+			{% if object_list %}
+				{% for obj in object_list %}
+					<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+				{% endfor %}
+			{% else %}
+				<h3> No Schedules found.</h3><br>
+				<p>Select "New" to create a schedule.</p>
+			{% endif %}			
+		</div>
+	</div>
+</div>
+{% endblock %}

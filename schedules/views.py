@@ -615,3 +615,8 @@ class ScheduleCreate(LoginRequiredMixin, CreateView):
 		context['cancel_url'] = 'schedules:schedule'
 		return context
 
+class ScheduleList(LoginRequiredMixin, ListView):
+	template_name = 'schedules/schedule_list.html'
+
+	def get_queryset(self, *args, **kwargs):	
+		return Schedule.objects.all().order_by(Lower('title'))
