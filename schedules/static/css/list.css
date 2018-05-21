@@ -9,7 +9,8 @@
     width: 100%;
     text-align: left;
 }
-.schedule_links li{
+
+#schedule_links li{
     display: inline-block;
     background-color: purple;
     font-size: 4em;
