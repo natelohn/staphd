@@ -5,7 +5,7 @@
 		<h1>{{ object.title }}</h1>
 	</div>
 	<div id="detail_footer">
-		<a class="delete_button" href="{% url 'schedules:stapher-delete' pk=object.id%}">Delete</a>
+		<a class="delete_button" href="{% url 'schedules:schedule-delete' pk=object.id%}">Delete</a>
 		<a class="button" href="{% url 'schedules:stapher-update' pk=object.id%}">Edit</a>
 	</div>
 </div>

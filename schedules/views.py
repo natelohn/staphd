@@ -628,9 +628,14 @@ class ScheduleList(LoginRequiredMixin, ListView):
 
 class ScheduleDetail(LoginRequiredMixin, DetailView):
 	queryset = Schedule.objects.all()
-	# TODO: Make a schedule_detail.html file
+
 	def get_context_data(self, *args, **kwargs):
 		context = super(ScheduleDetail, self).get_context_data(*args, **kwargs)
 		schedule = self.get_object()
 		context['title'] = schedule.title
 		return context
+
+class ScheduleDelete(LoginRequiredMixin, DeleteView):
+	template_name = 'schedules/delete.html'
+	model = Schedule
+	success_url = reverse_lazy('schedules:schedule')
