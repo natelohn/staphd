@@ -10,9 +10,10 @@
     text-align: left;
 }
 
-#schedule_links li *{
+#schedule_links {
     display: inline-block;
     margin-right: 5px;
+    background-color: purple;
 }
 
 .list_header {
