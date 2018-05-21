@@ -649,7 +649,7 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 		return Schedule.objects.all()
 
 	def get_context_data(self, *args, **kwargs):
-		context = super(ScheduleCreate, self).get_context_data(*args, **kwargs)
+		context = super(ScheduleUpdate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Edit Schedule'
 		context['cancel_url'] = 'schedules:select'
 		return context
