@@ -8,6 +8,7 @@
 .select_list {
     width: 100%;
     text-align: left;
+    display: inline-block;
 }
 
 .list_header {
