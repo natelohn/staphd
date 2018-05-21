@@ -8,7 +8,10 @@
 .select_list {
     width: 100%;
     text-align: left;
+}
+.select_list ul{
     display: inline-block;
+    background-color: purple;
 }
 
 .list_header {
