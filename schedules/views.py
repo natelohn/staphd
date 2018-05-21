@@ -345,7 +345,11 @@ class ShiftList(LoginRequiredMixin, ListView):
 		query = self.request.GET.get('q')
 		if query:
 			filtered_shifts = all_shifts
-			all_staphings = Staphing.objects.all()
+			try:
+				schedule = Schedule.objects.get(active__exact = True)
+				all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+			except:
+				all_staphings = []
 			qual_titles = [q.title for q in Qualification.objects.all()]
 			flag_titles = [f.title for f in Flag.objects.all()]
 			query_explanation = ["Showing shifts that:"]
