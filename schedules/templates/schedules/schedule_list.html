@@ -2,8 +2,12 @@
 {% block page %}
 <div id="page">
 	<div class="select_header">
+		{% if schedule %}
 		<h1>Current Schedule is "{{schedule}}"</h1>
 		<a class="button" type=button href="{% url 'schedules:schedule-detail' pk=schedule.id %}">View Current Schedule</a>
+		{% else %}
+		<h1>No Schedule Selected</h1>
+		{% endif %}	
 		<a class="button" type=button href="{% url 'schedules:schedule-create' %}">New Schedule</a>
 		<hr style="background-color: grey; height:1px; margin-top: 10px;">
 	</div>
