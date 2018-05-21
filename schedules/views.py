@@ -623,7 +623,7 @@ class ScheduleList(LoginRequiredMixin, ListView):
 			schedule = Schedule.objects.get(active__exact = True)
 			context['schedule'] = schedule
 		except:
-			context['schedule'] = 'No Selected Schedule'
+			print('No Active Schedule')
 		return context
 
 class ScheduleDetail(LoginRequiredMixin, DetailView):
