@@ -628,7 +628,7 @@ class ScheduleList(LoginRequiredMixin, ListView):
 
 class ScheduleDetail(LoginRequiredMixin, DetailView):
 	queryset = Schedule.objects.all()
-	
+	# TODO: Make a schedule_detail.html file
 	def get_context_data(self, *args, **kwargs):
 		context = super(ScheduleDetail, self).get_context_data(*args, **kwargs)
 		schedule = self.get_object()
