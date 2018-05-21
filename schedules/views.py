@@ -637,5 +637,15 @@ class ScheduleDetail(LoginRequiredMixin, DetailView):
 
 class ScheduleDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
-	model = Schedule
+	model = ScheduleCreateForm
 	success_url = reverse_lazy('schedules:schedule')
+
+
+class ScheduleUpdate(LoginRequiredMixin, UpdateView):
+	template_name = 'schedules/schedule_form.html'
+	form_class = ShiftCreateForm
+
+	def get_queryset(self):
+		return Schedule.objects.all()
+
+	
