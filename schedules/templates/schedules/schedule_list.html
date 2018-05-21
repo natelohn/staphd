@@ -15,11 +15,11 @@
 		{% if object_list %}
 			<h1>Select New Schedule:</h1>
 			{% for obj in object_list %}
-				<div id="schedule_links">
-					<h2>{{obj}}</h2>
-					<a class="list_btn" href="{% url 'schedules:schedule-detail' pk=obj.id %}">View</a>
-					<a class="list_btn" href='{{ obj.get_absolute_url }}'>Select</a>
-				</div>
+				<ul class="schedule_links">
+					<li><h2>{{obj}}</h2></li>
+					<li><a class="list_btn" href="{% url 'schedules:schedule-detail' pk=obj.id %}">View</a></li>
+					<li><a class="list_btn" href='{{ obj.get_absolute_url }}'>Select</a></li>
+				</ul>
 			{% endfor %}
 		{% else %}
 			<h3> No Schedules found.</h3><br>
