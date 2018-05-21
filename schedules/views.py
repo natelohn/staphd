@@ -348,8 +348,10 @@ class ShiftList(LoginRequiredMixin, ListView):
 			try:
 				schedule = Schedule.objects.get(active__exact = True)
 				all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+				no_schedule = False
 			except:
 				all_staphings = []
+				no_schedule = True
 			qual_titles = [q.title for q in Qualification.objects.all()]
 			flag_titles = [f.title for f in Flag.objects.all()]
 			query_explanation = ["Showing shifts that:"]
@@ -364,10 +366,13 @@ class ShiftList(LoginRequiredMixin, ListView):
 				if query == 'covered':
 					queryset = [shift for shift in all_shifts if shift.is_covered(all_staphings)]
 					explanation_str =  '- are not covered' if negate_query else '- are covered'
+					if no_schedule: explanation_str += ' (no current schedule)'
 					query_explanation.append(explanation_str)
+					
 				elif query == 'uncovered':
 					queryset = [shift for shift in all_shifts if not shift.is_covered(all_staphings)]
 					explanation_str = '- are not not covered' if negate_query else '- are not covered'
+					if no_schedule: explanation_str += ' (no current schedule)'
 					query_explanation.append(explanation_str)
 				elif '*' in query:
 					# To solve for shifts w/ both qualifications and flags always showing up
