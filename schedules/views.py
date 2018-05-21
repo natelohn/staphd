@@ -643,9 +643,10 @@ class ScheduleDelete(LoginRequiredMixin, DeleteView):
 
 class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/schedule_form.html'
-	form_class = ShiftCreateForm
+	form_class = ScheduleCreateForm
 
 	def get_queryset(self):
 		return Schedule.objects.all()
 
-	
+
+
