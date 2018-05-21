@@ -640,7 +640,6 @@ class ScheduleDelete(LoginRequiredMixin, DeleteView):
 	model = Schedule
 	success_url = reverse_lazy('schedules:schedule')
 
-
 class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/schedule_form.html'
 	form_class = ScheduleCreateForm
