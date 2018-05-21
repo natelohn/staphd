@@ -10,6 +10,14 @@
     text-align: left;
 }
 
+.schedule_links {
+    border-top: 1px;
+    border-style: solid;
+    border-color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .schedule_links li{
     display: inline-block;
     margin-right: 5px;
