@@ -18,7 +18,7 @@
 			<ul>
 			{% for obj in object_list %}
 				<li>
-					<h3>{{ obj }}</h3>
+					<h2>{{ obj }}</h2>
 					<a class="list_btn" href="{% url 'schedules:schedule-detail' pk=obj.id %}">View</a>
 					<a class="list_btn" href='{{ obj.get_absolute_url }}'>Select</a>
 				</li>
