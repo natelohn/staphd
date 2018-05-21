@@ -10,7 +10,7 @@
     text-align: left;
 }
 
-.schedule_list li{
+.schedule_list a{
     display: inline-block;
     background-color: pink;
 }
