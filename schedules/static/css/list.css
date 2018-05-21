@@ -16,11 +16,12 @@
 }
 
 .schedule_links h2{
-    width: 300px;
+    width: 250px;
+    background-color: pink;
 }
 
 .schedule_links a{
-    left: 300px;
+    left: 250px;
 }
 
 .list_header {
