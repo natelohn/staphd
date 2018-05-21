@@ -9,7 +9,7 @@
     width: 100%;
     text-align: left;
 }
-.select_list li *{
+.schedule_div{
     display: inline-block;
     background-color: purple;
 }
