@@ -10,7 +10,7 @@
     text-align: left;
 }
 
-.schedule_links{
+.schedule_links li{
     display: inline-block;
     margin-right: 5px;
     background-color: purple;
