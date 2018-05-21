@@ -12,6 +12,7 @@
 
 .schedule_list li{
     display: inline-block;
+    background-color: pink;
 }
 
 .list_header {
