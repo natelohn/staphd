@@ -26,7 +26,7 @@ urlpatterns = [
     url(r'^schedules/select/(?P<pk>[\d]+)/$', views.schedule_selected, name='schedule-selected'),
     url(r'^schedules/create$', views.ScheduleCreate.as_view(), name='schedule-create'),
     url(r'^schedules/(?P<pk>[\d]+)/$', views.ScheduleDetail.as_view(), name='schedule-detail'),
-    url(r'^schedules/(?P<pk>[\d]+)/delete$', views.ScheduleDelete.as_view(), name='schedule-delete')
+    url(r'^schedules/(?P<pk>[\d]+)/delete$', views.ScheduleDelete.as_view(), name='schedule-delete'),
     
 
     url(r'^settings/$', views.Settings.as_view(), name='settings'),
