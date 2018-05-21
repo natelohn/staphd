@@ -9,7 +9,7 @@
     width: 100%;
     text-align: left;
 }
-.select_list li{
+.select_list li *{
     display: inline-block;
     background-color: purple;
 }
