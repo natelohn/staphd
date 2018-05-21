@@ -10,7 +10,7 @@
     text-align: left;
 }
 
-.schedule_div {
+.schedule_list li{
     display: inline-block;
 }
 
