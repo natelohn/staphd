@@ -27,7 +27,6 @@ urlpatterns = [
     url(r'^schedules/create$', views.ScheduleCreate.as_view(), name='schedule-create'),
     url(r'^schedules/(?P<pk>[\d]+)/$', views.ScheduleDetail.as_view(), name='schedule-detail'),
     url(r'^schedules/(?P<pk>[\d]+)/delete$', views.ScheduleDelete.as_view(), name='schedule-delete'),
-    
 
     url(r'^settings/$', views.Settings.as_view(), name='settings'),
     url(r'^settings/flags/$', views.FlagSettings.as_view(), name='flag-settings'),

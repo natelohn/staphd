@@ -621,7 +621,7 @@ class ScheduleList(LoginRequiredMixin, ListView):
 		context = super(ScheduleList, self).get_context_data(*args, **kwargs)
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
-			context['schedule'] = schedule.title
+			context['schedule'] = schedule
 		except:
 			context['schedule'] = 'No Selected Schedule'
 		return context
