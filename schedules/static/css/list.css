@@ -12,8 +12,7 @@
 
 #schedule_links li{
     display: inline-block;
-    background-color: purple;
-    font-size: 4em;
+    margin-right: 5px;
 }
 
 .list_header {
