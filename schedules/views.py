@@ -34,6 +34,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
+			context['schedule'] = schedule
 			context['percent_complete'] = schedule.get_percent_complete()
 		except:
 			print('No schedule found in HomeView')
