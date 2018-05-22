@@ -372,13 +372,19 @@ class ShiftList(LoginRequiredMixin, ListView):
 				if query == 'covered':
 					queryset = [shift for shift in all_shifts if shift.is_covered(all_staphings)]
 					explanation_str =  '- are not covered' if negate_query else '- are covered'
-					if no_schedule: explanation_str += ' (no current schedule)'
+					if no_schedule:
+						explanation_str += ' (no current schedule)'
+					else:
+						explanation_str += f' in the "{schedule.title}" schedule.'
 					query_explanation.append(explanation_str)
 					
 				elif query == 'uncovered':
 					queryset = [shift for shift in all_shifts if not shift.is_covered(all_staphings)]
 					explanation_str = '- are not not covered' if negate_query else '- are not covered'
-					if no_schedule: explanation_str += ' (no current schedule)'
+					if no_schedule:
+						explanation_str += ' (no current schedule)'
+					else:
+						explanation_str += f' in the "{schedule.title}" schedule.'
 					query_explanation.append(explanation_str)
 				elif '*' in query:
 					# To solve for shifts w/ both qualifications and flags always showing up
@@ -402,6 +408,8 @@ class ShiftList(LoginRequiredMixin, ListView):
 							print(s.stapher)
 							name_contains.append(s.shift)
 							explanation_str = f'- {s.stapher.full_name()} is not working' if negate_query else f'- {s.stapher.full_name()} is working'
+							if not no_schedule:
+								explanation_str += f' in the "{schedule.title}" schedule.'								
 							explanations.add(explanation_str)
 					if name_contains: query_explanation.extend(list(explanations))
 
@@ -504,6 +512,12 @@ class ShiftList(LoginRequiredMixin, ListView):
 						if int(url_key) == obj_key:
 							if sort_type in ['flags', 'qualifications']:
 								msg = 'Shifts with the \'' + key['title'] + '\' ' + sort_type[:-1] 
+							elif sort_type is 'staphers':
+								try:
+									schedule = Schedule.objects.get(active__exact = True)
+									msg = key['title'] + f'\'s Shifts in the "{schedule.title}" schedule.'
+								except:
+									msg = 'No Current Schedule'
 							else:
 								msg = key['title'] + '\'s Shifts'
 							context['shift_displayed_msg'] = [msg]
