@@ -108,6 +108,7 @@ def build_schedules(request):
 			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
+	context['schedule'] = schedule.title
 	return render(request,'schedules/progress.html', context)
 
 @login_required
