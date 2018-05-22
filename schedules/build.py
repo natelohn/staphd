@@ -75,6 +75,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 					meta = {'message':f'Auto scheduled {staphing}', 'process_percent':percent}
 					current_task.update_state(meta = meta)
 				left = shift.left_to_cover(staphings)
+				percent = get_percent(actions_taken, total_actions)
 				meta = {'message':f'Could not schedule: {shift}. {left} more needed.', 'process_percent':percent}
 				current_task.update_state(meta = meta)
 
