@@ -142,23 +142,8 @@ def build_schedules(request):
 			print(f'schedule = {schedule}')
 		except:
 			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
-		try:
-			staphings = Staphing.objects.get(schedule_id__exact = schedule.id)
-		except:
-			staphings = []
-		print(f'staphings = {staphings}')
-		settings = ScheduleBuildingSettings.objects.get()
-		print(f'settings = {settings}')
-		sorted_shifts = cache.get('sorted_shifts')
-		print(f'sorted_shifts = {sorted_shifts}')
-		all_shifts = Shift.objects.all()
-		print(f'all_shifts = {all_shifts}')
-		all_staphers = Stapher.objects.all()
-		print(f'all_staphers = {all_staphers}')
-		task = build_schedules_task.delay(schedule, staphings, settings, sorted_shifts, all_shifts, all_staphers)
-		print(f'task = {task}')
+		task = build_schedules_task.delay(schedule.id)
 		task_id = task.task_id
-		print(f'task_id = {task_id}')
 		cache.set('current_task_id', task_id, 1500)
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}

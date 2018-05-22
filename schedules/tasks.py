@@ -41,14 +41,21 @@ def update_files_task(self, schedule_id):
 
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
-def build_schedules_task(self, schedule, staphings, settings, sorted_shifts, all_shifts, all_staphers):
+def build_schedules_task(self, schedule_id):
+	try:
+		staphings = Staphing.objects.get(schedule_id__exact = schedule_id)
+	except:
+		staphings = []
+	settings = ScheduleBuildingSettings.objects.get()
+	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:
 		# Set the message for the front end
 		self.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
+		all_shifts = Shift.objects.all()
+		all_staphers = Stapher.objects.all()
 		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
 		cache.set('sorted_shifts', sorted_shifts, None)
 		cache.set('resort', False, None)
-
 	
 	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
 
