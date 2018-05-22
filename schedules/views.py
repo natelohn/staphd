@@ -34,10 +34,9 @@ class HomeView(LoginRequiredMixin, TemplateView):
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
-			percent = schedule.get_percent_complete()
+			context['percent_complete'] = schedule.get_percent_complete()
 		except:
-			percent = 0
-		context['percent_complete'] = percent
+			print('No schedule found in HomeView')
 		return context
 
 class DownloadView(LoginRequiredMixin, TemplateView):
@@ -342,16 +341,16 @@ class ShiftList(LoginRequiredMixin, ListView):
 
 	def get_queryset(self, *args, **kwargs):	
 		all_shifts = Shift.objects.all()
+		try:
+			schedule = Schedule.objects.get(active__exact = True)
+			all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+			no_schedule = False
+		except:
+			all_staphings = []
+			no_schedule = True
 		query = self.request.GET.get('q')
 		if query:
 			filtered_shifts = all_shifts
-			try:
-				schedule = Schedule.objects.get(active__exact = True)
-				all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
-				no_schedule = False
-			except:
-				all_staphings = []
-				no_schedule = True
 			qual_titles = [q.title for q in Qualification.objects.all()]
 			flag_titles = [f.title for f in Flag.objects.all()]
 			query_explanation = ["Showing shifts that:"]
@@ -453,7 +452,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 						f = Flag.objects.get(id = key)
 						all_shifts = [s for s in all_shifts if s.has_flag(f.title)]
 					if sort_type == 'staphers':
-						stapher_staphings = Staphing.objects.filter(stapher__id = key)
+						stapher_staphings = all_staphings.filter(stapher__id = key)
 						all_shifts = [s.shift for s in stapher_staphings]
 		return sorted(all_shifts, key = attrgetter('day', 'start'))
 	

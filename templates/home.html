@@ -3,8 +3,13 @@
 <div id="page">
 	<div id="home-msg">
 		<h1>Welcome to staphd.com {{user.username}}!</h1>
-		<h3>You have {{ percent_complete }}% of your current shifts scheduled</h3>
-		<a href="{% url 'schedules:shift-list' %}?q=uncovered" class="button">View Unscheduled Shifts</a>
+		{% if percent_complete %}
+			<h3>You have {{ percent_complete }}% of your current shifts scheduled</h3>
+			<a href="{% url 'schedules:shift-list' %}?q=uncovered" class="button">View Unscheduled Shifts</a>
+		{% else %}}
+			<h3>Currently you have no schedule selected.</h3>
+			<a href="{% url 'schedules:select' %}" class="button">Select or Create Schedule</a>
+		{% endif %}
 	</div>
 </div>
 {% endblock %}

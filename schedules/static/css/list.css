@@ -7,10 +7,10 @@
 
 .select_list {
     width: 100%;
-    text-align: center;
 }
 
 .schedule_links {
+    text-align: center;
     border-top: 1px;
     border-style: solid;
     border-color: black;
