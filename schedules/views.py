@@ -97,7 +97,7 @@ def build_view(request):
 @csrf_exempt
 def build_schedules(request):
 	task_id = cache.get('current_task_id')
-	print(f'task_id = {task_id}')
+	print(f'task_id A = {task_id}')
 	context = {}
 	if not task_id:
 		try:
@@ -107,9 +107,11 @@ def build_schedules(request):
 			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
 		task = build_schedules_task.delay(schedule.id)
 		task_id = task.task_id
+		print(f'task_id B = {task_id}')
 		cache.set('current_task_id', task_id, 1500)
 	request.session['task_id'] = task_id
 	context['task_id'] = task_id
+	print(f'task_id C = {task_id}')
 	return render(request,'schedules/progress.html', context)
 
 @login_required
