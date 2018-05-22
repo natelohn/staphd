@@ -97,21 +97,15 @@ def build_view(request):
 @csrf_exempt
 def build_schedules(request):
 	task_id = cache.get('current_task_id')
-	print(f'task_id A = {task_id}')
-	context = {}
 	if not task_id:
-		try:
-			schedule = Schedule.objects.get(active__exact = True)
-			context['schedule'] = schedule.title
-		except:
-			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
-		task = build_schedules_task.delay(schedule.id)
+		staphings = Staphing.objects.all()
+		if staphings:
+			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
+		task = build_schedules_task.delay()
 		task_id = task.task_id
-		print(f'task_id B = {task_id}')
 		cache.set('current_task_id', task_id, 1500)
 	request.session['task_id'] = task_id
-	context['task_id'] = task_id
-	print(f'task_id C = {task_id}')
+	context = {'task_id':task_id}
 	return render(request,'schedules/progress.html', context)
 
 @login_required
@@ -147,33 +141,23 @@ def update_files(request, *args, **kwargs):
 def track_state(request, *args, **kwargs):
 	""" A view to report the progress of a task to the user """
 	data = 'Fail'
-	print('tracking A')
 	task_id = cache.get('current_task_id')
-	print('tracking B')
 	if request.is_ajax():
-		print('tracking C')
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
-			print('tracking D')
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
 			task = app.AsyncResult(task_id)
-			print('tracking E')
 			data = task.result or task.state
 			print(f'			data -> {data}')
 			task_running = not task.ready() and not isinstance(data, str)
 			print(f'			task_running -> {task_running}')
 			if task_running:
-				print('tracking F')
 				data['running'] = task_running
 		else:
-			print('tracking G')
 			data = 'No task_id in the request'
 	else:
-		print('tracking H')
 		data = 'This is not an ajax request'
-	print('tracking I')
 	json_data = json.dumps(data)
-	print('tracking J')
 	return HttpResponse(json_data, content_type='application/json')
 
 # Settings based views

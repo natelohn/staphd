@@ -42,7 +42,10 @@ def update_files_task(self, schedule_id):
 
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
-def build_schedules_task(self, schedule_id):
+def build_schedules_task(self):
+	schedule = Schedule()
+	schedule.save()
+	schedule_id = schedule.id
 	print('build_schedules_task A')
 	try:
 		schedule = Schedule.objects.get(id__exact = schedule_id)
