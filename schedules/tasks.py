@@ -48,10 +48,10 @@ def build_schedules_task(self, schedule_id):
 	except:
 		print('NOT A VALID SCHEDULE ID')
 	try:
-		staphings = Staphing.objects.get(schedule_id__exact = schedule_id)
+		staphings = Staphing.objects.filter(schedule_id__exact = schedule_id)
 	except:
 		staphings = []
-	print(staphings)
+	print(f'staphings = {staphings}')
 	settings = ScheduleBuildingSettings.objects.get()
 	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:
