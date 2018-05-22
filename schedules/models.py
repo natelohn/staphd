@@ -307,7 +307,6 @@ class Schedule(models.Model):
 		for shift in all_shifts:
 			total_needed += shift.workers_needed
 		percent_complete = int((len(staphings) / total_needed)  * 100)
-		print(f'percent_complete = {percent_complete}')
 		return percent_complete
 
 	

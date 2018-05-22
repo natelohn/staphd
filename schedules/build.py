@@ -4,7 +4,7 @@ from random import random
 from staphd.celery import app
 
 from .excel import get_percent
-from .models import Schedule, Staphing
+from .models import Staphing
 from .recommend import get_recommended_staphers
 
 

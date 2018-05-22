@@ -6,7 +6,7 @@ from django.db.models.functions import Lower
 
 from .build import build_schedules
 from .excel import update_individual_excel_files, update_masters, update_analytics
-from .models import Flag, Stapher, Shift, Staphing, Qualification, Master
+from .models import Flag, Schedule, Stapher, Shift, Staphing, Qualification, Master
 from .models import Settings as ScheduleBuildingSettings
 from .sort import get_sorted_shifts
 
@@ -43,6 +43,10 @@ def update_files_task(self, schedule_id):
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
 def build_schedules_task(self, schedule_id):
+	try:
+		schedule = Schedule.objects.get(id__exact = schedule_id)
+	except:
+		print('NOT A VALID SCHEDULE ID')
 	try:
 		staphings = Staphing.objects.get(schedule_id__exact = schedule_id)
 	except:
