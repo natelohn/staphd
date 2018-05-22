@@ -512,7 +512,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 						if int(url_key) == obj_key:
 							if sort_type in ['flags', 'qualifications']:
 								msg = 'Shifts with the \'' + key['title'] + '\' ' + sort_type[:-1] 
-							elif sort_type is 'staphers':
+							elif sort_type in 'staphers':
 								print('A')
 								try:
 									print('B')
