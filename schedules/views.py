@@ -137,6 +137,7 @@ def update_files(request, *args, **kwargs):
 
 	request.session['task_id'] = task_id
 	context['task_id'] = task_id
+	context['schedule'] = schedule.title
 	return render(request, template, context)
 
 @login_required
