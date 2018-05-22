@@ -42,52 +42,33 @@ def update_files_task(self, schedule_id):
 
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
-def build_schedules_task(self):
-	schedule = Schedule()
-	schedule.save()
-	schedule_id = schedule.id
-	print('build_schedules_task A')
+def build_schedules_task(self, schedule_id):
 	try:
 		schedule = Schedule.objects.get(id__exact = schedule_id)
-		print('build_schedules_task B')
 	except:
 		print('NOT A VALID SCHEDULE ID')
 	try:
 		staphings = Staphing.objects.get(schedule_id__exact = schedule_id)
-		print('build_schedules_task C')
 	except:
 		staphings = []
-		print('build_schedules_task D')
 	settings = ScheduleBuildingSettings.objects.get()
-	print('build_schedules_task E')
 	sorted_shifts = cache.get('sorted_shifts')
-	print('build_schedules_task F')
 	if cache.get('resort') or not sorted_shifts:
-		print('build_schedules_task G')
 		# Set the message for the front end
 		self.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
-		print('build_schedules_task H')
 		all_shifts = Shift.objects.all()
-		print('build_schedules_task I')
 		all_staphers = Stapher.objects.all()
-		print('build_schedules_task J')
 		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
-		print('build_schedules_task K')
 		cache.set('sorted_shifts', sorted_shifts, None)
-		print('build_schedules_task L')
 		cache.set('resort', False, None)
-	print('build_schedules_task M')
 	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
 
 	# Do the task
-	print('build_schedules_task N')
 	build_schedules(sorted_shifts, settings, schedule, staphings, self)
 
 	# Delete the values needed to track progress
-	print('build_schedules_task O')
 	cache.set('num_actions_made', None, 0)
 	cache.set('num_total_actions', None, 0)
 	cache.set('current_task_id', None, 0)
-	print('build_schedules_task P')
 	
 
