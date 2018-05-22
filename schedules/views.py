@@ -513,12 +513,19 @@ class ShiftList(LoginRequiredMixin, ListView):
 							if sort_type in ['flags', 'qualifications']:
 								msg = 'Shifts with the \'' + key['title'] + '\' ' + sort_type[:-1] 
 							elif sort_type is 'staphers':
+								print('A')
 								try:
+									print('B')
 									schedule = Schedule.objects.get(active__exact = True)
+									print('C')
 									msg = key['title'] + f'\'s Shifts in the "{schedule.title}" schedule.'
+									print('D')
 								except:
+									print('E')
 									msg = 'No Current Schedule'
+								print('F')
 							else:
+								print('G')
 								msg = key['title'] + '\'s Shifts'
 							context['shift_displayed_msg'] = [msg]
 		return context
