@@ -51,15 +51,12 @@ def resolve_ties(settings, recommendations):
 # Returns a schedule given the staphers, shifts and settings.
 # Currently is not guarenteed to cover every shift.
 # Covering 99% of shift w/ the 2017 shifts and staphers.
-def build_schedules(sorted_shifts, settings, current_task):
+def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 	# Initialize the frontend information
 	total_actions = cache.get('num_total_actions') or 1595 # TODO Remove Magic Number
 	meta = {'message':'Starting to Build Schedules', 'process_percent':0}
 	current_task.update_state(meta = meta)
 
-	schedule = Schedule()
-	schedule.save()
-	staphings = []
 	all_shifts = [shift[0] for shift in sorted_shifts]
 	actions_taken = 0
 	for shift, qualified_staphers in sorted_shifts:

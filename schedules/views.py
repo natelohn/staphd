@@ -24,6 +24,7 @@ from staphd.celery import app
 from .analytics import get_readable_time
 from .forms import FlagCreateForm, ScheduleCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
+from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task
 
 
@@ -31,6 +32,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 	template_name = 'home.html'	
 
 	def get_context_data(self, *args, **kwargs):
+		cache.set('schedule_id', None, 0) #TODO: Delete < 
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
@@ -135,12 +137,18 @@ def download_analytics(request):
 def build_schedules(request):
 	task_id = cache.get('current_task_id')
 	if not task_id:
-		staphings = Staphing.objects.all()
-		if staphings:
-			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must Delete Current Schedule First'})
-		task = build_schedules_task.delay()
-		task_id = task.task_id
-		cache.set('current_task_id', task_id, 1500)
+		try:
+			schedule = Schedule.objects.get(active__exact = True)
+			staphings = Staphing.objects.get(schedule_id__exact = schedule.id)
+			settings = ScheduleBuildingSettings.objects.get()
+			sorted_shifts = cache.get('sorted_shifts')
+			all_shifts = Shift.objects.all()
+			all_staphers = Stapher.objects.all()
+			task = build_schedules_task.delay(schedule, staphings, settings, sorted_shifts, all_shifts, all_staphers)
+			task_id = task.task_id
+			cache.set('current_task_id', task_id, 1500)
+		except:
+			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
 	return render(request,'schedules/progress.html', context)

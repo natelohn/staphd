@@ -5,7 +5,7 @@
 		<h1>Welcome to staphd.com {{user.username}}!</h1>
 		{% if schedule %}
 			<h3>Schedule: {{schedule.title}}</h3>
-			<h3>Currently you have {{ percent_complete }}% shifts scheduled.</h3>
+			<h3>Currently you have {{ percent_complete }}% of shifts scheduled.</h3>
 			<a href="{% url 'schedules:shift-list' %}?q=uncovered" class="button">View Unscheduled Shifts</a>
 		{% else %}}
 			<h3>Currently you have no schedule selected.</h3>
