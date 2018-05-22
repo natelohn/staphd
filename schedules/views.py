@@ -142,7 +142,10 @@ def build_schedules(request):
 			print(f'schedule = {schedule}')
 		except:
 			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
-		staphings = Staphing.objects.get(schedule_id__exact = schedule.id)
+		try:
+			staphings = Staphing.objects.get(schedule_id__exact = schedule.id)
+		except:
+			staphings = []
 		print(f'staphings = {staphings}')
 		settings = ScheduleBuildingSettings.objects.get()
 		print(f'settings = {settings}')
