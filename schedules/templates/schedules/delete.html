@@ -5,7 +5,7 @@
 		<h1>Are you sure you want to delete:<br>"{{ object }}"?</h1>
 		<div id='delete_form_btns'>
 			{% if schedule_id %}
-				<a class="link_btn" href='schedules:schedule-detail pk=schedule_id'>Cancel</a>
+				<a class="link_btn" href="{% url 'schedules:schedule-detail' pk=schedule_id %}">Cancel</a>
 			{% else %}}
 				<a class="link_btn" href='{{ object.get_absolute_url }}'>Cancel</a>
 			{% endif %}
