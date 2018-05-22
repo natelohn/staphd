@@ -46,9 +46,10 @@ def build_schedules_task(self, schedule_id):
 	try:
 		schedule = Schedule.objects.get(id__exact = schedule_id)
 	except:
-		print('NOT A VALID SCHEDULE ID')
+		schedule = Schedule()
+		schedule.save()
 	try:
-		staphings = Staphing.objects.filter(schedule_id__exact = schedule_id)
+		staphings = list(Staphing.objects.filter(schedule_id = schedule.id))
 	except:
 		staphings = []
 	print(f'staphings = {staphings}')
