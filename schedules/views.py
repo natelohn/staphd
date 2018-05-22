@@ -459,7 +459,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 						f = Flag.objects.get(id = key)
 						all_shifts = [s for s in all_shifts if s.has_flag(f.title)]
 					if sort_type == 'staphers':
-						stapher_staphings = all_staphings.filter(stapher__id = key)
+						stapher_staphings = all_staphings.filter(stapher__id = key) if all_staphings else []
 						all_shifts = [s.shift for s in stapher_staphings]
 		return sorted(all_shifts, key = attrgetter('day', 'start'))
 	
