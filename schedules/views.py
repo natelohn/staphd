@@ -43,64 +43,10 @@ class HomeView(LoginRequiredMixin, TemplateView):
 			print('No schedule found in HomeView')
 		return context
 
+# Download Based Views
 class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
 
-class Settings(LoginRequiredMixin, TemplateView):
-    template_name = 'settings.html'
-
-class FlagSettings(LoginRequiredMixin, TemplateView):
-	template_name = 'settings_edit.html'
-	
-	def get_context_data(self, *args, **kwargs):
-		context = super(FlagSettings, self).get_context_data(*args, **kwargs)
-		context['list'] = Flag.objects.all().order_by(Lower('title'))
-		context['delete_link'] = 'schedules:flag-delete'
-		context['create_link'] = 'schedules:flag-create'
-		context['object_name'] = 'Flag'
-		return context
-
-class QualificationSettings(LoginRequiredMixin, TemplateView):
-	template_name = 'settings_edit.html'
-
-	def get_context_data(self, *args, **kwargs):
-		context = super(QualificationSettings, self).get_context_data(*args, **kwargs)
-		context['list'] = Qualification.objects.all().order_by(Lower('title'))
-		context['delete_link'] = 'schedules:qualification-delete'
-		context['create_link'] = 'schedules:qualification-create'
-		context['object_name'] = 'Qualification'
-		return context
-
-
-@login_required
-def build_view(request):
-	template = 'schedules/schedule.html'
-	try:
-		schedule = Schedule.objects.get(active__exact = True)
-		context = {'schedule':schedule.title}
-	except:
-		context = {}
-	task_id = cache.get('current_task_id')
-	if task_id:
-		template = 'schedules/progress.html'
-		context['task_id'] = task_id
-	return render(request, template, context) 
-
-@login_required
-def schedule_selected(request, *args, **kwargs):
-	schedule_id = kwargs['pk']
-	try:
-		schedule = Schedule.objects.get(id__exact = schedule_id)
-		schedule.active = True
-		schedule.save()
-		for other_schedule in Schedule.objects.exclude(id__exact = schedule.id):
-			other_schedule.active = False
-			other_schedule.save()
-	except:
-		return Http404
-	return build_view(request)
-
-# Download Based Views
 @login_required
 def download_file(request, filename):
 	path = 'static/xlsx/' + filename
@@ -134,6 +80,20 @@ def download_analytics(request):
 
 # Schedule Building based Views
 @login_required
+def build_view(request):
+	template = 'schedules/schedule.html'
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+		context = {'schedule':schedule.title}
+	except:
+		context = {}
+	task_id = cache.get('current_task_id')
+	if task_id:
+		template = 'schedules/progress.html'
+		context['task_id'] = task_id
+	return render(request, template, context) 
+
+@login_required
 @csrf_exempt
 def build_schedules(request):
 	task_id = cache.get('current_task_id')
@@ -150,30 +110,6 @@ def build_schedules(request):
 	request.session['task_id'] = task_id
 	context['task_id'] = task_id
 	return render(request,'schedules/progress.html', context)
-
-@login_required
-@csrf_exempt
-def track_state(request, *args, **kwargs):
-	""" A view to report the progress of a task to the user """
-	data = 'Fail'
-	task_id = cache.get('current_task_id')
-	if request.is_ajax():
-		if 'task_id' in request.POST.keys() and request.POST['task_id']:
-			task_id = request.POST['task_id']
-			print(f'			task_id -> {task_id}')
-			task = app.AsyncResult(task_id)
-			data = task.result or task.state
-			print(f'			data -> {data}')
-			task_running = not task.ready() and not isinstance(data, str)
-			print(f'			task_running -> {task_running}')
-			if task_running:
-				data['running'] = task_running
-		else:
-			data = 'No task_id in the request'
-	else:
-		data = 'This is not an ajax request'
-	json_data = json.dumps(data)
-	return HttpResponse(json_data, content_type='application/json')
 
 @login_required
 @csrf_exempt
@@ -198,6 +134,66 @@ def update_files(request, *args, **kwargs):
 	request.session['task_id'] = task_id
 	context['task_id'] = task_id
 	return render(request, template, context)
+
+@login_required
+@csrf_exempt
+def track_state(request, *args, **kwargs):
+	""" A view to report the progress of a task to the user """
+	data = 'Fail'
+	print('tracking A')
+	task_id = cache.get('current_task_id')
+	print('tracking B')
+	if request.is_ajax():
+		print('tracking C')
+		if 'task_id' in request.POST.keys() and request.POST['task_id']:
+			print('tracking D')
+			task_id = request.POST['task_id']
+			print(f'			task_id -> {task_id}')
+			task = app.AsyncResult(task_id)
+			print('tracking E')
+			data = task.result or task.state
+			print(f'			data -> {data}')
+			task_running = not task.ready() and not isinstance(data, str)
+			print(f'			task_running -> {task_running}')
+			if task_running:
+				print('tracking F')
+				data['running'] = task_running
+		else:
+			print('tracking G')
+			data = 'No task_id in the request'
+	else:
+		print('tracking H')
+		data = 'This is not an ajax request'
+	print('tracking I')
+	json_data = json.dumps(data)
+	print('tracking J')
+	return HttpResponse(json_data, content_type='application/json')
+
+# Settings based views
+class Settings(LoginRequiredMixin, TemplateView):
+    template_name = 'settings.html'
+
+class FlagSettings(LoginRequiredMixin, TemplateView):
+	template_name = 'settings_edit.html'
+	
+	def get_context_data(self, *args, **kwargs):
+		context = super(FlagSettings, self).get_context_data(*args, **kwargs)
+		context['list'] = Flag.objects.all().order_by(Lower('title'))
+		context['delete_link'] = 'schedules:flag-delete'
+		context['create_link'] = 'schedules:flag-create'
+		context['object_name'] = 'Flag'
+		return context
+
+class QualificationSettings(LoginRequiredMixin, TemplateView):
+	template_name = 'settings_edit.html'
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(QualificationSettings, self).get_context_data(*args, **kwargs)
+		context['list'] = Qualification.objects.all().order_by(Lower('title'))
+		context['delete_link'] = 'schedules:qualification-delete'
+		context['create_link'] = 'schedules:qualification-create'
+		context['object_name'] = 'Qualification'
+		return context
 
 # Stapher based views
 class StapherList(LoginRequiredMixin,ListView):
@@ -637,6 +633,20 @@ class FlagDelete(LoginRequiredMixin, DeleteView):
 	success_url = reverse_lazy('schedules:settings')
 
 # Schedule Based Views
+@login_required
+def schedule_selected(request, *args, **kwargs):
+	schedule_id = kwargs['pk']
+	try:
+		schedule = Schedule.objects.get(id__exact = schedule_id)
+		schedule.active = True
+		schedule.save()
+		for other_schedule in Schedule.objects.exclude(id__exact = schedule.id):
+			other_schedule.active = False
+			other_schedule.save()
+	except:
+		return Http404
+	return build_view(request)
+
 class ScheduleCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/schedule_form.html'
 	form_class = ScheduleCreateForm
