@@ -302,11 +302,13 @@ class Schedule(models.Model):
 
 	def get_percent_complete(self):
 		all_shifts = Shift.objects.all()
-		staphings = Staphing.objects.filter(schedule__id = self.id)
+		staphings = Staphing.objects.filter(schedule_id__exact = self.id)
 		total_needed = 0
 		for shift in all_shifts:
 			total_needed += shift.workers_needed
-		return int((len(staphings) / total_needed)  * 100)
+		percent_complete = int((len(staphings) / total_needed)  * 100)
+		print(f'percent_complete = {percent_complete}')
+		return percent_complete
 
 	
 # A class representing a single pair of Shift & Stapher in a specific schedule
