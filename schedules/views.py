@@ -24,7 +24,6 @@ from staphd.celery import app
 from .analytics import get_readable_time
 from .forms import FlagCreateForm, ScheduleCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
-from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task
 
 

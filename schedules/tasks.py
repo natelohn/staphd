@@ -7,6 +7,7 @@ from django.db.models.functions import Lower
 from .build import build_schedules
 from .excel import update_individual_excel_files, update_masters, update_analytics
 from .models import Flag, Stapher, Shift, Staphing, Qualification, Master
+from .models import Settings as ScheduleBuildingSettings
 from .sort import get_sorted_shifts
 
 
