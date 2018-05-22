@@ -120,7 +120,11 @@ def update_files(request, *args, **kwargs):
 	context = {}
 	task_id = cache.get('current_task_id')
 	if not task_id:
-		schedule_id = cache.get('schedule_id') #TODO: Update schedule_id to be the only active schedule
+		try:
+			schedule = Schedule.objects.get(active__exact = True)
+			schedule_id = schedule.id
+		except:
+			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
 		staphings = Staphing.objects.filter(schedule__id = schedule_id)
 		if not staphings:
 			template = 'schedules/schedule.html'
