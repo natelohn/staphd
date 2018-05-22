@@ -96,32 +96,20 @@ def build_view(request):
 @login_required
 @csrf_exempt
 def build_schedules(request):
-	print('building A')
 	task_id = cache.get('current_task_id')
-	print('building B')
+	print(f'task_id = {task_id}')
 	context = {}
 	if not task_id:
-		print('building C')
 		try:
-			print('building D')
 			schedule = Schedule.objects.get(active__exact = True)
-			print('building E')
 			context['schedule'] = schedule.title
-			print('building F')
 		except:
-			print('building G')
 			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
-		print('building H')
 		task = build_schedules_task.delay(schedule.id)
-		print('building I')
 		task_id = task.task_id
-		print('building J')
 		cache.set('current_task_id', task_id, 1500)
-		print('building K')
 	request.session['task_id'] = task_id
-	print('building L')
 	context['task_id'] = task_id
-	print('building M')
 	return render(request,'schedules/progress.html', context)
 
 @login_required
