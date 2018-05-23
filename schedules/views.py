@@ -91,6 +91,13 @@ def build_view(request):
 	return render(request, template, context) 
 
 @login_required
+def schedule_settings(request):
+	template = 'schedules/schedule.html'
+	context = {}
+	return render(request, template, context) 
+
+
+@login_required
 @csrf_exempt
 def build_schedules(request):
 	task_id = cache.get('current_task_id')
@@ -160,6 +167,7 @@ def track_state(request, *args, **kwargs):
 		data = 'This is not an ajax request'
 	json_data = json.dumps(data)
 	return HttpResponse(json_data, content_type='application/json')
+
 
 # Settings based views
 class Settings(LoginRequiredMixin, TemplateView):
