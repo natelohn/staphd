@@ -1,3 +1,7 @@
 #setting_selector {
 	margin-top: 10px;
 }
+
+#setting_selected {
+	background-color: silver;
+}

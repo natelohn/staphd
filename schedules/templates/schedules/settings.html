@@ -3,9 +3,21 @@
 <div id="page">
 	<h1>Schedule Building Settings:</h1>
 	<div id="setting_selector">
-		<a class="button" href="{% url 'schedules:settings-select' %}">Select Parameters</a>
-		<a class="button" href="{% url 'schedules:settings-rank' %}">Edit Parameter Rank</a>
-		<a class="button" href="{% url 'schedules:settings-auto' %}">Edit Automation Preferences</a>
+		{% if select %}
+			<a class="button" id="setting_selected" href="{% url 'schedules:settings-select' %}">Select Parameters</a>
+		{% else %}
+			<a class="button" href="{% url 'schedules:settings-select' %}">Select Parameters</a>
+		{% endif %}
+		{% if select %}
+			<a class="button" id="setting_selected" href="{% url 'schedules:settings-rank' %}">Edit Parameter Rank</a>
+		{% else %}
+			<a class="button" href="{% url 'schedules:settings-rank' %}">Edit Parameter Rank</a>
+		{% endif %}
+		{% if select %}
+			<a class="button" id="setting_selected" href="{% url 'schedules:settings-auto' %}">Edit Automation Preferences</a>
+		{% else %}
+			<a class="button" href="{% url 'schedules:settings-auto' %}">Edit Automation Preferences</a>
+		{% endif %}
 	</div>
 	{% block form %}{% endblock %}
 </div>
