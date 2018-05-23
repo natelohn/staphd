@@ -31,9 +31,6 @@ class HomeView(LoginRequiredMixin, TemplateView):
 	template_name = 'home.html'	
 
 	def get_context_data(self, *args, **kwargs):
-		cache.set('current_task_id', None, 0) #TODO: Delete < 
-		test = cache.get('current_task_id') #TODO: Delete < 
-		print(f'test reset curr_task to None? {not test} "{test}"') #TODO: Delete <
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
@@ -504,19 +501,12 @@ class ShiftList(LoginRequiredMixin, ListView):
 							if sort_type in ['flags', 'qualifications']:
 								msg = 'Shifts with the \'' + key['title'] + '\' ' + sort_type[:-1] 
 							elif sort_type in 'staphers':
-								print('A')
 								try:
-									print('B')
 									schedule = Schedule.objects.get(active__exact = True)
-									print('C')
 									msg = key['title'] + f'\'s Shifts in the "{schedule.title}" schedule.'
-									print('D')
 								except:
-									print('E')
 									msg = 'No Current Schedule'
-								print('F')
 							else:
-								print('G')
 								msg = key['title'] + '\'s Shifts'
 							context['shift_displayed_msg'] = [msg]
 		return context
@@ -531,9 +521,17 @@ class ShiftDetail(LoginRequiredMixin, DetailView):
 		context['time_msg'] = get_readable_time(shift.start) + '-' + get_readable_time(shift.end)
 		worker_str = ' Workers Needed' if shift.workers_needed > 1 else ' Worker Needed'
 		context['needed_msg'] = str(shift.workers_needed) + worker_str
-		working_shift = [s.stapher for s in Staphing.objects.all() if s.shift == shift]
+		try:
+			schedule = Schedule.objects.get(active__exact = True)
+			schedule_title = f'Current Schedule: {schedule.title}'
+			staphings = Staphing.objects.filter(schedule_id = schedule.id)
+		except:
+			schedule_title = 'No Schedule Selected.'
+			staphings = []
+		context['schedule_title'] = schedule_title
+		working_shift = [s.stapher for s in staphings if s.shift == shift]
 		context['working_shift'] = sorted(working_shift, key = attrgetter('first_name'))
-		context['working_msg'] = str(len(working_shift))+ ' Workers Scheduled:' if working_shift else 'No Workers Scheduled.'
+		context['working_msg'] = str(len(working_shift))+ ' Workers Scheduled on :' if working_shift else 'No Workers Scheduled.'
 		context['qualifications'] = sorted(shift.qualifications.all(), key = attrgetter('title'))
 		context['flags'] = sorted(shift.flags.all(), key = attrgetter('title'))
 
