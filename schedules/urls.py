@@ -19,9 +19,9 @@ urlpatterns = [
     url(r'^flag/(?P<pk>[\d]+)/delete$', views.FlagDelete.as_view(), name='flag-delete'),
 
     url(r'^schedules/$', views.build_view, name='schedule'),
-    url(r'^schedules/settings/select$', views.select_settings, name='schedule-settings-select'),
-    url(r'^schedules/settings/rank$', views.rank_settings, name='schedule-settings-rank'),
-    url(r'^schedules/settings/auto$', views.auto_settings, name='schedule-settings-auto'),
+    url(r'^schedules/settings/select$', views.select_settings, name='settings-select'),
+    url(r'^schedules/settings/rank$', views.rank_settings, name='settings-rank'),
+    url(r'^schedules/settings/auto$', views.auto_settings, name='settings-auto'),
     url(r'^schedules/building$', views.build_schedules, name='building'),
     url(r'^schedules/update$', views.update_files, name='update'),
     url(r'^schedules/track$', views.track_state, name='track'),
