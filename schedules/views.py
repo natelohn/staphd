@@ -92,7 +92,7 @@ def build_view(request):
 
 @login_required
 def schedule_settings(request):
-	template = 'schedules/schedule.html'
+	template = 'schedules/settings.html'
 	context = {}
 	return render(request, template, context) 
 
