@@ -22,7 +22,7 @@ from operator import attrgetter
 from staphd.celery import app
 
 from .analytics import get_readable_time
-from .forms import FlagCreateForm, ScheduleCreateForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
+from .forms import FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
 from .tasks import build_schedules_task, update_files_task
 
@@ -98,7 +98,7 @@ def schedule_settings(request, setting):
 
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/settings_select.html'
-	form_class = ScheduleCreateForm
+	form_class = SettingsParameterForm
 
 	def get_queryset(self):
 		return Settings.objects.get()
