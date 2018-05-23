@@ -1,3 +1,7 @@
 #setting_selector {
-	background-color: purple;
+	margin-top: 10px;
+
+	border-color: black;
+	border-style: solid;
+	border-bottom: 1px;
 }
