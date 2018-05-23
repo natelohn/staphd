@@ -24,6 +24,7 @@ from staphd.celery import app
 from .analytics import get_readable_time
 from .forms import FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Qualification, Master
+from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task
 
 
@@ -101,7 +102,7 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 	form_class = SettingsParameterForm
 
 	def get_queryset(self):
-		return Settings.objects.get()
+		return ScheduleBuildingSettings.objects.get()
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(SettingParameterUpdate, self).get_context_data(*args, **kwargs)

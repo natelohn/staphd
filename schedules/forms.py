@@ -3,6 +3,7 @@ from django import forms
 from django.db.models.functions import Lower
 
 from .models import Flag, Qualification, Schedule, Settings, Shift, Stapher, Staphing
+from .models import Settings as ScheduleBuildingSettings
 
 
 class StapherCreateForm(forms.ModelForm):
@@ -148,7 +149,7 @@ class ScheduleCreateForm(forms.ModelForm):
 
 class SettingsParameterForm(forms.ModelForm):
 	class Meta:
-		model = Settings
+		model = ScheduleBuildingSettings
 		fields = [
 			'parameters'
 		]
