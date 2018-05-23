@@ -4,9 +4,9 @@
 	<h1>Schedule Building Settings:</h1>
 	<div id="setting_selector">
 		{% if select %}
-			<a class="button" id="setting_selected" href="{% url 'schedules:settings-select' pk=settings_id %}">Select Parameters</a>
+			<a class="button" id="setting_selected" href="{% url 'schedules:settings-select' %}">Select Parameters</a>
 		{% else %}
-			<a class="button" href="{% url 'schedules:settings-select' pk=settings_id %}">Select Parameters</a>
+			<a class="button" href="{% url 'schedules:settings-select' %}">Select Parameters</a>
 		{% endif %}
 		{% if rank %}
 			<a class="button" id="setting_selected" href="{% url 'schedules:settings-rank' %}">Edit Parameter Rank</a>

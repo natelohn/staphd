@@ -89,8 +89,6 @@ def build_view(request):
 	if task_id:
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
-	settings = ScheduleBuildingSettings.objects.get()
-	context['settings_id'] = settings.id
 	return render(request, template, context) 
 
 @login_required
@@ -98,7 +96,6 @@ def schedule_settings(request, setting):
 	template = 'schedules/settings_' + f'{setting}' + '.html'
 	context = {setting: True}
 	settings = ScheduleBuildingSettings.objects.get()
-	context['settings_id'] = settings.id
 	return render(request, template, context)
 
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
@@ -107,6 +104,12 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 
 	def get_queryset(self):
 		return ScheduleBuildingSettings.objects.all()
+
+	def get_object(self):
+		try:
+			return ScheduleBuildingSettings.objects.get()
+		except:
+			return Http404
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(SettingParameterUpdate, self).get_context_data(*args, **kwargs)
