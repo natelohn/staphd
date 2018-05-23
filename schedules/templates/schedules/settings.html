@@ -8,12 +8,12 @@
 		{% else %}
 			<a class="button" href="{% url 'schedules:settings-select' %}">Select Parameters</a>
 		{% endif %}
-		{% if select %}
+		{% if rank %}
 			<a class="button" id="setting_selected" href="{% url 'schedules:settings-rank' %}">Edit Parameter Rank</a>
 		{% else %}
 			<a class="button" href="{% url 'schedules:settings-rank' %}">Edit Parameter Rank</a>
 		{% endif %}
-		{% if select %}
+		{% if auto %}
 			<a class="button" id="setting_selected" href="{% url 'schedules:settings-auto' %}">Edit Automation Preferences</a>
 		{% else %}
 			<a class="button" href="{% url 'schedules:settings-auto' %}">Edit Automation Preferences</a>
