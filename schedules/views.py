@@ -90,7 +90,7 @@ def build_view(request):
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
 	settings = ScheduleBuildingSettings.objects.get()
-	context['pk'] = settings.id
+	context['settings_id'] = settings.id
 	return render(request, template, context) 
 
 @login_required
