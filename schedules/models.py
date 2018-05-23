@@ -328,7 +328,7 @@ class Parameter(models.Model):
 
 	def __str__(self):
 		self_str = f'"{self.title}" '
-		while len(self_str) >= 35:
+		while len(self_str) <= 35:
 			self_str += '-'
 		self_str += f'| {self.description}'
 		return self_str
