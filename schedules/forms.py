@@ -153,6 +153,7 @@ class SettingsParameterForm(forms.ModelForm):
 		fields = [
 			'parameters'
 		]
+		widgets = { 'parameters': forms.CheckboxSelectMultiple()}
 
 
 
