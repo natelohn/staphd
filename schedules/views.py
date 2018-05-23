@@ -96,9 +96,18 @@ def schedule_settings(request, setting):
 	context = {setting: True}
 	return render(request, template, context)
 
-@login_required
-def select_settings(request):
-	return schedule_settings(request, 'select')
+class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
+	template_name = 'schedules/settings_select.html'
+	form_class = ScheduleCreateForm
+
+	def get_queryset(self):
+		return Settings.objects.get()
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(SettingParameterUpdate, self).get_context_data(*args, **kwargs)
+		context['select'] = True
+		return context
+
 
 @login_required
 def rank_settings(request):
@@ -107,7 +116,6 @@ def rank_settings(request):
 @login_required
 def auto_settings(request):
 	return schedule_settings(request, 'auto')
-
 
 @login_required
 @csrf_exempt
