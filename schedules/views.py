@@ -97,6 +97,8 @@ def build_view(request):
 def schedule_settings(request, setting):
 	template = 'schedules/settings_' + f'{setting}' + '.html'
 	context = {setting: True}
+	settings = ScheduleBuildingSettings.objects.get()
+	context['settings_id'] = settings.id
 	return render(request, template, context)
 
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
