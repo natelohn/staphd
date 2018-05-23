@@ -2,10 +2,9 @@
 {% block settings_form %}
 <h3>Select which parameters you would like to search for when building schedules</h3>
 <h5>Somewhere between 3-8 parameters is reccomended</h5>
-<form method='POST' id='form' > {% csrf_token %}
-	<div id="form_div">
-		{{form}}
-	</div>
+<form method='POST' id='form' >
+	{% csrf_token %}
+	{{ form.as_table }}
 	<button class='create_btn' id="form_save" type='submit'>Save</button>
 </form>
 {% include "sections/save_first.html" %}
