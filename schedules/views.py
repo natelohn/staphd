@@ -101,6 +101,7 @@ def schedule_settings(request, setting):
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/settings_select.html'
 	form_class = SettingsParameterForm
+	success_url = reverse_lazy('schedules:settings-rank')
 
 	def get_queryset(self):
 		return ScheduleBuildingSettings.objects.all()
