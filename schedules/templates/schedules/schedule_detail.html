@@ -2,7 +2,7 @@
 {% block page %}
 <div id="page">
 	<div id="detail_header">
-		<h2><bold>{{ object.title }}:<bold> {{total_scheduled}} Shifts Placed - {{percent}}% Complete.</h2>
+		<h2>{{ object.title }} - {{percent}}% Complete.</h2>
 	</div>
 	<div id="detail_footer">
 		<a class="delete_button" href="{% url 'schedules:schedule-delete' pk=object.id%}">Delete</a>
