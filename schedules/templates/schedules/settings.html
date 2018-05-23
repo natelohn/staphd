@@ -5,8 +5,9 @@
 	<div id="setting_selector">
 		<a class="button" href="{% url 'schedules:schedule-settings-select' %}">Select Parameters</a>
 		<a class="button" href="{% url 'schedules:schedule-settings-rank' %}">Edit Parameter Rank</a>
-		<a class="button" href="{% url 'schedules:schedule-settings-preferences' %}">Edit Automation Preferences</a>
+		<a class="button" href="{% url 'schedules:schedule-settings-auto' %}">Edit Automation Preferences</a>
 	</div>
+	{% block form %}{% endblock %}
 </div>
 {% endblock %}
 

@@ -94,7 +94,25 @@ def build_view(request):
 def schedule_settings(request):
 	template = 'schedules/settings.html'
 	context = {}
-	return render(request, template, context) 
+	return render(request, template, context)
+
+@login_required
+def select_settings(request):
+	template = 'schedules/settings_select.html'
+	context = {}
+	return render(request, template, context)
+
+@login_required
+def rank_settings(request):
+	template = 'schedules/settings_rank.html'
+	context = {}
+	return render(request, template, context)
+
+@login_required
+def auto_settings(request):
+	template = 'schedules/settings_auto.html'
+	context = {}
+	return render(request, template, context)
 
 
 @login_required
