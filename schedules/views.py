@@ -674,6 +674,9 @@ class ScheduleDetail(LoginRequiredMixin, DetailView):
 		context = super(ScheduleDetail, self).get_context_data(*args, **kwargs)
 		schedule = self.get_object()
 		context['title'] = schedule.title
+		staphings = Staphing.objects.filter(schedule_id = schedule.id)
+		context['total_scheduled'] = len(staphings)
+		context['percent'] = schedule.get_percent_complete()
 		return context
 
 class ScheduleDelete(LoginRequiredMixin, DeleteView):
