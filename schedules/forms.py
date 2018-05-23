@@ -146,7 +146,7 @@ class ScheduleCreateForm(forms.ModelForm):
 			'title'
 		]
 
-class SettingsParameterForm(form.ModelForm):
+class SettingsParameterForm(forms.ModelForm):
 	class Meta:
 		model = Settings
 		fields = [
