@@ -523,7 +523,7 @@ class ShiftDetail(LoginRequiredMixin, DetailView):
 		context['needed_msg'] = str(shift.workers_needed) + worker_str
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
-			schedule_title = f'Current Schedule: {schedule.title}'
+			schedule_title = f'Schedule: {schedule.title}'
 			staphings = Staphing.objects.filter(schedule_id = schedule.id)
 		except:
 			schedule_title = 'No Schedule Selected.'
