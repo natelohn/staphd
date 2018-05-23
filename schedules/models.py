@@ -327,9 +327,7 @@ class Parameter(models.Model):
 	function_id		= models.IntegerField(unique = True, default = 1)
 
 	def __str__(self):
-		self_str = f'"{self.title}"'
-		self_str += f'<br>{self.description}'
-		return self_str
+		return f'{self.description} | ("{self.title}")'
 
 class Settings(models.Model):
 	parameters		= models.ManyToManyField(Parameter, blank = False)
