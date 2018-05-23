@@ -327,10 +327,8 @@ class Parameter(models.Model):
 	function_id		= models.IntegerField(unique = True, default = 1)
 
 	def __str__(self):
-		self_str = f'"{self.title}" '
-		while len(self_str) <= 35:
-			self_str += '-'
-		self_str += f'| {self.description}'
+		self_str = f'"{self.title}"'
+		self_str += f'<br>{self.description}'
 		return self_str
 
 class Settings(models.Model):
