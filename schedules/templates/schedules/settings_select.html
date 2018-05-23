@@ -4,7 +4,16 @@
 <h5>Somewhere between 3-8 parameters is reccomended</h5>
 <form method='POST' id='form' > {% csrf_token %}
 	<div id="form_div">
-		{{ form }}
+		<label>Parameters:</label>
+		<ul id="id_parameters">
+			{% for parameter in all_parameters %}
+			<li>
+				<label>
+					<input type="checkbox" name="parameters" value={{parameter.id}}>"{{parameter.title}}: {{parameter.description}}"
+				</label>
+			</li>
+			{% endfor %}
+		</ul>
 	</div>
 	<button class='create_btn' id="form_save" type='submit'>Save</button>
 </form>
