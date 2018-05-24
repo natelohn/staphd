@@ -135,6 +135,7 @@ def rank_up(request, *args, **kwargs):
 		up_param = None
 		down_param = None
 		for param in parameters:
+			print(f'{param.id} == {up_param_id}? {param.id == up_param_id}')
 			if param.id == up_param_id:
 				up_param = param
 			elif up_param and not down_param:
