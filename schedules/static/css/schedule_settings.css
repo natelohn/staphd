@@ -20,6 +20,7 @@
     position: relative;
     display: inline-block;
     border-bottom: 1px dotted black;
+    width: 50%;
 }
 
 .tooltip .tooltiptext {
