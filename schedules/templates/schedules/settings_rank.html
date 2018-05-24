@@ -21,10 +21,10 @@
 		<td><strong>{{param.title}}</strong></td>
 		<td>{{param.description}}</td>
 		<td>
-			<div>
-				<a href="{% url 'schedules:settings-rank' %}"><i class="fa fa-caret-up"></i></a>
-				<a href="{% url 'schedules:settings-rank' %}"><i class="fa fa-caret-down"></i></a>
-			</div>
+			<ul>
+				<li><a href="{% url 'schedules:settings-rank' %}"><i class="fa fa-caret-up"></i></a></li>
+				<li><a href="{% url 'schedules:settings-rank' %}"><i class="fa fa-caret-down"></i></a></li>
+			</ul>
 		</td>
 	</tr>
 	{% endfor %}
