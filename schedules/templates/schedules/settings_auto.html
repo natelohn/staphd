@@ -20,7 +20,7 @@
 <form method='POST' id='form' >{% csrf_token %}
 	<div id="form_div">
 		<div id="auto_schedule_div">
-			<h3>Auto Schedule:</h3>
+			<h2>Auto Schedule:</h2>
 			{% if auto_schedule %}
 			<p>Currently, the system will automatically schedule shifts if the stapher is the best choice in:
 			<label for="id_auto_threshold">Auto threshold:</label>
@@ -47,8 +47,8 @@
 		<br>
 		<br>
 		<div id="tie_breaker_div">
-			<h3>Tie-Breaker:</h5>
-			<h5>Whenever there is a tie in ammount of parameters a stapher is the best choice for...</h5>
+			<h2>Tie-Breaker:</h2>
+			<p>Whenever there is a tie in ammount of parameters a stapher is the best choice for...</p>
 			<label for="id_tie_breaker">Tie breaker:</label>
 			<select name="tie_breaker" id="id_tie_breaker">
 				{% if random %}

@@ -16,13 +16,16 @@
 margin-left: 5px;
 }
 
-#auto_schedule_div {
+#auto_schedule_div p{
 	font-size: 1.5em;
+}
+
+#tie_breaker_div p{
+	font-size: 1.75em;
 }
 
 #id_auto_threshold {
 	width: 50px;
-	font-size: 2em;
 }
 
 
