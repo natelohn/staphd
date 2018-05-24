@@ -108,7 +108,7 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(SettingParameterUpdate, self).get_context_data(*args, **kwargs)
 		context['select'] = True
-		context['all_parameters'] = Parameter.objects.all()
+		context['all_parameters'] = Parameter.objects.all().order_by('title')
 		return context
 
 
@@ -129,19 +129,19 @@ def rank_settings(request):
 @login_required
 def rank_up(request, *args, **kwargs):
 	try:
+		up_param_id = kwargs['up']
 		settings = ScheduleBuildingSettings.objects.get()
 		parameters = settings.parameters.all().order_by('rank')
+		up_param = None
 		down_param = None
-		up_param_id = kwargs['pk']
-		print(up_param_id)
-		for p in parameters:
-			print(f'{up_param_id}={p.id}? {p.id == up_param_id}')
-			if p.id == up_param_id:
-				up_param = p
+		for param in parameters:
+			if param.id == up_param_id:
+				up_param = param
+			elif up_param and not down_param:
+				down_param = param
+			if up_param and down_param:
+				up_param.swap_rankings(down_param)
 				break
-			down_param = p
-		if down_param:
-			up_param.swap_rankings(down_param)
 		return rank_settings(request)
 	except:
 		return Http404
