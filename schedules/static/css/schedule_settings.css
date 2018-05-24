@@ -46,8 +46,7 @@ margin-left: 5px;
 }
 
 #title_tablehead {
-	margin-left: 10px;
-	background-color: blue;
+	left: 10px;
 }
 
 #parameters_table td{
