@@ -131,7 +131,9 @@ def rank_up(request, *args, **kwargs):
 	try:
 		up_param_id = kwargs['up']
 		settings = ScheduleBuildingSettings.objects.get()
+		print(f'settings = {settings}')
 		parameters = settings.parameters.all().order_by('rank')
+		print(f'parameters = {parameters}')
 		up_param = None
 		down_param = None
 		for param in parameters:
@@ -143,6 +145,7 @@ def rank_up(request, *args, **kwargs):
 			if up_param and down_param:
 				up_param.swap_rankings(down_param)
 				break
+		print(f'hew?')
 		return rank_settings(request)
 	except:
 		return Http404
