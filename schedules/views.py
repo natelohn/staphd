@@ -142,10 +142,9 @@ def rank_up(request, *args, **kwargs):
 				up_param = param
 			elif up_param and not down_param:
 				down_param = param
-			if up_param and down_param:
-				up_param.swap_rankings(down_param)
 				break
-		print(f'hew?')
+		if up_param and down_param:
+			up_param.swap_rankings(down_param)
 		return rank_settings(request)
 	except:
 		return Http404
