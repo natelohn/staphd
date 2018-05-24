@@ -20,7 +20,7 @@ urlpatterns = [
 
     url(r'^schedules/$', views.build_view, name='schedule'),
     url(r'^schedules/settings/select$', views.SettingParameterUpdate.as_view(), name='settings-select'),
-    url(r'^schedules/settings/rank/$', views.rank_settings, name='settings-rank'),
+    url(r'^schedules/settings/rank$', views.rank_settings, name='settings-rank'),
     url(r'^schedules/settings/rank/up/(?P<pk>[\d]+)$', views.rank_up, name='rank-up'),
     url(r'^schedules/settings/rank/down/(?P<pk>[\d]+)$', views.rank_down, name='rank-down'),
     url(r'^schedules/settings/auto$', views.SettingPreferenceUpdate.as_view(), name='settings-auto'),

@@ -129,7 +129,7 @@ def rank_settings(request):
 @login_required
 def rank_up(request, *args, **kwargs):
 	try:
-		up_param_id = kwargs['up']
+		up_param_id = kwargs['pk']
 		settings = ScheduleBuildingSettings.objects.get()
 		print(f'settings = {settings}')
 		parameters = settings.parameters.all().order_by('rank')
