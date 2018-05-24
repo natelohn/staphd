@@ -26,13 +26,12 @@
 			{% for p in all_parameters %}
 			<tr>
 				<td id="parameters_table_select">
-					<label for="id_parameters_{{forloop.counter0}}">
+					<label for="id_parameters_{{forloop.counter0}}"></label>
 						{% if p in object.parameters.all %}
 						<input type="checkbox" name="parameters" value="{{p.id}}" id=id_parameters_{{forloop.counter0}} checked>
 						{% else %}
 						<input type="checkbox" name="parameters" value="{{p.id}}" id=id_parameters_{{forloop.counter0}}>
 						{% endif %}
-					</label>
 				</td>
 				<td id="parameters_table_text"><strong>{{p.title}}</strong></td>
 				<td id="parameters_table_text">{{p.description}}</td>
