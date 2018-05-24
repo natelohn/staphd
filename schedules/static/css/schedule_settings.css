@@ -20,8 +20,8 @@ margin-left: 5px;
 	font-size: 1.5em;
 }
 
-#id_auto_threshold, #id_auto_schedule {
-	font-size: 1.85em; }
+#id_auto_threshold, #id_auto_schedule, #id_tie_breaker{
+	font-size: 1.25em; }
 
 #id_auto_threshold {
 	width: 50px;
