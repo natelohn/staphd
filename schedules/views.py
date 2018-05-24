@@ -140,7 +140,7 @@ class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(SettingPreferenceUpdate, self).get_context_data(*args, **kwargs)
 		context['auto'] = True
-		settings = self.get_object()
+		settings = get_object()
 		context['auto_schedule'] = self.auto_schedule
 		context['auto_threshold'] = self.auto_threshold
 		context['random'] = self.tie_breaker == 0
