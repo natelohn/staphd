@@ -155,5 +155,14 @@ class SettingsParameterForm(forms.ModelForm):
 		]
 		widgets = { 'parameters': forms.CheckboxSelectMultiple()}
 
+class SettingsPreferenceForm(forms.ModelForm):
+	class Meta:
+		model = ScheduleBuildingSettings
+		fields = [
+			'auto_schedule',
+			'auto_threshold',
+			'tie_breaker'
+		]
+
 
 
