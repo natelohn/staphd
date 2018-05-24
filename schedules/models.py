@@ -332,10 +332,15 @@ class Parameter(models.Model):
 	def swap_rankings(self, other_parameter):
 		print(f'My Rank = {self.rank}, Other Rank = {other_parameter.rank}')
 		my_rank = self.rank
+		print(f'My Rank = {my_rank}, Other Rank = {other_parameter.rank}')
 		other_rank = other_parameter.rank
+		print(f'My Rank = {my_rank}, Other Rank = {other_rank}')
 		self.rank = other_rank
+		print(f'My Rank = {self.rank}, Other Rank = {other_rank}')
 		self.save()
+		print(f'My Rank = {self.rank}, Other Rank = {other_rank}')
 		other_parameter.rank = my_rank
+		print(f'My Rank = {self.rank}, Other Rank = {other_parameter.rank }')
 		other_parameter.save()
 		print(f'My Rank = {self.rank}, Other Rank = {other_parameter.rank}')
 
