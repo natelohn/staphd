@@ -9,7 +9,7 @@
 {% endif %}
 <form method='POST' id='form' >{% csrf_token %}
 	<div id="form_div">
-		<table id="id_parameters">
+		<table id="parameters_table">
 			<tr>
 				<th></th>
 				<th id="title_tablehead">Title</th>
@@ -34,8 +34,8 @@
 						{% endif %}
 					</label>
 				</td>
-				<td id="parameters_table_text"><strong>p.title</strong></td>
-				<td id="parameters_table_text">p.description</td>
+				<td id="parameters_table_text"><strong>{{p.title}}</strong></td>
+				<td id="parameters_table_text">{{p.description<}}/td>
 			</tr>
 			{% endfor %}
 		</table>
