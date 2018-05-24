@@ -13,7 +13,7 @@
 {% if form.errors %}
 	<div>
 		<p>The operation could not be performed because one or more error(s) occurred:</p>
-		<p>{{ form.errors.as_text }}</p>
+		<p id='error'>{{ form.errors.as_text }}</p>
 	</div>
 {% endif %}
 <form method='POST' id='form' >{% csrf_token %}

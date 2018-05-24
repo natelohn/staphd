@@ -43,3 +43,7 @@ margin-left: 5px;
 .tooltiptext {
 	width: 800px;
 }
+
+#error {
+	color: red;
+}
