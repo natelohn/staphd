@@ -18,7 +18,32 @@
 {% endif %}
 <form method='POST' id='form' >{% csrf_token %}
 	<div id="form_div">
-		{{form}}
+		<label for="id_auto_schedule">Auto Schedule:</label>
+		{% if auto_schedule %}}
+		<input type="checkbox" name="auto_schedule" id="id_auto_schedule" checked>
+		{% else %}
+		<input type="checkbox" name="auto_schedule" id="id_auto_schedule">
+		{% endif %}
+
+		<label for="id_auto_threshold">Auto threshold:</label>
+		<input type="number" name="auto_threshold" value={{threshold}} required id="id_auto_threshold">
+
+		<label for="id_tie_breaker">Tie breaker:</label>
+		<select name="tie_breaker" id="id_tie_breaker">
+			{% if random %}}
+			<option value="0" selected>Choose one of the people who tied at random.</option>
+			<option value="1">Pick whoever won highest ranked parmeter.</option>
+			<option value="2">I want to always choose whenever there is a tie.</option>
+			{% elif rank_based %}}
+			<option value="0">Choose one of the people who tied at random.</option>
+			<option value="1" selected>Pick whoever won highest ranked parmeter.</option>
+			<option value="2">I want to always choose whenever there is a tie.</option>
+			{% else %}}
+			<option value="0">Choose one of the people who tied at random.</option>
+			<option value="1" >Pick whoever won highest ranked parmeter.</option>
+			<option value="2" selected>I want to always choose whenever there is a tie.</option>
+			{% endif %}
+		</select>
 	</div>
 	<button class='create_btn' id="form_save" type='submit'>Save</button>
 </form>
