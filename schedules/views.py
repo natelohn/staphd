@@ -121,7 +121,7 @@ def rank_settings(request):
 		parameters = settings.parameters.all()
 		template = 'schedules/settings_rank.html'
 		context['rank'] = True
-		context['parameters'] = settings.parameters.all()
+		context['parameters'] = settings.parameters.all().order_by('rank')
 		return render(request, template, context)
 	except:
 		return Http404
