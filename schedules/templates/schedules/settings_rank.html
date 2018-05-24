@@ -20,7 +20,10 @@
 		<td id="parameters_table_rank"><strong>{{forloop.counter}}</strong></td>
 		<td><strong>{{param.title}}</strong></td>
 		<td>{{param.description}}</td>
-		<td>^v</td>
+		<td>
+			<a href="{% url 'schedules:settings-rank' %}">^</a>
+			<a href="{% url 'schedules:settings-rank' %}">v</a>
+		</td>
 	</tr>
 	{% endfor %}
 </table>
