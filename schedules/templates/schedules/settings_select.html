@@ -15,7 +15,7 @@
 			{% for p in all_parameters %}
 			<li>
 				<label for="id_parameters_{{forloop.counter0}}">
-					{% if p in object.parameters.all() %}
+					{% if p in object.parameters.all %}
 					<input type="checkbox" name="parameters" value="{{p.id}}" id=id_parameters_{{forloop.counter0}} checked>
 					{% else %}
 					<input type="checkbox" name="parameters" value="{{p.id}}" id=id_parameters_{{forloop.counter0}}>
