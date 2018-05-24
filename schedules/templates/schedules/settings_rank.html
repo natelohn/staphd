@@ -21,8 +21,8 @@
 		<td><strong>{{param.title}}</strong></td>
 		<td>{{param.description}}</td>
 		<td>
-			<a href="{% url 'schedules:settings-rank' %}">^</a>
-			<a href="{% url 'schedules:settings-rank' %}">v</a>
+			<a href="{% url 'schedules:settings-rank' %}"><i class="fa fa-caret-up"></i></a>
+			<a href="{% url 'schedules:settings-rank' %}"><i class="fa fa-caret-down"></i></a>
 		</td>
 	</tr>
 	{% endfor %}
