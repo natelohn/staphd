@@ -41,9 +41,9 @@ margin-left: 5px;
 
 
 .tooltiptext {
-	width: 80%;
+	width: 800px;
 }
 
-#error {
+.error {
 	color: red;
 }
