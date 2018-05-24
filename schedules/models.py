@@ -329,6 +329,16 @@ class Parameter(models.Model):
 	def __str__(self):
 		return f'{self.description} | ("{self.title}")'
 
+	def swap_rankings(self, other_parameter):
+		print(f'My Rank = {self.rank}, Other Rank = {other_parameter.rank}')
+		my_rank = self.rank
+		other_rank = other_parameter.rank
+		self.rank = other_rank
+		self.save()
+		other_parameter.rank = my_rank
+		other_parameter.save()
+		print(f'My Rank = {self.rank}, Other Rank = {other_parameter.rank}')
+
 class Settings(models.Model):
 	parameters		= models.ManyToManyField(Parameter, blank = False)
 	auto_schedule 	= models.BooleanField(default = True)
