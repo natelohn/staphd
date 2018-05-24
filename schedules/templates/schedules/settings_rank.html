@@ -2,8 +2,25 @@
 {% block settings_form %}
 <h1>Rank</h1>
 {% for param in parameters %}
-<p>{{param}}</p>
-<p>{{param.rank}}</p>
-<br>
+<tr>
+	<td>{{param.rank}}</td>
+	<td>{{param.title}}</td>
+	<td>{{param.description}}</td>
+	<td>^v</td>
+</tr>
 {% endfor %}
+<div class="tooltip">More Info 
+	<span class="tooltiptext">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus semper, nulla at maximus commodo, lacus quam suscipit erat, nec viverra risus metus id massa. Maecenas scelerisque nibh vitae nisi tristique bibendum. Cras nibh erat, vulputate id eleifend eu, porttitor nec neque. Pellentesque consequat congue augue at sagittis. Fusce quis placerat enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec ultricies, magna nec ornare consectetur, ante sem vehicula arcu, et pulvinar ipsum ligula in purus. Fusce ornare vehicula nunc quis ornare. Praesent at gravida metus.
+
+		Integer ac eros et orci viverra dignissim et non leo. Maecenas ut diam turpis. In semper, nisi at ultricies pellentesque, leo ex dapibus massa, at condimentum ipsum odio laoreet ante. Nulla sit amet vehicula ex. Fusce urna neque, facilisis ut quam a, faucibus rhoncus erat. Proin hendrerit id ante at mattis. Curabitur quis nunc luctus, rhoncus eros ut, ornare dolor. Nullam pretium laoreet sem sit amet malesuada.
+
+		Etiam tristique hendrerit ligula, vitae interdum velit dictum et. Duis dapibus, erat at bibendum pretium, lorem ipsum iaculis lectus, nec egestas lectus elit quis enim. Donec et eros vel neque imperdiet fermentum a ac arcu. Phasellus sed dignissim diam. Donec lobortis nisi eu neque rhoncus viverra. Fusce mattis cursus massa in malesuada. Integer dapibus suscipit tellus, vel congue lectus vestibulum nec. Mauris lectus mauris, tincidunt vel porttitor id, faucibus vitae turpis. Ut porttitor sodales lacinia. Aliquam mollis fermentum lacus, elementum ultrices lacus ullamcorper eget. Duis ac est pulvinar, aliquam leo non, tincidunt mi. Quisque ac vulputate quam, eget mattis risus. Sed id laoreet sem, ut consectetur dui. Duis dolor elit, tempus at dignissim eu, tincidunt id magna. Donec at aliquet libero.
+
+		Aenean rhoncus urna vitae ipsum sodales rutrum. Cras nibh arcu, ullamcorper sed bibendum vitae, vestibulum et tellus. Curabitur varius sit amet nisi eu fermentum. Donec quis lacus vitae eros malesuada pulvinar. Aenean vitae arcu sit amet est porta interdum. Donec a ipsum id quam ornare cursus id sed velit. Suspendisse lobortis porttitor varius. Integer bibendum ornare ornare. Aenean vestibulum pulvinar ullamcorper.
+
+		Fusce diam mi, suscipit ac magna eget, dictum vehicula libero. Vivamus feugiat, neque vitae sodales posuere, turpis massa rhoncus leo, vitae fringilla lorem lectus et augue. Phasellus placerat semper augue. Donec ac arcu et lacus congue elementum eget sit amet metus. Phasellus tristique est metus, vitae viverra sem feugiat et. Vivamus facilisis gravida commodo. Duis molestie vehicula felis ut tempus. Aenean vehicula quis elit eu feugiat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+	</span>
+</div>
 {% endblock %}
+
