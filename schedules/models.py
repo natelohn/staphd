@@ -330,19 +330,25 @@ class Parameter(models.Model):
 		return f'{self.description} | ("{self.title}")'
 
 	def swap_rankings(self, other_parameter):
+		temp_rank = -1
 		print(f'My Rank = {self.rank}, Other Rank = {other_parameter.rank}')
 		my_rank = self.rank
 		print(f'My Rank = {my_rank}, Other Rank = {other_parameter.rank}')
 		other_rank = other_parameter.rank
 		print(f'My Rank = {my_rank}, Other Rank = {other_rank}')
-		self.rank = other_rank
+		self.rank = temp_rank
 		print(f'My Rank = {self.rank}, Other Rank = {other_rank}')
 		self.save()
-		print(f'My Rank = {self.rank}, Other Rank = {other_rank}')
+		print(f'Save')
 		other_parameter.rank = my_rank
-		print(f'My Rank = {self.rank}, Other Rank = {other_parameter.rank }')
-		other_parameter.save()
 		print(f'My Rank = {self.rank}, Other Rank = {other_parameter.rank}')
+		other_parameter.save()
+		print(f'Save')
+		self.rank = other_rank
+		print(f'My Rank = {self.rank}, Other Rank = {other_parameter.rank}')
+		self.save()
+		print(f'Save')
+
 
 class Settings(models.Model):
 	parameters		= models.ManyToManyField(Parameter, blank = False)
