@@ -20,11 +20,11 @@ margin-left: 5px;
 	position: relative;
 	display: inline-block;
 	border-bottom: 1px dotted black;
+	width: 120px;
 }
 
 .tooltip .tooltiptext {
 	visibility: hidden;
-	width: 120px;
 	background-color: black;
 	color: #fff;
 	text-align: center;
