@@ -42,7 +42,7 @@ margin-left: 5px;
 
 #parameters_table th{
 	text-align: left;
-	font-size: 1.25em;
+	font-size: 1.5em;
 }
 
 #parameters_table td{
@@ -51,10 +51,10 @@ margin-left: 5px;
 	border-style: solid;
 	background-color: silver;
 	padding: 5px;
-	font-size: 1.15em;
+	font-size: 1.25em;
 }
 
-#up_down_vote {
+#up_down_vote i{
 	text-align: center;
 	font-size: 1.25em;
 	color: black;
