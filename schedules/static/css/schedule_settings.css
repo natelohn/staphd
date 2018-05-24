@@ -45,6 +45,10 @@ margin-left: 5px;
 	font-size: 1.25em;
 }
 
+#title_tablehead {
+	margin-left: 10px;
+}
+
 #parameters_table td{
 	border: 1px;
 	border-color: black;

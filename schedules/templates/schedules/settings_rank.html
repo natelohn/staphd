@@ -1,17 +1,23 @@
 {% extends "schedules/settings.html" %}
 {% block settings_form %}
-<h1>Rank</h1>
+<h1>Parameter Rankings</h1>
 <table id="parameters_table">
 	<tr>
 		<th>Rank</th>
-		<th>Title</th>
-		<th>Description</th>
+		<th id="title_tablehead">Title</th>
+		<th>Description
+			<div class="tooltip">?
+				<span class="tooltiptext">
+					Given the shift to be scheduled, select the worker that ...
+				</span>
+			</div>
+		</th>
 		<th>Edit</th>
 	</tr>
 	{% for param in parameters %}
 	<tr>
 		<td id="parameters_table_rank"><strong>{{param.rank}}</strong></td>
-		<td><strong>{{param.title}}<</strong>/td>
+		<td><strong>{{param.title}}</strong></td>
 		<td>{{param.description}}</td>
 		<td>^v</td>
 	</tr>
