@@ -16,18 +16,17 @@
 margin-left: 5px;
 }
 
-#auto_schedule_div p{
+#auto_schedule_div p, #tie_breaker_div p{
 	font-size: 1.5em;
 }
 
-#tie_breaker_div p{
-	font-size: 1.75em;
+#id_auto_threshold, #id_auto_schedule {
+	font-size: 1.85em;
 }
 
 #id_auto_threshold {
 	width: 50px;
 }
-
 
 .tooltip {
 	position: relative;
