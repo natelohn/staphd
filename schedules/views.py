@@ -123,9 +123,25 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 def rank_settings(request):
 	return schedule_settings(request, 'rank')
 
-@login_required
-def auto_settings(request):
-	return schedule_settings(request, 'auto')
+class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
+	template_name = 'schedules/settings_auto.html'
+	form_class = SettingsParameterForm
+	success_url = reverse_lazy('schedules:settings-rank')
+
+	def get_queryset(self):
+		return ScheduleBuildingSettings.objects.all()
+
+	def get_object(self):
+		try:
+			return ScheduleBuildingSettings.objects.get()
+		except:
+			return Http404
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(SettingParameterUpdate, self).get_context_data(*args, **kwargs)
+		context['auto'] = True
+		return context
+
 
 @login_required
 @csrf_exempt
