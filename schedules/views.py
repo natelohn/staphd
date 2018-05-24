@@ -127,45 +127,41 @@ def rank_settings(request):
 
 
 @login_required
+def swap_rank(request, param_id, parameters):
+	search_param = None
+	swap_param = None
+	for param in parameters:
+		if param.id == param_id:
+			search_param = param
+			break
+		elif not search_param and not swap_param:
+			swap_param = param
+	if search_param and down_param:
+		search_param.swap_rankings(swap_param)
+	return rank_settings(request)
+
+
+
+@login_required
 def rank_up(request, *args, **kwargs):
 	try:
 		up_param_id = int(kwargs['pk'])
 		settings = ScheduleBuildingSettings.objects.get()
-		print(f'settings = {settings}')
-		parameters = settings.parameters.all().order_by('rank')
-		print(f'parameters = {parameters}')
-		up_param = None
-		down_param = None
-		for param in parameters:
-			print(f'{param.id} == {up_param_id}? {param.id == up_param_id}')
-			if param.id == up_param_id:
-				up_param = param
-			elif up_param and not down_param:
-				down_param = param
-				break
-		if up_param and down_param:
-			up_param.swap_rankings(down_param)
-		return rank_settings(request)
+		parameters = settings.parameters.all().order_by('rank') #Highest Raking to Lowest
+		return swap_rank(request, up_param_id, parameters)
 	except:
 		return Http404
 
 @login_required
 def rank_down(request, *args, **kwargs):
 	try:
+		down_param_id = int(kwargs['pk'])
 		settings = ScheduleBuildingSettings.objects.get()
-		parameters = settings.parameters.all().order_by('rank')
-		down_param = None
-		up_param_id = kwargs['pk']
-		for p in parameters:
-			if p.id == up_param_id:
-				up_param = p
-				break
-			down_param = p
-		if down_param:
-			up_param.swap_rankings(down_param)
-		return rank_settings(request)
+		parameters = settings.parameters.all().order_by('-rank') #Lowest Raking to Highest
+		return swap_rank(request, down_param_id, parameters)
 	except:
 		return Http404
+
 
 class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/settings_auto.html'
