@@ -138,7 +138,7 @@ class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 			return Http404
 
 	def get_context_data(self, *args, **kwargs):
-		context = super(SettingParameterUpdate, self).get_context_data(*args, **kwargs)
+		context = super(SettingPreferenceUpdate, self).get_context_data(*args, **kwargs)
 		context['auto'] = True
 		return context
 
