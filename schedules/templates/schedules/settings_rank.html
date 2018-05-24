@@ -2,6 +2,12 @@
 {% block settings_form %}
 <h1>Rank</h1>
 <table id="parameters_table">
+	<tr>
+		<th>Rank</th>
+		<th>Title</th>
+		<th>Description</th>
+		<th>Edit</th>
+	</tr>
 	{% for param in parameters %}
 	<tr>
 		<td>{{param.rank}}</td>
