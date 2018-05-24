@@ -1,6 +1,6 @@
 {% extends "schedules/settings.html" %}
 {% block settings_form %}
-<h2>Automation Preferences</h2>
+<h2>Automation Preferences:</h2>
 <div class="tooltip">More Info 
   <span class="tooltiptext">
 	  	Selecting Parameters:<br>
@@ -43,23 +43,25 @@
 			</p>
 			{% endif %}
 		</div>
-
-		<label for="id_tie_breaker">Tie breaker:</label>
-		<select name="tie_breaker" id="id_tie_breaker">
-			{% if random %}
-			<option value="0" selected>Choose one of the people who tied at random.</option>
-			<option value="1">Pick whoever won highest ranked parmeter.</option>
-			<option value="2">I want to always choose whenever there is a tie.</option>
-			{% elif rank_based %}
-			<option value="0">Choose one of the people who tied at random.</option>
-			<option value="1" selected>Pick whoever won highest ranked parmeter.</option>
-			<option value="2">I want to always choose whenever there is a tie.</option>
-			{% else %}
-			<option value="0">Choose one of the people who tied at random.</option>
-			<option value="1" >Pick whoever won highest ranked parmeter.</option>
-			<option value="2" selected>I want to always choose whenever there is a tie.</option>
-			{% endif %}
-		</select>
+		<div id="tie_breaker_div">
+			<h3>Tie-Breaker:</h5>
+			<h5>Whenever there is a tie in ammount of parameters a stapher is the best choice for...</h5>
+			<label for="id_tie_breaker">Tie breaker:</label>
+			<select name="tie_breaker" id="id_tie_breaker">
+				{% if random %}
+				<option value="0" selected>Choose one of the people who tied at random.</option>
+				<option value="1">Pick whoever won highest ranked parmeter.</option>
+				<option value="2">I want to always choose whenever there is a tie.</option>
+				{% elif rank_based %}
+				<option value="0">Choose one of the people who tied at random.</option>
+				<option value="1" selected>Pick whoever won highest ranked parmeter.</option>
+				<option value="2">I want to always choose whenever there is a tie.</option>
+				{% else %}
+				<option value="0">Choose one of the people who tied at random.</option>
+				<option value="1" >Pick whoever won highest ranked parmeter.</option>
+				<option value="2" selected>I want to always choose whenever there is a tie.</option>
+				{% endif %}
+			</select>
 	</div>
 	<button class='create_btn' id="form_save" type='submit'>Save</button>
 </form>
