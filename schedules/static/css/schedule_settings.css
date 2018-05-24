@@ -52,6 +52,11 @@ margin-left: 5px;
 	background-color: silver;
 	padding: 5px;
 }
+
+#parameters_table_text{
+	font-size: 1.5em;
+}
+
 #up_down_vote {
 	text-align: center;
 }
