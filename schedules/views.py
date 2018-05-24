@@ -132,7 +132,7 @@ def rank_up(request, *args, **kwargs):
 	for p in Parameter.objects.all().order_by('rank'):
 		p.rank = i
 		p.save()
-		i++
+		i += 1
 		print(f'{p.title}: Rank = {p.rank}')
 	try:
 		up_param_id = int(kwargs['pk'])

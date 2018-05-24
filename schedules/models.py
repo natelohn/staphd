@@ -330,15 +330,16 @@ class Parameter(models.Model):
 		return f'{self.description} | ("{self.title}")'
 
 	def swap_rankings(self, other_parameter):
-		temp_rank = -1
-		my_rank = self.rank
-		other_rank = other_parameter.rank
-		self.rank = temp_rank
-		self.save()
-		other_parameter.rank = my_rank
-		other_parameter.save()
-		self.rank = other_rank
-		self.save()
+		if self.rank != -1 and other_parameter.rank != -1:
+			temp_rank = -1
+			my_rank = self.rank
+			other_rank = other_parameter.rank
+			self.rank = temp_rank
+			self.save()
+			other_parameter.rank = my_rank
+			other_parameter.save()
+			self.rank = other_rank
+			self.save()
 
 
 
