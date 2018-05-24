@@ -115,12 +115,16 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 @login_required
 def rank_settings(request):
 	template = 'schedules/settings_rank.html'
-	context = {'rank': True}
+	context = {}
 	try:
 		settings = ScheduleBuildingSettings.objects.get()
+		parameters = settings.parameters.all()
+		template = 'schedules/settings_rank.html'
+		context['rank'] = True
+		context['parameters'] = settings.parameters.all()
+		return render(request, template, context)
 	except:
 		return Http404
-	return render(request, template, context)
 
 class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/settings_auto.html'
