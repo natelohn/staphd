@@ -1,15 +1,7 @@
 {% extends "schedules/settings.html" %}
 {% block settings_form %}
 <h2>Selecting parameters will suggest the staffer that, given the shift to be placed...</h2>
-<div class="tooltip">More Info 
-  <span class="tooltiptext">
-	  	Selecting Parameters:<br>
-		- A "parameter" is what the automation will use to decide who is suggested to get (or is automatically gets) a shift scheduled.<br>
-		- They are used to decide who should get which shifts scheduled. i.e. The "Even Days" parameter will suggest scheduling the staffer that has the least hours on that day.<br>
-		- Selecting 3-8 parameters is reccomended.<br>
-		- Must select at least 1.<br>
-	</span>
-</div>
+
 {% if form.errors %}
 	<div>
 		<p>The operation could not be performed because one or more error(s) occurred:</p>
@@ -19,6 +11,15 @@
 <form method='POST' id='form' >{% csrf_token %}
 	<div id="form_div">
 		{{ form }}
+	</div>
+	<div class="tooltip">More Info 
+	  <span class="tooltiptext">
+		  	Selecting Parameters:<br>
+			- A "parameter" is what the automation will use to decide who is suggested to get (or is automatically gets) a shift scheduled.<br>
+			- They are used to decide who should get which shifts scheduled. i.e. The "Even Days" parameter will suggest scheduling the staffer that has the least hours on that day.<br>
+			- Selecting 3-8 parameters is reccomended.<br>
+			- Must select at least 1.<br>
+		</span>
 	</div>
 	<button class='create_btn' id="form_save" type='submit'>Save</button>
 </form>
