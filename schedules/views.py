@@ -91,13 +91,6 @@ def build_view(request):
 		context['task_id'] = task_id
 	return render(request, template, context) 
 
-@login_required
-def schedule_settings(request, setting):
-	template = 'schedules/settings_' + f'{setting}' + '.html'
-	context = {setting: True}
-	settings = ScheduleBuildingSettings.objects.get()
-	return render(request, template, context)
-
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/settings_select.html'
 	form_class = SettingsParameterForm
@@ -121,7 +114,13 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 
 @login_required
 def rank_settings(request):
-	return schedule_settings(request, 'rank')
+	template = 'schedules/settings_rank.html'
+	context = {'rank': True}
+	try:
+		settings = ScheduleBuildingSettings.objects.get()
+	except:
+		return Http404
+	return render(request, template, context)
 
 class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/settings_auto.html'
