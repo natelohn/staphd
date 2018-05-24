@@ -22,8 +22,8 @@ GENDER = {
 }
 
 TIE_OPTIONS = {
-    0 : 'Choose one of the people who tied at random.',
-    1 : 'Pick whoever won highest ranked parmeter.',
+    0 : 'Automatically choose one of the people who tied at random.',
+    1 : 'Automatically pick whoever won highest ranked parmeter.',
     2 : 'I want to choose whenever there is a tie.'
 }
 
