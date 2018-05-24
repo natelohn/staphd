@@ -128,31 +128,22 @@ def rank_settings(request):
 
 @login_required
 def rank_up(request, *args, **kwargs):
-	print('A')
 	try:
-		print('B')
 		settings = ScheduleBuildingSettings.objects.get()
-		print('C')
 		parameters = settings.parameters.all().order_by('rank')
-		print('D')
 		down_param = None
 		up_param_id = kwargs['pk']
-		print('E')
+		print(up_param_id)
 		for p in parameters:
-			print('F')
+			print(f'{up_param_id}={p.id}? {p.id == up_param_id}')
 			if p.id == up_param_id:
-				print('G')
 				up_param = p
 				break
 			down_param = p
-		print('H')
 		if down_param:
-			print('I')
 			up_param.swap_rankings(down_param)
-			print('J')
 		return rank_settings(request)
 	except:
-		print('K')
 		return Http404
 
 @login_required
