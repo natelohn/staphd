@@ -36,8 +36,11 @@ margin-left: 5px;
 	width: 100%;
 }
 
-#parameters_table_rank {
+#parameters_table_rank, #up_down_vote {
+	padding-left: 5px;
+	padding-right: 5px;
 	text-align: center;
+	font-size: 1.5em;
 }
 
 #parameters_table th{
@@ -53,16 +56,11 @@ margin-left: 5px;
 }
 
 #parameters_table_text{
-	font-size: 1.5em;
-}
-
-#up_down_vote {
-	text-align: center;
+	font-size: 1.25em;
 }
 
 #up_down_vote i{
 	color: black;
-	font-size: 1.25em;
 }
 
 #up_down_vote i:hover{
