@@ -144,6 +144,23 @@ def rank_up(request, *args, **kwargs):
 	except:
 		return Http404
 
+@login_required
+def rank_down(request, *args, **kwargs):
+	try:
+		settings = ScheduleBuildingSettings.objects.get()
+		parameters = settings.parameters.all().order_by('rank')
+		down_param = None
+		up_param_id = kwargs['pk']
+		for p in parameters:
+			if p.id == up_param_id:
+				up_param = p
+				break
+			down_param = p
+		if down_param:
+			up_param.swap_rankings(down_param)
+		return rank_settings(request)
+	except:
+		return Http404
 
 class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/settings_auto.html'
