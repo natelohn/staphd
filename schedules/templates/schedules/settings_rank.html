@@ -17,7 +17,7 @@
 	</tr>
 	{% for param in parameters %}
 	<tr>
-		<td id="parameters_table_rank"><strong>{{param.rank}}</strong></td>
+		<td id="parameters_table_rank"><strong>{{forloop.counter}}</strong></td>
 		<td><strong>{{param.title}}</strong></td>
 		<td>{{param.description}}</td>
 		<td>^v</td>
