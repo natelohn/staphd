@@ -136,7 +136,7 @@ def swap_rank(request, param_id, parameters):
 			break
 		elif not search_param and not swap_param:
 			swap_param = param
-	if search_param and down_param:
+	if search_param and swap_param:
 		search_param.swap_rankings(swap_param)
 	return rank_settings(request)
 
