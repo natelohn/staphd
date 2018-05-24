@@ -58,6 +58,7 @@ margin-left: 5px;
 
 #up_down_vote i{
 	color: black;
+	font-size: 1.25em;
 }
 
 #up_down_vote i:hover{
