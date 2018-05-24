@@ -3,7 +3,7 @@
 <h1>Parameter Rankings</h1>
 <table id="parameters_table">
 	<tr>
-		<th>Rank</th>
+		<th></th>
 		<th id="title_tablehead">Title</th>
 		<th>Description
 			<div class="tooltip">
@@ -13,7 +13,6 @@
 				(?)
 			</div>
 		</th>
-		<th>Edit</th>
 	</tr>
 	{% for param in parameters %}
 	<tr>
@@ -21,7 +20,7 @@
 		<td><strong>{{param.title}}</strong></td>
 		<td>{{param.description}}</td>
 		<td>
-			<ul>
+			<ul id="up_down_vote">
 				<li><a href="{% url 'schedules:settings-rank' %}"><i class="fa fa-caret-up"></i></a></li>
 				<li><a href="{% url 'schedules:settings-rank' %}"><i class="fa fa-caret-down"></i></a></li>
 			</ul>
