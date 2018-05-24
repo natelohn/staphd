@@ -108,8 +108,7 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(SettingParameterUpdate, self).get_context_data(*args, **kwargs)
 		context['select'] = True
-		context['all_parameters'] = Parameter.objects.all().order_by('title')
-		# context['settings_parameters'] = Settings.objects.get().parameters.all()
+		context['all_parameters'] = Parameter.objects.all().order_by('rank')
 		return context
 
 

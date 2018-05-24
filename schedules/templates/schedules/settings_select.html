@@ -1,7 +1,6 @@
 {% extends "schedules/settings.html" %}
 {% block settings_form %}
-<h2>The selected parameters will suggest the staffer that, given the shift to be placed...</h2>
-
+<h2>Selected Parameters:</h2>
 {% if form.errors %}
 <div>
 	<p>The operation could not be performed because one or more error(s) occurred:</p>
@@ -10,21 +9,36 @@
 {% endif %}
 <form method='POST' id='form' >{% csrf_token %}
 	<div id="form_div">
-		<label>Parameters:</label>
-		<ul id="id_parameters">
+		<table id="id_parameters">
+			<tr>
+				<th></th>
+				<th id="title_tablehead">Title</th>
+				<th>Description
+					<div class="tooltip">
+						<span class="tooltiptext" id="tooltiptext_small">
+							Given the shift to be scheduled, select the worker that ...
+						</span>
+						(?)
+					</div>
+				</th>
+			</tr>
+			<label>Parameters:</label>
 			{% for p in all_parameters %}
-			<li>
-				<label for="id_parameters_{{forloop.counter0}}">
-					{% if p in object.parameters.all %}
-					<input type="checkbox" name="parameters" value="{{p.id}}" id=id_parameters_{{forloop.counter0}} checked>
-					{% else %}
-					<input type="checkbox" name="parameters" value="{{p.id}}" id=id_parameters_{{forloop.counter0}}>
-					{% endif %}
-					"{{p}}"
-				</label>
-			</li>
+			<tr>
+				<td id="parameters_table_select">
+					<label for="id_parameters_{{forloop.counter0}}">
+						{% if p in object.parameters.all %}
+						<input type="checkbox" name="parameters" value="{{p.id}}" id=id_parameters_{{forloop.counter0}} checked>
+						{% else %}
+						<input type="checkbox" name="parameters" value="{{p.id}}" id=id_parameters_{{forloop.counter0}}>
+						{% endif %}
+					</label>
+				</td>
+				<td id="parameters_table_text"><strong>p.title</strong></td>
+				<td id="parameters_table_text">p.description</td>
+			</tr>
 			{% endfor %}
-		</ul>
+		</table>
 	</div>
 	<div class="tooltip">More Info 
 		<span class="tooltiptext">
