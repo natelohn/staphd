@@ -109,6 +109,7 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 		context = super(SettingParameterUpdate, self).get_context_data(*args, **kwargs)
 		context['select'] = True
 		context['all_parameters'] = Parameter.objects.all().order_by('title')
+		# context['settings_parameters'] = Settings.objects.get().parameters.all()
 		return context
 
 
@@ -139,8 +140,6 @@ def swap_rank(request, param_id, parameters):
 		search_param.swap_rankings(swap_param)
 	return rank_settings(request)
 
-
-
 @login_required
 def rank_up(request, *args, **kwargs):
 	try:
@@ -160,7 +159,6 @@ def rank_down(request, *args, **kwargs):
 		return swap_rank(request, down_param_id, parameters)
 	except:
 		return Http404
-
 
 class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/settings_auto.html'
