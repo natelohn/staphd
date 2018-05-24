@@ -36,6 +36,14 @@ margin-left: 5px;
 	width: 100%;
 }
 
+#parameters_table_rank {
+	text-align: center;
+}
+
+#parameters_table th{
+	text-align: left;
+	font-size: 1.25em;
+}
 
 #parameters_table td{
 	border: 1px;
@@ -43,6 +51,7 @@ margin-left: 5px;
 	border-style: solid;
 	background-color: silver;
 	padding: 5px;
+	font-size: 1.15em;
 }
 
 .tooltip {
