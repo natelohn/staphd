@@ -126,7 +126,7 @@ def rank_settings(request):
 class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/settings_auto.html'
 	form_class = SettingsPreferenceForm
-	success_url = reverse_lazy('schedules:settings-rank')
+	success_url = reverse_lazy('schedules:schedule')
 
 	def get_queryset(self):
 		return ScheduleBuildingSettings.objects.all()
