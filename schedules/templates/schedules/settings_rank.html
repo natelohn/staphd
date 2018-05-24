@@ -1,6 +1,6 @@
 {% extends "schedules/settings.html" %}
 {% block settings_form %}
-<h1>Parameter Rankings</h1>
+<h1>Parameter Rankings:</h1>
 <table id="parameters_table">
 	<tr>
 		<th></th>
@@ -31,7 +31,13 @@
 <br>
 <div class="tooltip">More Info
 	<span class="tooltiptext">
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus semper, nulla at maximus commodo, lacus quam suscipit erat, nec viverra risus metus id massa. Maecenas scelerisque nibh vitae nisi tristique bibendum. Cras nibh erat, vulputate id eleifend eu, porttitor nec neque. Pellentesque consequat congue augue at sagittis. Fusce quis placerat enim. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec ultricies, magna nec ornare consectetur, ante sem vehicula arcu, et pulvinar ipsum ligula in purus. Fusce ornare vehicula nunc quis ornare. Praesent at gravida metus.
+		Parameter Rankings are used for two things:<br><br>
+		1. Displaying Suggestions<br>
+		- When suggesting who should get which shift, the workers that are the best choice in higher ranked parameters will be closer to the top.<br><br>
+		2. Breaking Ties<br>
+		- If you chose so, you can have ties be broken by deciding whichever worker is the best choice in the highest ranked parameter.<br>
+		- More about breaking ties is explained on the next page! Woo hoo!<br><br>
+		Feel free to rank in whatever way you would like!
 	</span>
 </div>
 <a class="button" href="{% url 'schedules:settings-auto' %}">Next</a>
