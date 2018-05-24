@@ -1,7 +1,10 @@
 {% extends "schedules/settings.html" %}
 {% block settings_form %}
-<h3>Select which parameters you would like to search for when building schedules</h3>
-<h5>Somewhere between 3-8 parameters is reccomended</h5>
+<h2>Selecting Parameters</h2>
+<h3> - A "parameter" is what the automation will use to decide who is suggested to get (or is automatically gets) a shift scheduled.</h3>
+<h3> - Think of them as ways of deciding who should get which shifts scheduled. i.e. The "Even Days" parameter will suggest scheduling the staffer that has the least hours on that day.</h3>
+<h3> - Somewhere between 3-8 parameters is reccomended</h3>
+<h2>Select the parameters that, give the shift to be placed, will suggest the staffer that...</h2>
 <form method='POST' id='form' >{% csrf_token %}
 	<div id="form_div">
 		{{ form.as_p }}
