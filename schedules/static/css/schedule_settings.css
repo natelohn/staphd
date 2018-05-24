@@ -32,6 +32,13 @@ margin-left: 5px;
 	font-size: 1.5em;
 }
 
+#parameters_table {
+	border: 1px;
+	border-color: black;
+	border-style: solid;
+	background-color: silver;
+}
+
 .tooltip {
 	position: relative;
 	display: inline-block;

@@ -1,7 +1,7 @@
 {% extends "schedules/settings.html" %}
 {% block settings_form %}
 <h1>Rank</h1>
-<table>
+<table id="parameters_table">
 	{% for param in parameters %}
 	<tr>
 		<td>{{param.rank}}</td>
