@@ -1,15 +1,5 @@
 {% extends "schedules/settings.html" %}
 {% block settings_form %}
-<h2>Automation Preferences:</h2>
-<div class="tooltip">More Info 
-  <span class="tooltiptext">
-	  	Selecting Parameters:<br>
-		- A "parameter"<br>
-		- They are us <br>
-		- Select<br>
-		- Mast 1.<br>
-	</span>
-</div>
 {% if form.errors %}
 	<div>
 		<p>The operation could not be performed because one or more error(s) occurred:</p>
@@ -67,6 +57,15 @@
 			</select>
 	</div>
 	<br>
+	<div class="tooltip">More Info 
+	  	<span class="tooltiptext">
+		  	Selecting Parameters:<br>
+			- A "parameter"<br>
+			- They are us <br>
+			- Select<br>
+			- Mast 1.<br>
+		</span>
+	</div>
 	<button class='create_btn' id="form_save" type='submit'>Save</button>
 </form>
 {% include "sections/save_first.html" %}
