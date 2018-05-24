@@ -18,15 +18,28 @@
 {% endif %}
 <form method='POST' id='form' >{% csrf_token %}
 	<div id="form_div">
-		<label for="id_auto_schedule">Auto Schedule:</label>
-		{% if auto_schedule %}
-		<input type="checkbox" name="auto_schedule" id="id_auto_schedule" checked>
-		{% else %}
-		<input type="checkbox" name="auto_schedule" id="id_auto_schedule">
-		{% endif %}
-
-		<label for="id_auto_threshold">Auto threshold:</label>
-		<input type="number" name="auto_threshold" value={{auto_threshold}} required id="id_auto_threshold">
+		<div id="auto_schedule_div">
+			<h3>Auto Schedule:</h3>
+			{% if auto_schedule %}
+			<p>Currently, the system will automatically schedule shifts if the stapher is the best choice in:
+			<label for="id_auto_threshold">Auto threshold:</label>
+			<input type="number" name="auto_threshold" value={{auto_threshold}} required id="id_auto_threshold">
+			parameters.
+			</p>
+			<p>If you would like to schedule every shift with no automation, uncheck this box:
+				<label for="id_auto_schedule">Auto Schedule:</label>
+				<input type="checkbox" name="auto_schedule" id="id_auto_schedule" checked>
+			</p>
+			{% else %}
+			<p>If you would like to automatically schedule shifts when the stapher is the best choice in 
+				<label for="id_auto_threshold">Auto threshold:</label>
+				<input type="number" name="auto_threshold" value={{auto_threshold}} required id="id_auto_threshold">
+				then check this box:
+				<label for="id_auto_schedule">Auto Schedule:</label>
+				<input type="checkbox" name="auto_schedule" id="id_auto_schedule">
+			</p>
+			{% endif %}
+		</div>
 
 		<label for="id_tie_breaker">Tie breaker:</label>
 		<select name="tie_breaker" id="id_tie_breaker">
