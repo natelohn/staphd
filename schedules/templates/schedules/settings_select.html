@@ -10,6 +10,12 @@
 		- Must select at least 1.<br>
 	</span>
 </div>
+{% if form.errors %}
+	<div id="form_errors">
+		<p>The operation could not be performed because one or more error(s) occurred:</p>
+		<p>{{ form.errors.as_text }}</p>
+	</div>
+{% endif %}
 <form method='POST' id='form' >{% csrf_token %}
 	<div id="form_div">
 		{{ form.as_p }}
