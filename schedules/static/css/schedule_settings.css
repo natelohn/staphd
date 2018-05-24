@@ -32,12 +32,17 @@ margin-left: 5px;
 	font-size: 1.5em;
 }
 
+#parameters_table {
+	width: 100%;
+}
+
+
 #parameters_table td{
 	border: 1px;
 	border-color: black;
 	border-style: solid;
 	background-color: silver;
-	margin: 5px;
+	padding: 5px;
 }
 
 .tooltip {
