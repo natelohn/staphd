@@ -61,24 +61,24 @@ def download_file(request, filename):
 		raise Http404
 
 @login_required
-def download_individual(request):
+def download_individual(request, *args, **kwargs):
 	return download_file(request, 'schedules.xlsx')
 
 @login_required
-def download_masters(request):
+def download_masters(request, *args, **kwargs):
 	return download_file(request, 'masters.xlsx')
 
 @login_required
-def download_meals(request):
+def download_meals(request, *args, **kwargs):
 	return download_file(request, 'meal-masters.xlsx')
 
 @login_required
-def download_analytics(request):
+def download_analytics(request, *args, **kwargs):
 	return download_file(request, 'analytics.xlsx')
 
 # Schedule Building based Views
 @login_required
-def build_view(request):
+def build_view(request, *args, **kwargs):
 	template = 'schedules/schedule.html'
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
@@ -112,7 +112,7 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 		return context
 
 @login_required
-def rank_settings(request):
+def rank_settings(request, *args, **kwargs):
 	try:
 		settings = ScheduleBuildingSettings.objects.get()
 		parameters = settings.parameters.all()
@@ -184,7 +184,7 @@ class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 
 @login_required
 @csrf_exempt
-def build_schedules(request):
+def build_schedules(request, *args, **kwargs):
 	task_id = cache.get('current_task_id')
 	if not task_id:
 		try:
@@ -413,7 +413,7 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 	success_url = reverse_lazy('schedules:stapher-list')
 
 @login_required
-def schedule_view(request):
+def schedule_view(request, *args, **kwargs):
 	template = 'schedules/schedule.html'
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
