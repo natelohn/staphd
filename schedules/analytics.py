@@ -1,5 +1,6 @@
 import datetime
 
+# Used in Views.py
 def get_hours_from_timedelta(time_delta):
 	return (time_delta.days * 24) + round(time_delta.seconds / 3600, 2)
 
