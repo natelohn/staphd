@@ -176,10 +176,10 @@ class Stapher(models.Model):
 				shifts_by_day[day] = []
 		return shifts_by_day
 
-	def get_shift_during_time(self, day, time, staphings):
+	def get_staphing_during_time(self, day, time, staphings):
 		for staphing in staphings:
 			if self.id == staphing.stapher.id and staphing.shift.is_during_day_and_time(day, time):
-				return staphing.shift
+				return staphing
 		return None
 
 
