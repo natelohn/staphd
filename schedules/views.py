@@ -433,9 +433,9 @@ def schedule_view(request, *args, **kwargs):
 	all_times = []
 	time = datetime.timedelta(hours = 6, minutes = 0)
 	max_time = datetime.timedelta(hours = 23, minutes = 30)
-	while time < max_time:
+	while time <= max_time:
 		time_for_day = []
-		for day in days:
+		for day in header:
 			time_for_day.append(time)
 		time += datetime.timedelta(hours = 0, minutes = 15)
 		all_times.append(time_for_day)
