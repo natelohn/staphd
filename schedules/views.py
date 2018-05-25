@@ -428,17 +428,16 @@ def schedule_view(request, *args, **kwargs):
 	context['stapher'] = stapher
 	context['name'] = stapher.full_name()
 	context['schedule'] = schedule
-	header = ['Time','Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
+	header = ['','Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 	context['header'] = header
 	all_times = []
 	time = datetime.timedelta(hours = 6, minutes = 0)
 	max_time = datetime.timedelta(hours = 23, minutes = 30)
 	while time <= max_time:
-		time_for_day = []
-		for day in header:
-			time_for_day.append(time)
+		# for day in header:
+			# Place shifts for the day
+		all_times.append([time])
 		time += datetime.timedelta(hours = 0, minutes = 15)
-		all_times.append(time_for_day)
 	context['all_times'] = all_times
 	return render(request, template, context) 
 
