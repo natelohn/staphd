@@ -416,6 +416,7 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 def schedule_view(request, *args, **kwargs):
 	template = 'schedules/stapher_schedule.html'
 	stapher_id = kwargs['pk']
+	context = {}
 	try:
 		stapher = Stapher.objects.get(id__exact = stapher_id)
 	except:
