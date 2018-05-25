@@ -21,7 +21,9 @@
 
 #delete_icon {
 	color: red;
-	text-align: left;
+	position: absolute;
+	top:0;
+	left:0;
 }
 
 #delete_icon {
