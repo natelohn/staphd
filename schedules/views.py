@@ -823,7 +823,7 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
 	model = Staphing
 	staphing = self.get_object()
-	success_url = reverse_lazy('schedules:stapher-schedule' pk = staphing.stapher.id)
+	success_url = reverse_lazy('schedules:stapher-schedule', kwargs={'pk':staphing.stapher.id})
 
 	def get_queryset(self):
 		return Staphing.objects.all()
