@@ -431,7 +431,7 @@ def schedule_view(request, *args, **kwargs):
 	max_time = datetime.timedelta(hours = 23, minutes = 30)
 	increment = datetime.timedelta(hours = 0, minutes = 15)
 	all_rows_for_time = []
-	while time.hour <= max_time:
+	while time <= max_time:
 		row_for_time = [time]
 		for i, day in enumerate(days):
 			hours = get_hours_from_timedelta(time)
