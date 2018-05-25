@@ -14,3 +14,11 @@
 	border-color: black;
 	border-style: solid;
 }
+
+#scheduled_time{
+	background-color: pink;
+}
+
+#non_scheduled_time{
+	background-color: grey;
+}

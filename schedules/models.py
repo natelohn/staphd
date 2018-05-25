@@ -176,6 +176,13 @@ class Stapher(models.Model):
 				shifts_by_day[day] = []
 		return shifts_by_day
 
+	def get_shift_during_time(self, day, time, staphings):
+		for staphing in staphings:
+			if self.id == staphing.stapher.id and staphing.shift.is_during_day_and_time(day, time):
+				return staphing.shift
+		return None
+
+
 class Shift(models.Model):
 	active			= models.BooleanField(default = True)
 	title 			= models.CharField(max_length = 100, default = 'NAME OF SHIFT')
@@ -211,6 +218,9 @@ class Shift(models.Model):
 
 	def is_during_time(self, time):
 		return self.start <= time and self.end > time
+
+	def is_during_day_and_time(self, day, time):
+		return self.day == day and self.is_during_time(time):
 
 	def is_in_window(self, day, start, end):
 		# TODO: check to see if start should be <= end?

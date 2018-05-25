@@ -423,22 +423,29 @@ def schedule_view(request, *args, **kwargs):
 		return Http404
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
+		staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
 	except:
 		schedule = None
+		staphings = []
 	context['stapher'] = stapher
 	context['name'] = stapher.full_name()
 	context['schedule'] = schedule
-	header = ['','Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
-	context['header'] = header
-	all_times = []
-	time = datetime.timedelta(hours = 6, minutes = 0)
+	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
+	context['days'] = days
+	time += datetime.timedelta(hours = 6, minutes = 0)
 	max_time = datetime.timedelta(hours = 23, minutes = 30)
+	all_rows_for_time = []
 	while time <= max_time:
-		# for day in header:
-			# Place shifts for the day
-		all_times.append([time])
+		row_for_time = [time]
+		for i, day in enumerate(days):
+			shift = stapher.get_shift_during_time(i)
+			if shift:
+				row_for_time.append(True)
+			else:
+				row_for_time.append(False)
+		all_rows_for_time.append(row_for_time)
 		time += datetime.timedelta(hours = 0, minutes = 15)
-	context['all_times'] = all_times
+	context['all_rows_for_time'] = all_rows_for_time
 	return render(request, template, context) 
 
 # Shift based views
