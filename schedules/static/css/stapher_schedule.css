@@ -1,6 +1,6 @@
 #schedule_table {
 	width: 100%;
-	background-color: silver;
+	background-color: #EEEEEE;
 }
 
 #schedule_table th{
@@ -10,7 +10,7 @@
 
 #scheduled_time{
 	position: relative;
-	background-color: grey;
+	background-color: silver;
 	text-align: center;
 	
 }
