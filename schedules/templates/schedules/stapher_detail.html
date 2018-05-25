@@ -10,7 +10,7 @@
 			<h5>Age: {{object.age}}</h5>
 			<h5>Class: {{object.class_year}}</h5>
 			<h5>{{readable_summer}} Summer</h5>
-			<a class="button" href="{% url 'schedules:stapher-schedule' %} pk={{object.id}}">View {{object.first_name }}'s Schedule</a>
+			<a class="button" href="{% url 'schedules:stapher-schedule' %} pk=object.id">View {{object.first_name }}'s Schedule</a>
 		</div>
 		<div id="detail_body_right">
 			{% if qualifications %}
