@@ -13,7 +13,9 @@
 		{% for row in all_rows_for_time %}
 		<tr>
 			{% for cel in row %}
-				{% if cell%}
+				{% if forloop.first %}
+				<td>{{cell}}</td>
+				{% elif cell%}
 				<td id="scheduled_time">busy</td>
 				{% else %}
 				<td id="non_scheduled_time">free</td>
