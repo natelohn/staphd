@@ -822,8 +822,6 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 class StaphingDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
 	model = Staphing
-	staphing = get_object()
-	success_url = reverse_lazy('schedules:stapher-schedule', kwargs={'pk':staphing.stapher.id})
 
 	def get_queryset(self):
 		return Staphing.objects.all()
@@ -831,4 +829,9 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(StaphingDelete, self).get_context_data(*args, **kwargs)
 		return context
+
+	def get_success_url(self):
+		staphing = self.get_object()
+		return reverse_lazy('schedules:stapher-schedule', kwargs={'pk':staphing.stapher.id})
+
 
