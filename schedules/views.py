@@ -432,7 +432,6 @@ def schedule_view(request, *args, **kwargs):
 	context['stapher'] = stapher
 	context['name'] = stapher.full_name()
 	context['schedule'] = schedule
-	context['days'] = days
 	context['can_delete'] = True
 	context['all_rows_for_time'] = all_rows_for_time
 	return render(request, template, context) 
