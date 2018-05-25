@@ -432,11 +432,14 @@ def schedule_view(request, *args, **kwargs):
 	increment = datetime.timedelta(hours = 0, minutes = 15)
 	all_rows_for_time = []
 	while time <= max_time:
-		row_for_time = [time]
+		hours = int(get_hours_from_timedelta(time))
+		minutes = (time.seconds//60)%60
+		t = datetime.time(hours, minutes, 0, 0)
+		if minutes == 0:
+			row_for_time = [time]
+		else:
+			row_for_time = ['']
 		for i, day in enumerate(days):
-			hours = int(get_hours_from_timedelta(time))
-			minutes = (time.seconds//60)%60
-			t = datetime.time(hours, minutes, 0, 0)
 			shift = stapher.get_shift_during_time(i, t, staphings)
 			if shift:
 				row_for_time.append(True)
