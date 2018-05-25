@@ -17,6 +17,8 @@
 				<td>{{cell}}</td>
 				{% elif cell%}
 				<td id="scheduled_time">{{cell}}</td>
+				{% else %}
+				<td id="non_scheduled_time"></td>
 				{% endif %}
 			{% endfor %}
 		</tr>
