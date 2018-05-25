@@ -3,6 +3,7 @@
 <div id="page">
 	{% if schedule %}
 	<h1>{{name}}'s Shifts on "{{schedule.title}}"</h1>
+	<br>
 	<a class="button" href="{% url 'schedules:select' %}">Change Schedules</a>
 	<br>
 	<br>
