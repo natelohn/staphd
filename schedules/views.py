@@ -414,9 +414,7 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 
 @login_required
 def schedule_view(request, *args, **kwargs):
-	template = 'schedules/stapher_schedule.html'
 	stapher_id = kwargs['pk']
-	context = {}
 	try:
 		stapher = Stapher.objects.get(id__exact = stapher_id)
 	except:
@@ -427,13 +425,11 @@ def schedule_view(request, *args, **kwargs):
 	except:
 		schedule = None
 		staphings = []
-	context['stapher'] = stapher
-	context['name'] = stapher.full_name()
-	context['schedule'] = schedule
+
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
-	context['days'] = days
-	time += datetime.timedelta(hours = 6, minutes = 0)
+	time = datetime.timedelta(hours = 6, minutes = 0)
 	max_time = datetime.timedelta(hours = 23, minutes = 30)
+	increment = datetime.timedelta(hours = 0, minutes = 15)
 	all_rows_for_time = []
 	while time <= max_time:
 		row_for_time = [time]
@@ -444,7 +440,14 @@ def schedule_view(request, *args, **kwargs):
 			else:
 				row_for_time.append(False)
 		all_rows_for_time.append(row_for_time)
-		time += datetime.timedelta(hours = 0, minutes = 15)
+		time += increment
+
+	template = 'schedules/stapher_schedule.html'
+	context = {}
+	context['stapher'] = stapher
+	context['name'] = stapher.full_name()
+	context['schedule'] = schedule
+	context['days'] = days
 	context['all_rows_for_time'] = all_rows_for_time
 	return render(request, template, context) 
 
