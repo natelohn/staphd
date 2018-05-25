@@ -4,6 +4,7 @@
 	{% if schedule %}
 	<h1>{{name}}'s Shifts on "{{schedule.title}}"</h1>
 	<a class="button" href="{% url 'schedules:select' %}">Change Schedules</a>
+	<br>
 	{% include "sections/week_view.html" %}
 	{% else %}
 	<h1>No schedule selected...</h1>
