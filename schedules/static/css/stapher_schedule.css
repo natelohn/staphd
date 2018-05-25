@@ -8,7 +8,14 @@
 
 #schedule_table th{
 	background-color: grey;
-	width: 14.25%;
+	width: 14.285%; /* 100 / 7 = 14.285 */
+}
+
+#schedule_table th, td{
+	border-left: 1px;
+	border-right: 1px;
+	border-color: black;
+	border-style: solid;
 }
 
 #scheduled_time{
