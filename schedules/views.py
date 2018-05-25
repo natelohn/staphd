@@ -436,10 +436,7 @@ def schedule_view(request, *args, **kwargs):
 		hours = int(get_hours_from_timedelta(time))
 		minutes = (time.seconds//60)%60
 		t = datetime.time(hours, minutes, 0, 0)
-		if minutes == 0:
-			row_for_time = [time]
-		else:
-			row_for_time = ['']
+		row_for_time = [time]
 		for i, day in enumerate(days):
 			shift = stapher.get_shift_during_time(i, t, staphings)
 			if shift and shift.id not in seen_shifts:
