@@ -427,8 +427,8 @@ def schedule_view(request, *args, **kwargs):
 		staphings = []
 
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
-	time = datetime.time(hours = 6, minutes = 0)
-	max_time = datetime.time(hours = 23, minutes = 30)
+	time = datetime.timedelta(hours = 6, minutes = 0)
+	max_time = datetime.timedelta(hours = 23, minutes = 30)
 	increment = datetime.timedelta(hours = 0, minutes = 15)
 	all_rows_for_time = []
 	while time.hour <= max_time:
