@@ -24,9 +24,9 @@
 #delete_icon {
 	position: absolute;
 	top:0;
-	left:2px;
+	left:0;
 	color: red;
-	font-size: 0.5em;
+	background-color: white;
 }
 
 #delete_icon {
