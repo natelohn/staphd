@@ -9,7 +9,7 @@
 		{% else %}
 			{% for cell in row %}
 				{% if cell%}
-					<td id="scheduled_time" rowspan="{{cell.span}}"><a href="{% url 'schedules:home' %}">
+					<td id="scheduled_time" rowspan="{{cell.span}}"><a href="{% url 'schedules:staphing-delete' %}">
 						{% if can_delete %}
 						<i class="fa fa-times-rectangle" id="delete_icon"></i></a>
 						{% endif %}

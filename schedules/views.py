@@ -818,3 +818,9 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 
 
 
+# Staphing Based Views
+# class StaphingDelete(LoginRequiredMixin, DeleteView):
+# 	template_name = 'schedules/delete.html'
+# 	model = Staphing
+# 	success_url = reverse_lazy('schedules:stapher-schedule pk=')
+

@@ -54,6 +54,8 @@ urlpatterns = [
     url(r'^staphers/(?P<pk>[\d]+)/schedule$', views.schedule_view, name='stapher-schedule'),
 
     url(r'^qualification/create$', views.QualificationCreate.as_view(), name='qualification-create'),
-    url(r'^qualification/(?P<pk>[\d]+)/delete$', views.QualificationDelete.as_view(), name='qualification-delete')
+    url(r'^qualification/(?P<pk>[\d]+)/delete$', views.QualificationDelete.as_view(), name='qualification-delete'),
+
+    url(r'^staphing/(?P<pk>[\d]+)/delete$', views.HomeView.as_view(), name='staphing-delete')
 
 ]
