@@ -1,8 +1,5 @@
 #schedule_table {
 	width: 100%;
-	border: 1px;
-	border-color: black;
-	border-style: solid;
 	background-color: silver;
 }
 
@@ -11,16 +8,12 @@
 	width: 14.285%; /* 100 / 7 = 14.285 */
 }
 
-#schedule_table th, td{
-	border-left: 1px;
-	border-right: 1px;
-	border-color: black;
-	border-style: solid;
-}
-
 #scheduled_time{
 	background-color: grey;
 	text-align: center;
+}
+
+#schedule_table, #schedule_table th, #scheduled_time {
 	border: 1px;
 	border-color: black;
 	border-style: solid;
