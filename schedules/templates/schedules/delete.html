@@ -6,7 +6,7 @@
 		<div id='delete_form_btns'>
 			{% if schedule_id %}
 				<a class="link_btn" href="{% url 'schedules:schedule-detail' pk=schedule_id %}">Cancel</a>
-			{% else %}}
+			{% else %}
 				<a class="link_btn" href='{{ object.get_absolute_url }}'>Cancel</a>
 			{% endif %}
 			<input class="final_delete_btn" type="submit" value="Delete" />

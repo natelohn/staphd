@@ -111,7 +111,6 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 		context['all_parameters'] = Parameter.objects.all().order_by('rank')
 		return context
 
-
 @login_required
 def rank_settings(request):
 	try:
@@ -124,7 +123,6 @@ def rank_settings(request):
 		return render(request, template, context)
 	except:
 		return Http404
-
 
 @login_required
 def swap_rank(request, param_id, parameters):
@@ -413,6 +411,20 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
 	model = Stapher
 	success_url = reverse_lazy('schedules:stapher-list')
+
+@login_required
+def schedule_view(request):
+	template = 'schedules/schedule.html'
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+		context = {'schedule':schedule.title}
+	except:
+		context = {}
+	task_id = cache.get('current_task_id')
+	if task_id:
+		template = 'schedules/progress.html'
+		context['task_id'] = task_id
+	return render(request, template, context) 
 
 # Shift based views
 class ShiftList(LoginRequiredMixin, ListView):
