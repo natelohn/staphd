@@ -428,6 +428,7 @@ def schedule_view(request, *args, **kwargs):
 	context['stapher'] = stapher
 	context['name'] = stapher.full_name()
 	context['schedule'] = schedule
+	context['days'] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 	return render(request, template, context) 
 
 # Shift based views
