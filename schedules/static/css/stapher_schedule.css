@@ -3,22 +3,17 @@
 	border: 1px;
 	border-color: black;
 	border-style: solid;
+	background-color: silver;
 }
 
 #schedule_table th{
 	background-color: grey;
 }
 
-#schedule_table td{
+#scheduled_time{
+	background-color: grey;
+	text-align: center
 	border: 1px;
 	border-color: black;
 	border-style: solid;
-}
-
-#scheduled_time{
-	background-color: pink;
-}
-
-#non_scheduled_time{
-	background-color: grey;
 }
