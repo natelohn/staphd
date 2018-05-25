@@ -16,7 +16,7 @@
 				{% if forloop.first %}
 				<td>{{cell}}</td>
 				{% elif cell%}
-				<td id="scheduled_time">{{cell}}</td>
+				<td id="scheduled_time" rowspan="cell.span">{{cell.title}}</td>
 				{% else %}
 				<td id="non_scheduled_time"></td>
 				{% endif %}
