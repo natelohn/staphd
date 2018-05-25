@@ -330,7 +330,7 @@ class Staphing(models.Model):
 		return f'{self.stapher.first_name}: {self.shift}'
 
 	def get_absolute_url(self):
-		return reverse('schedules:stapher-schedule' kwargs={'pk':self.stapher.id})
+		return reverse('schedules:stapher-schedule', kwargs={'pk':self.stapher.id})
 
 class Parameter(models.Model):
 	title 			= models.CharField(max_length = 100, default = 'PARAMETER TITLE')
