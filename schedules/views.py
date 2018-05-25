@@ -434,7 +434,7 @@ def schedule_view(request, *args, **kwargs):
 	while time <= max_time:
 		row_for_time = [time]
 		for i, day in enumerate(days):
-			shift = stapher.get_shift_during_time(i)
+			shift = stapher.get_shift_during_time(i, time, staphings)
 			if shift:
 				row_for_time.append(True)
 			else:
