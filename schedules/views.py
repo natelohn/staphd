@@ -436,10 +436,10 @@ def schedule_view(request, *args, **kwargs):
 	while time < max_time:
 		time_for_day = []
 		for day in days:
-			time_for_day.append[time]
+			time_for_day.append(time)
 		time += 0.25
 		all_times.append(time_for_day)
-	context['all_times'] = times
+	context['all_times'] = all_times
 	return render(request, template, context) 
 
 # Shift based views

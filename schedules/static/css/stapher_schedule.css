@@ -3,9 +3,14 @@
 	border: 1px;
 	border-color: black;
 	border-style: solid;
-	
 }
 
 #schedule_table th{
 	background-color: grey;
+}
+
+#schedule_table td{
+	border: 1px;
+	border-color: black;
+	border-style: solid;
 }
