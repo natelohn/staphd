@@ -436,7 +436,9 @@ def schedule_view(request, *args, **kwargs):
 		for i, day in enumerate(days):
 			hours = get_hours_from_timedelta(time)
 			minutes = (time.seconds//60)%60
-			t = datetime.time(hours, minutes, 0, 0)
+			print(hours)
+			print(minutes)
+			t = datetime.time(int(hours), int(minutes), 0, 0)
 			shift = stapher.get_shift_during_time(i, t, staphings)
 			if shift:
 				row_for_time.append(True)
