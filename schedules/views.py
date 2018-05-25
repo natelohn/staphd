@@ -838,7 +838,6 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 			staphings = []
 		all_rows_for_time = get_week_schedule_view_info(stapher, staphings)
 		template = 'schedules/stapher_schedule.html'
-		context = {}
 		context['stapher'] = stapher
 		context['name'] = stapher.full_name()
 		context['schedule'] = schedule
