@@ -820,7 +820,7 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 
 # Staphing Based Views
 class StaphingDelete(LoginRequiredMixin, DeleteView):
-	template_name = 'schedules/delete.html'
+	template_name = 'schedules/staphing_delete.html'
 	model = Staphing
 
 	def get_queryset(self):
@@ -828,6 +828,22 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(StaphingDelete, self).get_context_data(*args, **kwargs)
+		staphing = self.get_object()
+		stapher = staphing.stapher
+		try:
+			schedule = Schedule.objects.get(active__exact = True)
+			staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+		except:
+			schedule = None
+			staphings = []
+		all_rows_for_time = get_week_schedule_view_info(stapher, staphings)
+		template = 'schedules/stapher_schedule.html'
+		context = {}
+		context['stapher'] = stapher
+		context['name'] = stapher.full_name()
+		context['schedule'] = schedule
+		context['can_delete'] = True
+		context['all_rows_for_time'] = all_rows_for_time
 		return context
 
 	def get_success_url(self):
