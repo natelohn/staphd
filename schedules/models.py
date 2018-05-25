@@ -220,7 +220,7 @@ class Shift(models.Model):
 		return self.start <= time and self.end > time
 
 	def is_during_day_and_time(self, day, time):
-		return self.day == day and self.is_during_time(time):
+		return self.day == day and self.is_during_time(time)
 
 	def is_in_window(self, day, start, end):
 		# TODO: check to see if start should be <= end?
