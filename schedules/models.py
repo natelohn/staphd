@@ -198,7 +198,7 @@ class Shift(models.Model):
 		days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 		start_str = self.start.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
 		end_str = self.end.strftime("%I:%M%p").replace(':00','').lstrip('0').lower()
-		return f'{self.title} on {days[self.day]}, {start_str}-{end_str}'
+		return f'{self.title} on {self.get_day_string()}, {start_str}-{end_str}'
 
 	def save(self, *args, **kwargs):
 		# Start of shift must be before the end of shift and day must be between 0 and 6 (Sun-Sat)

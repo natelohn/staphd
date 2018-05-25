@@ -442,7 +442,7 @@ def schedule_view(request, *args, **kwargs):
 		for i, day in enumerate(days):
 			shift = stapher.get_shift_during_time(i, t, staphings)
 			if shift:
-				row_for_time.append(shift)
+				row_for_time.append(f'{shift.title} {get_readable_time(shift.start)}-{get_readable_time(shift.end)}')
 			else:
 				row_for_time.append(False)
 		all_rows_for_time.append(row_for_time)
