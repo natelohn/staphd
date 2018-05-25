@@ -13,7 +13,7 @@
 		<tr>
 			{% for cell in row %}
 				{% if cell%}
-				<td id="scheduled_time" rowspan="{{cell.span}}"><a href="{% url 'schedules:home' %}"><i class="fa fa-caret-up"></i></a>{{cell.title}}</td>
+				<td id="scheduled_time" rowspan="{{cell.span}}"><a href="{% url 'schedules:home' %}"><i class="fas fa-times-circle"></i></a>{{cell.title}}</td>
 				{% else %}
 				<td id="non_scheduled_time"></td>
 				{% endif %}
