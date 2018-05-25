@@ -3,7 +3,7 @@
 <div id="page">
 {% if schedule %}
 	<h1>{{name}}'s Shifts on "{{schedule.title}}"</h1>
-	<table>
+	<table id="schedule_table">
 		<tr>
 			{% for day in days %}
 			<th>{{day}}</th>
