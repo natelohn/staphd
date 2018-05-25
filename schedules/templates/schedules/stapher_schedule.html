@@ -12,9 +12,7 @@
 		{% for row in all_rows_for_time %}
 		<tr>
 			{% for cell in row %}
-				{% if forloop.first %}
-				<td>{{cell}}</td>
-				{% elif cell%}
+				{% if cell%}
 				<td id="scheduled_time" rowspan="{{cell.span}}">{{cell.title}}</td>
 				{% else %}
 				<td id="non_scheduled_time"></td>
