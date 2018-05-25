@@ -414,16 +414,19 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 
 @login_required
 def schedule_view(request, *args, **kwargs):
-	template = 'schedules/schedule.html'
+	template = 'schedules/stapher_schedule.html'
+	stapher_id = kwargs['pk']
+	try:
+		stapher = Stapher.objects.get(id__exact = stapher_id)
+	except:
+		return Http404
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
-		context = {'schedule':schedule.title}
 	except:
-		context = {}
-	task_id = cache.get('current_task_id')
-	if task_id:
-		template = 'schedules/progress.html'
-		context['task_id'] = task_id
+		schedule = None
+	context['stapher'] = stapher
+	context['name'] = stapher.full_name()
+	context['schedule'] = schedule
 	return render(request, template, context) 
 
 # Shift based views

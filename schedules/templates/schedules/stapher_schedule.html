@@ -1,0 +1,10 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+{% if schedule %}
+<h1>{{name}}'s Shifts on {{schedule.title}}:</h1>
+{% else %}
+<h1>No schedule selected...</h1>
+<h2>To see {{name}}'s shifts select a schedule.</h2>
+<a class="button" href="{% url 'schedules:settings-select' %}">Select Schedule</a>
+{% endif %}
+{% endblock %}
