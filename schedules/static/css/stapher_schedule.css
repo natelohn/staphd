@@ -27,6 +27,6 @@
 	visibility: hidden;
 }
 
-.scheduled_time:hover .delete_icon {
+#scheduled_time:hover #delete_icon {
 	visibility: visible;
 }
