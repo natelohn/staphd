@@ -327,7 +327,7 @@ class Staphing(models.Model):
 	schedule 		= models.ForeignKey(Schedule, on_delete = models.CASCADE)
 
 	def __str__(self):
-		return f'{self.stapher.first_name}: {self.shift}'
+		return f'{self.stapher.first_name} working {self.shift}'
 
 	def get_absolute_url(self):
 		return reverse('schedules:stapher-schedule', kwargs={'pk':self.stapher.id})
