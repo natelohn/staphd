@@ -1,6 +1,11 @@
 #schedule_table {
 	width: 100%;
+	border: 1px;
 	border-color: black;
 	border-style: solid;
-	background-color: silver;
+	
+}
+
+#schedule_table th{
+	background-color: grey;
 }
