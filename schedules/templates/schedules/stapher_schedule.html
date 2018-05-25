@@ -5,8 +5,8 @@
 	<h1>{{name}}'s Shifts on "{{schedule.title}}"</h1>
 	<table id="schedule_table">
 		<tr>
-			{% for day in days %}
-			<th>{{day}}</th>
+			{% for h in header %}
+			<th>{{h}}</th>
 			{% endfor %}
 		</tr>
 		{% for time_for_day in all_times %}
