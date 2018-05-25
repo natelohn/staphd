@@ -440,14 +440,12 @@ def schedule_view(request, *args, **kwargs):
 		else:
 			row_for_time = ['']
 		cell = {}
-		seen_shifts = set()
 		for i, day in enumerate(days):
 			shift = stapher.get_shift_during_time(i, t, staphings)
-			if shift and shift.id not in seen_shifts:
+			if shift:
 				cell['title'] = f'{shift.title}, {get_readable_time(shift.start)}-{get_readable_time(shift.end)}'
 				cell['span'] = get_hours_from_timedelta(shift.length()) * 4
 				row_for_time.append(cell)
-				seen_shifts.add(shift.id)
 			else:
 				row_for_time.append(False)
 		all_rows_for_time.append(row_for_time)
