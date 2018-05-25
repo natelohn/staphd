@@ -9,8 +9,10 @@
 }
 
 #scheduled_time{
+	position: relative;
 	background-color: grey;
 	text-align: center;
+	
 }
 
 #schedule_table, #schedule_table th, #scheduled_time {
@@ -20,10 +22,10 @@
 }
 
 #delete_icon {
-	color: red;
-	position: relative;
+	position: absolute;
 	top:0;
 	left:0;
+	color: red;
 }
 
 #delete_icon {
