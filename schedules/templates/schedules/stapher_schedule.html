@@ -7,16 +7,16 @@
 		<tr>
 			<th>Time</th>
 			{% for day in days %}
-			<th>{{days}}</th>
+			<th>{{day}}</th>
 			{% endfor %}
 		</tr>
 		{% for row in all_rows_for_time %}
 		<tr>
 			{% for cel in row %}
 				{% if cell%}
-				<td id="scheduled_time"></td>
+				<td id="scheduled_time">busy</td>
 				{% else %}
-				<td id="non_scheduled_time"></td>
+				<td id="non_scheduled_time">free</td>
 				{% endif %}
 			{% endfor %}
 		</tr>
