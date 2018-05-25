@@ -3,26 +3,7 @@
 <div id="page">
 	{% if schedule %}
 	<h1>{{name}}'s Shifts on "{{schedule.title}}"</h1>
-	<table id="schedule_table">
-		<tr>
-			{% for day in days %}
-			<th>{{day}}</th>
-			{% endfor %}
-		</tr>
-		{% for row in all_rows_for_time %}
-		<tr>
-			{% for cell in row %}
-			{% if cell%}
-			<td id="scheduled_time" rowspan="{{cell.span}}"><a href="{% url 'schedules:home' %}">
-				<i class="fa fa-times-rectangle" id="delete_icon"></i></a>{{cell.title}}
-			</td>
-			{% else %}
-			<td id="non_scheduled_time"></td>
-			{% endif %}
-			{% endfor %}
-		</tr>
-		{% endfor %}
-	</table>
+	{% include "sections/week_view.html" %}
 	{% else %}
 	<h1>No schedule selected...</h1>
 	<h2>To see {{name}}'s shifts select a schedule.</h2>

@@ -1,0 +1,25 @@
+<table id="schedule_table">
+
+	{% for row in all_rows_for_time %}
+	<tr>
+		{% if forloop.first %}
+			{% for day in row %}
+				<th>{{day}}</th>
+			{% endfor %}
+		{% else %}
+			{% for cell in row %}
+				{% if cell%}
+					<td id="scheduled_time" rowspan="{{cell.span}}"><a href="{% url 'schedules:home' %}">
+						{% if can_delete %}
+						<i class="fa fa-times-rectangle" id="delete_icon"></i></a>
+						{% endif %}
+						{{cell.title}}
+					</td>
+				{% else %}
+					<td id="non_scheduled_time"></td>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	</tr>
+	{% endfor %}
+</table>
