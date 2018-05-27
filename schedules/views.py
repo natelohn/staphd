@@ -435,7 +435,7 @@ def schedule_view(request, *args, **kwargs):
 	if schedule:
 		context['schedule_msg'] = f'{stapher.full_name()}\'s Shifts on "{schedule.title}"'
 	else:
-		context['schedule_msg'] = "No schedule selected..."
+		context['schedule_msg'] = f'Unable to view {stapher.full_name()} schedule since no schedule selected...'
 	context['can_delete'] = True
 	context['all_rows_for_time'] = all_rows_for_time
 	return render(request, template, context) 
