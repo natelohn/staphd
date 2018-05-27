@@ -1,13 +1,15 @@
 <div id="shifts_to_add">
 	{% for day in shifts_by_day %}
 	{% for shift in day %}
-	{% if forloop.first %}
-	<p>shift</p>
-	{% else %}
-	<ul id="shift_for_day">
-		<li>{{shift}}</li>		
-	</ul>
-	{% endif %}
+	<div id="shifts_for_day">
+		{% if forloop.first %}
+		<p>shift</p>
+		{% else %}
+		<ul>
+			<li>{{shift}}</li>		
+		</ul>
+		{% endif %}
+	</div>
 	{% endfor %}
 	{% endfor %}
 </div>
