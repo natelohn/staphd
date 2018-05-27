@@ -2,9 +2,6 @@
 	{% for day in shifts_by_day %}
 	{% for shift in day %}
 	<div id="shifts_for_day">
-		{% if forloop.first %}
-		<p>{{shift}}</p>
-		{% else %}
 		<ul>
 			<li>{{shift}}</li>		
 		</ul>
