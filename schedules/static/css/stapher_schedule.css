@@ -36,3 +36,11 @@
 #scheduled_time:hover #delete_icon {
 	visibility: visible;
 }
+
+#shift_to_add {
+	width: 100%;
+}
+
+#shift_for_day {
+	display: inline-block;
+}

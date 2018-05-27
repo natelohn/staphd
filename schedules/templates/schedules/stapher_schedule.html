@@ -11,8 +11,8 @@
 		{% include "sections/week_view.html" %}
 		<br>
 		{% if add_shifts %}
-			{% include "sections/add_shifts.html" %}
 			<a class="button" href="{% url 'schedules:stapher-schedule' pk=stapher.id %}">Done</a>
+			{% include "sections/add_shifts.html" %}
 		{% else %}
 			<a class="button" href="{% url 'schedules:stapher-schedule-shift' pk=stapher.id %}">Add Shifts</a>
 		{% endif %}

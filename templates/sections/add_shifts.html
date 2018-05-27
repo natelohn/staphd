@@ -1,10 +1,12 @@
-{% for day in shifts_by_day %}
-<div>
-	<p>{{day}}day</p>
-	{% for shift in day %}
-	<ul>
-		<li>{{forloop.counter}}</li>
-	</ul>
+<div id="shifts_to_add">
+	{% for day in shifts_by_day %}
+	<div id="shift_for_day">
+		<p>{{day}}day</p>
+		{% for shift in day %}
+		<ul>
+			<li>{{forloop.counter}}</li>
+		</ul>
+		{% endfor %}
+	</div>
 	{% endfor %}
 </div>
-{% endfor %}
