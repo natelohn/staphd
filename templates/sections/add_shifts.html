@@ -1,9 +1,10 @@
 <div id="shifts_to_add">
 	{% for day in shifts_by_day %}
-		{% for shift in day %}
-			<ul id="shift_for_day">
-				<li>{{shift}}</li>
-			</ul>
-		{% endfor %}
+	<ul id="shift_for_day">
+	{% for shift in day %}
+		
+			<li>{{shift}}</li>
+	{% endfor %}
+	</ul>
 	{% endfor %}
 </div>
