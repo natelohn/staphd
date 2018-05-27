@@ -414,7 +414,7 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 	success_url = reverse_lazy('schedules:stapher-list')
 
 @login_required
-def schedule_view(request, *args, **kwargs):
+def stapher_schedule_view(request, *args, **kwargs, add_shifts):
 	stapher_id = kwargs['pk']
 	try:
 		stapher = Stapher.objects.get(id__exact = stapher_id)
@@ -438,7 +438,12 @@ def schedule_view(request, *args, **kwargs):
 		context['schedule_msg'] = f'Unable to view {stapher.full_name()} schedule since no schedule selected...'
 	context['can_delete'] = True
 	context['all_rows_for_time'] = all_rows_for_time
-	return render(request, template, context) 
+	return render(request, template, context)
+
+@login_required
+def stapher_schedule_add(request, *args, **kwargs):
+	return stapher_schedule_view(request, *args, **kwargs, True):
+
 
 # Shift based views
 class ShiftList(LoginRequiredMixin, ListView):
