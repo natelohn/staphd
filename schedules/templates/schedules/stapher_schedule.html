@@ -7,9 +7,13 @@
 	<br>
 	<br>
 	{% if schedule %}
-	{% include "sections/week_view.html" %}
-	<br>
-	<a class="button" href="{% url 'schedules:stapher-schedule-shift' pk=stapher.id %}">Add Shifts</a>
+		{% include "sections/week_view.html" %}
+		{% if add_shifts %}
+			{% include "sections/add_shifts.html" %}
+		{% else %}
+			<br>
+			<a class="button" href="{% url 'schedules:stapher-schedule-shift' pk=stapher.id %}">Add Shifts</a>
+		{% endif %}
 	{% endif %}
 </div>
 {% endblock %}

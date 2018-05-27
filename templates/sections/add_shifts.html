@@ -1,0 +1,10 @@
+{% for day in shifts_by_day %}
+<div>
+	<p>____Day</p>
+	{% for shift in day %}
+	<ul>
+		<li>{{forloop.counter}}</li>
+	</ul>
+	{% endfor %}
+</div>
+{% endfor %}
