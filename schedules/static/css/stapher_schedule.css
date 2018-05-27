@@ -39,8 +39,10 @@
 
 #shift_to_add {
 	width: 100%;
+	background-color: blue;
 }
 
 #shift_for_day {
 	display: inline-block;
+	background-color: pink;
 }
