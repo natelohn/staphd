@@ -440,7 +440,7 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 	context['all_rows_for_time'] = all_rows_for_time
 	context['add_shifts'] = add_shifts
 	if add_shifts:
-		context['shifts_by_day'] = all_rows_for_time
+		context['shifts_by_day'] = ['Sun', 'Mon', 'Tues', 'Wednes', 'Thurs', 'Fri', 'Satur']
 	return render(request, template, context)
 
 @login_required
