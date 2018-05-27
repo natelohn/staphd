@@ -45,4 +45,5 @@
 #shift_for_day {
 	display: inline-block;
 	background-color: pink;
+	width: 14.285%; /* 100 / 7 = 14.285 */
 }
