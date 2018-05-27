@@ -39,11 +39,11 @@
 
 #shifts_to_add {
 	width: 100%;
-	display: inline-block;
 	background-color: blue;
 }
 
 #shifts_for_day {
+	display: inline-block;
 	background-color: pink;
 	width: 14%;
 }
