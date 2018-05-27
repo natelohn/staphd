@@ -6,6 +6,8 @@
 	<a class="button" href="{% url 'schedules:select' %}">Select New Schedule</a>
 	<br>
 	<br>
+	{% if schedule %}
 	{% include "sections/week_view.html" %}
+	{% endif %}
 </div>
 {% endblock %}
