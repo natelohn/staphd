@@ -431,7 +431,10 @@ def schedule_view(request, *args, **kwargs):
 	context = {}
 	context['stapher'] = stapher
 	context['name'] = stapher.full_name()
-	context['schedule'] = schedule
+	if schedule:
+		context['schedule_msg'] = f'{stapher.full_name()}\'s Shifts on "{schedule.title}"'
+	else:
+		context['schedule_msg'] = schedule
 	context['can_delete'] = True
 	context['all_rows_for_time'] = all_rows_for_time
 	return render(request, template, context) 

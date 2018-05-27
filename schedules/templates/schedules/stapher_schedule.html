@@ -1,17 +1,11 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	{% if schedule %}
-	<h1>{{name}}'s Shifts on "{{schedule.title}}"</h1>
-	<br>
-	<a class="button" href="{% url 'schedules:select' %}">Change Schedules</a>
+	<h1>{{schedule_msg}}</h1>
+	<a class="button" href='{{ stapher.get_absolute_url }}'>View {{name}}</a>
+	<a class="button" href="{% url 'schedules:select' %}">Select New Schedule</a>
 	<br>
 	<br>
 	{% include "sections/week_view.html" %}
-	{% else %}
-	<h1>No schedule selected...</h1>
-	<h2>To see {{name}}'s shifts select a schedule.</h2>
-	<a class="button" href="{% url 'schedules:select' %}">Select Schedule</a>
-	{% endif %}
 </div>
 {% endblock %}
