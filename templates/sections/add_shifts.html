@@ -1,6 +1,6 @@
 <div id="shifts_to_add">
 	{% for day in shifts_by_day %}
-	<td>
+	<tr>
 		{% for shift in day %}
 		{% if forloop.first %}
 		<th id="shifts_for_day">{{shift}}</th>
@@ -12,6 +12,6 @@
 		</td>
 		{% endif %}
 		{% endfor %}
-	</td>
+	</tr>
 	{% endfor %}
 </div>
