@@ -414,7 +414,7 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 	success_url = reverse_lazy('schedules:stapher-list')
 
 @login_required
-def stapher_schedule_view(request, *args, **kwargs, add_shifts):
+def stapher_schedule(request, *args, **kwargs, add_shifts):
 	stapher_id = kwargs['pk']
 	try:
 		stapher = Stapher.objects.get(id__exact = stapher_id)
@@ -441,8 +441,12 @@ def stapher_schedule_view(request, *args, **kwargs, add_shifts):
 	return render(request, template, context)
 
 @login_required
+def stapher_schedule_view(request, *args, **kwargs):
+	return stapher_schedule(request, *args, **kwargs, False)
+
+@login_required
 def stapher_schedule_add(request, *args, **kwargs):
-	return stapher_schedule_view(request, *args, **kwargs, True):
+	return stapher_schedule(request, *args, **kwargs, True)
 
 
 # Shift based views
