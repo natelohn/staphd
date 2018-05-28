@@ -5,9 +5,7 @@
 		{% if forloop.first %}
 		<th>{{shift}}</th>
 		{% else %}
-		<td>
-			<a class="button" href="{% url 'schedules:home' %}">{{shift}}</a>
-		</td>
+
 		{% endif %}
 		{% endfor %}
 	</tr>
