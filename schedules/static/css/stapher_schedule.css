@@ -45,6 +45,7 @@
 #shifts_for_day {
 	display: inline-block;
 	background-color: pink;
+	top: 0;
 	width: 14.285%;
 }
 
