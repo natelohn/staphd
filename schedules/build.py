@@ -97,6 +97,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 				if not settings.auto_schedule:
 					for staphing in staphings:
 						staphing.save()
+						print(f'No autoscheduling. settings.auto_schedule = {settings.auto_schedule}')
 					return recommendations
 				else:
 					ties_exist = do_ties_exist(recommendations, shift.left_to_cover(staphings))
@@ -104,6 +105,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 						if settings.user_breaks_ties():
 							for staphing in staphings:
 								staphing.save()
+							print(f'Tie and user breaks ties. settings.user_breaks_ties() = {settings.user_breaks_ties()}')
 							return recommendations
 						else:
 							recommendations = resolve_ties(settings, recommendations)
@@ -121,9 +123,11 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 							current_task.update_state(meta = meta)
 							
 					recommendations = recommendations[recommendations_used:]
-					for staphing in staphings:
-						staphing.save()
-					return recommendations
+					if not shift.is_covered(staphings):
+						for staphing in staphings:
+							staphing.save()
+						print(f'Not enough recs over the threshold. settings.auto_threshold = {settings.auto_threshold}')
+						return recommendations
 	# Update the frontend
 	percent = get_percent(actions_taken, total_actions)
 	meta = {'message':f'Saving Schedule', 'process_percent':percent}
