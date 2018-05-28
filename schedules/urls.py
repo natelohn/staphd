@@ -30,7 +30,7 @@ urlpatterns = [
     url(r'^schedules/update$', views.update_files, name='update'),
     url(r'^schedules/building$', views.build_schedules, name='building'),
     url(r'^schedules/track$', views.track_state, name='track'),
-    
+    url(r'^schedules/reccomendation$', views.HomeView.as_view(), name='reccomendation'),
     url(r'^schedules/(?P<pk>[\d]+)/$', views.ScheduleDetail.as_view(), name='schedule-detail'),
     url(r'^schedules/(?P<pk>[\d]+)/delete$', views.ScheduleDelete.as_view(), name='schedule-delete'),
     url(r'^schedules/(?P<pk>[\d]+)/edit$', views.ScheduleUpdate.as_view(), name='schedule-update'),
