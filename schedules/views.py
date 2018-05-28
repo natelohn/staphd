@@ -426,6 +426,7 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 		stapher_staphings = all_staphings.filter(stapher_id__exact = stapher.id)
 	except:
 		schedule = None
+		all_staphings = []
 		stapher_staphings = []
 	if schedule:
 		schedule_msg = f'{stapher.full_name()}\'s Shifts on "{schedule.title}"'
