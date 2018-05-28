@@ -20,7 +20,7 @@
 	
 }
 
-#schedule_table, #schedule_table th, #scheduled_time, #add_shifts_table th, #add_shifts_table td{
+#schedule_table, #schedule_table th, #scheduled_time, #add_shifts_table th, #add_shift_row_td{
 	border: 1px;
 	border-color: black;
 	border-style: solid;
@@ -42,7 +42,7 @@
 	visibility: visible;
 }
 
-#add_shift_row td{
+#add_shift_row_td{
 	background-color: silver;
 	pointer-events: none;
 }
@@ -67,4 +67,5 @@
 
 #empty_cell {
 	background-color: white;
+	border: 0;
 }
