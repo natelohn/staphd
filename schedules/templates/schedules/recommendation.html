@@ -1,6 +1,8 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<p>{{recommendation}}</p>
+	{%for rec in recommendation%}
+	<p>{{rec}}</p>
+	{% endfor %}
 </div>
 {% endblock %}
