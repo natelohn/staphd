@@ -26,7 +26,7 @@ from .forms import FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, Se
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task
-from .view_helpers import get_week_schedule_view_info
+from .view_helpers import get_shifts_by_day, get_week_schedule_view_info
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -422,11 +422,12 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 		return Http404
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
-		staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+		all_staphings = Staphing.objects.all()
+		stapher_staphings = all_staphings.filter(schedule_id__exact = schedule.id)
 	except:
 		schedule = None
-		staphings = []
-	all_rows_for_time = get_week_schedule_view_info(stapher, staphings)
+		stapher_staphings = []
+	all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings)
 	template = 'schedules/stapher_schedule.html'
 	context = {}
 	context['stapher'] = stapher
@@ -440,7 +441,8 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 	context['all_rows_for_time'] = all_rows_for_time
 	context['add_shifts'] = add_shifts
 	if add_shifts:
-		context['shifts_by_day'] = all_rows_for_time
+		all_shifts = Shifts.objects.all()
+		context['shifts_by_day'] = get_shifts_by_day(stapher, all_shifts, all_staphings)
 	return render(request, template, context)
 
 @login_required

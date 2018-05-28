@@ -30,3 +30,15 @@ def get_week_schedule_view_info(stapher, staphings):
 		all_rows_for_time.append(row_for_time)
 		time += increment
 	return all_rows_for_time
+
+
+def get_shifts_by_day(stapher, shifts, staphings):
+	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
+	shifts_by_day = {}
+	for day in days:
+		shifts_by_day[day] = []
+	for shift in shifts:
+		if not shift.is_covered(staphings):
+			if stapher.can_cover(shift, staphings):
+				shifts_by_day[days[shift.day]].append(shift)
+	return shifts_by_day
