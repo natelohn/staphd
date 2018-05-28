@@ -10,7 +10,7 @@
 		{% if cell %}
 		<td><div id="add_shift_btn"><a id="add_shift_link" href="">{{cell.shift.title}}<br>{{cell.time_string}}</a></div></td>
 		{% else %}
-		<td></td>
+		<td id="empty_cell"></td>
 		{% endif %}
 		{% endfor %}
 		{% endif %}

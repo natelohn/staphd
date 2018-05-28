@@ -1,6 +1,11 @@
-#schedule_table, #add_shifts_table{
+#schedule_table{
 	width: 100%;
 	background-color: #EEEEEE;
+}
+
+#add_shifts_table{
+	width: 100%;
+	background-color: white;
 }
 
 #schedule_table th, #add_shifts_table th{
@@ -58,4 +63,8 @@
 
 #add_shift_row td:hover {
     background-color: #32e535;
+}
+
+#empty_cell {
+	background-color: white;
 }
