@@ -11,7 +11,7 @@ def get_wins(item):
 
 # Returns a list of staphers that is reccomended based on the settings.
 def get_recommended_staphers(staphers, shift, staphings, settings, all_shifts):
-	parameters = settings.parameters.filter(use = True).order_by('rank')
+	parameters = settings.parameters.all().order_by('rank')
 	all_scores = []
 	best_scores = []
 
