@@ -47,3 +47,8 @@
 	background-color: pink;
 	width: 14.285%;
 }
+
+#shifts_for_day th, #shifts_for_day td{
+	display: block;
+	background-color: purple;
+}
