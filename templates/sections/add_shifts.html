@@ -6,9 +6,7 @@
 		<th>{{shift}}</th>
 		{% else %}
 		<td>
-			<ul>
-				<li>{{shift}}</li>		
-			</ul>
+			<a class="button" href="{% url 'schedules:home' %}">{{shift}}</a>
 		</td>
 		{% endif %}
 		{% endfor %}
