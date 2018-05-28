@@ -1,13 +1,13 @@
 <table id="schedule_table">
 	<tr>
-		{% for day in days %}
+		{% for day in shifts_by_day %}
 		<th>{{day}}</th>
 		{% endfor %}
 	</tr>
 	<tr>
-		{% for key, day in shifts_by_day.items %}
+		{% for title, day in shifts_by_day.items %}
 			{% for shift in day %}
-			<a href="{% url 'schedules:home' %}">{{shift}}</a>
+			<a href="{% url 'schedules:home' %}">{{shift.title}}, {{shfit.start}}-{{shift.end}}</a>
 			{% endfor %}
 		{% endfor %}
 	</tr>
