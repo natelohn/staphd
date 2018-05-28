@@ -26,7 +26,7 @@ from .forms import FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, Se
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task
-from .view_helpers import get_shifts_by_day, get_week_schedule_view_info
+from .view_helpers import get_shifts_to_add, get_week_schedule_view_info
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -434,7 +434,7 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 
 	if add_shifts:
 		all_shifts = Shift.objects.all().order_by('day', 'start')
-		new_shift_rows = get_shifts_by_day(stapher, all_shifts, all_staphings)
+		new_shift_rows = get_shifts_to_add(stapher, all_shifts, all_staphings, stapher_staphings)
 	else:
 		new_shift_rows = None
 
