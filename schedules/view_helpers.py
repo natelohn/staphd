@@ -37,8 +37,8 @@ def get_shifts_by_day(stapher, shifts, staphings):
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 	all_rows = [days]
 	for shift in shifts:
-		if stapher.can_cover(shift, staphings):
-			if not shift.is_covered(staphings):
+		if not shift.is_covered(staphings):
+			if stapher.can_cover(shift, staphings):
 				i = 0
 				while i < len(all_rows):
 					if all_rows[i][shift.day]:
