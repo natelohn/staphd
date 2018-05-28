@@ -3,6 +3,7 @@ from .parameters import get_parameter_scores, get_best_scores
 def get_win_loss_info(best_scores, stapher_scores):
 	wins_losses = []
 	for i, score in enumerate(stapher_scores):
+		print(f'{score}={best_scores[i]}? {score == best_scores[i]}')
 		wins_losses.append(score == best_scores[i])
 	return wins_losses
 
