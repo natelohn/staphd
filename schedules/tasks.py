@@ -45,15 +45,13 @@ def update_files_task(self, schedule_id):
 def build_schedules_task(self, schedule_id):
 	try:
 		schedule = Schedule.objects.get(id__exact = schedule_id)
+		settings = ScheduleBuildingSettings.objects.get()
 	except:
-		schedule = Schedule()
-		schedule.save()
+		return None
 	try:
 		staphings = list(Staphing.objects.filter(schedule_id = schedule.id))
 	except:
 		staphings = []
-	print(f'staphings = {staphings}')
-	settings = ScheduleBuildingSettings.objects.get()
 	sorted_shifts = cache.get('sorted_shifts')
 	if cache.get('resort') or not sorted_shifts:
 		# Set the message for the front end
@@ -66,7 +64,8 @@ def build_schedules_task(self, schedule_id):
 	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
 
 	# Do the task
-	build_schedules(sorted_shifts, settings, schedule, staphings, self)
+	recommendation = build_schedules(sorted_shifts, settings, schedule, staphings, self)
+	print(f'Recommendation = {recommendation}')
 
 	# Delete the values needed to track progress
 	cache.set('num_actions_made', None, 0)

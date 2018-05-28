@@ -65,7 +65,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 			free_and_qualified = get_free_staphers(qualified_staphers, shift, staphings)
 
 			# Fail case, not enough qualified staphers to cover the shift
-			if len(free_and_qualified) < shift.left_to_cover(staphings):
+			if len(free_and_qualified) < shift.left_to_cover(staphings) and settings.auto_schedule:
 				for stapher in free_and_qualified:
 					staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
 					staphings.append(staphing)
@@ -79,8 +79,8 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 				meta = {'message':f'Could not schedule: {shift}. {left} more needed.', 'process_percent':percent}
 				current_task.update_state(meta = meta)
 
-			# In this system, all shifts that have no other options of people to cover them will be automatically scheduled.
-			elif len(free_and_qualified) == shift.left_to_cover(staphings):
+			# In this system, all shifts that have no other options of people to cover them will be automatically scheduled when autoschedule is selected.
+			elif len(free_and_qualified) == shift.left_to_cover(staphings) and settings.auto_schedule:
 				for stapher in free_and_qualified:
 					staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
 					staphings.append(staphing)
@@ -95,12 +95,16 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 			else:
 				recommendations = get_recommended_staphers(free_and_qualified, shift, staphings, settings, all_shifts)
 				if not settings.auto_schedule:
-					break
+					for staphing in staphings:
+						staphing.save()
+					return recommendations
 				else:
 					ties_exist = do_ties_exist(recommendations, shift.left_to_cover(staphings))
 					if ties_exist:
 						if settings.user_breaks_ties():
-							break
+							for staphing in staphings:
+								staphing.save()
+							return recommendations
 						else:
 							recommendations = resolve_ties(settings, recommendations)
 					recommendations_used = 0
@@ -117,6 +121,9 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 							current_task.update_state(meta = meta)
 							
 					recommendations = recommendations[recommendations_used:]
+					for staphing in staphings:
+						staphing.save()
+					return recommendations
 	# Update the frontend
 	percent = get_percent(actions_taken, total_actions)
 	meta = {'message':f'Saving Schedule', 'process_percent':percent}
@@ -125,4 +132,3 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 	# Finally we save all the staphings that were made and return the Scheudle
 	for staphing in staphings:
 		staphing.save()
-	return schedule
