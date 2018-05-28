@@ -45,16 +45,9 @@
 	background-color: pink;
 }
 
-#add_shift_div {
+#add_shift_btn {
 	font-size: 0.9em;
 	text-align: center;
-	background-color: grey;
-}
-
-#add_shift_btn {
-	text-decoration: none;
-}
-
-#add_shift_btn:hover #add_shift_div {
-	background-color: #32e535;
+	height: 100%;
+	width: 100%;
 }
