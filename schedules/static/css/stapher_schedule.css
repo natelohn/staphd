@@ -66,6 +66,6 @@
 }
 
 #empty_cell {
-	display: none;
+	background-color: white;
 	pointer-events: none;
 }
