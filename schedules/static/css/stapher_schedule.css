@@ -53,8 +53,6 @@
 
 #add_shift_btn {
 	text-decoration: none;
-	background-color: #EEEEEE;
-	color: #333333;
 }
 
 #add_shift_btn:hover #add_shift_div {
