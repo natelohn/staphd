@@ -49,8 +49,8 @@ def get_shifts_to_add(stapher, shifts, all_staphings, stapher_staphings):
 		for day, string in enumerate(days):
 			if i < len(shifts_by_day[day]):
 				shift = shifts_by_day[day][i]
-				shift_string = f'{shift.title}, {get_readable_time(shift.start)}-{get_readable_time(shift.end)}'
-				cell = {'title':shift_string}
+				time_string = f'{get_readable_time(shift.start)}-{get_readable_time(shift.end)}'
+				cell = {'shift':shift, 'time_string':time_string}
 				new_row.append(cell)
 			else:
 				new_row.append('')

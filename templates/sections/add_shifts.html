@@ -7,7 +7,11 @@
 		{% endfor %}
 		{% else %}
 		{% for cell in row %}
-		<td><a class="create_btn" id="add_shift_btn" href="">{{cell.title}}</a></td>
+		{% if cell %}
+		<td><a class="create_btn" id="add_shift_btn" href="">{{cell.shift.title}}<br>{{cell.time_string}}</a></td>
+		{% else %}
+		<td></td>
+		{% endif %}
 		{% endfor %}
 		{% endif %}
 	</tr>
