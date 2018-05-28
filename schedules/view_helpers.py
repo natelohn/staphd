@@ -36,8 +36,8 @@ def get_shifts_to_add(stapher, shifts, all_staphings, stapher_staphings):
 	shifts_by_day = {0:[], 1:[], 2:[], 3:[], 4:[], 5:[], 6:[]}
 	most_shifts_in_day = 0
 	for shift in shifts:
-		if not shift.is_covered(all_staphings):
-			if stapher.can_cover(shift, stapher_staphings):
+		if stapher.can_cover(shift, stapher_staphings):
+			if not shift.is_covered(all_staphings):
 				shifts_by_day[shift.day].append(shift)
 				if len(shifts_by_day[shift.day]) > most_shifts_in_day:
 					most_shifts_in_day = len(shifts_by_day[shift.day])
