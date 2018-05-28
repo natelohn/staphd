@@ -247,6 +247,8 @@ def track_state(request, *args, **kwargs):
 			print(f'			task_running -> {task_running}')
 			if task_running:
 				data['running'] = task_running
+			if 'building_complete' in data:
+				data['building_complete'] = True
 		else:
 			data = 'No task_id in the request'
 	else:
@@ -257,7 +259,11 @@ def track_state(request, *args, **kwargs):
 @login_required
 def recommendations_view(request, *args, **kwargs):
 	template = 'schedules/recommendation.html'
-	return render(request, template, {}) 
+	rec = cache.get('recommendation')
+
+	context = {}
+	context['recommendation'] = rec
+	return render(request, template, context)
 
 
 # Settings based views

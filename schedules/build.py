@@ -132,3 +132,4 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 	# Finally we save all the staphings that were made and return the Scheudle
 	for staphing in staphings:
 		staphing.save()
+	return True

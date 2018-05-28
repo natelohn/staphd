@@ -65,7 +65,11 @@ def build_schedules_task(self, schedule_id):
 
 	# Do the task
 	recommendation = build_schedules(sorted_shifts, settings, schedule, staphings, self)
-	print(f'Recommendation = {recommendation}')
+	if recommendation == True: #Schedule is done! (no more recs to be made)
+		self.update_state(meta = {'message':'All possible shifts placements made.', 'process_percent':100, 'building_complete':True})
+	else:
+		print(f'Recommendation = {recommendation}')
+		cache.set('recommendation',recommendation, None)
 
 	# Delete the values needed to track progress
 	cache.set('num_actions_made', None, 0)
