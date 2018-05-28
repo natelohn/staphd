@@ -38,14 +38,14 @@
 }
 
 #add_shift_row {
-	background-color: pink;
+	background-color: silver;
+	pointer-events: none;
 }
 
 #add_shift_btn {
 	text-align: center;
 	height: 100%;
 	width: 100%;
-	background-color: silver;
 
 	pointer-events: none;
 }
@@ -56,6 +56,6 @@
 	pointer-events: auto;
 }
 
-#add_shift_btn:hover {
+#add_shift_row:hover {
     background-color: #32e535;
 }
