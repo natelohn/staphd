@@ -1,9 +1,7 @@
 <table>
-	{% for title, day in shifts_by_day.items %}
 	<tr>
-		{% if forloop.first %}		
+		{% for day in days %}	
 		<th>{{title}}</th>
-		{% else %}
+		{% endfor %}
 	</tr>
-	{% endfor %}
 </table>

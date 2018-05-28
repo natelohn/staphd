@@ -439,6 +439,7 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 		context['schedule_msg'] = f'Unable to view {stapher.full_name()} schedule since no schedule selected...'
 	context['can_delete'] = True
 	context['all_rows_for_time'] = all_rows_for_time
+	context['days'] = all_rows_for_time[0]
 	context['add_shifts'] = add_shifts
 	if add_shifts:
 		all_shifts = Shift.objects.all()
