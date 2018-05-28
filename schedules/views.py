@@ -460,7 +460,7 @@ def stapher_schedule_add(request, *args, **kwargs):
 	return stapher_schedule(request, args, kwargs, True)
 
 @login_required
-def stapher_schedule_added(request, *args, **kwargs):
+def stapher_shift_scheduled(request, *args, **kwargs):
 	stapher_id = kwargs['st']
 	shift_id = kwargs['sh']
 	try:
