@@ -41,18 +41,11 @@
 	background-color: pink;
 }
 
-#add_shift_row td{
-	width: 14%;
-}
-
 #add_shift_btn {
 	text-align: center;
 	height: 100%;
 	width: 100%;
 	background-color: silver;
-	border: 1px;
-	border-color: black;
-	border-style: solid;
 
 	pointer-events: none;
 }
