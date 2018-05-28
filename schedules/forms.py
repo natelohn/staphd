@@ -166,7 +166,7 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 	def clean_auto_threshold(self):
 		auto_threshold = self.cleaned_data.get("auto_threshold")
-		min_auto_threshold = 1
+		min_auto_threshold = 0
 		max_auto_threshold = ScheduleBuildingSettings.objects.get().parameters.all().count()
 		if auto_threshold < min_auto_threshold:
 			print('Huh?')
