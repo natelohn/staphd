@@ -8,7 +8,7 @@
 		{% else %}
 		{% for cell in row %}
 		{% if cell %}
-		<td><a class="create_btn" id="add_shift_btn" href="">{{cell.shift.title}}<br>{{cell.time_string}}</a></td>
+		<td><div><a class="create_btn" id="add_shift_btn" href="">{{cell.shift.title}}<br>{{cell.time_string}}</a></div></td>
 		{% else %}
 		<td></td>
 		{% endif %}
