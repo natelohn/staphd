@@ -4,8 +4,8 @@
 		{% endfor %}
 	</tr>
 	<tr>
-		{% for day in shifts_by_day %}
-			{% for shift in shifts_by_day[day] %}
+		{% for key, day in shifts_by_day.items %}
+			{% for shift in day %}
 			<a href="{% schedules:home %}">{{shift}}</a>
 			{% endfor %}
 		{% endfor %}
