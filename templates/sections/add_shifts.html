@@ -7,7 +7,7 @@
 		{% endfor %}
 		{% else %}
 		{% for cell in row %}
-		<td>{{cell}}</td>
+		<td><a href="">{{cell.title}}, {{cell.start}}-{{cell.end}}</a></td>
 		{% endfor %}
 		{% endif %}
 	</tr>
