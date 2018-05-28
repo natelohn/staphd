@@ -427,23 +427,28 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 	except:
 		schedule = None
 		stapher_staphings = []
+	if schedule:
+		schedule_msg = f'{stapher.full_name()}\'s Shifts on "{schedule.title}"'
+	else:
+		schedule_msg = f'Unable to view {stapher.full_name()} schedule since no schedule selected...'
+
+	if add_shifts:
+		all_shifts = Shift.objects.all().order_by('day', 'start')
+		new_shift_rows = get_shifts_by_day(stapher, all_shifts, all_staphings)
+	else:
+		new_shift_rows = None
+
 	all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings)
 	template = 'schedules/stapher_schedule.html'
 	context = {}
 	context['stapher'] = stapher
 	context['name'] = stapher.full_name()
 	context['schedule'] = schedule
-	if schedule:
-		context['schedule_msg'] = f'{stapher.full_name()}\'s Shifts on "{schedule.title}"'
-	else:
-		context['schedule_msg'] = f'Unable to view {stapher.full_name()} schedule since no schedule selected...'
+	context['schedule_msg'] = schedule_msg 
 	context['can_delete'] = True
 	context['all_rows_for_time'] = all_rows_for_time
-	context['days'] = all_rows_for_time[0]
 	context['add_shifts'] = add_shifts
-	if add_shifts:
-		all_shifts = Shift.objects.all()
-		context['shifts_by_day'] = get_shifts_by_day(stapher, all_shifts, all_staphings)
+	context['new_shift_rows'] = new_shift_rows
 	return render(request, template, context)
 
 @login_required

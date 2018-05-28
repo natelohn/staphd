@@ -1,7 +1,15 @@
 <table>
+	{% for row in new_shift_rows %}
 	<tr>
-		{% for day in days %}	
-		<th>{{day}}</th>
+		{% if forloop.first %}
+		{% for cell in row %}
+		<th>{{cell}}</th>
 		{% endfor %}
+		{% else %}
+		{% for cell in row %}
+		<td>{{cell}}</td>
+		{% endfor %}
+		{% endif %}
 	</tr>
+	{% endfor %}
 </table>
