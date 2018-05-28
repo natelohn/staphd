@@ -1,6 +1,6 @@
 <table id="schedule_table">
 	{% for row in new_shift_rows %}
-	<tr>
+	<tr id="add_shift_row">
 		{% if forloop.first %}
 		{% for cell in row %}
 		<th>{{cell}}</th>
