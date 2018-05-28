@@ -8,7 +8,7 @@
 		{% else %}
 		{% for cell in row %}	
 		<td>
-			{{cell.title}}
+			<a class="button" href="{% url 'schedules:home' %}">{{cell.title}}</a>
 		</td>
 		{% endfor %}
 		{% endif %}
