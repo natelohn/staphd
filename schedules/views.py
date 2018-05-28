@@ -441,7 +441,7 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 	context['all_rows_for_time'] = all_rows_for_time
 	context['add_shifts'] = add_shifts
 	if add_shifts:
-		all_shifts = Shifts.objects.all()
+		all_shifts = Shift.objects.all()
 		context['shifts_by_day'] = get_shifts_by_day(stapher, all_shifts, all_staphings)
 	return render(request, template, context)
 
