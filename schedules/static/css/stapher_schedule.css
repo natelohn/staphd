@@ -1,9 +1,9 @@
-#schedule_table {
+#schedule_table, #add_shifts_table{
 	width: 100%;
 	background-color: #EEEEEE;
 }
 
-#schedule_table th{
+#schedule_table th, #add_shifts_table th{
 	background-color: grey;
 	width: 14.285%; /* 100 / 7 = 14.285 */
 }
@@ -15,7 +15,7 @@
 	
 }
 
-#schedule_table, #schedule_table th, #scheduled_time {
+#schedule_table, #schedule_table th, #scheduled_time, #add_shifts_table, #add_shifts_table th{
 	border: 1px;
 	border-color: black;
 	border-style: solid;
@@ -50,7 +50,7 @@
 	text-align: center;
 	height: 100%;
 	width: 100%;
-	background-color: grey;
+	background-color: silver;
 }
 
 #add_shift_link {
