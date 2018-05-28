@@ -11,6 +11,8 @@
 		{% include "sections/week_view.html" %}
 		<br>
 		{% if add_shifts %}
+			<h2>Uncovered Shifts {{name}} is both Free and Qualified for: </h2>
+			<h4>Select shift to add them to {{name}}'s schedule...</h4>
 			<a class="button" href="{% url 'schedules:stapher-schedule' pk=stapher.id %}">Done</a>
 			<br>
 			<br>
