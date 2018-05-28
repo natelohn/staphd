@@ -7,7 +7,11 @@
 		{% endfor %}
 		{% else %}
 		{% for cell in row %}
+		{% if cell %}
 		<td>{{cell}}</td>
+		{% else %}
+		<td></td>
+		{% endif %}
 		{% endfor %}
 		{% endif %}
 	</tr>
