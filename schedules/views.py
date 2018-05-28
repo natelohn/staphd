@@ -470,6 +470,9 @@ def stapher_schedule_added(request, *args, **kwargs):
 		return Http404
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
+		if schedule:
+			new_staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+			new_staphing.save()
 	except:
 		schedule = None
 		stapher_staphings = []
