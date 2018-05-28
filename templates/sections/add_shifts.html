@@ -1,17 +1,16 @@
-<table id="shifts_to_add">
-	{% for day in shifts_by_day %}
-	{% for shift in day %}
-	{% if forloop.first %}
+<table id="schedule_table">
+	{% for row in all_rows_for_time %}
 	<tr>
-		<th>{{shift}}</th>
-	</tr>
-	{% else %}
-	<tr>
+		{% if forloop.first %}
+		{% for day in row %}
+		<th>{{day}}</th>
+		{% endfor %}
+		{% else %}
+		{% for cell in row %}	
 		<td>
-			<a class="button" href="{% url 'schedules:home' %}">Boat Dock, 10am-11am</a>
+			{{cell.title}}
 		</td>
+		{% endfor %}
 	</tr>
-	{% endif %}
-	{% endfor %}
 	{% endfor %}
 </table>
