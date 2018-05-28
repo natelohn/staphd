@@ -33,40 +33,40 @@ def get_week_schedule_view_info(stapher, staphings):
 
 
 def get_shifts_to_add(stapher, shifts, all_staphings, stapher_staphings):
-	empty_row = ['', '', '', '', '', '','']
-	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
-	all_rows = [days]
-	for shift in shifts:
-		if stapher.can_cover(shift, stapher_staphings):
-			if not shift.is_covered(all_staphings):
-				i = 0
-				while i < len(all_rows):
-					if all_rows[i][shift.day]:
-						i += 1
-				if i >= len(all_rows):
-					new_row = empty_row[:]
-					new_row[shift.day] = shift
-					all_rows.append(new_row)
-				else:
-					all_rows[i][shift.day] = shift
-	return all_rows
-	# shifts_by_day = {0:[], 1:[], 2:[], 3:[], 4:[], 5:[], 6:[]}
-	# most_shifts_in_day = 0
-	# for shift in shifts:
-	# 	if not shift.is_covered(staphings):
-	# 		if stapher.can_cover(shift, staphings):
-	# 			shifts_by_day[shift.day].append(shift)
-	# 			if len(shifts_by_day[shift.day]) > most_shifts_in_day:
-	# 				most_shifts_in_day = len(shifts_by_day[shift.day])
-
+	# empty_row = ['', '', '', '', '', '','']
 	# days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 	# all_rows = [days]
-	# for i in range(0, most_shifts_in_day):
-	# 	new_row = []
-	# 	for day, string in enumerate(days):
-	# 		if i < len(shifts_by_day[day]):
-	# 			new_row.append(shifts_by_day[day][i])
-	# 		else:
-	# 			new_row.append('')
-	# 	all_rows.append(new_row)
+	# for shift in shifts:
+	# 	if stapher.can_cover(shift, stapher_staphings):
+	# 		if not shift.is_covered(all_staphings):
+	# 			i = 0
+	# 			while i < len(all_rows):
+	# 				if all_rows[i][shift.day]:
+	# 					i += 1
+	# 			if i >= len(all_rows):
+	# 				new_row = empty_row[:]
+	# 				new_row[shift.day] = shift
+	# 				all_rows.append(new_row)
+	# 			else:
+	# 				all_rows[i][shift.day] = shift
 	# return all_rows
+	shifts_by_day = {0:[], 1:[], 2:[], 3:[], 4:[], 5:[], 6:[]}
+	most_shifts_in_day = 0
+	for shift in shifts:
+		if not shift.is_covered(staphings):
+			if stapher.can_cover(shift, staphings):
+				shifts_by_day[shift.day].append(shift)
+				if len(shifts_by_day[shift.day]) > most_shifts_in_day:
+					most_shifts_in_day = len(shifts_by_day[shift.day])
+
+	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
+	all_rows = [days]
+	for i in range(0, most_shifts_in_day):
+		new_row = []
+		for day, string in enumerate(days):
+			if i < len(shifts_by_day[day]):
+				new_row.append(shifts_by_day[day][i])
+			else:
+				new_row.append('')
+		all_rows.append(new_row)
+	return all_rows
