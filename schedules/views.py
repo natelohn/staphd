@@ -254,6 +254,11 @@ def track_state(request, *args, **kwargs):
 	json_data = json.dumps(data)
 	return HttpResponse(json_data, content_type='application/json')
 
+@login_required
+def recommendations_view(request, *args, **kwargs):
+	template = 'schedules/recommendation.html'
+	return render(request, template, {}) 
+
 
 # Settings based views
 class Settings(LoginRequiredMixin, TemplateView):
