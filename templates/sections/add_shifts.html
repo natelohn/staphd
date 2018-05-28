@@ -8,7 +8,7 @@
 		{% else %}
 		{% for cell in row %}
 		{% if cell %}
-		<td id="add_shift_row_td"><div id="add_shift_btn"><a id="add_shift_link" href="{% url 'schedule:stapher-shift-scheduled' st=stapher.id sh=cell.shift.id %}">{{cell.shift.title}}<br>{{cell.time_string}}</a></div></td>
+		<td id="add_shift_row_td"><div id="add_shift_btn"><a id="add_shift_link" href="{% url 'schedules:stapher-shift-scheduled' st=stapher.id sh=cell.shift.id %}">{{cell.shift.title}}<br>{{cell.time_string}}</a></div></td>
 		{% else %}
 		<td id="empty_cell"></td>
 		{% endif %}
