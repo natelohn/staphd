@@ -20,7 +20,7 @@
 	
 }
 
-#schedule_table, #schedule_table th, #scheduled_time, #add_shifts_table, #add_shifts_table th{
+#schedule_table, #schedule_table th, #scheduled_time, #add_shifts_table th, #add_shifts_table td{
 	border: 1px;
 	border-color: black;
 	border-style: solid;
