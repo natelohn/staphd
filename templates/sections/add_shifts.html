@@ -1,19 +1,17 @@
 <table id="shifts_to_add">
 	{% for day in shifts_by_day %}
-	<tr id="shifts_for_day">
-		{% for shift in day %}
-		{% if forloop.first %}
+	{% for shift in day %}
+	{% if forloop.first %}
+	<tr>
 		<th>{{shift}}</th>
-		{% else %}
-		<td>
-			<ul>
-				<li>
-					<a class="button" href="{% url 'schedules:home' %}">{{day}}</a>
-				</li>
-			</ul>
-		</td>
-		{% endif %}
-		{% endfor %}
 	</tr>
+	{% else %}
+	<tr>
+		<td>
+			<a class="button" href="{% url 'schedules:home' %}">Boat Dock, 10am-11am</a>
+		</td>
+	</tr>
+	{% endif %}
+	{% endfor %}
 	{% endfor %}
 </table>
