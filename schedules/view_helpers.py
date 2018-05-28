@@ -40,7 +40,7 @@ def get_shifts_by_day(stapher, shifts, staphings):
 		if stapher.can_cover(shift, staphings):
 			if not shift.is_covered(staphings):
 				i = 0
-				while i <= len(all_rows):
+				while i < len(all_rows):
 					if all_rows[i][shift.day]:
 						i += 1
 				if i > len(all_rows):
