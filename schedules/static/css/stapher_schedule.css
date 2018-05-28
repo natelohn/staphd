@@ -53,3 +53,7 @@
 	display: block;
 	background-color: purple;
 }
+
+#add_shift_btn {
+	font-size: 0.5em;
+}

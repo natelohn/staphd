@@ -8,7 +8,7 @@
 		{% else %}
 		{% for cell in row %}
 		{% if cell %}
-		<td><a class="button" href="">{{cell.title}}, {{cell.start}}-{{cell.end}}</a></td>
+		<td><a class="button" id="add_shift_btn" href="">{{cell.title}}, {{cell.start}}-{{cell.end}}</a></td>
 		{% else %}
 		<td></td>
 		{% endif %}
