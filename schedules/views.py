@@ -422,8 +422,8 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 		return Http404
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
-		all_staphings = Staphing.objects.all()
-		stapher_staphings = all_staphings.filter(schedule_id__exact = schedule.id)
+		all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+		stapher_staphings = all_staphings.filter(stapher_id__exact = stapher.id)
 	except:
 		schedule = None
 		stapher_staphings = []
@@ -457,6 +457,23 @@ def stapher_schedule_view(request, *args, **kwargs):
 
 @login_required
 def stapher_schedule_add(request, *args, **kwargs):
+	return stapher_schedule(request, args, kwargs, True)
+
+@login_required
+def stapher_schedule_added(request, *args, **kwargs):
+	stapher_id = kwargs['st']
+	shift_id = kwargs['sh']
+	try:
+		stapher = Stapher.objects.get(id__exact = stapher_id)
+		shift = Shift.objects.get(id__exact = shift_id)
+	except:
+		return Http404
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+	except:
+		schedule = None
+		stapher_staphings = []
+
 	return stapher_schedule(request, args, kwargs, True)
 
 
