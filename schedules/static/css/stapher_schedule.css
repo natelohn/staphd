@@ -42,8 +42,15 @@
 	border-bottom: 1px;
 	border-color: black;
 	border-style: solid;
+	background-color: pink;
 }
 
-#add_shift_btn {
+#add_shift_div {
 	font-size: 0.9em;
+	text-align: center;
+	background-color: grey;
+}
+
+#add_shift_div:hover {
+	background-color: #32e535;
 }
