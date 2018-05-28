@@ -48,7 +48,10 @@
 #add_shift_btn {
 	font-size: 0.9em;
 	text-align: center;
-	text-decoration: none;
 	height: 100%;
 	width: 100%;
+}
+
+#add_shift_link {
+	text-decoration: none;
 }
