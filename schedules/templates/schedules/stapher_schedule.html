@@ -10,6 +10,7 @@
 		<br>
 		{% include "sections/week_view.html" %}
 		{% if add_shifts %}
+			<br>
 			<a class="button" href="{% url 'schedules:stapher-schedule' pk=stapher.id %}">Done</a>
 			<br>
 			<br>

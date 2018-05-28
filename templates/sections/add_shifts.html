@@ -1,7 +1,9 @@
-<div>
+<table>
 	{% for title, day in shifts_by_day.items %}
-	{% for shift in day %}
-	<a href="{% url 'schedules:home' %}">{{shift.title}}, {{shfit.start}}-{{shift.end}}</a>
+	<tr>
+		{% if forloop.first %}		
+		<th>{{title}}</th>
+		{% else %}
+	</tr>
 	{% endfor %}
-	{% endfor %}
-</div>
+</table>
