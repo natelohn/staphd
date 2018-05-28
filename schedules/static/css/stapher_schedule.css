@@ -49,11 +49,16 @@
 	border: 1px;
 	border-color: black;
 	border-style: solid;
+
+	pointer-events: none;
 }
 
 #add_shift_link {
 	text-decoration: none;
 	color: black;
+	pointer-events: auto;
 }
 
-
+#add_shift_link:hover {
+    background-color: #234562;
+}
