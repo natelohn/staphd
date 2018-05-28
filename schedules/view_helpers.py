@@ -38,7 +38,7 @@ def get_shifts_to_add(stapher, shifts, all_staphings, stapher_staphings):
 	all_rows = [days]
 	for shift in shifts:
 		if stapher.can_cover(shift, stapher_staphings):
-			if not shift.is_covered(staphings):
+			if not shift.is_covered(all_staphings):
 				i = 0
 				while i < len(all_rows):
 					if all_rows[i][shift.day]:
