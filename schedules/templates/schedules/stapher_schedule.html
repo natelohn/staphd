@@ -16,7 +16,7 @@
 			<br>
 			{% include "sections/add_shifts.html" %}
 		{% else %}
-			<a class="button" href="{% url 'schedules:stapher-schedule-shift' pk=stapher.id %}">Add Shifts</a>
+			<a class="button" href="{% url 'schedules:stapher-schedule-shifts' pk=stapher.id %}">Add Shifts</a>
 		{% endif %}
 	{% endif %}
 </div>
