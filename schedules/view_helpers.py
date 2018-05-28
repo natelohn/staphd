@@ -50,6 +50,6 @@ def get_shifts_by_day(stapher, shifts, staphings):
 			if i < len(shifts_by_day[day]):
 				new_row.append(shifts_by_day[day][i])
 			else:
-				new_row.append(None)
+				new_row.append('')
 		all_rows.append(new_row)
 	return all_rows
