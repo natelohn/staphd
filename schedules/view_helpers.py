@@ -43,7 +43,7 @@ def get_shifts_by_day(stapher, shifts, staphings):
 				while i < len(all_rows):
 					if all_rows[i][shift.day]:
 						i += 1
-				if i > len(all_rows):
+				if i >= len(all_rows):
 					new_row = empty_row[:]
 					new_row[shift.day] = shift
 					all_rows.append(new_row)
