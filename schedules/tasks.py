@@ -70,6 +70,7 @@ def build_schedules_task(self, schedule_id):
 	else:
 		print(f'Recommendation = {recommendation}')
 	cache.set('recommendation',recommendation, None)
+	print(f'Recommendation set to {recommendation}')
 
 	# Delete the values needed to track progress
 	cache.set('num_actions_made', None, 0)
