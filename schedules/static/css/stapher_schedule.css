@@ -50,3 +50,13 @@
 	text-align: center;
 	background-color: grey;
 }
+
+#add_shift_btn {
+	text-decoration: none;
+	background-color: #EEEEEE;
+	color: #333333;
+}
+
+#add_shift_btn:hover #add_shift_div {
+	background-color: #32e535;
+}
