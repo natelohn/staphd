@@ -38,22 +38,22 @@
 }
 
 #add_shift_row {
-	border-top: 1px;
-	border-bottom: 1px;
-	border-color: black;
-	border-style: solid;
 	background-color: pink;
 }
 
 #add_shift_btn {
-	font-size: 0.9em;
 	text-align: center;
 	height: 100%;
 	width: 100%;
 	background-color: silver;
+	border: 1px;
+	border-color: black;
+	border-style: solid;
 }
 
 #add_shift_link {
 	text-decoration: none;
 	color: black;
 }
+
+
