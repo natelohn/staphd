@@ -247,8 +247,6 @@ def track_state(request, *args, **kwargs):
 			print(f'			task_running -> {task_running}')
 			if task_running:
 				data['running'] = task_running
-			if 'building_complete' in data:
-				data['building_complete'] = True
 		else:
 			data = 'No task_id in the request'
 	else:
@@ -260,7 +258,8 @@ def track_state(request, *args, **kwargs):
 def recommendations_view(request, *args, **kwargs):
 	template = 'schedules/recommendation.html'
 	rec = cache.get('recommendation')
-
+	if rec == True:
+		return HttpResponseRedirect(reverse('schedules:schedule'))
 	context = {}
 	context['recommendation'] = rec
 	return render(request, template, context)

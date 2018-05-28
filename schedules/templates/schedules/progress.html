@@ -36,8 +36,6 @@
 				// of the current task
 				if (check_state_again) {
 					PollState(task_id);
-				} else if (building_complete){
-					window.location = "{% url 'schedules:schedule' %}"
 				} else {
 					window.location = "{% url 'schedules:recommendation' %}"
 				}
