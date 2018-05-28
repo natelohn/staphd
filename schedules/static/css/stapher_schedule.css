@@ -37,7 +37,7 @@
 	visibility: visible;
 }
 
-#add_shift_row {
+#add_shift_row td{
 	background-color: silver;
 	pointer-events: none;
 }
@@ -56,6 +56,6 @@
 	pointer-events: auto;
 }
 
-#add_shift_row:hover {
+#add_shift_row td:hover {
     background-color: #32e535;
 }
