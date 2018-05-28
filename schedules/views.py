@@ -477,7 +477,7 @@ def stapher_shift_scheduled(request, *args, **kwargs):
 		schedule = None
 		stapher_staphings = []
 
-	return stapher_schedule(request, args, kwargs, True)
+	return HttpResponseRedirect(reverse('schedules:stapher-schedule-shifts'))
 
 
 # Shift based views
