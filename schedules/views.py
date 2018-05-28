@@ -461,8 +461,8 @@ def stapher_schedule_add(request, *args, **kwargs):
 
 @login_required
 def stapher_shift_scheduled(request, *args, **kwargs):
-	stapher_id = kwargs['st']
-	shift_id = kwargs['sh']
+	stapher_id = kwargs['pk']
+	shift_id = kwargs['s']
 	try:
 		stapher = Stapher.objects.get(id__exact = stapher_id)
 		shift = Shift.objects.get(id__exact = shift_id)
