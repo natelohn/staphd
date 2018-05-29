@@ -34,11 +34,11 @@
 	background-color: pink;
 }
 
-#view_week_btn:hover + #winning_cell {
+#view_week_btn:hover + table {
 	background-color: pink;
 }
 
-#view_week_btn:hover + #hidden_schedule_table {
+#view_week_btn:hover + table {
 	display: block;
 }
 
