@@ -141,9 +141,7 @@ class ShiftCreateForm(forms.ModelForm):
 			else:
 				scheduled_per_schedule[s.schedule.id] = 1
 			if scheduled_per_schedule[s.schedule.id] > workers_needed:
-				over_scheduled_schedule = s.schedule
-		if over_scheduled_schedule:
-			raise forms.ValidationError(f"The \"{over_scheduled_schedule}\" schedule has more than {workers_needed} scheudled workers for this shift ({scheduled_per_schedule[over_scheduled_schedule.id]} workers to be exact). To make this edit delete {scheduled_per_schedule[over_scheduled_schedule.id] - workers_needed} workers from the \"{over_scheduled_schedule}\" schedule")
+				raise forms.ValidationError(f"The \"{s.schedule}\" schedule has more than {workers_needed} scheudled workers for this shift. To make this edit delete these workers from the \"{s.schedule}\" schedule")
 		print(f'workers_needed = {workers_needed}')
 		return workers_needed
 
