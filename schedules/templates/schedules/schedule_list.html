@@ -19,8 +19,9 @@
 					<li><h2>{{obj}}</h2></li>
 					<li><a class="list_btn" href="{% url 'schedules:schedule-detail' pk=obj.id %}">View</a></li>
 					<li><a class="create_btn" href='{{ obj.get_absolute_url }}'>Select</a></li>
-					<li><a class="list_btn" href="{% url 'schedules:schedule-detail' pk=obj.id %}">Erase Current Schedule & Copy {{obj.title}}</a></li>
-					
+					{% if schedule %}
+					<li><a class="list_btn" href="{% url 'schedules:duplicate' pk=obj.id %}">Erase Current Schedule & Duplicate "{{obj.title}}"</a></li>
+					{% endif %}
 				</ul>
 			{% endfor %}
 		{% else %}

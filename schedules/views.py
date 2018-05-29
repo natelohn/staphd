@@ -921,6 +921,22 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 		context['cancel_url'] = 'schedules:select'
 		return context
 
+def schedule_duplicate(request, *args, **kwargs):
+	duplicate_id = kwargs['pk']
+	try:
+		schedule = Schedule.objects.get(active = True)
+		duplicate_schedule = Schedule.objects.get(id__exact = duplicate_id)
+		# Delete all old staphings
+		Staphings.objects.filter(schedule_id__exact = schedule.id).delete()
+
+		#Copy new staphings
+		copy_staphings = Staphings.objects.filter(schedule_id__exact = duplicate_schedule.id)
+		for staphing in copy_staphings:
+			new_staphing = Staphing(schedule = schedule, stapher = staphing.stapher, shift = staphing.shift)
+			new_staphing.save()
+	except:
+		return Http404
+	return HttpResponseRedirect(reverse('schedules:detail', kwargs={'pk':schedule.id}))
 
 # Staphing Based Views
 class StaphingDelete(LoginRequiredMixin, DeleteView):
