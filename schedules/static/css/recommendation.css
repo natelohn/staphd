@@ -26,3 +26,11 @@
 #stapher_cell {
 	text-align: right;
 }
+
+#staphers_schedule {
+	visibility: hidden;
+}
+
+#view_week_btn:hover #staphers_schedule{
+	visibility: visible;
+}
