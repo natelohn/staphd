@@ -290,7 +290,7 @@ def recommendations_view(request, *args, **kwargs):
 				stapher_staphings = Staphing.objects.filter(schedule_id__exact= schedule.id, stapher_id__exact = stapher.id)
 			except:
 				stapher_staphings = []
-			all_rows_for_time = get_week_schedule_view_info(rec[0], stapher_staphings)
+			all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings)
 			row['schedule'] = [all_rows_for_time]
 			rows.append(row)
 	context['rows'] = rows

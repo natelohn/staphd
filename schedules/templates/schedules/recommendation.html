@@ -26,7 +26,6 @@
 		</tr>
 	</table>
 	{% for all_rows_for_time in rec_row.schedule %}
-	<p>{{all_rows_for_time}}</p>
 	<table class="hidden_schedule_table" id="stapher_schedule_{{rec_row.stapher.id}}">
 		{% include "sections/week_view.html" %}
 	</table>
