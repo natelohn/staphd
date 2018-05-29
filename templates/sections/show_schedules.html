@@ -1,5 +1,6 @@
 <script>
-function show_shedule() {
-  document.getElementById("demo").innerHTML = "Hello World";
-}
+	function show_shedule(stapher_id) {
+		var id_string = '#stapher_schedule_' + stapher_id
+		jQuery(id_string).css({'display: none;'});
+	}
 </script>
