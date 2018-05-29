@@ -89,7 +89,7 @@ class StapherCreateForm(forms.ModelForm):
 class ShiftCreateForm(forms.ModelForm):
 	class Meta:
 		model = Shift
-		fields = ('title','day','start','end','workers_needed','flags','qualifications')
+		fields = ('title','start','end','day','workers_needed','flags','qualifications')
 		widgets = {'flags': forms.CheckboxSelectMultiple(), 'qualifications': forms.CheckboxSelectMultiple()}
 
 	def __init__(self, auto_id, *args, **kwargs):
