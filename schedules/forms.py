@@ -100,7 +100,6 @@ class ShiftCreateForm(forms.ModelForm):
 
 	def clean_start(self):
 		start = self.cleaned_data.get("start")
-		print(f'start = {start}')
 		if not start:
 			raise forms.ValidationError("Must enter a valid time format: (i.e. 12:00pm)")
 		return start
@@ -108,8 +107,6 @@ class ShiftCreateForm(forms.ModelForm):
 	def clean_end(self):
 		start = self.cleaned_data.get("start")
 		end = self.cleaned_data.get("end")
-		print(f'start = {start}')
-		print(f'end = {end}')
 		if not end:
 			raise forms.ValidationError("Must enter a valid time format: (i.e. 12:00pm)")
 		if start and start >= end:
@@ -137,13 +134,16 @@ class ShiftCreateForm(forms.ModelForm):
 		if workers_needed > max_availible_workers:
 			raise forms.ValidationError(f'You have {max_availible_workers} workers! Shifts cannot require more workers than you have.')
 		scheduled_per_schedule = {}
+		over_scheduled_schedule = None
 		for s in Staphing.objects.filter(shift = self.instance):
 			if s.schedule.id in scheduled_per_schedule:
 				scheduled_per_schedule[s.schedule.id] += 1
 			else:
 				scheduled_per_schedule[s.schedule.id] = 1
 			if scheduled_per_schedule[s.schedule.id] > workers_needed:
-				raise forms.ValidationError(f"The \"{s.schedule}\" schedule has more than {workers_needed} scheudled workers for this shift ({scheduled_per_schedule[s.schedule.id]} workers to be exact). To make this edit delete {scheduled_per_schedule[s.schedule.id] - workers_needed} workers from the \"{s.schedule}\" schedule")
+				over_scheduled_schedule = s.schedule
+		if over_scheduled_schedule:
+			raise forms.ValidationError(f"The \"{over_scheduled_schedule}\" schedule has more than {workers_needed} scheudled workers for this shift ({scheduled_per_schedule[over_scheduled_schedule.id]} workers to be exact). To make this edit delete {scheduled_per_schedule[over_scheduled_schedule.id] - workers_needed} workers from the \"{over_scheduled_schedule}\" schedule")
 		return workers_needed
 
 	def clean_qualifications(self):
