@@ -22,11 +22,11 @@
 			<td class="button"><a id="view_week_btn" href="">View Week</a></td>
 			<td class="create_btn"><a id="scheudle_link" href="">Schedule</a></td>
 		</tr>
-		{% for all_rows_for_time in rec_row.schedule %}
 		<div id="staphers_schedule">
+		{% for all_rows_for_time in rec_row.schedule %}
 			{% include "sections/week_view.html" %}
-		</div>
 		{% endfor %}
+		</div>
 		{% endfor %}
 	</table>
 </div>
