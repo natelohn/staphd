@@ -2,7 +2,7 @@
 	margin-bottom: 5px;
 }
 
-.schedule_table{
+.schedule_table, .hidden_schedule_table{
 	width: 100%;
 	background-color: #EEEEEE;
 }
@@ -12,7 +12,7 @@
 	background-color: white;
 }
 
-#schedule_table th, #add_shifts_table th{
+.schedule_table th, #add_shifts_table th, .hidden_schedule_table th{
 	background-color: grey;
 	width: 14.285%; /* 100 / 7 = 14.285 */
 }
@@ -24,7 +24,8 @@
 	
 }
 
-#schedule_table, #schedule_table th, #scheduled_time, #add_shifts_table th, #add_shift_row_td{
+.schedule_table, .schedule_table th, #scheduled_time, #add_shifts_table th, #add_shift_row_td,
+ .hidden_schedule_table, .hidden_schedule_table th{
 	border: 1px;
 	border-color: black;
 	border-style: solid;

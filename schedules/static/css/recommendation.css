@@ -29,19 +29,3 @@
 #hidden_schedule_table {
 	display: none;
 }
-
-#view_week_btn:hover {
-	background-color: pink;
-}
-
-#view_week_btn:hover + h1 {
-	background-color: pink;
-}
-
-#view_week_btn:hover + h1 {
-	display: block;
-}
-
-#hidden_schedule_table:hover {
-	display: block;
-}

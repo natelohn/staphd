@@ -21,15 +21,16 @@
 			<td>{{cell.score}}</td>
 			{% endif %}
 			{% endfor %}
-			<td class="button" id="view_week_btn">View Week</td>
+			<td class="button" id="view_week_btn" onclick="show_shedule(rec_row.stapher.id)">View Week</td>
 			<td class="create_btn"><a id="scheudle_link" href="">Schedule</a></td>
 		</tr>
 	</table>
 	{% for all_rows_for_time in rec_row.schedule %}
-	<table class="schedule_table" id="hidden_schedule_table">
+	<table class="hidden_schedule_table" id="stapher_schedule_{{rec_row.stapher.id}}">
 		{% include "sections/week_view.html" %}
 	</table>
 	{% endfor %}
 	{% endfor %}
 </div>
+{% include "sections/show_schedule.html" %}
 {% endblock %}
