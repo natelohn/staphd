@@ -100,6 +100,7 @@ class ShiftCreateForm(forms.ModelForm):
 
 	def clean_start(self):
 		start = self.cleaned_data.get("start")
+		print(f'start = {start}')
 		if not start:
 			raise forms.ValidationError("Must enter a valid time format: (i.e. 12:00pm)")
 		return start
@@ -107,6 +108,8 @@ class ShiftCreateForm(forms.ModelForm):
 	def clean_end(self):
 		start = self.cleaned_data.get("start")
 		end = self.cleaned_data.get("end")
+		print(f'start = {start}')
+		print(f'end = {end}')
 		if not end: 
 			raise forms.ValidationError("Must enter a valid time format: (i.e. 12:00pm)")
 		if start and start >= end:
