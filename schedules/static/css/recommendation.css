@@ -29,16 +29,14 @@
 
 
 
-#staphers_schedule {
+#hidden_schedule_table {
 	visibility: hidden;
-	font-size: 3em;
 }
 
-#view_week_btn:hover #staphers_schedule * {
+#view_week_btn:hover #hidden_schedule_table {
 	visibility: visible;
-	font-size: 3em;
 }
 
-#staphers_schedule *:hover{
+#hidden_schedule_table:hover {
 	visibility: visible;
 }

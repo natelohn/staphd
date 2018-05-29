@@ -25,13 +25,11 @@
 			<td class="create_btn"><a id="scheudle_link" href="">Schedule</a></td>
 		</tr>
 	</table>
-	<div id="stapher_schedule">
-		{% for all_rows_for_time in rec_row.schedule %}
-		<table id="schedule_table">
-			{% include "sections/week_view.html" %}
-		</table>
-		{% endfor %}
-	</div>
+	{% for all_rows_for_time in rec_row.schedule %}
+	<table id="hidden_schedule_table">
+		{% include "sections/week_view.html" %}
+	</table>
+	{% endfor %}
 	{% endfor %}
 </div>
 {% endblock %}
