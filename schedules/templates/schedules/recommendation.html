@@ -22,7 +22,7 @@
 			{% endif %}
 			{% endfor %}
 			<td class="button" id="view_week_btn" onclick="toggle_schedule({{rec_row.stapher.id}})">View Week</td>
-			<td class="create_btn"><a id="scheudle_link" href="{% url scheudles:recommendation_add pk=rec_row.stapher.id%}">Schedule</a></td>
+			<td class="create_btn"><a id="scheudle_link" href="{% url 'scheudles:recommendation_add' pk=rec_row.stapher.id%}">Schedule</a></td>
 		</tr>
 	</table>
 	{% for all_rows_for_time in rec_row.schedule %}
