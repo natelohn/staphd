@@ -27,7 +27,7 @@
 }
 
 #hidden_schedule_table {
-	visibility: hidden;
+	display: none;
 }
 
 #view_week_btn:hover {
@@ -35,9 +35,9 @@
 }
 
 #view_week_btn:hover + #hidden_schedule_table {
-	visibility: visible;
+	display: block;
 }
 
 #hidden_schedule_table:hover {
-	visibility: visible;
+	display: block;
 }
