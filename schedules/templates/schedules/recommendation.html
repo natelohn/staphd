@@ -22,8 +22,9 @@
 			<td class="button"><a id="view_" href="">View Week</a></td>
 			<td class="create_btn"><a id="scheudle_link" href="">Schedule</a></td>
 		</tr>
-		{% for schedule row.schedule%}
+		{% for schedule in row.schedule%}
 		{% include "sections/week_view.html" %}
+		{% endfor %}
 		{% endfor %}
 	</table>
 </div>
