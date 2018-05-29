@@ -34,11 +34,11 @@
 	background-color: pink;
 }
 
-#view_week_btn:hover + table {
+#view_week_btn:hover + h1 {
 	background-color: pink;
 }
 
-#view_week_btn:hover + table {
+#view_week_btn:hover + h1 {
 	display: block;
 }
 
