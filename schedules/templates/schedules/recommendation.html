@@ -11,7 +11,7 @@
 		{% for row in rows %}
 		<tr>
 			<td>{{row.stapher}}</td>
-			{% for cell in row %}
+			{% for cell in row.cells %}
 			{% if cell.win %}
 			<td>{{cell.score}} Win</td>
 			{% else %}
