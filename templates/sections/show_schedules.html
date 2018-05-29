@@ -2,10 +2,10 @@
 	function toggle_schedule(stapher_id) {
 		var id_string = 'stapher_schedule_' + stapher_id
 		var schedule = document.getElementById(id_string);
-		if (schedule.style.display === "none") {
-			schedule.style.display = "table";
-		} else {
+		if (schedule.style.display === "table") {
 			schedule.style.display = "none";
+		} else {
+			schedule.style.display = "table";
 		}
 	}
 </script>
