@@ -1,6 +1,7 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
+	<p>{{shift}}</p>
 	{%for rec in recommendation%}
 	<p>{{rec}}</p>
 	{% endfor %}

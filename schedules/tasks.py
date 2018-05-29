@@ -64,11 +64,16 @@ def build_schedules_task(self, schedule_id):
 	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
 
 	# Do the task
-	recommendation = build_schedules(sorted_shifts, settings, schedule, staphings, self)
-	if recommendation == True: #Schedule Building is done! (no more recs to be made)
+	shift_and_rec = build_schedules(sorted_shifts, settings, schedule, staphings, self)
+	if not shift_and_rec: #Schedule Building is done! (no more recs to be made)
 		self.update_state(meta = {'message':'All possible shifts placements made.', 'process_percent':100})
-	cache.set('recommendation',recommendation, None)
-	print(f'Recommendation set to {recommendation}')
+		cache.set('recommendation', False, None)
+	else:
+		recommended_shift = shift_and_rec[0]
+		recommendation = shift_and_rec[1]
+		cache.set('recommended_shift',recommended_shift, None)
+		cache.set('recommendation',recommendation, None)
+		print(f'Recommendation set to {recommendation}')
 
 	# Delete the values needed to track progress
 	cache.set('num_actions_made', None, 0)

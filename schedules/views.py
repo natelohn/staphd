@@ -258,10 +258,13 @@ def track_state(request, *args, **kwargs):
 def recommendations_view(request, *args, **kwargs):
 	template = 'schedules/recommendation.html'
 	rec = cache.get('recommendation')
-	if rec == True:
+	shift = cache.get('recommended_shift')
+	if not rec or not shift:
+		print(f'No recommendations to be made (rec = {rec})')
 		return HttpResponseRedirect(reverse('schedules:schedule'))
 	context = {}
 	context['recommendation'] = rec
+	context['shift'] = shift
 	return render(request, template, context)
 
 
