@@ -4,3 +4,7 @@
 	border-color: black;
 	border-style: solid;
 }
+
+#winning_cell {
+	background-color: green;
+}

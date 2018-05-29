@@ -14,9 +14,9 @@
 			<th>{{row.stapher}}</th>
 			{% for cell in row.cells %}
 			{% if cell.win %}
-			<td>{{cell.score}} Win</td>
+			<td id='winning_cell'>{{cell.score}}</td>
 			{% else %}
-			<td>{{cell.score}} Lose</td>
+			<td>{{cell.score}}</td>
 			{% endif %}
 			{% endfor %}
 		</tr>
