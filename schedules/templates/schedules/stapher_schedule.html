@@ -14,15 +14,15 @@
 	<br>
 	{% if schedule %}
 	<br>
+	<table id="schedule_table">
 	{% include "sections/week_view.html" %}
+	</table>
 	<br>
 	{% if add_shifts %}
 	<h2>Uncovered Shifts {{name}} is both Free and Qualified for: </h2>
 	<h4>Select shifts to add them to {{name}}'s schedule...</h4>
 	<br>
-	<table id="schedule_table">
 	{% include "sections/add_shifts.html" %}
-	</table>
 	{% endif %}
 	{% endif %}
 </div>
