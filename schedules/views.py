@@ -264,6 +264,7 @@ def recommendations_view(request, *args, **kwargs):
 	template = 'schedules/recommendation.html'
 	recs = cache.get('recommendation')
 	shift = cache.get('recommended_shift')
+	print(f'Recs = {recs}')
 	if not recs or not shift:
 		print(f'No recommendations to be made (rec = {recs})')
 		return HttpResponseRedirect(reverse('schedules:schedule'))
