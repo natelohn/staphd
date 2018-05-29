@@ -144,6 +144,7 @@ class ShiftCreateForm(forms.ModelForm):
 				over_scheduled_schedule = s.schedule
 		if over_scheduled_schedule:
 			raise forms.ValidationError(f"The \"{over_scheduled_schedule}\" schedule has more than {workers_needed} scheudled workers for this shift ({scheduled_per_schedule[over_scheduled_schedule.id]} workers to be exact). To make this edit delete {scheduled_per_schedule[over_scheduled_schedule.id] - workers_needed} workers from the \"{over_scheduled_schedule}\" schedule")
+		print(f'workers_needed = {workers_needed}')
 		return workers_needed
 
 	def clean_qualifications(self):
