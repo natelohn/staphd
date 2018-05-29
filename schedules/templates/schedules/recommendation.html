@@ -1,9 +1,25 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<p>{{shift}}</p>
-	{%for rec in recommendation%}
-	<p>{{rec}}</p>
-	{% endfor %}
+	<table>
+		<tr>
+			<th></th>
+			{% for p in parameters %}
+			<th>{{p.title}}</th>
+			{% endfor %}
+		</tr>
+		{% for row in rows %}
+		<tr>
+			<td>{{row.stapher}}</td>
+			{% for cell in row %}
+			{% if cell.win %}
+			<td>{{cell.score}} Win</td>
+			{% else %}
+			<td>{{cell.score}} Lose</td>
+			{% endif %}
+			{% endfor %}
+		</tr>
+		{% endfor %}
+	</table>
 </div>
 {% endblock %}

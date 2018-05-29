@@ -256,14 +256,31 @@ def track_state(request, *args, **kwargs):
 
 @login_required
 def recommendations_view(request, *args, **kwargs):
+	try:
+		settings = Settings.objects.get()
+	except:
+		return Http404
 	template = 'schedules/recommendation.html'
-	rec = cache.get('recommendation')
+	recs = cache.get('recommendation')
 	shift = cache.get('recommended_shift')
-	if not rec or not shift:
-		print(f'No recommendations to be made (rec = {rec})')
+	if not recs or not shift:
+		print(f'No recommendations to be made (rec = {recs})')
 		return HttpResponseRedirect(reverse('schedules:schedule'))
 	context = {}
-	context['recommendation'] = rec
+	context['parameters'] = settings.parameters.all().order_by('rank')
+	rows = []
+	for rec in recs:
+		row = {}
+		row['stapher'] = rec[0]
+		cells = []
+		for i, score in enumerate(rec[1]):
+			cell = {}
+			cell['score'] = score
+			cell['win'] = rec[2][i]
+			cells.append(cell)
+		row['cells'] = cells
+		rows.append(row)
+	context['rows'] = rows
 	context['shift'] = shift
 	return render(request, template, context)
 
