@@ -270,7 +270,7 @@ def recommendations_view(request, *args, **kwargs):
 	parameters = settings.parameters.all().order_by('rank')
 	context = {}
 	context['parameters'] = parameters
-	context['param_count'] = parameters.count()
+	context['table_length'] = parameters.count() + 3
 	rows = []
 	for rec in recs:
 		contains_win = rec[2].count(True) > 0
