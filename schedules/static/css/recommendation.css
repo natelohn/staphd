@@ -8,10 +8,13 @@
 	border-color: black;
 	border-style: solid;
 	text-align: center;
+	pointer-events: none;
 }
+
 #recomendation_table a{
 	text-decoration: none;
 	color: black;
+	pointer-events: auto;
 }
 
 #winning_cell {
