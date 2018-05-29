@@ -33,6 +33,7 @@
 
 #view_week_btn:hover #staphers_schedule * {
 	visibility: visible;
+	font-size: 3em;
 }
 
 #staphers_schedule *:hover{
