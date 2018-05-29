@@ -28,15 +28,13 @@
 }
 
 #staphers_schedule {
-	width: 100%;
-	/*visibility: hidden;*/
+	visibility: hidden;
 }
 
-/*#view_week_btn:hover #staphers_schedule table{
+#view_week_btn:hover #staphers_schedule table{
 	visibility: visible;
 }
 
 #staphers_schedule table:hover{
 	visibility: visible;
 }
-*/
