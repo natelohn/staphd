@@ -21,7 +21,7 @@
 			<td>{{cell.score}}</td>
 			{% endif %}
 			{% endfor %}
-			<td class="button" id="view_week_btn" onclick="show_schedule(rec_row.stapher.id)">View Week</td>
+			<td class="button" id="view_week_btn" onclick="show_schedule("{{rec_row.stapher.id}}")">View Week</td>
 			<td class="create_btn"><a id="scheudle_link" href="">Schedule</a></td>
 		</tr>
 	</table>
