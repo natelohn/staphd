@@ -139,7 +139,7 @@ class ShiftCreateForm(forms.ModelForm):
 		qualifications = self.cleaned_data.get("qualifications")
 		for s in Staphing.objects.filter(shift = self.instance):
 			for q in qualifications: 
-				if q not in s.stapher.qualifications.all()::
+				if q not in s.stapher.qualifications.all():
 					error_string = f"{s.stapher} does not have the {q} qualification and they are scheduled for {self.instance} on {s.schedule}. Give the {q} qualification to {s.stapher} or remove {self.instance} from {s.staphers}'s schedule on {s.schedule}."
 					raise forms.ValidationError(error_string)
 		return qualifications
