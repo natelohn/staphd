@@ -11,7 +11,8 @@
 }
 
 #winning_cell {
-	background-color: green;
+	font-weight: bold;
+	background-color: #32e535;
 }
 
 #stapher_cell {

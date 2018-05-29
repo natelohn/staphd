@@ -1,7 +1,7 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<h3>Recomendations for {{shift}}</h3>
+	<h1>Recomendations for {{shift}}</h1>
 	<table id="recomendation_table">
 		<tr>
 			<th></th>
@@ -19,6 +19,8 @@
 			<td>{{cell.score}}</td>
 			{% endif %}
 			{% endfor %}
+			<td class="button"><a href="">View Week</a></td>
+			<td class="create_btn"><a href="">Schedule Shift</a></td>
 		</tr>
 		{% endfor %}
 	</table>
