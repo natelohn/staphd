@@ -285,7 +285,7 @@ def recommendations_view(request, *args, **kwargs):
 		except:
 			stapher_staphings = []
 		all_rows_for_time = get_week_schedule_view_info(rec[0], stapher_staphings)
-		row['schedule'] = all_rows_for_time
+		row['schedule'] = [all_rows_for_time]
 		rows.append(row)
 	context['rows'] = rows
 	context['shift'] = shift
