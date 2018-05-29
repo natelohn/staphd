@@ -2,14 +2,16 @@
 {% block page %}
 <div id="page">
 	<h1>Recomendations for {{shift}}</h1>
+	{% for rec_row in rows %}
 	<table id="recomendation_table">
+		{% if forloop.first %}
 		<tr>
 			<th></th>
 			{% for p in parameters %}
 			<th>{{p.title}}</th>
 			{% endfor %}
 		</tr>
-		{% for rec_row in rows %}
+		{% endif %}
 		<tr>
 			<th id="stapher_cell">{{rec_row.stapher}}</th>
 			{% for cell in rec_row.cells %}
@@ -22,14 +24,10 @@
 			<td class="button"><a id="view_week_btn" href="">View Week</a></td>
 			<td class="create_btn"><a id="scheudle_link" href="">Schedule</a></td>
 		</tr>
-		<tr id="staphers_schedule">
-			<td rowspan="{{table_length}}">
-				{% for all_rows_for_time in rec_row.schedule %}
-				{% include "sections/week_view.html" %}
-				{% endfor %}
-			</td>
-		</tr>
-		{% endfor %}
 	</table>
+	{% for all_rows_for_time in rec_row.schedule %}
+		{% include "sections/week_view.html" %}
+	{% endfor %}
+	{% endfor %}
 </div>
 {% endblock %}
