@@ -924,16 +924,24 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 def schedule_duplicate(request, *args, **kwargs):
 	duplicate_id = kwargs['pk']
 	try:
+		print('A')
 		schedule = Schedule.objects.get(active = True)
+		print('B')
 		duplicate_schedule = Schedule.objects.get(id__exact = duplicate_id)
 		# Delete all old staphings
+		print('C')
 		Staphings.objects.filter(schedule_id__exact = schedule.id).delete()
-
+		print('D')
 		#Copy new staphings
 		copy_staphings = Staphings.objects.filter(schedule_id__exact = duplicate_schedule.id)
+		print('E')
 		for staphing in copy_staphings:
+			print('F')
 			new_staphing = Staphing(schedule = schedule, stapher = staphing.stapher, shift = staphing.shift)
+			print('G')
 			new_staphing.save()
+			print('H')
+		print('I')
 	except:
 		return Http404
 	return HttpResponseRedirect(reverse('schedules:detail', kwargs={'pk':schedule.id}))
