@@ -201,12 +201,8 @@ class Shift(models.Model):
 		return f'{self.title} on {self.get_day_string()}, {start_str}-{end_str}'
 
 	def save(self, *args, **kwargs):
-		# Start of shift must be before the end of shift and day must be between 0 and 6 (Sun-Sat)
-		if self.start < self.end and self.day in range(0,6):
-			cache.set('resort', True, None)
-			super(Shift, self).save(*args, **kwargs)
-		else:
-			return
+		cache.set('resort', True, None)
+		super(Shift, self).save(*args, **kwargs)
 
 	def delete(self, *args, **kwargs):
 		cache.set('resort', True, None)

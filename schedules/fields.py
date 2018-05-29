@@ -11,7 +11,7 @@ DAY_OF_THE_WEEK = {
     3 : _(u'Wednesday'),
     4 : _(u'Thursday'),
     5 : _(u'Friday'),
-    6 : _(u'Saturday'), 
+    6 : _(u'Saturday')
 }
 
 GENDER = {
