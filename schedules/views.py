@@ -272,22 +272,24 @@ def recommendations_view(request, *args, **kwargs):
 	context['parameters'] = parameters
 	rows = []
 	for rec in recs:
-		contains_win = rec[2].count(True) > 0
+		stapher = rec[0]
+		scores = rec[1]
+		wins = rec[2]
+		contains_win = wins.count(True) > 0
 		if contains_win:
 			row = {}
-			row['stapher'] = rec[0]
+			row['stapher'] = stapher
 			cells = []
-			for i, score in enumerate(rec[1]):
+			for i, score in enumerate(scores):
 				cell = {}
 				cell['score'] = score
-				cell['win'] = rec[2][i]
+				cell['win'] = wins[i]
 				cells.append(cell)
 			row['cells'] = cells
 			try:
 				stapher_staphings = Staphing.objects.filter(schedule_id__exact= schedule.id, stapher_id__exact = stapher.id)
 			except:
 				stapher_staphings = []
-			print(stapher_staphings)
 			all_rows_for_time = get_week_schedule_view_info(rec[0], stapher_staphings)
 			row['schedule'] = [all_rows_for_time]
 			rows.append(row)
