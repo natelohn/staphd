@@ -1,9 +1,13 @@
 import datetime
 
 from .analytics import get_hours_from_timedelta, get_readable_time
+from .models import Staphing
 
 
-def get_week_schedule_view_info(stapher, staphings):
+def get_week_schedule_view_info(stapher, staphings, shift, schedule):
+	if shift:
+		new_staphings = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+		staphings.append(new_staphings)
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 	time = datetime.timedelta(hours = 6, minutes = 0)
 	max_time = datetime.timedelta(hours = 23, minutes = 30)
@@ -24,6 +28,8 @@ def get_week_schedule_view_info(stapher, staphings):
 				cell['title'] = f'{staphing.shift.title}, {get_readable_time(staphing.shift.start)}-{get_readable_time(staphing.shift.end)}'
 				cell['span'] = get_hours_from_timedelta(staphing.shift.length()) * 4
 				cell['staphing_id'] = staphing.id
+				if shift:
+					cell['new_shift'] = staphing.shift.id == shift.id
 				row_for_time.append(cell)
 				seen_staphings.add(staphing.id)
 				

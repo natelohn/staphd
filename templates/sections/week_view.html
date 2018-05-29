@@ -7,7 +7,11 @@
 	{% else %}
 	{% for cell in row %}
 	{% if cell%}
-	<td id="scheduled_time" rowspan="{{cell.span}}">
+	{% if cell.new_shift %}
+	<td class="scheduled_time" id="new_shift" rowspan="{{cell.span}}">
+	{% else %}
+	<td class="scheduled_time" rowspan="{{cell.span}}">
+	{% endif %}
 		{% if can_delete %}
 		<a href="{% url 'schedules:staphing-delete' pk=cell.staphing_id %}"><i class="fa fa-times-rectangle" id="delete_icon"></i></a>
 		{% endif %}

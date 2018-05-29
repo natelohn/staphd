@@ -17,14 +17,14 @@
 	width: 14.285%; /* 100 / 7 = 14.285 */
 }
 
-#scheduled_time{
+.scheduled_time{
 	position: relative;
 	background-color: silver;
 	text-align: center;
 	
 }
 
-.schedule_table, .schedule_table th, #scheduled_time, #add_shifts_table th, #add_shift_row_td,
+.schedule_table, .schedule_table th, .scheduled_time, #add_shifts_table th, #add_shift_row_td,
  .hidden_schedule_table, .hidden_schedule_table th{
 	border: 1px;
 	border-color: black;
@@ -43,7 +43,7 @@
 	visibility: hidden;
 }
 
-#scheduled_time:hover #delete_icon {
+.scheduled_time:hover #delete_icon {
 	visibility: visible;
 }
 
@@ -73,4 +73,9 @@
 #empty_cell {
 	background-color: white;
 	pointer-events: none;
+}
+
+
+#new_shift {
+	background-color: #32e535;
 }

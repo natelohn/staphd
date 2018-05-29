@@ -290,7 +290,7 @@ def recommendations_view(request, *args, **kwargs):
 				stapher_staphings = Staphing.objects.filter(schedule_id__exact= schedule.id, stapher_id__exact = stapher.id)
 			except:
 				stapher_staphings = []
-			all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings)
+			all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings, shift, schedule)
 			row['schedule'] = [all_rows_for_time]
 			rows.append(row)
 	context['rows'] = rows
@@ -482,7 +482,7 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 	else:
 		new_shift_rows = None
 
-	all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings)
+	all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings, None, schedule)
 	template = 'schedules/stapher_schedule.html'
 	context = {}
 	context['stapher'] = stapher
@@ -923,7 +923,7 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 		except:
 			schedule = None
 			staphings = []
-		all_rows_for_time = get_week_schedule_view_info(stapher, staphings)
+		all_rows_for_time = get_week_schedule_view_info(stapher, staphings, None, schedule)
 		template = 'schedules/stapher_schedule.html'
 		context['stapher'] = stapher
 		context['name'] = stapher.full_name()
