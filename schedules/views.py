@@ -303,8 +303,15 @@ def add_recommendation(request, *args, **kwargs):
 	stapher_id = kwargs['pk']
 	try:
 		stapher = Stapher.objects.get(id = stapher_id)
+		schedule = Schedule.objects.get(active__exact = True)
 	except:
 		return Http404
+	shift = cache.get('recommended_shift')
+	if not shift:
+		return Http404
+	else:
+		new_staphing = Staphing(schedule = schedule, stapher = stapher, shift = shift)
+		new_staphing.save()
 	return HttpResponseRedirect(reverse('schedules:building'))
 
 
