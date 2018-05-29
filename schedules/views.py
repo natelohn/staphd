@@ -257,7 +257,7 @@ def track_state(request, *args, **kwargs):
 @login_required
 def recommendations_view(request, *args, **kwargs):
 	try:
-		settings = Settings.objects.get()
+		settings = ScheduleBuildingSettings.objects.get()
 	except:
 		return Http404
 	template = 'schedules/recommendation.html'
