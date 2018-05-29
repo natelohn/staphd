@@ -937,7 +937,7 @@ def schedule_duplicate(request, *args, **kwargs):
 		# 	staphing.delete()
 		print('D')
 		#Copy new staphings
-		copy_staphings = Staphings.objects.filter(schedule_id__exact = duplicate_schedule.id)
+		copy_staphings = Staphing.objects.filter(schedule_id__exact = duplicate_schedule.id)
 		print('E')
 		for staphing in copy_staphings:
 			print('F')
