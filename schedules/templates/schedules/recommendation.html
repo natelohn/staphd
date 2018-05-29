@@ -14,9 +14,9 @@
 		{% endif %}
 		<tr>
 			<th id="stapher_cell">{{rec_row.stapher}}</th>
-			{% for cell in rec_row.cells %}
-			{% if cell.win %}
-			<td id='winning_cell'>{{cell.score}}</td>
+			{% for param_cell in rec_row.cells %}
+			{% if param_cell.win %}
+			<td id='winning_cell'>{{param_cell.score}}</td>
 			{% else %}
 			<td>{{cell.score}}</td>
 			{% endif %}
