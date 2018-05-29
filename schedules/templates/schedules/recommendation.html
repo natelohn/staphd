@@ -23,7 +23,9 @@
 			<td class="create_btn"><a id="scheudle_link" href="">Schedule</a></td>
 		</tr>
 		{% for all_rows_for_time in rec_row.schedule %}
-		{% include "sections/week_view.html" %}
+		<div id="staphers_schedule">
+			{% include "sections/week_view.html" %}
+		</div>
 		{% endfor %}
 		{% endfor %}
 	</table>

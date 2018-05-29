@@ -271,22 +271,24 @@ def recommendations_view(request, *args, **kwargs):
 	context['parameters'] = settings.parameters.all().order_by('rank')
 	rows = []
 	for rec in recs:
-		row = {}
-		row['stapher'] = rec[0]
-		cells = []
-		for i, score in enumerate(rec[1]):
-			cell = {}
-			cell['score'] = score
-			cell['win'] = rec[2][i]
-			cells.append(cell)
-		row['cells'] = cells
-		try:
-			stapher_staphings = Staphing.objects.filter(schedule_id__exact= schedule.id, stapher_id__exact = stapher.id)
-		except:
-			stapher_staphings = []
-		all_rows_for_time = get_week_schedule_view_info(rec[0], stapher_staphings)
-		row['schedule'] = [all_rows_for_time]
-		rows.append(row)
+		contains_win = rec[2].count(True) > 0
+		if contains_win:
+			row = {}
+			row['stapher'] = rec[0]
+			cells = []
+			for i, score in enumerate(rec[1]):
+				cell = {}
+				cell['score'] = score
+				cell['win'] = rec[2][i]
+				cells.append(cell)
+			row['cells'] = cells
+			try:
+				stapher_staphings = Staphing.objects.filter(schedule_id__exact= schedule.id, stapher_id__exact = stapher.id)
+			except:
+				stapher_staphings = []
+			all_rows_for_time = get_week_schedule_view_info(rec[0], stapher_staphings)
+			row['schedule'] = [all_rows_for_time]
+			rows.append(row)
 	context['rows'] = rows
 	context['shift'] = shift
 	return render(request, template, context)
