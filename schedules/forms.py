@@ -117,6 +117,7 @@ class ShiftCreateForm(forms.ModelForm):
 		day = self.cleaned_data.get("day")
 		start = self.cleaned_data.get("start")
 		end = self.cleaned_data.get("end")
+		print(f'{day}, {start}, {end}')
 		for s in Staphing.objects.filter(shift = self.instance):
 			staphers_other_staphings = Staphing.objects.filter(stapher = s.stapher).exclude(shift = self.instance)
 			for other_s in staphers_other_staphings:
