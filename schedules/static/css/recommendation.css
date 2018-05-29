@@ -4,6 +4,7 @@
 }
 
 #recomendation_table td{
+	height: 40px;
 	border: 1px;
 	border-color: black;
 	border-style: solid;
