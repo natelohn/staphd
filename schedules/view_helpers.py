@@ -7,6 +7,7 @@ from .models import Staphing
 def get_week_schedule_view_info(stapher, staphings, shift, schedule):
 	if shift:
 		new_staphings = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+		staphings = list(staphings)
 		staphings.append(new_staphings)
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 	time = datetime.timedelta(hours = 6, minutes = 0)
