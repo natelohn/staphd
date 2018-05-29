@@ -270,7 +270,6 @@ def recommendations_view(request, *args, **kwargs):
 		return HttpResponseRedirect(reverse('schedules:schedule'))
 	parameters = settings.parameters.all().order_by('rank')
 	context = {}
-	context['parameters'] = parameters
 	rows = []
 	for rec in recs:
 		stapher = rec[0]
@@ -294,9 +293,19 @@ def recommendations_view(request, *args, **kwargs):
 			all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings, shift, schedule)
 			row['schedule'] = [all_rows_for_time]
 			rows.append(row)
+	context['parameters'] = parameters
 	context['rows'] = rows
 	context['shift'] = shift
 	return render(request, template, context)
+
+@login_required
+def add_recommendation(request, *args, **kwargs):
+	stapher_id = kwargs['pk']
+	try:
+		stapher = Stapher.objects.get(id = stapher_id)
+	except:
+		return Http404
+	return HttpResponseRedirect(reverse('schedules:building'))
 
 
 # Settings based views

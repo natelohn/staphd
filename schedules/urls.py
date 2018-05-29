@@ -31,6 +31,7 @@ urlpatterns = [
     url(r'^schedules/building$', views.build_schedules, name='building'),
     url(r'^schedules/track$', views.track_state, name='track'),
     url(r'^schedules/recommendation$', views.recommendations_view, name='recommendation'),
+    url(r'^schedules/recommendation/add/(?P<pk>[\d]+)$', views.add_recommendation, name='recommendation_add'),
     url(r'^schedules/(?P<pk>[\d]+)/$', views.ScheduleDetail.as_view(), name='schedule-detail'),
     url(r'^schedules/(?P<pk>[\d]+)/delete$', views.ScheduleDelete.as_view(), name='schedule-delete'),
     url(r'^schedules/(?P<pk>[\d]+)/edit$', views.ScheduleUpdate.as_view(), name='schedule-update'),
