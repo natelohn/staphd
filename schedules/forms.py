@@ -110,7 +110,7 @@ class ShiftCreateForm(forms.ModelForm):
 		end = self.cleaned_data.get("end")
 		print(f'start = {start}')
 		print(f'end = {end}')
-		if not end: 
+		if not end:
 			raise forms.ValidationError("Must enter a valid time format: (i.e. 12:00pm)")
 		if start and start >= end:
 			raise forms.ValidationError("Shift must end after it starts.")
@@ -121,6 +121,8 @@ class ShiftCreateForm(forms.ModelForm):
 		start = self.cleaned_data.get("start")
 		end = self.cleaned_data.get("end")
 		print(f'{day}, {start}, {end}')
+		if not start or not end:
+			raise forms.ValidationError("Must enter a valid time format: (i.e. 12:00pm)")
 		for s in Staphing.objects.filter(shift = self.instance):
 			staphers_other_staphings = Staphing.objects.filter(stapher = s.stapher).exclude(shift = self.instance)
 			for other_s in staphers_other_staphings:
