@@ -267,8 +267,10 @@ def recommendations_view(request, *args, **kwargs):
 	if not recs or not shift:
 		print(f'No recommendations to be made (rec = {recs})')
 		return HttpResponseRedirect(reverse('schedules:schedule'))
+	parameters = settings.parameters.all().order_by('rank')
 	context = {}
-	context['parameters'] = settings.parameters.all().order_by('rank')
+	context['parameters'] = parameters
+	context['param_count'] = parameters.count()
 	rows = []
 	for rec in recs:
 		contains_win = rec[2].count(True) > 0
