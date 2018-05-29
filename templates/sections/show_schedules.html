@@ -1,7 +1,11 @@
 <script type="text/javascript">
 	function show_schedule(stapher_id) {
 		var id_string = '#stapher_schedule_' + stapher_id
-		console.log(id_string)
-		jQuery(id_string).css({'display':'block'});
+		var schedule = document.getElementById(id_string);
+		if (schedule.style.display === "none") {
+			schedule.style.display = "table";
+		} else {
+			schedule.style.display = "none";
+		}
 	}
 </script>
