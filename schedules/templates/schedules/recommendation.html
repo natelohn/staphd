@@ -9,10 +9,10 @@
 			<th>{{p.title}}</th>
 			{% endfor %}
 		</tr>
-		{% for row in rows %}
+		{% for rec_row in rows %}
 		<tr>
-			<th id="stapher_cell">{{row.stapher}}</th>
-			{% for cell in row.cells %}
+			<th id="stapher_cell">{{rec_row.stapher}}</th>
+			{% for cell in rec_row.cells %}
 			{% if cell.win %}
 			<td id='winning_cell'>{{cell.score}}</td>
 			{% else %}
@@ -22,7 +22,7 @@
 			<td class="button"><a id="view_" href="">View Week</a></td>
 			<td class="create_btn"><a id="scheudle_link" href="">Schedule</a></td>
 		</tr>
-		{% for all_rows_for_time in row.schedule %}
+		{% for all_rows_for_time in rec_row.schedule %}
 		{% include "sections/week_view.html" %}
 		{% endfor %}
 		{% endfor %}
