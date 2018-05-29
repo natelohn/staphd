@@ -26,9 +26,9 @@
 	text-align: right;
 }
 
-/*#hidden_schedule_table {
+#hidden_schedule_table {
 	visibility: hidden;
-}*/
+}
 
 #view_week_btn:hover {
 	background-color: pink;
