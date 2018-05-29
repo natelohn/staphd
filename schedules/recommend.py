@@ -3,7 +3,6 @@ from .parameters import get_parameter_scores, get_best_scores
 def get_win_loss_info(best_scores, stapher_scores):
 	wins_losses = []
 	for i, score in enumerate(stapher_scores):
-		print(f'{score}={best_scores[i]}? {score == best_scores[i]}')
 		wins_losses.append(score == best_scores[i])
 	return wins_losses
 
@@ -29,7 +28,6 @@ def get_recommended_staphers(staphers, shift, staphings, settings, all_shifts):
 	reccomendations = []
 	for stapher, scores in all_scores:
 		wins_losses = get_win_loss_info(best_scores, scores)
-		print(f'{stapher} wins = {wins_losses}')
 		reccomendations.append([stapher, scores, wins_losses])
 
 	# Finally, we return a list of staphers, scores, and wins/losses with the stapher with the most wins at the front.
