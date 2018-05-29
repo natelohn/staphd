@@ -32,6 +32,12 @@
 	visibility: hidden;
 }
 
+
+#view_week_btn:hover {
+	background-color: pink;
+}
+
+
 #view_week_btn:hover #hidden_schedule_table {
 	visibility: visible;
 }
