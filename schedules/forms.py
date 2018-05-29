@@ -120,9 +120,6 @@ class ShiftCreateForm(forms.ModelForm):
 		day = self.cleaned_data.get("day")
 		start = self.cleaned_data.get("start")
 		end = self.cleaned_data.get("end")
-		print(f'{day}, {start}, {end}')
-		if not start or not end:
-			raise forms.ValidationError("Must enter a valid time format: (i.e. 12:00pm)")
 		for s in Staphing.objects.filter(shift = self.instance):
 			staphers_other_staphings = Staphing.objects.filter(stapher = s.stapher).exclude(shift = self.instance)
 			for other_s in staphers_other_staphings:
@@ -139,6 +136,14 @@ class ShiftCreateForm(forms.ModelForm):
 			raise forms.ValidationError(f"Shifts require at least {min_workers} worker.")
 		if workers_needed > max_availible_workers:
 			raise forms.ValidationError(f'You have {max_availible_workers} workers! Shifts cannot require more workers than you have.')
+		scheduled_per_schedule = {}
+		for s in Staphing.objects.filter(shift = self.instance):
+			if s.schedule.id in scheduled_per_schedule:
+				scheduled_per_schedule[s.schedule.id] += 1
+			else:
+				scheduled_per_schedule[s.schedule.id] = 1
+			if scheduled_per_schedule[s.schedule.id] > workers_needed:
+				raise forms.ValidationError(f"The \"{s.schedule}\" schedule has more than {workers_needed} scheudled workers for this shift ({scheduled_per_schedule[s.schedule.id]} workers to be exact). To make this edit delete {scheduled_per_schedule[s.schedule.id] - workers_needed} workers from the \"{s.schedule}\" schedule")
 		return workers_needed
 
 	def clean_qualifications(self):
