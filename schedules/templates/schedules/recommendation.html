@@ -1,7 +1,8 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<table>
+	<h3>Recomendations for {{shift}}</h3>
+	<table id="recomendation_table">
 		<tr>
 			<th></th>
 			{% for p in parameters %}
@@ -10,7 +11,7 @@
 		</tr>
 		{% for row in rows %}
 		<tr>
-			<td>{{row.stapher}}</td>
+			<th>{{row.stapher}}</th>
 			{% for cell in row.cells %}
 			{% if cell.win %}
 			<td>{{cell.score}} Win</td>
