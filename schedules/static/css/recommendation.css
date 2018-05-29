@@ -1,8 +1,12 @@
 #recomendation_table {
 	width: 100%;
+}
+
+#recomendation_table td{
 	border: 1px;
 	border-color: black;
 	border-style: solid;
+	text-align: center;
 }
 
 #winning_cell {
