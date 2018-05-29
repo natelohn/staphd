@@ -18,7 +18,7 @@
 			{% if param_cell.win %}
 			<td id='winning_cell'>{{param_cell.score}}</td>
 			{% else %}
-			<td>{{cell.score}}</td>
+			<td>{{param_cell.score}}</td>
 			{% endif %}
 			{% endfor %}
 			<td class="button" id="view_week_btn" onclick="toggle_schedule({{rec_row.stapher.id}})">View Week</td>
