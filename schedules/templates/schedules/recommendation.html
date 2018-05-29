@@ -27,7 +27,9 @@
 	</table>
 	<div id="stapher_schedule">
 		{% for all_rows_for_time in rec_row.schedule %}
-		{% include "sections/week_view.html" %}
+		<table id="schedule_table">
+			{% include "sections/week_view.html" %}
+		</table>
 		{% endfor %}
 	</div>
 	{% endfor %}

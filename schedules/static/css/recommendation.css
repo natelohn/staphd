@@ -27,8 +27,11 @@
 	text-align: right;
 }
 
-#staphers_schedule *{
+
+
+#staphers_schedule {
 	visibility: hidden;
+	font-size: 3em;
 }
 
 #view_week_btn:hover #staphers_schedule * {
