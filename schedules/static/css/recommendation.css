@@ -26,6 +26,6 @@
 	text-align: right;
 }
 
-#hidden_schedule_table {
+.hidden_schedule_table {
 	display: none;
 }
