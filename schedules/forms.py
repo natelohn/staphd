@@ -133,15 +133,15 @@ class ShiftCreateForm(forms.ModelForm):
 			raise forms.ValidationError(f"Shifts require at least {min_workers} worker.")
 		if workers_needed > max_availible_workers:
 			raise forms.ValidationError(f'You have {max_availible_workers} workers! Shifts cannot require more workers than you have.')
-		scheduled_per_schedule = {}
-		over_scheduled_schedule = None
-		for s in Staphing.objects.filter(shift = self.instance):
-			if s.schedule.id in scheduled_per_schedule:
-				scheduled_per_schedule[s.schedule.id] += 1
-			else:
-				scheduled_per_schedule[s.schedule.id] = 1
-			if scheduled_per_schedule[s.schedule.id] > workers_needed:
-				raise forms.ValidationError(f"The \"{s.schedule}\" schedule has more than {workers_needed} scheudled workers for this shift. To make this edit delete these workers from the \"{s.schedule}\" schedule")
+		# scheduled_per_schedule = {}
+		# over_scheduled_schedule = None
+		# for s in Staphing.objects.filter(shift = self.instance):
+		# 	if s.schedule.id in scheduled_per_schedule:
+		# 		scheduled_per_schedule[s.schedule.id] += 1
+		# 	else:
+		# 		scheduled_per_schedule[s.schedule.id] = 1
+		# 	if scheduled_per_schedule[s.schedule.id] > workers_needed:
+		# 		raise forms.ValidationError(f"The \"{s.schedule}\" schedule has more than {workers_needed} scheudled workers for this shift. To make this edit delete these workers from the \"{s.schedule}\" schedule")
 		print(f'workers_needed = {workers_needed}')
 		return workers_needed
 
