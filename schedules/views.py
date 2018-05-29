@@ -257,6 +257,7 @@ def track_state(request, *args, **kwargs):
 @login_required
 def recommendations_view(request, *args, **kwargs):
 	try:
+		schedule = Schedule.objects.get(active__exact = True)
 		settings = ScheduleBuildingSettings.objects.get()
 	except:
 		return Http404
@@ -279,6 +280,12 @@ def recommendations_view(request, *args, **kwargs):
 			cell['win'] = rec[2][i]
 			cells.append(cell)
 		row['cells'] = cells
+		try:
+			stapher_staphings = Staphing.objects.filter(schedule_id__exact= schedule.id, stapher_id__exact = stapher.id)
+		except:
+			stapher_staphings = []
+		all_rows_for_time = get_week_schedule_view_info(rec[0], stapher_staphings)
+		row['schedule'] = all_rows_for_time
 		rows.append(row)
 	context['rows'] = rows
 	context['shift'] = shift
