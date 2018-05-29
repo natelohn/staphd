@@ -22,10 +22,12 @@
 			<td class="button"><a id="view_week_btn" href="">View Week</a></td>
 			<td class="create_btn"><a id="scheudle_link" href="">Schedule</a></td>
 		</tr>
-		<tr id="staphers_schedule" rowspan="{{param_count}}">
-		{% for all_rows_for_time in rec_row.schedule %}
-			{% include "sections/week_view.html" %}
-		{% endfor %}
+		<tr>
+			<td id="staphers_schedule" rowspan="{{param_count}}">
+				{% for all_rows_for_time in rec_row.schedule %}
+				{% include "sections/week_view.html" %}
+				{% endfor %}
+			</td>
 		</tr>
 		{% endfor %}
 	</table>
