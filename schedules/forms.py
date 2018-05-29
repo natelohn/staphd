@@ -82,7 +82,7 @@ class StapherCreateForm(forms.ModelForm):
 		for s in Staphing.objects.filter(stapher = self.instance):
 			for q in s.shift.qualifications.all():
 				if q not in qualifications:
-					error_string = f"The {q} qualification is needed for {self.instance}'s scheduled shift {s.shift}. Add the {q} qualification or remove {s.shift} from {self.instance}'s schedule."
+					error_string = f"The {q} qualification is needed for {self.instance}'s scheduled shift {s.shift} on {s.schedule}. Give the {q} qualification to {self.instance} or remove {s.shift} from {self.instance}'s schedule on {s.schedule}."
 					raise forms.ValidationError(error_string)
 		return qualifications
 
@@ -102,6 +102,12 @@ class ShiftCreateForm(forms.ModelForm):
 		start = self.cleaned_data.get("start")
 		if not start:
 			raise forms.ValidationError("Must enter a valid time format: (i.e. 12:00pm)")
+		for s in Staphing.objects.filter(shift = self.instance):
+			staphers_other_staphings = Staphing.objects.filter(stapher = s.stapher, shift != self.instance)
+			for other_s in staphers_other_staphings:
+				if s.shift.overlaps(other_s.shift) and s.schedule.id == other_s.schedule.id:
+					error_string = f"{s.stapher} is working {s.shift} and {other_s.shift} on the {other_s.schedule} schedule, so this time edit can not be made. Either delete {s.shift} or {other_s.shift} from {s.stapher}'s schedule on {other_s.schedule} to make this edit."
+					raise forms.ValidationError(error_string)
 		return start
 
 	def clean_end(self):
@@ -111,6 +117,12 @@ class ShiftCreateForm(forms.ModelForm):
 			raise forms.ValidationError("Must enter a valid time format: (i.e. 12:00pm)")
 		if start and start >= end:
 			raise forms.ValidationError("Shift must end after it starts.")
+		for s in Staphing.objects.filter(shift = self.instance):
+			staphers_other_staphings = Staphing.objects.filter(stapher = s.stapher, shift != self.instance)
+			for other_s in staphers_other_staphings:
+				if s.shift.overlaps(other_s.shift) and s.schedule.id == other_s.schedule.id:
+					error_string = f"{s.stapher} is working {s.shift} and {other_s.shift} on the {other_s.schedule} schedule, so this time edit can not be made. Either delete {s.shift} or {other_s.shift} from {s.stapher}'s schedule on {other_s.schedule} to make this edit."
+					raise forms.ValidationError(error_string)
 		return end
 
 	def clean_workers_needed(self):
@@ -122,6 +134,15 @@ class ShiftCreateForm(forms.ModelForm):
 		if workers_needed > max_availible_workers:
 			raise forms.ValidationError(f'You have {max_availible_workers} workers! Shifts cannot require more workers than you have.')
 		return workers_needed
+
+	def clean_qualifications(self):
+		qualifications = self.cleaned_data.get("qualifications")
+		for s in Staphing.objects.filter(shift = self.instance):
+			for q in qualifications: 
+				if q not in s.stapher.qualifications.all()::
+					error_string = f"{s.stapher} does not have the {q} qualification and they are scheduled for {self.instance} on {s.schedule}. Give the {q} qualification to {s.stapher} or remove {self.instance} from {s.staphers}'s schedule on {s.schedule}."
+					raise forms.ValidationError(error_string)
+		return qualifications
 
 
 class QualificationCreateForm(forms.ModelForm):
