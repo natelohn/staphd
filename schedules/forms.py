@@ -103,7 +103,7 @@ class ShiftCreateForm(forms.ModelForm):
 		if not start:
 			raise forms.ValidationError("Must enter a valid time format: (i.e. 12:00pm)")
 		for s in Staphing.objects.filter(shift = self.instance):
-			staphers_other_staphings = Staphing.objects.filter(stapher = s.stapher, shift != self.instance)
+			staphers_other_staphings = Staphing.objects.filter(stapher = s.stapher).exclude(shift = self.instance)
 			for other_s in staphers_other_staphings:
 				if s.shift.overlaps(other_s.shift) and s.schedule.id == other_s.schedule.id:
 					error_string = f"{s.stapher} is working {s.shift} and {other_s.shift} on the {other_s.schedule} schedule, so this time edit can not be made. Either delete {s.shift} or {other_s.shift} from {s.stapher}'s schedule on {other_s.schedule} to make this edit."
@@ -118,7 +118,7 @@ class ShiftCreateForm(forms.ModelForm):
 		if start and start >= end:
 			raise forms.ValidationError("Shift must end after it starts.")
 		for s in Staphing.objects.filter(shift = self.instance):
-			staphers_other_staphings = Staphing.objects.filter(stapher = s.stapher, shift != self.instance)
+			staphers_other_staphings = Staphing.objects.filter(stapher = s.stapher).exclude(shift = self.instance)
 			for other_s in staphers_other_staphings:
 				if s.shift.overlaps(other_s.shift) and s.schedule.id == other_s.schedule.id:
 					error_string = f"{s.stapher} is working {s.shift} and {other_s.shift} on the {other_s.schedule} schedule, so this time edit can not be made. Either delete {s.shift} or {other_s.shift} from {s.stapher}'s schedule on {other_s.schedule} to make this edit."
