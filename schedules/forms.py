@@ -222,7 +222,7 @@ class AddShiftsForm(forms.Form):
 
 	def clean_added_shifts(self):
 		added_shifts = self.cleaned_data.get("added_shifts")
-		print(f'cleaning -->> {test_shifts}')
+		print(f'cleaning -->> {added_shifts}')
 		return added_shifts
 
 
