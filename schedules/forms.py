@@ -209,6 +209,13 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 
 class AddShiftsForm(forms.Form):
-	your_name = forms.CheckboxSelectMultiple()
+	class Meta:
+		fields = ('your_name')
+		widgets = { 'your_name': forms.CheckboxSelectMultiple()}
+
+
+	def __init__(self, auto_id, *args, **kwargs):
+		super(AddShiftsForm, self).__init__(*args, **kwargs)
+		self.fields['your_name'].queryset = Qualification.objects.order_by(Lower('title'))
 
 
