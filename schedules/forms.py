@@ -216,8 +216,7 @@ class AddShiftsForm(forms.Form):
 	added_shifts = forms.MultipleChoiceField(
 			label='added_shifts',
 			widget = forms.CheckboxSelectMultiple(),
-			choices=tuple(sorted(ALL_SHIFTS.items())),
-			blank = True
+			choices=tuple(sorted(ALL_SHIFTS.items()))
 		)
 
 
