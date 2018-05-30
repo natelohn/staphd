@@ -216,8 +216,7 @@ class AddShiftsForm(forms.Form):
 		)
 	test_shifts = forms.MultipleChoiceField(
 			label='test_shifts',
-			widget = forms.CheckboxSelectMultiple,
-		 	choices = OPTIONS
+			widget = forms.CheckboxSelectMultiple
 		 )
 
 	def __init__(self, *args, **kwargs):
