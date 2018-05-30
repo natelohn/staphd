@@ -211,7 +211,7 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 class AddShiftsForm(forms.Form):
 	your_name = forms.CharField(label='Your name', max_length=100)
-	shifts = models.ManyToManyField(Shift, blank = True)
+	shifts = forms.ManyToManyField(Shift, blank = True)
 
 	class Meta:
 		fields = ['shifts']
