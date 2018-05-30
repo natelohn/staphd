@@ -214,13 +214,10 @@ class AddShiftsForm(forms.Form):
 	
 
 	def __init__(self, *args, **kwargs):
-		print(kwargs['pk'])
-		OPTIONS = {
-				0 : 'Automatically choose one of the people who tied at random.',
-				1 : 'Automatically pick whoever won highest ranked parmeter.',
-				2 : 'I want to choose whenever there is a tie.'
-			}
-		kwargs['choices'] = tuple(sorted(DAY_OF_THE_WEEK.items()))
+		OPTIONS = {}
+		for shift in Shift.objects.all():
+			OPTIONS[shift.id] = f'{shift}'
+		kwargs['choices'] = tuple(sorted(OPTIONS.items()))
 		super(AddShiftsForm, self).__init__(*args, **kwargs)
 
 
