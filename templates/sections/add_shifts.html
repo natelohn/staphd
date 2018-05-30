@@ -1,33 +1,33 @@
-<form action="" method='POST' id='form' >{% csrf_token %}
-	<div id="form_div">
-		<label for="added_shifts">Added shifts:</label>
-		<table id="add_shifts_table">
-			{% for row in new_shift_rows %}
-			<tr id="add_shift_row">
-				{% if forloop.first %}
-				{% for cell in row %}
-				<th>{{cell}}</th>
-				{% endfor %}
-				{% else %}
-				{% for cell in row %}
-				{% if cell %}
-
-				<td id="add_shift_row_td">
-					<div id="add_shift_btn">
-						<label for="id_added_shifts_{{forloop.counter0}}"></label>
-						<input type="checkbox" name="added_shifts" value="{{cell.shift.id}}" id="id_added_shifts_{{forloop.counter0}}">
-						{{cell.shift.title}}<br>{{cell.time_string}}
-					</div>
-				</td>
-
-				{% else %}
-				<td id="empty_cell"></td>
-				{% endif %}
-				{% endfor %}
-				{% endif %}
-			</tr>
-			{% endfor %}
-		</table>
-	</div>
+<form method="post">
+	{% csrf_token %}
+	{{ form }}
 	<input type="submit" value="Submit" />
 </form>
+<table id="add_shifts_table">
+	{% for row in new_shift_rows %}
+	<tr id="add_shift_row">
+		{% if forloop.first %}
+		{% for cell in row %}
+		<th>{{cell}}</th>
+		{% endfor %}
+		{% else %}
+		{% for cell in row %}
+		{% if cell %}
+
+		<td id="add_shift_row_td">
+			<div id="add_shift_btn">
+				<label for="id_added_shifts_{{forloop.counter0}}"></label>
+				<input type="checkbox" name="added_shifts" value="{{cell.shift.id}}" id="id_added_shifts_{{forloop.counter0}}">
+				{{cell.shift.title}}<br>{{cell.time_string}}
+			</div>
+		</td>
+
+		{% else %}
+		<td id="empty_cell"></td>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+	</tr>
+	{% endfor %}
+</table>
+</div>
