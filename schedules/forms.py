@@ -209,7 +209,7 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 
 class AddShiftsForm(forms.Form):
-	your_name = forms.CharField(label='Your name', max_length=100)
+	your_name = forms.CheckboxSelectMultiple()
 
 
 	def __init__(self, *args, **kwargs):
