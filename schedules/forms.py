@@ -214,11 +214,12 @@ class AddShiftsForm(forms.Form):
 	
 
 	def __init__(self, *args, **kwargs):
+		super(AddShiftsForm, self).__init__(*args, **kwargs)
 		OPTIONS = {}
 		for shift in Shift.objects.all():
 			OPTIONS[shift.id] = f'{shift}'
 		kwargs['choices'] = tuple(sorted(OPTIONS.items()))
-		super(AddShiftsForm, self).__init__(*args, **kwargs)
+		
 
 
 
