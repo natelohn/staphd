@@ -210,15 +210,11 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 
 class AddShiftsForm(forms.Form):
-	OPTIONS = (("a", "A"),("b", "B"))
-	test_shifts = forms.MultipleChoiceField(label='test_shifts',
-			widget = forms.CheckboxSelectMultiple,
-			choices = OPTIONS
-		 )
+	added_shifts = forms.MultipleChoiceField(label='added_shifts', widget = forms.CheckboxSelectMultiple())
 
 	def clean_test_shifts(self):
-		test_shifts = self.cleaned_data.get("test_shifts")
+		added_shifts = self.cleaned_data.get("added_shifts")
 		print(f'cleaning -->> {test_shifts}')
-		return test_shifts
+		return added_shifts
 
 
