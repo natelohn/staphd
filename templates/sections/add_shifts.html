@@ -1,7 +1,7 @@
 <form action="" method='POST' id='form' >{% csrf_token %}
 	<div id="form_div">
+		<label for="added_shifts">Added shifts:</label>
 		<table id="add_shifts_table">
-			<label for="added_shifts">Added shifts:</label>
 			{% for row in new_shift_rows %}
 			<tr id="add_shift_row">
 				{% if forloop.first %}
