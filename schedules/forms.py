@@ -202,11 +202,13 @@ class SettingsPreferenceForm(forms.ModelForm):
 		min_auto_threshold = 0
 		max_auto_threshold = ScheduleBuildingSettings.objects.get().parameters.all().count()
 		if auto_threshold < min_auto_threshold:
-			print('Huh?')
 			raise forms.ValidationError(f"A thresholds minimum possible value is {min_auto_threshold}.")
 		if auto_threshold > max_auto_threshold:
 			raise forms.ValidationError(f'You have {max_auto_threshold} active parameters. A threshold greater than {max_auto_threshold} is not allowed.')
 		return auto_threshold
 
+
+class AddShiftForm(forms.Form):
+	added_shifts = forms.CheckboxSelectMultiple()
 
 
