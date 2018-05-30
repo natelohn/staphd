@@ -508,7 +508,7 @@ def stapher_schedule(request, args, kwargs, form):
 	context['schedule_msg'] = schedule_msg 
 	context['can_delete'] = True
 	context['all_rows_for_time'] = all_rows_for_time
-	context['add_shifts'] = form != None
+	context['form'] = form
 	context['new_shift_rows'] = new_shift_rows
 	return render(request, template, context)
 
