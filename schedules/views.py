@@ -548,15 +548,17 @@ def stapher_schedule_add(request, *args, **kwargs):
 		return Http404
 
 	# if this is a POST request we need to process the form data
+	print(f'method =>> {request.method}')
 	if request.method == 'POST':
 		# create a form instance and populate it with data from the request:
 		form = AddShiftsForm(request.POST)
 		# check whether it's valid:
+		print(f'Valid = {form.is_valid()}')
 		if form.is_valid():
 			# process the data in form.cleaned_data as required
 			print('Hereee...')
-			print(request.method)
-			print(form.is_valid())
+			
+			
 			print(form.cleaned_data)
 			# redirect to a new URL:
 			return HttpResponseRedirect(reverse('schedules:stapher-schedule', kwargs={'pk': stapher.id}))

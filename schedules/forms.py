@@ -219,4 +219,9 @@ class AddShiftsForm(forms.Form):
 		super(AddShiftsForm, self).__init__(*args, **kwargs)
 		self.fields['test_shifts'].queryset = Qualification.objects.order_by(Lower('title'))
 
+	def clean_test_shifts(self):
+		test_shifts = self.cleaned_data.get("test_shifts")
+		print(f'cleaning -->> {test_shifts}')
+		return test_shifts
+
 
