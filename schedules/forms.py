@@ -210,7 +210,6 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 
 class AddShiftsForm(forms.Form):
-	your_name = forms.CharField(label='Your name', max_length=100)
 	shifts = forms.MultipleChoiceField(choices = ['a', 'ab', 'b'])
 
 	class Meta:
