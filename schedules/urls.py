@@ -2,9 +2,6 @@ from django.conf.urls import url
 
 from . import views
 
-# Temporary?
-from django.views.generic import TemplateView
-
 app_name = 'schedules'
 urlpatterns = [
     url(r'^$', views.HomeView.as_view(), name='home'),
