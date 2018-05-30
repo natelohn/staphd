@@ -1,19 +1,35 @@
-<table id="add_shifts_table">
-	{% for row in new_shift_rows %}
-	<tr id="add_shift_row">
-		{% if forloop.first %}
-		{% for cell in row %}
-		<th>{{cell}}</th>
-		{% endfor %}
-		{% else %}
-		{% for cell in row %}
-		{% if cell %}
-		<td id="add_shift_row_td"><div id="add_shift_btn"><a id="add_shift_link" href="{% url 'schedules:stapher-shift-scheduled' pk=stapher.id s=cell.shift.id %}">{{cell.shift.title}}<br>{{cell.time_string}}</a></div></td>
-		{% else %}
-		<td id="empty_cell"></td>
-		{% endif %}
-		{% endfor %}
-		{% endif %}
-	</tr>
-	{% endfor %}
-</table>
+<form method='POST' id='form' >{% csrf_token %}
+	<div id="form_div">
+		<table id="add_shifts_table">
+			{% for row in new_shift_rows %}
+			<tr id="add_shift_row">
+				{% if forloop.first %}
+				{% for cell in row %}
+				<th>{{cell}}</th>
+				{% endfor %}
+				{% else %}
+				{% for cell in row %}
+				{% if cell %}
+
+
+				<td id="add_shift_row_td">
+					<label for="add_shift_link"></label>
+					<div id="add_shift_btn">
+						<input type="checkbox" name="parameters" value="{{cell.shift.id}}" id="add_shift_link">
+						{{cell.shift.title}}<br>{{cell.time_string}}
+					</div>
+				</td>
+
+
+
+				{% else %}
+				<td id="empty_cell"></td>
+				{% endif %}
+				{% endfor %}
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+	<button class='create_btn' id="form_save" type='submit'>Add Shifts</button>
+</form>
