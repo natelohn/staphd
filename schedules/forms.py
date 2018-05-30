@@ -211,8 +211,8 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 class AddShiftsForm(forms.Form):
 	ALL_SHIFTS = {}
-		for shift in Shift.objects.all():
-			ALL_SHIFTS[shift.id] = f'{shift}'
+	for shift in Shift.objects.all():
+		ALL_SHIFTS[shift.id] = f'{shift}'
 	added_shifts = forms.MultipleChoiceField(label='added_shifts', widget = forms.CheckboxSelectMultiple(), choices=tuple(sorted(ALL_SHIFTS.items())))
 
 
