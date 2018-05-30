@@ -208,7 +208,7 @@ class SettingsPreferenceForm(forms.ModelForm):
 		return auto_threshold
 
 
-class AddShiftForm(forms.Form):
+class AddShiftsForm(forms.Form):
 	added_shifts = forms.CheckboxSelectMultiple()
 
 

@@ -22,7 +22,7 @@ from operator import attrgetter
 from staphd.celery import app
 
 from .analytics import get_readable_time
-from .forms import FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
+from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task
@@ -474,7 +474,7 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 	success_url = reverse_lazy('schedules:stapher-list')
 
 @login_required
-def stapher_schedule(request, args, kwargs, add_shifts):
+def stapher_schedule(request, args, kwargs, form):
 	stapher_id = kwargs['pk']
 	try:
 		stapher = Stapher.objects.get(id__exact = stapher_id)
@@ -493,7 +493,7 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 	else:
 		schedule_msg = f'Unable to view {stapher.full_name()} schedule since no schedule selected...'
 
-	if add_shifts:
+	if form:
 		all_shifts = Shift.objects.all().order_by('day', 'start')
 		new_shift_rows = get_shifts_to_add(stapher, all_shifts, all_staphings, stapher_staphings)
 	else:
@@ -508,17 +508,17 @@ def stapher_schedule(request, args, kwargs, add_shifts):
 	context['schedule_msg'] = schedule_msg 
 	context['can_delete'] = True
 	context['all_rows_for_time'] = all_rows_for_time
-	context['add_shifts'] = add_shifts
+	context['add_shifts'] = form != None
 	context['new_shift_rows'] = new_shift_rows
 	return render(request, template, context)
 
 @login_required
 def stapher_schedule_view(request, *args, **kwargs):
-	return stapher_schedule(request, args, kwargs, False)
+	return stapher_schedule(request, args, kwargs, None)
 
-@login_required
-def stapher_schedule_add(request, *args, **kwargs):
-	return stapher_schedule(request, args, kwargs, True)
+# @login_required
+# def stapher_schedule_add(request, *args, **kwargs):
+# 	return stapher_schedule(request, args, kwargs, True)
 
 @login_required
 def stapher_shift_scheduled(request, *args, **kwargs):
@@ -539,6 +539,31 @@ def stapher_shift_scheduled(request, *args, **kwargs):
 		stapher_staphings = []
 
 	return HttpResponseRedirect(reverse('schedules:stapher-schedule-shifts', kwargs={'pk': stapher.id}))
+
+@login_required
+def stapher_schedule_add(request, *args, **kwargs):
+	stapher_id = kwargs['pk']
+	try:
+		stapher = Stapher.objects.get(id__exact = stapher_id)
+	except:
+		return Http404
+
+	# if this is a POST request we need to process the form data
+	if request.method == 'POST':
+		# create a form instance and populate it with data from the request:
+		form = AddShiftsForm(request.POST)
+		# check whether it's valid:
+		if form.is_valid():
+			# process the data in form.cleaned_data as required
+			# ...
+			# redirect to a new URL:
+			return HttpResponseRedirect(reverse('schedules:stapher-schedule', kwargs={'pk': stapher.id}))
+	
+	# if a GET (or any other method) we'll create a blank form
+	else:
+		form = AddShiftsForm()
+
+	return stapher_schedule(request, args, kwargs, form)
 
 
 # Shift based views
