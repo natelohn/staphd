@@ -473,7 +473,7 @@ class StapherDelete(LoginRequiredMixin, DeleteView):
 	success_url = reverse_lazy('schedules:stapher-list')
 
 @login_required
-def stapher_schedule(request, args, kwargs, form):
+def stapher_schedule(request, args, kwargs):
 	stapher_id = kwargs['pk']
 	try:
 		stapher = Stapher.objects.get(id__exact = stapher_id)
@@ -492,12 +492,6 @@ def stapher_schedule(request, args, kwargs, form):
 	else:
 		schedule_msg = f'Unable to view {stapher.full_name()} schedule since no schedule selected...'
 
-	if form:
-		all_shifts = Shift.objects.all().order_by('day', 'start')
-		new_shift_rows = get_shifts_to_add(stapher, all_shifts, all_staphings, stapher_staphings)
-	else:
-		new_shift_rows = None
-
 	all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings, None, schedule)
 	template = 'schedules/stapher_schedule.html'
 	context = {}
@@ -507,17 +501,12 @@ def stapher_schedule(request, args, kwargs, form):
 	context['schedule_msg'] = schedule_msg 
 	context['can_delete'] = True
 	context['all_rows_for_time'] = all_rows_for_time
-	context['form'] = form
-	context['new_shift_rows'] = new_shift_rows
+	context['adding_shifts'] = False
 	return render(request, template, context)
 
 @login_required
 def stapher_schedule_view(request, *args, **kwargs):
 	return stapher_schedule(request, args, kwargs, None)
-
-# @login_required
-# def stapher_schedule_add(request, *args, **kwargs):
-# 	return stapher_schedule(request, args, kwargs, True)
 
 @login_required
 def stapher_shift_scheduled(request, *args, **kwargs):
@@ -539,33 +528,46 @@ def stapher_shift_scheduled(request, *args, **kwargs):
 
 	return HttpResponseRedirect(reverse('schedules:stapher-schedule-shifts', kwargs={'pk': stapher.id}))
 
-@login_required
-def stapher_schedule_add(request, *args, **kwargs):
-	stapher_id = kwargs['pk']
-	try:
-		stapher = Stapher.objects.get(id__exact = stapher_id)
-	except:
-		return Http404
+class StapherAddShifts(LoginRequiredMixin, UpdateView):
+	template_name = 'schedules/stapher_schedule.html'
+	form_class = AddShiftsForm
+	stapher = get_object()
+	success_url = reverse('schedules:stapher-schedule-shifts', kwargs={'pk': stapher.id})
 
-	# if this is a POST request we need to process the form data
-	if request.method == 'POST':
-		# create a form instance and populate it with data from the request:
-		form = AddShiftsForm(request.POST)
-		# check whether it's valid:
-		if form.is_valid():
-			# process the data in form.cleaned_data as required
-			print('Hereee...')
-			print(request.method)
-			print(form.is_valid())
-			print(form.cleaned_data)
-			# redirect to a new URL:
-			return HttpResponseRedirect(reverse('schedules:stapher-schedule', kwargs={'pk': stapher.id}))
-	
-	# if a GET (or any other method) we'll create a blank form
-	else:
-		form = AddShiftsForm()
+	def get_object(self, *args, **kwargs):
+		stapher_id = kwargs['pk']
+		try:
+			stapher = Stapher.objects.get(id = stapher_id)
+		except:
+			return None
+		return stapher
 
-	return stapher_schedule(request, args, kwargs, form)
+	def get_context_data(self, *args, **kwargs):
+		try:
+			schedule = Schedule.objects.get(active__exact = True)
+			all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+			stapher_staphings = all_staphings.filter(stapher_id__exact = stapher.id)
+		except:
+			schedule = None
+			all_staphings = []
+			stapher_staphings = []
+		if schedule:
+			schedule_msg = f'{stapher.full_name()}\'s Shifts on "{schedule.title}"'
+		else:
+			schedule_msg = f'Unable to view {stapher.full_name()} schedule since no schedule selected...'
+
+		all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings, None, schedule)
+		all_shifts = Shift.objects.all().order_by('day', 'start')
+		new_shift_rows = get_shifts_to_add(stapher, all_shifts, all_staphings, stapher_staphings)
+		context = super(SettingParameterUpdate, self).get_context_data(*args, **kwargs)
+		context['stapher'] = self.get_object(*args, **kwargs)
+		context['name'] = stapher.full_name()
+		context['schedule'] = schedule
+		context['schedule_msg'] = schedule_msg 
+		context['can_delete'] = True
+		context['all_rows_for_time'] = all_rows_for_time
+		context['adding_shifts'] = True
+		return context
 
 
 # Shift based views
