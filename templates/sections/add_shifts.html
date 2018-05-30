@@ -12,7 +12,6 @@
 				{% for cell in row %}
 				{% if cell %}
 
-
 				<td id="add_shift_row_td">
 					<div id="add_shift_btn">
 						<label for="added_shifts_{{forloop.counter0}}"></label>
@@ -20,8 +19,6 @@
 						{{cell.shift.title}}<br>{{cell.time_string}}
 					</div>
 				</td>
-
-
 
 				{% else %}
 				<td id="empty_cell"></td>

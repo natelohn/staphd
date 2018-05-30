@@ -182,7 +182,6 @@ class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 		context['rank_based'] = settings.tie_breaker == 1
 		return context
 
-
 @login_required
 @csrf_exempt
 def build_schedules(request, *args, **kwargs):
@@ -556,7 +555,9 @@ def stapher_schedule_add(request, *args, **kwargs):
 		if form.is_valid():
 			# process the data in form.cleaned_data as required
 			print('Hereee...')
-			print(form)
+			print(request.method)
+			print(form.is_valid())
+			print(form.cleaned_data)
 			# redirect to a new URL:
 			return HttpResponseRedirect(reverse('schedules:stapher-schedule', kwargs={'pk': stapher.id}))
 	
