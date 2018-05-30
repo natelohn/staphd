@@ -217,5 +217,6 @@ class AddShiftsForm(forms.Form):
 		print('Boottyyyyasss')
 		for shift in added_shifts:
 			print(shift)
+		return added_shifts
 
 
