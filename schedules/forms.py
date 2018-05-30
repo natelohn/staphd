@@ -210,6 +210,7 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 
 class AddShiftsForm(forms.Form):
+	your_name = forms.CharField(label='Your name', max_length=100)
 	shifts = models.ManyToManyField(Shift, blank = True)
 
 	class Meta:
@@ -218,6 +219,6 @@ class AddShiftsForm(forms.Form):
 
 	def __init__(self, *args, **kwargs):
 		super(AddShiftsForm, self).__init__(*args, **kwargs)
-		print(self.fields)
+		print(self.fields.keys())
 
 
