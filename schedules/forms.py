@@ -210,7 +210,11 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 
 class AddShiftsForm(forms.Form):
-	test_shifts = forms.MultipleChoiceField(widget = forms.CheckboxSelectMultiple(), Shifts.objects.all())
+	test_shifts = forms.MultipleChoiceField(
+			label='test_shifts',
+			widget = forms.CheckboxSelectMultiple,
+		 	choices = Shifts.objects.all()
+		 )
 
 	def __init__(self, *args, **kwargs):
 		super(AddShiftsForm, self).__init__(*args, **kwargs)
