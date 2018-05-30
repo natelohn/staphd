@@ -212,3 +212,10 @@ class AddShiftsForm(forms.Form):
 	added_shifts = forms.CheckboxSelectMultiple()
 
 
+	def clean_added_shifts(self):
+		added_shifts = self.cleaned_data.get("added_shifts")
+		print('Boottyyyyasss')
+		for shift in added_shifts:
+			print(shift)
+
+
