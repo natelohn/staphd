@@ -211,6 +211,19 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 class AddShiftsForm(forms.Form):
 	added_shifts = forms.MultipleChoiceField(label='added_shifts', widget = forms.CheckboxSelectMultiple())
+	
+
+	def __init__(self, *args, **kwargs):
+		print(kwargs['pk'])
+		OPTIONS = {
+				0 : 'Automatically choose one of the people who tied at random.',
+				1 : 'Automatically pick whoever won highest ranked parmeter.',
+				2 : 'I want to choose whenever there is a tie.'
+			}
+		kwargs['choices'] = tuple(sorted(DAY_OF_THE_WEEK.items()))
+		super(AddShiftsForm, self).__init__(*args, **kwargs)
+
+
 
 	def clean_test_shifts(self):
 		added_shifts = self.cleaned_data.get("added_shifts")
