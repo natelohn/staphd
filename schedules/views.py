@@ -557,8 +557,6 @@ def stapher_schedule_add(request, *args, **kwargs):
 		if form.is_valid():
 			# process the data in form.cleaned_data as required
 			print('Hereee...')
-			
-			
 			print(form.cleaned_data)
 			# redirect to a new URL:
 			return HttpResponseRedirect(reverse('schedules:stapher-schedule', kwargs={'pk': stapher.id}))

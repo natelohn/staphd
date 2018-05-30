@@ -210,14 +210,12 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 
 class AddShiftsForm(forms.Form):
+	OPTIONS = (("a", "A"),("b", "B"))
 	test_shifts = forms.MultipleChoiceField(
 			label='test_shifts',
-			widget = forms.CheckboxSelectMultiple
+			widget = forms.CheckboxSelectMultiple,
+			choices = OPTIONS
 		 )
-
-	def __init__(self, *args, **kwargs):
-		super(AddShiftsForm, self).__init__(*args, **kwargs)
-		self.fields['test_shifts'].queryset = Qualification.objects.order_by(Lower('title'))
 
 	def clean_test_shifts(self):
 		test_shifts = self.cleaned_data.get("test_shifts")
