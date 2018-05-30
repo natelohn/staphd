@@ -1,5 +1,6 @@
 import datetime as dt
 from django import forms
+from django.db import models
 from django.db.models.functions import Lower
 
 from .models import Flag, Qualification, Schedule, Settings, Shift, Stapher, Staphing
