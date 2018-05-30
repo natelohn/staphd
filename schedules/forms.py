@@ -211,13 +211,13 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 class AddShiftsForm(forms.Form):
 	shifts = models.ManyToManyField(Shift, blank = True)
-	
+
 	class Meta:
 		fields = ['shifts']
 		widgets = { 'shifts': forms.CheckboxSelectMultiple()}
 
 	def __init__(self, *args, **kwargs):
 		super(AddShiftsForm, self).__init__(*args, **kwargs)
-		print(self.fields['shifts'])
+		print(self.fields)
 
 
