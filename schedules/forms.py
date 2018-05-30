@@ -10,7 +10,7 @@ class StapherCreateForm(forms.ModelForm):
 	
 	class Meta:
 		model = Stapher
-		fields = ('first_name','last_name', 'title', 'age', 'class_year', 'summers_worked', 'gender','qualifications')
+		fields = ['first_name','last_name', 'title', 'age', 'class_year', 'summers_worked', 'gender','qualifications']
 		widgets = { 'qualifications': forms.CheckboxSelectMultiple()}
 
 
@@ -209,13 +209,11 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 
 class AddShiftsForm(forms.Form):
-	class Meta:
-		fields = ['your_name']
-		widgets = { 'your_name': forms.CheckboxSelectMultiple()}
+	your_name = forms.CharField(label='Your name', max_length=100)
 
 
 	def __init__(self, *args, **kwargs):
 		super(AddShiftsForm, self).__init__(*args, **kwargs)
-		self.fields['your_name'].queryset = Qualification.objects.order_by(Lower('title'))
+		print(self.fields['your_name'])
 
 
