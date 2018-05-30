@@ -531,7 +531,7 @@ def stapher_shift_scheduled(request, *args, **kwargs):
 class StapherAddShifts(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/stapher_schedule.html'
 	form_class = AddShiftsForm
-	stapher = get_object()
+	stapher = self.get_object()
 	success_url = reverse('schedules:stapher-schedule-shifts', kwargs={'pk': stapher.id})
 
 	def get_object(self, *args, **kwargs):
