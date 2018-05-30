@@ -216,6 +216,7 @@ class AddShiftsForm(forms.Form):
 
 	def __init__(self, auto_id, *args, **kwargs):
 		super(AddShiftsForm, self).__init__(*args, **kwargs)
+		self.auto_id = auto_id
 		self.fields['your_name'].queryset = Qualification.objects.order_by(Lower('title'))
 
 
