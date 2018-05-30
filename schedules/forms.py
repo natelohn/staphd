@@ -213,10 +213,15 @@ class AddShiftsForm(forms.Form):
 	ALL_SHIFTS = {}
 	for shift in Shift.objects.all():
 		ALL_SHIFTS[shift.id] = f'{shift}'
-	added_shifts = forms.MultipleChoiceField(label='added_shifts', widget = forms.CheckboxSelectMultiple(), choices=tuple(sorted(ALL_SHIFTS.items())))
+	added_shifts = forms.MultipleChoiceField(
+			label='added_shifts',
+			widget = forms.CheckboxSelectMultiple(),
+			choices=tuple(sorted(ALL_SHIFTS.items())),
+			blank = True
+		)
 
 
-	def clean_test_shifts(self):
+	def clean_added_shifts(self):
 		added_shifts = self.cleaned_data.get("added_shifts")
 		print(f'cleaning -->> {test_shifts}')
 		return added_shifts
