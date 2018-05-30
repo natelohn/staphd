@@ -209,7 +209,9 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 
 class AddShiftsForm(forms.Form):
-	added_shifts = forms.CheckboxSelectMultiple(label='Added shifts')
+	class Meta:
+		fields = ('added_shifts')
+		widgets = { 'added_shifts': forms.CheckboxSelectMultiple()}
 
 
 	def clean_added_shifts(self):
