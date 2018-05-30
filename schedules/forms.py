@@ -214,9 +214,8 @@ class AddShiftsForm(forms.Form):
 		widgets = { 'your_name': forms.CheckboxSelectMultiple()}
 
 
-	def __init__(self, auto_id, *args, **kwargs):
+	def __init__(self, *args, **kwargs):
 		super(AddShiftsForm, self).__init__(*args, **kwargs)
-		self.auto_id = auto_id
 		self.fields['your_name'].queryset = Qualification.objects.order_by(Lower('title'))
 
 
