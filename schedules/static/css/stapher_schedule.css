@@ -61,6 +61,7 @@
 #add_shift_row_td input:checked {
     background-color: #32e535;
     font-size: 20em;
+    color: pink;
 }
 
 #empty_cell {
