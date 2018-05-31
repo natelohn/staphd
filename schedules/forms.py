@@ -231,7 +231,7 @@ class AddShiftsForm(forms.Form):
 				raise forms.ValidationError(f"{shift_id} is not vaild shift id.")
 		for shift in added_shifts:
 			for other_shift in added_shifts:
-				if shift not other_shift:
+				if shift.id != other_shift.id:
 					if shift.overlaps(other_shift):
 						raise forms.ValidationError(f"Cannot add both {shift} and {other_shift} since they overlap. Please select one or the other.")
 		return added_shifts
