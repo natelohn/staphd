@@ -49,11 +49,9 @@
 
 #add_shift_row_td{
 	background-color: silver;
-}
-
-#add_shift_btn {
 	text-align: center;
-	height: 100%;
+	height: 60px;
+
 }
 
 #add_shift_link {
