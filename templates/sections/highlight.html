@@ -5,6 +5,12 @@
 		var shift = document.getElementById(id_string);
 		console.log(shift);
 		console.log(shift.style.backgroundColor);
-		shift.style.backgroundColor = "#32e535";
+		if (shift.style.backgroundColor === "#32e535") {
+			console.log('was green');
+			shift.style.backgroundColor = "silver";
+		} else {
+			console.log('was silver');
+			schedule.style.backgroundColor = "32e535";
+		}
 	}
 </script>
