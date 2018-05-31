@@ -54,17 +54,11 @@
 
 }
 
-#add_shift_link {
-	text-decoration: none;
-	color: black;
-	pointer-events: auto;
-}
-
 #add_shift_row td:hover {
     background-color: #32e535;
 }
 
-#add_shift_row input:checked + #add_shift_row td {
+#add_shift_row input:checked {
     background-color: #32e535;
 }
 
