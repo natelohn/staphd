@@ -543,28 +543,20 @@ def stapher_shift_scheduled(request, *args, **kwargs):
 def stapher_schedule_add(request, *args, **kwargs):
 	stapher_id = kwargs['pk']
 	try:
+		schedule = Schedule.objects.get(active = True)
 		stapher = Stapher.objects.get(id__exact = stapher_id)
 	except:
 		return Http404
-
-	# if this is a POST request we need to process the form data
-	print(f'method =>> {request.method}')
 	if request.method == 'POST':
-		# create a form instance and populate it with data from the request:
 		form = AddShiftsForm(request.POST)
-		# check whether it's valid:
 		print(f'Valid = {form.is_valid()}')
 		if form.is_valid():
-			# process the data in form.cleaned_data as required
-			print('Hereee...')
-			print(form.cleaned_data)
-			# redirect to a new URL:
+			for shift in form.cleaned_data['added_shifts']:
+				new_staphing = Staphing(stapher = stapher, schedule = schedule, shift = shift)
+				new_staphing.save()
 			return HttpResponseRedirect(reverse('schedules:stapher-schedule', kwargs={'pk': stapher.id}))
-	
-	# if a GET (or any other method) we'll create a blank form
 	else:
 		form = AddShiftsForm()
-
 	return stapher_schedule(request, args, kwargs, form)
 
 
