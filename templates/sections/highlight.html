@@ -4,9 +4,12 @@
 		console.log(id_string);
 		var shift = document.getElementById(id_string);
 		console.log(shift);
+		console.log(shift.style.backgroundColor);
 		if (shift.style.backgroundColor === "silver") {
+			console.log('was silver');
 			shift.style.backgroundColor = "#32e535";
 		} else {
+			console.log('was green');
 			schedule.style.backgroundColor = "silver";
 		}
 	}
