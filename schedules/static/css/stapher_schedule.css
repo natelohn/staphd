@@ -54,10 +54,6 @@
 
 }
 
-.add_shift_row_td:hover {
-    background-color: #32e535;
-}
-
 
 #empty_cell {
 	background-color: white;
