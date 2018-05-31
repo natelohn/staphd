@@ -220,7 +220,7 @@ class AddShiftsForm(forms.Form):
 		)
 
 	def __init__(self, *args, **kwargs):
-		super(StapherCreateForm, self).__init__(*args, **kwargs)
+		super(AddShiftsForm, self).__init__(*args, **kwargs)
 		self.fields['added_shifts'].queryset = Shift.objects.all()
 
 	def clean_added_shifts(self):
