@@ -23,7 +23,9 @@
 				<td class="add_shift_row_td" id="new_shift_{{cell.shift.id}}">
 					<label for="id_added_shifts_{{forloop.counter0}}"></label>
 					<input type="checkbox" name="added_shifts" value="{{cell.shift.id}}" class="new_shift_checkbox" id="id_added_shifts_{{forloop.counter0}}" onclick="toggle_highlighted({{cell.shift.id}})">
-					{{cell.shift.title}}<br>{{cell.time_string}}
+					<a class="link_btn" href='{{ cell.shift.get_absolute_url }}'>
+						{{cell.shift.title}}<br>{{cell.time_string}}
+					</a>
 				</td>
 
 				{% else %}
