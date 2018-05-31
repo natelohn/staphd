@@ -210,18 +210,17 @@ class SettingsPreferenceForm(forms.ModelForm):
 
 
 class AddShiftsForm(forms.Form):
-	ALL_SHIFTS = {}
-	for shift in Shift.objects.all():
-		ALL_SHIFTS[shift.id] = f'{shift}'
 	added_shifts = forms.MultipleChoiceField(
 			label='added_shifts',
 			widget = forms.CheckboxSelectMultiple(),
-			choices=tuple(sorted(ALL_SHIFTS.items()))
 		)
 
 	def __init__(self, *args, **kwargs):
 		super(AddShiftsForm, self).__init__(*args, **kwargs)
-		self.fields['added_shifts'].queryset = Shift.objects.all()
+		ALL_SHIFTS = {}
+		for shift in Shift.objects.all():
+			ALL_SHIFTS[shift.id] = f'{shift}'
+		self.fields['added_shifts'].choices = tuple(sorted(ALL_SHIFTS.items()))
 
 	def clean_added_shifts(self):
 		added_shifts_ids = self.cleaned_data.get("added_shifts")
