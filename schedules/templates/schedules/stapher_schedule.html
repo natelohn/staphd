@@ -5,7 +5,7 @@
 	<a class="button" href='{{ stapher.get_absolute_url }}'>View Stapher</a>
 	<a class="button" href="{% url 'schedules:select' %}">Select New Schedule</a>
 	{% if schedule %}
-	{% if add_shifts %}
+	{% if form %}
 	<a class="button" href="{% url 'schedules:stapher-schedule' pk=stapher.id %}">Done Adding Shifts</a>
 	{% else %}
 	<a class="button" href="{% url 'schedules:stapher-schedule-shifts' pk=stapher.id %}">Add Shifts</a>

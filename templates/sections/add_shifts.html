@@ -2,10 +2,9 @@
 	<button class='create_btn' id="form_save" type='submit'>Add Selected Shifts</button>
 	{% if form.errors %}
 	<div id="form_errors">
-		<br>
-		<br>
 		<p>The shifts could not be added:</p>
 		<p>{{ form.errors.as_text }}</p>
+		<br>
 		<br>
 		<br>
 	</div>
