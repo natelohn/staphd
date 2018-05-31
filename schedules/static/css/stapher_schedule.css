@@ -24,7 +24,7 @@
 	
 }
 
-.schedule_table, .schedule_table th, .scheduled_time, #add_shifts_table th, #add_shift_row_td,
+.schedule_table, .schedule_table th, .scheduled_time, #add_shifts_table th, .add_shift_row_td,
  .hidden_schedule_table, .hidden_schedule_table th{
 	border: 1px;
 	border-color: black;
@@ -47,14 +47,14 @@
 	visibility: visible;
 }
 
-#add_shift_row_td{
+.add_shift_row_td{
 	background-color: silver;
 	text-align: center;
 	height: 60px;
 
 }
 
-#add_shift_row_td:hover {
+.add_shift_row_td:hover {
     background-color: #32e535;
 }
 
