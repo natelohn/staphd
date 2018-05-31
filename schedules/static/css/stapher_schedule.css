@@ -60,6 +60,7 @@
 
 #add_shift_row input:checked {
     background-color: #32e535;
+    font-size: 8em;
 }
 
 #empty_cell {
