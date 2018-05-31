@@ -49,16 +49,24 @@
 
 #add_shift_row_td{
 	background-color: silver;
-	text-align: center;
-	height: 100%;
-	width: 100%;
 }
 
-#add_shift_row_td:hover {
+#add_shift_btn {
+	text-align: center;
+	height: 100%;
+}
+
+#add_shift_link {
+	text-decoration: none;
+	color: black;
+	pointer-events: auto;
+}
+
+#add_shift_row td:hover {
     background-color: #32e535;
 }
 
-#add_shift_row input:checked + #add_shift_row_td {
+#add_shift_row input:checked + #add_shift_row td {
     background-color: #32e535;
 }
 
