@@ -1,10 +1,8 @@
 <script type="text/javascript">
-	function toggle_highlighted(shift_id, box_id) {
+	function toggle_highlighted(shift_id) {
 		var shift_id_string = 'new_shift_' + shift_id;
-		var box_id_string = 'id_added_shifts_' + box_id;
 		var shift = document.getElementById(shift_id_string);
-		var box = document.getElementById(box_id_string);
-		if (box.checked) {
+		if (shift.style.backgroundColor === "silver") {
 			shift.style.backgroundColor = "#32E535";
 		} else {
 			shift.style.backgroundColor = "silver";
