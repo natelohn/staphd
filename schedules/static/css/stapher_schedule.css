@@ -54,11 +54,11 @@
 
 }
 
-#add_shift_row td:hover {
+#add_shift_row_td:hover {
     background-color: #32e535;
 }
 
-#add_shift_row input:checked {
+#add_shift_row_td input:checked {
     background-color: #32e535;
     font-size: 8em;
 }
