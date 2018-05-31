@@ -219,6 +219,9 @@ class AddShiftsForm(forms.Form):
 			choices=tuple(sorted(ALL_SHIFTS.items()))
 		)
 
+	def __init__(self, *args, **kwargs):
+		super(StapherCreateForm, self).__init__(*args, **kwargs)
+		self.fields['added_shifts'].queryset = Shift.objects.all()
 
 	def clean_added_shifts(self):
 		added_shifts_ids = self.cleaned_data.get("added_shifts")
