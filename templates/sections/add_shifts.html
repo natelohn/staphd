@@ -1,4 +1,11 @@
 <form action="" method='POST' id='form' >{% csrf_token %}
+	{% if form.errors %}
+	<div id="form_errors">
+		<p>The shifts could not be added:</p>
+		<p>{{ form.errors.as_text }}</p>
+	</div>
+	{% endif %}
+	<button class='create_btn' id="form_save" type='submit'>Add Selected Shifts</button>
 	<div id="form_div">
 		<label for="added_shifts">Added shifts:</label>
 		<table id="add_shifts_table">
@@ -29,5 +36,4 @@
 			{% endfor %}
 		</table>
 	</div>
-	<input type="submit" value="Submit" />
 </form>

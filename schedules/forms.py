@@ -221,8 +221,19 @@ class AddShiftsForm(forms.Form):
 
 
 	def clean_added_shifts(self):
-		added_shifts = self.cleaned_data.get("added_shifts")
-		print(f'cleaning -->> {added_shifts}')
+		added_shifts_ids = self.cleaned_data.get("added_shifts")
+		added_shifts = []
+		for shift_id in added_shifts_ids:
+			try:
+				shift = Shift.objects.get(id = shift_id)
+				added_shifts.append(shift)
+			except:
+				raise forms.ValidationError(f"{shift_id} is not vaild shift id.")
+		for shift in added_shifts:
+			for other_shift in added_shifts:
+				if shift not other_shift:
+					if shift.overlaps(other_shift):
+						raise forms.ValidationError(f"Cannot add both {shift} and {other_shift} since they overlap. Please select one or the other.")
 		return added_shifts
 
 
