@@ -68,6 +68,10 @@
     background-color: #32e535;
 }
 
+#add_shift_row input:checked + #add_shift_row td {
+    background-color: #32e535;
+}
+
 #empty_cell {
 	background-color: white;
 	pointer-events: none;
@@ -77,3 +81,6 @@
 #new_shift {
 	background-color: #32e535;
 }
+
+
+
