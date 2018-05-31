@@ -8,12 +8,12 @@
 		var box = document.getElementById(box_id_string);
 		console.log(shift);
 		console.log(box);
-		if (shift.style.backgroundColor === "#32e535") {
-			console.log('was green');
-			shift.style.backgroundColor = "silver";
+		if (box.checked) {
+			console.log('is checked');
+			shift.style.backgroundColor = "32e535";
 		} else {
-			console.log('was silver');
-			schedule.style.backgroundColor = "32e535";
+			console.log('not checked');
+			schedule.style.backgroundColor = "silver";
 		}
 	}
 </script>
