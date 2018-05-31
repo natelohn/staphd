@@ -70,4 +70,8 @@
 	color: black;
 }
 
+#new_shift_link:hover {
+	text-decoration: underline;
+}
+
 
