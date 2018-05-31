@@ -1,7 +1,9 @@
 <script type="text/javascript">
 	function toggle_highlighted(shift_id) {
-		var id_string = 'id_added_shifts_' + shift_id
+		var id_string = 'id_added_shifts_' + shift_id;
+		console_log(id_string);
 		var shift = document.getElementById(id_string);
+		console_log(shift);
 		if (shift.style.background_color === "silver") {
 			shift.style.background_color = "#32e535";
 		} else {
