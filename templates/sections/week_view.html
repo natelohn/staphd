@@ -15,7 +15,9 @@
 		{% if can_delete %}
 		<a href="{% url 'schedules:staphing-delete' pk=cell.staphing_id %}"><i class="fa fa-times-rectangle" id="delete_icon"></i></a>
 		{% endif %}
-		{{cell.title}}
+		<a id="new_shift_link" href='{{ cell.shift.get_absolute_url }}' target="_blank">
+			{{cell.title}}
+		</a>
 	</td>
 	{% else %}
 	<td id="non_scheduled_time"></td>

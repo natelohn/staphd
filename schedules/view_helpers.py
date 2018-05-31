@@ -29,6 +29,7 @@ def get_week_schedule_view_info(stapher, staphings, shift, schedule):
 				cell['title'] = f'{staphing.shift.title}, {get_readable_time(staphing.shift.start)}-{get_readable_time(staphing.shift.end)}'
 				cell['span'] = get_hours_from_timedelta(staphing.shift.length()) * 4
 				cell['staphing_id'] = staphing.id
+				cell['shift'] = staphing.shift
 				if shift:
 					cell['new_shift'] = staphing.shift.id == shift.id
 				row_for_time.append(cell)
