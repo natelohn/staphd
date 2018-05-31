@@ -1,9 +1,9 @@
 <form action="" method='POST' id='form' >{% csrf_token %}
 	<button class='create_btn' id="form_save" type='submit'>Add Selected Shifts</button>
 	{% if form.errors %}
-	<div>
-		<p id="error">The shifts could not be added due to the following error:</p>
-		<p id="error">>{{ form.errors.as_text }}</p>
+	<div id="error">
+		<p>The shifts could not be added due to the following error:</p>
+		<p>{{ form.errors.as_text }}</p>
 	</div>
 	{% endif %}
 	<div id="form_div">
