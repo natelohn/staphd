@@ -2,12 +2,8 @@
 	function toggle_highlighted(shift_id, box_id) {
 		var shift_id_string = 'new_shift_' + shift_id;
 		var box_id_string = 'id_added_shifts_' + box_id;
-		console.log(shift_id_string);
-		console.log(box_id_string);
 		var shift = document.getElementById(shift_id_string);
 		var box = document.getElementById(box_id_string);
-		console.log(shift);
-		console.log(box);
 		if (box.checked) {
 			console.log('is checked');
 			shift.style.backgroundColor = "32e535";
