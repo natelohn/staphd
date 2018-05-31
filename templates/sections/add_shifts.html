@@ -1,15 +1,11 @@
-{% if form.errors %}
-<div>
-	<p>The shifts could not be added due to the following error:</p>
-	<p>{{ form.errors.as_text }}</p>
-</div>
-<br>
-<br>
-<br>
-<br>
-{% endif %}
 <form action="" method='POST' id='form' >{% csrf_token %}
 	<button class='create_btn' id="form_save" type='submit'>Add Selected Shifts</button>
+	{% if form.errors %}
+	<div>
+		<p id="error">The shifts could not be added due to the following error:</p>
+		<p id="error">>{{ form.errors.as_text }}</p>
+	</div>
+	{% endif %}
 	<div id="form_div">
 		<label for="added_shifts">Added shifts:</label>
 		<table id="add_shifts_table">
