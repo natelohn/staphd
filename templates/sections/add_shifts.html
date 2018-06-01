@@ -1,6 +1,6 @@
 <form action="" method='POST' id='form' >{% csrf_token %}
 	<button class='create_btn' id="form_save" type='submit'>Add Selected Shifts</button>
-	<a class="button" type=button href="{% url 'schedules:shift-create' %}">New Shift</a>
+	<a class="button" type=button href="{% url 'schedules:shift-create' %}" target="_blank">New Shift</a>
 	{% if form.errors %}
 	<div class="error">
 		<p>The shifts could not be added due to the following error:</p>
