@@ -96,6 +96,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 			# Depending on the settings, we either auto-schedule those recommendations or return them.
 			else:
 				recommendations = get_recommended_staphers(free_and_qualified, shift, staphings, settings, all_shifts)
+				print(f'recommendations = {recommendations}')
 				if not settings.auto_schedule:
 					for staphing in staphings:
 						staphing.save()
