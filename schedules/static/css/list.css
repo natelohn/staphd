@@ -147,5 +147,9 @@
 	margin-bottom: 2.5px;
 	/* Style */
 	/*background-color: purple;*/
+}
 
+
+#search_info {
+    top: 60px;
 }
