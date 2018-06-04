@@ -22,9 +22,8 @@ def get_recommended_staphers(staphers, shift, staphings, settings, all_shifts):
 			best_scores = parameter_scores
 		else:
 			best_scores = get_best_scores(parameters, parameter_scores, best_scores)
-		all_scores.append([stapher, parameter_scores])
+		all_scores.append([stapher, parameter_scores[:]])
 		print(f'all_scores Pre = {all_scores}')
-		print(f'{stapher} scores = {parameter_scores}')
 
 	# Next we loop to determine which staphers have the best scores.
 	reccomendations = []
