@@ -5,6 +5,31 @@
 		<h1>{{title}}</h1>
 		<form method='GET' action='.'>
 			<input type='text' placeholder="Search... " name='q' value='{{ request.GET.q }}'>
+			<div class="tooltip">?
+				<span class="tooltiptext">
+					Use this are to search for Staphers with specific information: <br>
+					Options include:<br>
+					- Searching by any portion of the staphers first or last name (Searching <i>"Mic"</i> will show Mick, Michelle, etc.)
+					<br>
+					- Searching by their job title is <strong>exactly</strong> (Searching <i>"Ski"</i> won't show ski dock)
+					<br>
+					- Search <i>“New”</i> or <i>“Returners”</i> to show new or returning staphers
+					<br>
+					- Searching 0, 1, 2, etc. will give the staphers with that number of summers.
+					<br>
+					- Searching for exact class year (i.e. <i>"2020"</i> will give you people that graduate in 2020)
+					<br>
+					- Searching for exact age (i.e. <i>"21"</i> will give you people that are 21)
+					<br>
+					- Searching for the exact qualification (i.e. <i>"boat-dock"</i> will give you people that have are qualified to work Boat Dock) - to see a full list of qualifications go to the settings tab.
+					<br>
+					- Placing an exclamation point (!) before your search will give you all the people that do not fit that search (Searching <i>"! lifeguarding"</i> shows everyone that is NOT qualified to work lifeguarding shifts)
+					<br>
+					- You can perform multiple searches by separating searches by “,” (i.e. Searching <i>"Ski Dock, ! lifeguarding, New"</i> gives you new staphers that are on Ski Dock and are NOT qualified to lifeguard). You can combine as many of these searches as you like. 
+					<br>
+					- An explanation of the results is shown above the list of Staphers. If a search results in all staphers being shown (i.e. Searching <i>"New, Returners"</i>) it will simply read "All Staphers" above the list.
+				</span>
+			</div>
 			<button class="button" type='submit'>Search</button>
 		</form>
 		<a class="link_btn" type=button href="{% url link %}">New</a>	
@@ -12,15 +37,15 @@
 	<div class="lists">
 		<div class="left_list" id="stapher_list">
 			{% if object_list %}
-				{% if query_explanation %}
-					<h2>{{query_explanation}}</h2>
-				{% endif %}
-				{% for obj in object_list %}
-					<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
-				{% endfor %}
+			{% if query_explanation %}
+			<h2>{{query_explanation}}</h2>
+			{% endif %}
+			{% for obj in object_list %}
+			<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+			{% endfor %}
 			{% else %}
-				<h3> No {{title}} found.</h3><br>
-				<p>Select "New" or edit your search.</p>
+			<h3> No {{title}} found.</h3><br>
+			<p>Select "New" or edit your search.</p>
 			{% endif %}			
 		</div>
 	</div>
