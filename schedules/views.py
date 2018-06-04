@@ -271,6 +271,7 @@ def recommendations_view(request, *args, **kwargs):
 	context = {}
 	rows = []
 	for rec in recs:
+		print(rec)
 		stapher = rec[0]
 		scores = rec[1]
 		wins = rec[2]
