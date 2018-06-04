@@ -3,36 +3,36 @@
 <div id="page">
 	<div class="list_header">
 		<h1>{{title}}</h1>
+		<div class="tooltip">More Info
+			<span class="tooltiptext">
+				Use this are to search for Shifts with specific information: <br>
+				Options include:<br>
+				- Searching "Covered" or "Uncovered" to see the shifts that have all the stapher they require on the current scheudle.
+				<br>
+				- Searching by any portion of the shifts title (Searching <i>"Dock"</i> will show Boat Dock, Ski Dock, etc.)
+				<br>
+				- Searching day of the week (days must be spelled <strong>exactly</strong>) to see the shifts on that day ("Sunday" shows all of Sundays shifts)
+				<br>
+				- Searching by times "12:00 pm" shows shifts at that time (Times must include ":" & an "am" or "pm)
+				- Searching for exact class year (i.e. <i>"2020"</i> will give you people that graduate in 2020)
+				<br>
+				- Searching for shifts that require the a qualification (i.e. <i>"boat-dock"</i> give all shifts requiring a that qualification) - to see a full list of qualifications go to the settings tab.
+				<br>
+				- Searching for shifts that have a certain flag (i.e. <i>"inside"</i> give all shifts requiring a that have the inside flag) - to see a full list of flags go to the settings tab.
+				<br>
+				- Flag & Qualification searches are case sensative so searching "hk" will not show shifts with the "HK" flag
+				<br>
+				- Some shifts have the same a flag and qualification with the same title. If you like to seach specifically for either of these place a "*q" or a "*f" before the search for just qualification and just flag respectively. (Searching "*q lifeguarding" will show shifts with the lifeguarding qualification but not the lifeguarding flag)
+				<br>
+				- Placing an exclamation point (!) before your search will give you all the shifts that do not fit that search (Searching <i>"! Sunday"</i> shows all the shifts that are NOT require on Sunday)
+				<br>
+				- You can perform multiple searches by separating searches by “,” (i.e. Searching <i>"Uncovered, Boat Dock, ! lifeguarding"</i> gives all the uncovered shifts with the title "Boat Dock" that do not require lifeguarding. You can combine as many of these searches as you like. 
+				<br>
+				- An explanation of the results is shown above the list of Shifts. If a search results in all shifts being shown (i.e. Searching <i>"Covered, Uncovered"</i>) it will simply read "All Shifts" above the list.
+			</span>
+		</div>
 		<form method='GET' action='.'>
 			<input type='text' placeholder="Search... " name='q' value='{{ request.GET.q }}'>
-			<div class="tooltip">?
-				<span class="tooltiptext">
-					Use this are to search for Shifts with specific information: <br>
-					Options include:<br>
-					- Searching "Covered" or "Uncovered" to see the shifts that have all the stapher they require on the current scheudle.
-					<br>
-					- Searching by any portion of the shifts title (Searching <i>"Dock"</i> will show Boat Dock, Ski Dock, etc.)
-					<br>
-					- Searching day of the week (days must be spelled <strong>exactly</strong>) to see the shifts on that day ("Sunday" shows all of Sundays shifts)
-					<br>
-					- Searching by times "12:00 pm" shows shifts at that time (Times must include ":" & an "am" or "pm)
-					- Searching for exact class year (i.e. <i>"2020"</i> will give you people that graduate in 2020)
-					<br>
-					- Searching for shifts that require the a qualification (i.e. <i>"boat-dock"</i> give all shifts requiring a that qualification) - to see a full list of qualifications go to the settings tab.
-					<br>
-					- Searching for shifts that have a certain flag (i.e. <i>"inside"</i> give all shifts requiring a that have the inside flag) - to see a full list of flags go to the settings tab.
-					<br>
-					- Flag & Qualification searches are case sensative so searching "hk" will not show shifts with the "HK" flag
-					<br>
-					- Some shifts have the same a flag and qualification with the same title. If you like to seach specifically for either of these place a "*q" or a "*f" before the search for just qualification and just flag respectively. (Searching "*q lifeguarding" will show shifts with the lifeguarding qualification but not the lifeguarding flag)
-					<br>
-					- Placing an exclamation point (!) before your search will give you all the shifts that do not fit that search (Searching <i>"! Sunday"</i> shows all the shifts that are NOT require on Sunday)
-					<br>
-					- You can perform multiple searches by separating searches by “,” (i.e. Searching <i>"Uncovered, Boat Dock, ! lifeguarding"</i> gives all the uncovered shifts with the title "Boat Dock" that do not require lifeguarding. You can combine as many of these searches as you like. 
-					<br>
-					- An explanation of the results is shown above the list of Shifts. If a search results in all shifts being shown (i.e. Searching <i>"Covered, Uncovered"</i>) it will simply read "All Shifts" above the list.
-				</span>
-			</div>
 			<button class="button" type='submit'>Search</button>
 		</form>
 		<a class="link_btn" type=button href="{% url link %}">New</a>	
