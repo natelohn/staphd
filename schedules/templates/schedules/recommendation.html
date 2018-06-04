@@ -13,7 +13,7 @@
 		</tr>
 		{% endif %}
 		<tr>
-			<th id="stapher_cell">{{rec_row.stapher}}</th>
+			<th id="stapher_cell"><a href="{{ rec_row.stapher.get_absolute_url }}'">{{rec_row.stapher}}</a></th>
 			{% for param_cell in rec_row.cells %}
 			{% if param_cell.win %}
 			<td id='winning_cell'>{{param_cell.score}}</td>
