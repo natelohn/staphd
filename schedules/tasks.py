@@ -71,6 +71,7 @@ def build_schedules_task(self, schedule_id):
 	else:
 		recommended_shift = shift_and_rec[0]
 		recommendation = shift_and_rec[1]
+		print(recommendation)
 		cache.set('recommended_shift',recommended_shift, None)
 		cache.set('recommendation',recommendation, None)
 		print(f'Recommendation set to {recommendation}')
