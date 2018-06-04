@@ -26,7 +26,9 @@ def get_recommended_staphers(staphers, shift, staphings, settings, all_shifts):
 
 	# Next we loop to determine which staphers have the best scores.
 	reccomendations = []
+	print(f'all_scores = {all_scores}')
 	for stapher, scores in all_scores:
+		print(f'stapher & scores = {[stapher, scores]}')
 		wins_losses = get_win_loss_info(best_scores, scores)
 		print(f'reccomendations = {[stapher, scores, wins_losses]}')
 		reccomendations.append([stapher, scores, wins_losses])
