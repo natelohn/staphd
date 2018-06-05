@@ -33,6 +33,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 	template_name = 'home.html'
 
 	def get_context_data(self, *args, **kwargs):
+		cache.set('current_task_id', None, 0)	
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
