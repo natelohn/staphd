@@ -282,7 +282,7 @@ def get_parameter_scores(stapher, shift, staphings, parameters, all_shifts):
 def get_best_scores(parameters, new_scores, best_scores):
 	for parameter in parameters:
 		cmp_funtion = get_cmp_funtion(parameter.function_id)
-		print(f'parameter = {parameter}, cmp_funtion = {cmp_funtion}')
+		print(f'****************************** Parameter = {parameter}, cmp_funtion = {cmp_funtion}')
 		for i, score in enumerate(new_scores):
 			best_scores[i] = cmp_funtion(score, best_scores[i])
 	return best_scores
