@@ -13,16 +13,17 @@ def get_min(time):
 
 def get_time_str(time):
 	h = time.hour
+	print(h)
 	m = get_min(time)
+	print(f'{h} - {m}')
+	print(str(h + m))
 	return str(h + m)
 
 def get_shift_csv(shift):
 	csv = ''
 	for flag in shift.flags.all():
-		print(flag)
 		csv += flag.title + ','
 	info_str = str(shift.day) + ',' + shift.title
-	print(info_str)
 	info_str += get_time_str(shift.start) + ',' + get_time_str(shift.end)
 	print(info_str)
 	info_str += str(shift.workers_needed) + ','
