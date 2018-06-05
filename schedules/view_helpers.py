@@ -31,6 +31,7 @@ def make_shifts_csv():
 	for shift in Shift.objects.all():
 		csv_string = get_shift_csv(shift)
 		all_csv_strings.append(csv_string)
+		print(f'csv_string = {csv_string}')
 	return all_csv_strings
 
 
