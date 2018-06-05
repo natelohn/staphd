@@ -27,8 +27,10 @@ def get_shift_csv(shift):
 	return csv[:-1]
 
 def make_shifts_csv():
+	print('A')
 	all_csv_strings = []
 	for shift in Shift.objects.all():
+		print(shift)
 		csv_string = get_shift_csv(shift)
 		all_csv_strings.append(csv_string)
 		print(f'csv_string = {csv_string}')
