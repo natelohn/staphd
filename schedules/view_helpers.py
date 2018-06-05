@@ -14,13 +14,13 @@ def get_min(time):
 def get_time_str(time):
 	h = time.hour
 	m = get_min(time)
-	return (h + m)
+	return str(h + m)
 
 def get_shift_csv(shift):
 	csv = ''
 	for flag in shift.flags.all():
 		csv += flag.title + ','
-	csv += shift.day + ',' + shift.title + ',' + get_time_str(shift.start) + ',' get_time_str(shift.end) + ','
+	csv += str(shift.day) + ',' + shift.title + ',' + get_time_str(shift.start) + ',' get_time_str(shift.end) + ',' + str(shift.workers_needed) + ','
 	for qual in shift.qualifications.all():
 		csv += qual.title + ','
 	return csv[:-1]
