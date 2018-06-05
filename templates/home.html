@@ -4,13 +4,19 @@
 	<div id="home-msg">
 		<h1>Welcome to staphd.com {{user.username}}!</h1>
 		{% if schedule %}
-			<h3>Schedule: {{schedule.title}}</h3>
-			<h3>Currently you have {{ percent_complete }}% of shifts scheduled.</h3>
-			<a href="{% url 'schedules:shift-list' %}?q=uncovered" class="button">View Unscheduled Shifts</a>
+		<h3>Schedule: {{schedule.title}}</h3>
+		<h3>Currently you have {{ percent_complete }}% of shifts scheduled.</h3>
+		<a href="{% url 'schedules:shift-list' %}?q=uncovered" class="button">View Unscheduled Shifts</a>
 		{% else %}}
-			<h3>Currently you have no schedule selected.</h3>
-			<a href="{% url 'schedules:select' %}" class="button">Select or Create Schedule</a>
+		<h3>Currently you have no schedule selected.</h3>
+		<a href="{% url 'schedules:select' %}" class="button">Select or Create Schedule</a>
 		{% endif %}
 	</div>
+	<p>
+		{% for v in csv %}
+		{{v}}
+		<br>
+		{% endfor %}
+	</p>
 </div>
 {% endblock %}

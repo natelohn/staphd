@@ -1,7 +1,36 @@
 import datetime
 
 from .analytics import get_hours_from_timedelta, get_readable_time
-from .models import Staphing
+from .models import Staphing, Shift
+
+def get_min(time):
+	m = round(time.min / 60, 2)
+	min_options = [0, 0.25, 0.33, 0.5, 0.66, 0.75, 1]
+	if m not in min_options:
+		for i, opt in enumerate(min_options):
+			if min_options[i] < m and m < min_options[i + 1]:
+				return min_options[i]
+
+def get_time_str(time):
+	h = time.hour
+	m = get_min(time)
+	return (h + m)
+
+def get_shift_csv(shift):
+	csv = ''
+	for flag in shift.flags.all():
+		csv += flag.title + ','
+	csv += shift.day + ',' + shift.title + ',' + get_time_str(shift.start) + ',' get_time_str(shift.end) + ','
+	for qual in shift.qualifications.all():
+		csv += qual.title + ','
+	return csv[:-1]
+
+def make_shifts_csv():
+	all_csv_strings = []
+	for shift in Shift.objects.all():
+		csv_string = get_shift_csv(shift)
+		all_csv_strings.append(csv_string)
+	return all_csv_strings
 
 
 def get_week_schedule_view_info(stapher, staphings, shift, schedule):
