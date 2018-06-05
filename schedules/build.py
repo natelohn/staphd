@@ -39,9 +39,7 @@ def resolve_ties(settings, recommendations):
 		win_count = recommendation_wins(rec)
 		if settings.break_ties_randomly():
 			tie_breaker = random()
-			print(f'Breaking ties randomly. settings.break_ties_randomly() = {settings.break_ties_randomly()}')
 		elif settings.ranked_wins_break_ties():
-			print(f'Breaking ties on rank. settings.ranked_wins_break_ties() = {settings.ranked_wins_break_ties()}')
 			tie_breaker = highest_ranked_win(rec)
 		else:
 			tie_breaker = 0
@@ -99,7 +97,6 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 				if not settings.auto_schedule:
 					for staphing in staphings:
 						staphing.save()
-					print(f'No autoscheduling. settings.auto_schedule = {settings.auto_schedule}')
 					return [shift, recommendations]
 				else:
 					ties_exist = do_ties_exist(recommendations, shift.left_to_cover(staphings))
@@ -107,10 +104,8 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 						if settings.user_breaks_ties():
 							for staphing in staphings:
 								staphing.save()
-							print(f'Tie and user breaks ties. settings.user_breaks_ties() = {settings.user_breaks_ties()}')
 							return [shift, recommendations]
 						else:
-							print(f'Ties Exist - getting resolved')
 							recommendations = resolve_ties(settings, recommendations)
 					recommendations_used = 0
 					for stapher, scores, wins_losses in recommendations:
