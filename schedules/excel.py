@@ -453,11 +453,12 @@ def update_meal_masters(masters, staphings, xl_dir, current_task):
 			workers = set(shift_workers[shift.id])
 
 			# Add the worker's names to the cell
-			for worker in workers:
-				cell = master_ws.cell(row = curr_row, column = col)
-				cell.value = worker.full_name()
-				cell.font = Font(size = 12)
-				curr_row += 1
+			if curr_row and col:
+				for worker in workers:
+					cell = master_ws.cell(row = curr_row, column = col)
+					cell.value = worker.full_name()
+					cell.font = Font(size = 12)
+					curr_row += 1
 
 	# Reset the cache and send the final message to the front end
 	cache.set('num_actions_made', num_actions_made + len(masters), 1500)
