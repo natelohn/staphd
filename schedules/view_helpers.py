@@ -5,10 +5,15 @@ from .models import Staphing, Shift
 
 def get_min(time):
 	m = round(time.min / 60, 2)
+	print(m)
 	min_options = [0, 0.25, 0.33, 0.5, 0.66, 0.75, 1]
+	print(m not in min_options)
 	if m not in min_options:
+		print(m)
 		for i, opt in enumerate(min_options):
+			print(opt)
 			if min_options[i] < m and m < min_options[i + 1]:
+				print(min_options[i])
 				return min_options[i]
 
 def get_time_str(time):
@@ -36,10 +41,8 @@ def get_shift_csv(shift):
 	return csv[:-1]
 
 def make_shifts_csv():
-	print('A')
 	all_csv_strings = []
 	for shift in Shift.objects.all():
-		print(shift)
 		csv_string = get_shift_csv(shift)
 		all_csv_strings.append(csv_string)
 		print(f'csv_string = {csv_string}')
