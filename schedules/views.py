@@ -273,6 +273,8 @@ def recommendations_view(request, *args, **kwargs):
 		stapher = rec[0]
 		scores = rec[1]
 		wins = rec[2]
+		contains_win = wins.count(True) > 0
+		if contains_win:
 		row = {}
 		row['stapher'] = stapher
 		cells = []
@@ -288,7 +290,7 @@ def recommendations_view(request, *args, **kwargs):
 			stapher_staphings = []
 		all_rows_for_time = get_week_schedule_view_info(stapher, stapher_staphings, shift, schedule)
 		row['schedule'] = [all_rows_for_time]
-			rows.append(row)
+		rows.append(row)
 	context['parameters'] = parameters
 	context['rows'] = rows
 	context['shift'] = shift
