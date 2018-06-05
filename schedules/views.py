@@ -186,16 +186,16 @@ class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 @login_required
 @csrf_exempt
 def build_schedules(request, *args, **kwargs):
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+	except:
+		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
 	task_id = cache.get('current_task_id')
 	if not task_id:
-		try:
-			schedule = Schedule.objects.get(active__exact = True)
-			schedule_id = schedule.id
-			task = build_schedules_task.delay(schedule_id)
-			task_id = task.task_id
-			cache.set('current_task_id', task_id, 3000)
-		except:
-			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
+		schedule_id = schedule.id
+		task = build_schedules_task.delay(schedule_id)
+		task_id = task.task_id
+		cache.set('current_task_id', task_id, 3000)	
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
 	context['schedule'] = schedule.title
