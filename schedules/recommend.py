@@ -30,7 +30,7 @@ def get_recommended_staphers(staphers, shift, staphings, settings, all_shifts):
 	print(f'all_scores Post = {all_scores}')
 	for stapher, scores in all_scores:
 		wins_losses = get_win_loss_info(best_scores, scores)
-		reccomendations.append([stapher, scores, wins_losses])
+		reccomendations.append([stapher, scores, wins_losses[:]])
 
 	# Finally, we return a list of staphers, scores, and wins/losses with the stapher with the most wins at the front.
 	reccomendations.sort(reverse = True, key = get_wins)

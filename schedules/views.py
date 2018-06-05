@@ -30,9 +30,10 @@ from .view_helpers import get_shifts_to_add, get_week_schedule_view_info
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
-	template_name = 'home.html'	
+	template_name = 'home.html'
 
 	def get_context_data(self, *args, **kwargs):
+		cache.set('current_task_id', None, 0)
 		context = super(HomeView, self).get_context_data(*args, **kwargs)
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
@@ -192,7 +193,7 @@ def build_schedules(request, *args, **kwargs):
 			schedule_id = schedule.id
 			task = build_schedules_task.delay(schedule_id)
 			task_id = task.task_id
-			cache.set('current_task_id', task_id, 1500)
+			cache.set('current_task_id', task_id, 3000)
 		except:
 			return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
 	request.session['task_id'] = task_id
@@ -219,7 +220,7 @@ def update_files(request, *args, **kwargs):
 			template = 'schedules/progress.html'
 			task = update_files_task.delay(schedule_id)
 			task_id = task.task_id
-			cache.set('current_task_id', task_id, 1500)
+			cache.set('current_task_id', task_id, 3000)
 	else:
 		template = 'schedules/progress.html'
 		context['update_error_message'] = 'Please wait for the current task to complete.'
