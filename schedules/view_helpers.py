@@ -40,7 +40,7 @@ def make_staphings_csv(schedule):
 	print('A')
 	print(schedule)
 	all_staphings = Staphings.objects.filter(schedule = schedule)
-	print(all_staphings)
+	print(f'--->> {all_staphings}')
 	for staphing in all_staphings:
 		print(staphing)
 		shift_csv = get_shift_csv(staphing.shift)
