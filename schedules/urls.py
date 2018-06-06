@@ -57,7 +57,7 @@ urlpatterns = [
     url(r'^qualification/create$', views.QualificationCreate.as_view(), name='qualification-create'),
     url(r'^qualification/(?P<pk>[\d]+)/delete$', views.QualificationDelete.as_view(), name='qualification-delete'),
 
-    url(r'^staphing/(?P<pk>[\d]+)/delete$', views.StaphingDelete.as_view(), name='staphing-delete')
+    url(r'^staphing/(?P<pk>[\d]+)/delete$', views.StaphingDelete.as_view(), name='staphing-delete'),
 
     url(r'^set/create/$', views.ShiftSetCreate.as_view(), name='set-create')
 
