@@ -12,18 +12,17 @@
 			<h1>{{ title }} - </h1>
 			<a class='button' id="form_cancel" href='{% url cancel_url %}'>Cancel</a>
 			<button class='create_btn' id="form_save" type='submit'>Save</button>
+			<div class="tooltip" id="search_info">More Info
+				<span class="tooltiptext">
+					Select a Flag from a Shift Set to add all Shifts in that set with that have the selected flag.
+				</span>
+			</div>
 		</div>
 		<div id="form_div">
 			{{ form }}
 		</div>
 		<div class="left_list" id="shift_set_div">
-			<h2>Shifts Sets:
-				<div class="tooltip" id="search_info">More Info
-					<span class="tooltiptext">
-						Select a Flag from a Shift Set to add all Shifts in that set with that have the selected flag.
-					</span>
-				</div>
-			</h2>
+			<h2>Shifts Sets:</h2>
 			{% for set in shift_sets %}
 			<h2><u>{{set.title}}</u></h2>
 			<ul>
@@ -33,11 +32,13 @@
 					{{flag}}
 				</li>
 				{% endfor %}
+				<br>
+				<br>
 			</ul>
 			{% endfor %}
 		</div>
 		<div class="right_list" id="all_shifts_div">
-			<h3>Select Shifts:</h3>
+			<h2><u>Select Shifts:</u></h2>
 			<ul>
 				{% for shift in all_shifts %}
 				<li>
