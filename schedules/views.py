@@ -669,7 +669,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 					if no_schedule:
 						shift_set_match = [s for s in filtered_shifts if query in s.shift_set.title ]
 						explanation_str = f'- are not in the \'{query}\' shift set' if negate_query else f'- are in the \'{query}\' shift set'
-						if flag_match: query_explanation.append(explanation_str)
+						if shift_set_match: query_explanation.append(explanation_str)
 
 
 					queryset = name_contains + list(title_contains) + list(day_exact) + during_time + qual_match + flag_match + shift_set_match
@@ -678,7 +678,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 				filtered_shifts = list(set(filtered_shifts) & set(queryset))
 
 			all_shifts = filtered_shifts
-			if len(query_explanation) == 1: query_explanation = ['Result includes all shifts.'] 
+			if len(query_explanation) == 1: query_explanation = ['- Result includes all shifts.'] 
 			cache.set('query_explanation', query_explanation, 60)
 		
 		# If there is no query then we see if they have sorted the shifts and return the appr
@@ -731,7 +731,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 		if schedule:
 			context['shift_displayed_msg'] = [f'Showing {schedule.shift_set} Shifts']
 		else:
-			context['shift_displayed_msg'] = [f'Showing Shifts in All Shift Sets', '- select a scheule to show a specicifc shift set.']
+			context['shift_displayed_msg'] = [f'Showing Shifts in All Shift Sets', '- select a schedule to show a specific shift set.']
 		query_explanation = cache.get('query_explanation')
 		if query_explanation:
 			context['shift_displayed_msg'] += query_explanation
