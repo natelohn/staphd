@@ -38,8 +38,11 @@ def make_shifts_csv():
 def make_staphings_csv(schedule_id):
 	all_csv_strings = []
 	for staphing in Staphings.objects.all(schedule_id__exact = schedule_id):
+		print(staphing)
 		shift_csv = get_shift_csv(staphing.shift)
+		print(shift_csv)
 		csv_string = staphing.stapher.full_name() + ',' + shift_csv
+		print(csv_string)
 		all_csv_strings.append(csv_string)
 	return all_csv_strings
 
