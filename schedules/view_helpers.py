@@ -27,9 +27,9 @@ def get_shift_csv(shift):
 		csv += qual.title + ','
 	return csv[:-1]
 
-def make_shifts_csv():
+def make_shifts_csv(schedule):
 	all_csv_strings = []
-	for shift in Shift.objects.all():
+	for shift in Shift.objects.filter(shift_set = schedule.shift_set):
 		csv_string = get_shift_csv(shift)
 		all_csv_strings.append(csv_string)
 		print(f'csv_string = {csv_string}')

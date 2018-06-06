@@ -23,7 +23,7 @@ from staphd.celery import app
 
 from .analytics import get_readable_time
 from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
-from .models import Flag, Schedule, Shift, Stapher, Staphing, Master, Parameter, Qualification
+from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task
 from .view_helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv
@@ -490,8 +490,8 @@ def stapher_schedule(request, args, kwargs, form):
 		schedule_msg = f'Unable to view {stapher.full_name()} schedule since no schedule selected...'
 
 	if form:
-		all_shifts = Shift.objects.all().order_by('day', 'start')
-		new_shift_rows = get_shifts_to_add(stapher, all_shifts, all_staphings, stapher_staphings)
+		shifts_in_set = Shift.objects.filter(shift_set = schedule.shift_set).order_by('day', 'start')
+		new_shift_rows = get_shifts_to_add(stapher, shifts_in_set, all_staphings, stapher_staphings)
 	else:
 		new_shift_rows = None
 
@@ -569,15 +569,16 @@ class ShiftList(LoginRequiredMixin, ListView):
 			time =  None
 		return time
 
-	def get_queryset(self, *args, **kwargs):	
-		all_shifts = Shift.objects.all()
+	def get_queryset(self, *args, **kwargs):
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
 			all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
 			no_schedule = False
+			all_shifts = Shift.objects.filter(shift_set = schedule.shift_set)
 		except:
 			all_staphings = []
 			no_schedule = True
+			all_shifts = Shift.objects.all()
 		query = self.request.GET.get('q')
 		if query:
 			filtered_shifts = all_shifts
@@ -682,10 +683,10 @@ class ShiftList(LoginRequiredMixin, ListView):
 				if self.kwargs['key']:
 					key = self.kwargs['key']
 					if sort_type == 'days':
-						all_shifts = Shift.objects.filter(day__iexact = key)
+						all_shifts = all_shifts.filter(day__iexact = key)
 					if sort_type == 'qualifications':
 						q = Qualification.objects.get(id = key)
-						all_shifts = [s for s in Shift.objects.all() if s.has_qualification(q.title)]
+						all_shifts = [s for s in all_shifts if s.has_qualification(q.title)]
 					if sort_type == 'flags':
 						f = Flag.objects.get(id = key)
 						all_shifts = [s for s in all_shifts if s.has_flag(f.title)]

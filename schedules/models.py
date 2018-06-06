@@ -322,10 +322,10 @@ class Schedule(models.Model):
 		return reverse('schedules:schedule-selected', kwargs={'pk': self.id})
 
 	def get_percent_complete(self):
-		all_shifts = Shift.objects.all()
+		shifts_in_set = Shift.objects.filter(shift_set = self.shift_set)
 		staphings = Staphing.objects.filter(schedule_id__exact = self.id)
 		total_needed = 0
-		for shift in all_shifts:
+		for shift in shifts_in_set:
 			total_needed += shift.workers_needed
 		percent_complete = int((len(staphings) / total_needed)  * 100)
 		return percent_complete

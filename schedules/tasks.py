@@ -56,9 +56,9 @@ def build_schedules_task(self, schedule_id):
 	if cache.get('resort') or not sorted_shifts:
 		# Set the message for the front end
 		self.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
-		all_shifts = Shift.objects.all()
+		shifts_in_set = Shift.objects.filter(shift_set = schedule.shift_set)
 		all_staphers = Stapher.objects.all()
-		sorted_shifts = get_sorted_shifts(all_staphers, all_shifts)
+		sorted_shifts = get_sorted_shifts(all_staphers, shifts_in_set)
 		cache.set('sorted_shifts', sorted_shifts, None)
 		cache.set('resort', False, None)
 	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
