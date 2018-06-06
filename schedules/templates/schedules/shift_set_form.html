@@ -16,27 +16,33 @@
 		<div id="form_div">
 			{{ form }}
 		</div>
-		<div id="shift_set_div">
+		<div class="left_list" id="shift_set_div">
 			<h2>Shifts Sets:</h2>
 			<div class="tooltip" id="search_info">More Info
-			<span class="tooltiptext">
-				Select a Flag from a Shift Set to add all Shifts in that set with that have the selected flag.
-			</span>
-		</div>
+				<span class="tooltiptext">
+					Select a Flag from a Shift Set to add all Shifts in that set with that have the selected flag.
+				</span>
+			</div>
 			{% for set in shift_sets %}
 			<h3>{{set.title}}</h3>
 			<ul>
 				{% for flag in flags %}
-				<li>{{flag}}</li>
+				<li class="list_btn">
+					<input type="checkbox" name="added_shifts" value="{{flag.id}}"">
+					{{flag}}
+				</li>
 				{% endfor %}
 			</ul>
 			{% endfor %}
 		</div>
-		<div id="all_shifts_div">
+		<div class="right_list" id="all_shifts_div">
 			<h3>Select Shifts:</h3>
 			<ul>
 				{% for shift in all_shifts %}
-				<li>{{shift}}</li>
+				<li class="list_btn">
+					<input type="checkbox" name="added_shifts" value="{{shift.id}}"">
+					{{shift}}
+				</li>
 				{% endfor %}
 			</ul>
 		</div>
