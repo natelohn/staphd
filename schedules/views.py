@@ -666,10 +666,9 @@ class ShiftList(LoginRequiredMixin, ListView):
 					if flag_match: query_explanation.append(explanation_str)
 
 					# Search by Shift Set
-					if no_schedule:
-						shift_set_match = [s for s in filtered_shifts if query in s.shift_set.title ]
-						explanation_str = f'- are not in the \'{query}\' shift set' if negate_query else f'- are in the \'{query}\' shift set'
-						if shift_set_match: query_explanation.append(explanation_str)
+					shift_set_match = [s for s in filtered_shifts if query in s.shift_set.title ]
+					explanation_str = f'- are not in the \'{query}\' shift set' if negate_query else f'- are in the \'{query}\' shift set'
+					if shift_set_match: query_explanation.append(explanation_str)
 
 
 					queryset = name_contains + list(title_contains) + list(day_exact) + during_time + qual_match + flag_match + shift_set_match
