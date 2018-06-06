@@ -10140,7 +10140,7 @@
 		"fields": {
 			"day":3,
 			"title":"Campfire Music!",
-			"flags":[324,246,267,264],
+			"flags":[324,267,264],
 			"start":"18:30",
 			"end":"21:00",
 			"workers_needed":"3",
@@ -10154,7 +10154,7 @@
 		"fields": {
 			"day":3,
 			"title":"Campfire S'mores!",
-			"flags":[267,321,264],
+			"flags":[267,264],
 			"start":"18:30",
 			"end":"21:00",
 			"workers_needed":"3",
