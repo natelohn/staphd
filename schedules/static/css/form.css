@@ -327,9 +327,15 @@ label[for=shift_flags_hardcoded]{
 	top: 50px;
 }
 
- #shift_flags{
- 	top: 85px;
- }
+#shift_flags{
+	top: 85px;
+}
+
+#id_shift_set {
+	font-size: 2em;
+}
+
+
 
 
 
