@@ -5,16 +5,13 @@ from .models import Staphing, Shift
 
 def get_min(time):
 	m = round(time.minute / 60, 2)
-	print(m)
 	min_options = [0, 0.25, 0.33, 0.5, 0.66, 0.75, 1]
-	print(m not in min_options)
 	if m not in min_options:
-		print(m)
 		for i, opt in enumerate(min_options):
-			print(opt)
 			if min_options[i] < m and m < min_options[i + 1]:
 				print(min_options[i])
 				return min_options[i]
+	return m
 
 def get_time_str(time):
 	h = time.hour
