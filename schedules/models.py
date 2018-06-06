@@ -369,7 +369,6 @@ class Settings(models.Model):
 
 	def user_breaks_ties(self):
 		return int(self.tie_breaker) == 2
-		
 
 class Master(models.Model):
 	title 			= models.CharField(max_length = 100, default = 'NAME OF MASTER')
