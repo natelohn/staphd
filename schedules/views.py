@@ -1011,6 +1011,6 @@ class ShiftSetCreate(LoginRequiredMixin, CreateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftSetCreate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'New Shift Set'
-		context['cancel_url'] = 'schedules:scedule-create'
+		context['cancel_url'] = 'schedules:set-create'
 		return context
 
