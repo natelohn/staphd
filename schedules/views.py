@@ -731,7 +731,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 		if schedule:
 			context['shift_displayed_msg'] = [f'Showing {schedule.shift_set} Shifts']
 		else:
-			context['shift_displayed_msg'] = [f'Showing Shifts in All Shift Sets', '- select a schedule to show a specific shift set.']
+			context['shift_displayed_msg'] = [f'Showing Shifts in All Shift Sets', '- select a schedule or search by shifts sets title to show a specific shift set.']
 		query_explanation = cache.get('query_explanation')
 		if query_explanation:
 			context['shift_displayed_msg'] += query_explanation
