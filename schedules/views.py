@@ -757,6 +757,10 @@ class ShiftList(LoginRequiredMixin, ListView):
 									msg = 'No Current Schedule'
 							else:
 								msg = key['title'] + '\'s Shifts'
+							if schedule:
+								msg += f' from {schedule.shift_set.title}'
+							else:
+								msg += f' from All Shift Sets'
 							context['shift_displayed_msg'] = [msg]
 		return context
 
