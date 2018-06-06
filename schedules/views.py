@@ -38,7 +38,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 			schedule = Schedule.objects.get(active__exact = True)
 			context['schedule'] = schedule
 			context['percent_complete'] = schedule.get_percent_complete()
-			context['csv'] = make_staphings_csv()
+			context['csv'] = make_staphings_csv(schedule.id)
 		except:
 			print('No schedule found in HomeView')
 		return context
