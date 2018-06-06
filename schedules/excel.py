@@ -479,9 +479,8 @@ def update_masters(masters, staphings, xl_dir, current_task):
 	standard_masters = []
 	meal_masters = []
 	for master in masters:
-		if master.is_standard():
-			standard_masters.append(master)
-		else:
+		standard_masters.append(master)
+		if not master.is_standard():
 			meal_masters.append(master)
 	update_standard_masters(standard_masters, staphings, xl_dir, current_task)
 	update_meal_masters(meal_masters, staphings, xl_dir, current_task)
