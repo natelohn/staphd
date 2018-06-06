@@ -288,6 +288,18 @@ label[for=shift_workers_needed]{
 	font-size: 2em;
 }
 
+label[for=shift_shift_set]{
+	font-size: 2.25em;
+	display: block;	
+}
+
+#shift_shift_set{
+	left: 275px;
+	width: 300px;
+	text-align: center;
+	font-size: 2em;
+}
+
 #shift_qualifications, #shift_flags{
 	border-style: solid;
 	border-width: 1px 1px 1px 1px;
