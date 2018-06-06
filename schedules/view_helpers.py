@@ -22,15 +22,8 @@ def get_shift_csv(shift):
 	csv = ''
 	for flag in shift.flags.all():
 		csv += flag.title + ','
-	info_str = str(shift.day) + ',' + shift.title
-	info_str += get_time_str(shift.start) + ',' + get_time_str(shift.end)
-	print(info_str)
-	info_str += str(shift.workers_needed) + ','
-	print(info_str)
-	csv += info_str
-	print(csv)
+	csv += str(shift.day) + ',' + shift.title + ',' + get_time_str(shift.start) + ',' + get_time_str(shift.end) + ',' + str(shift.workers_needed) + ','
 	for qual in shift.qualifications.all():
-		print(csv)
 		csv += qual.title + ','
 	return csv[:-1]
 
