@@ -186,7 +186,7 @@ class Stapher(models.Model):
 # A class representing a set of shifts used at different times over the summer (mirco bopper week/conference season)
 # - this will allow for different types of schedules
 class ShiftSet(models.Model):
-	DEAULT_PK 		= 2
+	DEAULT_PK 		= 1
 	active			= models.BooleanField(default = True)
 	title 			= models.CharField(max_length = 100, default = 'NAME OF SHIFT SET')
 
