@@ -90,7 +90,7 @@ class StapherCreateForm(forms.ModelForm):
 class ShiftCreateForm(forms.ModelForm):
 	class Meta:
 		model = Shift
-		fields = ('title','start','end','day','workers_needed','flags','qualifications')
+		fields = ('title','start','end','day','workers_needed','flags','qualifications','shift_set')
 		widgets = {'flags': forms.CheckboxSelectMultiple(), 'qualifications': forms.CheckboxSelectMultiple()}
 
 	def __init__(self, auto_id, *args, **kwargs):
@@ -177,26 +177,18 @@ class FlagCreateForm(forms.ModelForm):
 class ScheduleCreateForm(forms.ModelForm):
 	class Meta:
 		model = Schedule
-		fields = [
-			'title'
-		]
+		fields = ['title','shift_set']
 
 class SettingsParameterForm(forms.ModelForm):
 	class Meta:
 		model = ScheduleBuildingSettings
-		fields = [
-			'parameters'
-		]
+		fields = ['parameters']
 		widgets = { 'parameters': forms.CheckboxSelectMultiple()}
 
 class SettingsPreferenceForm(forms.ModelForm):
 	class Meta:
 		model = ScheduleBuildingSettings
-		fields = [
-			'auto_schedule',
-			'auto_threshold',
-			'tie_breaker'
-		]
+		fields = ['auto_schedule','auto_threshold','tie_breaker']
 
 	def clean_auto_threshold(self):
 		auto_threshold = self.cleaned_data.get("auto_threshold")
