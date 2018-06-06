@@ -289,7 +289,7 @@ label[for=shift_workers_needed]{
 }
 
 label[for=shift_shift_set], #shift_shift_set{
-	top: 50px;
+	top: 100px;
 }
 
 label[for=shift_shift_set]{
