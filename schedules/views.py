@@ -315,6 +315,7 @@ def add_recommendation(request, *args, **kwargs):
 class Settings(LoginRequiredMixin, TemplateView):
     template_name = 'settings.html'
 
+
 class FlagSettings(LoginRequiredMixin, TemplateView):
 	template_name = 'settings_edit.html'
 	
