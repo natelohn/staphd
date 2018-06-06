@@ -35,9 +35,9 @@ def make_shifts_csv():
 		print(f'csv_string = {csv_string}')
 	return all_csv_strings
 
-def make_staphings_csv(schedule_id):
+def make_staphings_csv(schedule):
 	all_csv_strings = []
-	for staphing in Staphings.objects.all(schedule_id__exact = schedule_id):
+	for staphing in Staphings.objects.all(schedule = schedule):
 		print(staphing)
 		shift_csv = get_shift_csv(staphing.shift)
 		print(shift_csv)
