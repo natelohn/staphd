@@ -187,6 +187,14 @@ class ScheduleCreateForm(forms.ModelForm):
 		model = Schedule
 		fields = ['title','shift_set']
 
+	def clean_shift_set(self):
+		shift_set = self.cleaned_data.get("shift_set")
+		for s in Staphing.objects.filter(schedule = self.instance):
+			if s.shift.shift_set != shift_set:
+				error_string = f"This schedule has shifts from the \"{s.shift.shift_set}\" shift set. To make this edit clear this schedule of shifts with shifts sets other than \"{shift_set}\"."
+				raise forms.ValidationError(error_string)
+		return shift_set
+
 class SettingsParameterForm(forms.ModelForm):
 	class Meta:
 		model = ScheduleBuildingSettings
