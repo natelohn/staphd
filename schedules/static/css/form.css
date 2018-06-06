@@ -290,7 +290,7 @@ label[for=shift_workers_needed]{
 
 label[for=shift_shift_set], #shift_shift_set{
 	top: 100px;
-	display: block;	
+	position: absolute;
 }
 
 label[for=shift_shift_set]{
