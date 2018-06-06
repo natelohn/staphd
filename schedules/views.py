@@ -26,7 +26,7 @@ from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsPa
 from .models import Flag, Schedule, Shift, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task
-from .view_helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv
+from .view_helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv
 
 
 class HomeView(LoginRequiredMixin, TemplateView):
@@ -38,7 +38,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 			schedule = Schedule.objects.get(active__exact = True)
 			context['schedule'] = schedule
 			context['percent_complete'] = schedule.get_percent_complete()
-			context['csv'] = make_shifts_csv()
+			context['csv'] = make_staphings_csv()
 		except:
 			print('No schedule found in HomeView')
 		return context

@@ -1,0 +1,846 @@
+photo,programming,0,Photo,10,11.25,1,photo 
+meal,inside,breakfast,0,Breakfast,7.5,9,3 
+meal,inside,breakfast,0,Breakfast,7.75,9.5,3 
+meal,inside,breakfast,0,Breakfast,8.25,10.25,3 
+meal,inside,breakfast,1,Breakfast,6.75,10.25,2 
+meal,inside,breakfast,1,Breakfast,7.75,9.5,3 
+meal,inside,breakfast,1,Breakfast,8.25,10.25,3 
+meal,inside,breakfast,2,Breakfast,6.75,10.25,2 
+meal,inside,breakfast,2,Breakfast,7.75,9.5,3 
+meal,inside,breakfast,2,Breakfast,8.25,10.25,3 
+meal,inside,breakfast,3,Breakfast,6.75,10.25,2 
+meal,inside,breakfast,3,Breakfast,7.5,9,3 
+meal,inside,breakfast,3,Breakfast,7.75,9.5,3 
+meal,inside,breakfast,3,Breakfast,8.25,10.25,3 
+meal,inside,breakfast,4,Breakfast,6.75,10.25,2 
+meal,inside,breakfast,4,Breakfast,7.5,9,3 
+meal,inside,breakfast,4,Breakfast,7.75,9.5,3 
+meal,inside,breakfast,4,Breakfast,8.25,10.25,3 
+meal,inside,breakfast,5,Breakfast,6.75,10.25,2 
+meal,inside,breakfast,5,Breakfast,7.5,9,3 
+meal,inside,breakfast,5,Breakfast,7.75,9.5,3 
+meal,inside,breakfast,6,Breakfast,6.75,10.25,2 
+meal,inside,breakfast,6,Breakfast,7.5,9,3 
+meal,inside,breakfast,6,Breakfast,7.75,9.5,3 
+meal,inside,breakfast,6,Breakfast,8.25,10.25,3 
+meal,dinner,inside,0,Dinner,17.25,20,11 
+meal,dinner,inside,0,Dinner,18,20,3 
+meal,dinner,inside,1,Dinner,17.25,20,11 
+meal,dinner,inside,1,Dinner,18,20,3 
+meal,dinner,inside,3,Dinner,17.25,20,11 
+meal,dinner,inside,3,Dinner,18,20,3 
+meal,dinner,inside,4,Dinner,18,20,3 
+meal,dinner,inside,5,Dinner,17.25,20,8 
+lunch,meal,inside,0,Lunch,11.25,14,3 
+lunch,meal,inside,0,Lunch,11.75,13,8 
+lunch,meal,inside,0,Lunch,12,14,5 
+lunch,meal,inside,1,Lunch,11.75,13,4 
+lunch,meal,inside,1,Lunch,12,14,4 
+lunch,meal,inside,1,Lunch,11.25,14,2 
+lunch,meal,inside,2,Lunch,11.25,14,3 
+lunch,meal,inside,2,Lunch,12,14,5 
+lunch,meal,inside,3,Lunch,11.25,14,3 
+lunch,meal,inside,3,Lunch,11.75,13,8 
+lunch,meal,inside,3,Lunch,12,14,5 
+lunch,meal,inside,4,Lunch,11.75,13,4 
+lunch,meal,inside,4,Lunch,12,14,4 
+lunch,meal,inside,4,Lunch,11.25,14,2 
+lunch,meal,inside,5,Lunch,11.25,14,3 
+lunch,meal,inside,5,Lunch,12,14,5 
+meal,inside,meal-head,breakfast-head,breakfast,0,Breakfast Head,6.75,10.25,1,meal-head 
+meal,inside,meal-head,breakfast-head,breakfast,1,Breakfast Head,6.75,10.25,1,meal-head 
+meal,inside,meal-head,breakfast-head,breakfast,2,Breakfast Head,6.75,10.25,1,meal-head 
+meal,inside,meal-head,breakfast-head,breakfast,3,Breakfast Head,6.75,10.25,1,meal-head 
+meal,inside,meal-head,breakfast-head,breakfast,4,Breakfast Head,6.75,10.25,1,meal-head 
+meal,inside,meal-head,breakfast-head,breakfast,5,Breakfast Head,6.75,10.25,1,meal-head 
+meal,inside,meal-head,breakfast-head,breakfast,6,Breakfast Head,6.75,10.25,1,meal-head 
+lunch,meal,inside,meal-head,lunch-head,0,Lunch Head,11.25,14,1,meal-head 
+lunch,meal,inside,meal-head,lunch-head,1,Lunch Head,11.25,14,1,meal-head 
+lunch,meal,inside,meal-head,lunch-head,2,Lunch Head,11.25,14,1,meal-head 
+lunch,meal,inside,meal-head,lunch-head,3,Lunch Head,11.25,14,1,meal-head 
+lunch,meal,inside,meal-head,lunch-head,4,Lunch Head,11.25,14,1,meal-head 
+lunch,meal,inside,meal-head,lunch-head,5,Lunch Head,11.25,14,1,meal-head 
+meal,dinner,inside,meal-head,dinner-head,0,Dinner Head,17.25,20,1,meal-head 
+meal,dinner,inside,meal-head,dinner-head,1,Dinner Head,17.25,20,1,meal-head 
+fountain,inside,5,Fountain,15.5,16.75,1,fountain 
+meal,dinner,inside,meal-head,dinner-head,3,Dinner Head,17.25,20,1,meal-head 
+meal,dinner,inside,meal-head,dinner-head,4,Dinner Head,17.25,20,1,meal-head 
+meal,dinner,inside,meal-head,dinner-head,5,Dinner Head,17.25,20,1,meal-head 
+meal,dinner,inside,meal-head,dinner-head,6,Dinner Head,17.25,20,1,meal-head 
+outside,boat-dock,0,Boat Dock,9,10,1,boat-dock,lifeguarding 
+outside,boat-dock,0,Boat Dock,10,11,1,boat-dock,lifeguarding 
+outside,boat-dock,0,Boat Dock,11,12,1,boat-dock,lifeguarding 
+outside,boat-dock,0,Boat Dock,12,13,1,boat-dock,lifeguarding 
+outside,boat-dock,0,Boat Dock,14,15,1,boat-dock,lifeguarding 
+outside,boat-dock,0,Boat Dock,15,16,1,boat-dock,lifeguarding 
+outside,boat-dock,0,Boat Dock,16,17,1,boat-dock,lifeguarding 
+outside,boat-dock,0,Boat Dock,19,20,1,boat-dock,lifeguarding 
+outside,boat-dock,0,Boat Dock,19,20,1,boat-dock 
+outside,boat-dock,1,Boat Dock,9,10,1,boat-dock,lifeguarding 
+outside,boat-dock,1,Boat Dock,10,11,1,boat-dock,lifeguarding 
+outside,boat-dock,1,Boat Dock,11,12,1,boat-dock,lifeguarding 
+outside,boat-dock,1,Boat Dock,12,13,1,boat-dock,lifeguarding 
+outside,boat-dock,1,Boat Dock,13,14,1,boat-dock,lifeguarding 
+outside,boat-dock,1,Boat Dock,14,15,1,boat-dock,lifeguarding 
+outside,boat-dock,1,Boat Dock,15,16,1,boat-dock,lifeguarding 
+outside,boat-dock,1,Boat Dock,16,17,1,boat-dock,lifeguarding 
+outside,boat-dock,1,Boat Dock,16,17,1,boat-dock 
+outside,boat-dock,1,Boat Dock,19,20,1,boat-dock,lifeguarding 
+outside,boat-dock,1,Boat Dock,19,20,1,boat-dock 
+outside,boat-dock,2,Boat Dock,9,10,1,boat-dock,lifeguarding 
+outside,boat-dock,2,Boat Dock,10,11,1,boat-dock,lifeguarding 
+outside,boat-dock,2,Boat Dock,11,12,1,boat-dock,lifeguarding 
+outside,boat-dock,2,Boat Dock,12,13,1,boat-dock,lifeguarding 
+outside,boat-dock,2,Boat Dock,13,14,1,boat-dock,lifeguarding 
+outside,boat-dock,2,Boat Dock,14,15,1,boat-dock,lifeguarding 
+outside,boat-dock,2,Boat Dock,15,16,1,boat-dock,lifeguarding 
+meal,dinner,inside,6,Dinner,17.25,20,11 
+meal,dinner,inside,4,Dinner,17.25,20,10 
+lunch,meal,inside,2,Lunch,11.75,13,10 
+meal,dinner,inside,performance,2,Performance Dinner,18,20,3 
+outside,boat-dock,0,Boat Dock,16,17,2,boat-dock 
+outside,boat-dock,5,Boat Dock,13,14,1,boat-dock 
+beffa,artists,3,Arts Beffa,13,13.5,3,artists 
+meal,inside,breakfast,1,Breakfast,7.5,9,2 
+meal,dinner,inside,6,Dinner,18,20,4 
+outside,boat-dock,0,Boat Dock,13,14,2,boat-dock 
+meal,dinner,inside,5,Dinner,17.5,19,9 
+meal,dinner,inside,performance,2,Performance Dinner,17.25,20,8 
+outside,boat-dock,2,Boat Dock,16,17,1,boat-dock,lifeguarding 
+outside,boat-dock,2,Boat Dock,16,17,1,boat-dock 
+outside,boat-dock,2,Boat Dock,19,20,1,boat-dock,lifeguarding 
+outside,boat-dock,2,Boat Dock,19,20,1,boat-dock 
+outside,boat-dock,3,Boat Dock,13,14,1,boat-dock,lifeguarding 
+outside,boat-dock,3,Boat Dock,14,15,1,boat-dock,lifeguarding 
+outside,boat-dock,3,Boat Dock,15,16,1,boat-dock,lifeguarding 
+outside,boat-dock,3,Boat Dock,16,17,1,boat-dock,lifeguarding 
+outside,boat-dock,3,Boat Dock,16,17,1,boat-dock 
+outside,boat-dock,3,Boat Dock,19,20,1,boat-dock,lifeguarding 
+outside,boat-dock,3,Boat Dock,19,20,1,boat-dock 
+outside,boat-dock,4,Boat Dock,9,10,1,boat-dock,lifeguarding 
+outside,boat-dock,4,Boat Dock,10,11,1,boat-dock,lifeguarding 
+outside,boat-dock,4,Boat Dock,11,12,1,boat-dock,lifeguarding 
+outside,boat-dock,4,Boat Dock,14,15,1,boat-dock,lifeguarding 
+outside,boat-dock,4,Boat Dock,15,16,1,boat-dock,lifeguarding 
+outside,boat-dock,4,Boat Dock,16,17,1,boat-dock,lifeguarding 
+outside,boat-dock,4,Boat Dock,16,17,1,boat-dock 
+outside,boat-dock,4,Boat Dock,19,20,1,boat-dock,lifeguarding 
+outside,boat-dock,5,Boat Dock,9,10,1,boat-dock,lifeguarding 
+outside,boat-dock,5,Boat Dock,10,11,1,boat-dock,lifeguarding 
+outside,boat-dock,5,Boat Dock,11,12,1,boat-dock,lifeguarding 
+outside,boat-dock,5,Boat Dock,12,13,1,boat-dock,lifeguarding 
+outside,boat-dock,5,Boat Dock,13,14,1,boat-dock,lifeguarding 
+outside,boat-dock,5,Boat Dock,14,15,1,boat-dock,lifeguarding 
+outside,boat-dock,5,Boat Dock,15,16,1,boat-dock,lifeguarding 
+outside,boat-dock,5,Boat Dock,16,17,1,boat-dock,lifeguarding 
+outside,boat-dock,5,Boat Dock,16,17,1,boat-dock 
+outside,boat-dock,5,Boat Dock,19,20,1,boat-dock,lifeguarding 
+outside,boat-dock,5,Boat Dock,19,20,1,boat-dock 
+fountain,inside,0,Fountain,16,17.75,1,fountain 
+fountain,inside,0,Fountain,21,22,1,fountain 
+fountain,inside,0,Fountain,21.25,22.75,1,fountain 
+fountain,inside,0,Fountain,21,22.75,1,fountain 
+outside,boat-dock,1,Boat Dock,13,14,1,boat-dock 
+fountain,inside,1,Fountain,10.5,12,1,fountain 
+fountain,inside,1,Fountain,20,22.25,1,fountain 
+fountain,inside,2,Fountain,21,22.25,1,fountain 
+fountain,inside,2,Fountain,16,17,1,fountain 
+fountain,inside,2,Fountain,20,21,1,fountain 
+fountain,inside,2,Fountain,21,22.25,1,fountain 
+fountain,inside,2,Fountain,15,16,1,fountain 
+fountain,inside,3,Fountain,20.5,22.75,1,fountain 
+fountain,inside,3,Fountain,9,10,1,fountain 
+fountain,inside,3,Fountain,13,14.5,1,fountain 
+fountain,inside,3,Fountain,15.5,16.5,2,fountain 
+fountain,inside,3,Fountain,21.75,22.75,1,fountain 
+fountain,inside,3,Fountain,21,22,1,fountain 
+fountain,inside,3,Fountain,13,14,1,fountain 
+fountain,inside,3,Fountain,14.5,15.5,1,fountain 
+fountain,inside,4,Fountain,16.75,17.75,1,fountain 
+fountain,inside,4,Fountain,16,17,1,fountain 
+fountain,inside,5,Fountain,16,17.5,1,fountain 
+fountain,inside,5,Fountain,13,14,2,fountain 
+fountain,inside,5,Fountain,14,15.5,1,fountain 
+fountain,inside,5,Fountain,9,10,1,fountain 
+fountain,inside,5,Fountain,10,11,1,fountain 
+fountain,inside,5,Fountain,11,12,1,fountain 
+fountain,inside,6,Fountain,20.75,22,1,fountain 
+fountain,inside,0,Fountain,12.5,13.75,1,fountain 
+HK,6,HK/Staph Meeting,10.5,14.5,2 
+HK,6,HK/Staph Meeting,10.25,14.5,6 
+fountain,inside,1,Fountain,19.5,21.5,1,fountain 
+fountain,inside,3,Fountain,16.25,17.75,1,fountain 
+fountain,inside,0,Fountain,10.5,12,1,fountain 
+fountain,inside,1,Fountain,20.5,22.25,1,fountain 
+fountain,inside,4,Fountain,21.75,22.75,1,fountain 
+fountain,inside,1,Fountain,15.25,16.5,1,fountain 
+fountain,inside,4,Fountain,14.25,16,1,fountain 
+fountain,inside,2,Fountain,13.5,15,1,fountain 
+fountain,inside,5,Fountain,14.75,16.25,1,fountain 
+fountain,inside,6,Fountain,20.75,22.75,1,fountain 
+fountain,inside,1,Fountain,9,10.5,1,fountain 
+fountain,inside,0,Fountain,14,15,1,fountain 
+fountain,inside,2,Fountain,9.5,11,1,fountain 
+fountain,inside,1,Fountain,15,16,1,fountain 
+fountain,inside,2,Fountain,15,16.5,1,fountain 
+fountain,inside,3,Fountain,14,16,1,fountain 
+fountain,inside,6,Fountain,20.75,23,1,fountain 
+fountain,inside,1,Fountain,16.75,17.75,1,fountain 
+fountain,inside,2,Fountain,12.5,13.5,1,fountain 
+rotation,fountain,inside,5,Fountain Wks 5/9/13,21,23.25,5,fountain 
+fountain,inside,4,Fountain,21.25,22.75,2,fountain 
+fountain,inside,5,Fountain,16.25,17.5,1,fountain 
+rotation,fountain,inside,5,Fountain Wks 3/7/11,21,23.25,5,fountain 
+fountain,inside,4,Fountain,21.25,22.25,1,fountain 
+rotation,fountain,inside,5,Fountain Wks 2/6/10,21,23.25,5,fountain 
+rotation,fountain,inside,5,Fountain Wks 4/8/12,21,23.25,5,fountain 
+fountain,inside,4,Fountain,15.5,17.5,1,fountain 
+fountain,inside,0,Fountain,15,17,1,fountain 
+outside,boat-dock,4,Boat Dock,19,20,1,boat-dock 
+HK,6,HK/Staph Meeting,11,14.5,1 
+unpaid,off-day,2,Off Day,6,23.5,12,motue 
+outside,lifeguarding,0,Lifeguarding,11,12,1,lifeguarding 
+outside,lifeguarding,0,Lifeguarding,12,13,1,lifeguarding 
+outside,lifeguarding,0,Lifeguarding,13,14,1,lifeguarding 
+outside,lifeguarding,0,Lifeguarding,14,15,1,lifeguarding 
+outside,lifeguarding,0,Lifeguarding,15,16,1,lifeguarding 
+outside,lifeguarding,0,Lifeguarding,16,17,1,lifeguarding 
+outside,lifeguarding,1,Lifeguarding,10,11,1,lifeguarding 
+outside,lifeguarding,1,Lifeguarding,11,12,1,lifeguarding 
+outside,lifeguarding,1,Lifeguarding,12,13,1,lifeguarding 
+outside,lifeguarding,1,Lifeguarding,13,14,1,lifeguarding 
+outside,lifeguarding,1,Lifeguarding,14,15,1,lifeguarding 
+outside,lifeguarding,1,Lifeguarding,15,16,1,lifeguarding 
+outside,lifeguarding,1,Lifeguarding,16,17,1,lifeguarding 
+outside,lifeguarding,2,Lifeguarding,10,11,1,lifeguarding 
+outside,lifeguarding,2,Lifeguarding,11,12,1,lifeguarding 
+outside,lifeguarding,2,Lifeguarding,12,13,1,lifeguarding 
+outside,lifeguarding,2,Lifeguarding,13,14,1,lifeguarding 
+outside,lifeguarding,2,Lifeguarding,14,15,1,lifeguarding 
+outside,lifeguarding,2,Lifeguarding,15,16,1,lifeguarding 
+outside,lifeguarding,2,Lifeguarding,16,17,1,lifeguarding 
+outside,lifeguarding,3,Lifeguarding,10,11,1,lifeguarding 
+outside,lifeguarding,3,Lifeguarding,11,12,1,lifeguarding 
+outside,lifeguarding,3,Lifeguarding,12,13,1,lifeguarding 
+outside,lifeguarding,3,Lifeguarding,13,14,1,lifeguarding 
+outside,lifeguarding,3,Lifeguarding,14,15,1,lifeguarding 
+outside,lifeguarding,3,Lifeguarding,15,16,1,lifeguarding 
+outside,lifeguarding,3,Lifeguarding,16,17,1,lifeguarding 
+outside,lifeguarding,4,Lifeguarding,10,11,1,lifeguarding 
+outside,lifeguarding,4,Lifeguarding,11,12,1,lifeguarding 
+outside,lifeguarding,4,Lifeguarding,12,13,1,lifeguarding 
+outside,lifeguarding,4,Lifeguarding,13,14,1,lifeguarding 
+outside,lifeguarding,4,Lifeguarding,14,15,1,lifeguarding 
+outside,lifeguarding,4,Lifeguarding,15,16,1,lifeguarding 
+outside,lifeguarding,4,Lifeguarding,16,17,1,lifeguarding 
+outside,lifeguarding,5,Lifeguarding,10,11,1,lifeguarding 
+outside,lifeguarding,5,Lifeguarding,11,12,1,lifeguarding 
+outside,lifeguarding,5,Lifeguarding,12,13,1,lifeguarding 
+outside,lifeguarding,5,Lifeguarding,13,14,1,lifeguarding 
+outside,lifeguarding,5,Lifeguarding,14,15,1,lifeguarding 
+outside,lifeguarding,5,Lifeguarding,15,16,1,lifeguarding 
+outside,lifeguarding,5,Lifeguarding,16,17,1,lifeguarding 
+lm,inside,3,LM,14.75,16,2 
+special,3,Cardinal Service,15,16.5,1 
+maintenance,0,Heathers Restock,16,16.5,1 
+maintenance,1,Faculty Speaker Setup,15.5,15.75,1 
+maintenance,5,Faculty Speaker Setup,9.5,9.75,1 
+lm,inside,5,LM,14,15,1 
+rotation,outside,parking,6,Parking EVEN,14.5,16,1 
+rotation,outside,parking,6,Parking ODD,14.5,16,1 
+arts,maintenance,0,Art Closet Clean,8.25,9.25,1,arts 
+programming,arts,0,Art,9.25,11.75,1,arts 
+outside,programming,arts,boatster,0,Art Boatster,13.75,16,1,arts,boatster 
+unpaid,off-day,3,Off Day,16,23.5,14,wethur 
+programming,arts,3,Family Art,13.75,16.25,1,arts 
+programming,arts,4,Art,13.75,16.25,1,arts 
+programming,arts,5,Art Social,15.5,17,1,arts 
+am-chicken,chicken,programming,inside,0,Chicken,9,13.5,2,chicken 
+am-chicken,chicken,programming,inside,1,Chicken,9,13.5,2,chicken 
+am-chicken,chicken,programming,inside,2,Chicken,9,13.5,2,chicken 
+am-chicken,chicken,programming,inside,3,Chicken,9,13.5,2,chicken 
+am-chicken,chicken,programming,inside,4,Chicken,9,13.5,2,chicken 
+am-chicken,chicken,programming,inside,5,Chicken,9,13.5,2,chicken 
+am-chicken,chicken,programming,inside,6,Chicken,9,13.5,4,chicken 
+breakfast-chef,chicken,programming,inside,0,Breakfast Chef,7,11,1,chicken 
+rotation,outside,parking,6,Parking ODD,16,17.25,1 
+lm,inside,4,LM,16.25,17.5,2 
+rotation,outside,parking,6,Parking EVEN,17.25,18.5,1 
+beffa,odo,3,Odo Beffa,12.5,13,4,odo 
+unpaid,off-day,4,Off Day,16,23.5,12,stirfry 
+beffa,sports,3,Sports Beffa,12,12.5,5,sports 
+unpaid,off-day,0,Off Day,16,23.5,12,sumo 
+programming,boat-dock,boat-dock-coordinator,3,Boat Dock Maint,10.5,12,1,boat-dock-coordinator 
+lm,inside,3,LM,10.25,11.25,2 
+lm,inside,1,LM,9,10,1 
+HK,6,CSPs/Slunch,13.5,14.5,1,chicken 
+maintenance,3,Wall Maintenance,9.5,10.5,1 
+lm,inside,2,LM,16.25,17.25,2 
+maintenance,6,C+R,19,19.75,2 
+unpaid,off-day,4,Off Day,6,23.5,14,wethur 
+lm,inside,4,LM,9.75,10.75,1 
+programming,arts,1,Art,9.25,11.75,1,arts 
+programming,arts,1,Art,13.75,16,1,arts 
+programming,arts,4,Teens Art,9.75,11.25,1,arts 
+programming,arts,5,Crafts/Art Overlap,9.25,11.5,1,arts 
+unpaid,off-day,1,Off Day,6,23.5,12,sumo 
+lm,inside,1,LM,10,11,1 
+lm,inside,1,LM,16,17,1 
+unpaid,off-day,5,Off Day,6,23.5,12,stirfry 
+intro-skits,inside,6,Intro Skits,20,21,57 
+unpaid,off-day,2,Off Day,16,23.5,12,tueway 
+unpaid,off-day,3,Off Day,6,23.5,12,tueway 
+lm,inside,2,LM,9.75,10.75,1 
+lm,inside,0,LM,11,12,1 
+lm,inside,0,LM,16.25,17.5,1 
+unpaid,off-day,1,Off Day,16,23.5,12,motue 
+maintenance,3,Munchkins/XR BR Clean,9.5,10.5,1 
+maintenance,3,RC/Heathers BR Clean,9.5,11,1 
+maintenance,3,Faculty Cabin Clean,10.5,11.75,1 
+intro-skits,inside,6,Intro Skits,20,20.75,4 
+breakfast-chef,chicken,programming,inside,1,Breakfast Chef,7,11,1,chicken 
+breakfast-chef,chicken,programming,inside,2,Breakfast Chef,7,11,1,chicken 
+breakfast-chef,chicken,programming,inside,3,Breakfast Chef,7,11,1,chicken 
+breakfast-chef,chicken,programming,inside,4,Breakfast Chef,7,11,1,chicken 
+breakfast-chef,chicken,programming,inside,5,Breakfast Chef,7,11,1,chicken 
+breakfast-chef,chicken,programming,inside,6,Breakfast Chef,7,11,1,chicken 
+pm-chicken,chicken,programming,inside,0,Chicken,16.5,20,3,chicken 
+pm-chicken,chicken,programming,inside,1,Chicken,16.5,20,3,chicken 
+pm-chicken,chicken,programming,inside,2,Chicken,16.5,20,3,chicken 
+pm-chicken,chicken,programming,inside,3,Chicken,16.5,20,3,chicken 
+pm-chicken,chicken,programming,inside,4,Chicken,16.5,20,3,chicken 
+pm-chicken,chicken,programming,inside,5,Chicken,16.5,20,3,chicken 
+pm-chicken,chicken,programming,inside,6,Chicken,16.5,20,1,chicken 
+outside,maintenance,climbing,0,Wall Clean,16,16.5,1,climbing 
+outside,maintenance,climbing,2,Wall Set Up,10.25,10.75,1,climbing 
+outside,programming,climbing,2,Mido Climb,10.75,11.75,1,climbing 
+outside,programming,climbing,3,Wall Maintenance,9.5,11.5,1,climbing 
+menehunes,programming,0,Hunes,9.25,12,1,menehunes 
+programming,crafts,5,Art Social,15.5,17,1,crafts 
+wilderness,outside,programming,hiking,1,Medium Hike,9.25,15.5,1,hiking 
+wilderness,outside,programming,hiking,2,Medium Hike,9.25,15.5,1,hiking 
+wilderness,outside,programming,hiking,4,Long Hike,8,16,1,hiking 
+wilderness,outside,programming,hiking,4,Medium Hike,9.25,15.5,1,hiking 
+menehunes,programming,0,Hunes,13.75,16,2,menehunes 
+programming,individual-instructor-coordinator,6,Manager's Meeting,9,9.5,1,individual-instructor-coordinator 
+beffa,programming,kids-group-coordinator,0,Yahoos Beffa,8,8.5,1,kids-group-coordinator 
+beffa,programming,kids-group-coordinator,0,Hunes Beffa,8.5,9,1,kids-group-coordinator 
+beffa,programming,kids-group-coordinator,0,Midos Beffa,9,9.5,1,kids-group-coordinator 
+beffa,programming,kids-group-coordinator,0,Suaves Beffa,9.5,10,1,kids-group-coordinator 
+programming,kids-group-coordinator,0,Kids,14,15.5,1,kids-group-coordinator 
+programming,kids-group-coordinator,1,Kids,9.25,15.5,1,kids-group-coordinator 
+programming,kids-group-coordinator,6,Manager's Meeting,9,9.5,1,kids-group-coordinator 
+beffa,programming,kids-group-coordinator,6,Munch Beffa,18,18.5,1,kids-group-coordinator 
+beffa,programming,kids-group-coordinator,6,Snoop Beffa,18.5,19,1,kids-group-coordinator 
+menehunes,programming,4,Hunes Hike Day,9.5,15.75,1,menehunes 
+beffa,menehunes,0,Hunes Beffa,8.5,9,5,menehunes 
+menehunes,programming,0,Hunes,13.75,16,2,menehunes 
+menehunes,programming,2,Hunes,13.75,16,2,menehunes 
+programming,crafts,0,Crafts,13.75,16.25,1,crafts 
+beffa,midorees,0,Midos Beffa,9,9.5,5,midorees 
+maintenance,crafts,0,Art Closet Clean,8.25,9.25,1,crafts 
+beffa,programming,individual-instructor-coordinator,3,Odo Beffa,12.5,13,1,individual-instructor-coordinator 
+photo,programming,1,Disco B Photo,19.5,20.5,1,photo 
+kids-naturalist,outside,programming,boatster,1,Nature Boatster,9.5,10.75,1,kids-naturalist,boatster 
+kids-naturalist,programming,2,Yahoo Nature,9.5,10.5,1,kids-naturalist 
+kids-naturalist,programming,2,Snooper Nature,10.5,11.5,1,kids-naturalist 
+kids-naturalist,programming,1,Hunes Nature,13,14,1,kids-naturalist 
+kids-naturalist,programming,1,Munchkins Nature,11,12,1,kids-naturalist 
+menehunes,programming,0,Hunes,9.25,12,2,menehunes 
+menehunes,outside,programming,1,Hunes Beach Day,9.5,15.75,2,menehunes 
+menehunes,programming,2,Hunes,9.25,11.5,2,menehunes 
+menehunes,programming,5,Hunes,9.25,12,2,menehunes 
+programming,individual-instructor-coordinator,0,IIC,14.5,15.5,1,individual-instructor-coordinator 
+outside,maintenance,climbing,2,Wall Clean,11.75,12.25,1,climbing 
+programming,individual-instructor-coordinator,2,IIC,15.25,16.25,1,individual-instructor-coordinator 
+beffa,programming,individual-instructor-coordinator,3,Sports Beffa,12,12.5,1,individual-instructor-coordinator 
+programming,individual-instructor-coordinator,3,IIC,13.75,16,1,individual-instructor-coordinator 
+programming,individual-instructor-coordinator,5,IIC,13,15,1,individual-instructor-coordinator 
+beffa,programming,individual-instructor-coordinator,3,Arts Beffa,13,13.5,1,individual-instructor-coordinator 
+beffa,programming,individual-instructor-coordinator,5,Opho Beffa,15,15.5,1,individual-instructor-coordinator 
+pm-chicken,chicken,programming,inside,6,Chicken Dinner,16.5,20,2,chicken 
+outside,maintenance,climbing,0,Wall Set Up,10,10.5,1,climbing 
+outside,programming,climbing,0,Suaves Climb,10.5,11.75,1,climbing 
+outside,programming,climbing,0,Open Climb,13,15,1,climbing 
+outside,programming,climbing,0,Yahoos Climb,15,16,1,climbing 
+outside,maintenance,climbing,1,Wall Set Up,9,9.5,1,climbing 
+outside,programming,climbing,1,Beginner Climb,9.5,11.5,1,climbing 
+outside,programming,climbing,1,Open Climb,14,16,1,climbing 
+outside,maintenance,climbing,1,Wall Clean,16,16.5,1,climbing 
+outside,programming,climbing,2,Outdoor Rock Climb,9.5,13.5,1,climbing 
+outside,programming,climbing,2,Hunes Climb,15,16,1,climbing 
+outside,maintenance,climbing,4,Wall Set Up,10.5,11,1,climbing 
+outside,maintenance,climbing,4,Wall Clean,15,15.5,1,climbing 
+outside,programming,climbing,4,Open Climb,13,15,1,climbing 
+programming,kids-group-coordinator,0,Kids,10.25,11.5,1,kids-group-coordinator 
+programming,kids-group-coordinator,0,KGC/IIC Check-In,15.5,16,1,kids-group-coordinator 
+programming,kids-group-coordinator,4,Kids,9.25,15.25,1,kids-group-coordinator 
+programming,kids-group-coordinator,5,Kids,10.5,11.5,1,kids-group-coordinator 
+beffa,programming,kids-group-coordinator,6,Teens Beffa,16.5,17,1,kids-group-coordinator 
+programming,kids-group-coordinator,6,Kids,21,21.5,1,kids-group-coordinator 
+menehunes,programming,4,Hunes Hike Day,9.25,15.75,1,menehunes 
+menehunes,programming,4,Hunes Hike Day,9.25,15.5,1,menehunes 
+outside,programming,hiking,0,Hiking Meeting,10.5,11,1,hiking 
+programming,midorees,0,Midorees,9.5,12,4,midorees 
+programming,yahoos,0,Yahoos,9.25,12,3,yahoos 
+programming,crafts,2,Crafts,9.25,11.5,1,crafts 
+programming,crafts,3,Family Crafts,13.75,16,1,crafts 
+programming,crafts,2,Suaves Crafts,13,14.25,1,crafts 
+programming,crafts,5,Crafts/Art Overlap,9.25,11.5,1,crafts 
+menehunes,programming,0,Hunes,9.25,12,2,menehunes 
+menehunes,programming,2,Hunes,13.75,16,2,menehunes 
+menehunes,programming,4,Hunes Hike Day,9.25,15.75,1,menehunes 
+menehunes,programming,5,Hunes,9.5,11.75,1,menehunes 
+outside,programming,hiking,3,Orienteering,15,16,1,hiking 
+programming,midorees,0,Midorees,9.5,11.5,1,midorees 
+menehunes,programming,1,Hunes Beach Day,9.25,15.75,1,menehunes 
+menehunes,programming,2,Hunes,9.25,12,1,menehunes 
+photo,programming,0,Photo,10,11.5,1,photo 
+programming,midorees,2,Midorees,13.75,16,2,midorees 
+programming,midorees,4,Midorees,20,21.25,3,midorees 
+photo,programming,0,Photo,14.5,16,1,photo 
+photo,programming,4,Photo,14.5,16,1,photo 
+munchkins,programming,5,Munchkins,9,12,1,munchkins 
+munchkins,beffa,6,Munchkins Beffa,18,18.5,4,munchkins 
+programming,music,5,Music Hour,17.5,19,1,music 
+programming,music,5,Tallacapella,19.25,20.25,1,music 
+wilderness,naturalist,outside,programming,0,Naturalist Hike,9,15,1,naturalist 
+naturalist,programming,0,Orienteering Training,16,17,1,naturalist 
+munchkins,outside,programming,1,Munchkins Hike Day,9,15.5,3,munchkins 
+office,programming,inside,0,Office,8,12,1,office 
+office,programming,inside,0,Office,13,14,1,office 
+office,programming,inside,0,Office,15.5,17,1,office 
+office,programming,inside,1,Office,8,9,1,office 
+office,programming,inside,1,Office!,15.5,17,1,office 
+office,programming,inside,1,Office,17,22,1,office 
+office,programming,inside,2,Office,8,9,1,office 
+office,programming,inside,2,Office,15.5,17,1,office 
+office,programming,inside,2,Office,17,22,1,office 
+office,programming,inside,3,Office,8,12,1,office 
+office,programming,inside,3,Office,13,14,1,office 
+office,programming,inside,3,Office,15.5,17,1,office 
+office,programming,inside,4,Office,13,14,1,office 
+office,programming,inside,4,Office,15.5,17,1,office 
+office,programming,inside,5,Office,8,10,1,office 
+office,rotation,programming,inside,6,Office ODD,8,9,1,office 
+office,rotation,programming,inside,6,Office EVEN,8,9,1,office 
+office,rotation,programming,inside,6,Office ODD/HK @ 9:30 EVEN,9,14,1,office 
+office,rotation,programming,inside,6,Office EVEN/HK @ 9:30 ODD,9,14,1,office 
+office,rotation,programming,inside,6,Office ODD,15.5,17,1,office 
+office,rotation,programming,inside,6,Office EVEN,15.5,17,1,office 
+photo,programming,0,Couples Photo,17,18,1,photo 
+photo,programming,0,Family Portraits,18.5,19.5,1,photo 
+photo,programming,1,Photo,11,12,1,photo 
+photo,programming,1,Photo,14.5,16,1,photo 
+photo,programming,2,Photo,14,15,1,photo 
+photo,programming,2,Family Portraits,16.5,18,1,photo 
+photo,beffa,unpaid,3,Ski Show/Games Day Beffa,7.5,9.5,2,photo 
+photo,rotation,programming,3,Games Day Photo ODD/Ski Show Photo EVEN,9.75,12,1,photo 
+photo,rotation,programming,3,Games Day Photo EVEN/Ski Show Photo ODD,9.75,12,1,photo 
+photo,programming,3,Photo,13,15,1,photo 
+photo,programming,3,Family Portraits,17,18,1,photo 
+photo,programming,3,Campfire Photos,19.5,20.75,1,photo 
+programming,midorees,0,Midorees,20,21.25,4,midorees 
+photo,maintenance,5,Slideshow Set Up,19,19.5,2,photo 
+photo,programming,5,Slideshow,19.5,20.75,2,photo 
+photo,rotation,programming,6,Photo Upload ODD,16,17,1,photo 
+photo,rotation,programming,6,Photo Upload EVEN,16,17,1,photo 
+outside,programming,sailing,3,Family Sail,13,15.5,1,sailing 
+outside,programming,ski-dock,ski-clinic,0,Ski Clinic,7.5,10,2,ski-dock 
+outside,programming,ski-dock,ski-clinic,2,Wakeboard Clinic,7.5,10,2,ski-dock 
+outside,programming,ski-dock,0,Dock + Gas,10,11.25,2,ski-dock 
+outside,programming,ski-dock,0,Dock,12.75,14,3,ski-dock 
+outside,programming,ski-dock,0,Dock,14,15,3,ski-dock 
+outside,programming,ski-dock,0,Dock,15,16,3,ski-dock 
+outside,programming,ski-dock,0,Dock,16,17,3,ski-dock 
+outside,programming,ski-dock,1,Dock,7.5,9,2,ski-dock 
+programming,midorees,2,Midorees,9.25,11.5,2,midorees 
+programming,midorees,2,Midorees,13.75,16,2,midorees 
+programming,midorees,4,Midorees Beach Day,9.25,15.5,1,midorees 
+programming,midorees,5,Midorees,9.5,12,1,midorees 
+munchkins,outside,programming,4,Munchkins Beach Day,9,15.5,3,munchkins 
+programming,midorees,0,Midorees,14,16,1,midorees 
+munchkins,programming,5,Munchkins,9.75,12,1,munchkins 
+programming,midorees,1,Midorees Hike Day,9.5,15.75,2,midorees 
+programming,midorees,2,Midorees,9.25,12,2,midorees 
+munchkins,programming,0,Munchkins,9,11.5,1,munchkins 
+naturalist,outside,programming,boatster,1,Nature Boatster,9.75,11,1,naturalist,boatster 
+naturalist,programming,2,Naturalist Program,14.5,16.25,1,naturalist 
+outside,programming,sailing,0,Beginner Clinic,13,16,1,sailing 
+outside,programming,sailing,0,Kids' Open Sail/Bic Open Lessons,16,17.5,1,sailing 
+outside,programming,sailing,1,Teen Sail,14,16,1,sailing 
+outside,programming,sailing,2,Advanced Clinic,13,15.5,1,sailing 
+outside,programming,sailing,5,Sailing Regatta,13.25,15.5,1,sailing 
+programming,music,0,Tallacappella,10.5,12,1,music 
+programming,music,2,Tallacappella,10.25,11.75,1,music 
+programming,music,3,Tallacappella,16.25,17.5,1,music 
+programming,music,4,Mu-Snoo Music,13,14,1,music 
+programming,music,5,Tallacappella,15.75,17.25,1,music 
+programming,music,4,Tallacappella,15,17,1,music 
+office,programming,inside,4,Office,8,11,1,office 
+munchkins,programming,0,Munchkins,9,11.75,1,munchkins 
+munchkins,programming,2,Munchkins,9.25,12,1,munchkins 
+munchkins,programming,2,Munchkins,9.5,11.75,1,munchkins 
+munchkins,programming,5,Munchkins,9,11.5,1,munchkins 
+programming,midorees,0,Midorees,13.75,16,3,midorees 
+programming,midorees,5,Midorees,9.25,12,1,midorees 
+outside,programming,ski-dock,1,Dock,8,9,1,ski-dock 
+outside,programming,ski-dock,1,Dock,9,10,3,ski-dock 
+outside,programming,ski-dock,1,Dock + Gas,10,11.25,2,ski-dock 
+outside,programming,ski-dock,1,Dock,12.75,14,3,ski-dock 
+outside,programming,ski-dock,1,Dock,14,15,3,ski-dock 
+outside,programming,ski-dock,1,Dock,15,16,3,ski-dock 
+outside,programming,ski-dock,1,Dock,16,17,3,ski-dock 
+outside,programming,ski-dock,2,Dock + Gas,10,11.25,2,ski-dock 
+outside,programming,ski-dock,2,Dock,12.75,14,3,ski-dock 
+outside,programming,ski-dock,2,Dock,14,15,3,ski-dock 
+outside,programming,ski-dock,2,Dock,15,16,3,ski-dock 
+outside,programming,ski-dock,2,Dock,16,17,3,ski-dock 
+outside,programming,ski-dock,3,Dock,12.75,14,3,ski-dock 
+outside,programming,ski-dock,3,Dock,14,15,3,ski-dock 
+outside,programming,ski-dock,3,Dock,15,16,3,ski-dock 
+outside,programming,ski-dock,3,Dock,16,17,3,ski-dock 
+outside,programming,ski-dock,4,Dock,7.5,9,2,ski-dock 
+outside,programming,ski-dock,4,Dock,8,9,1,ski-dock 
+outside,programming,ski-dock,4,Dock,9,10,3,ski-dock 
+outside,programming,ski-dock,4,Dock + Gas,10,11.25,2,ski-dock 
+outside,programming,ski-dock,4,Dock,14,15,3,ski-dock 
+outside,programming,ski-dock,4,Dock,15,16,3,ski-dock 
+outside,programming,ski-dock,4,Dock,16,17,3,ski-dock 
+outside,programming,ski-dock,5,Dock,7.5,9,2,ski-dock 
+outside,programming,ski-dock,5,Dock,8,9,1,ski-dock 
+outside,programming,ski-dock,5,Dock,9,10,3,ski-dock 
+outside,programming,ski-dock,5,Dock + Gas,10,11.25,2,ski-dock 
+outside,programming,ski-dock,5,Dock,12.75,14,3,ski-dock 
+outside,programming,ski-dock,5,Dock,14,15,3,ski-dock 
+outside,programming,ski-dock,5,Dock,15,16,3,ski-dock 
+outside,programming,ski-dock,5,Dock,16,17,3,ski-dock 
+beffa,outside,ski-dock,unpaid,ski-show,3,Ski Show Beffa,8,9.5,6,ski-dock 
+outside,programming,ski-dock,ski-show,3,Ski Show Practice,6.25,8,6,ski-dock 
+outside,programming,ski-dock,ski-show,3,Ski Show,9.75,12,6,ski-dock 
+staph-ski,outside,programming,ski-dock,0,Staph Ski,18.5,20,1,ski-dock 
+staph-ski,outside,programming,ski-dock,0,Gas,17.5,17.75,1,ski-dock 
+photo,maintenance,5,Slideshow Prep,8.5,9.5,1,photo 
+staph-ski,outside,programming,ski-dock,1,Staph Ski,18.5,20,1,ski-dock 
+staph-ski,outside,programming,ski-dock,1,Gas,17.5,17.75,1,ski-dock 
+staph-ski,outside,programming,ski-dock,1,Shuffle/Bills,17.5,18.5,1,ski-dock 
+staph-ski,outside,programming,ski-dock,2,Staph Ski,18.5,20,1,ski-dock 
+staph-ski,outside,programming,ski-dock,2,Gas,17.5,17.75,1,ski-dock 
+staph-ski,outside,programming,ski-dock,2,Shuffle/Bills,17.5,18.5,1,ski-dock 
+staph-ski,outside,programming,ski-dock,3,Teen Ski + Gas,17.5,20,1,ski-dock 
+staph-ski,outside,programming,ski-dock,4,Gas,17.5,17.75,1,ski-dock 
+staph-ski,outside,programming,ski-dock,4,Shuffle/Bills,17.5,18.5,1,ski-dock 
+staph-ski,outside,programming,ski-dock,5,Staph Ski,17.5,20,1,ski-dock 
+staph-ski,outside,programming,ski-dock,5,Gas,17.5,17.75,1,ski-dock 
+ski-dock-head,programming,0,Dock Maintenance,11.25,11.75,1,ski-dock-head 
+ski-dock-head,programming,3,Gas,12,12.33,1,ski-dock-head 
+ski-dock-head,programming,6,Manager's Meeting,9,9.5,1,ski-dock-head 
+ski-dock-head,programming,6,Shuffle,21,22,1,ski-dock-head 
+snoopers,programming,0,Snoopers,9.25,12,1,snoopers 
+photo,programming,5,Last Minute Photos,9.5,11,2,photo 
+photo,maintenance,5,Slideshow Prep,15.5,18,2,photo 
+snoopers,programming,0,Snoopers,13.75,16,2,snoopers 
+outside,programming,ski-dock,4,Dock,12.75,14,4,ski-dock 
+staph-ski,outside,programming,ski-dock,4,Staph Ski,17.75,19.75,1,ski-dock 
+snoopers,programming,5,Snoopers,9.25,11.75,1,snoopers 
+snoopers,programming,5,Snoopers,9.25,12,1,snoopers 
+snoopers,programming,5,Snoopers,9.5,11.75,1,snoopers 
+staph-ski,outside,programming,ski-dock,5,Staph Ski,17.5,20,1,ski-dock 
+snoopers,beffa,6,Snooper Beffa,18.5,19,5,snoopers 
+wilderness,suaves,driving,outside,programming,overnight,4,Suave Overnight,13,21,4,suaves 
+wilderness,outside,teens,maintenance,0,Teens Overnight Prep,9,10,3,teens 
+wilderness,driving,outside,teens,programming,overnight,0,Teens Overnight,10,21,3,teens 
+teens,programming,2,Teens,11,16,3,teens 
+teens,programming,4,Teens,20,21.5,2,teens 
+staph-ski,outside,programming,ski-dock,3,Teen Ski & Shuffle/Bills,17.75,19.75,1,ski-dock 
+outside,programming,ski-dock,ski-show,6,Dock Meeting,15,16,6,ski-dock 
+snoopers,programming,2,Snoopers,9.25,11.5,2,snoopers 
+programming,yahoos,2,Yahoos,9.5,11.5,1,yahoos 
+snoopers,programming,1,Snoopers Hike Day,9.5,15.75,1,snoopers 
+staph-ski,outside,programming,ski-dock,2,Staph Ski,17.5,20,1,ski-dock 
+ski-dock-head,programming,5,Bills,9,10,1,ski-dock-head 
+snoopers,programming,0,Snoopers,9.25,11.5,1,snoopers 
+snoopers,programming,2,Snoopers,9.25,12,2,snoopers 
+snoopers,programming,4,Snoopers Beach Day,9.25,15.5,1,snoopers 
+staph-ski,outside,programming,ski-dock,0,Staph Ski,18.5,20,1,ski-dock 
+suaves,programming,2,Suaves,11,12,3,suaves 
+staph-ski,outside,programming,ski-dock,4,Staph Ski,18.5,19.75,1,ski-dock 
+snoopers,programming,4,Snoopers Beach Day,9.25,15.5,1,snoopers 
+snoopers,programming,0,Snoopers,13.75,16,3,snoopers 
+teens,programming,4,Teens,10,11.75,3,teens 
+snoopers,programming,4,Snoopers Beach Day,9.5,15.75,1,snoopers 
+suaves,driving,outside,programming,1,Suaves Beach Day,11.5,16,3,suaves 
+staph-ski,outside,programming,ski-dock,0,Shuffle/Bills,20,21,1,ski-dock 
+snoopers,programming,1,Snoopers Hike Day,9.25,15.5,1,snoopers 
+wilderness,suaves,outside,maintenance,4,Suave Overnight Prep,12,13,4,suaves 
+wilderness,driving,outside,teens,programming,overnight,1,Teen Overnight,8,11.5,3,teens 
+suaves,programming,2,Suaves,13,15,3,suaves 
+teens,programming,5,Teens,10,11.75,1,teens 
+teens,programming,5,Teens,10.25,12,1,teens 
+beffa,teens,6,Teens Beffa,16.5,17,3,teens 
+outside,programming,tennis,1,Advanced Tennis Clinic,8.75,10.75,1,tennis 
+snoopers,programming,2,Snoopers,13.75,15.75,1,snoopers 
+outside,programming,tennis,1,Tennis,14,16,1,tennis 
+outside,programming,tennis,2,Munchkin Tennis,10,11,1,tennis 
+menehunes,programming,2,Hunes,9.5,12,1,menehunes 
+lm,inside,0,LM,15.75,17,1 
+suaves,programming,0,Suaves,10,12,4,suaves 
+suaves,programming,0,Suaves,13,15,4,suaves 
+wilderness,suaves,driving,outside,programming,overnight,5,Suave Overnight,6,9,4,suaves 
+suaves,programming,5,Suaves,13,14.5,4,suaves 
+snoopers,programming,0,Snoopers,9.25,11.5,2,snoopers 
+outside,programming,tennis,3,Wimbledon Wednesday,13.5,17.25,1,tennis 
+outside,programming,volleyball,3,Guest v. Guest,13,15.5,1,volleyball 
+outside,programming,volleyball,5,Staph v. Guest,13,16,1,volleyball 
+beffa,yahoos,0,Yahoos Beffa,8,8.5,5,yahoos 
+programming,yoga,0,Yoga,6.75,8.25,1,yoga 
+programming,yoga,0,Twilight Yoga,19.75,21.25,1,yoga 
+programming,yoga,2,Yoga,6.75,8.25,1,yoga 
+programming,yoga,4,Yoga,6.75,8.25,1,yoga 
+special,outside,plants,1,Plants,17,18,2 
+special,outside,plants,3,Plants,15,16,2 
+unpaid,5,Staph v. Guest Volleyball,13,15,1 
+programming,yahoos,0,Yahoos,9.25,11.5,2,yahoos 
+special,outside,astrocruise,boatster,0,Astro Cruise,21.5,23,2,astrocruise,boatster 
+special,outside,astrocruise,boatster,1,Astro Cruise,21.5,23,2,astrocruise,boatster 
+special,outside,astrocruise,boatster,3,Astro Cruise,21.5,23,2,astrocruise,boatster 
+special,outside,astrocruise,boatster,4,Astro Cruise,21.5,23,2,astrocruise,boatster 
+special,outside,basketball,5,Basketball Tournament,15,17,1 
+special,outside,boatster,performance,boatster-cruise,1,Boatster,16.5,18.25,2,boatster 
+special,outside,boatster,performance,boatster-cruise,2,Boatster,16.5,18.25,2,boatster 
+special,outside,boatster,performance,boatster-cruise,3,Boatster,16.5,18.25,2,boatster 
+special,outside,boatster,performance,boatster-cruise,4,Boatster,16.5,18.25,2,boatster 
+special,bread-bake,5,Bread Bake,14,16,2 
+special,hobart,inside,breakfast-hobart,0,Hobart,7,10.5,2,hobart 
+special,hobart,inside,breakfast-hobart,1,Hobart,7,10.5,2,hobart 
+special,hobart,inside,breakfast-hobart,2,Hobart,7,10.5,2,hobart 
+special,hobart,inside,breakfast-hobart,3,Hobart,7,10.5,2,hobart 
+special,hobart,inside,breakfast-hobart,4,Hobart,7,10.5,2,hobart 
+special,hobart,inside,breakfast-hobart,5,Hobart,7,10.5,2,hobart 
+special,hobart,inside,breakfast-hobart,6,Hobart,7,10.5,2,hobart 
+programming,yahoos,2,Yahoos,13.75,16,3,yahoos 
+cherry-house,special,outside,social,5,Cherry House,16,18,4 
+special,hobart,dinner-hobart,inside,0,Hobart,17.5,20,2,hobart 
+special,hobart,dinner-hobart,inside,1,Hobart,17.5,20,2,hobart 
+special,hobart,dinner-hobart,inside,2,Hobart,17.5,20,2,hobart 
+special,hobart,dinner-hobart,inside,3,Hobart,17.5,20,2,hobart 
+special,hobart,dinner-hobart,inside,4,Hobart,17.5,20,2,hobart 
+special,hobart,dinner-hobart,inside,5,Hobart,17.5,20,2,hobart 
+special,hobart,dinner-hobart,inside,6,Hobart,17.5,20,2,hobart 
+disco-bingo,special,inside,performance,1,Disco Bingo,19,21,5 
+special,outside,egg-drop,5,Egg Drop,15.75,17.25,2 
+beffa,special,outside,games-day,unpaid,3,Games Day Beffa,7.5,9.5,6 
+special,outside,games-day,3,Games Day,9.75,12,6 
+greeting,special,inside,6,Greeting,14.75,16.5,2,greeting 
+greeting,special,inside,6,Greeting,16.5,18,2,greeting 
+guest-to-guest,special,social,inside,2,Guest to Guest,18.5,20,1 
+special,hoohune,4,HooHune Night,19.75,21.25,3 
+kids-t-show,special,5,Kid's Talent Show!,14,15,1 
+lunch-hobart,special,hobart,inside,0,Hobart,12,14.5,2,hobart 
+lunch-hobart,special,hobart,inside,1,Hobart,12,14.5,2,hobart 
+lunch-hobart,special,hobart,inside,2,Hobart,12,14.5,2,hobart 
+lunch-hobart,special,hobart,inside,3,Hobart,12,14.5,2,hobart 
+lunch-hobart,special,hobart,inside,4,Hobart,12,14.5,2,hobart 
+lunch-hobart,special,hobart,inside,5,Hobart,12,14.5,2,hobart 
+musnoo,special,4,MuSnoo Night,19.75,21.25,3 
+special,omelet-bar,5,Omelette Bar Chef,6.75,9.5,1,omelet-bar 
+outside,programming,yahoos,4,Yahoos Hike Day,9.25,15.5,2,yahoos 
+programming,yahoos,2,Yahoos,13.75,15.75,1,yahoos 
+programming,yahoos,5,Yahoos,9.5,11.75,1,yahoos 
+programming,yahoos,1,Yahoos Beach Day,9.25,15.5,2,yahoos 
+special,outside,performance,3,Campfire,19,21,6 
+special,music-hour,performance,5,Music Hour,17.5,19,4,musical 
+programming,yoga,0,Snooper Yoga,15.25,16,1,yoga 
+programming,yahoos,0,Yahoos,13.75,16,4,yahoos 
+programming,yahoos,1,Yahoos Beach Day,9.25,15.75,2,yahoos 
+programming,yahoos,2,Yahoos,9.25,12,2,yahoos 
+special,book-discussion,4,Book Discussion,15.25,16.25,1 
+outside,programming,volleyball,0,Beginner Volleyball,14,15,1,volleyball 
+outside,programming,volleyball,0,Adult Social Volleyball,15,16,1,volleyball 
+outside,programming,volleyball,2,Serving Clinic,9.5,10.5,1,volleyball 
+special,improv,performance,2,Improv,20,22,4,improv 
+special,womens-breakfast,1,Women's Breakfast,7.75,8.5,1 
+programming,yoga,1,Yoga,10.25,11.75,1,yoga 
+programming,yoga,1,Yoga,14.75,16,1,yoga 
+programming,yoga,3,Yoga,15,16.25,1,yoga 
+programming,yoga,4,Yoga,15,16.25,1,yoga 
+outside,programming,tennis,2,Couples Tennis,14,16,1,tennis 
+outside,tennis,maintenance,2,Tennis BR Clean,16,16.5,1,tennis 
+outside,programming,tennis,4,Tennis Clinic,9.25,11,1,tennis 
+programming,yahoos,4,Yahoos Hike Day,9.25,15.75,2,yahoos 
+special,outside,linen-bar,3,Linen Exchange,8.75,10,2 
+dance,special,0,Dance Class,15.5,16.5,1 
+special,improv,performance,2,Improv,20.5,22,1,improv 
+special,outside,mountain-biking,0,Mountain Biking Ride,13.25,16.5,1,mountain-biking 
+special,omelet-bar,2,Omelette Bar Chef,6.75,9.5,2,omelet-bar 
+special,hoohune,0,HooHune Night,19.75,21.25,3 
+programming,yahoos,2,Yahoos,9.25,11.75,1,yahoos 
+programming,yahoos,5,Yahoos,9.25,12,2,yahoos 
+special,outside,kids-carnival,5,Kid's Carnival,15,16,4 
+wilderness,outside,mountain-biking,programming,5,Mountain Bike Ride,9,12,1,mountain-biking 
+special,puppet-show,inside,0,Puppet Show,19.75,21.25,3 
+rowing,special,outside,0,Rowing,6.25,8.25,2,rowing 
+rowing,special,outside,1,Rowing,6.25,8.25,2,rowing 
+rowing,special,outside,2,Rowing,6.25,8.25,2,rowing 
+rowing,special,outside,3,Rowing,6.25,8.25,2,rowing 
+rowing,special,outside,4,Rowing,6.25,8.25,2,rowing 
+rowing,special,outside,5,Rowing,6.25,8.25,2,rowing 
+wilderness,social-hike,special,outside,social,0,Social Hike,16.5,18.5,5 
+special,story-hour,0,Story Hour,16.75,18,2 
+special,story-hour,1,Story Hour,16.75,18,2 
+special,story-hour,2,Story Hour,16.75,18,2 
+special,story-hour,3,Story Hour,16.75,18,2 
+special,story-hour,4,Story Hour,16.75,18,2 
+town-run,special,driving,0,Town Run,9,12,1,town-run 
+town-run,special,driving,1,Town Run,9,12,1,town-run 
+town-run,special,driving,2,Town Run,9,12,1,town-run 
+town-run,special,driving,3,Town Run,9,12,1,town-run 
+town-run,special,driving,4,Town Run,9,12,1,town-run 
+town-run,special,driving,5,Town Run,9,12,1,town-run 
+special,inside,performance,trivia,4,Trivia,21.5,22.75,2 
+special,inside,wine,0,Wine,17.25,19.5,1,wine 
+special,inside,wine,1,Wine,17.25,19.5,1,wine 
+special,inside,wine,2,Wine,17.25,19.5,1,wine 
+special,inside,wine,3,Wine,17.25,19.5,1,wine 
+special,inside,wine,4,Wine,17.25,19.5,1,wine 
+special,inside,wine,5,Wine,17.25,19.5,1,wine 
+special,inside,wine,6,Wine,17.25,19.5,1,wine 
+meal,inside,breakfast,0,Breakfast,6.75,10.25,2 
+outside,boat-dock,6,Boat Dock,19,20,1,boat-dock,lifeguarding 
+lm,inside,0,LM,9.75,10.75,1 
+outside,programming,yoga,0,Suaves SUP Yoga,14,15,1,yoga 
+programming,boat-dock-coordinator,crafts,0,Crafts,9.25,11.75,1,crafts 
+programming,yahoos,5,Yahoos,9.5,11.5,1,yahoos 
+menehunes,programming,5,Hunes,9.25,11.5,1,menehunes 
+outside,boat-dock,3,Boat Dock,14,15,2,boat-dock 
+snoopers,outside,programming,1,Snoopers Hike Day,9.5,15.5,2,snoopers 
+special,outside,unpaid,3,Water,14.5,15.5,1 
+play,special,performance,3,The Play,20,22,4,play 
+outside,2,Outrigger Canoe,9,10.5,1,outrigger-canoe 
+outside,programming,midorees,4,Midorees Beach Day,9.5,15.75,2,midorees 
+special,outside,mountain-biking,3,Mountain Biking,12.75,16,1,mountain-biking 
+lm,inside,5,LM,10.5,11.5,2 
+beffa,opho,5,Opho Beffa,15,15.5,4,opho 
+staph-ski,outside,programming,ski-dock,1,Staph Ski,17.5,20,1,ski-dock 
+meal,dinner,inside,4,Dinner,17.25,19.5,1 
+rotation,outside,6,Parking EVEN,16,17.25,1 
+rotation,outside,parking,6,Parking EVEN,16,17.25,1 
+special,book-discussion,2,Book Discussion,16,17,1 
+kids-naturalist,outside,programming,4,Suaves Nature,13,13.5,1,kids-naturalist 
+programming,yoga,5,Yoga,10.5,12,1,yoga 
+photo,programming,5,Rowing Photo,7.25,8,1,photo 
+unpaid,5,Staph v. Guest Volleyball,13,16,1 
+dance,special,5,Dance Class,16.25,17.25,1 
+HK,6,HK/Staph Meeting,9.5,14.5,43 
+programming,yoga,4,Teens Twilight Yoga,20,21.25,1,yoga 
+outside,boat-dock,0,Boat Dock,13,14,1,boat-dock,lifeguarding 
+dinner,2,Dinner,19.5,20,1 
+rotation,parking,6,Parking ODD,17.25,18.5,1 
+outside,programming,volleyball,2,Kids/Adult Volleyball,16.5,17.5,1,volleyball 
+outside,programming,volleyball,4,Competitive Volleyball,10.75,12,1,volleyball 
+outside,programming,volleyball,5,Teens Vball,11.25,12,1,volleyball 
+HK,chicken,programming,6,Lunch Chicken & SPs (HK wks 2/5/7/9/12),9,14.5,1,chicken 
+snoopers,programming,2,Snoopers,13.75,16,2,snoopers 
+programming,individual-instructor-coordinator,0,Hiking Meeting,10.5,11,1,individual-instructor-coordinator 
+play,performance,3,The Play,20.25,22,1,play 
+dinner,3,Dinner,17.25,19.5,1 
+programming,individual-instructor-coordinator,0,KGC/IIC Check-In,15.5,16,1,individual-instructor-coordinator 
+outside,mountain-biking,programming,5,Ride Prep,8.75,9,1,mountain-biking 
+special,womens-breakfast,1,Women's Breakfast,7.75,8.75,1 
+kids-naturalist,programming,2,Mido Nature,14,14.5,1,kids-naturalist 
+kids-naturalist,outside,programming,0,Teens Nature,10,10.5,1,kids-naturalist 
+dinner,2,Dinner,17.25,20,2 
+kids-naturalist,programming,3,Family Nature Mineral Paint,14.5,17,1,kids-naturalist 
+special,shabbat,5,Shabbat,16.25,17.5,1 
+lm,4,LM,10.5,11.5,1 
+outside,programming,climbing,2,Open Climb,16,17,1,climbing 
+special,2,Outrigger Canoe,10.5,11.75,1,outrigger-canoe 
+naturalist,programming,1,Nature Photo,14.75,15.75,1,naturalist 
+naturalist,programming,3,Orienteering,13,15,1,naturalist 
+naturalist,outside,programming,3,Wilderness Skills Workshop,15,16,1,naturalist 
+snoopers,programming,0,Snoopers,9.25,12,1,snoopers 
+outside,boat-dock,0,Boat Dock,12,13,1,boat-dock 
+outside,boat-dock,2,Boat Dock,12,13,1,boat-dock 
+dance,special,3,Dance Class,15.5,16.5,1 
+outside,programming,climbing,2,Wall Set Up,14.5,15,1,climbing 
+outside,programming,climbing,2,Wall Clean,17,17.5,1,climbing 
+dinner,3,Dinner,19.5,20,1 
+play,special,3,The Play Tech,20.75,22,1,play 
+outside,programming,climbing,4,Teen Climb,11,12,1,climbing 
+special,exercise,1,Morning Exercise,7,8,1 
+special,exercise,5,Morning Exercise,7,8,1 
+chicken,programming,6,Lunch Chicken & SPs (HK wks 3/5/8/10/12),9,14.5,1,chicken 
+am-chicken,chicken,programming,6,Lunch Chicken & SPs (HK wks 2/4/7/9/11),9,14.5,1,chicken 
+outside,programming,sailing,2,Yahoos Sail,10.5,11.5,1,sailing 
+HK,chicken,6,Lunch Chicken & SPs (HK wks 3/6/8/10/13),9,14.5,1,chicken 
+rotation,programming,arts,3,Welcome Board EVEN,11.5,12.5,1,arts 
+dinner,4,Dinner,19.5,20,1 
+HK,chicken,6,Lunch Chicken & SPs (HK wks 4/6/8/11/13),9,14.5,1,chicken 
+fountain,inside,4,Fountain,20.75,21.75,1,fountain 
+programming,music,5,Suaves Ukulele,13,14,1,music 
+fountain,inside,0,Fountain,9,10.5,1,fountain 
+outside,boat-dock,0,Boat Dock,14,15,1,boat-dock 
+outside,boat-dock,2,Boat Dock,9,10,1,boat-dock 
+outside,programming,midorees,1,Midorees Hike Day,9.25,15.75,1,midorees 
+outside,programming,midorees,1,Midorees Hike Day,9.25,15.5,1,midorees 
+snoopers,programming,2,Snoopers,14,16,1,snoopers 
+snoopers,programming,4,Snoopers Beach Day,9.5,15.75,1,snoopers 
+snoopers,programming,5,Snoopers,9.25,12,1,snoopers 
+dinner,performance,2,Performance Dinner,17.25,19.5,1 
+outside,boat-dock,0,Boat Dock,15,16,1,boat-dock 
+munchkins,programming,2,Munchkins,9,11.75,1,munchkins 
+outside,boat-dock,0,Boat Dock,9,10,1,boat-dock 
+programming,midorees,4,Midorees Beach Day,9.25,15.75,1,midorees 
+programming,midorees,5,Midorees,9.25,11.5,1,midorees 
+outside,boat-dock,5,Boat Dock,14,15,2,boat-dock 
+programming,boat-dock,boat-dock-coordinator,6,Boat Dock,15,17,1,boat-dock-coordinator 
+outside,programming,boat-dock,boat-dock-coordinator,6,Boat Dock,15.5,17,1,boat-dock-coordinator 
+HK,chicken,programming,6,Lunch Chicken & SPs (HK wks 2/4/6/9/11/13),9,14.5,1,chicken 
+teens,programming,1,Teens,14,16,3,teens 
+meal,inside,breakfast,5,Breakfast,8.25,10.25,4 
+outside,programming,tennis,0,Begginner Tennis Clinic,9.25,11.25,1,tennis 
+programming,tennis,0,Hunes Tennis,14,15,1,tennis 
+outside,boat-dock,4,Boat Dock,15,16,1,boat-dock 
+outside,boat-dock,1,Boat Dock,14,15,1,boat-dock 
+outside,boat-dock,1,Boat Dock,15,16,1,boat-dock 
+rotation,programming,crafts,3,Welcome Board ODD,10,11,1,crafts 
+lm,inside,5,LM,14,15.25,1 
+programming,hiking,0,Hiking Meeting,11,11.5,1,hiking 
+wilderness,programming,hiking,1,Long Hike,8,16,1,hiking 
+beffa,chicken,6,Chicken Beffa,21,21.5,9,chicken 
+outside,boat-dock,2,Boat Dock,14,15,1,boat-dock 
+outside,boat-dock,2,Boat Dock,15,16,1,boat-dock 
+beffa,suaves,0,Suaves Beffa,9.5,10,4,suaves 
+suaves,programming,0,Suaves,20,21.25,3,suaves 
+outside,boat-dock,5,Boat Dock,10,11,1,boat-dock 
+lunch,meal,inside,5,Lunch,11.75,13,10 
+programming,midorees,0,Midorees,13.75,15.75,1,midorees 
+meal,inside,breakfast,2,Breakfast,7.5,9,5 
+meal,dinner,inside,meal-head,dinner-head,2,Performance Dinner Head,17.25,20,2,meal-head 
+outside,boat-dock,3,Boat Dock,15,16,1,boat-dock 
+programming,midorees,5,Midorees,9.25,11.75,1,midorees 
+special,1,Staph to Guest,16.75,18,5 
+munchkins,programming,0,Munchkins,9,12,2,munchkins 
+munchkins,programming,2,Munchkins,9,12,1,munchkins 
+fountain,0,Fountain,15.5,16.75,1,fountain 
+menehunes,programming,0,Hunes,13.75,15.75,1,menehunes 
+book-discussion,0,Book Discussion,16,17.25,1 
+menehunes,programming,1,Hunes Beach Day,9.5,15.5,1,menehunes 
+lm,inside,1,LM,16,17.25,1 
+outside,boat-dock,6,Boat Dock,19,20,2,boat-dock 
+outside,boat-dock,0,Boat Dock,10,11,1,boat-dock 
+outside,boat-dock,1,Boat Dock,11,12,1,boat-dock 
+special,discussion,1,Staph to Guest,16.5,18.25,1 
+office,programming,4,Office,11,12,1,office 
+outside,boat-dock,4,Boat Dock,12,13,1,boat-dock 
+breakfast,4,Breakfast,6.75,8.75,1 
+fountain,inside,5,Fountain,16.5,17.75,1,fountain 
+outside,boat-dock,2,Boat Dock,10,11,1,boat-dock 
+lm,inside,2,LM,11,12,1 
+fountain,inside,2,Fountain,16.5,17.75,1,fountain 
+outside,boat-dock,4,Boat Dock,13,14,1,boat-dock 
+outside,boat-dock,3,Boat Dock,13,14,1,boat-dock 
+outside,boat-dock,5,Boat Dock,15,16,1,boat-dock 
+outside,boat-dock,2,Boat Dock,11,12,1,boat-dock 
+outside,boat-dock,5,Boat Dock,11,12,1,boat-dock 
+fountain,inside,1,Fountain,12.5,14,1,fountain
