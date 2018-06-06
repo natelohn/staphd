@@ -27,7 +27,7 @@
 			<h2><u>{{set.title}}</u></h2>
 			<ul>
 				{% for flag in flags %}
-				<li>
+				<li class="shift_set_li">
 					<input type="checkbox" name="added_shifts" value="{{flag.id}}"">
 					{{flag}}
 				</li>
@@ -41,7 +41,7 @@
 			<h2><u>Select Shifts:</u></h2>
 			<ul>
 				{% for shift in all_shifts %}
-				<li id="shift_set_li">
+				<li class="shift_set_li">
 					<input type="checkbox" name="added_shifts" value="{{shift.id}}"">
 					{{shift}}
 				</li>
