@@ -12,11 +12,5 @@
 		<a href="{% url 'schedules:select' %}" class="button">Select or Create Schedule</a>
 		{% endif %}
 	</div>
-	<p>
-		{% for v in csv %}
-		{{v}}
-		<br>
-		{% endfor %}
-	</p>
 </div>
 {% endblock %}
