@@ -3,6 +3,7 @@
 <div id="page">
 	<div id="detail_header">
 		<h1>{{ object.title }} - {{percent}}% Complete.</h1>
+		<h1>Shift Set: {shift_set}</h1>
 	</div>
 	<div id="detail_footer">
 		<a class="delete_button" href="{% url 'schedules:schedule-delete' pk=object.id%}">Delete</a>

@@ -926,6 +926,7 @@ class ScheduleDetail(LoginRequiredMixin, DetailView):
 		schedule = self.get_object()
 		context['title'] = schedule.title
 		context['percent'] = schedule.get_percent_complete()
+		context['shift_set'] = schedule.shift_set.title
 		return context
 
 class ScheduleDelete(LoginRequiredMixin, DeleteView):
