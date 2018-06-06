@@ -22,7 +22,7 @@ from operator import attrgetter
 from staphd.celery import app
 
 from .analytics import get_readable_time
-from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm
+from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task
@@ -1002,4 +1002,14 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 		staphing = self.get_object()
 		return reverse_lazy('schedules:stapher-schedule', kwargs={'pk':staphing.stapher.id})
 
+
+class ShiftSetCreate(LoginRequiredMixin, CreateView):
+	template_name = 'schedules/shift_set_form.html'
+	form_class = ShiftSetCreateForm
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ShiftSetCreate, self).get_context_data(*args, **kwargs)
+		context['title'] = 'New Shift Set'
+		context['cancel_url'] = 'schedules:scedule-create'
+		return context
 

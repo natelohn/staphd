@@ -59,4 +59,6 @@ urlpatterns = [
 
     url(r'^staphing/(?P<pk>[\d]+)/delete$', views.StaphingDelete.as_view(), name='staphing-delete')
 
+    url(r'^set/create/$', views.ShiftSetCreate.as_view(), name='set-create')
+
 ]

@@ -3,7 +3,7 @@ from django import forms
 from django.db import models
 from django.db.models.functions import Lower
 
-from .models import Flag, Qualification, Schedule, Settings, Shift, Stapher, Staphing
+from .models import Flag, Qualification, Schedule, Settings, Shift, Stapher, Staphing, ShiftSet
 from .models import Settings as ScheduleBuildingSettings
 
 
@@ -245,5 +245,11 @@ class AddShiftsForm(forms.Form):
 					if shift.overlaps(other_shift):
 						raise forms.ValidationError(f"Cannot add both {shift} and {other_shift} since they overlap. Please select one or the other.")
 		return added_shifts
+
+
+class ShiftSetCreateForm(forms.ModelForm):
+	class Meta:
+		model = ShiftSet
+		fields = ['title']
 
 
