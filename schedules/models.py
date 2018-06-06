@@ -3,6 +3,7 @@ from django.conf import settings
 from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from django.db import models
+from django.utils import timezone
 from operator import attrgetter
 
 from . import fields
@@ -182,6 +183,15 @@ class Stapher(models.Model):
 				return staphing
 		return None
 
+# A class representing a set of shifts used at different times over the summer (mirco bopper week/conference season)
+# - this will allow for different types of schedules
+class ShiftSet(models.Model):
+	DEAULT_PK 		= 1
+	active			= models.BooleanField(default = True)
+	title 			= models.CharField(max_length = 100, default = 'NAME OF SHIFT SET')
+
+	def __str__(self):
+		return f'{self.title}'
 
 class Shift(models.Model):
 	active			= models.BooleanField(default = True)
@@ -193,6 +203,7 @@ class Shift(models.Model):
 	qualifications	= models.ManyToManyField(Qualification, blank = True)
 	workers_needed	= models.IntegerField(default= 1)
 	difficult		= models.BooleanField(default = False)
+	shift_set 		= models.ForeignKey(ShiftSet, on_delete = models.CASCADE, default = ShiftSet.DEAULT_PK)
 
 	def __str__(self):
 		days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
@@ -295,10 +306,14 @@ class Shift(models.Model):
 	def get_day_string(self):
 		return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][self.day]
 	
+
 # A class representing all shift/staph pairs for a user - this will allow for multiple schedules
 class Schedule(models.Model):
 	active			= models.BooleanField(default = True)
 	title 			= models.CharField(max_length = 100, default = 'NAME OF SCHEDULE')
+	shift_set 		= models.ForeignKey(ShiftSet, on_delete = models.CASCADE, default = ShiftSet.DEAULT_PK)
+	updated_on		= models.DateTimeField(default = timezone.now)
+	excel_updated	= models.DateTimeField(default = timezone.now)
 
 	def __str__(self):
 		return f'{self.title}'
@@ -392,17 +407,6 @@ class Master(models.Model):
 
 	def is_standard(self):
 		return self.template == 'master-template'
-
-
-
-# A class representing a set of shifts used at different times over the summer (mirco bopper week/conference season)
-# - this will allow for different types of schedules
-class ShiftSet(models.Model):
-	active			= models.BooleanField(default = True)
-	title 			= models.CharField(max_length = 100, default = 'NAME OF SHIFT SET')
-
-	def __str__(self):
-		return f'{self.title}'
 
 
 
