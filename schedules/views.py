@@ -665,8 +665,14 @@ class ShiftList(LoginRequiredMixin, ListView):
 					explanation_str = f'- do not have the \'{upper_query}\' flag' if negate_query else f'- have the \'{upper_query}\' flag'
 					if flag_match: query_explanation.append(explanation_str)
 
+					# Search by Shift Set
+					if no_schedule:
+						shift_set_match = [s for s in filtered_shifts if query in s.shift_set.title ]
+						explanation_str = f'- are not in the \'{query}\' shift set' if negate_query else f'- are in the \'{query}\' shift set'
+						if flag_match: query_explanation.append(explanation_str)
 
-					queryset = name_contains + list(title_contains) + list(day_exact) + during_time + qual_match + flag_match 
+
+					queryset = name_contains + list(title_contains) + list(day_exact) + during_time + qual_match + flag_match + shift_set_match
 
 				if negate_query: queryset = list(set(all_shifts) - set(queryset))
 				filtered_shifts = list(set(filtered_shifts) & set(queryset))
@@ -728,7 +734,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 			context['shift_displayed_msg'] = [f'Showing Shifts in All Shift Sets', '- select a scheule to show a specicifc shift set.']
 		query_explanation = cache.get('query_explanation')
 		if query_explanation:
-			context['shift_displayed_msg'] = query_explanation
+			context['shift_displayed_msg'] += query_explanation
 		elif 'sort' in self.kwargs:
 			sort_type = self.kwargs['sort']
 			context['key_msg'] = 'Select ' + sort_type.capitalize()[:-1]
