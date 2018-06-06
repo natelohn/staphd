@@ -39,7 +39,7 @@ def make_staphings_csv(schedule):
 	all_csv_strings = []
 	print('A')
 	print(schedule)
-	all_staphings = Staphings.objects.filter(schedule = schedule)
+	all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
 	print(f'--->> {all_staphings}')
 	for staphing in all_staphings:
 		print(staphing)
