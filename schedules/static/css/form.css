@@ -290,11 +290,11 @@ label[for=shift_workers_needed]{
 
 label[for=shift_shift_set], #shift_shift_set{
 	top: 100px;
+	display: block;	
 }
 
 label[for=shift_shift_set]{
 	font-size: 2.25em;
-	display: block;	
 }
 
 #shift_shift_set{
