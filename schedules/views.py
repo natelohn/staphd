@@ -1013,6 +1013,7 @@ class ShiftSetCreate(LoginRequiredMixin, CreateView):
 		context['title'] = 'New Shift Set'
 		context['cancel_url'] = 'schedules:schedule-create'
 		context['shift_sets'] = ShiftSet.objects.all()
+		context['flags'] = Flag.objects.all()
 		context['all_shifts'] = Shift.objects.all()
 		return context
 
