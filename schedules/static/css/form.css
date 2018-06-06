@@ -250,7 +250,7 @@ label[for=stapher_qualifications_hardcoded] {
 /*******************************************************/
 /***************** SHIFT SPECIFIC *********************/
 /*******************************************************/
-#shift_title {
+#shift_title, #shift_shift_set{
 	/* size */
 	width: 435px;
 
@@ -291,7 +291,6 @@ label[for=shift_workers_needed]{
 #shift_shift_set{
 	position: absolute;
 	top: 215px;
-	width: 445px;
 	text-align: center;
 	font-size: 2em;
 }
