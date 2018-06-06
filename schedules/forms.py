@@ -156,6 +156,14 @@ class ShiftCreateForm(forms.ModelForm):
 					raise forms.ValidationError(error_string)
 		return qualifications
 
+	def clean_shift_set(self):
+		shift_set = self.cleaned_data.get("shift_set")
+		for s in Staphing.objects.filter(shift = self.instance):
+			if s.schedule.shift_set != shift_set:
+				error_string = f"This shift is scheduled on the \"{s.schedule}\" schedule which uses the {s.schedule.shift_set} shift set. To make this edit delete all of the schedule workers from this shift on the \"{s.schedule}\" schedule."
+				raise forms.ValidationError()
+		return shift_set
+
 
 
 class QualificationCreateForm(forms.ModelForm):
