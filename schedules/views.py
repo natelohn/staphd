@@ -713,12 +713,19 @@ class ShiftList(LoginRequiredMixin, ListView):
 		return key_dict
 
 	def get_context_data(self, *args, **kwargs):
+		try:
+			schedule = Schedule.objects.get(active__exact = True)
+		except:
+			schedule = None
 		context = super(ShiftList, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Shifts'
 		context['link'] = 'schedules:shift-create'
 		context['query_explanation'] = cache.get('query_explanation')
 		context['shift_sort_options'] = self.get_sort_options()
-		context['shift_displayed_msg'] = ['All Shifts']
+		if schedule:
+			context['shift_displayed_msg'] = [f'Showing {schedule.shift_set} Shifts']
+		else:
+			context['shift_displayed_msg'] = [f'Showing Shifts in All Shift Sets', '- select a scheule to show a specicifc shift set.']
 		query_explanation = cache.get('query_explanation')
 		if query_explanation:
 			context['shift_displayed_msg'] = query_explanation
@@ -737,10 +744,9 @@ class ShiftList(LoginRequiredMixin, ListView):
 							if sort_type in ['flags', 'qualifications']:
 								msg = 'Shifts with the \'' + key['title'] + '\' ' + sort_type[:-1] 
 							elif sort_type in 'staphers':
-								try:
-									schedule = Schedule.objects.get(active__exact = True)
+								if schedule:
 									msg = key['title'] + f'\'s Shifts in the "{schedule.title}" schedule.'
-								except:
+								else:
 									msg = 'No Current Schedule'
 							else:
 								msg = key['title'] + '\'s Shifts'
