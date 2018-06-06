@@ -4,14 +4,11 @@ from .analytics import get_hours_from_timedelta, get_readable_time
 from .models import Staphing, Shift
 
 def get_min(time):
-	m = round(time.minute / 60, 2)
+	m = time.minute / 60
 	min_options = [0, 0.25, 0.33, 0.5, 0.66, 0.75, 1]
-	if m not in min_options:
-		for i, opt in enumerate(min_options):
-			if min_options[i] < m and m < min_options[i + 1]:
-				print(min_options[i])
-				return min_options[i]
-	return m
+	for i, opt in enumerate(min_options):
+		if min_options[i] < m and m < min_options[i + 1]:
+			return min_options[i]
 
 def get_time_str(time):
 	h = time.hour
