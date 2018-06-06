@@ -395,9 +395,14 @@ class Master(models.Model):
 
 
 
+# A class representing a set of shifts used at different times over the summer (mirco bopper week/conference season)
+# - this will allow for different types of schedules
+class ShiftSet(models.Model):
+	active			= models.BooleanField(default = True)
+	title 			= models.CharField(max_length = 100, default = 'NAME OF SHIFT SET')
 
-
-
+	def __str__(self):
+		return f'{self.title}'
 
 
 
