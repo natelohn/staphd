@@ -14,7 +14,7 @@
 			<button class='create_btn' id="form_save" type='submit'>Save</button>
 			<div class="tooltip">More Info
 				<span class="tooltiptext">
-					Select a Flag from a Shift Set to add all Shifts in that set with that have the selected flag.
+					Select a Flag from a Shift Set (left) to add all Shifts in that set with that have the selected flag to the new Shift Set (right).
 				</span>
 			</div>
 		</div>
@@ -41,7 +41,7 @@
 			<h2><u>Select Shifts:</u></h2>
 			<ul>
 				{% for shift in all_shifts %}
-				<li>
+				<li id="shift_set_li">
 					<input type="checkbox" name="added_shifts" value="{{shift.id}}"">
 					{{shift}}
 				</li>
