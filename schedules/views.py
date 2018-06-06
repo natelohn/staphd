@@ -676,8 +676,9 @@ class ShiftList(LoginRequiredMixin, ListView):
 				if negate_query: queryset = list(set(all_shifts) - set(queryset))
 				filtered_shifts = list(set(filtered_shifts) & set(queryset))
 
+			
+			if len(all_shifts) == len(filtered_shifts): query_explanation = ['- Result includes all shifts.']
 			all_shifts = filtered_shifts
-			if len(query_explanation) == 1: query_explanation = ['- Result includes all shifts.'] 
 			cache.set('query_explanation', query_explanation, 60)
 		
 		# If there is no query then we see if they have sorted the shifts and return the appr
