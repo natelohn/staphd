@@ -8,6 +8,10 @@
 	height: 75px;
 }
 
+#schedule_detail_header{
+	height: 200px;
+}
+
 #detail_body_left {
 	/* Positioning */
 	width: 30%;
