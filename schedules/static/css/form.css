@@ -288,6 +288,10 @@ label[for=shift_workers_needed]{
 	font-size: 2em;
 }
 
+label[for=shift_shift_set], #shift_shift_set{
+	top: 50px;
+}
+
 label[for=shift_shift_set]{
 	font-size: 2.25em;
 	display: block;	
@@ -310,11 +314,11 @@ label[for=shift_qualifications_hardcoded], #shift_qualifications{
 	position: absolute;
 }
 label[for=shift_qualifications_hardcoded] {
-	top: 215px;
+	top: 265px;
 }
 
 #shift_qualifications{
-	top: 250px;
+	top: 300px;
 	width: 435px;
 }
 
