@@ -4,7 +4,7 @@ from .analytics import get_hours_from_timedelta, get_readable_time
 from .models import Staphing, Shift
 
 def get_min(time):
-	m = round(time.min / 60, 2)
+	m = round(time.minute / 60, 2)
 	print(m)
 	min_options = [0, 0.25, 0.33, 0.5, 0.66, 0.75, 1]
 	print(m not in min_options)
