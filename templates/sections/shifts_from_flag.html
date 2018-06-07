@@ -1,27 +1,26 @@
 <script type="text/javascript">
 	function toggle_like_shifts(flag_id, shift_set_id, check) {
 		var all_shifts = {{shifts_arr}};
-		var shifts_to_check = []
+		var shifts_to_check = [];
 		for (i = 0; i < all_shifts.length; i++) {
-			var shift = all_shifts[i];
-			console.log(shift)
-			if (shift.set === shift_set_id){
-				console.log(shift.set)
-				for (j = 0; j < shift.flags.length; j++) {
-					var flag = shift.flags[j]
+			var arr = all_shifts[i];
+			var shift = arr[0];
+			var set = arr[1];
+			var flags = arr[2];
+			if (set === shift_set_id){
+				for (j = 0; j < flags.length; j++) {
+					var flag = flags[j];
 					if (flag === flag_id) {
-						console.log(flag)
-						shifts_to_check.push(shift.id)
+						shifts_to_check.push(shift);
 					}
 				}
 			}
 		}
 		for (i = 0; i < shifts_to_check.length; i++) {
 			var id = shifts_to_check[i];
-			var shift_id_str = "shift_id_" + id
-			console.log(shift_id_str)
+			var shift_id_str = "shift_id_" + id;
+			console.log(shift_id_str);
 			var shift_elem = document.getElementById(shift_id_str);
-			console.log(shift_elem)
 			shift_elem.checked = check;
 		}
 	}
