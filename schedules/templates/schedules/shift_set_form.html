@@ -27,7 +27,7 @@
 			<ul>
 				{% for flag in flags %}
 				<li class="shift_set_li">
-					<input type="checkbox" value="flag_{{flag.id}}" id="f_{{flag.id}}_s{{set.id}}" onclick="toggle_shifts({{flag}}, {{set}})">
+					<input type="checkbox" value="flag_{{flag.id}}" id="f_{{flag.id}}_s{{set.id}}" onclick="toggle_shifts(flag.id, set.id)">
 					{{flag}}
 				</li>
 				{% endfor %}
