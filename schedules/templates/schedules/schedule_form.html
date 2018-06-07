@@ -17,7 +17,7 @@
 			{{ form }}
 		</div>
 	</form>
-	{% if edit %}
+	{% if shift_set %}
 	<a class="button" href="{% url shift_set_url pk=shift_set.id %}">Edit {{shift_set.title}} Shifts</a>
 	{% endif %}
 	{% if create %}

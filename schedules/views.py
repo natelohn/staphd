@@ -901,7 +901,6 @@ class ScheduleCreate(LoginRequiredMixin, CreateView):
 		context['title'] = 'New Schedule'
 		context['cancel_url'] = 'schedules:select'
 		context['create'] = True
-		context['edit'] = False
 		return context
 
 class ScheduleList(LoginRequiredMixin, ListView):
@@ -954,7 +953,6 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 		context['title'] = 'Edit Schedule'
 		context['cancel_url'] = 'schedules:select'
 		context['create'] = True
-		context['edit'] = True
 		context['shift_set_url'] = 'schedules:set-add'
 		context['shift_set'] = schedule.shift_set
 		return context
