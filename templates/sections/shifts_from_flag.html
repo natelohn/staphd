@@ -1,15 +1,15 @@
 <script type="text/javascript">
-	function toggle_shifts(flag, shift_set) {
+	function toggle_shifts(flag_id, shift_set_id) {
 		console.log(flag);
 		console.log(shift_set);
-		var flag_id_string = 'f_' + flag.id + '_s_' + shift_set.id;
+		var flag_id_string = 'f_' + flag_id + '_s_' + shift_set_id;
 		console.log(flag_id_string);
-		var flag = document.getElementById(flag_id_string);
-		console.log(flag)
-		if (flag.checked) {
-			flag.style.backgroundColor = "blue";
+		var flag_elem = document.getElementById(flag_id_string);
+		console.log(flag_elem)
+		if (flag_elem.checked) {
+			flag_elem.style.backgroundColor = "blue";
 		} else {
-			flag.style.backgroundColor = "gold";
+			flag_elem.style.backgroundColor = "gold";
 		}
 	}
 </script>
