@@ -309,9 +309,9 @@ def add_recommendation(request, *args, **kwargs):
 
 # Settings based views
 class Settings(LoginRequiredMixin, TemplateView):
-    template_name = 'settings.html'
+	template_name = 'settings.html'
 
-    def get_context_data(self, *args, **kwargs):
+	def get_context_data(self, *args, **kwargs):
 		context = super(Settings, self).get_context_data(*args, **kwargs)
 		context['at_settings'] = True
 		return context
