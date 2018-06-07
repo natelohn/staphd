@@ -38,9 +38,9 @@
 			<label for="added_shifts">Added Shifts:</label>
 			<ul>
 				{% for shift in all_shifts %}
-				<li class="shift_set_li">
+				<li class="shift_set_li" id="added_shift_li_{{shift.id}}">
 					<label for="id_added_shifts_{{shift.id}}"></label>
-					<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="id_added_shifts_{{shift.id}}">
+					<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="id_added_shifts_{{shift.id}}" onclick="toggle_highlighted({{shift.id}})">
 					<a href="{{ shift.get_absolute_url }}">{{shift}}</a>
 				</li>
 				{% endfor %}

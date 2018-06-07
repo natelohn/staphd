@@ -21,12 +21,14 @@
 			var shift_id_str = "id_added_shifts_" + id;
 			var shift_elem = document.getElementById(shift_id_str);
 			shift_elem.checked = check;
+			var li_elem = "added_shift_li_" + id
+			var shift_elem = document.getElementById(li_elem);
 			if (check) {
-				shift_elem.style.backgroundColor = "lime";
-				shift_elem.style.fontWeight = "bold";
+				li_elem.style.backgroundColor = "lime";
+				li_elem.style.fontWeight = "bold";
 			} else {
-				shift_elem.style.backgroundColor = "EEEEEE";
-				shift_elem.style.fontWeight = "normal";
+				li_elem.style.backgroundColor = "EEEEEE";
+				li_elem.style.fontWeight = "normal";
 			}
 		}
 	}
@@ -39,6 +41,18 @@
 			toggle_like_shifts(flag_id, shift_set_id, true);
 		} else {
 			toggle_like_shifts(flag_id, shift_set_id, false);
+		}
+	}
+
+	function toggle_highlighted(shift_id) {
+		var shift_id_string = 'added_shift_li_' + shift_id;
+		var shift = document.getElementById(shift_id_string);
+		if (shift.style.backgroundColor === "lime") {
+			shift.style.backgroundColor = "EEEEEE";
+			shift.style.fontWeight = "normal";
+		} else {
+			shift.style.backgroundColor = "lime";
+			shift.style.fontWeight = "bold";
 		}
 	}
 </script>
