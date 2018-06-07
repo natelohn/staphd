@@ -1016,8 +1016,6 @@ class ShiftSetCreate(LoginRequiredMixin, CreateView):
 @login_required
 def shift_set_add(request, *args, **kwargs):
 	set_id = kwargs['pk']
-	if Shift.objects.filter(shift_set_id__exact = set_id):
-		HttpResponseRedirect(reverse('schedules:schedule-create'))
 	try:
 		shift_set = ShiftSet.objects.get(id = set_id)
 	except:
@@ -1030,7 +1028,7 @@ def shift_set_add(request, *args, **kwargs):
 				shift.id = None # This will copy the shift object 
 				shift.save() # .... and save it as another instance
 
-			return HttpResponseRedirect(reverse('schedules:set-add'))
+			return HttpResponseRedirect(reverse('schedules:schedule-create'))
 	else:
 		template = 'schedules/shift_set_form.html'
 		form = AddShiftsToSetForm()
@@ -1041,6 +1039,8 @@ def shift_set_add(request, *args, **kwargs):
 		context['flags'] = Flag.objects.all().order_by('title')
 		all_shifts = Shift.objects.all().order_by('title','shift_set','day','start')
 		context['all_shifts'] = all_shifts
+		shifts_in_set = Shift.objects.filter(shift_set = shift_set)
+		context['shifts_in_set'] = shifts_in_set
 		shifts_arr = []
 		for shift in all_shifts:
 			flags = []

@@ -15,3 +15,8 @@
 .shift_set_li a:hover{
 	text-decoration: underline;
 }
+
+.shift_set_li.shifts_in_set {
+	background-color: lime;
+	font-weight: bold;
+}
