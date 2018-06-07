@@ -948,10 +948,13 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 		return Schedule.objects.all()
 
 	def get_context_data(self, *args, **kwargs):
+		schedule = self.get_object()
 		context = super(ScheduleUpdate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Edit Schedule'
 		context['cancel_url'] = 'schedules:select'
 		context['create'] = True
+		context['shift_set_url'] = reverse('schedules:set-add', kwargs={'pk': schedule.shift_set.id})
+		context['shift_set_title'] = schedule.shift_set.title
 		return context
 
 def schedule_duplicate(request, *args, **kwargs):
