@@ -1,4 +1,14 @@
 <script type="text/javascript">
+	function check_like_shifts(flag_id, shift_set_id) {
+		console.log("check");
+
+	}
+
+	function uncheck_like_shifts(flag_id, shift_set_id) {
+		console.log("uncheck!");
+	}
+
+
 	function toggle_shifts(flag_id, shift_set_id) {
 		console.log(flag_id);
 		console.log(shift_set_id);
@@ -8,9 +18,9 @@
 		console.log(flag_elem)
 		console.log(flag_elem.checked)
 		if (flag_elem.checked) {
-			flag_elem.style.backgroundColor = "blue";
+			uncheck_like_shifts(flag_id, shift_set_id);
 		} else {
-			flag_elem.style.backgroundColor = "gold";
+			check_like_shifts(flag_id, shift_set_id);
 		}
 	}
 </script>
