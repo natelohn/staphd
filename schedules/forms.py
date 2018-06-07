@@ -250,7 +250,7 @@ class AddShiftsForm(forms.Form):
 class ShiftSetCreateForm(forms.ModelForm):
 	class Meta:
 		model = ShiftSet
-		fields = ['title', 'shifts']
+		fields = ['title']
 
 	def __init__(self, *args, **kwargs):
 		super(ShiftSetCreateForm, self).__init__(*args, **kwargs)
