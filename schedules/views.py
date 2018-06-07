@@ -25,8 +25,9 @@ from .analytics import get_readable_time
 from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
+from .ratio import get_solution_for_time
 from .tasks import build_schedules_task, update_files_task
-from .view_helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv
+from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv
 
 
 # Download Based Views
@@ -68,6 +69,9 @@ def download_meals(request, *args, **kwargs):
 @login_required
 def download_analytics(request, *args, **kwargs):
 	return download_file(request, 'analytics.xlsx')
+
+
+
 
 # Schedule Building based Views
 @login_required
@@ -309,6 +313,18 @@ def add_recommendation(request, *args, **kwargs):
 		new_staphing.save()
 	return HttpResponseRedirect(reverse('schedules:building'))
 
+@login_required
+def sanity_check_view(request, *args, **kwargs):
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+		shifts = Shift.objects.filter(shift_set = schedule.shift_set)
+		staphers = Stapher.objects.all()
+	except:
+		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
+	get_solution_for_time(shifts, staphers, 0, datetime.time(11, 0, 0, 0), datetime.time(11, 15, 0, 0))
+	return HttpResponseRedirect(reverse('schedules:home'))
+
+
 
 # Settings based views
 class Settings(LoginRequiredMixin, TemplateView):
@@ -342,6 +358,8 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 		context['object_name'] = 'Qualification'
 		context['at_settings'] = True
 		return context
+
+
 
 # Stapher based views
 class StapherList(LoginRequiredMixin,ListView):
@@ -563,6 +581,8 @@ def stapher_schedule_add(request, *args, **kwargs):
 	else:
 		form = AddShiftsForm()
 	return stapher_schedule(request, args, kwargs, form)
+
+
 
 
 # Shift based views
@@ -849,6 +869,9 @@ class ShiftDelete(LoginRequiredMixin, DeleteView):
 	model = Shift
 	success_url = reverse_lazy('schedules:shift-list')
 
+
+
+
 # Qualification Based Views
 class QualificationCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/form.html'
@@ -870,6 +893,9 @@ class QualificationDelete(LoginRequiredMixin, DeleteView):
 	model = Qualification
 	success_url = reverse_lazy('schedules:settings')
 
+
+
+
 # Flag Based Views
 class FlagCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/form.html'
@@ -890,6 +916,9 @@ class FlagDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/delete.html'
 	model = Flag
 	success_url = reverse_lazy('schedules:settings')
+
+
+
 
 # Schedule Based Views
 @login_required
@@ -976,6 +1005,7 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 		context['at_build'] = True
 		return context
 
+@login_required
 def schedule_duplicate(request, *args, **kwargs):
 	duplicate_id = kwargs['pk']
 	try:
@@ -993,6 +1023,9 @@ def schedule_duplicate(request, *args, **kwargs):
 	except:
 		return Http404
 	return HttpResponseRedirect(reverse('schedules:schedule-detail', kwargs={'pk':schedule.id}))
+
+
+
 
 # Staphing Based Views
 class StaphingDelete(LoginRequiredMixin, DeleteView):
@@ -1025,6 +1058,9 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 	def get_success_url(self):
 		staphing = self.get_object()
 		return reverse_lazy('schedules:stapher-schedule', kwargs={'pk':staphing.stapher.id})
+
+
+
 
 # Shift Set Based Views
 class ShiftSetCreate(LoginRequiredMixin, CreateView):
