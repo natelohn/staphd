@@ -61,5 +61,6 @@ urlpatterns = [
 
     url(r'^set/create/$', views.ShiftSetCreate.as_view(), name='set-create'),
     url(r'^set/add/(?P<pk>[\d]+)$', views.shift_set_add, name='set-add')
+    url(r'^set/delete/(?P<pk>[\d]+)$', views.ShiftSetDelete.as_view(), name='set-delete')
 
 ]

@@ -1006,7 +1006,7 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 		staphing = self.get_object()
 		return reverse_lazy('schedules:stapher-schedule', kwargs={'pk':staphing.stapher.id})
 
-
+# Shift Set Based Views
 class ShiftSetCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/schedule_form.html'
 	form_class = ShiftSetCreateForm
@@ -1059,7 +1059,7 @@ def shift_set_add(request, *args, **kwargs):
 				uncheckable.append(shift)
 	context['shifts_arr'] = shifts_arr
 	context['form'] = form
-	context['title'] = f'Add Shifts to {shift_set.title}'
+	context['shift_set'] = shift_set
 	context['cancel_url'] = 'schedules:schedule-create'
 	context['shift_sets'] = ShiftSet.objects.exclude(id = set_id)
 	context['flags'] = Flag.objects.all().order_by('title')
@@ -1067,4 +1067,18 @@ def shift_set_add(request, *args, **kwargs):
 	context['shifts_in_set'] = shifts_in_set
 	context['uncheckable'] = uncheckable
 	return render(request, template, context)
+
+class ShiftSetDelete(LoginRequiredMixin, DeleteView):
+	template_name = 'schedules/delete.html'
+	model = ShiftSet
+	success_url = reverse_lazy('schedules:schedule-create')
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ShiftSetDelete, self).get_context_data(*args, **kwargs)
+		shift_set = self.get_object
+		schedules = list(Schedule.objects.filter(shift_set = shift_set))
+		shifts = list(Shift.objects.filter(shift_set = shift_set))
+		context['deleted_extras'] = schedules + shifts
+		return context
+
 

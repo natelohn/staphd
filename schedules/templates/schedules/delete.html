@@ -3,6 +3,12 @@
 <div id="page">
 	<form id='delete_form' action="" method="post">{% csrf_token %}
 		<h1>Are you sure you want to delete:<br>"{{ object }}"?</h1>
+		{% if deleted_extras %}
+		<h2><u>Doing so will also delete:</u></h2>
+		{% for to_delete in deleted_extras %}
+		<h2>- {{to_delete}} </h2>
+		{% endfor %}
+		{% endif %}
 		<div id='delete_form_btns'>
 			{% if schedule_id %}
 				<a class="link_btn" href="{% url 'schedules:schedule-detail' pk=schedule_id %}">Cancel</a>
