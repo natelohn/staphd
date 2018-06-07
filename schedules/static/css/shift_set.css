@@ -2,6 +2,8 @@
 	background-color: #EEEEEE;
 	margin: 3px;
 	font-size: 1.5em;
+	border: 1px;
+	border-color: black;
 }
 
 .shift_set_li a{
