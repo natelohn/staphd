@@ -1014,6 +1014,15 @@ class ShiftSetCreate(LoginRequiredMixin, CreateView):
 		context['cancel_url'] = 'schedules:schedule-create'
 		context['shift_sets'] = ShiftSet.objects.all()
 		context['flags'] = Flag.objects.all().order_by('title')
-		context['all_shifts'] = list(Shift.objects.all().order_by('day', 'start'))
+		all_shifts = Shift.objects.all().order_by('day', 'start')
+		context['all_shifts'] = all_shifts
+		shift_jsons = []
+		for shift in all_shifts:
+			flags = []
+			for f in shift.flags.all():
+				flags.append(f.id)
+			json = {'id':shift.id, 'set':shift.shift_set.id, 'flags':flags}
+			shift_jsons.append(json)
+		context['shift_jsons'] = shift_jsons
 		return context
 
