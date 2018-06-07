@@ -34,7 +34,7 @@
 	}
 
 
-	function toggle_all_shifts(shift_set_id, check) {
+	function toggle_shifts_in_set(shift_set_id, check) {
 		var all_shifts = {{shifts_arr}};
 		var shifts_to_check = [];
 		for (i = 0; i < all_shifts.length; i++) {
@@ -67,9 +67,9 @@
 		var set_id_string = 'set_' + shift_set_id;
 		var set_elem = document.getElementById(set_id_string);
 		if (set_elem.checked) {
-			toggle_all_shifts(shift_set_id, true);
+			toggle_shifts_in_set(shift_set_id, true);
 		} else {
-			toggle_all_shifts(shift_set_id, false);
+			toggle_shifts_in_set(shift_set_id, false);
 		}
 	}
 
