@@ -1023,11 +1023,15 @@ def shift_set_add(request, *args, **kwargs):
 	if request.method == 'POST':
 		form = AddShiftsToSetForm(request.POST)
 		if form.is_valid():
-			for shift in form.cleaned_data['added_shifts']:
+			added_shifts = form.cleaned_data['added_shifts']
+			for shift in added_shifts:
 				if shift not in shifts_in_set:
 					shift.shift_set = shift_set
 					shift.id = None # This will copy the shift object 
 					shift.save() # .... and save it as another instance
+			for shift in shifts_in_set:
+				if shift not in added_shifts:
+					shift.delete()
 			return HttpResponseRedirect(reverse('schedules:schedule-create'))
 	else:
 		template = 'schedules/shift_set_form.html'
