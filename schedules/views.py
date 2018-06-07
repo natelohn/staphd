@@ -1019,8 +1019,9 @@ def shift_set_add(request, *args, **kwargs):
 	if Schedule.objects.filter(shift_set_id__exact = set_id):
 		HttpResponseRedirect(reverse('schedules:schedule-create'))
 	try:
-		shift_set = Schedule.objects.get(id__exact = set_id)
+		shift_set = Schedule.objects.get(id = set_id)
 	except:
+		print(set_id)
 		return Http404
 	if request.method == 'POST':
 		form = AddShiftsToSetForm(request.POST)
