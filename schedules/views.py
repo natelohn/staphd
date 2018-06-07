@@ -1034,7 +1034,7 @@ def shift_set_add(request, *args, **kwargs):
 			for shift in shifts_in_set:
 				if shift not in added_shifts:
 					shift.delete()
-			return reverse('schedules:schedule-create')
+			return HttpResponseRedirect(reverse('schedules:schedule-create'))
 	else:
 		form = AddShiftsToSetForm()
 	template = 'schedules/shift_set_form.html'
@@ -1057,6 +1057,5 @@ def shift_set_add(request, *args, **kwargs):
 	context['flags'] = Flag.objects.all().order_by('title')
 	context['all_shifts'] = all_shifts
 	context['shifts_in_set'] = shifts_in_set
-	
 	return render(request, template, context)
 
