@@ -2,7 +2,6 @@ import datetime
 
 
 def get_solution(shifts, staphers):
-	shifts.filter(day__exact = day, start__lte = time, end__gt = time).order_by('workers_needed')
 	for shift in shifts:
 		print(shift)
 
