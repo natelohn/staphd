@@ -3,11 +3,12 @@ import datetime
 
 def get_solution(shifts, staphers):
 	for shift in shifts:
-		print(shift)
+		print(f'{shift} - {shift.workers_needed}')
 
 
 
 def find_ratios(shifts, staphers):
+	shifts.order_by('workers_needed')
 	day = 0
 	start = datetime.time(11, 0, 0, 0)
 	end = datetime.time(11, 15, 0, 0)
