@@ -62,6 +62,7 @@ def build_schedules_task(self, schedule_id):
 		cache.set('sorted_shifts', sorted_shifts, None)
 		cache.set('resort', False, None)
 	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
+	cache.set('num_total_actions', total_actions, 1500)
 
 	# Do the task
 	shift_and_rec = build_schedules(sorted_shifts, settings, schedule, staphings, self)
