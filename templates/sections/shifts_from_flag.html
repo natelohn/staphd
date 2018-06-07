@@ -46,13 +46,16 @@
 
 	function toggle_highlighted(shift_id) {
 		var shift_id_string = 'added_shift_li_' + shift_id;
-		var shift = document.getElementById(shift_id_string);
-		if (shift.style.backgroundColor === "lime") {
-			shift.style.backgroundColor = "#EEEEEE";
-			shift.style.fontWeight = "normal";
+		var shift_elem = document.getElementById(shift_id_string);
+		var checkbox_id_string = 'id_added_shifts_' + shift_id;
+		var checkbox_elem = document.getElementById(checkbox_id_string);
+		if (checkbox_elem.checked) {
+			shift_elem.style.backgroundColor = "lime";
+			shift_elem.style.fontWeight = "bold";
 		} else {
-			shift.style.backgroundColor = "lime";
-			shift.style.fontWeight = "bold";
+			shift_elem.style.backgroundColor = "#EEEEEE";
+			shift_elem.style.fontWeight = "normal";
+			
 		}
 	}
 </script>
