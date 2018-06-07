@@ -25,7 +25,7 @@ from .analytics import get_readable_time
 from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
-from .ratio import get_solution_for_time
+from .ratio import find_ratios
 from .tasks import build_schedules_task, update_files_task
 from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv
 
@@ -321,7 +321,7 @@ def sanity_check_view(request, *args, **kwargs):
 		staphers = Stapher.objects.all()
 	except:
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
-	get_solution_for_time(shifts, staphers, 0, datetime.time(11, 0, 0, 0))
+	find_ratios(shifts, staphers)
 	return HttpResponseRedirect(reverse('schedules:home'))
 
 
