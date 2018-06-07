@@ -1,5 +1,4 @@
-.shift_set_li{
-	background-color: #EEEEEE;
+.shift_set_li, .in_set {
 	margin: 3px;
 	font-size: 1.5em;
 	border: 1px;
@@ -7,16 +6,21 @@
 	border-style: solid;
 }
 
-.shift_set_li a{
+.shift_set_li {
+	background-color: #EEEEEE;
+}
+
+.in_set {
+	background-color: lime;
+	font-weight: bold;
+}
+
+.shift_set_li a, .in_set a{
 	text-decoration: none;
 	color: black;
 }
 
-.shift_set_li a:hover{
+.shift_set_li a:hover, .in_set a:hover{
 	text-decoration: underline;
 }
 
-.shift_set_li.shifts_in_set {
-	background-color: lime;
-	font-weight: bold;
-}

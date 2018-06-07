@@ -39,7 +39,7 @@
 			<ul>
 				{% for shift in all_shifts %}
 				{% if shift in shifts_in_set%}
-				<li class="shift_set_li shifts_in_set" id="added_shift_li_{{shift.id}}">
+				<li class="in_set" id="added_shift_li_{{shift.id}}">
 				{$ else $}
 				<li class="shift_set_li" id="added_shift_li_{{shift.id}}">
 				{% endif %}
