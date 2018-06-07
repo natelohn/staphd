@@ -4,17 +4,7 @@ from . import views
 
 app_name = 'schedules'
 urlpatterns = [
-    url(r'^$', views.HomeView.as_view(), name='home'),
-
-    url(r'^download/$', views.DownloadView.as_view(), name='download'),
-    url(r'^download/individual$', views.download_individual, name='download-individual'),
-    url(r'^download/masters$', views.download_masters, name='download-masters'),
-    url(r'^download/meals$', views.download_meals, name='download-meals'),
-    url(r'^download/analytics$', views.download_analytics, name='download-analytics'),
-
-    url(r'^flag/create$', views.FlagCreate.as_view(), name='flag-create'),
-    url(r'^flag/(?P<pk>[\d]+)/delete$', views.FlagDelete.as_view(), name='flag-delete'),
-
+    url(r'^$', views.build_view, name='home'),
     url(r'^schedules/$', views.build_view, name='schedule'),
     url(r'^schedules/settings/select$', views.SettingParameterUpdate.as_view(), name='settings-select'),
     url(r'^schedules/settings/rank/$', views.rank_settings, name='settings-rank'),
@@ -33,6 +23,15 @@ urlpatterns = [
     url(r'^schedules/(?P<pk>[\d]+)/$', views.ScheduleDetail.as_view(), name='schedule-detail'),
     url(r'^schedules/(?P<pk>[\d]+)/delete$', views.ScheduleDelete.as_view(), name='schedule-delete'),
     url(r'^schedules/(?P<pk>[\d]+)/edit$', views.ScheduleUpdate.as_view(), name='schedule-update'),
+
+    url(r'^download/$', views.DownloadView.as_view(), name='download'),
+    url(r'^download/individual$', views.download_individual, name='download-individual'),
+    url(r'^download/masters$', views.download_masters, name='download-masters'),
+    url(r'^download/meals$', views.download_meals, name='download-meals'),
+    url(r'^download/analytics$', views.download_analytics, name='download-analytics'),
+
+    url(r'^flag/create$', views.FlagCreate.as_view(), name='flag-create'),
+    url(r'^flag/(?P<pk>[\d]+)/delete$', views.FlagDelete.as_view(), name='flag-delete'),
 
     url(r'^settings/$', views.Settings.as_view(), name='settings'),
     url(r'^settings/flags$', views.FlagSettings.as_view(), name='flag-settings'),

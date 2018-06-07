@@ -29,19 +29,6 @@ from .tasks import build_schedules_task, update_files_task
 from .view_helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv
 
 
-class HomeView(LoginRequiredMixin, TemplateView):
-	template_name = 'home.html'
-
-	def get_context_data(self, *args, **kwargs):
-		context = super(HomeView, self).get_context_data(*args, **kwargs)
-		try:
-			schedule = Schedule.objects.get(active__exact = True)
-			context['schedule'] = schedule
-			context['percent_complete'] = schedule.get_percent_complete()
-		except:
-			print('No schedule found in HomeView')
-		return context
-
 # Download Based Views
 class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
@@ -84,6 +71,7 @@ def build_view(request, *args, **kwargs):
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
 		context = {'schedule':schedule.title}
+		context['percent_complete'] = schedule.get_percent_complete()
 	except:
 		context = {}
 	task_id = cache.get('current_task_id')

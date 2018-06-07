@@ -24,10 +24,9 @@
 		user: {{ user.get_username }}, <a href="{% url 'logout'%}">Log out</a>
 	</div>
 	<ul id="links">
-		<li><a href="{% url 'schedules:home'%}">Home</a></li>
+		<li><a href="{% url 'schedules:home'%}">Build</a></li>
 		<li><a href="{% url 'schedules:stapher-list'%}">Staphers</a></li>
 		<li><a href="{% url 'schedules:shift-list' %}">Shifts</a></li>
-		<li><a href="{% url 'schedules:schedule'%}">Build Schedule</a></li>
 		<li><a href="{% url 'schedules:download'%}">Download</a></li>
 		<li><a href="{% url 'schedules:settings' %}">Settings</a></li>
 	</ul>
