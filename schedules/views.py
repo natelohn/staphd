@@ -953,8 +953,8 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 		context['title'] = 'Edit Schedule'
 		context['cancel_url'] = 'schedules:select'
 		context['create'] = True
-		context['shift_set_url'] = reverse('schedules:set-add', kwargs={'pk': schedule.shift_set.id})
-		context['shift_set_title'] = schedule.shift_set.title
+		context['shift_set_url'] = 'schedules:set-add'
+		context['shift_set'] = schedule.shift_set
 		return context
 
 def schedule_duplicate(request, *args, **kwargs):
