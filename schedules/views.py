@@ -1076,8 +1076,8 @@ class ShiftSetDelete(LoginRequiredMixin, DeleteView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftSetDelete, self).get_context_data(*args, **kwargs)
 		shift_set = self.get_object
-		schedules = list(Schedule.objects.filter(shift_set = shift_set))
-		shifts = list(Shift.objects.filter(shift_set = shift_set))
+		schedules = [s for s in Schedule.objects.filter(shift_set = shift_set)]
+		shifts = [s for s in Shift.objects.filter(shift_set = shift_set)]
 		deleted_extras = schedules + shifts
 		context['deleted_extras'] = deleted_extras
 		return context
