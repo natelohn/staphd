@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	function toggle_like_shifts(flag_id, shift_set_id, check) {
+	function toggle_set_flag(flag_id, shift_set_id, check) {
 		var all_shifts = {{shifts_arr}};
 		var shifts_to_check = [];
 		for (i = 0; i < all_shifts.length; i++) {
@@ -34,7 +34,7 @@
 	}
 
 
-	function toggle_shifts_in_set(shift_set_id, check) {
+	function toggle_set(shift_set_id, check) {
 		var all_shifts = {{shifts_arr}};
 		var shifts_to_check = [];
 		for (i = 0; i < all_shifts.length; i++) {
@@ -63,13 +63,13 @@
 		}
 	}
 
-	function toggle_all_shifts(shift_set_id) {
+	function toggle_set_shifts(shift_set_id) {
 		var set_id_string = 'set_' + shift_set_id;
 		var set_elem = document.getElementById(set_id_string);
 		if (set_elem.checked) {
-			toggle_shifts_in_set(shift_set_id, true);
+			toggle_set(shift_set_id, true);
 		} else {
-			toggle_shifts_in_set(shift_set_id, false);
+			toggle_set(shift_set_id, false);
 		}
 	}
 
@@ -77,9 +77,9 @@
 		var flag_id_string = 'f_' + flag_id + '_s_' + shift_set_id;
 		var flag_elem = document.getElementById(flag_id_string);
 		if (flag_elem.checked) {
-			toggle_like_shifts(flag_id, shift_set_id, true);
+			toggle_set_flag(flag_id, shift_set_id, true);
 		} else {
-			toggle_like_shifts(flag_id, shift_set_id, false);
+			toggle_set_flag(flag_id, shift_set_id, false);
 		}
 	}
 
