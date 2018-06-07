@@ -1022,8 +1022,6 @@ def shift_set_add(request, *args, **kwargs):
 	except:
 		return Http404
 	shifts_in_set = [s for s in Shift.objects.filter(shift_set = shift_set)]
-	template = 'schedules/shift_set_form.html'
-	context = {}
 	if request.method == 'POST':
 		form = AddShiftsToSetForm(request.POST)
 		if form.is_valid():
@@ -1039,23 +1037,26 @@ def shift_set_add(request, *args, **kwargs):
 			return reverse('schedules:schedule-create')
 	else:
 		form = AddShiftsToSetForm()
-		context['form'] = form
-		context['title'] = f'Add Shifts to {shift_set.title}'
-		context['cancel_url'] = 'schedules:schedule-create'
-		context['shift_sets'] = ShiftSet.objects.exclude(id = set_id)
-		context['flags'] = Flag.objects.all().order_by('title')
-		all_shifts = Shift.objects.all().order_by('title','shift_set','day','start')
-		context['all_shifts'] = all_shifts
-		context['shifts_in_set'] = shifts_in_set
-		for shift in shifts_in_set:
-			shift.has_staphings = bool(Staphing.objects.filter(shift = shift))
-		shifts_arr = []
-		for shift in all_shifts:
-			flags = []
-			for f in shift.flags.all():
-				flags.append(f.id)
-			shift = [shift.id, shift.shift_set.id, flags]
-			shifts_arr.append(shift)
-		context['shifts_arr'] = shifts_arr
+	template = 'schedules/shift_set_form.html'
+	context = {}
+	for shift in shifts_in_set:
+		shift.has_staphings = bool(Staphing.objects.filter(shift = shift))
+	shifts_arr = []
+	for shift in all_shifts:
+		flags = []
+		for f in shift.flags.all():
+			flags.append(f.id)
+		shift = [shift.id, shift.shift_set.id, flags]
+		shifts_arr.append(shift)
+	context['shifts_arr'] = shifts_arr
+	context['form'] = form
+	context['title'] = f'Add Shifts to {shift_set.title}'
+	context['cancel_url'] = 'schedules:schedule-create'
+	context['shift_sets'] = ShiftSet.objects.exclude(id = set_id)
+	context['flags'] = Flag.objects.all().order_by('title')
+	all_shifts = Shift.objects.all().order_by('title','shift_set','day','start')
+	context['all_shifts'] = all_shifts
+	context['shifts_in_set'] = shifts_in_set
+	
 	return render(request, template, context)
 
