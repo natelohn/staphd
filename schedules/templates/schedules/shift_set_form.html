@@ -18,7 +18,7 @@
 				</span>
 			</div>
 		</div>
-		<a href="{% url 'schedules:set-delete' pk=shift_set.id %}"></a>
+		<a class="delete_btn" href="{% url 'schedules:set-delete' pk=shift_set.id %}">Delete</a>
 		<div class="left_list" id="shift_set_div" >
 			{% for set in shift_sets %}
 			<h2><u>{{set.title}}</u> - Select All 
