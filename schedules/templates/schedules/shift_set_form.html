@@ -14,7 +14,7 @@
 			<button class='create_btn' id="form_save" type='submit'>Save</button>
 			<div class="tooltip">More Info 
 				<span class="tooltiptext" id="tooltiptext_small">
-					Select a Flag from a Shift Set (left) to add all Shifts in that set with that have the selected flag to the new Shift Set (right).
+					Select a Flag from a Shift Set (left) to add all Shifts in that set with that have the selected flag to the new Shift Set (right). You are not able to remove Shifts that have been scheduled from the shift set. To remove these delete their Staphings and return. 
 				</span>
 			</div>
 		</div>
@@ -41,7 +41,11 @@
 				{% if shift in shifts_in_set %}
 				<li class="in_set" id="added_shift_li_{{shift.id}}">
 					<label for="id_added_shifts_{{shift.id}}"></label>
+					{% if shift.has_staphings %}
+					<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="non_selectable" checked>
+					{% else %}
 					<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="id_added_shifts_{{shift.id}}" onclick="toggle_highlighted({{shift.id}})" checked>
+					{% endif %}
 				{% else %}
 				<li class="shift_set_li" id="added_shift_li_{{shift.id}}">
 					<label for="id_added_shifts_{{shift.id}}"></label>

@@ -24,3 +24,6 @@
 	text-decoration: underline;
 }
 
+#non_selectable {
+	pointer-events: none;
+}
