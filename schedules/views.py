@@ -900,7 +900,6 @@ class ScheduleCreate(LoginRequiredMixin, CreateView):
 		context = super(ScheduleCreate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'New Schedule'
 		context['cancel_url'] = 'schedules:select'
-		context['create'] = True
 		return context
 
 class ScheduleList(LoginRequiredMixin, ListView):
