@@ -250,6 +250,19 @@ class AddShiftsForm(forms.Form):
 class ShiftSetCreateForm(forms.ModelForm):
 	class Meta:
 		model = ShiftSet
-		fields = ['title']
+		fields = ['title', 'shifts']
+
+	def __init__(self, *args, **kwargs):
+		super(ShiftSetCreateForm, self).__init__(*args, **kwargs)
+		ALL_SHIFTS = {}
+		for shift in Shift.objects.all():
+			ALL_SHIFTS[shift.id] = f'{shift}'
+		self.fields['shifts'].choices = tuple(sorted(ALL_SHIFTS.items()))
+
+	def clean_shifts(self):
+		print('cleaning!')
+		all_shifts = self.cleaned_data.get("shifts")
+		for shift in all_shifts:
+			print(shift)
 
 
