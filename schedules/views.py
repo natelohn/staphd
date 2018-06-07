@@ -1078,7 +1078,8 @@ class ShiftSetDelete(LoginRequiredMixin, DeleteView):
 		shift_set = self.get_object
 		schedules = list(Schedule.objects.filter(shift_set = shift_set))
 		shifts = list(Shift.objects.filter(shift_set = shift_set))
-		context['deleted_extras'] = schedules + shifts
+		deleted_extras = schedules + shifts
+		context['deleted_extras'] = deleted_extras
 		return context
 
 
