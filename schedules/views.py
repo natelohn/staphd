@@ -1018,16 +1018,17 @@ def shift_set_add(request, *args, **kwargs):
 	set_id = kwargs['pk']
 	try:
 		shift_set = ShiftSet.objects.get(id = set_id)
+		shifts_in_set = [s for s in Shift.objects.filter(shift_set = shift_set)]
 	except:
 		return Http404
 	if request.method == 'POST':
 		form = AddShiftsToSetForm(request.POST)
 		if form.is_valid():
 			for shift in form.cleaned_data['added_shifts']:
-				shift.shift_set = shift_set
-				shift.id = None # This will copy the shift object 
-				shift.save() # .... and save it as another instance
-
+				if shift not in shifts_in_set:
+					shift.shift_set = shift_set
+					shift.id = None # This will copy the shift object 
+					shift.save() # .... and save it as another instance
 			return HttpResponseRedirect(reverse('schedules:schedule-create'))
 	else:
 		template = 'schedules/shift_set_form.html'
@@ -1039,7 +1040,6 @@ def shift_set_add(request, *args, **kwargs):
 		context['flags'] = Flag.objects.all().order_by('title')
 		all_shifts = Shift.objects.all().order_by('title','shift_set','day','start')
 		context['all_shifts'] = all_shifts
-		shifts_in_set = [s for s in Shift.objects.filter(shift_set = shift_set)]
 		context['shifts_in_set'] = shifts_in_set
 		print(shifts_in_set)
 		shifts_arr = []
