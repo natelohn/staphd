@@ -1047,7 +1047,11 @@ def shift_set_add(request, *args, **kwargs):
 		context['all_shifts'] = all_shifts
 		context['shifts_in_set'] = shifts_in_set
 		for shift in shifts_in_set:
-			shift.has_staphings = bool(Staphing.objects.get(shift = shift))
+			try:
+				Staphing.objects.get(shift = shift)
+				shift.has_staphings = True
+			except:
+				shift.has_staphings = False
 		shifts_arr = []
 		for shift in all_shifts:
 			flags = []
