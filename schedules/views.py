@@ -1039,7 +1039,7 @@ def shift_set_add(request, *args, **kwargs):
 		context['cancel_url'] = 'schedules:schedule-create'
 		context['shift_sets'] = ShiftSet.objects.exclude(id = set_id)
 		context['flags'] = Flag.objects.all().order_by('title')
-		all_shifts = Shift.objects.all().order_by('title')
+		all_shifts = Shift.objects.all().order_by('title','shift_set','day','start')
 		context['all_shifts'] = all_shifts
 		shifts_arr = []
 		for shift in all_shifts:
