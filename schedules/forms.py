@@ -252,17 +252,25 @@ class ShiftSetCreateForm(forms.ModelForm):
 		model = ShiftSet
 		fields = ['title']
 
+
+class AddShiftsToSetForm(forms.Form):
+	added_shifts = forms.MultipleChoiceField(label='added_shifts',widget = forms.CheckboxSelectMultiple())
+
 	def __init__(self, *args, **kwargs):
-		super(ShiftSetCreateForm, self).__init__(*args, **kwargs)
+		super(AddShiftsToSetForm, self).__init__(*args, **kwargs)
 		ALL_SHIFTS = {}
 		for shift in Shift.objects.all():
 			ALL_SHIFTS[shift.id] = f'{shift}'
-		self.fields['shifts'].choices = tuple(sorted(ALL_SHIFTS.items()))
+		self.fields['added_shifts'].choices = tuple(sorted(ALL_SHIFTS.items()))
 
-	def clean_shifts(self):
-		print('cleaning!')
-		all_shifts = self.cleaned_data.get("shifts")
-		for shift in all_shifts:
-			print(shift)
+	def clean_added_shifts(self):
+		added_shifts_ids = self.cleaned_data.get("added_shifts")
+		added_shifts = []
+		for shift_id in added_shifts_ids:
+			try:
+				shift = Shift.objects.get(id = shift_id)
+				added_shifts.append(shift)
+			except:
+				raise forms.ValidationError(f"{shift_id} is not vaild shift id.")
 
 

@@ -22,7 +22,7 @@ from operator import attrgetter
 from staphd.celery import app
 
 from .analytics import get_readable_time
-from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm
+from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task
@@ -314,7 +314,6 @@ def add_recommendation(request, *args, **kwargs):
 # Settings based views
 class Settings(LoginRequiredMixin, TemplateView):
     template_name = 'settings.html'
-
 
 class FlagSettings(LoginRequiredMixin, TemplateView):
 	template_name = 'settings_edit.html'
@@ -1005,12 +1004,35 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 
 
 class ShiftSetCreate(LoginRequiredMixin, CreateView):
-	template_name = 'schedules/shift_set_form.html'
+	template_name = 'schedules/schedule_form.html'
 	form_class = ShiftSetCreateForm
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftSetCreate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'New Shift Set'
+		context['cancel_url'] = 'schedules:schedule-create'
+		return context
+
+@login_required
+def shift_set_add(request, *args, **kwargs):
+	set_id = kwargs['pk']
+	if Schedule.objects.filter(shift_set_id__exact = set_id):
+		HttpResponseRedirect(reverse('schedules:schedule-create'))
+	try:
+		shift_set = Schedule.objects.get(id__exact = set_id)
+	except:
+		return Http404
+	if request.method == 'POST':
+		form = AddShiftsToSetForm(request.POST)
+		if form.is_valid():
+			for shift in form.cleaned_data['added_shifts']:
+				print(f'Add Shift = {shift}')
+			return HttpResponseRedirect(reverse('schedules:schedule-create'))
+	else:
+		template = 'schedules/shift_set_form.html'
+		form = AddShiftsToSetForm()
+		context = {}
+		context['title'] = f'Add Shifts to {shift_set.title}'
 		context['cancel_url'] = 'schedules:schedule-create'
 		context['shift_sets'] = ShiftSet.objects.all()
 		context['flags'] = Flag.objects.all().order_by('title')
@@ -1024,5 +1046,6 @@ class ShiftSetCreate(LoginRequiredMixin, CreateView):
 			shift = [shift.id, shift.shift_set.id, flags]
 			shifts_arr.append(shift)
 		context['shifts_arr'] = shifts_arr
-		return context
+	template
+	return render(request, template, context)
 

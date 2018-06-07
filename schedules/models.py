@@ -193,6 +193,9 @@ class ShiftSet(models.Model):
 	def __str__(self):
 		return f'{self.title}'
 
+	def get_absolute_url(self):
+		return reverse('schedules:set-add', kwargs = {'pk': self.id})
+
 class Shift(models.Model):
 	active			= models.BooleanField(default = True)
 	title 			= models.CharField(max_length = 100, default = 'NAME OF SHIFT')
