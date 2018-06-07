@@ -41,7 +41,7 @@
 				<li class="shift_set_li" id="added_shift_li_{{shift.id}}">
 					<label for="id_added_shifts_{{shift.id}}"></label>
 					<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="id_added_shifts_{{shift.id}}" onclick="toggle_highlighted({{shift.id}})">
-					<a href="{{ shift.get_absolute_url }}">{{shift}} - {{shift.shift_set.title}}</a>
+					<a href="{{ shift.get_absolute_url }}">{{shift}} - <strong>{{shift.shift_set.title}}</strong></a>
 				</li>
 				{% endfor %}
 			</ul>
