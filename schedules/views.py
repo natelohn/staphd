@@ -1019,9 +1019,9 @@ def shift_set_add(request, *args, **kwargs):
 	set_id = kwargs['pk']
 	try:
 		shift_set = ShiftSet.objects.get(id = set_id)
-		shifts_in_set = [s for s in Shift.objects.filter(shift_set = shift_set)]
 	except:
 		return Http404
+	shifts_in_set = [s for s in Shift.objects.filter(shift_set = shift_set)]
 	if request.method == 'POST':
 		form = AddShiftsToSetForm(request.POST)
 		if form.is_valid():
