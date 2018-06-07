@@ -1036,7 +1036,7 @@ def shift_set_add(request, *args, **kwargs):
 			for shift in shifts_in_set:
 				if shift not in added_shifts:
 					shift.delete()
-			return HttpResponseRedirect(reverse('schedules:schedule-create'))
+			return reverse('schedules:schedule-create')
 	else:
 		form = AddShiftsToSetForm()
 		context['title'] = f'Add Shifts to {shift_set.title}'
