@@ -1039,6 +1039,7 @@ def shift_set_add(request, *args, **kwargs):
 			return reverse('schedules:schedule-create')
 	else:
 		form = AddShiftsToSetForm()
+		context['form'] = form
 		context['title'] = f'Add Shifts to {shift_set.title}'
 		context['cancel_url'] = 'schedules:schedule-create'
 		context['shift_sets'] = ShiftSet.objects.exclude(id = set_id)
