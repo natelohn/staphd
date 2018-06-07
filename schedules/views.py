@@ -1021,13 +1021,15 @@ def shift_set_add(request, *args, **kwargs):
 	try:
 		shift_set = ShiftSet.objects.get(id = set_id)
 	except:
-		print(set_id)
 		return Http404
 	if request.method == 'POST':
 		form = AddShiftsToSetForm(request.POST)
 		if form.is_valid():
 			for shift in form.cleaned_data['added_shifts']:
-				print(f'Add Shift = {shift}')
+				shift.shift_set = shift_set
+				shift.id = None # This will copy the shift object 
+				shift.save() # .... and save it as another instance
+
 			return HttpResponseRedirect(reverse('schedules:schedule-create'))
 	else:
 		template = 'schedules/shift_set_form.html'
