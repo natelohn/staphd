@@ -1032,9 +1032,8 @@ def shift_set_add(request, *args, **kwargs):
 			added_shifts = form.cleaned_data['added_shifts']
 			for shift in added_shifts:
 				if shift not in shifts_in_set:
-					shift.shift_set = shift_set
-					shift.id = None # This will copy the shift object 
-					shift.save() # .... and save it as another instance
+					new_shift = Shift(title = shift.title, day = shift.day, start = shift.start, end = shift.end, flags = shift.flags, qualifications = shift.qualifications, workers_needed = shift.workers_needed, shift_set = shift_set)
+					new_shift.save()
 			for shift in shifts_in_set:
 				if shift not in added_shifts:
 					shift.delete()
