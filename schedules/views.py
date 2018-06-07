@@ -1016,12 +1016,12 @@ class ShiftSetCreate(LoginRequiredMixin, CreateView):
 		context['flags'] = Flag.objects.all().order_by('title')
 		all_shifts = Shift.objects.all().order_by('day', 'start')
 		context['all_shifts'] = all_shifts
-		shift_jsons = []
+		shifts_arr = []
 		for shift in all_shifts:
 			flags = []
 			for f in shift.flags.all():
 				flags.append(f.id)
-			json = {'id':shift.id, 'set':shift.shift_set.id, 'flags':flags}
+			shift = [shift.id, shift.shift_set.id, flags]
 			shift_jsons.append(json)
 		context['shift_jsons'] = shift_jsons
 		return context
