@@ -83,7 +83,7 @@ def build_view(request, *args, **kwargs):
 	if task_id:
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
-		context['at_build'] = True
+	context['at_build'] = True
 	return render(request, template, context) 
 
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
@@ -104,6 +104,7 @@ class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 		context = super(SettingParameterUpdate, self).get_context_data(*args, **kwargs)
 		context['select'] = True
 		context['all_parameters'] = Parameter.objects.all().order_by('rank')
+		context['at_build'] = True
 		return context
 
 @login_required
@@ -115,6 +116,7 @@ def rank_settings(request, *args, **kwargs):
 		context = {}
 		context['rank'] = True
 		context['parameters'] = settings.parameters.all().order_by('rank')
+		context['at_build'] = True
 		return render(request, template, context)
 	except:
 		return Http404
@@ -172,8 +174,9 @@ class SettingPreferenceUpdate(LoginRequiredMixin, UpdateView):
 		settings = self.get_object()
 		context['auto_schedule'] = settings.auto_schedule
 		context['auto_threshold'] = settings.auto_threshold
-		context['random'] = settings.tie_breaker == 0
-		context['rank_based'] = settings.tie_breaker == 1
+		context['random'] = settings.break_ties_randomly()
+		context['rank_based'] = settings.ranked_wins_break_ties()
+		context['at_build'] = True
 		return context
 
 @login_required
