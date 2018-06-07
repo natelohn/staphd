@@ -59,7 +59,7 @@
 						<label for="id_added_shifts_{{shift.id}}"></label>
 						<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="id_added_shifts_{{shift.id}}" onclick="toggle_highlighted({{shift.id}})">
 						{% endif %}
-						<a href="{{ shift.get_absolute_url }}">{{shift}} - <strong>{{shift.shift_set.title}}</strong></a>
+						<a href="{{ shift.get_absolute_url }}" target="_blank">{{shift}} - <strong>{{shift.shift_set.title}}</strong></a>
 					</li>
 					{% endfor %}
 				</ul>
