@@ -17,9 +17,12 @@
 			{{ form }}
 		</div>
 	</form>
-	{% if create %}
+	{% if edit %}
 	<a class="button" href="{% url shift_set_url pk=shift_set.id %}">Edit {{shift_set.title}} Shifts</a>
+	{% endif %}
+	{% if create %}
 	<a class="create_btn" href="{% url 'schedules:set-create' %}">New Shift Set</a>
 	{% endif %}
+
 </div>
 {% endblock %}
