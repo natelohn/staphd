@@ -1048,8 +1048,8 @@ def shift_set_add(request, *args, **kwargs):
 		flags = []
 		for f in shift.flags.all():
 			flags.append(f.id)
-		shift = [shift.id, shift.shift_set.id, flags]
-		shifts_arr.append(shift)
+		arr = [shift.id, shift.shift_set.id, flags]
+		shifts_arr.append(arr)
 		if shift.shift_set == shift_set:
 			shifts_in_set.append(shift)
 			if Staphing.objects.filter(shift = shift):
