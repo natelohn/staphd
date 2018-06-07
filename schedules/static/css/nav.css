@@ -43,6 +43,7 @@
     display: inline-block;
     height: 100%;
     text-align: center;
+    pointer-events: none;
 }
 
 #links li:hover{
@@ -50,6 +51,7 @@
 }
 
 #links a{
+    pointer-events: auto;
     text-decoration: none;
     font-size: 1.4em;
     width: 20%;
@@ -58,5 +60,9 @@
     color: white;
     margin-right: 15px;
     margin-left: 15px;
+}
+
+.current_link {
+    background-color: grey;
 }
 

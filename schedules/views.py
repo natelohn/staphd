@@ -33,6 +33,11 @@ from .view_helpers import get_shifts_to_add, get_week_schedule_view_info, make_s
 class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
 
+	def get_context_data(self, *args, **kwargs):
+		context = super(DownloadView, self).get_context_data(*args, **kwargs)
+		context['at_download'] = True
+		return context
+
 @login_required
 def download_file(request, filename):
 	path = 'static/xlsx/' + filename
@@ -78,6 +83,7 @@ def build_view(request, *args, **kwargs):
 	if task_id:
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
+		context['at_build'] = True
 	return render(request, template, context) 
 
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
@@ -186,6 +192,7 @@ def build_schedules(request, *args, **kwargs):
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
 	context['schedule'] = schedule.title
+	context['at_build'] = True
 	return render(request,'schedules/progress.html', context)
 
 @login_required
@@ -215,6 +222,7 @@ def update_files(request, *args, **kwargs):
 	request.session['task_id'] = task_id
 	context['task_id'] = task_id
 	context['schedule'] = schedule.title
+	context['at_build'] = True
 	return render(request, template, context)
 
 @login_required
@@ -303,6 +311,11 @@ def add_recommendation(request, *args, **kwargs):
 class Settings(LoginRequiredMixin, TemplateView):
     template_name = 'settings.html'
 
+    def get_context_data(self, *args, **kwargs):
+		context = super(Settings, self).get_context_data(*args, **kwargs)
+		context['at_settings'] = True
+		return context
+
 class FlagSettings(LoginRequiredMixin, TemplateView):
 	template_name = 'settings_edit.html'
 	
@@ -312,6 +325,7 @@ class FlagSettings(LoginRequiredMixin, TemplateView):
 		context['delete_link'] = 'schedules:flag-delete'
 		context['create_link'] = 'schedules:flag-create'
 		context['object_name'] = 'Flag'
+		context['at_settings'] = True
 		return context
 
 class QualificationSettings(LoginRequiredMixin, TemplateView):
@@ -323,6 +337,7 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 		context['delete_link'] = 'schedules:qualification-delete'
 		context['create_link'] = 'schedules:qualification-create'
 		context['object_name'] = 'Qualification'
+		context['at_settings'] = True
 		return context
 
 # Stapher based views
@@ -391,6 +406,7 @@ class StapherList(LoginRequiredMixin,ListView):
 		context['title'] = 'Staphers'
 		context['link'] = 'schedules:stapher-create'
 		context['query_explanation'] = cache.get('query_explanation')
+		context['at_staph'] = True
 		return context
 
 class StapherDetail(LoginRequiredMixin, DetailView):
@@ -405,6 +421,7 @@ class StapherDetail(LoginRequiredMixin, DetailView):
 		suffix = suffixes[summers]
 		context['readable_summer'] = str(stapher.summers_worked + 1) + suffix
 		context['qualifications'] = sorted(stapher.qualifications.all(), key = attrgetter('title'))
+		context['at_staph'] = True
 		return context
 
 class StapherCreate(LoginRequiredMixin, CreateView):
@@ -416,6 +433,7 @@ class StapherCreate(LoginRequiredMixin, CreateView):
 		context['title'] = 'New Stapher'
 		context['cancel_url'] = 'schedules:stapher-list'
 		context['qualification_label_name'] = 'stapher_qualifications_hardcoded'
+		context['at_staph'] = True
 		return context
 
 	def form_valid(self, form):
@@ -436,6 +454,7 @@ class StapherUpdate(LoginRequiredMixin, UpdateView):
 		context = super(StapherUpdate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Edit Stapher'
 		context['qualification_label_name'] = 'stapher_qualifications_hardcoded'
+		context['at_staph'] = True
 		return context
 
 	# TODO: See if this works (takes from the create form in forms.py)
@@ -494,6 +513,7 @@ def stapher_schedule(request, args, kwargs, form):
 	context['all_rows_for_time'] = all_rows_for_time
 	context['form'] = form
 	context['new_shift_rows'] = new_shift_rows
+	context['at_staph'] = True
 	return render(request, template, context)
 
 @login_required
@@ -712,6 +732,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 		except:
 			schedule = None
 		context = super(ShiftList, self).get_context_data(*args, **kwargs)
+		context['at_shifts'] = True
 		context['title'] = 'Shifts'
 		context['link'] = 'schedules:shift-create'
 		context['query_explanation'] = cache.get('query_explanation')
@@ -774,7 +795,7 @@ class ShiftDetail(LoginRequiredMixin, DetailView):
 		context['working_msg'] = str(len(working_shift))+ ' Workers Scheduled on :' if working_shift else 'No Workers Scheduled.'
 		context['qualifications'] = sorted(shift.qualifications.all(), key = attrgetter('title'))
 		context['flags'] = sorted(shift.flags.all(), key = attrgetter('title'))
-
+		context['at_shifts'] = True
 		return context
 
 class ShiftCreate(LoginRequiredMixin, CreateView):
@@ -787,6 +808,7 @@ class ShiftCreate(LoginRequiredMixin, CreateView):
 		context['cancel_url'] = 'schedules:shift-list'
 		context['qualification_label_name'] = 'shift_qualifications_hardcoded'
 		context['flag_label_name'] = 'shift_flags_hardcoded'
+		context['at_shifts'] = True
 		return context
 
 	def form_valid(self, form):
@@ -808,6 +830,7 @@ class ShiftUpdate(LoginRequiredMixin, UpdateView):
 		context['title'] = 'Edit Shift'
 		context['qualification_label_name'] = 'shift_qualifications_hardcoded'
 		context['flag_label_name'] = 'shift_flags_hardcoded'
+		context['at_shifts'] = True
 		return context
 
 	def get_queryset(self):
@@ -889,6 +912,7 @@ class ScheduleCreate(LoginRequiredMixin, CreateView):
 		context['title'] = 'New Schedule'
 		context['cancel_url'] = 'schedules:select'
 		context['create'] = True
+		context['at_build'] = True
 		return context
 
 class ScheduleList(LoginRequiredMixin, ListView):
@@ -899,6 +923,7 @@ class ScheduleList(LoginRequiredMixin, ListView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ScheduleList, self).get_context_data(*args, **kwargs)
+		context['at_build'] = True
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
 			context['schedule'] = schedule
@@ -915,6 +940,7 @@ class ScheduleDetail(LoginRequiredMixin, DetailView):
 		context['title'] = schedule.title
 		context['percent'] = schedule.get_percent_complete()
 		context['shift_set'] = schedule.shift_set.title
+		context['at_build'] = True
 		return context
 
 class ScheduleDelete(LoginRequiredMixin, DeleteView):
@@ -926,6 +952,7 @@ class ScheduleDelete(LoginRequiredMixin, DeleteView):
 		context = super(ScheduleDelete, self).get_context_data(*args, **kwargs)
 		schedule = self.get_object()
 		context['schedule_id'] = schedule.id
+		context['at_build'] = True
 		return context
 
 class ScheduleUpdate(LoginRequiredMixin, UpdateView):
@@ -943,6 +970,7 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 		context['create'] = True
 		context['shift_set_url'] = 'schedules:set-add'
 		context['shift_set'] = schedule.shift_set
+		context['at_build'] = True
 		return context
 
 def schedule_duplicate(request, *args, **kwargs):
@@ -988,6 +1016,7 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 		context['schedule'] = schedule
 		context['can_delete'] = True
 		context['all_rows_for_time'] = all_rows_for_time
+		context['at_staph'] = True
 		return context
 
 	def get_success_url(self):
@@ -1003,6 +1032,7 @@ class ShiftSetCreate(LoginRequiredMixin, CreateView):
 		context = super(ShiftSetCreate, self).get_context_data(*args, **kwargs)
 		context['title'] = 'New Shift Set'
 		context['cancel_url'] = 'schedules:schedule-create'
+		context['at_build'] = True
 		return context
 
 @login_required
@@ -1056,6 +1086,7 @@ def shift_set_add(request, *args, **kwargs):
 	context['all_shifts'] = all_shifts
 	context['shifts_in_set'] = shifts_in_set
 	context['uncheckable'] = uncheckable
+	context['at_build'] = True
 	return render(request, template, context)
 
 class ShiftSetDelete(LoginRequiredMixin, DeleteView):
