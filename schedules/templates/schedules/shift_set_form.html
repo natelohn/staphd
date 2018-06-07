@@ -43,20 +43,25 @@
 					<label for="id_added_shifts_{{shift.id}}"></label>
 					{% if shift in uncheckable %}
 					<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="non_selectable" checked>
+					<div class="tooltip">? 
+						<span class="tooltiptext" id="tooltiptext_small">
+							You are not able to remove Shifts that have been scheduled from the shift set. To remove these delete their Staphings and return.
+						</span>
+					</div>
 					{% else %}
 					<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="id_added_shifts_{{shift.id}}" onclick="toggle_highlighted({{shift.id}})" checked>
 					{% endif %}
-				{% else %}
-				<li class="shift_set_li" id="added_shift_li_{{shift.id}}">
-					<label for="id_added_shifts_{{shift.id}}"></label>
-					<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="id_added_shifts_{{shift.id}}" onclick="toggle_highlighted({{shift.id}})">
-				{% endif %}
-					<a href="{{ shift.get_absolute_url }}">{{shift}} - <strong>{{shift.shift_set.title}}</strong></a>
-				</li>
-				{% endfor %}
-			</ul>
-		</div>
-	</form>
-</div>
-{% include "sections/shifts_from_flag.html" %}
-{% endblock %}
+					{% else %}
+					<li class="shift_set_li" id="added_shift_li_{{shift.id}}">
+						<label for="id_added_shifts_{{shift.id}}"></label>
+						<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="id_added_shifts_{{shift.id}}" onclick="toggle_highlighted({{shift.id}})">
+						{% endif %}
+						<a href="{{ shift.get_absolute_url }}">{{shift}} - <strong>{{shift.shift_set.title}}</strong></a>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</form>
+	</div>
+	{% include "sections/shifts_from_flag.html" %}
+	{% endblock %}
