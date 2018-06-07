@@ -7,7 +7,7 @@
 		<h3>Schedule: {{schedule.title}}</h3>
 		<h3>Currently you have {{ percent_complete }}% of shifts scheduled.</h3>
 		<a href="{% url 'schedules:shift-list' %}?q=uncovered" class="button">View Unscheduled Shifts</a>
-		{% else %}}
+		{% else %}
 		<h3>Currently you have no schedule selected.</h3>
 		<a href="{% url 'schedules:select' %}" class="button">Select or Create Schedule</a>
 		{% endif %}
