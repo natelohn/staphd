@@ -1,7 +1,11 @@
 <script type="text/javascript">
 	function toggle_shifts(flag, shift_set) {
+		console.log(flag);
+		console.log(shift_set);
 		var flag_id_string = 'f_' + flag.id + '_s_' + shift_set.id;
+		console.log(flag_id_string);
 		var flag = document.getElementById(flag_id_string);
+		console.log(flag)
 		if (flag.checked) {
 			flag.style.backgroundColor = "blue";
 		} else {
