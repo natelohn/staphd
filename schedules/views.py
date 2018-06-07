@@ -1039,6 +1039,7 @@ def shift_set_add(request, *args, **kwargs):
 		form = AddShiftsToSetForm()
 	template = 'schedules/shift_set_form.html'
 	context = {}
+	all_shifts = Shift.objects.all().order_by('title','shift_set','day','start')
 	for shift in shifts_in_set:
 		shift.has_staphings = bool(Staphing.objects.filter(shift = shift))
 	shifts_arr = []
@@ -1054,7 +1055,6 @@ def shift_set_add(request, *args, **kwargs):
 	context['cancel_url'] = 'schedules:schedule-create'
 	context['shift_sets'] = ShiftSet.objects.exclude(id = set_id)
 	context['flags'] = Flag.objects.all().order_by('title')
-	all_shifts = Shift.objects.all().order_by('title','shift_set','day','start')
 	context['all_shifts'] = all_shifts
 	context['shifts_in_set'] = shifts_in_set
 	
