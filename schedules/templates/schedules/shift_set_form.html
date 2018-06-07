@@ -20,7 +20,9 @@
 		</div>
 		<div class="left_list" id="shift_set_div">
 			{% for set in shift_sets %}
-			<h2><u>{{set.title}}</u></h2>
+			<h2><u>{{set.title}}</u> - Select All 
+				<input type="checkbox" value="{{set.id}}" id="set_{{set.id}}" onclick="toggle_all_shifts({{set.id}})">
+			</h2>
 			<ul>
 				{% for flag in flags %}
 				<li class="shift_set_li">

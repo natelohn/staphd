@@ -34,6 +34,45 @@
 	}
 
 
+	function toggle_all_shifts(shift_set_id, check) {
+		var all_shifts = {{shifts_arr}};
+		var shifts_to_check = [];
+		for (i = 0; i < all_shifts.length; i++) {
+			var arr = all_shifts[i];
+			var shift = arr[0];
+			var set = arr[1];
+			var flags = arr[2];
+			if (set === shift_set_id){
+				shifts_to_check.push(shift);
+			}
+		}
+		for (i = 0; i < shifts_to_check.length; i++) {
+			var id = shifts_to_check[i];
+			var shift_id_str = "id_added_shifts_" + id;
+			var shift_elem = document.getElementById(shift_id_str);
+			shift_elem.checked = check;
+			var li_elem_id = "added_shift_li_" + id;
+			var li_elem = document.getElementById(li_elem_id);
+			if (check) {
+				li_elem.style.backgroundColor = "lime";
+				li_elem.style.fontWeight = "bold";
+			} else {
+				li_elem.style.backgroundColor = "#EEEEEE";
+				li_elem.style.fontWeight = "normal";
+			}
+		}
+	}
+
+	function toggle_all_shifts(shift_set_id) {
+		var set_id_string = 'set_' + shift_set_id;
+		var set_elem = document.getElementById(set_id_string);
+		if (set_elem.checked) {
+			toggle_all_shifts(shift_set_id, true);
+		} else {
+			toggle_all_shifts(shift_set_id, false);
+		}
+	}
+
 	function toggle_shifts(flag_id, shift_set_id) {
 		var flag_id_string = 'f_' + flag_id + '_s_' + shift_set_id;
 		var flag_elem = document.getElementById(flag_id_string);
