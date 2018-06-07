@@ -1026,6 +1026,20 @@ def shift_set_add(request, *args, **kwargs):
 		return Http404
 	shifts_in_set = []
 	uncheckable = []
+	all_shifts = Shift.objects.all().order_by('title','shift_set','day','start')
+	shifts_arr = []
+	shifts_in_set = []
+	uncheckable = []
+	for shift in all_shifts:
+		flags = []
+		for f in shift.flags.all():
+			flags.append(f.id)
+		arr = [shift.id, shift.shift_set.id, flags]
+		shifts_arr.append(arr)
+		if shift.shift_set == shift_set:
+			shifts_in_set.append(shift)
+			if Staphing.objects.filter(shift = shift):
+				uncheckable.append(shift)
 	if request.method == 'POST':
 		form = AddShiftsToSetForm(request.POST)
 		if form.is_valid():
@@ -1045,20 +1059,6 @@ def shift_set_add(request, *args, **kwargs):
 		form = AddShiftsToSetForm()
 	template = 'schedules/shift_set_form.html'
 	context = {}
-	all_shifts = Shift.objects.all().order_by('title','shift_set','day','start')
-	shifts_arr = []
-	shifts_in_set = []
-	uncheckable = []
-	for shift in all_shifts:
-		flags = []
-		for f in shift.flags.all():
-			flags.append(f.id)
-		arr = [shift.id, shift.shift_set.id, flags]
-		shifts_arr.append(arr)
-		if shift.shift_set == shift_set:
-			shifts_in_set.append(shift)
-			if Staphing.objects.filter(shift = shift):
-				uncheckable.append(shift)
 	context['shifts_arr'] = shifts_arr
 	context['form'] = form
 	context['shift_set'] = shift_set
