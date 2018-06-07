@@ -1022,6 +1022,7 @@ def shift_set_add(request, *args, **kwargs):
 	except:
 		return Http404
 	shifts_in_set = [s for s in Shift.objects.filter(shift_set = shift_set)]
+	template = 'schedules/shift_set_form.html'
 	if request.method == 'POST':
 		form = AddShiftsToSetForm(request.POST)
 		if form.is_valid():
@@ -1036,7 +1037,6 @@ def shift_set_add(request, *args, **kwargs):
 					shift.delete()
 			return HttpResponseRedirect(reverse('schedules:schedule-create'))
 	else:
-		template = 'schedules/shift_set_form.html'
 		form = AddShiftsToSetForm()
 		context = {}
 		context['title'] = f'Add Shifts to {shift_set.title}'
@@ -1056,6 +1056,5 @@ def shift_set_add(request, *args, **kwargs):
 			shift = [shift.id, shift.shift_set.id, flags]
 			shifts_arr.append(shift)
 		context['shifts_arr'] = shifts_arr
-	template
 	return render(request, template, context)
 
