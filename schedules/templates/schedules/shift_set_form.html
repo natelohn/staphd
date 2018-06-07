@@ -18,9 +18,6 @@
 				</span>
 			</div>
 		</div>
-		<div id="form_div">
-			{{ form }}
-		</div>
 		<div class="left_list" id="shift_set_div">
 			{% for set in shift_sets %}
 			<h2><u>{{set.title}}</u></h2>
@@ -38,10 +35,12 @@
 		</div>
 		<div class="right_list" id="all_shifts_div">
 			<h2><u>Select Shifts:</u></h2>
+			<label for="added_shifts">Added Shifts:</label>
 			<ul>
 				{% for shift in all_shifts %}
 				<li class="shift_set_li">
-					<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="shift_id_{{shift.id}}">
+					<label for="id_added_shifts_{{shift.id}}"></label>
+					<input type="checkbox" name="added_shifts" value="{{shift.id}}" id="id_added_shifts_{{shift.id}}">
 					<a href="{{ shift.get_absolute_url }}">{{shift}}</a>
 				</li>
 				{% endfor %}

@@ -18,10 +18,16 @@
 		}
 		for (i = 0; i < shifts_to_check.length; i++) {
 			var id = shifts_to_check[i];
-			var shift_id_str = "shift_id_" + id;
-			console.log(shift_id_str);
+			var shift_id_str = "id_added_shifts_" + id;
 			var shift_elem = document.getElementById(shift_id_str);
 			shift_elem.checked = check;
+			if (check) {
+				shift_elem.style.backgroundColor = "lime";
+				shift.style.fontWeight = "bold";
+			} else {
+				shift_elem.style.backgroundColor = "EEEEEE";
+				shift.style.fontWeight = "normal";
+			}
 		}
 	}
 
