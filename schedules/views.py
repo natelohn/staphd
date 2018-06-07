@@ -1022,7 +1022,7 @@ class ShiftSetCreate(LoginRequiredMixin, CreateView):
 			for f in shift.flags.all():
 				flags.append(f.id)
 			shift = [shift.id, shift.shift_set.id, flags]
-			shift_jsons.append(json)
-		context['shift_jsons'] = shift_jsons
+			shifts_arr.append(shift)
+		context['shifts_arr'] = shifts_arr
 		return context
 
