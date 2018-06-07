@@ -1,6 +1,6 @@
 <script type="text/javascript">
 	function toggle_like_shifts(flag_id, shift_set_id, check) {
-		var all_shifts = "{{shift_jsons}}";
+		var all_shifts = {{shift_jsons}};
 		var shifts_to_check = []
 		for (i = 0; i < all_shifts.length; i++) {
 			var shift = all_shifts[i];
