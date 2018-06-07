@@ -1050,7 +1050,7 @@ def shift_set_add(request, *args, **kwargs):
 			flags.append(f.id)
 		shift = [shift.id, shift.shift_set.id, flags]
 		shifts_arr.append(shift)
-		if shift.shift_set = shift_set:
+		if shift.shift_set == shift_set:
 			shifts_in_set.append(shift)
 			if Staphing.objects.filter(shift = shift):
 				uncheckable.append(shift)
