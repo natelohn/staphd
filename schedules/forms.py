@@ -272,5 +272,6 @@ class AddShiftsToSetForm(forms.Form):
 				added_shifts.append(shift)
 			except:
 				raise forms.ValidationError(f"{shift_id} is not vaild shift id.")
+		return added_shifts
 
 
