@@ -321,7 +321,7 @@ def sanity_check_view(request, *args, **kwargs):
 		staphers = Stapher.objects.all()
 	except:
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
-	get_solution_for_time(shifts, staphers, 0, datetime.time(11, 0, 0, 0), datetime.time(11, 15, 0, 0))
+	get_solution_for_time(shifts, staphers, 0, datetime.time(11, 0, 0, 0))
 	return HttpResponseRedirect(reverse('schedules:home'))
 
 
