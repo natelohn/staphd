@@ -19,7 +19,7 @@
 					<li><h2>{{obj}}</h2></li>
 					<li><a class="list_btn" href="{% url 'schedules:schedule-detail' pk=obj.id %}">View</a></li>
 					<li><a class="create_btn" href='{{ obj.get_absolute_url }}'>Select</a></li>
-					{% if schedule %}
+					{% if schedule and obj.shift_set.id == schedule.shift_set.id %}
 					<li><a class="delete_button" href="{% url 'schedules:duplicate' pk=obj.id %}">Erase Current Schedule & Duplicate "{{obj.title}}"</a></li>
 					{% endif %}
 				</ul>
