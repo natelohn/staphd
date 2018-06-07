@@ -1042,8 +1042,6 @@ def shift_set_add(request, *args, **kwargs):
 		shifts_in_set = [s for s in Shift.objects.filter(shift_set = shift_set)]
 		for shift in all_shifts:
 			shift.in_set = shift in shifts_in_set
-		for shift in all_shifts:
-			print(shift.in_set)
 		context['shifts_in_set'] = shifts_in_set
 		shifts_arr = []
 		for shift in all_shifts:
