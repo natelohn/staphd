@@ -2,6 +2,9 @@
 	background-color: silver;
 	margin: 3px;
 	font-size: 1.5em;
+}
+
+.shift_set_li a{
 	text-decoration: none;
 	color: black;
 }
