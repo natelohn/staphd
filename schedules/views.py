@@ -34,6 +34,9 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
 
 	def get_context_data(self, *args, **kwargs):
+		cache.set('recommendation', None, 0)# TODO Delete <-
+		cache.set('recommended_shift', None, 0)# TODO Delete <-
+		cache.set('ratios', None, 0) # TODO Delete <-
 		context = super(DownloadView, self).get_context_data(*args, **kwargs)
 		context['at_download'] = True
 		return context
