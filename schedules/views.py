@@ -25,8 +25,7 @@ from .analytics import get_readable_time
 from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
-from .ratio import find_ratios
-from .tasks import build_schedules_task, update_files_task
+from .tasks import build_schedules_task, update_files_task, find_ratios_task
 from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv
 
 
@@ -317,10 +316,7 @@ def add_recommendation(request, *args, **kwargs):
 def sanity_check_view(request, *args, **kwargs):
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
-		shifts = Shift.objects.filter(shift_set = schedule.shift_set)
-		staphers = Stapher.objects.all()
-		staphings = Staphing.objects.filter(schedule = schedule)
-		find_ratios(shifts, staphers, staphings)
+		find_ratios_task.delay(schedule.id, schedule.shift_set.id)
 	except:
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
 	return HttpResponseRedirect(reverse('schedules:home'))

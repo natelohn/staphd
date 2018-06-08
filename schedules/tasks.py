@@ -8,6 +8,7 @@ from .build import build_schedules
 from .excel import update_individual_excel_files, update_masters, update_analytics
 from .models import Flag, Schedule, Stapher, Shift, Staphing, Qualification, Master
 from .models import Settings as ScheduleBuildingSettings
+from .ratio import find_ratios
 from .sort import get_sorted_shifts
 
 
@@ -79,4 +80,13 @@ def build_schedules_task(self, schedule_id):
 	cache.set('num_actions_made', None, 0)
 	cache.set('num_total_actions', None, 0)
 	cache.set('current_task_id', None, 0)
+
+@task(bind=True, track_started=True, task_time_limit = 1500)
+@shared_task(bind=True, ignore_result=False)
+def find_ratios_task(self, schedule_id, shift_set_id):
+	shifts = Shift.objects.filter(shift_set_id = shift_set_id)
+	staphers = Stapher.objects.all()
+	staphings = Staphing.objects.filter(schedule_id = schedule_id)
+	ratios = find_ratios(shifts, staphers, staphings)
+	print(f'ratios = {ratios}')
 

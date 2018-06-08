@@ -34,6 +34,7 @@ def find_ratios(shifts, staphers, staphings):
 			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start)
 			clean = clean_ratios(shifts_in_window, staphers, staphings)
 			if clean:
-				print('clean')
+				print(f'{day}, {start}-{end} clean')
 			else:
-				print('*************** UNCLEAN!! *****************')
+				print(f'*************** {day}, {start}-{end} UNCLEAN!! *****************')
+	return 'NoThin!'
