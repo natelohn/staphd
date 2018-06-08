@@ -19,8 +19,7 @@ def clean_ratios(shifts, staphers, staphings):
 			for qs in qs_set:
 				sum_of_workers_needed += sum([s.workers_needed for s in shift_dict[qs]])
 				availible_workers = availible_workers | set([s.id for s in stapher_dict[qs]])
-				print(f'{sum_of_workers_needed} / {availible_workers}')
-				ratio = (sum_of_workers_needed / availible_workers) if availible_workers > 0 else (sum_of_workers_needed + 1)
+				ratio = (sum_of_workers_needed / len(availible_workers)) if availible_workers else (sum_of_workers_needed + 1)
 				if ratio > 1:
 					return False
 	return True
