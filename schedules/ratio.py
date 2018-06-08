@@ -2,16 +2,16 @@ import datetime
 
 from .sort import get_ordered_start_and_end_times_by_day
 
-def get_solution(shifts, staphers, left_to_cover):
-	if not shifts:
-		return True
-	for shift in shifts:
-		if left_to_cover[shift] > 0:
-			for stapher in staphers:
+# def get_solution(shifts, staphers, left_to_cover):
+# 	if not shifts:
+# 		return True
+# 	for shift in shifts:
+# 		if left_to_cover[shift] > 0:
+# 			for stapher in staphers:
 
-		else:
-			covered_shifts.add(shift)
-	return False
+# 		else:
+# 			covered_shifts.add(shift)
+# 	return False
 
 
 
