@@ -24,4 +24,5 @@ def find_ratios(shifts, staphers, staphings):
 			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start).order_by('workers_needed')
 			solution = get_solution(shifts_in_window[:], list(staphers), staphings)
 			print(f'------------- solution = {solution} ----------------')
+		return
 
