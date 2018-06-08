@@ -19,6 +19,11 @@ class Qualification(models.Model):
 	def get_absolute_url(self):
 		return reverse('schedules:qualification-settings')
 
+	def delete(self, *args, **kwargs):
+		cache.set('resort', True, None)
+		cache.set('reset_ratios', True, None)
+		super(Qualification, self).delete(*args, **kwargs)
+
 class Flag(models.Model):
 	active			= models.BooleanField(default = True)
 	title 			= models.CharField(max_length = 100, unique = True, default = 'TYPE OF SHIFT')
@@ -45,11 +50,13 @@ class Stapher(models.Model):
 
 	def save(self, *args, **kwargs):
 		cache.set('resort', True, None)
+		cache.set('reset_ratios', True, None)
 		super(Stapher, self).save(*args, **kwargs)
 			
 
 	def delete(self, *args, **kwargs):
 		cache.set('resort', True, None)
+		cache.set('reset_ratios', True, None)
 		super(Stapher, self).delete(*args, **kwargs)
 
 	def get_absolute_url(self):
@@ -223,10 +230,12 @@ class Shift(models.Model):
 
 	def save(self, *args, **kwargs):
 		cache.set('resort', True, None)
+		cache.set('reset_ratios', True, None)
 		super(Shift, self).save(*args, **kwargs)
 
 	def delete(self, *args, **kwargs):
 		cache.set('resort', True, None)
+		cache.set('reset_ratios', True, None)
 		super(Shift, self).delete(*args, **kwargs)
 			
 
@@ -330,6 +339,16 @@ class Schedule(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('schedules:schedule-selected', kwargs={'pk': self.id})
+
+
+	def save(self, *args, **kwargs):
+		cache.set('reset_ratios', True, None)
+		super(Schedule, self).save(*args, **kwargs)
+			
+
+	def delete(self, *args, **kwargs):
+		cache.set('reset_ratios', True, None)
+		super(Schedule, self).delete(*args, **kwargs)
 
 	def get_percent_complete(self):
 		shifts_in_set = Shift.objects.filter(shift_set = self.shift_set)
