@@ -319,9 +319,10 @@ def sanity_check_view(request, *args, **kwargs):
 		schedule = Schedule.objects.get(active__exact = True)
 		shifts = Shift.objects.filter(shift_set = schedule.shift_set)
 		staphers = Stapher.objects.all()
+		staphings = Staphing.objects.filter(schedule = schedule)
+		find_ratios(shifts, staphers, staphings)
 	except:
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
-	find_ratios(shifts, staphers)
 	return HttpResponseRedirect(reverse('schedules:home'))
 
 
