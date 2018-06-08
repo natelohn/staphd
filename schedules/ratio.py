@@ -38,6 +38,7 @@ def find_ratios(shifts, staphers, staphings, all_ordered_times, current_task):
 			percent = get_percent(actions_taken, total_actions)
 			meta = {'message':f'Geting Ratio for {days[day]}, {start}-{end}', 'process_percent':percent}
 			current_task.update_state(meta = meta)
+			print('message':f'Geting Ratio for {days[day]}, {start}-{end}')
 			
 			shifts_in_window = [s for s in shifts.filter(day = day, start__lt = end, end__gt = start) if workers_left[s.id] > 0]
 			busy_staphers = [s.stapher.id for s in staphings.filter(shift__day = day, shift__start__lt = end, shift__end__gt = start)]
