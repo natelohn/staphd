@@ -4,8 +4,8 @@ from .sort import get_ordered_start_and_end_times_by_day, get_qual_and_shifts_di
 
 from .models import Shift, Stapher, Staphing
 
-def get_ratios_in_window(shifts, staphers, staphings):
-	busy_staphers = [s.stapher.id for s in staphings]
+def get_ratios_in_window(shifts, staphers, busy_staphers):
+	
 	shift_and_qual_dicts = get_qual_and_shifts_dicts(shifts)
 	shift_dict = shift_and_qual_dicts[1]
 	stapher_dict = get_stapher_dict(staphers, shift_and_qual_dicts[0])
@@ -30,10 +30,9 @@ def find_ratios(schedule_id, shift_set_id):
 			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start).order_by('workers_needed')
 			print(f'{day}, {start}-{end}')
 			print(shifts_in_window)
-			print(staphings)
-			staphings_in_window = staphings.filter(shift_day = day, shift_start__lt = end, shift_end__gt = start)
+			busy_staphers = [s.stapher.id for s in staphings.filter(shift_day = day, shift_start__lt = end, shift_end__gt = start)]
 			print('E')
-			ratios_in_window = get_ratios_in_window(shifts_in_window, staphers, staphings_in_window)
+			ratios_in_window = get_ratios_in_window(shifts_in_window, staphers, busy_staphers)
 			print('D')
 			time_info = [day, start, end]
 			print('C')
