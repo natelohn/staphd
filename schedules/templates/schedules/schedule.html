@@ -14,7 +14,11 @@
 	</div>
 	<div id="schedule_information">
 		{% if schedule %}
-			<h2><strong>Current Schedule: {{ schedule }}</strong> {%if percent_complete %}- {{percent_complete}}% complete. {% endif %}</h2>
+			<h2><strong>Current Schedule: {{ schedule }}</strong>
+			{%if percent_complete %}
+			- {{percent_complete}}% complete. 
+			{% endif %}
+		</h2>
 		{% else %}
 			<h2><strong>No Current Schedule</strong></h2>
 		{% endif %}
