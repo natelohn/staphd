@@ -21,8 +21,10 @@ def clean_ratios(shifts, staphers, staphings):
 			availible_workers = set()
 			print('D')
 			for qs in qs_set:
-				print('E')
-				sum_of_workers_needed += sum([s.workers_needed for s in shift_dict[q_set]])
+				print('E.1')
+				workers_needed = [s.workers_needed for s in shift_dict[q_set]]
+				print('E.2')
+				sum_of_workers_needed += sum(workers_needed)
 				print('F')
 				availible_workers = availible_workers | set([s.id for s in stapher_dict[q_set]])
 				print('G')
@@ -41,7 +43,7 @@ def find_ratios(shifts, staphers, staphings):
 		for i in range(1, len(ordered_times_by_day[day])):
 			start = ordered_times_by_day[day][i - 1]
 			end = ordered_times_by_day[day][i]
-			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start).order_by('workers_needed')
+			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start)
 			clean = clean_ratios(shifts_in_window, staphers, staphings)
 			if clean:
 				print('clean')
