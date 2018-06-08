@@ -354,6 +354,17 @@ class Staphing(models.Model):
 	def get_absolute_url(self):
 		return reverse('schedules:stapher-schedule', kwargs={'pk':self.stapher.id})
 
+	def save(self, *args, **kwargs):
+		cache.set('reset_ratios', True, None)
+		super(Staphing, self).save(*args, **kwargs)
+			
+
+	def delete(self, *args, **kwargs):
+		cache.set('reset_ratios', True, None)
+		super(Staphing, self).delete(*args, **kwargs)
+
+	
+
 class Parameter(models.Model):
 	title 			= models.CharField(max_length = 100, default = 'PARAMETER TITLE')
 	description 	= models.CharField(max_length = 500, default = 'PARAMETER DESCRIPTION')
