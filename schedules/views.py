@@ -25,7 +25,7 @@ from .analytics import get_readable_time
 from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
-from .tasks import build_schedules_task, update_files_task, find_ratios_task
+from .tasks import build_schedules_task, update_files_task
 from .ratio import find_ratios
 from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv
 
