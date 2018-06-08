@@ -1,4 +1,5 @@
 import datetime
+from django.core.cache import cache
 
 from .excel import get_percent
 from .sort import get_qual_and_shifts_dicts, get_stapher_dict
