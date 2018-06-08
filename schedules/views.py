@@ -317,11 +317,10 @@ def add_recommendation(request, *args, **kwargs):
 def sanity_check_view(request, *args, **kwargs):
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
-		ratios = find_ratios(schedule.id, schedule.shift_set.id)
-		print(f'********* Ratios = {ratios}')
-
 	except:
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
+	ratios = find_ratios(schedule.id, schedule.shift_set.id)
+	print(f'********* Ratios = {ratios}')
 	return HttpResponseRedirect(reverse('schedules:home'))
 
 
