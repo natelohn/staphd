@@ -9,7 +9,7 @@ from .excel import update_individual_excel_files, update_masters, update_analyti
 from .models import Flag, Schedule, Stapher, Shift, Staphing, Qualification, Master
 from .models import Settings as ScheduleBuildingSettings
 from .ratio import find_ratios
-from .sort import get_sorted_shifts
+from .sort import get_sorted_shifts, get_ordered_start_and_end_times_by_day
 
 
 

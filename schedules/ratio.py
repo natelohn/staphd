@@ -1,7 +1,7 @@
 import datetime
 
 from .excel import get_percent
-from .sort import get_ordered_start_and_end_times_by_day, get_qual_and_shifts_dicts, get_stapher_dict
+from .sort import get_qual_and_shifts_dicts, get_stapher_dict
 
 from .models import Shift, Stapher, Staphing
 
