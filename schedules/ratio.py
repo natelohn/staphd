@@ -24,4 +24,5 @@ def find_ratios(shifts, staphers, staphings):
 			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start).order_by('workers_needed')
 			for shift in shifts_in_window:
 				print(f'{shift} - {shift.workers_needed}')
+			print('-----------------------------')
 
