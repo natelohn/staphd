@@ -256,21 +256,41 @@ def track_state(request, *args, **kwargs):
 	return HttpResponse(json_data, content_type='application/json')
 
 @login_required
+@csrf_exempt
+def redirect(request, *args, **kwargs):
+	recs = cache.get('recommendation')
+	shift = cache.get('recommended_shift')
+	ratios = cache.get('ratios')
+	if recs and shift and ratios:
+		return HttpResponseRedirect(reverse('schedules:schedule'))
+	elif recs and shift:
+		return HttpResponseRedirect(reverse('schedules:recommendation'))
+	elif ratios:
+		return HttpResponseRedirect(reverse('schedules:ratio-week'))
+	else:
+		return HttpResponseRedirect(reverse('schedules:schedule'))
+
+@login_required
 def recommendations_view(request, *args, **kwargs):
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
 		settings = ScheduleBuildingSettings.objects.get()
 	except:
 		return Http404
-	template = 'schedules/recommendation.html'
+
 	recs = cache.get('recommendation')
 	shift = cache.get('recommended_shift')
+	cache.set('recommendation', None, 0)
+	cache.set('recommended_shift', None, 0)
+
 	if not recs or not shift:
 		print(f'No recommendations to be made (rec = {recs})')
 		return HttpResponseRedirect(reverse('schedules:schedule'))
-	parameters = settings.parameters.all().order_by('rank')
+
+	template = 'schedules/recommendation.html'
 	context = {}
 	rows = []
+	parameters = settings.parameters.all().order_by('rank')
 	for rec in recs:
 		stapher = rec[0]
 		scores = rec[1]
@@ -313,26 +333,34 @@ def add_recommendation(request, *args, **kwargs):
 	return HttpResponseRedirect(reverse('schedules:building'))
 
 @login_required
-def sanity_check_view(request, *args, **kwargs):
+def get_ratio(request, *args, **kwargs):
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
 	except:
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
 	task_id = cache.get('current_task_id')
-	reset = cache.get('reset_ratios')
-	if not task_id and reset:
+	if not task_id:
 		schedule_id = schedule.id
 		shift_set_id = schedule.shift_set.id
 		task = find_ratios_task.delay(schedule_id, shift_set_id)
 		task_id = task.task_id
-		cache.set('current_task_id', task_id, 3000)	
+		cache.set('current_task_id', task_id, 3000)
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
 	context['schedule'] = schedule.title
 	context['at_build'] = True
 	return render(request,'schedules/progress.html', context)
 
-
+@login_required
+def ratio_week_view(request, *args, **kwargs):
+	template = 'schedules/ratio_week.html'
+	ratios = cache.get('ratios')
+	cache.set('ratios', None, 0)
+	if not ratios:
+		print(f'No ratios (ratios = {ratios})')
+		return HttpResponseRedirect(reverse('schedules:schedule'))
+	context = {'ratios': ratios}
+	return render(request, template, context)
 
 # Settings based views
 class Settings(LoginRequiredMixin, TemplateView):

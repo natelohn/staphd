@@ -96,7 +96,6 @@ def find_ratios_task(self, schedule_id, shift_set_id):
 	# Do the task
 	ratios = find_ratios(shifts, staphers, staphings, ordered_times_by_day, self)
 	cache.set('ratios', ratios, None)
-	cache.set('reset_ratios', False, None)
 
 	# Delete the values needed to track progress
 	cache.set('num_actions_made', None, 0)
