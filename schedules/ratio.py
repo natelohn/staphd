@@ -3,13 +3,13 @@ import datetime
 from .sort import get_ordered_start_and_end_times_by_day, get_qual_and_shifts_dicts, get_stapher_dict
 
 def get_solution(day, start, end, shift_dict, stapher_dict):
-	print(f'{day}')
+	print(f'day = {day}')
 	for key in shift_dict:
-		print(f'{key}')
+		print(f'key = {key}')
 		shifts_in_window = [s for s in shift_dict[key] if s.is_in_window(day, start, end)]
-		print(f'{key}')
+		print(f'key = {key}')
 		eligible_staphers = [s for s in stapher_dict[key] if s.is_free_during_window(day, start, end)]
-		print(f'{key}')
+		print(f'eligible_staphers = {eligible_staphers}')
 		for shift in shifts_in_window:
 			print(f'{shift} - {shift.workers_needed} / {len(eligible_staphers)}')
 
