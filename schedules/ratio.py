@@ -13,7 +13,7 @@ def get_ratios_in_window(shifts, staphers, busy_staphers):
 	for q_set in shift_dict.keys():
 		sum_needed = sum([s.workers_needed for s in shift_dict[q_set]])
 		availible_workers = [s for s in stapher_dict[q_set] if s.id not in busy_staphers]
-		all_ratios.append([sum_needed, availible_workers])
+		all_ratios.append([sum_needed, len(availible_workers)])
 	return all_ratios
 
 
