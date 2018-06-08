@@ -17,10 +17,7 @@ def get_ratios_in_window(shifts, staphers, busy_staphers):
 	return all_ratios
 
 
-def find_ratios(schedule_id, shift_set_id):
-	shifts = Shift.objects.filter(shift_set_id = shift_set_id)
-	staphers = Stapher.objects.all()
-	staphings = Staphing.objects.filter(schedule_id = schedule_id)
+def find_ratios(shifts, staphers, staphings):
 	ordered_times_by_day = get_ordered_start_and_end_times_by_day(shifts)
 	all_window_info = []
 	for day in ordered_times_by_day:
