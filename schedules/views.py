@@ -318,7 +318,7 @@ def sanity_check_view(request, *args, **kwargs):
 		schedule = Schedule.objects.get(active__exact = True)
 	except:
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
-	find_ratios_task(schedule.id, schedule.shift_set.id)
+	find_ratios_task.delay(schedule.id, schedule.shift_set.id)
 	return HttpResponseRedirect(reverse('schedules:home'))
 
 
