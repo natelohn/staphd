@@ -84,6 +84,9 @@ def build_schedules_task(self, schedule_id):
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
 def find_ratios_task(self, schedule_id, shift_set_id):
+	shifts = Shift.objects.filter(shift_set_id = shift_set_id)
+	staphers = Stapher.objects.all()
+	staphings = Staphing.objects.filter(schedule_id = schedule_id)
 	ordered_times_by_day = get_ordered_start_and_end_times_by_day(shifts)
 
 	# Set the amount of actions for the task to recieve later to use for percentage
@@ -91,12 +94,9 @@ def find_ratios_task(self, schedule_id, shift_set_id):
 	cache.set('num_actions_made', 0, None)
 	cache.set('num_total_actions', total_actions, None)
 
-	shifts = Shift.objects.filter(shift_set_id = shift_set_id)
-	staphers = Stapher.objects.all()
-	staphings = Staphing.objects.filter(schedule_id = schedule_id)
+	# Do the task
 	ratios = find_ratios(shifts, staphers, staphings, ordered_times_by_day, self)
 	print(f'********* Ratios = {ratios}')
-
 
 	# Delete the values needed to track progress
 	cache.set('num_actions_made', None, 0)
