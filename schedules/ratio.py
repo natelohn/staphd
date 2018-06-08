@@ -12,9 +12,9 @@ def get_solution(shifts, staphers, staphings):
 		for stapher in staphers:
 			print(stapher)
 			if stapher.can_cover(shift, staphings):
-				print('B')
 				shifts.remove(shift)
-				print('C')
+				print(shifts)
+				print()
 				staphers.remove(stapher)
 				print('------------------')
 				return get_solution(shifts[:], staphers[:], staphings)
@@ -31,6 +31,6 @@ def find_ratios(shifts, staphers, staphings):
 			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start).order_by('workers_needed')
 			for shift in shifts_in_window:
 				print(f'{shift} - {shift.workers_needed}')
-			solution = get_solution(shifts_in_window[:], staphers[:], staphings)
+			solution = get_solution(shifts_in_window[:], list(staphers), staphings)
 			print(f'------------- solution = {solution} ----------------')
 
