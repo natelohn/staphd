@@ -1,21 +1,18 @@
 import datetime
 
-from .sort import get_ordered_start_and_end_times_by_day
+from itertools import combinations
 
-def get_solution(shifts, staphers, staphings):
-	if not shifts:
-		return True
-	for shift in shifts:
-		for stapher in staphers:
-			if stapher.can_cover(shift, staphings):
-				shifts_cpy = shifts[:]
-				staphers_cpy = staphers[:]
-				shifts_cpy.remove(shift)
-				staphers_cpy.remove(stapher)
-				return get_solution(shifts_cpy, staphers_cpy, staphings)
-			return get_solution(shifts[:], staphers[:], staphings)
-	return False
+from .sort import get_ordered_start_and_end_times_by_day, get_qual_and_shifts_dicts, get_stapher_dict
 
+
+
+def clean_ratios(shifts, staphers, staphings):
+	shift_and_qual_dicts = get_qual_and_shifts_dicts(shifts)
+	shift_dict = shift_and_qual_dicts[1]
+	stapher_dict = get_stapher_dict(staphers, shift_and_qual_dicts[0])
+	for i in range(1, len(shift_dict.keys())):
+		for item in list(combinations(samplelist, i)):
+			print(item)
 
 
 def find_ratios(shifts, staphers, staphings):
@@ -25,7 +22,7 @@ def find_ratios(shifts, staphers, staphings):
 			start = ordered_times_by_day[day][i - 1]
 			end = ordered_times_by_day[day][i]
 			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start).order_by('workers_needed')
-			solution = get_solution(shifts_in_window[:], list(staphers), staphings)
+			clean = clean_ratios(shifts_in_window, staphers, staphings)
 			print(f'------------- solution = {solution} ----------------')
 		return
 
