@@ -92,7 +92,7 @@ class Stapher(models.Model):
 				return False
 		return True
 
-	def is_free_during_window(staphings, day, start, end):
+	def free_during_window(staphings, day, start, end):
 		print('A')
 		for staphing in staphings:
 			if staphing.stapher.id == self.id and staphing.shift.is_in_window(day, start, end):

@@ -21,9 +21,9 @@ def get_solution(staphings, day, start, end,shift_dict, stapher_dict):
 				print(day)
 				print(start)
 				print(end)
-				print(s.is_free_during_window(staphings, day, start, end))
+				print(s.free_during_window)
 				print(f'mid-loop staphers: {eligible_staphers}')
-				if s.is_free_during_window(staphings, day, start, end):
+				if s.free_during_window(staphings, day, start, end):
 					eligible_staphers.append(s)
 					print(f'edited staphers: {eligible_staphers}')
 			print(eligible_staphers)
