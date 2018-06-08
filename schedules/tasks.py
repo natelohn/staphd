@@ -25,7 +25,7 @@ def update_files_task(self, schedule_id):
 
 	# Set the amount of actions for the task to recieve later to use for percentage
 	# TODO: Dynamically get num_total_actions (?)
-	num_total_actions = (len(all_staphers) * 2) + ((len(all_masters) * 2) - 3) + 3
+	num_total_actions = (len(all_staphers) * 2) + ((len(all_masters) * 2) - 3)
 	cache.set('num_actions_made', 0, 1500)
 	cache.set('num_total_actions', num_total_actions, 1500)
 
@@ -84,11 +84,24 @@ def build_schedules_task(self, schedule_id):
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
 def find_ratios_task(self, schedule_id, shift_set_id):
+	ordered_times_by_day = get_ordered_start_and_end_times_by_day(shifts)
+
+	# Set the amount of actions for the task to recieve later to use for percentage
+	total_actions = sum([len(ordered_times_by_day[d]) for d in ordered_times_by_day])
+	cache.set('num_actions_made', 0, None)
+	cache.set('num_total_actions', total_actions, None)
+
 	shifts = Shift.objects.filter(shift_set_id = shift_set_id)
 	staphers = Stapher.objects.all()
 	staphings = Staphing.objects.filter(schedule_id = schedule_id)
-	ratios = find_ratios(shifts, staphers, staphings)
+	ratios = find_ratios(shifts, staphers, staphings, ordered_times_by_day, self)
 	print(f'********* Ratios = {ratios}')
+
+
+	# Delete the values needed to track progress
+	cache.set('num_actions_made', None, 0)
+	cache.set('num_total_actions', None, 0)
+	cache.set('current_task_id', None, 0)
 
 
 
