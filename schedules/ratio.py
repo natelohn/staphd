@@ -2,16 +2,16 @@ import datetime
 
 from .sort import get_ordered_start_and_end_times_by_day
 
-# def get_solution(shifts, staphers, left_to_cover):
-# 	if not shifts:
-# 		return True
-# 	for shift in shifts:
-# 		if left_to_cover[shift] > 0:
-# 			for stapher in staphers:
-
-# 		else:
-# 			covered_shifts.add(shift)
-# 	return False
+def get_solution(shifts, staphers, staphings):
+	if not shifts:
+		return True
+	for shift in shifts:
+		for stapher in staphers:
+			if stapher.can_cover(shift, staphings):
+				shifts.remove(shift)
+				staphers.remove(stapher)
+				return get_solution(shifts[:], staphers[:], staphings)
+	return False
 
 
 
@@ -24,5 +24,6 @@ def find_ratios(shifts, staphers, staphings):
 			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start).order_by('workers_needed')
 			for shift in shifts_in_window:
 				print(f'{shift} - {shift.workers_needed}')
-			print('-----------------------------')
+			solution = get_solution(shifts_in_window[:], staphers[:], staphings)
+			print(f'------------- solution = {solution} ----------------')
 
