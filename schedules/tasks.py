@@ -91,7 +91,6 @@ def find_ratios_task(self, schedule_id, shift_set_id):
 
 	# Set the amount of actions for the task to recieve later to use for percentage
 	total_actions = sum([len(ordered_times_by_day[d]) for d in ordered_times_by_day])
-	cache.set('num_actions_made', 0, None)
 	cache.set('num_total_actions', total_actions, None)
 
 	# Do the task
