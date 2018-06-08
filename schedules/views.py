@@ -333,6 +333,7 @@ def add_recommendation(request, *args, **kwargs):
 	return HttpResponseRedirect(reverse('schedules:building'))
 
 @login_required
+@csrf_exempt
 def get_ratio(request, *args, **kwargs):
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
