@@ -39,6 +39,7 @@ def find_ratios(schedule_id, shift_set_id):
 			print('G')
 			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start).order_by('workers_needed')
 			print('F')
+			print(staphings)
 			staphings_in_window = staphings.filter(shift_day = day, shift_start__lt = end, shift_end__gt = start)
 			print('E')
 			ratios_in_window = get_ratios_in_window(shifts_in_window, staphers, staphings_in_window)
