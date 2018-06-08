@@ -4,13 +4,17 @@ from .sort import get_ordered_start_and_end_times_by_day
 
 def get_solution(shifts, staphers, staphings):
 	print(f'Shifts = {shifts}')
-	print(f'Staphers = {shifts}')
+	print(f'Staphers = {staphers}')
 	if not shifts:
 		return True
 	for shift in shifts:
+		print('A')
 		for stapher in staphers:
+			print(stapher)
 			if stapher.can_cover(shift, staphings):
+				print('B')
 				shifts.remove(shift)
+				print('C')
 				staphers.remove(stapher)
 				print('------------------')
 				return get_solution(shifts[:], staphers[:], staphings)
