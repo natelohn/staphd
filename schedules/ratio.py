@@ -22,3 +22,4 @@ def find_ratios(shifts, staphers, staphings):
 			start = ordered_times_by_day[day][i - 1]
 			end = ordered_times_by_day[day][i]
 			get_solution(staphings, day, start, end, shift_dict, stapher_dict)
+			return
