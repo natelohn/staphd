@@ -18,27 +18,18 @@ def get_ratios_in_window(shifts, staphers, staphings):
 
 
 def find_ratios(schedule_id, shift_set_id):
-	print('P')
 	shifts = Shift.objects.filter(shift_set_id = shift_set_id)
-	print('O')
 	staphers = Stapher.objects.all()
-	print('N')
 	staphings = Staphing.objects.filter(schedule_id = schedule_id)
-	print('M')
 	ordered_times_by_day = get_ordered_start_and_end_times_by_day(shifts)
-	print('L')
 	all_window_info = []
-	print('K')
 	for day in ordered_times_by_day:
-		print('J')
 		for i in range(1, len(ordered_times_by_day[day])):
-			print('I')
 			start = ordered_times_by_day[day][i - 1]
-			print('H')
 			end = ordered_times_by_day[day][i]
-			print('G')
 			shifts_in_window = shifts.filter(day = day, start__lt = end, end__gt = start).order_by('workers_needed')
-			print('F')
+			print(f'{day}, {start}-{end}')
+			print(shifts_in_window)
 			print(staphings)
 			staphings_in_window = staphings.filter(shift_day = day, shift_start__lt = end, shift_end__gt = start)
 			print('E')
