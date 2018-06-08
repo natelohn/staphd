@@ -8,9 +8,12 @@ def get_solution(shifts, staphers, staphings):
 	for shift in shifts:
 		for stapher in staphers:
 			if stapher.can_cover(shift, staphings):
-				shifts.remove(shift)
-				staphers.remove(stapher)
-				return get_solution(shifts[:], staphers[:], staphings)
+				shifts_cpy = shifts[:]
+				staphers_cpy = staphers[:]
+				shifts_cpy.remove(shift)
+				staphers_cpy.remove(stapher)
+				return get_solution(shifts_cpy, staphers_cpy, staphings)
+			return get_solution(shifts[:], staphers[:], staphings)
 	return False
 
 
