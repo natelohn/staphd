@@ -3,6 +3,8 @@ import datetime
 from .sort import get_ordered_start_and_end_times_by_day
 
 def get_solution(shifts, staphers, staphings):
+	print(f'Shifts = {shifts}')
+	print(f'Staphers = {shifts}')
 	if not shifts:
 		return True
 	for shift in shifts:
@@ -10,6 +12,7 @@ def get_solution(shifts, staphers, staphings):
 			if stapher.can_cover(shift, staphings):
 				shifts.remove(shift)
 				staphers.remove(stapher)
+				print('------------------')
 				return get_solution(shifts[:], staphers[:], staphings)
 	return False
 
