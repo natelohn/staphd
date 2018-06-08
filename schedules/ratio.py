@@ -13,15 +13,25 @@ def clean_ratios(shifts, staphers, staphings):
 	all_q_sets = list(shift_dict.keys())
 	print(all_q_sets)
 	for i in range(1, len(all_q_sets)):
+		print('A')
 		for qs_set in list(combinations(all_q_sets, i)):
+			print('B')
 			sum_of_workers_needed = 0
+			print('C')
 			availible_workers = set()
+			print('D')
 			for qs in qs_set:
+				print('E')
 				sum_of_workers_needed += sum([s.workers_needed for s in shift_dict[q_set]])
+				print('F')
 				availible_workers = availible_workers | set([s.id for s in stapher_dict[q_set]])
+				print('G')
 				ratio = sum_of_workers_needed / availible_workers if availible_workers else sum_of_workers_needed + 1
+				print('H')
 				if ratio > 1:
+					print('I')
 					return False
+	print('J')
 	return True
 
 
