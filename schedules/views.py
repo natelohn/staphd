@@ -321,7 +321,9 @@ def sanity_check_view(request, *args, **kwargs):
 		return render(request,'schedules/schedule.html', {'schedule_error_message':'Must select a schedule first.'})
 	task_id = cache.get('current_task_id')
 	if not task_id:
-		task = find_ratios_task.delay(schedule.id, schedule.shift_set.id)
+		schedule_id = schedule.id
+		shift_set_id = schedule.shift_set.id
+		task = find_ratios_task.delay(schedule_id, shift_set_id)
 		task_id = task.task_id
 		cache.set('current_task_id', task_id, 3000)	
 	request.session['task_id'] = task_id
