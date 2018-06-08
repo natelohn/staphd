@@ -16,6 +16,7 @@ def get_solution(staphings, day, start, end,shift_dict, stapher_dict):
 			eligible_staphers = []
 			print(f'pre-loop staphers: {eligible_staphers}')
 			for s in stapher_dict[key]:
+				print(s)
 				print(f'mid-loop staphers: {eligible_staphers}')
 				if s.is_free_during_window(staphings, day, start, end):
 					eligible_staphers.append(s)
