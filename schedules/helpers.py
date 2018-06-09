@@ -1,6 +1,6 @@
 import datetime
 
-from .analytics import get_hours_from_timedelta, get_readable_time
+from .analytics import get_hours_from_timedelta, get_readable_time, get_td_from_time
 from .models import Staphing, Shift
 
 def get_min(time):
@@ -103,22 +103,63 @@ def get_shifts_to_add(stapher, shifts, all_staphings, stapher_staphings):
 	return all_rows
 
 
+def get_row_span_from_time(start, end):
+	start_td = get_td_from_time(start)
+	end_td = get_td_from_time(end)
+	length = end_td - start_td
+	row_span = (length.minutes / 5)
+	print(f'{start}-{end} = {row_span}')
+	return row_span
+
+def get_max_ratio(ratios):
+	max_ratio = 0
+	for r in ratios:
+		num = r[0]
+		denom = r[1]
+		ratio = (num / denom) if denom else num + 1
+		if ratio > max_ratio:
+			max_ratio = ratio
+	return max_ratio
 
 
 def get_ratio_tables(ratios):
-	print(ratios)
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 	table_dict = {}
 	max_time = datetime.timedelta(hours = 23, minutes = 30)
 	increment = datetime.timedelta(hours = 0, minutes = 5)
 	all_tables = []
-	for day in range(0, 7):
-		time = datetime.timedelta(hours = 6, minutes = 0)
+	for day in ratios:
 		table = [days[day]]
-		while time <= max_time:
+		window_info = ratios[day]
+		time = datetime.timedelta(hours = 6, minutes = 0)
+		for window in window_info:
+			time_info = window[0]
+			start = time_info[0]
+			end = time_info[1]
+			ratio_info = window[1]
 
-			table.append(time)
-			time += increment
+			# Making sure all tables line up
+			while time <= start:
+				table.append(None)
+				time += increment
+			time = max_time
+
+			cell = {}
+			start_txt = get_readable_time(start)
+			end_txt = get_readable_time(end)
+			cell['title'] = f'{start_txt}-{end_txt}'
+			cell['row_span'] = get_row_span_from_time(start, end)
+			cell['max_ratio'] = get_max_ratio(ratio_info)
+			table.append(cell)
+
+		# Making sure all tables line up
+		while end <= max_time:
+			table.append(None)
+			end += increment
+
+				
+			
+			
 		all_tables.append(table)
 	return all_tables
 
