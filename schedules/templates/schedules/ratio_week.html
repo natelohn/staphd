@@ -6,7 +6,11 @@
 	<table id="ratio_table">
 		<tr>
 			{% for col in table%}
+			{% if forloop.first %}
+			<th>{{col}}</th>
+			{% else %}
 			<td>{{col}}</td>
+			{% endif %}
 			{% endfor %}
 		</tr>
 	</table>
