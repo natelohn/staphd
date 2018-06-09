@@ -102,5 +102,7 @@ def find_ratios_task(self, schedule_id, shift_set_id):
 	cache.set('num_total_actions', None, 0)
 	cache.set('current_task_id', None, 0)
 
+	print('**************** Task Complete! ****************')
+
 
 
