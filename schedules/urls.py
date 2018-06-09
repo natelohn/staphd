@@ -24,7 +24,7 @@ urlpatterns = [
     url(r'^schedules/(?P<pk>[\d]+)/$', views.ScheduleDetail.as_view(), name='schedule-detail'),
     url(r'^schedules/(?P<pk>[\d]+)/delete$', views.ScheduleDelete.as_view(), name='schedule-delete'),
     url(r'^schedules/(?P<pk>[\d]+)/edit$', views.ScheduleUpdate.as_view(), name='schedule-update'),
-    url(r'^schedules/ratios/get$', views.get_ratio, name='get-ratio'),
+    url(r'^schedules/get_ratios$', views.get_ratio, name='get-ratio'),
     url(r'^schedules/ratios/$', views.ratio_week_view, name='ratio-week'),
 
     url(r'^download/$', views.DownloadView.as_view(), name='download'),
