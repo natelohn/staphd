@@ -2,7 +2,15 @@
 {% block page %}
 <div id="page">
 	<h1>Ratio for {{shift_set}}</h1>
-	<p>{{ratios}}</p>
+	{% for table in all_tables %}
+	<table>
+		<tr>
+			{% for col in table%}
+			<td>col</td>
+			{% endfor %}
+		</tr>
+	</table>
+	{% endfor %}
 </div>
 {% include "sections/show_schedules.html" %}
 {% endblock %}

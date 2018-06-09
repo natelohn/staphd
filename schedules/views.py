@@ -26,7 +26,7 @@ from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsPa
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
-from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv
+from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv, get_ratio_tables
 
 
 # Download Based Views
@@ -87,6 +87,7 @@ def build_view(request, *args, **kwargs):
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
 	context['at_build'] = True
+	cache.set('built_excel', None, 0)
 	return render(request, template, context) 
 
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
@@ -205,6 +206,7 @@ def build_schedules(request, *args, **kwargs):
 @csrf_exempt
 def update_files(request, *args, **kwargs):
 	context = {}
+	cache.set('built_excel', True, None)
 	task_id = cache.get('current_task_id')
 	if not task_id:
 		try:
@@ -260,12 +262,14 @@ def track_state(request, *args, **kwargs):
 def redirect(request, *args, **kwargs):
 	recs = cache.get('recommendation')
 	shift = cache.get('recommended_shift')
+	built_excel = cache.get('built_excel')
 	ratios = cache.get('ratios')
-	print('Redirect!!')
 	if recs and shift and ratios:
 		return HttpResponseRedirect(reverse('schedules:schedule'))
 	elif recs and shift:
 		return HttpResponseRedirect(reverse('schedules:recommendation'))
+	elif built_excel:
+		return HttpResponseRedirect(reverse('schedules:schedule'))
 	elif ratios:
 		return HttpResponseRedirect(reverse('schedules:ratio-week'))
 	else:
@@ -361,11 +365,13 @@ def ratio_week_view(request, *args, **kwargs):
 		return Http404
 	template = 'schedules/ratio_week.html'
 	ratios = cache.get('ratios')
-	cache.set('ratios', None, 0)
+	# cache.set('ratios', None, 0) #TODO: Add this again... maybe... definitily... since excel building redirect
 	if not ratios:
 		print(f'No ratios (ratios = {ratios})')
 		return HttpResponseRedirect(reverse('schedules:get-ratio'))
-	context = {'ratios': ratios}
+	all_tables = get_ratio_tables(ratios)
+	context = {}
+	context['all_tables'] = all_tables
 	context['shift_set'] = schedule.shift_set.title
 	return render(request, template, context)
 

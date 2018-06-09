@@ -12,10 +12,7 @@ def get_min(time):
 
 def get_time_str(time):
 	h = time.hour
-	print(h)
 	m = get_min(time)
-	print(f'{h} - {m}')
-	print(str(h + m))
 	return str(h + m)
 
 def get_shift_csv(shift):
@@ -32,21 +29,14 @@ def make_shifts_csv(schedule):
 	for shift in Shift.objects.filter(shift_set = schedule.shift_set):
 		csv_string = get_shift_csv(shift)
 		all_csv_strings.append(csv_string)
-		print(f'csv_string = {csv_string}')
 	return all_csv_strings
 
 def make_staphings_csv(schedule):
 	all_csv_strings = []
-	print('A')
-	print(schedule)
 	all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
-	print(f'--->> {all_staphings}')
 	for staphing in all_staphings:
-		print(staphing)
 		shift_csv = get_shift_csv(staphing.shift)
-		print(shift_csv)
 		csv_string = staphing.stapher.full_name() + ',' + shift_csv
-		print(csv_string)
 		all_csv_strings.append(csv_string)
 	return all_csv_strings
 
@@ -111,3 +101,22 @@ def get_shifts_to_add(stapher, shifts, all_staphings, stapher_staphings):
 				new_row.append('')
 		all_rows.append(new_row)
 	return all_rows
+
+
+
+def get_ratio_tables(ratios):
+	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
+	max_time = datetime.timedelta(hours = 23, minutes = 30)
+	increment = datetime.timedelta(hours = 0, minutes = 15)
+	all_tables = []
+	for day in range(0, 6):
+		time = datetime.timedelta(hours = 6, minutes = 0)
+		table = [days[day]]
+		while time <= max_time:
+			table.append(time)
+			time += increment
+		all_tables.append(table)
+
+
+
+
