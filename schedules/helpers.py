@@ -103,7 +103,7 @@ def get_shifts_to_add(stapher, shifts, all_staphings, stapher_staphings):
 	return all_rows
 
 
-def get_row_span_from_time(start, end):
+def get_span_from_time(start, end):
 	start_td = get_td_from_time(start)
 	end_td = get_td_from_time(end)
 	length = end_td - start_td
@@ -122,49 +122,48 @@ def get_max_ratio(ratios):
 	return max_ratio
 
 
-def get_ratio_tables(ratios):
+def get_window_during_time(day, time, ratios):
+	for r in ratios[day]:
+		time_info = r[0]
+		start_td = get_td_from_time(time_info[0])
+		end_td = get_td_from_time(time_info[1])
+		if start_td <= time and time < end_td:
+			return r
+	return None
+
+def get_ratio_table(ratios):
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
-	table_dict = {}
+	time = datetime.timedelta(hours = 6, minutes = 0)
 	max_time = datetime.timedelta(hours = 23, minutes = 30)
 	increment = datetime.timedelta(hours = 0, minutes = 5)
-	all_tables = []
-	for day in ratios:
-		table = {'day':days[day]}
-		cells = []
-		window_info = ratios[day]
-		time = datetime.timedelta(hours = 6, minutes = 0)
-		for window in window_info:
-			time_info = window[0]
-			start = time_info[0]
-			end = time_info[1]
-			ratio_info = window[1]
+	all_rows_for_time = [days]
+	seen_windows = set()
+	while time <= max_time:
+		hours = int(get_hours_from_timedelta(time))
+		minutes = (time.seconds//60)%60
+		t = datetime.time(hours, minutes, 0, 0)
+		row_for_time = []
+		for i, day in enumerate(days):
+			window = get_window_during_time(i, t, ratios)
 
-			# Making sure all tables line up
-			start_td = get_td_from_time(start)
-			while time <= start_td:
-				cells.append(None)
-				time += increment
-			time = max_time
-
-			cell = {}
-			start_txt = get_readable_time(start)
-			end_txt = get_readable_time(end)
-			cell['title'] = f'{start_txt}-{end_txt}'
-			cell['row_span'] = get_row_span_from_time(start, end)
-			cell['max_ratio'] = get_max_ratio(ratio_info)
-			cells.append(cell)
-
-		# Making sure all tables line up
-		end_td = get_td_from_time(end)
-		while end_td <= max_time:
-			cells.append(None)
-			end_td += increment
-
+			if not window:
+				row_for_time.append(False)
+			else:
+				time_info = [day, window[0]]
+				start = window[0][0]
+				end = window[0][1]
+				if time_info not in seen_windows:
+					cell = {}
+					start_txt = get_readable_time(start)
+					end_txt = get_readable_time(end)
+					cell['title'] = f'{start_txt}-{end_txt}'
+					cell['span'] = get_span_from_time(start, end)
+					row_for_time.append(cell)
+					seen_windows.add(time_info)
 				
-		table['cells'] = cells
-		all_tables.append(table)
-	
-	return all_tables
+		all_rows_for_time.append(row_for_time)
+		time += increment
+	return all_rows_for_time
 
 
 

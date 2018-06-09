@@ -369,7 +369,7 @@ def ratio_week_view(request, *args, **kwargs):
 	if not ratios:
 		print(f'No ratios (ratios = {ratios})')
 		return HttpResponseRedirect(reverse('schedules:get-ratio'))
-	all_tables = get_ratio_tables(ratios)
+	all_tables = get_ratio_table(ratios)
 	context = {}
 	context['all_tables'] = all_tables
 	context['shift_set'] = schedule.shift_set.title

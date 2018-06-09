@@ -2,19 +2,28 @@
 {% block page %}
 <div id="page">
 	<h1>Ratios for {{shift_set}}</h1>
-	{% for table in all_tables %}
-	<h3>{{table.day}}</h3>
-	<table id="ratio_table">
-		{% for cell in table.cells %}
+	<table class="schedule_table">
+		{% for row in all_rows_for_time %}
 		<tr>
-			{% if cell%}
-			<td rowspan="{{cell.row_span}}">{{cell.title}}</td>
+			{% if forloop.first %}
+			
+			{% for day in row %}
+			<th>{{day}}</th>
+			{% endfor %}
+			
 			{% else %}
-			<td></td>
+			
+			{% for cell in row %}
+			{% if cell %}
+			<td class="scheduled_time" rowspan="{{cell.span}}">{{cell.title}}</td>
+			{% else %}
+			<td id="non_scheduled_time"></td>
+			{% endif %}
+			{% endfor %}
+			
 			{% endif %}
 		</tr>
 		{% endfor %}
 	</table>
-	{% endfor %}
 </div>
 {% endblock %}
