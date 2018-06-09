@@ -138,26 +138,28 @@ def get_ratio_table(ratios):
 	max_time = datetime.timedelta(hours = 23, minutes = 30)
 	increment = datetime.timedelta(hours = 0, minutes = 5)
 	all_rows_for_time = [days]
-	seen_windows = set()
+	seen_windows = {}
+	for day in range(0, 7):
+		seen_windows[day] = []
 	while time <= max_time:
 		row_for_time = []
-		for i, day in enumerate(days):
-			window = get_window_during_time(i, time, ratios)
+		for day in range(0, 7):
+			window = get_window_during_time(day, time, ratios)
 
 			if not window:
 				row_for_time.append(False)
 			else:
-				time_info = [day, window[0]]
-				start = window[0][0]
-				end = window[0][1]
-				if time_info not in seen_windows:
+				time_info = window[0]
+				start = time_info[0]
+				end = time_info[1]
+				if start not in seen_windows[day]:
 					cell = {}
 					start_txt = get_readable_time(start)
 					end_txt = get_readable_time(end)
 					cell['title'] = f'{start_txt}-{end_txt}'
 					cell['span'] = get_span_from_time(start, end)
 					row_for_time.append(cell)
-					seen_windows.add(time_info)
+					seen_windows[day].append(start)
 				
 		all_rows_for_time.append(row_for_time)
 		time += increment
