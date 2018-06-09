@@ -139,7 +139,8 @@ def get_ratio_tables(ratios):
 			ratio_info = window[1]
 
 			# Making sure all tables line up
-			while time <= start:
+			start_td = get_td_from_time(start)
+			while time <= start_td:
 				table.append(None)
 				time += increment
 			time = max_time
@@ -153,9 +154,10 @@ def get_ratio_tables(ratios):
 			table.append(cell)
 
 		# Making sure all tables line up
-		while end <= max_time:
+		end_td = get_td_from_time(end)
+		while end_td <= max_time:
 			table.append(None)
-			end += increment
+			end_td += increment
 
 				
 			
