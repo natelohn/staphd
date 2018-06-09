@@ -113,7 +113,7 @@ def get_ratio_tables(ratios):
 	all_tables = []
 	for day in range(0, 7):
 		time = datetime.timedelta(hours = 6, minutes = 0)
-		table = []
+		table = [days[day]]
 		while time <= max_time:
 			table.append(time)
 			time += increment
