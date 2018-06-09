@@ -6,9 +6,9 @@
 	<table id="ratio_table">
 		{% for cell in table %}
 		{% if cell%}
-		<td rowspan="{{cell.row_span}}">{{cell.title}}</td>
+		<td rowspan="{{cell.row_span}}">Y</td>
 		{% else %}
-		<td></td>
+		<td>x</td>
 		{% endif %}
 		{% endfor %}
 	</table>
