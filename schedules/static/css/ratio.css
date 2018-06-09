@@ -1,6 +1,10 @@
 #ratio_table {
 	width: 100%;
 	table-layout: fixed;
+	background-color: #EEEEEE;
+	border: 1px;
+	border-color: black;
+	border-style: solid;
 }
 
 #ratio_table td{

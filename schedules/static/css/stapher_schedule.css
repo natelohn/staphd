@@ -21,7 +21,6 @@
 	position: relative;
 	background-color: silver;
 	text-align: center;
-	
 }
 
 .schedule_table, .schedule_table th, .scheduled_time, #add_shifts_table th, .add_shift_row_td,
@@ -51,7 +50,6 @@
 	background-color: silver;
 	text-align: center;
 	height: 60px;
-
 }
 
 
