@@ -107,7 +107,7 @@ def get_row_span_from_time(start, end):
 	start_td = get_td_from_time(start)
 	end_td = get_td_from_time(end)
 	length = end_td - start_td
-	row_span = (length.minutes / 5)
+	row_span = ((length.seconds / 60) / 5)
 	print(f'{start}-{end} = {row_span}')
 	return row_span
 
