@@ -262,6 +262,7 @@ def redirect(request, *args, **kwargs):
 	recs = cache.get('recommendation')
 	shift = cache.get('recommended_shift')
 	ratios = cache.get('ratios')
+	print('Redirect!!')
 	if recs and shift and ratios:
 		return HttpResponseRedirect(reverse('schedules:schedule'))
 	elif recs and shift:

@@ -12,7 +12,6 @@
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		var check_state_again = true;
-		var schedule_complete = false;
 		// pole state of the current task
 		var PollState = function(task_id) {
 			jQuery.ajax({
@@ -37,7 +36,7 @@
 				if (check_state_again) {
 					PollState(task_id);
 				} else {
-					window.location = "{% url 'schedules:task-complete' %}"
+					window.location = "{% url 'schedules:redirect' %}"
 				}
 			});
 		}
