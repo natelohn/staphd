@@ -106,6 +106,7 @@ def get_shifts_to_add(stapher, shifts, all_staphings, stapher_staphings):
 
 
 def get_ratio_tables(ratios):
+	print(ratios)
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 	table_dict = {}
 	max_time = datetime.timedelta(hours = 23, minutes = 30)
@@ -115,6 +116,7 @@ def get_ratio_tables(ratios):
 		time = datetime.timedelta(hours = 6, minutes = 0)
 		table = [days[day]]
 		while time <= max_time:
+
 			table.append(time)
 			time += increment
 		all_tables.append(table)
