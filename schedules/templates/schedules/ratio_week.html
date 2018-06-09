@@ -3,13 +3,14 @@
 <div id="page">
 	<h1>Ratios for {{shift_set}}</h1>
 	{% for table in all_tables %}
+	<h3>{{table.day}}</h3>
 	<table id="ratio_table">
-		{% for cell in table %}
+		{% for cell in table.cells %}
 		<tr>
 			{% if cell%}
-			<td rowspan="{{cell.row_span}}">Y</td>
+			<td rowspan="{{cell.row_span}}">{{cell.title}}</td>
 			{% else %}
-			<td>x</td>
+			<td></td>
 			{% endif %}
 		</tr>
 		{% endfor %}

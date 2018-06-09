@@ -109,7 +109,7 @@ def get_row_span_from_time(start, end):
 	length = end_td - start_td
 	row_span = ((length.seconds / 60) / 5)
 	print(f'{start}-{end} = {row_span}')
-	return row_span
+	return int(row_span)
 
 def get_max_ratio(ratios):
 	max_ratio = 0
@@ -129,7 +129,8 @@ def get_ratio_tables(ratios):
 	increment = datetime.timedelta(hours = 0, minutes = 5)
 	all_tables = []
 	for day in ratios:
-		table = [days[day]]
+		table = {'day':days[day]}
+		cells = []
 		window_info = ratios[day]
 		time = datetime.timedelta(hours = 6, minutes = 0)
 		for window in window_info:
@@ -160,9 +161,9 @@ def get_ratio_tables(ratios):
 			end_td += increment
 
 				
-			
-			
+		table['cells'] = cells
 		all_tables.append(table)
+	
 	return all_tables
 
 
