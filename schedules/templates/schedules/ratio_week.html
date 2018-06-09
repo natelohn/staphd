@@ -15,7 +15,7 @@
 			
 			{% for cell in row %}
 			{% if cell %}
-			<td class="scheduled_time" rowspan="{{cell.span}}"><a href="">{{cell.title}}</a></td>
+			<td class="scheduled_time" rowspan="{{cell.span}}"><a id="ratio_link" href="">{{cell.title}}</a></td>
 			{% else %}
 			<td id="non_scheduled_time"></td>
 			{% endif %}
