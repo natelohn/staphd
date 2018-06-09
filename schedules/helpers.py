@@ -116,6 +116,7 @@ def get_ratio_tables(ratios):
 			table.append(time)
 			time += increment
 		all_tables.append(table)
+	return all_tables
 
 
 
