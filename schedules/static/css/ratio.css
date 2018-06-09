@@ -1,13 +1,26 @@
-#ratio_table {
-	width: 14%;
-	table-layout: fixed;
+.ratio_table {
+	width: 100%;
 	background-color: #EEEEEE;
+}
+
+.ratio_table th {
+	background-color: grey;
+	width: 14.285%; /* 100 / 7 = 14.285 */
+}
+
+.scheduled_time{
+	position: relative;
+	background-color: silver;
+	text-align: center;
+}
+
+.ratio_table, .ratio_table th{
 	border: 1px;
 	border-color: black;
 	border-style: solid;
-	display: inline-block;
 }
 
-#ratio_table td{
-	text-align: center;
-}
+
+
+
+
