@@ -5,11 +5,13 @@
 	{% for table in all_tables %}
 	<table id="ratio_table">
 		{% for cell in table %}
-		{% if cell%}
-		<td rowspan="{{cell.row_span}}">Y</td>
-		{% else %}
-		<td>x</td>
-		{% endif %}
+		<tr>
+			{% if cell%}
+			<td rowspan="{{cell.row_span}}">Y</td>
+			{% else %}
+			<td>x</td>
+			{% endif %}
+		</tr>
 		{% endfor %}
 	</table>
 	{% endfor %}
