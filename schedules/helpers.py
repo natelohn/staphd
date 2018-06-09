@@ -112,11 +112,10 @@ def get_ratio_tables(ratios):
 		time_info = window[0]
 		day = time_info[0]
 		start = get_readable_time(time_info[1])
-		end = get_readable_time(time_info[2])
 		if day in table_dict:
-			table_dict[day].append(f'{start}-{end}')
+			table_dict[day].append(f'{start}')
 		else:
-			table_dict[day] = [days[day], f'{start}-{end}']
+			table_dict[day] = [f'{start}']
 		
 	all_tables = []
 	for day in range(0,7):
