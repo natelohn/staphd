@@ -1,0 +1,8 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+<div id="page">
+	<h1>Ratio for {{shift_set}}</h1>
+	<p>{{ratios}}</p>
+</div>
+{% include "sections/show_schedules.html" %}
+{% endblock %}

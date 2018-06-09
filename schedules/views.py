@@ -34,7 +34,6 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
 
 	def get_context_data(self, *args, **kwargs):
-		cache.set('current_task_id', None, 0) #TODO Delete <-
 		context = super(DownloadView, self).get_context_data(*args, **kwargs)
 		context['at_download'] = True
 		return context
@@ -287,7 +286,7 @@ def recommendations_view(request, *args, **kwargs):
 
 	if not recs or not shift:
 		print(f'No recommendations to be made (rec = {recs})')
-		return HttpResponseRedirect(reverse('schedules:schedule'))
+		return HttpResponseRedirect(reverse('schedules:building'))
 
 	template = 'schedules/recommendation.html'
 	context = {}
@@ -356,13 +355,18 @@ def get_ratio(request, *args, **kwargs):
 
 @login_required
 def ratio_week_view(request, *args, **kwargs):
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+	except:
+		return Http404
 	template = 'schedules/ratio_week.html'
 	ratios = cache.get('ratios')
 	cache.set('ratios', None, 0)
 	if not ratios:
 		print(f'No ratios (ratios = {ratios})')
-		return HttpResponseRedirect(reverse('schedules:schedule'))
+		return HttpResponseRedirect(reverse('schedules:get-ratio'))
 	context = {'ratios': ratios}
+	context['shift_set'] = schedule.shift_set.title
 	return render(request, template, context)
 
 # Settings based views
