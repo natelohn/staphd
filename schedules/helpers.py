@@ -127,6 +127,9 @@ def get_window_during_time(day, time, ratios):
 		time_info = r[0]
 		start_td = get_td_from_time(time_info[0])
 		end_td = get_td_from_time(time_info[1])
+		test = time > time
+		test = start_td <= time
+		test = time < end_td
 		print(f'start_td = {start_td}, end_td = {end_td}, time = {time}')
 		if start_td <= time and time < end_td:
 			return r
