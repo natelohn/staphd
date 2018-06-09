@@ -1,7 +1,7 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<h1>Ratio for {{shift_set}}</h1>
+	<h1>Ratios for {{shift_set}}</h1>
 	{% for table in all_tables %}
 	<table id="ratio_table">
 		<tr>
@@ -9,7 +9,7 @@
 			{% if forloop.first %}
 			<th>{{col}}</th>
 			{% else %}
-			<td>{{col}}</td>
+			<td>X</td>
 			{% endif %}
 			{% endfor %}
 		</tr>
