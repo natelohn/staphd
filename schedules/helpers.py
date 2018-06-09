@@ -142,7 +142,7 @@ def get_ratio_tables(ratios):
 			# Making sure all tables line up
 			start_td = get_td_from_time(start)
 			while time <= start_td:
-				table.append(None)
+				cells.append(None)
 				time += increment
 			time = max_time
 
@@ -152,12 +152,12 @@ def get_ratio_tables(ratios):
 			cell['title'] = f'{start_txt}-{end_txt}'
 			cell['row_span'] = get_row_span_from_time(start, end)
 			cell['max_ratio'] = get_max_ratio(ratio_info)
-			table.append(cell)
+			cells.append(cell)
 
 		# Making sure all tables line up
 		end_td = get_td_from_time(end)
 		while end_td <= max_time:
-			table.append(None)
+			cells.append(None)
 			end_td += increment
 
 				
