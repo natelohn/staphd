@@ -1,0 +1,12 @@
+#ratio_table {
+	width: 100%;
+	table-layout: fixed;
+}
+
+#ratio_table td{
+	height: 60px;
+	border: 1px;
+	border-color: black;
+	border-style: solid;
+	text-align: center;
+}
