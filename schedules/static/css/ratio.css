@@ -29,7 +29,7 @@
 
 #ratio_link:hover {
 	text-decoration: underline;
-	text-decoration: bold;
+	font-weight: bold;
 }
 
 #clean_ratio {
