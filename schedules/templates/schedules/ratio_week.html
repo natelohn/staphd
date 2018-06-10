@@ -17,7 +17,7 @@
 			{% if cell %}
 			{% if cell.max_ratio < 1 %}
 			<td class="scheduled_time" id="clean_ratio" rowspan="{{cell.span}}"><a id="ratio_link" href="">{{cell.title}}</a></td>
-			{% elif cell.max_ratio = 1 %}
+			{% elif cell.max_ratio == 1 %}
 			<td class="scheduled_time" id="at_limit_ratio" rowspan="{{cell.span}}"><a id="ratio_link" href="">{{cell.title}}</a></td>
 			{% else %}
 			<td class="scheduled_time" id="bad_ratio" rowspan="{{cell.span}}"><a id="ratio_link" href="">{{cell.title}}</a></td>
