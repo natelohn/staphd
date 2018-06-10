@@ -132,6 +132,7 @@ def get_window_during_time(day, time, ratios):
 			return r
 	return None
 
+
 def get_ratio_table(ratios):
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 	time = datetime.timedelta(hours = 6, minutes = 0)
@@ -160,6 +161,9 @@ def get_ratio_table(ratios):
 					cell['title'] = f'{start_txt}-{end_txt}'
 					cell['span'] = get_span_from_time(start, end)
 					cell['max_ratio'] = get_max_ratio(ratio_info)
+					cell['day'] = day
+					cell['s_url'] = start.strftime("%H%M")
+					cell['e_url'] = end.strftime("%H%M")
 					row_for_time.append(cell)
 					seen_windows[day].append(start)
 				

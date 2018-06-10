@@ -26,6 +26,7 @@ urlpatterns = [
     url(r'^schedules/(?P<pk>[\d]+)/edit$', views.ScheduleUpdate.as_view(), name='schedule-update'),
     url(r'^schedules/get_ratios$', views.get_ratio, name='get-ratio'),
     url(r'^schedules/ratios/$', views.ratio_week_view, name='ratio-week'),
+    url(r'^schedules/ratios/(?P<d>[\d]+)/(?P<s>[\d]+)/(?P<e>[\d]+)/$', views.ratio_week_view, name='ratio-window'),
 
     url(r'^download/$', views.DownloadView.as_view(), name='download'),
     url(r'^download/individual$', views.download_individual, name='download-individual'),
