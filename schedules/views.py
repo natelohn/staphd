@@ -390,9 +390,9 @@ def ratio_window_view(request, *args, **kwargs):
 	end_url = kwargs['e']
 	context = {}
 	context['shift_set'] = schedule.shift_set.title
-	context['day'] = day
-	context['start'] = datetime.strptime(start_url,'%H%M')
-	context['end'] = datetime.strptime(end_url,'%H%M')
+	context['day'] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'][day]
+	context['start'] = datetime.time.strptime(start_url,'%H%M')
+	context['end'] = datetime.time.strptime(end_url,'%H%M')
 	return render(request, template, context)
 
 
