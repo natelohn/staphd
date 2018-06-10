@@ -365,7 +365,6 @@ def ratio_week_view(request, *args, **kwargs):
 		return Http404
 	template = 'schedules/ratio_week.html'
 	ratios = cache.get('ratios')
-	# cache.set('ratios', None, 0) #TODO: Add this again... maybe... definitily... since excel building redirect
 	if not ratios:
 		print(f'No ratios (ratios = {ratios})')
 		return HttpResponseRedirect(reverse('schedules:get-ratio'))
@@ -374,6 +373,29 @@ def ratio_week_view(request, *args, **kwargs):
 	context['all_rows_for_time'] = all_rows_for_time
 	context['shift_set'] = schedule.shift_set.title
 	return render(request, template, context)
+
+@login_required
+def ratio_window_view(request, *args, **kwargs):
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+	except:
+		return Http404
+	template = 'schedules/ratio_window.html'
+	ratios = cache.get('ratios')
+	if not ratios:
+		print(f'No ratios (ratios = {ratios})')
+		return HttpResponseRedirect(reverse('schedules:get-ratio'))
+	day = kwargs['d']
+	start_url = kwargs['s']
+	end_url = kwargs['e']
+	context = {}
+	context['shift_set'] = schedule.shift_set.title
+	context['day'] = day
+	context['start'] = start_url
+	context['end'] = end_url
+	return render(request, template, context)
+
+
 
 # Settings based views
 class Settings(LoginRequiredMixin, TemplateView):
@@ -407,6 +429,7 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 		context['object_name'] = 'Qualification'
 		context['at_settings'] = True
 		return context
+
 
 
 
