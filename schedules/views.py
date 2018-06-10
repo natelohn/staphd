@@ -386,13 +386,13 @@ def ratio_window_view(request, *args, **kwargs):
 		print(f'No ratios (ratios = {ratios})')
 		return HttpResponseRedirect(reverse('schedules:get-ratio'))
 	day = kwargs['d']
-	start_url = kwargs['s']
-	end_url = kwargs['e']
+	start = datetime.time(hour = int(kwargs['s'][:2]), minute = int(kwargs['s'][2:]))
+	end = datetime.time(hour = int(kwargs['e'][:2]), minute = int(kwargs['e'][2:]))
 	context = {}
 	context['shift_set'] = schedule.shift_set.title
 	context['day'] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'][int(day)]
-	context['start'] = get_readable_time(datetime.fromtimestamp(time.mktime(time.strptime(start_url,'%H%M'))).time())
-	context['end'] = get_readable_time(datetime.fromtimestamp(time.mktime(time.strptime(end_url,'%H%M'))).time())
+	context['start'] = get_readable_time(start)
+	context['end'] = get_readable_time(end)
 	return render(request, template, context)
 
 
