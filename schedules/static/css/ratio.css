@@ -31,4 +31,16 @@
 	text-decoration: underline;
 }
 
+#clean_ratio {
+	background-color: green;
+}
 
+
+#at_limit_ratio {
+	background-color: yellow;
+}
+
+
+#bad_ratio {
+	background-color: red;
+}

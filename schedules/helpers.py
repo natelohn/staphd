@@ -152,12 +152,14 @@ def get_ratio_table(ratios):
 				time_info = window[0]
 				start = time_info[0]
 				end = time_info[1]
+				ratio_info = window[1]
 				if start not in seen_windows[day]:
 					cell = {}
 					start_txt = get_readable_time(start)
 					end_txt = get_readable_time(end)
 					cell['title'] = f'{start_txt}-{end_txt}'
 					cell['span'] = get_span_from_time(start, end)
+					cell['max_ratio'] = get_max_ratio(ratio_info)
 					row_for_time.append(cell)
 					seen_windows[day].append(start)
 				
