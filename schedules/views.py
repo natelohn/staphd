@@ -3,7 +3,6 @@ import botocore
 import datetime
 import json
 import os
-import time
 
 from celery import current_task
 from celery.result import AsyncResult
@@ -392,8 +391,8 @@ def ratio_window_view(request, *args, **kwargs):
 	context = {}
 	context['shift_set'] = schedule.shift_set.title
 	context['day'] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'][int(day)]
-	context['start'] = get_readable_time(datetime.time.fromtimestamp(time.mktime(time.strptime(start_url,'%H%M'))))
-	context['end'] = get_readable_time(datetime.time.fromtimestamp(time.mktime(time.strptime(end_url,'%H%M'))))
+	context['start'] = get_readable_time(datetime.fromtimestamp(time.mktime(time.strptime(start_url,'%H%M'))).time())
+	context['end'] = get_readable_time(datetime.fromtimestamp(time.mktime(time.strptime(end_url,'%H%M'))).time())
 	return render(request, template, context)
 
 
