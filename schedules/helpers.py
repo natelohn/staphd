@@ -120,8 +120,9 @@ def get_max_ratio(ratios):
 		print(f'{num}/{denom} = {ratio}')
 
 		print(f'{info[1]}')
-		for s_set in info[2]:
-			print(f'{len(s_set)} staphers:')
+		li = ['! f or q', '! qual', '! free', 'Free and Qualified']
+		for i, s_set in enumerate(info[2]):
+			print(f'{len(s_set)} staphers {li[i]}:')
 			for s in s_set:
 				print(f'	- {s}')
 		print('=--------------=---------=-------=----------')
