@@ -108,12 +108,12 @@ def get_span_from_time(start, end):
 	end_td = get_td_from_time(end)
 	length = end_td - start_td
 	row_span = ((length.seconds / 60) / 5)
-	print(f'{start}-{end} = {row_span}')
 	return int(row_span)
 
 def get_max_ratio(ratios):
 	max_ratio = 0
-	for r in ratios:
+	for info in ratios:
+		r = info[0]
 		num = r[0]
 		denom = r[1]
 		ratio = (num / denom) if denom else num + 1
@@ -127,7 +127,6 @@ def get_window_during_time(day, time, ratios):
 		time_info = r[0]
 		start_td = get_td_from_time(time_info[0])
 		end_td = get_td_from_time(time_info[1])
-		print(f'start_td = {start_td}, end_td = {end_td}, time = {time}')
 		if start_td <= time and time < end_td:
 			return r
 	return None
