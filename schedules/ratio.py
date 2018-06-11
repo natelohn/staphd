@@ -31,7 +31,7 @@ def get_ratios_info_in_window(shifts, staphers, workers_left, busy_staphers):
 				else:
 					not_free_or_qualified_workers.append(s)
 
-		all_ratios.append([sum_needed, len(availible_workers)], q_strings, [not_free_or_qualified_workers, not_qualified_workers, not_free_workers, availible_workers])
+		all_ratios.append([[sum_needed, len(availible_workers)], q_strings, [not_free_or_qualified_workers, not_qualified_workers, not_free_workers, availible_workers]])
 	return all_ratios
 
 
