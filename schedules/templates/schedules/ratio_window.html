@@ -3,12 +3,12 @@
 <div id="page">
 	<h1>Ratios for {{shift_set}} Shifts</h1>
 	<h2>{{day}}, {{start}}-{{end}}</h2>
+	<a class="button" href="{% url 'schedules:ratio-week' %}">All Ratios</a>
 	{% if not ratio_tables %}
 	<h1>No uncovered shifts during this time.</h1>
 	{% endif %}
-	<a class="button" href="{% url 'schedules:ratio-week' %}">All Ratios</a>
 	{% for table in ratio_tables %}
-	<h3>{{table.qualifications }}</h3>
+	<h3>Showing shifts with {{table.qual_string}} qualification(s)</h3>
 	<table>
 		<tr>
 			{% for cell in table.cells %}

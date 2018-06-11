@@ -195,9 +195,13 @@ def get_q_set_table(q_titles, ratio, total_staph):
 			cells.append(availible_cell, needed_cell)
 	while len(cells) >= total_staph:
 		cells.append(None)
+	qual_str = ''
+	for title in q_titles:
+		qual_str += title + ', '
+	qual_str = qual_str[:-2]
 	table = {}
-	table['qualifications'] = q_titles
 	table['cells'] = cells
+	table['qual_str'] = qual_str if qual_str else 'no'
 	return table
 
 
