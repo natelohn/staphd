@@ -6,10 +6,6 @@ from .sort import get_qual_and_shifts_dicts, get_stapher_dict
 
 from .models import Shift, Stapher, Staphing
 
-def get_ratio_info_in_window():
-
-
-
 def get_ratios_info_in_window(shifts, staphers, workers_left, busy_staphers):
 	shift_and_qual_dicts = get_qual_and_shifts_dicts(shifts)
 	shift_dict = shift_and_qual_dicts[1]
@@ -34,7 +30,6 @@ def get_ratios_info_in_window(shifts, staphers, workers_left, busy_staphers):
 					not_qualified_workers.append(s)
 				else:
 					not_free_or_qualified_workers.append(s)
-
 
 		all_ratios.append([sum_needed, len(availible_workers)], q_strings, [not_free_or_qualified_workers, not_qualified_workers, not_free_workers, availible_workers])
 	return all_ratios
