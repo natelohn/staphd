@@ -3,5 +3,15 @@
 <div id="page">
 	<h1>Ratios for {{shift_set}} Shifts</h1>
 	<h2>{{day}}, {{start}}-{{end}}</h2>
+	{% for table in ratio_tables %}
+	<h3>{{table.qualifications }}</h3>
+	<table>
+		<tr>
+			{% for cell in table.cells %}
+			<td colspan="{{cell.span}}">{{cell.title}}</td>
+			{% endfor %}
+		</tr>
+	</table>
+	{% endfor %}
 </div>
 {% endblock %}

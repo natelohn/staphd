@@ -145,7 +145,6 @@ def get_ratio_table(ratios):
 		row_for_time = []
 		for day in range(0, 7):
 			window = get_window_during_time(day, time, ratios)
-
 			if not window:
 				row_for_time.append(False)
 			else:
@@ -170,8 +169,52 @@ def get_ratio_table(ratios):
 		time += increment
 	return all_rows_for_time
 
+def get_q_set_table(q_titles, ratio, total_staph):
+	cells = []
+	num = ratio[0]
+	denom = ratio[1]
+	needed_str = f'{num} needed. '
+	availible_str = f'{denom} free and qualified.'
+	if num == denom:
+		clean_cell = {}
+		clean_cell['span'] = num
+		clean_cell['title'] = needed_str + availible_str
+		cells.append(clean_cell)
+	else:
+		needed_cell = {}
+		needed_cell['title'] = needed_str
+		availible_cell = {}
+		availible_cell['title'] = availible_str
+		if num < denom:
+			needed_cell['span'] = num
+			availible_cell['span'] = denom - num
+			cells.append(needed_cell, availible_cell)
+		else:
+			needed_cell['span'] = num - denom
+			availible_cell['span'] = denom
+			cells.append(availible_cell, needed_cell)
+	while len(cells) >= total_staph:
+		cells.append(None)
+	table = {}
+	table['qualifications'] = q_titles
+	table['cells'] = cells
+	return table
 
 
+
+def get_ratio_tables_in_window(ratios, day, start, end):
+	window = get_window_during_time(day, start, ratios)
+	if window:
+		ratio_info = window[1]
+		all_tables = []
+		for info in ratio_info:
+			q_set_ratios = info[0]
+			q_strings = info[1]
+			stap_groups = info[2]
+			total_staph = sum([len(group) for group in stap_groups])
+			q_set_table = get_q_set_table(q_strings, q_set_ratios,total_staph)
+			all_tables.append(q_set_table)
+	return all_tables
 
 
 

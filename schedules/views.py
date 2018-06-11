@@ -26,7 +26,7 @@ from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsPa
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
-from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv, get_ratio_table
+from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv, get_ratio_table, get_ratio_tables_in_window
 
 
 # Download Based Views
@@ -384,16 +384,17 @@ def ratio_window_view(request, *args, **kwargs):
 		end = datetime.time(hour = int(kwargs['e'][:2]), minute = int(kwargs['e'][2:]))
 	except:
 		return Http404
-	shifts = Shift.objects.filter(shift_set_id = schedule.shift_set.id, day = day, start__lt = end, end__gt = start)
-	staphers = Stapher.objects.all()
-	staphings = Staphing.objects.filter(schedule_id = schedule.id, shift__day = day, shift__start__lt = end, shift__end__gt = start)
-
+	ratios = cache.get('ratios')
+	if not ratios:
+		return HttpResponseRedirect(reverse('schedules:get-ratio'))
+	ratio_tables = get_ratio_tables_in_window(ratios, day, start, end)
 	template = 'schedules/ratio_window.html'
 	context = {}
 	context['shift_set'] = schedule.shift_set.title
 	context['day'] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'][day]
 	context['start'] = get_readable_time(start)
 	context['end'] = get_readable_time(end)
+	context['ratio_tables'] = ratio_tables
 	return render(request, template, context)
 
 
