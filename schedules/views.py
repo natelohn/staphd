@@ -26,7 +26,7 @@ from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsPa
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
-from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv, get_ratio_table
+from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv, get_ratio_table, get_window_ratios_view_info
 
 
 # Download Based Views
@@ -378,19 +378,20 @@ def ratio_week_view(request, *args, **kwargs):
 def ratio_window_view(request, *args, **kwargs):
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
+		day = int(kwargs['d'])
+		start = datetime.time(hour = int(kwargs['s'][:2]), minute = int(kwargs['s'][2:]))
+		end = datetime.time(hour = int(kwargs['e'][:2]), minute = int(kwargs['e'][2:]))
 	except:
 		return Http404
+	shifts = Shift.objects.filter(shift_set_id = schedule.shift_set.id, day = day, start__lt = end, end__gt = start)
+	staphers = Stapher.objects.all()
+	staphings = Staphing.objects.filter(schedule_id = schedule.id, shift__day = day, shift__start__lt = end, shift__end__gt = start)
+	ratio_window_info = get_window_ratios_view_info(shifts, staphers, staphings, day, start, end)
+
 	template = 'schedules/ratio_window.html'
-	ratios = cache.get('ratios')
-	if not ratios:
-		print(f'No ratios (ratios = {ratios})')
-		return HttpResponseRedirect(reverse('schedules:get-ratio'))
-	day = kwargs['d']
-	start = datetime.time(hour = int(kwargs['s'][:2]), minute = int(kwargs['s'][2:]))
-	end = datetime.time(hour = int(kwargs['e'][:2]), minute = int(kwargs['e'][2:]))
 	context = {}
 	context['shift_set'] = schedule.shift_set.title
-	context['day'] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'][int(day)]
+	context['day'] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday'][day]
 	context['start'] = get_readable_time(start)
 	context['end'] = get_readable_time(end)
 	return render(request, template, context)

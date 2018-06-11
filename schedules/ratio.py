@@ -6,15 +6,37 @@ from .sort import get_qual_and_shifts_dicts, get_stapher_dict
 
 from .models import Shift, Stapher, Staphing
 
-def get_ratios_in_window(shifts, staphers, workers_left, busy_staphers):
+def get_ratio_info_in_window():
+
+
+
+def get_ratios_info_in_window(shifts, staphers, workers_left, busy_staphers):
 	shift_and_qual_dicts = get_qual_and_shifts_dicts(shifts)
 	shift_dict = shift_and_qual_dicts[1]
 	stapher_dict = get_stapher_dict(staphers, shift_and_qual_dicts[0])
 	all_ratios = []
 	for q_set in shift_dict.keys():
 		sum_needed = sum([workers_left[s.id] for s in shift_dict[q_set]])
-		availible_workers = [s for s in stapher_dict[q_set] if s.id not in busy_staphers]
-		all_ratios.append([sum_needed, len(availible_workers)])
+		shifts_in_q_set = shift_dict[q_set][0]
+		q_strings = [q.title for q in shifts_in_q_set.qualifications.all()]
+		availible_workers = []
+		not_free_workers = []
+		not_qualified_workers = []
+		not_free_or_qualified_workers = []
+		for s in staphers:
+			if s in stapher_dict[q_set]:
+				if s not in busy_staphers:
+					availible_workers.append(s)
+				else:
+					not_free_workers.append(s)
+			else:
+				if s not in busy_staphers:
+					not_qualified_workers.append(s)
+				else:
+					not_free_or_qualified_workers.append(s)
+
+
+		all_ratios.append([sum_needed, len(availible_workers)], q_strings, [not_free_or_qualified_workers, not_qualified_workers, not_free_workers, availible_workers])
 	return all_ratios
 
 
@@ -42,8 +64,8 @@ def find_ratios(shifts, staphers, staphings, all_ordered_times, current_task):
 			
 			shifts_in_window = [s for s in shifts.filter(day = day, start__lt = end, end__gt = start) if workers_left[s.id] > 0]
 			busy_staphers = [s.stapher.id for s in staphings.filter(shift__day = day, shift__start__lt = end, shift__end__gt = start)]
-			ratios_in_window = get_ratios_in_window(shifts_in_window, staphers, workers_left, busy_staphers)
+			ratios_info_in_window = get_ratios_info_in_window(shifts_in_window, staphers, workers_left, busy_staphers)
 			time_info = [start, end]
-			window_info = [time_info, ratios_in_window]
+			window_info = [time_info, ratios_info_in_window]
 			windows_by_day[day].append(window_info)
 	return windows_by_day
