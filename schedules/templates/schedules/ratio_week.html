@@ -18,9 +18,9 @@
 			{% if cell.max_ratio < 1 %}
 			<td class="scheduled_time" id="clean_ratio" rowspan="{{cell.span}}"><a id="ratio_link" href="{% url 'schedules:ratio-window' d=cell.day s=cell.s_url e=cell.e_url %}">{{cell.title}}</a></td>
 			{% elif cell.max_ratio == 1 %}
-			<td class="scheduled_time" id="at_limit_ratio" rowspan="{{cell.span}}"><a id="ratio_link" href="">{{cell.title}}</a></td>
+			<td class="scheduled_time" id="at_limit_ratio" rowspan="{{cell.span}}"><a id="ratio_link" href="{% url 'schedules:ratio-window' d=cell.day s=cell.s_url e=cell.e_url %}">{{cell.title}}</a></td>
 			{% else %}
-			<td class="scheduled_time" id="bad_ratio" rowspan="{{cell.span}}"><a id="ratio_link" href="">{{cell.title}}</a></td>
+			<td class="scheduled_time" id="bad_ratio" rowspan="{{cell.span}}"><a id="ratio_link" href="{% url 'schedules:ratio-window' d=cell.day s=cell.s_url e=cell.e_url %}">{{cell.title}}</a></td>
 			{% endif %}
 			{% else %}
 			<td id="non_scheduled_time"></td>

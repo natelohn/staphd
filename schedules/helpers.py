@@ -117,19 +117,8 @@ def get_max_ratio(ratios):
 		num = r[0]
 		denom = r[1]
 		ratio = (num / denom) if denom else num + 1
-		print(f'{num}/{denom} = {ratio}')
-
-		print(f'Qualifications = {info[1]}')
-		print(f'{len(info[2])} lists of staphers')
-		li = ['! f or q', '! qual', '! free', 'Free and Qualified']
-		for i, s_set in enumerate(info[2]):
-			print(f'{len(s_set)} staphers {li[i]}:')
-			for s in s_set:
-				print(f'	- {s}')
-		print('=--------------=---------=-------=----------')
 		if ratio > max_ratio:
 			max_ratio = ratio
-
 	return max_ratio
 
 
