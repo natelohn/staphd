@@ -386,7 +386,6 @@ def ratio_window_view(request, *args, **kwargs):
 	shifts = Shift.objects.filter(shift_set_id = schedule.shift_set.id, day = day, start__lt = end, end__gt = start)
 	staphers = Stapher.objects.all()
 	staphings = Staphing.objects.filter(schedule_id = schedule.id, shift__day = day, shift__start__lt = end, shift__end__gt = start)
-	ratio_window_info = get_window_ratios_view_info(shifts, staphers, staphings, day, start, end)
 
 	template = 'schedules/ratio_window.html'
 	context = {}
