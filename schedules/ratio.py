@@ -13,8 +13,6 @@ def get_ratios_info_in_window(shifts, staphers, workers_left, busy_staphers):
 	all_ratios = []
 	for q_set in shift_dict.keys():
 		sum_needed = sum([workers_left[s.id] for s in shift_dict[q_set]])
-		shifts_in_q_set = shift_dict[q_set][0]
-		q_strings = [q.title for q in shifts_in_q_set.qualifications.all()]
 		availible_workers = []
 		not_free_workers = []
 		not_qualified_workers = []
@@ -31,7 +29,11 @@ def get_ratios_info_in_window(shifts, staphers, workers_left, busy_staphers):
 				else:
 					not_free_or_qualified_workers.append(s)
 
-		all_ratios.append([[sum_needed, len(availible_workers)], q_strings, [not_free_or_qualified_workers, not_qualified_workers, not_free_workers, availible_workers]])
+		ratios = [sum_needed, len(availible_workers)]
+		shifts_in_q_set = shift_dict[q_set][0]
+		q_strings = [q.title for q in shifts_in_q_set.qualifications.all()]
+		stapher_info = [not_free_or_qualified_workers, not_qualified_workers, not_free_workers, availible_workers]
+		all_ratios.append([ratios, q_strings, stapher_info])
 	return all_ratios
 
 

@@ -117,8 +117,10 @@ def get_max_ratio(ratios):
 		num = r[0]
 		denom = r[1]
 		ratio = (num / denom) if denom else num + 1
+		print(f'{num}/{denom} = {ratio}')
 		if ratio > max_ratio:
 			max_ratio = ratio
+
 	return max_ratio
 
 
