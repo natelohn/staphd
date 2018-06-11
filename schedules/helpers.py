@@ -118,6 +118,13 @@ def get_max_ratio(ratios):
 		denom = r[1]
 		ratio = (num / denom) if denom else num + 1
 		print(f'{num}/{denom} = {ratio}')
+
+		print(f'{info[1]}')
+		for s_set in info[2]:
+			print(f'{len(s_set)} staphers:')
+			for s in s_set:
+				print(f'	- {s}')
+		print('=--------------=---------=-------=----------')
 		if ratio > max_ratio:
 			max_ratio = ratio
 
