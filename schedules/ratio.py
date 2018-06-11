@@ -19,7 +19,7 @@ def get_ratios_info_in_window(shifts, staphers, workers_left, busy_staphers):
 		not_free_or_qualified_workers = []
 		for s in staphers:
 			if s in stapher_dict[q_set]:
-				if s not in busy_staphers:
+				if s.id not in busy_staphers:
 					availible_workers.append(s)
 				else:
 					not_free_workers.append(s)
