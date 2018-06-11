@@ -203,7 +203,7 @@ def get_q_set_table(q_titles, ratio, total_staph):
 
 
 def get_ratio_tables_in_window(ratios, day, start, end):
-	window = get_window_during_time(day, start, ratios)
+	window = get_window_during_time(day, get_td_from_time(start), ratios)
 	if window:
 		ratio_info = window[1]
 		all_tables = []
