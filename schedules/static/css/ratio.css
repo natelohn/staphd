@@ -1,7 +1,6 @@
 .ratio_table {
 	width: 100%;
 	background-color: #EEEEEE;
-	margin-bottom: 10px;
 }
 
 .ratio_table th {
@@ -73,6 +72,10 @@
 
 #ratio_red {
 	background-color: red;
+}
+
+#ratio_btn {
+	top: 5px;
 }
 
 
