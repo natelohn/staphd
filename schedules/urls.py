@@ -4,7 +4,7 @@ from . import views
 
 app_name = 'schedules'
 urlpatterns = [
-    url(r'^$', views.build_view, name='home'),
+    url(r'^schedules/$', views.build_view, name='home'),
     url(r'^schedules/$', views.build_view, name='schedule'),
     url(r'^schedules/settings/select$', views.SettingParameterUpdate.as_view(), name='settings-select'),
     url(r'^schedules/settings/rank/$', views.rank_settings, name='settings-rank'),
