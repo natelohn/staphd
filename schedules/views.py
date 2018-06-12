@@ -35,6 +35,33 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(DownloadView, self).get_context_data(*args, **kwargs)
+		try:
+			active_schedule = Schedule.objects.get(active = True)
+		except:
+			active_schedule = None
+		last_updated = Schedule.objects.latest('excel_updated')
+		up_to_date = False
+		from_current_schedule = False
+		if active_schedule:
+			from_current_schedule = (active_schedule == last_updated)
+			up_to_date = (last_updated.updated_on < last_updated.excel_updated)
+		latest_excel_deleted = cache.get('latest_excel_deleted')
+		clean_excels = from_current_schedule and up_to_date and not latest_excel_deleted
+		if clean_excels:
+			clean_msg = f'Excel files are up to date.'
+		elif latest_excel_deleted:
+			clean_msg = f'Excel files match a deleted schedule, please update Excel Files'
+		elif from_current_schedule:
+			clean_msg = f'Need to update Excel files for {active_schedule}'
+		elif up_to_date:
+			clean_msg = f'Excel files match {last_updated} - not the current schedule ({active_schedule})'
+		else:
+			clean_msg = f'Please update {last_updated} Excel files before downloading'
+
+		context['schedule_msg'] = f'Downloading files from {last_updated}'
+		context['updated_msg'] = f'Files last updated on: {last_updated.excel_updated}'
+		context['clean_excels'] = clean_excels
+		context['clean_msg'] = clean_msg
 		context['at_download'] = True
 		return context
 
@@ -206,7 +233,6 @@ def build_schedules(request, *args, **kwargs):
 @csrf_exempt
 def update_files(request, *args, **kwargs):
 	context = {}
-	cache.set('built_excel', True, None)
 	task_id = cache.get('current_task_id')
 	if not task_id:
 		try:
@@ -220,6 +246,8 @@ def update_files(request, *args, **kwargs):
 			context['update_error_message'] = 'No Shifts Scheduled - Must Schedule Shifts First'
 		else:
 			template = 'schedules/progress.html'
+			cache.set('built_excel', True, None)
+			schedule.excel_updated = timezone.now()
 			task = update_files_task.delay(schedule_id)
 			task_id = task.task_id
 			cache.set('current_task_id', task_id, 3000)

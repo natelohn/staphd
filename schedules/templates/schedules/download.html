@@ -1,6 +1,13 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
+	<h1>{{schedule_msg}}</h1>
+	<h2>{{updated_msg}}</h2>
+	{% if clean_excels %}
+	<h2>{{clean_msg}}</h2>
+	{% else %}
+	<h2 class="error">{{clean_msg}}</h2>
+	{% endif %}
 	<ul id="download_list">
 		<li><a class='list_btn' href="{% url 'schedules:download-individual' %}">Download Indiviual Schedules</a></li>
 		<li><a class='list_btn' href="{% url 'schedules:download-masters' %}">Download Masters</a></li>
