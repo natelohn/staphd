@@ -13,8 +13,8 @@
 	<hr style="background-color: grey; height:1px; margin: 10px;">
 	<div id="ratio_header">
 		<div>
-			<h3>Ratio for shifts with {{table.qual_table.qual_str}} qualification(s)</h3>
-			<h5>{{table.qual_table.ratio_msg}}</h5>	
+			<h2>Ratio for shifts with {{table.qual_table.qual_str}} qualification(s)</h2>
+			<h3>{{table.qual_table.ratio_msg}}</h3>	
 		</div>
 		<div>
 			<a class="button"id="ratio_btn" href="{% url 'schedules:shift-list' %}?q={{table.shift_link}}" target="_blank">View Shifts</a>
@@ -34,16 +34,16 @@
 			{% for cell in row %}
 			{% if cell.header %}
 			<th>{{cell.header}}</td>
-				{% else %}
-				<td class="ratio_time">
-					{% if cell.link %}
-					<a id="ratio_link" href="{{ cell.link }}">{{cell.stapher}}</a>
-					{% endif %}	
-				</td>
-				{% endif %}
-				{% endfor %}
-			</tr>
+			{% else %}
+			{% if cell.link %}
+			<td class="ratio_time"><a id="ratio_link" href="{{ cell.link }}">{{cell.stapher}}</a></td>
+			{% else %}
+			<td></td>
+			{% endif %}	
+			{% endif %}
 			{% endfor %}
+		</tr>
+		{% endfor %}
 		</table>
 		{% endfor %}
 	</div>
