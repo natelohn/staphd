@@ -260,7 +260,6 @@ def get_ratio_tables_in_window(ratios, day, start, end):
 		ratio_info = window[1]
 		largest_needed = get_largest_needed(ratio_info)
 		for info in ratio_info:
-			print(f'info = {info}')
 			q_set_ratio = info[0]
 			q_strings = info[1]
 			staph_groups = info[2]
