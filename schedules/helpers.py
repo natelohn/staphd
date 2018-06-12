@@ -201,9 +201,11 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 			cells.append(availible_cell)
 			cells.append(needed_cell)
 	while len(cells) >= largest_needed:
+		print(f'len(cells) = {len(cells)}')
 		cells.append(False)
 	qual_str = ''
 	for i, title in enumerate(q_titles):
+		print(f'title = {title}')
 		if i > 0:
 			string = ', and ' + title if (i + 1) == len(q_titles) else ', ' + title
 			qual_str += string				
@@ -235,6 +237,7 @@ def get_ratio_tables_in_window(ratios, day, start, end):
 		ratio_info = window[1]
 		largest_needed = get_largest_needed(ratio_info)
 		for info in ratio_info:
+			print(f'info = {info}')
 			q_set_ratio = info[0]
 			q_strings = info[1]
 			stap_groups = info[2]
