@@ -81,6 +81,12 @@
 	background-color: darkred;
 }
 
+#empty_cell {
+	border: 0px;
+	border-color: white;
+	border-style: none;
+}
+
 
 #ratio_btn {
 	bottom: 15px;

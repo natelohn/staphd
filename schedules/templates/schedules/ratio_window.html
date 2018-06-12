@@ -24,7 +24,11 @@
 	<table class="ratio_window_table">
 		<tr>
 			{% for cell in table.qual_table.cells %}
+			{% if cell %}
 			<td id="ratio_{{cell.color}}"></td>
+			{% else %}
+			<td id="empty_cell"></td>
+			{% endif %}
 			{% endfor %}
 		</tr>
 	</table>
