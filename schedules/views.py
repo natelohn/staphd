@@ -1007,7 +1007,7 @@ def schedule_selected(request, *args, **kwargs):
 			other_schedule.save()
 	except:
 		return Http404
-	return build_view(request)
+	return HttpResponseRedirect(reverse('schedules:schedule'))
 
 class ScheduleCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/schedule_form.html'
