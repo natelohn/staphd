@@ -15,7 +15,7 @@
 	height: 25px;
 }
 
-.ratio_table, .ratio_table th{
+.ratio_table, .ratio_table th, .ratio_time{
 	border: 1px;
 	border-color: black;
 	border-style: solid;
