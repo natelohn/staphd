@@ -50,6 +50,7 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 		if clean_excels:
 			clean_msg = f'Excel files are up to date.'
 		elif latest_excel_deleted:
+			last_updated = 'a deleted schedule.'
 			clean_msg = f'Excel files match a deleted schedule, please update Excel Files'
 		elif from_current_schedule:
 			clean_msg = f'Need to update Excel files for {active_schedule}'
