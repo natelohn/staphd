@@ -169,7 +169,7 @@ def get_ratio_table(ratios):
 		time += increment
 	return all_rows_for_time
 
-def get_q_set_table(q_titles, ratio, largest_needed):
+def get_q_set_table(q_titles, ratio, largest_needed, shift_link_str):
 	cells = []
 	num = ratio[0]
 	denom = ratio[1]
@@ -200,16 +200,18 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 		cells.append(False)
 	qual_str = ''
 	for i, title in enumerate(q_titles):
-		print(f'title = {title}')
 		if i > 0:
 			string = ', and ' + title if (i + 1) == len(q_titles) else ', ' + title
 			qual_str += string				
 		else:
 			qual_str += title
+	shift_link = 'uncovered', 
+
 	table = {}
 	table['cells'] = cells
 	table['qual_str'] = qual_str if qual_str else 'no'
 	table['ratio_msg'] = f'{num} stapher(s) needed. {denom} stapher(s) free and qualified.'
+	table['shift_link'] = shift_link_str
 	return table
 
 
@@ -237,7 +239,11 @@ def get_ratio_tables_in_window(ratios, day, start, end):
 			q_set_ratio = info[0]
 			q_strings = info[1]
 			stap_groups = info[2]
-			q_set_table = get_q_set_table(q_strings, q_set_ratio, largest_needed)
+			days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
+			link_str = 'uncovered,' + days[day] + ',' + start.strftime("%I:%M%p") + ',' + end.strftime("%I:%M%p")
+			for q in q_strings:
+				link_str += ',' + q
+			q_set_table = get_q_set_table(q_strings, q_set_ratio, largest_needed, link_str)
 			all_tables.append(q_set_table)
 	return all_tables
 
