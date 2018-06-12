@@ -60,9 +60,10 @@ def find_ratios(shifts, staphers, staphings, all_ordered_times, current_task):
 			current_task.update_state(meta = meta)
 			
 			shifts_in_window = [s for s in shifts.filter(day = day, start__lt = end, end__gt = start) if workers_left[s.id] > 0]
-			busy_staphers = [s.stapher.id for s in staphings.filter(shift__day = day, shift__start__lt = end, shift__end__gt = start)]
-			ratios_info_in_window = get_ratios_info_in_window(shifts_in_window, staphers, workers_left, busy_staphers)
-			time_info = [start, end]
-			window_info = [time_info, ratios_info_in_window]
-			windows_by_day[day].append(window_info)
+			if shifts_in_window:
+				busy_staphers = [s.stapher.id for s in staphings.filter(shift__day = day, shift__start__lt = end, shift__end__gt = start)]
+				ratios_info_in_window = get_ratios_info_in_window(shifts_in_window, staphers, workers_left, busy_staphers)
+				time_info = [start, end]
+				window_info = [time_info, ratios_info_in_window]
+				windows_by_day[day].append(window_info)
 	return windows_by_day
