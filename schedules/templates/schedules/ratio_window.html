@@ -8,11 +8,13 @@
 	<h1>No uncovered shifts during this time.</h1>
 	{% endif %}
 	{% for table in ratio_tables %}
+	<br>
+	<br>
 	<h3>Ratio for shifts with {{table.qual_str}} qualification(s)</h3>
 	<table class="ratio_window_table">
 		<tr>
 			{% for cell in table.cells %}
-			<td id="ratio_{{cell.color}}" colspan="{{cell.span}}">{{cell.title}}</td>
+			<td id="ratio_{{cell.color}}"></td>
 			{% endfor %}
 		</tr>
 	</table>

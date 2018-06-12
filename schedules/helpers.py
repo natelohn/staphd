@@ -173,8 +173,8 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 	cells = []
 	num = ratio[0]
 	denom = ratio[1]
-	needed_str = f'{num} needed. '
-	availible_str = f'{denom} free and qualified.'
+	needed_str = f'{num} stapher(s) needed. '
+	availible_str = f'{denom} stapher(s) free and qualified.'
 	if num == denom:
 		clean_cell = {}
 		clean_cell['span'] = num
@@ -187,21 +187,21 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 		availible_cell = {}
 		availible_cell['title'] = availible_str
 		if num < denom:
-			needed_cell['span'] = num
-			availible_cell['span'] = denom - num
 			needed_cell['color'] = 'green'
 			availible_cell['color'] = 'grey'
-			cells.append(needed_cell)
-			cells.append(availible_cell)
+			for i in range(0, num):
+				cells.append(needed_cell)
+			for i in range(0, (denom - num)):
+				cells.append(availible_cell)
 		else:
-			needed_cell['span'] = num - denom
-			availible_cell['span'] = denom
+			needed_cell['span'] = 
 			needed_cell['color'] = 'grey'
 			availible_cell['color'] = 'red'
-			cells.append(availible_cell)
-			cells.append(needed_cell)
-	while len(cells) <= largest_needed:
-		print(f'len(cells) = {len(cells)}')
+			for i in range(0, denom):
+				cells.append(availible_cell)
+			for i in range(0, (num - denom)):
+				cells.append(needed_cell)
+	while len(cells) < largest_needed:
 		cells.append(False)
 	qual_str = ''
 	for i, title in enumerate(q_titles):
