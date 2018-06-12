@@ -115,7 +115,7 @@ def build_view(request, *args, **kwargs):
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
 	context['at_build'] = True
-	cache.set('built_excel', None, 0)
+	cache.set('no_redirect', None, 0)
 	return render(request, template, context) 
 
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
@@ -223,7 +223,8 @@ def build_schedules(request, *args, **kwargs):
 		schedule_id = schedule.id
 		task = build_schedules_task.delay(schedule_id)
 		task_id = task.task_id
-		cache.set('current_task_id', task_id, 3000)	
+		cache.set('current_task_id', task_id, 3000)
+		cache.set('no_redirect', True, None)
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
 	context['schedule'] = schedule.title
@@ -247,11 +248,11 @@ def update_files(request, *args, **kwargs):
 			context['update_error_message'] = 'No Shifts Scheduled - Must Schedule Shifts First'
 		else:
 			template = 'schedules/progress.html'
-			cache.set('built_excel', True, None)
 			schedule.excel_updated = timezone.now()
 			task = update_files_task.delay(schedule_id)
 			task_id = task.task_id
 			cache.set('current_task_id', task_id, 3000)
+			cache.set('no_redirect', True, None)
 	else:
 		template = 'schedules/progress.html'
 		context['update_error_message'] = 'Please wait for the current task to complete.'
@@ -291,11 +292,11 @@ def track_state(request, *args, **kwargs):
 def redirect(request, *args, **kwargs):
 	recs = cache.get('recommendation')
 	shift = cache.get('recommended_shift')
-	built_excel = cache.get('built_excel')
+	no_redirect = cache.get('no_redirect')
 	ratios = cache.get('ratios')
 	if recs and shift:
 		return HttpResponseRedirect(reverse('schedules:recommendation'))
-	elif built_excel:
+	elif no_redirect:
 		return HttpResponseRedirect(reverse('schedules:schedule'))
 	elif ratios:
 		return HttpResponseRedirect(reverse('schedules:ratio-week'))
