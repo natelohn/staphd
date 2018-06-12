@@ -265,9 +265,7 @@ def redirect(request, *args, **kwargs):
 	shift = cache.get('recommended_shift')
 	built_excel = cache.get('built_excel')
 	ratios = cache.get('ratios')
-	if recs and shift and ratios:
-		return HttpResponseRedirect(reverse('schedules:schedule'))
-	elif recs and shift:
+	if recs and shift:
 		return HttpResponseRedirect(reverse('schedules:recommendation'))
 	elif built_excel:
 		return HttpResponseRedirect(reverse('schedules:schedule'))
