@@ -14,15 +14,11 @@
 	</div>
 	<div id="schedule_information">
 		{% if schedule %}
-			<h2><strong>{{ schedule }}</strong>
-			{%if percent_complete %}
-			- {{percent_complete}}% complete. 
-			{% endif %}
-		</h2>
-		{% else %}
-			<h2><strong>No Current Schedule</strong></h2>
-		{% endif %}
+		<h2><strong>{{ schedule }}</strong>{%if percent_complete %}- {{percent_complete}}% complete. {% endif %}</h2>
 		<a class="button" href="{% url 'schedules:get-ratio' %}">Check Ratios</a>
+		{% else %}
+		<h2><strong>No Current Schedule</strong></h2>
+		{% endif %}
 		<a class="button" href="{% url 'schedules:select' %}">Select New Schedule</a>
 	</div>
 	<div id="build_schedule_form">
