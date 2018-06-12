@@ -8,10 +8,11 @@
 	width: 14.285%; /* 100 / 7 = 14.285 */
 }
 
-.scheduled_time{
+.ratio_time{
 	position: relative;
 	background-color: silver;
 	text-align: center;
+	height: 15px;
 }
 
 .ratio_table, .ratio_table th{
@@ -19,8 +20,6 @@
 	border-color: black;
 	border-style: solid;
 }
-
-
 
 #ratio_link {
 	text-decoration: none;
