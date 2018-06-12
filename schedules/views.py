@@ -249,6 +249,7 @@ def update_files(request, *args, **kwargs):
 		else:
 			template = 'schedules/progress.html'
 			schedule.excel_updated = timezone.now()
+			schedule.save()
 			task = update_files_task.delay(schedule_id)
 			task_id = task.task_id
 			cache.set('current_task_id', task_id, 3000)
