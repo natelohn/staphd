@@ -387,7 +387,6 @@ def ratio_window_view(request, *args, **kwargs):
 	ratios = cache.get('ratios')
 	if not ratios:
 		return HttpResponseRedirect(reverse('schedules:get-ratio'))
-	print(f'ratios = {ratios}')
 	ratio_tables = get_ratio_tables_in_window(ratios, day, start, end)
 	template = 'schedules/ratio_window.html'
 	context = {}

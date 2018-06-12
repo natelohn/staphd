@@ -87,7 +87,8 @@ def find_ratios_task(self, schedule_id, shift_set_id):
 	shifts = Shift.objects.filter(shift_set_id = shift_set_id)
 	staphers = Stapher.objects.all()
 	staphings = Staphing.objects.filter(schedule_id = schedule_id)
-	ordered_times_by_day = get_ordered_start_and_end_times_by_day(shifts)
+	uncovered_shifts = [s for s in shifts if not s.is_covered(staphings)]
+	ordered_times_by_day = get_ordered_start_and_end_times_by_day(uncovered_shifts)
 
 	# Set the amount of actions for the task to recieve later to use for percentage
 	total_actions = sum([len(ordered_times_by_day[d]) for d in ordered_times_by_day])
