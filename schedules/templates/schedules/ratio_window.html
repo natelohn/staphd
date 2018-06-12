@@ -25,15 +25,13 @@
 	<table class="schedule_table">
 		{% for row in table.stapher_table %}
 		<tr>
-			{% if forloop.first %}
 			{% for cell in row %}
-			<th>{{cell}}</td>
-			{% endfor %}
+			{% if cell.header %}
+			<th>{{cell.header}}</td>
 			{% else %}
-			{% for cell in row %}
 			<td><a href="{% url cell.link %}">{{cell.stapher}}</a></td>
-			{% endfor %}
 			{% endif %}
+			{% endfor %}
 		</tr>
 	</table>
 	{% endfor %}

@@ -228,8 +228,7 @@ def get_stapher_table(groups):
 	for g in groups:
 		if len(g) > largest_group:
 			largest_group = len(g)
-	group_table =[['Not Free or Qualified', 'Not Qualified', 'Not Free', 'Free & Qualified']]
-	all_rows = []
+	all_rows =[[{'header':'Not Free or Qualified'}, {'header':'Not Qualified'},{'header':'Not Free'}, {'header':'Free & Qualified'}]]
 	for i in range(0, largest_group):
 		new_row = []
 		for j, g in enumerate(groups):
