@@ -19,6 +19,7 @@
 	border: 1px;
 	border-color: black;
 	border-style: solid;
+	table-layout: fixed;
 }
 
 #ratio_link {
@@ -52,12 +53,6 @@
 	height: 50px;
 }
 
-.ratio_window_table {
-	width: 100%;
-	background-color: silver;
-	height: 50px;
-}
-
 #ratio_grey {
 	background-color: grey;
 }
@@ -73,6 +68,7 @@
 #ratio_red {
 	background-color: red;
 }
+
 
 
 
