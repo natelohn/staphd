@@ -18,7 +18,7 @@
 		</div>
 		<div>
 			<a class="button"id="ratio_btn" href="{% url 'schedules:shift-list' %}?q={{table.shift_link}}" target="_blank">View Shifts</a>
-			<a class="button" id="ratio_btn" href="">View Staphers</a>
+			<a class="button" id="ratio_btn" onclick="toggle_schedule({{forloop.counter}})">View Staphers</a>
 		</div>
 	</div>
 	<table class="ratio_window_table">
@@ -28,7 +28,7 @@
 			{% endfor %}
 		</tr>
 	</table>
-	<table class="schedule_table">
+	<table class="hidden_schedule_table" id="stapher_schedule_{{forloop.counter}}">
 		{% for row in table.stapher_table %}
 		<tr>
 			{% for cell in row %}
@@ -44,7 +44,8 @@
 			{% endfor %}
 		</tr>
 		{% endfor %}
-		</table>
-		{% endfor %}
-	</div>
-	{% endblock %}
+	</table>
+	{% endfor %}
+</div>
+{% include "sections/show_schedules.html" %}
+{% endblock %}
