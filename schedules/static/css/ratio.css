@@ -53,6 +53,12 @@
 	table-layout: fixed;
 }
 
+.ratio_window_table td{
+	border: 1px;
+	border-color: black;
+	border-style: solid;
+}
+
 #ratio_grey {
 	background-color: grey;
 }
