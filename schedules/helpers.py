@@ -190,8 +190,8 @@ def get_q_set_table(q_titles, ratio, largest_needed, shift_link_str):
 			for i in range(0, (denom - num)):
 				cells.append(availible_cell)
 		else:
-			needed_cell['color'] = 'grey' if denom else 'red'
-			availible_cell['color'] = 'red'
+			needed_cell['color'] = 'red'
+			availible_cell['color'] = 'dark_red'
 			for i in range(0, denom):
 				cells.append(availible_cell)
 			for i in range(0, (num - denom)):

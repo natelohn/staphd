@@ -78,6 +78,11 @@
 	background-color: red;
 }
 
+#ratio_dark_red {
+	background-color: darkred;
+}
+
+
 #ratio_btn {
 	bottom: 15px;
 }
