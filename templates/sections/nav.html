@@ -27,7 +27,7 @@
 		{% if at_build %}
 		<li class="current_link"><a href="{% url 'schedules:schedule'%}">Build</a></li>
 		{% else %}
-		<li><a href="{% url 'schedules:home'%}">Build</a></li>
+		<li><a href="{% url 'schedules:schedule'%}">Build</a></li>
 		{% endif %}
 		{% if at_staph %}
 		<li class="current_link"><a href="{% url 'schedules:stapher-list'%}">Staphers</a></li>
