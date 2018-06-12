@@ -230,7 +230,7 @@ def get_stapher_table(groups):
 			largest_group = len(g)
 	group_table =[['Not Free or Qualified', 'Not Qualified', 'Not Free', 'Free & Qualified']]
 	all_rows = []
-	for i in range(0, largest_group)
+	for i in range(0, largest_group):
 		new_row = []
 		for j, g in enumerate(groups):
 			cell = {}
