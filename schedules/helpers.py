@@ -175,8 +175,6 @@ def get_q_set_table(q_titles, ratio, largest_needed, shift_link_str):
 	denom = ratio[1]
 	if num == denom:
 		clean_cell = {}
-		clean_cell['span'] = num
-		clean_cell['title'] = needed_str + availible_str
 		clean_cell['color'] = 'yellow'
 		cells.append(clean_cell)
 	else:
