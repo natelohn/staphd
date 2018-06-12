@@ -29,7 +29,11 @@
 			{% if cell.header %}
 			<th>{{cell.header}}</td>
 			{% else %}
-			<td><a href="{% url cell.link %}">{{cell.stapher}}</a></td>
+			<td>
+				{% if cell.link %}
+				<a href="{% url cell.link %}">{{cell.stapher}}</a>
+				{% endif %}	
+			</td>
 			{% endif %}
 			{% endfor %}
 		</tr>
