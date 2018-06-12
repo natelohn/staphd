@@ -188,11 +188,13 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 		if num < denom:
 			needed_cell['span'] = num
 			availible_cell['span'] = denom - num
-			cells.append(needed_cell, availible_cell)
+			cells.append(needed_cell)
+			cells.append(availible_cell)
 		else:
 			needed_cell['span'] = num - denom
 			availible_cell['span'] = denom
-			cells.append(availible_cell, needed_cell)
+			cells.append(availible_cell)
+			cells.append(needed_cell)
 	while len(cells) >= largest_needed:
 		cells.append(False)
 	qual_str = ''
