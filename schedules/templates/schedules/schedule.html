@@ -23,6 +23,7 @@
 			<h2><strong>No Current Schedule</strong></h2>
 		{% endif %}
 		<a class="button" href="{% url 'schedules:select' %}">Select New Schedule</a>
+		<a class="button" href="{% url 'schedules:get-ratio' %}">Check Ratios</a>
 	</div>
 	<div id="build_schedule_form">
 		{% if error_message %}<h5><strong>{{ error_message }}</strong></h5>{% endif %}
