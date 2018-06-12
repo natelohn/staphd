@@ -1,3 +1,7 @@
+#ratio_header {
+	display: inline-block;
+}
+
 .ratio_table {
 	width: 100%;
 	background-color: #EEEEEE;

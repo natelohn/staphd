@@ -11,8 +11,16 @@
 	<br>
 	<br>
 	<hr style="background-color: grey; height:1px; margin: 10px;">
-	<h3>Ratio for shifts with {{table.qual_table.qual_str}} qualification(s)</h3>
-	<h5>{{table.qual_table.ratio_msg}}</h5>
+	<div id="ratio_header">
+		<div>
+			<h3>Ratio for shifts with {{table.qual_table.qual_str}} qualification(s)</h3>
+			<h5>{{table.qual_table.ratio_msg}}</h5>	
+		</div>
+		<div>
+			<a class="button"id="ratio_btn" href="{% url 'schedules:shift-list' %}?q={{table.shift_link}}" target="_blank">View Shifts</a>
+			<a class="button" id="ratio_btn" href="">View Staphers</a>
+		</div>
+	</div>
 	<table class="ratio_window_table">
 		<tr>
 			{% for cell in table.qual_table.cells %}
@@ -20,25 +28,23 @@
 			{% endfor %}
 		</tr>
 	</table>
-	<a class="button" id="ratio_btn" href="{% url 'schedules:shift-list' %}?q={{table.shift_link}}" target="_blank">View Shifts</a>
-	<a class="button" id="ratio_btn" href="">View Staphers</a>
-	<table class="schedule_table">
+	<table class="hidden_schedule_table">
 		{% for row in table.stapher_table %}
 		<tr>
 			{% for cell in row %}
 			{% if cell.header %}
 			<th>{{cell.header}}</td>
-			{% else %}
-			<td class="ratio_time">
-				{% if cell.link %}
-				<a id="ratio_link" href="{{ cell.link }}">{{cell.stapher}}</a>
-				{% endif %}	
-			</td>
-			{% endif %}
+				{% else %}
+				<td class="ratio_time">
+					{% if cell.link %}
+					<a id="ratio_link" href="{{ cell.link }}">{{cell.stapher}}</a>
+					{% endif %}	
+				</td>
+				{% endif %}
+				{% endfor %}
+			</tr>
 			{% endfor %}
-		</tr>
+		</table>
 		{% endfor %}
-	</table>
-	{% endfor %}
-</div>
-{% endblock %}
+	</div>
+	{% endblock %}
