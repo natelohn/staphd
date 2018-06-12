@@ -341,6 +341,9 @@ class Schedule(models.Model):
 			
 
 	def delete(self, *args, **kwargs):
+		latest_excel = Schedule.objects.latest('excel_updated')
+		if latest_excel == self:
+			cache.set('latest_excel_deleted', True, None)
 		super(Schedule, self).delete(*args, **kwargs)
 
 	def get_percent_complete(self):
