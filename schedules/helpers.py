@@ -179,6 +179,7 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 		clean_cell = {}
 		clean_cell['span'] = num
 		clean_cell['title'] = needed_str + availible_str
+		clean_cell['color'] = 'yellow'
 		cells.append(clean_cell)
 	else:
 		needed_cell = {}
@@ -188,11 +189,15 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 		if num < denom:
 			needed_cell['span'] = num
 			availible_cell['span'] = denom - num
+			needed_cell['color'] = 'green'
+			availible_cell['color'] = 'grey'
 			cells.append(needed_cell)
 			cells.append(availible_cell)
 		else:
 			needed_cell['span'] = num - denom
 			availible_cell['span'] = denom
+			needed_cell['color'] = 'grey'
+			availible_cell['color'] = 'red'
 			cells.append(availible_cell)
 			cells.append(needed_cell)
 	while len(cells) >= largest_needed:

@@ -48,5 +48,41 @@
 
 .ratio_window_table {
 	width: 100%;
-	background-color: blue;
+	background-color: silver;
+	height: 50px;
 }
+
+.ratio_window_table {
+	width: 100%;
+	background-color: silver;
+	height: 50px;
+}
+
+#ratio_grey {
+	background-color: grey;
+}
+
+#ratio_green {
+	background-color: green;
+}
+
+#ratio_yellow {
+	background-color: yellow;
+}
+
+#ratio_red {
+	background-color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
