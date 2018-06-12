@@ -22,8 +22,8 @@
 	</table>
 	<a class="button" id="ratio_btn" href="{% url 'schedules:shift-list' %}?q={{table.shift_link}}" target="_blank">View Shifts</a>
 	<a class="button" id="ratio_btn" href="">View Staphers</a>
-	<table class="hidden_schedule_table">
-		{% for row in table.stapher_table.cells %}
+	<table class="schedule_table">
+		{% for row in table.stapher_table %}
 		<tr>
 			{% if forloop.first %}
 			{% for cell in row %}
