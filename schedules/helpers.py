@@ -255,7 +255,6 @@ def get_stapher_table(groups):
 
 def get_ratio_tables_in_window(ratios, day, start, end):
 	window = get_window_during_time(day, get_td_from_time(start), ratios)
-	print(f'window = {window}')
 	all_tables = []
 	if window:
 		ratio_info = window[1]
