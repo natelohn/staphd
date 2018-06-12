@@ -60,7 +60,7 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 			clean_msg = f'Please update {last_updated} Excel files before downloading'
 
 		context['schedule_msg'] = f'Downloading files from {last_updated}'
-		context['updated_msg'] = f'Files last updated on: {last_updated.excel_updated.strftime("%m/%d/%Y at %I:%M %p %Z")}'
+		context['updated'] = last_updated.excel_updated
 		context['clean_excels'] = clean_excels
 		context['clean_msg'] = clean_msg
 		context['at_download'] = True

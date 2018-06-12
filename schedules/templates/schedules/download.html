@@ -1,8 +1,11 @@
 {% extends "sections/nav.html" %}
 {% block page %}
+{% load tz %}
 <div id="page">
 	<h1>{{schedule_msg}}</h1>
-	<h2>{{updated_msg}}</h2>
+	{% localtime on %}
+	<h2>Files last updated on: {{updated}}</h2>
+	{% endlocaltime %}
 	{% if clean_excels %}
 	<h2>{{clean_msg}}</h2>
 	{% else %}
