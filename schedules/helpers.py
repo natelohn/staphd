@@ -169,7 +169,7 @@ def get_ratio_table(ratios):
 		time += increment
 	return all_rows_for_time
 
-def get_q_set_table(q_titles, ratio, total_staph):
+def get_q_set_table(q_titles, ratio, largest_needed):
 	cells = []
 	num = ratio[0]
 	denom = ratio[1]
@@ -193,8 +193,8 @@ def get_q_set_table(q_titles, ratio, total_staph):
 			needed_cell['span'] = num - denom
 			availible_cell['span'] = denom
 			cells.append(availible_cell, needed_cell)
-	while len(cells) >= total_staph:
-		cells.append(None)
+	while len(cells) >= largest_needed:
+		cells.append(False)
 	qual_str = ''
 	for i, title in enumerate(q_titles):
 		if i > 0:
@@ -208,6 +208,17 @@ def get_q_set_table(q_titles, ratio, total_staph):
 	return table
 
 
+def get_largest_needed(ratio_info):
+	largest_needed = 0
+	for info in ratio_info:
+		ratio = info[0]
+		num = ratio[0]
+		denom = ratio[1]
+		if num > largest_needed:
+			largest_needed = num
+		if denom > largest_needed:
+			largest_needed = denom
+	return largest_needed
 
 def get_ratio_tables_in_window(ratios, day, start, end):
 	window = get_window_during_time(day, get_td_from_time(start), ratios)
@@ -215,12 +226,12 @@ def get_ratio_tables_in_window(ratios, day, start, end):
 	all_tables = []
 	if window:
 		ratio_info = window[1]
+		largest_needed = get_largest_needed(ratio_info)
 		for info in ratio_info:
-			q_set_ratios = info[0]
+			q_set_ratio = info[0]
 			q_strings = info[1]
 			stap_groups = info[2]
-			total_staph = sum([len(group) for group in stap_groups])
-			q_set_table = get_q_set_table(q_strings, q_set_ratios,total_staph)
+			q_set_table = get_q_set_table(q_strings, q_set_ratio, largest_needed)
 			all_tables.append(q_set_table)
 	return all_tables
 

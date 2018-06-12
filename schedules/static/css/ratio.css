@@ -45,3 +45,9 @@
 #bad_ratio {
 	background-color: red;
 }
+
+
+.ratio_window_table {
+	width: 100%;
+	background-color: blue;
+}
