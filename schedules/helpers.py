@@ -240,7 +240,7 @@ def get_ratio_tables_in_window(ratios, day, start, end):
 			days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 			link_str = 'uncovered,' + days[day] + ',' + start.strftime("%I:%M %p").lstrip('0').lower() + ',' + end.strftime("%I:%M%p").lstrip('0').lower()
 			for q in q_strings:
-				link_str += ',' + q
+				link_str += ', *q' + q
 			q_set_table = get_q_set_table(q_strings, q_set_ratio, largest_needed, link_str)
 			all_tables.append(q_set_table)
 	return all_tables
