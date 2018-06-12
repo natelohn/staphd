@@ -173,8 +173,6 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 	cells = []
 	num = ratio[0]
 	denom = ratio[1]
-	needed_str = f'{num} stapher(s) needed. '
-	availible_str = f'{denom} stapher(s) free and qualified.'
 	if num == denom:
 		clean_cell = {}
 		clean_cell['span'] = num
@@ -213,6 +211,7 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 	table = {}
 	table['cells'] = cells
 	table['qual_str'] = qual_str if qual_str else 'no'
+	table['ratio_msg'] = f'{num} stapher(s) needed. {denom} stapher(s) free and qualified.'
 	return table
 
 
