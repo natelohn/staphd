@@ -200,7 +200,7 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 			availible_cell['color'] = 'red'
 			cells.append(availible_cell)
 			cells.append(needed_cell)
-	while len(cells) >= largest_needed:
+	while len(cells) <= largest_needed:
 		print(f'len(cells) = {len(cells)}')
 		cells.append(False)
 	qual_str = ''
