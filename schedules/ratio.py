@@ -26,7 +26,7 @@ def get_ratios_info_in_window(shifts, staphers, workers_left, busy_staphers):
 				else:
 					not_free_workers.append(s)
 			else:
-				if s not in busy_staphers:
+				if s.id not in busy_staphers:
 					not_qualified_workers.append(s)
 				else:
 					not_free_or_qualified_workers.append(s)
