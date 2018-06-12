@@ -1,5 +1,7 @@
 import datetime
 
+from django.urls import reverse
+
 from .analytics import get_hours_from_timedelta, get_readable_time, get_td_from_time
 from .models import Staphing, Shift
 
@@ -236,11 +238,11 @@ def get_stapher_table(groups):
 			if i < len(g):
 				cell['stapher'] = g[i]
 				if j == 3:
-					link = f'\'stapher-schedule-shifts\' pk={g[i].id}'
+					link = reverse('schedules:stapher-schedule-shifts', kwargs={'pk': g[i].id})
 				elif j == 2:
-					link = f'\'stapher-schedule\' pk={g[i].id}'
+					link = reverse('schedules:stapher-schedule', kwargs={'pk': g[i].id})
 				elif j == 1:
-					link = f'\'stapher-update\' pk={g[i].id}'
+					link = reverse('schedules:stapher-update', kwargs={'pk': g[i].id})
 				else:
 					link =  g[i].get_absolute_url() 
 				cell['link'] = link
