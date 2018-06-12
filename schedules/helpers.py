@@ -181,9 +181,7 @@ def get_q_set_table(q_titles, ratio, largest_needed):
 		cells.append(clean_cell)
 	else:
 		needed_cell = {}
-		needed_cell['title'] = needed_str
 		availible_cell = {}
-		availible_cell['title'] = availible_str
 		if num < denom:
 			needed_cell['color'] = 'green'
 			availible_cell['color'] = 'grey'
