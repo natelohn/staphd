@@ -19,7 +19,6 @@
 	border: 1px;
 	border-color: black;
 	border-style: solid;
-	table-layout: fixed;
 }
 
 #ratio_link {
@@ -51,6 +50,7 @@
 	width: 100%;
 	background-color: silver;
 	height: 50px;
+	table-layout: fixed;
 }
 
 #ratio_grey {
