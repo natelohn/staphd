@@ -11,17 +11,31 @@
 	<br>
 	<br>
 	<hr style="background-color: grey; height:1px; margin: 10px;">
-	<h3>Ratio for shifts with {{table.qual_str}} qualification(s)</h3>
-	<h5>{{table.ratio_msg}}</h5>
+	<h3>Ratio for shifts with {{table.qual_table.qual_str}} qualification(s)</h3>
+	<h5>{{table.qual_table.ratio_msg}}</h5>
 	<table class="ratio_window_table">
 		<tr>
-			{% for cell in table.cells %}
+			{% for cell in table.qual_table.cells %}
 			<td id="ratio_{{cell.color}}"></td>
 			{% endfor %}
 		</tr>
 	</table>
 	<a class="button" id="ratio_btn" href="{% url 'schedules:shift-list' %}?q={{table.shift_link}}" target="_blank">View Shifts</a>
 	<a class="button" id="ratio_btn" href="">View Staphers</a>
+	<table class="hidden_schedule_table">
+		{% for row in table.stapher_table.cells %}
+		<tr>
+			{% if forloop.first %}
+			{% for cell in row %}
+			<th>{{cell}}</td>
+			{% endfor %}
+			{% else %}
+			{% for cell in row %}
+			<td><a href="{% url cell.link %}">{{cell.stapher}}</a></td>
+			{% endfor %}
+			{% endif %}
+		</tr>
+	</table>
 	{% endfor %}
 </div>
 {% endblock %}

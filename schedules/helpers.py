@@ -223,6 +223,35 @@ def get_largest_needed(ratio_info):
 			largest_needed = denom
 	return largest_needed
 
+def get_stapher_table(groups):
+	largest_group = 0
+	for g in groups:
+		if len(g) > largest_group:
+			largest_group = len(g)
+	group_table =[['Not Free or Qualified', 'Not Qualified', 'Not Free', 'Free & Qualified']]
+	all_rows = []
+	for i in range(0, largest_group)
+		new_row = []
+		for j, g in enumerate(groups):
+			cell = {}
+			if i < len(g):
+				cell['stapher'] = g[i]
+				if j == 3:
+					link = f'\'stapher-schedule-shifts\' pk={g[i].id}'
+				elif j == 2:
+					link = f'\'stapher-schedule\' pk={g[i].id}'
+				elif j == 1:
+					link = f'\'stapher-update\' pk={g[i].id}'
+				else:
+					link =  g[i].get_absolute_url() 
+				cell['link'] = link
+				new_row.append(cell)
+			else:
+				new_row.append(cell)
+		all_rows.append(new_row)
+	return all_rows
+
+
 def get_ratio_tables_in_window(ratios, day, start, end):
 	window = get_window_during_time(day, get_td_from_time(start), ratios)
 	print(f'window = {window}')
@@ -234,13 +263,15 @@ def get_ratio_tables_in_window(ratios, day, start, end):
 			print(f'info = {info}')
 			q_set_ratio = info[0]
 			q_strings = info[1]
-			stap_groups = info[2]
+			staph_groups = info[2]
 			days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday','Saturday']
 			link_str = 'uncovered,' + days[day] + ',' + start.strftime("%I:%M %p").lstrip('0').lower()
 			for q in q_strings:
 				link_str += ', *q ' + q
 			q_set_table = get_q_set_table(q_strings, q_set_ratio, largest_needed, link_str)
-			all_tables.append(q_set_table)
+			stapher_table = get_stapher_table(staph_groups)
+			tables = {'qual_table':q_set_table, 'stapher_table': stapher_table}
+			all_tables.append(tables)
 	return all_tables
 
 
