@@ -125,12 +125,13 @@ def get_max_ratio(ratios):
 
 
 def get_window_during_time(day, time, ratios):
-	for r in ratios[day]:
-		time_info = r[0]
-		start_td = get_td_from_time(time_info[0])
-		end_td = get_td_from_time(time_info[1])
-		if start_td <= time and time < end_td:
-			return r
+	if day in ratios:
+		for r in ratios[day]:
+			time_info = r[0]
+			start_td = get_td_from_time(time_info[0])
+			end_td = get_td_from_time(time_info[1])
+			if start_td <= time and time < end_td:
+				return r
 	return None
 
 
