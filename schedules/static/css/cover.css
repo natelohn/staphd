@@ -1,8 +1,8 @@
 #cover_days {
 	width: 100%;
-	display: inline-block;
 }
 
 #cover_days h2{
 	background-color: silver;
+	display: inline-block;
 }
