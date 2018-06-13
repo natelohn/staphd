@@ -1,5 +1,11 @@
 {% extends "sections/nav.html" %}
 {% block page %}
+{% if form.errors %}
+<div id="form_errors">
+	<p>The operation could not be performed because one or more error(s) occurred:</p>
+	<p>{{ form.errors.as_text }}</p>
+</div>
+{% endif %}
 <div id="page">
 	<h1 id="stapher_schedule_msg">{{schedule_msg}}</h1>
 	<a class="button" href='{{ stapher.get_absolute_url }}'>View Stapher</a>
@@ -7,7 +13,17 @@
 	<br>
 	{% if schedule %}
 	<br>
-	{{form}}
+	<h3>Select the days {{stapher.first_name}} needs shifts covered for:</h3>
+	<ul id="id_days">
+		{% for day in days%}
+		<li>
+			<label>
+				<input type="checkbox" name="days" value="{day.int}" id="id_days_{{forloop.counter0}}">
+				{{day.txt}}
+			</label>
+		</li>
+		{% endfor %}
+	</ul>
 	<br>
 	{% endif %}
 </div>
