@@ -370,14 +370,16 @@ class Staphing(models.Model):
 		return reverse('schedules:stapher-schedule', kwargs={'pk':self.stapher.id})
 
 	def save(self, *args, **kwargs):
-		self.schedule.updated_on = timezone.now
-		self.schedule.save()
+		schedule = self.schedule
+		schedule.updated_on = timezone.now()
+		schedule.save()
 		super(Staphing, self).save(*args, **kwargs)
 			
 
 	def delete(self, *args, **kwargs):
-		self.schedule.updated_on = timezone.now
-		self.schedule.save()
+		schedule = self.schedule
+		schedule.updated_on = timezone.now()
+		schedule.save()
 		super(Staphing, self).delete(*args, **kwargs)
 
 	
