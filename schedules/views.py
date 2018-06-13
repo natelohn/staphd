@@ -54,11 +54,11 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 			last_updated = 'a deleted schedule.'
 			clean_msg = f'Excel files match a deleted schedule, please update Excel Files'
 		elif from_current_schedule:
-			clean_msg = f'Need to update Excel files for {active_schedule}'
+			clean_msg = f'These files are not up to date. Please update Excel files for {active_schedule}'
 		elif up_to_date:
 			clean_msg = f'Excel files match {last_updated} - not the current schedule ({active_schedule})'
 		else:
-			clean_msg = f'Please update {last_updated} Excel files before downloading'
+			clean_msg = f'Files do not match {active_schedule}. Please update {active_schedule}\'s Excel files before downloading'
 
 		context['last_updated'] = last_updated
 		context['clean_excels'] = clean_excels
