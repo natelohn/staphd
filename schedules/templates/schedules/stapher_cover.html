@@ -14,15 +14,13 @@
 	{% if schedule %}
 	<br>
 	<h2>Select the days {{stapher.first_name}} needs shifts covered for:</h2>
-	<ul>
+	<div id="cover_days">
 		{% for day in days%}
-		<li>
-			<label for="id_days_{{forloop.counter0}}"></label>
-			<input type="checkbox" name="days" value="{{day.int}}" id="id_days_{{forloop.counter0}}">
-			{{day.txt}}
-		</li>
+		<label for="id_days_{{forloop.counter0}}"></label>
+		<input type="checkbox" name="days" value="{{day.int}}" id="id_days_{{forloop.counter0}}">
+		<h3>{{day.txt}}</h3>
 		{% endfor %}
-	</ul>
+	</div>
 	<br>
 	{% endif %}
 </div>
