@@ -683,7 +683,7 @@ def stapher_schedule_add(request, *args, **kwargs):
 	return stapher_schedule(request, args, kwargs, form)
 
 @login_required
-def stapher_cover_view(request, *args, **kwargs):
+def stapher_cover_select_days(request, *args, **kwargs):
 	stapher_id = kwargs['pk']
 	try:
 		stapher = Stapher.objects.get(id__exact = stapher_id)
@@ -704,9 +704,10 @@ def stapher_cover_view(request, *args, **kwargs):
 	if request.method == 'POST':
 		form = WeekdayForm(request.POST)
 		if form.is_valid():
+			days_str = ''
 			for day in form.cleaned_data['days']:
-				print(f'day = {day}')
-			return HttpResponseRedirect(reverse('schedules:stapher-list'))
+				days_str += f'{day}'
+			return HttpResponseRedirect(reverse('schedules:stapher-cover-days', kwargs={'pk': stapher.id, 'd':days_str}))
 	else:
 		form = WeekdayForm()
 	template = 'schedules/stapher_cover.html'
