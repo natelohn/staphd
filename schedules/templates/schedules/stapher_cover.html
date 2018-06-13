@@ -6,6 +6,7 @@
 	<p>{{ form.errors.as_text }}</p>
 </div>
 {% endif %}
+{{form}}
 <div id="page">
 	<h1 id="stapher_schedule_msg">{{schedule_msg}}</h1>
 	<a class="button" href='{{ stapher.get_absolute_url }}'>View Stapher</a>
@@ -18,10 +19,9 @@
 		<h1>Here </h1>
 		{% for day in days%}
 		<li>
-			<label>
-				<input type="checkbox" name="days" value="{{day.int}}" id="id_days_{{forloop.counter0}}">
-				{{day.txt}}
-			</label>
+			<label></label>
+			<input type="checkbox" name="days" value="{{day.int}}" id="id_days_{{forloop.counter0}}">
+			{{day.txt}}
 		</li>
 		{% endfor %}
 	</ul>
