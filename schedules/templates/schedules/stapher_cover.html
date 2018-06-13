@@ -19,8 +19,12 @@
 		{% for day in days%}
 		<label for="id_days_{{forloop.counter0}}"></label>
 		<h2 id="day_checkbox">
+			{% if day.selected %}
+			<input type="checkbox" name="days" value="{{day.int}}" id="id_days_{{forloop.counter0}}" checked>
+			{% else %}
 			<input type="checkbox" name="days" value="{{day.int}}" id="id_days_{{forloop.counter0}}">
-			{{day.txt}}
+			{% endif %}
+			{{day.txt}} 
 		</h2>
 		{% endfor %}
 	</div>
