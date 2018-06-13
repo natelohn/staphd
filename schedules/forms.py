@@ -277,6 +277,6 @@ class AddShiftsToSetForm(forms.Form):
 		return added_shifts
 
 class WeekdayForm(forms.Form):
-	days = forms.DayOfTheWeekField(label='days', widget = forms.CheckboxSelectMultiple())
+	days = DayOfTheWeekField(label='days', widget = forms.CheckboxSelectMultiple())
 
 
