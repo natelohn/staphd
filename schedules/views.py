@@ -715,7 +715,7 @@ def stapher_cover_view(request, *args, **kwargs):
 	context['schedule'] = schedule
 	context['schedule_msg'] = schedule_msg 
 	context['form'] = form
-	context['days'] = [{'int':i, 'txt', day} for i, day in enumerate(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])]
+	context['days'] = [{'int':i, 'txt':day} for i, day in enumerate(['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'])]
 	context['at_staph'] = True
 	return render(request, template, context)
 
