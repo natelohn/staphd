@@ -35,7 +35,6 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
 
 	def get_context_data(self, *args, **kwargs):
-		cache.set('current_task_id', None, 30)
 		context = super(DownloadView, self).get_context_data(*args, **kwargs)
 		try:
 			active_schedule = Schedule.objects.get(active = True)
