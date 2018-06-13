@@ -18,7 +18,7 @@
 		{% for day in days%}
 		<li>
 			<label>
-				<input type="checkbox" name="days" value="{day.int}" id="id_days_{{forloop.counter0}}">
+				<input type="checkbox" name="days" value="{{day.int}}" id="id_days_{{forloop.counter0}}">
 				{{day.txt}}
 			</label>
 		</li>
