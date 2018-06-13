@@ -15,7 +15,6 @@
 	<br>
 	<h2>Select the days {{stapher.first_name}} needs shifts covered for:</h2>
 	<form action="" method='POST' id='form' >{% csrf_token %}
-	<button class='create_btn' id="form_save" type='submit'>Get Shifts Covered</button>
 	<div id="cover_days">
 		{% for day in days%}
 		<label for="id_days_{{forloop.counter0}}"></label>
@@ -25,6 +24,7 @@
 		</h2>
 		{% endfor %}
 	</div>
+	<button class='create_btn' id="form_save" type='submit'>Get Shifts Covered</button>
 	</form>
 	<br>
 	{% endif %}
