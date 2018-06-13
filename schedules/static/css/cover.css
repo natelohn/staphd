@@ -2,7 +2,11 @@
 	width: 100%;
 }
 
-#cover_days h2{
-	background-color: silver;
+#cover_days h1{
+	background-color: #EEEEEE;
 	display: inline-block;
+	margin: 10px;
+	border: 1px;
+	border-style: solid;
+	border-color: black;
 }
