@@ -35,7 +35,6 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
 
 	def get_context_data(self, *args, **kwargs):
-		cache.set('current_task_id', None, 0)
 		context = super(DownloadView, self).get_context_data(*args, **kwargs)
 		try:
 			active_schedule = Schedule.objects.get(active = True)
@@ -59,7 +58,7 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 		elif up_to_date:
 			clean_msg = f'Excel files match {last_updated} - not the current schedule ({active_schedule})'
 		else:
-			clean_msg = f'Files do not match {active_schedule}. Please update {active_schedule}\'s Excel files before downloading'
+			clean_msg = f'Files do not match {last_updated}. Please update the Excel files for {last_updated} or {active_schedule} before downloading'
 
 		context['last_updated'] = last_updated
 		context['clean_excels'] = clean_excels

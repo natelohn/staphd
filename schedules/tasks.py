@@ -25,7 +25,7 @@ def update_files_task(self, schedule_id):
 
 	# Set the amount of actions for the task to recieve later to use for percentage
 	# TODO: Dynamically get num_total_actions (?)
-	num_total_actions = (len(all_staphers) * 2) + ((len(all_masters) * 2) - 3) + 3
+	num_total_actions = (len(all_staphers) * 2) + ((len(all_masters) * 2) - 3) + 6
 	cache.set('num_actions_made', 0, 1500)
 	cache.set('num_total_actions', num_total_actions, 1500)
 
@@ -54,14 +54,13 @@ def build_schedules_task(self, schedule_id):
 	except:
 		staphings = []
 	sorted_shifts = cache.get('sorted_shifts')
-	if cache.get('resort') or not sorted_shifts:
+	if not sorted_shifts:
 		# Set the message for the front end
 		self.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
 		shifts_in_set = Shift.objects.filter(shift_set = schedule.shift_set)
 		all_staphers = Stapher.objects.all()
 		sorted_shifts = get_sorted_shifts(all_staphers, shifts_in_set)
 		cache.set('sorted_shifts', sorted_shifts, None)
-		cache.set('resort', False, None)
 	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
 	cache.set('num_total_actions', total_actions, 1500)
 
