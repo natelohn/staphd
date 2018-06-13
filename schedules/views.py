@@ -717,7 +717,7 @@ def stapher_cover(request, *args, **kwargs):
 	context['schedule'] = schedule
 	context['schedule_msg'] = schedule_msg 
 	context['form'] = form
-	context['days'] = [{'int':i, 'txt':day, 'selected':(day in shift_to_cover.keys())} for i, day in enumerate(days)]
+	context['days'] = days
 	context['shift_to_cover'] = shift_to_cover
 	context['at_staph'] = True
 	return render(request, template, context)
