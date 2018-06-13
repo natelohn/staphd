@@ -282,7 +282,6 @@ class WeekdayForm(forms.Form):
 	def __init__(self, *args, **kwargs):
 		super(WeekdayForm, self).__init__(*args, **kwargs)
 		DAY_OF_THE_WEEK = {0:_(u'Sunday'),1:_(u'Monday'),2:_(u'Tuesday'),3:_(u'Wednesday'),4:_(u'Thursday'),5:_(u'Friday'),6:_(u'Saturday')}
-		kwargs['choices'] = tuple(sorted(DAY_OF_THE_WEEK.items())) 
-		self.fields['added_shifts'].choices = tuple(sorted(ALL_SHIFTS.items()))  
+		self.fields['days'].choices = tuple(sorted(DAY_OF_THE_WEEK.items()))  
 
 
