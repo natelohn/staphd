@@ -23,7 +23,7 @@ from operator import attrgetter
 from staphd.celery import app
 
 from .analytics import get_readable_time
-from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
+from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm, WeekDaysForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
@@ -644,7 +644,6 @@ def stapher_schedule(request, args, kwargs, form):
 def stapher_schedule_view(request, *args, **kwargs):
 	return stapher_schedule(request, args, kwargs, None)
 
-
 @login_required
 def stapher_shift_scheduled(request, *args, **kwargs):
 	stapher_id = kwargs['pk']
@@ -675,7 +674,6 @@ def stapher_schedule_add(request, *args, **kwargs):
 		return Http404
 	if request.method == 'POST':
 		form = AddShiftsForm(request.POST)
-		print(f'Valid = {form.is_valid()}')
 		if form.is_valid():
 			for shift in form.cleaned_data['added_shifts']:
 				new_staphing = Staphing(stapher = stapher, schedule = schedule, shift = shift)
@@ -685,6 +683,33 @@ def stapher_schedule_add(request, *args, **kwargs):
 		form = AddShiftsForm()
 	return stapher_schedule(request, args, kwargs, form)
 
+@login_required
+def stapher_cover(request, *args, **kwargs):
+	stapher_id = kwargs['pk']
+	try:
+		stapher = Stapher.objects.get(id__exact = stapher_id)
+	except:
+		return Http404
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+		all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+		stapher_staphings = all_staphings.filter(stapher_id__exact = stapher.id)
+	except:
+		schedule = None
+		all_staphings = []
+		stapher_staphings = []
+	if schedule:
+		schedule_msg = f'Covering {stapher.full_name()}\'s Shifts on "{schedule.title}"'
+	else:
+		schedule_msg = f'Unable to cover shifts for {stapher.full_name()}\'s schedule since no schedule is selected...'
+
+	template = 'schedules/stapher_cover.html'
+	context = {}
+	context['stapher'] = stapher
+	context['schedule'] = schedule
+	context['schedule_msg'] = schedule_msg 
+	context['at_staph'] = True
+	return render(request, template, context)
 
 
 
