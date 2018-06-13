@@ -707,9 +707,8 @@ def stapher_cover(request, *args, **kwargs):
 		form = WeekdayForm(request.POST)
 		if form.is_valid():
 			for day in form.cleaned_data['days']:
-				test = day + 1
-				print(f'day = {test}' )
-				shift_to_cover[days[day]] = [s.shift for s in Staphing.objects.filter( stapher = stapher, schedule = schedule)]
+				print(f'day = {day}' )
+				shift_to_cover[days[int(day)]] = [s.shift for s in Staphing.objects.filter( stapher = stapher, schedule = schedule)]
 			return HttpResponseRedirect(reverse('schedules:stapher-cover'))
 	else:
 		form = WeekdayForm()
