@@ -254,6 +254,7 @@ def update_files(request, *args, **kwargs):
 			task_id = task.task_id
 			cache.set('current_task_id', task_id, 3000)
 			cache.set('no_redirect', True, None)
+			cache.set('latest_excel_deleted', False, None)
 	else:
 		template = 'schedules/progress.html'
 		context['update_error_message'] = 'Please wait for the current task to complete.'
