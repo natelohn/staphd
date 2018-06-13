@@ -2,9 +2,9 @@ import datetime as dt
 from django import forms
 from django.db import models
 from django.db.models.functions import Lower
+from django.utils.translation import ugettext as _
 
 
-from .fields import DayOfTheWeekField
 from .models import Flag, Qualification, Schedule, Settings, Shift, Stapher, Staphing, ShiftSet
 from .models import Settings as ScheduleBuildingSettings
 
@@ -277,6 +277,12 @@ class AddShiftsToSetForm(forms.Form):
 		return added_shifts
 
 class WeekdayForm(forms.Form):
-	days = DayOfTheWeekField(widget = forms.CheckboxSelectMultiple())
+	days = forms.MultipleChoiceField(label='days', widget = forms.CheckboxSelectMultiple())
+
+	def __init__(self, *args, **kwargs):
+		super(WeekdayForm, self).__init__(*args, **kwargs)
+		DAY_OF_THE_WEEK = {0:_(u'Sunday'),1:_(u'Monday'),2:_(u'Tuesday'),3:_(u'Wednesday'),4:_(u'Thursday'),5:_(u'Friday'),6:_(u'Saturday')}
+		kwargs['choices'] = tuple(sorted(DAY_OF_THE_WEEK.items())) 
+		self.fields['added_shifts'].choices = tuple(sorted(ALL_SHIFTS.items()))  
 
 
