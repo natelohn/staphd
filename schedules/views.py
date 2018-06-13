@@ -715,6 +715,7 @@ def stapher_cover_view(request, *args, **kwargs):
 	context['schedule'] = schedule
 	context['schedule_msg'] = schedule_msg 
 	context['schedule_msg'] = schedule_msg 
+	context['form'] = form 
 	context['at_staph'] = True
 	return render(request, template, context)
 
