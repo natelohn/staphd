@@ -371,11 +371,13 @@ class Staphing(models.Model):
 
 	def save(self, *args, **kwargs):
 		self.schedule.updated_on = timezone.now
+		self.schedule.save()
 		super(Staphing, self).save(*args, **kwargs)
 			
 
 	def delete(self, *args, **kwargs):
 		self.schedule.updated_on = timezone.now
+		self.schedule.save()
 		super(Staphing, self).delete(*args, **kwargs)
 
 	
