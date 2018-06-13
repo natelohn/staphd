@@ -684,7 +684,7 @@ def stapher_schedule_add(request, *args, **kwargs):
 	return stapher_schedule(request, args, kwargs, form)
 
 @login_required
-def stapher_cover(request, *args, **kwargs):
+def stapher_cover_view(request, *args, **kwargs):
 	stapher_id = kwargs['pk']
 	try:
 		stapher = Stapher.objects.get(id__exact = stapher_id)
