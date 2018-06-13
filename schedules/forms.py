@@ -3,6 +3,8 @@ from django import forms
 from django.db import models
 from django.db.models.functions import Lower
 
+
+from .fields import DayOfTheWeekField
 from .models import Flag, Qualification, Schedule, Settings, Shift, Stapher, Staphing, ShiftSet
 from .models import Settings as ScheduleBuildingSettings
 
@@ -273,5 +275,8 @@ class AddShiftsToSetForm(forms.Form):
 			except:
 				raise forms.ValidationError(f"{shift_id} is not vaild shift id.")
 		return added_shifts
+
+class WeekdayForm(forms.Form):
+	days = forms.DayOfTheWeekField(label='days', widget = forms.CheckboxSelectMultiple())
 
 

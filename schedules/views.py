@@ -23,7 +23,7 @@ from operator import attrgetter
 from staphd.celery import app
 
 from .analytics import get_readable_time
-from .forms import AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
+from .forms import WeekdayForm, AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
@@ -427,7 +427,6 @@ def ratio_window_view(request, *args, **kwargs):
 	return render(request, template, context)
 
 
-
 # Settings based views
 class Settings(LoginRequiredMixin, TemplateView):
 	template_name = 'settings.html'
@@ -702,11 +701,19 @@ def stapher_cover_view(request, *args, **kwargs):
 		schedule_msg = f'Covering {stapher.full_name()}\'s Shifts on "{schedule.title}"'
 	else:
 		schedule_msg = f'Unable to cover shifts for {stapher.full_name()}\'s schedule since no schedule is selected...'
-
+	if request.method == 'POST':
+		form = WeekdayForm(request.POST)
+		if form.is_valid():
+			for day in form.cleaned_data['days']:
+				print(f'day = {day}')
+			return HttpResponseRedirect(reverse('schedules:stapher-list'))
+	else:
+		form = WeekdayForm()
 	template = 'schedules/stapher_cover.html'
 	context = {}
 	context['stapher'] = stapher
 	context['schedule'] = schedule
+	context['schedule_msg'] = schedule_msg 
 	context['schedule_msg'] = schedule_msg 
 	context['at_staph'] = True
 	return render(request, template, context)
