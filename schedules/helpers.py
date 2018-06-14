@@ -5,7 +5,7 @@ from dateutil.parser import parse
 from operator import attrgetter
 
 from .analytics import get_hours_from_timedelta, get_readable_time, get_td_from_time
-from .models import Staphing, Shift, Stapher, ShiftPreference
+from .models import Schedule, Staphing, Shift, Stapher, ShiftPreference
 
 def get_min(time):
 	m = time.minute / 60
@@ -286,7 +286,11 @@ def get_time_from_string(time_string):
 	return time
 
 def get_preferences_information(stapher):
-	all_shifts = Shift.objects.all()
+	try:
+		schedule = Schedule.objects.get(active = True)
+		all_shifts = Shift.objects.filter(shift_set = schedule.shift_set)
+	except:
+		all_shifts = Shift.objects.all()
 	all_special_flags = set()
 	for shift in all_shifts:
 		if shift.is_special() and not shift.is_unpaid():
