@@ -49,7 +49,7 @@
 			•
 			<a id="uncovered_shift_links" onclick="toggle_schedule({{shift.id}})">Stapher Breakdown</a>
 			•
-			<a id="uncovered_shift_links" href="">Search</a>
+			<a id="uncovered_shift_links" href="{% url 'schedules:stapher-list' %}?q={{shift.search_link}}" target="_blank">Search</a>
 		</li>
 		<table class="hidden_schedule_table" id="stapher_schedule_{{shift.id}}">
 			{% for row in shift.stapher_table %}

@@ -737,6 +737,7 @@ def stapher_cover(request, *args, **kwargs):
 						shift_obj['txt'] = f'{shift.title}, {get_readable_time(shift.start)}-{get_readable_time(shift.end)}, {len(break_down[3])} availible.'
 						shift_obj['id'] = shift.id
 						shift_obj['stapher_table'] = break_down
+						shift_obj['search_link'] = f'{days[shift.day]} {shift.start.strftime("%I:%M%p")}-{shift.end.strftime("%I:%M%p")}'
 						shifts_to_cover[day_str].append(shift_obj)
 	else:
 		form = WeekdayForm()
