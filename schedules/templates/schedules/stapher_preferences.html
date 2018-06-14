@@ -5,9 +5,11 @@
 	<br>
 	<br>
 	<h2>Stapher Prefences</h2>
-	{% for flag in flags_to_add %}
-	<a href="">{{flag}}</a>
-	{% endfor %}
+	<ul>
+		{% for flag in flags_to_add %}
+		<li><a href="">{{flag}}</a></li>
+		{% endfor %}
+	</ul>
 	<h2>Stapher Prefences</h2>
 	<table id="ranking_table">
 		{% for pref in preferences %}
