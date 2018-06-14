@@ -1,5 +1,4 @@
 #ranking_table {
-	left: 25%;
 	width: 50%;
 }
 
@@ -29,4 +28,14 @@
 
 #ranking_table i:hover{
 	color: white;
+}
+
+#rating_link {
+	text-decoration: none;
+	color: black;
+}
+
+#rating_link:hover {
+	text-decoration: underline;
+	font-weight: bold;
 }
