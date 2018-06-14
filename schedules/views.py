@@ -709,7 +709,7 @@ def stapher_cover(request, *args, **kwargs):
 				day_str = days[int(day)]
 				shifts_to_cover[day_str] = []
 				for shift in all_staphers_shifts:
-					if shift.day == day and not shift.is_unpaid():
+					if shift.day == int(day) and not shift.is_unpaid():
 						shift_obj = {}
 						shift_obj['txt'] = f'{shift.title}, {get_readable_time(shift.start)}-{get_readable_time(shift.end)}'
 						shift_obj['stapher_table'] = get_stapher_breakdown_table(shift, Stapher.object.filter(stapher__id = stapher.id), all_staphings)
