@@ -18,22 +18,6 @@
 	top: 150px;
 }
 
-#build_schedule_form input{
-	font-size: 4em;
-}
-
-#build_schedule_form input:hover{
-	background-color: #52f97f;
-}
-
-.big_button {
-	font-size: 4em;
-}
-
-.big_button:hover {
-	background-color: #52f97f;
-}
-
 #schedule_settings, #update_excel_form{
 	top: 45px;
 }
