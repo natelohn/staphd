@@ -6,9 +6,16 @@
 	<br>
 	<h2>Add Prefences</h2>
 	<ul>
-		{% for flag in flags_to_add %}
-		<li><a href="">{{flag}}</a></li>
-		{% endfor %}
+		<table id="ranking_table">
+			{% for flag in flags_to_add %}
+			<tr>
+				<td class="ranking_table_data" id="ranking_table_text">{flag}}</td>
+				<td class="ranking_table_data" id="ranking_table_text">
+					<a id="rating_link" href="">Add</a>
+				</td>
+			</tr>
+			{% endfor %}
+		</table>
 	</ul>
 	<h2>Stapher Prefences</h2>
 	<table id="ranking_table">
