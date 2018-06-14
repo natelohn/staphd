@@ -43,7 +43,6 @@ class Stapher(models.Model):
 	age 			= models.IntegerField(default = 18)
 	class_year 		= models.IntegerField(default = datetime.datetime.today().year + 3)
 	summers_worked 	= models.IntegerField(default = 0)
-	ranking			= models.IntegerField(default = 1)
 
 	def __str__(self):
 		return f'{self.first_name} {self.last_name}'
