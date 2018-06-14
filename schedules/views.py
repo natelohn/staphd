@@ -531,7 +531,7 @@ class StapherList(LoginRequiredMixin,ListView):
 								start = get_time_from_string(start_str)
 								end = get_time_from_string(end_str)
 					free_during_time = [s for s in all_staphers if s.free_during_window(all_staphings, day, start, end)] if (day != None and start != None and end != None) else []
-					explanation_str = f' are free on {query.capitalize()} on the \"{schedule}\" schedule' if schedule else f' free on {query.capitalize()} (which is all staphers since no schedule is selected),'
+					explanation_str = f' are free on {query.capitalize()} on the \"{schedule}\" schedule,' if schedule else f' free on {query.capitalize()} (which is all staphers since no schedule is selected),'
 					if free_during_time: query_explanation += explanation_str
 
 					queryset = list(names_contain) + list(title_exact) + list(class_year_exact) + list(age_exact) + list(summers_exact) + free_during_time
