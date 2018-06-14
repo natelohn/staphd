@@ -701,7 +701,7 @@ def stapher_cover(request, *args, **kwargs):
 		schedule_msg = f'Covering {stapher.full_name()}\'s Shifts on "{schedule.title}"'
 	else:
 		schedule_msg = f'Unable to cover shifts for {stapher.full_name()}\'s schedule since no schedule is selected...'
-	shift_to_cover = {}
+	shifts_to_cover = {}
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 	if request.method == 'POST':
 		form = WeekdayForm(request.POST)
@@ -709,7 +709,7 @@ def stapher_cover(request, *args, **kwargs):
 			all_staphers_shifts = [s.shift for s in Staphing.objects.filter( stapher = stapher, schedule = schedule)]
 			for day in form.cleaned_data['days']:
 				print(f'day = {day}' )
-				shift_to_cover[days[int(day)]] = [s for s in all_staphers_shifts if s.day == int(day)]
+				shifts_to_cover[days[int(day)]] = [s for s in all_staphers_shifts if s.day == int(day) and not s.is_unpaid()]
 	else:
 		form = WeekdayForm()
 	template = 'schedules/stapher_cover.html'
@@ -719,8 +719,8 @@ def stapher_cover(request, *args, **kwargs):
 	context['schedule_msg'] = schedule_msg 
 	context['form'] = form
 	context['days'] = days
-	print(f'shift_to_cover = {shift_to_cover}')
-	context['shift_to_cover'] = shift_to_cover
+	print(f'shifts_to_cover = {shifts_to_cover}')
+	context['shifts_to_cover'] = shifts_to_cover
 	context['at_staph'] = True
 	return render(request, template, context)
 
