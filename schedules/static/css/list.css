@@ -64,10 +64,10 @@
     text-align: right;
 }
 
-.list_header input, .list_header button {
+.list_header input, .list_header button , .list_header a{
 	/* Positioning */
     position: absolute;
-    height: 50%;
+    height: 40px;
     top: 50%;
     font-size: 1.75em;
 }
