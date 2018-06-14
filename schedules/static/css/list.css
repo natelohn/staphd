@@ -64,7 +64,7 @@
     text-align: right;
 }
 
-.list_header input, .list_header button , .list_header a{
+.list_header input, .list_header button {
 	/* Positioning */
     position: absolute;
     height: 50%;
