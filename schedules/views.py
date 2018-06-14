@@ -519,7 +519,7 @@ class StapherList(LoginRequiredMixin,ListView):
 					if summers_exact: query_explanation += f' have worked {query} summer(s),'
 
 					# Search by Day/Time
-					days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+					days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']
 					day = None
 					start = None
 					end = None
