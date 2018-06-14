@@ -27,7 +27,7 @@ from .forms import WeekdayForm, AddShiftsForm, FlagCreateForm, ScheduleCreateFor
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
-from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv, get_ratio_table, get_ratio_tables_in_window
+from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table
 
 
 # Download Based Views
@@ -692,11 +692,9 @@ def stapher_cover(request, *args, **kwargs):
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
 		all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
-		stapher_staphings = all_staphings.filter(stapher_id__exact = stapher.id)
 	except:
 		schedule = None
 		all_staphings = []
-		stapher_staphings = []
 	if schedule:
 		schedule_msg = f'Covering {stapher.full_name()}\'s Shifts on "{schedule.title}"'
 	else:
@@ -706,7 +704,7 @@ def stapher_cover(request, *args, **kwargs):
 	if request.method == 'POST':
 		form = WeekdayForm(request.POST)
 		if form.is_valid():
-			all_staphers_shifts = [s.shift for s in Staphing.objects.filter( stapher = stapher, schedule = schedule)]
+			all_staphers_shifts = [s.shift for s in all_staphings.filter(stapher = stapher, schedule = schedule)]
 			for day in form.cleaned_data['days']:
 				day_str = days[int(day)]
 				shifts_to_cover[day_str] = []
@@ -714,7 +712,8 @@ def stapher_cover(request, *args, **kwargs):
 					if shift.day == day and not shift.is_unpaid():
 						shift_obj = {}
 						shift_obj['txt'] = f'{shift.title}, {get_readable_time(shift.start)}-{get_readable_time(shift.end)}'
-						shifts_to_cover[day_str].append()
+						shift_obj['stapher_table'] = get_stapher_breakdown_table()
+						shifts_to_cover[day_str].append(shift_obj)
 	else:
 		form = WeekdayForm()
 	template = 'schedules/stapher_cover.html'

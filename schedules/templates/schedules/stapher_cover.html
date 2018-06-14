@@ -39,7 +39,11 @@
 	<h2>Shifts to Cover on {{day}}:</h2>
 	<ul id="uncovered_shift_list">
 		{% for shift in shifts %}
-		<li>{{shift.txt}}<a href="">See Staphers</a><a href="">Get Recommendation</a></li>
+		<li>
+			{{shift.txt}}
+			<a href="">See Staphers</a>
+			<a href="">Get Recommendation</a>
+		</li>
 		{% endfor %}
 	</ul>
 	{% endfor %} 

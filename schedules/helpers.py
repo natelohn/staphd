@@ -274,5 +274,7 @@ def get_ratio_tables_in_window(ratios, day, start, end):
 			all_tables.append(tables)
 	return all_tables
 
+def get_stapher_breakdown_table(shift, staphers, staphings):
+	return None
 
 
