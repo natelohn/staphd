@@ -1377,7 +1377,7 @@ def stapher_preferences(request, *args, **kwargs):
 		stapher = Stapher.objects.get(id = stapher_id)
 	except:
 		return Http404
-		
+
 	pref_info = get_preferences_information(stapher)
 	template = 'schedules/stapher_preferences.html'
 	context = {}
@@ -1402,9 +1402,6 @@ def stapher_preferences_add(request, *args, **kwargs):
 		return Http404
 	new_preference = ShiftPreference(stapher = stapher, flag = flag, ranking = ranking)
 	new_preference.save()
-	stapher_preference_info = cache.get('stapher_preference_info')
-	stapher_preference_info.pop(stapher.id, None)
-	cache.set('stapher_preference_info', stapher_preference_info, None)
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': stapher.id}))
 
 
@@ -1417,9 +1414,6 @@ def stapher_preferences_delete(request, *args, **kwargs):
 		return Http404
 	stapher = preference.stapher
 	preference.delete()
-	stapher_preference_info = cache.get('stapher_preference_info')
-	stapher_preference_info.pop(stapher.id, None)
-	cache.set('stapher_preference_info', None, 0) #TODO Delete <-
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': stapher.id}))
 
 
