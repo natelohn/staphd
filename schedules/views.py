@@ -1327,6 +1327,7 @@ def rank_staphers_view(request, *args, **kwargs):
 	context = {}
 	context['schedule'] = schedule
 	context['order_staphers'] = order_staphers
+	print(f'order_staphers = {order_staphers}')
 	return render(request, template, context)
 
 
