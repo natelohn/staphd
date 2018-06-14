@@ -706,10 +706,10 @@ def stapher_cover(request, *args, **kwargs):
 	if request.method == 'POST':
 		form = WeekdayForm(request.POST)
 		if form.is_valid():
-			all_shifts = [s.shift for s in Staphing.objects.filter( stapher = stapher, schedule = schedule)]
+			all_staphers_shifts = [s.shift for s in Staphing.objects.filter( stapher = stapher, schedule = schedule)]
 			for day in form.cleaned_data['days']:
 				print(f'day = {day}' )
-				shift_to_cover[days[int(day)]] = [s for s in all_shifts if s.day == int(day)]
+				shift_to_cover[days[int(day)]] = [s for s in all_staphers_shifts if s.day == int(day)]
 	else:
 		form = WeekdayForm()
 	template = 'schedules/stapher_cover.html'
