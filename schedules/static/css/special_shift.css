@@ -1,0 +1,32 @@
+#ranking_table {
+	left: 25%;
+	width: 50%;
+}
+
+#ranking_table_rank {
+	padding-left: 5px;
+	padding-right: 5px;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+#ranking_table td{
+	border: 1px;
+	border-color: black;
+	border-style: solid;
+	background-color: silver;
+}
+
+#ranking_table_text{
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 1.35em;
+}
+
+#ranking_table i{
+	color: black;
+}
+
+#ranking_table i:hover{
+	color: white;
+}

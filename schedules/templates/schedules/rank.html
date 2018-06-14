@@ -9,12 +9,12 @@
 	{% endif %}
 	{% if schedule %}
 	<h2>Staphers order affects when they will get their special shift choices.</h2>
-	<table>
+	<table id="ranking_table">
 		{% for stapher in ordered_staphers %}
 		<tr>
-			<td id="parameters_table_rank"><strong>{{forloop.counter}}</strong></td>
-			<td id="parameters_table_text"><strong>{{stapher}}</strong></td>
-			<td id="parameters_table_text"><a href="">Edit Preferences</a></td>
+			<td id="ranking_table_rank"><strong>{{forloop.counter}}</strong></td>
+			<td id="ranking_table_text"><strong>{{stapher}}</strong></td>
+			<td id="ranking_table_text"><a href="">Edit Preferences</a></td>
 			<td>
 				<ul id="up_down_vote">
 					<li><a href=""><i class="fa fa-sort-up"></i></a></li>
