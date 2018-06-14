@@ -1405,9 +1405,16 @@ def stapher_preferences_add(request, *args, **kwargs):
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': stapher.id}))
 
 
-
-
-
+@login_required
+def stapher_preferences_delete(request, *args, **kwargs):
+	pref_id = kwargs['pk']
+	try:
+		preference = ShiftPreference.objects.get(id = pref_id)
+	except:
+		return Http404
+	stapher = preference.stapher
+	preference.delete()
+	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': stapher.id}))
 
 
 
