@@ -37,7 +37,11 @@
 	<hr style="background-color: grey; height:1px; margin: 10px;">
 	<br>
 	{% for day, shifts in shifts_to_cover.items %}
+	{% if shifts %}
 	<h2>Shifts to Cover on {{day}}:</h2>
+	{% else %}
+	<h2>No Shifts to Cover on {{day}}.</h2>
+	{% endif %}
 	<ul id="uncovered_shift_list">
 		{% for shift in shifts %}
 		<li>
