@@ -1340,9 +1340,9 @@ def rank_staphers_swap_rank(request, swap_stapher, up):
 		if swap_stapher == stapher:
 			index = i
 			break
-	if index > 0 and up:
+	if index >= 0 and up:
 		new_index = index - 1
-	elif index > 0 and not up:
+	elif index >= 0 and not up:
 		new_index = index + 1
 	else:
 		new_index = -1
