@@ -2,7 +2,7 @@
 {% block page %}
 <div id="page">
 	{% if schedule %}
-	<h1>Special Shift Placement for {{schedule}}:</h1>
+	<h1>Special Shift Placement for {{schedule}}</h1>
 	{% else %}
 	<h1>No Schedule Selected. Select Schedule to Place Shifts</h1>
 	<a class="button" href="{% url 'schedules:select' %}">Select New Schedule</a>
@@ -18,6 +18,7 @@
 		<tr>
 			<td id="parameters_table_rank"><strong>{{forloop.counter}}</strong></td>
 			<td id="parameters_table_text"><strong>{{stapher}}</strong></td>
+			<td><a href="">Edit Preference</a></td>
 			<td>
 				<ul id="up_down_vote">
 					<li><a href=""><i class="fa fa-sort-up"></i></a></li>
