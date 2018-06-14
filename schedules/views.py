@@ -1308,3 +1308,41 @@ class ShiftSetDelete(LoginRequiredMixin, DeleteView):
 		return context
 
 
+
+
+
+
+# Special Shift Placement Based Views
+@login_required
+def rank_staphers_view(request, *args, **kwargs):
+	try:
+		schedule = Schedule.objects.get(active = True)
+	except:
+		schedule = None
+	template = 'schedules/rank.html'
+	order_staphers = cache.get('order_staphers')
+	if not order_staphers:
+		order_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age')
+		cache.set('order_staphers', order_staphers, 1500)
+	context = {}
+	context['schedule'] = schedule
+	context['order_staphers'] = order_staphers
+	return render(request, template, context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

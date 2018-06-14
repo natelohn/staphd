@@ -1,0 +1,33 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+<div id="page">
+	{% if schedule %}
+	<h1>Special Shift Placement for {schedule}:</h1>
+	{% else %}
+	<h1>No Schedule Selected. Select Schedule to Place Shifts</h1>
+	<a class="button" href="{% url 'schedules:select' %}">Select New Schedule</a>
+	{% endif %}
+	{% if schedule %}
+	<h2>Staphers order affects when they will get their special shift choices.</h2>
+	<table id="parameters_table">
+		<tr>
+			<th></th>
+			<th id="title_tablehead">Name</th>
+		</tr>
+		{% for stapher in ordered_staphers %}
+		<tr>
+			<td id="parameters_table_rank"><strong>{{forloop.counter}}</strong></td>
+			<td id="parameters_table_text"><strong>{{param.title}}</strong></td>
+			<td id="parameters_table_text">{{param.description}}</td>
+			<td>
+				<ul id="up_down_vote">
+					<li><a href="{% url 'schedules:rank-up' pk=param.id %}"><i class="fa fa-sort-up"></i></a></li>
+					<li><a href="{% url 'schedules:rank-down' pk=param.id %}"><i class="fa fa-sort-down"></i></a></li>
+				</ul>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% endif %}
+</div>
+{% endblock %}
