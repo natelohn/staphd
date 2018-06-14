@@ -5,7 +5,7 @@ from dateutil.parser import parse
 from operator import attrgetter
 
 from .analytics import get_hours_from_timedelta, get_readable_time, get_td_from_time
-from .models import Staphing, Shift
+from .models import Staphing, Shift, Stapher
 
 def get_min(time):
 	m = time.minute / 60
@@ -43,6 +43,15 @@ def make_staphings_csv(schedule):
 		csv_string = staphing.stapher.full_name() + ',' + shift_csv
 		all_csv_strings.append(csv_string)
 	return all_csv_strings
+
+def get_all_staphers_qualifications():
+	all_staphers_and_quals = []
+	for stapher in Stapher.objects.all():
+		stapher_str = f'{stapher.first_name},{stapher.last_name}'
+		for qual in stapher.qualifications.all():
+			stapher_str += ',' + qual.title
+		all_staphers_and_quals.append(stapher_str)
+	return all_staphers_and_quals
 
 
 def get_week_schedule_view_info(stapher, staphings, shift, schedule):
