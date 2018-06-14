@@ -1319,7 +1319,7 @@ def rank_staphers_view(request, *args, **kwargs):
 		schedule = None
 	template = 'schedules/rank.html'
 	ordered_staphers = cache.get('ordered_staphers')
-	if ordered_staphers:
+	if not ordered_staphers:
 		ordered_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age', 'first_name')
 		cache.set('ordered_staphers', ordered_staphers, 1800)
 	context = {}
