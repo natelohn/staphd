@@ -23,7 +23,7 @@ from staphd.celery import app
 
 from .analytics import get_readable_time
 from .forms import WeekdayForm, AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
-from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
+from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification, ShiftPreference
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
 from .helpers import get_shifts_to_add, get_week_schedule_view_info, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string, get_preferences_information
@@ -1385,6 +1385,24 @@ def stapher_preferences(request, *args, **kwargs):
 	context['flags_to_add'] = pref_info[0]
 	context['preferences'] = pref_info[1]
 	return render(request, template, context)
+
+@login_required
+def stapher_preferences_add(request, *args, **kwargs):
+	stapher_id = kwargs['pk']
+	flag_id = kwargs['f']
+	try:
+		stapher = Stapher.objects.get(id = stapher_id)
+		flag = Stapher.objects.get(id = stapher_id)
+		all_preferences = list(ShiftPreference.objects.all().order_by('-rank'))
+		if all_preferences:
+			rank = all_preferences[0].rank + 1
+		else:
+			rank = 1
+	except:
+		return Http404
+	new_preference = ShiftPreference(stapher = stapher, flag = flag, rank = rank)
+	new_preference.save()
+	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': stapher.id}))
 
 
 

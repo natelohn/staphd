@@ -12,7 +12,7 @@
 				<tr>
 					<td class="ranking_table_data" id="ranking_table_text">{{flag}}</td>
 					<td class="ranking_table_data" id="ranking_table_text">
-						<a id="rating_link" href="">Add</a>
+						<a id="rating_link" href="{% url 'schedules:stapher-preferences-add' pk=stapher.id f=flag.id %}">Add</a>
 					</td>
 				</tr>
 				{% endfor %}
