@@ -2,12 +2,14 @@
 {% block page %}
 <div id="page">
 	<br>
+	<a class="button" href="{% url 'schedules:download'%}">Download Excel Files</a>
+	<br>
+	<br>
 	<a class="button" href="{% url 'schedules:flag-settings' %}">Edit Flags</a>
 	<br>
 	<br>
 	<a class="button" href="{% url 'schedules:qualification-settings' %}">Edit Qualifications</a>
 	<br>
 	<br>
-	<a class="button" href="{% url 'schedules:settings-select' %}">Edit Schedule Building Settings</a>
 </div>
 {% endblock %}

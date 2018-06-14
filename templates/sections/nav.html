@@ -40,11 +40,6 @@
 		{% else %}
 		<li><a href="{% url 'schedules:shift-list' %}">Shifts</a></li>
 		{% endif %}
-		{% if at_download %}
-		<li class="current_link"><a href="{% url 'schedules:download'%}">Download</a></li>
-		{% else %}
-		<li><a href="{% url 'schedules:download'%}">Download</a></li>
-		{% endif %}
 		{% if at_settings %}
 		<li class="current_link"><a href="{% url 'schedules:settings' %}">Extras</a></li>
 		{% else %}
