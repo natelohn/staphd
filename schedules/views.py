@@ -523,16 +523,14 @@ class StapherList(LoginRequiredMixin,ListView):
 					start = None
 					end = None
 					for i, d in enumerate(days):
-						if d in query and not (day and start and end):
+						if d in query and not (day != None and start != None and end != None):
 							query_cpy = query.replace(d,'').strip()
 							day = i
 							if '-' in query_cpy:
 								start_str, end_str = query_cpy.split('-')
 								start = get_time_from_string(start_str)
 								end = get_time_from_string(end_str)
-								print(f'day = "{day}", start = "{start}", end = "{end}", bool = {(day and start and end)}')
-					free_during_time = [s for s in all_staphers if s.free_during_window(all_staphings, day, start, end)] if (day and start and end) else []
-					print(f'free_during_time = {free_during_time}')
+					free_during_time = [s for s in all_staphers if s.free_during_window(all_staphings, day, start, end)] if (day != None and start != None and end != None) else []
 					explanation_str = f'- are free on {query} on the \"{schedule}\" schedule' if schedule else f'- all staphers are free on {query} since no schedule is selected.'
 					if free_during_time: query_explanation.append(explanation_str)
 
