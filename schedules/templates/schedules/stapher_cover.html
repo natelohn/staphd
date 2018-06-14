@@ -34,10 +34,10 @@
 	<button class='button' id="form_save" type='submit'>Cover Shifts</button>
 	{% endif %}
 	</form>
-	{% for day in shifts_to_cover %}
+	{% for day, shifts in shifts_to_cover.items %}
 	<h2>Shifts to Cover on {{day}}:</h2>
 	<ul>
-		{% for shift in shifts_to_cover[day] %}
+		{% for shift in shifts %}
 		<li>{{shift}}</li>
 		{% endfor %}
 	</ul>
