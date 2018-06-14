@@ -10,7 +10,7 @@
 	font-size: 1.5em;
 }
 
-#ranking_table_data {
+#ranking_table td{
 	border: 1px;
 	border-color: black;
 	border-style: solid;
