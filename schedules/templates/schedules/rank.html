@@ -12,8 +12,9 @@
 	<table id="parameters_table">
 		<tr>
 			<th></th>
-			<th id="title_tablehead">Name</th>
+			<th id="title_tablehead">Name - {{ordered_staphers}}</th>
 		</tr>
+
 		{% for stapher in ordered_staphers %}
 		<tr>
 			<td id="parameters_table_rank"><strong>{{forloop.counter}}</strong></td>
