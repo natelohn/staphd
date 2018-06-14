@@ -43,6 +43,7 @@ class Stapher(models.Model):
 	age 			= models.IntegerField(default = 18)
 	class_year 		= models.IntegerField(default = datetime.datetime.today().year + 3)
 	summers_worked 	= models.IntegerField(default = 0)
+	ranking			= models.IntegerField(unique = True, default = 1)
 
 	def __str__(self):
 		return f'{self.first_name} {self.last_name}'
@@ -457,7 +458,16 @@ class Master(models.Model):
 		return self.template == 'master-template'
 
 
+class ShiftPreference(models.Model):
+	stapher 		= models.ForeignKey(Stapher, on_delete = models.CASCADE)
+	flag 			= models.ForeignKey(Flag, on_delete = models.CASCADE)
+	ranking			= models.IntegerField(unique = True, default = 1)
 
+	def __str__(self):
+		return f'{self.stapher} has {self.flag.title} ranked {self.ranking}'
+
+	def get_absolute_url(self):
+		return reverse('schedules:stapher-detail', kwargs={'pk': self.stapher.id})
 
 
 

@@ -62,7 +62,6 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 		context['last_updated'] = last_updated
 		context['clean_excels'] = clean_excels
 		context['clean_msg'] = clean_msg
-		context['at_download'] = True
 		return context
 
 @login_required
