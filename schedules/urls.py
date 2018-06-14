@@ -29,6 +29,8 @@ urlpatterns = [
     url(r'^schedules/ratios/$', views.ratio_week_view, name='ratio-week'),
     url(r'^schedules/ratios/(?P<d>[\d]+)/(?P<s>[\d]+)/(?P<e>[\d]+)/$', views.ratio_window_view, name='ratio-window'),
     url(r'^schedules/special/$', views.rank_staphers_view, name='special'),
+    url(r'^schedules/special/(?P<pk>[\d]+)/up$', views.rank_staphers_up, name='special-rank-up'),
+    url(r'^schedules/special/(?P<pk>[\d]+)/down$', views.rank_staphers_down, name='special-rank-down'),
 
     url(r'^download/$', views.DownloadView.as_view(), name='download'),
     url(r'^download/individual$', views.download_individual, name='download-individual'),
