@@ -16,7 +16,6 @@
 	<h2>Select the days {{stapher.first_name}} needs shifts covered for:</h2>
 	<form action="" method='POST' id='form' >{% csrf_token %}
 	<div id="cover_days">
-		{{shifts_to_cover}}
 		{% for day in days%}
 		<label for="id_days_{{forloop.counter0}}"></label>
 		<h2 id="day_checkbox">
@@ -25,7 +24,8 @@
 			{% else %}
 			<input type="checkbox" name="days" value="{{forloop.counter0}}" id="id_days_{{forloop.counter0}}">
 			{% endif %}
-			{{day}} 
+			{{day}}
+			{{shifts_to_cover}}
 		</h2>
 		{% endfor %}
 	</div>
