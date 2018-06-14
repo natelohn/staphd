@@ -733,11 +733,14 @@ def stapher_cover(request, *args, **kwargs):
 				for shift in sorted(all_staphers_shifts, key = attrgetter('start')):
 					if shift.day == int(day) and not shift.is_unpaid():
 						break_down = get_stapher_breakdown_table(shift, Stapher.objects.exclude(id = stapher.id), all_staphings)
+						qual_str = ''
+						for qual in shift.qualifications.all():
+							qual_str += qual.title + ','
 						shift_obj = {}
 						shift_obj['txt'] = f'{shift.title}, {get_readable_time(shift.start)}-{get_readable_time(shift.end)}, {len(break_down[3])} availible.'
 						shift_obj['id'] = shift.id
 						shift_obj['stapher_table'] = break_down
-						shift_obj['search_link'] = f'{days[shift.day]} {shift.start.strftime("%I:%M%p")}-{shift.end.strftime("%I:%M%p")}'
+						shift_obj['search_link'] = f'{qual_str} {days[shift.day]} {shift.start.strftime("%I:%M%p")}-{shift.end.strftime("%I:%M%p")}'
 						shifts_to_cover[day_str].append(shift_obj)
 	else:
 		form = WeekdayForm()
