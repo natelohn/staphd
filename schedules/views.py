@@ -1378,7 +1378,7 @@ def stapher_preferences(request, *args, **kwargs):
 	except:
 		return Http404
 	stapher_preference_info = cache.get('stapher_preference_info')
-	if stapher.id not in pref_info:
+	if stapher.id not in stapher_preference_info:
 		pref_info = get_preferences_information(stapher)
 		stapher_preference_info = {}
 		stapher_preference_info[stapher.id] = pref_info
