@@ -708,11 +708,13 @@ def stapher_cover(request, *args, **kwargs):
 		if form.is_valid():
 			all_staphers_shifts = [s.shift for s in Staphing.objects.filter( stapher = stapher, schedule = schedule)]
 			for day in form.cleaned_data['days']:
-				shifts_to_cover[days[int(day)]] = []
+				day_str = days[int(day)]
+				shifts_to_cover[day_str] = []
 				for shift in all_staphers_shifts:
-					if shift.day == int(day) and not shift.is_unpaid():
+					if shift.day == day and not shift.is_unpaid():
 						shift_obj = {}
 						shift_obj['txt'] = f'{shift.title}, {get_readable_time(shift.start)}-{get_readable_time(shift.end)}'
+						shifts_to_cover[day_str].append()
 	else:
 		form = WeekdayForm()
 	template = 'schedules/stapher_cover.html'
