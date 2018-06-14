@@ -2,7 +2,6 @@ import datetime
 
 from django.urls import reverse
 from dateutil.parser import parse
-
 from operator import attrgetter
 
 from .analytics import get_hours_from_timedelta, get_readable_time, get_td_from_time
@@ -303,11 +302,8 @@ def get_time_from_string(time_string):
 	try:
 		print('here')
 		if ':' in time_string or 'am' in time_string or 'pm' in time_string:
-			print(f'time_string ={time_string}')
 			string_dt = parse(time_string)
-			print(f'string_dt ={string_dt}')
 			time = datetime.time(string_dt.hour, string_dt.minute, 0, 0)
-			print(f'time = {time}')
 		else:
 			raise Exception
 	except:
