@@ -38,9 +38,9 @@ urlpatterns = [
     url(r'^flag/create$', views.FlagCreate.as_view(), name='flag-create'),
     url(r'^flag/(?P<pk>[\d]+)/delete$', views.FlagDelete.as_view(), name='flag-delete'),
 
-    url(r'^settings/$', views.Settings.as_view(), name='settings'),
-    url(r'^settings/flags$', views.FlagSettings.as_view(), name='flag-settings'),
-    url(r'^settings/qualifications$', views.QualificationSettings.as_view(), name='qualification-settings'),
+    url(r'^extras/$', views.Settings.as_view(), name='settings'),
+    url(r'^extras/flags$', views.FlagSettings.as_view(), name='flag-settings'),
+    url(r'^extras/qualifications$', views.QualificationSettings.as_view(), name='qualification-settings'),
 
     url(r'^shifts/$', views.ShiftList.as_view(), name='shift-list'),
     url(r'^shifts/create$', views.ShiftCreate.as_view(), name='shift-create'),
