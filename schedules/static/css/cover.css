@@ -14,7 +14,12 @@
 	left: 15px;
 }
 
-#uncovered_shift_list a:hover {
+#uncovered_shift_links{
+	text-decoration: underline;
+	font-style: bold;
+}
+
+#uncovered_shift_links:hover {
 	text-decoration: underline;
 	font-style: bold;
 }
