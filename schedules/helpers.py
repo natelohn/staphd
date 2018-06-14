@@ -44,7 +44,7 @@ def make_staphings_csv(schedule):
 		all_csv_strings.append(csv_string)
 	return all_csv_strings
 
-def get_all_staphers_qualifications():
+def get_all_staphers_qualifications_csv():
 	all_staphers_and_quals = []
 	for stapher in Stapher.objects.all():
 		stapher_str = f'{stapher.first_name},{stapher.last_name}'
