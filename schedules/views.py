@@ -520,7 +520,9 @@ class StapherList(LoginRequiredMixin,ListView):
 
 					# Search by Day/Time
 					days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-					day, start, end = None
+					day = None
+					start = None
+					end = None
 					for i, d in enumerate(days):
 						if d in query:
 							query_cpy = query
