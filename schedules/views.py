@@ -1329,12 +1329,7 @@ def rank_staphers_view(request, *args, **kwargs):
 
 
 @login_required
-def rank_staphers_swap_rank(request, *args, **kwargs, up):
-	upvote_stapher_id = kwargs['pk']
-	try:
-		stapher = Stapher.objects.get(id = upvote_stapher_id)
-	except:
-		return Http404
+def rank_staphers_swap_rank(request, swap_stapher, up):
 	ordered_staphers = cache.get('ordered_staphers')
 	if not ordered_staphers:
 		ordered_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age')
@@ -1342,21 +1337,38 @@ def rank_staphers_swap_rank(request, *args, **kwargs, up):
 	index = None
 	ordered_staphers = list(ordered_staphers)
 	for i, stapher in enumerate(ordered_staphers):
-		if up: index = i
 		if swap_stapher == stapher:
-			ordered_staphers.remove(swap_stapher)
+			index = i
 			break
-		if not up: index = i
-	if index:
-		ordered_staphers.insert(index, swap_stapher)
+	if index and up:
+		new_index = index - 1
+	elif index and not up:
+		new_index = index + 1
+	else:
+		new_index = -1
+	if new_index in range(0, len(ordered_staphers)):
+		ordered_staphers.remove(swap_stapher)
+		ordered_staphers.insert(new_index, swap_stapher)
 	cache.set('ordered_staphers', ordered_staphers, 1800)
-	return rank_staphers_view(request, args, kwargs)
+	return HttpResponse(reverse('schedules:special'))
 
+@login_required
 def rank_staphers_up(request, *args, **kwargs):
-	return rank_staphers_swap_rank(request, *args, **kwargs, True)
+	stapher_id = kwargs['pk']
+	try:
+		stapher = Stapher.objects.get(id = stapher_id)
+	except:
+		return Http404
+	return rank_staphers_swap_rank(request, stapher, True)
 
+@login_required
 def rank_staphers_down(request, *args, **kwargs):
-	return rank_staphers_swap_rank(request, *args, **kwargs, False)
+	stapher_id = kwargs['pk']
+	try:
+		stapher = Stapher.objects.get(id = stapher_id)
+	except:
+		return Http404
+	return rank_staphers_swap_rank(request, stapher, False)
 
 
 
