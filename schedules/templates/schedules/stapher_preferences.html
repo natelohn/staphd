@@ -4,36 +4,40 @@
 	<h1>Special Shift Preferences for {{stapher}}</h1>
 	<br>
 	<br>
-	<h2>Add Prefences</h2>
-	<ul>
+	<div id="preferences_div">
+		<h2>Add Prefences</h2>
+		<ul>
+			<table id="ranking_table">
+				{% for flag in flags_to_add %}
+				<tr>
+					<td class="ranking_table_data" id="ranking_table_text">{{flag}}</td>
+					<td class="ranking_table_data" id="ranking_table_text">
+						<a id="rating_link" href="">Add</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+		</ul>
+	</div>
+	<div id="preferences_div">
+		<h2>Stapher Prefences</h2>
 		<table id="ranking_table">
-			{% for flag in flags_to_add %}
+			{% for pref in preferences %}
 			<tr>
-				<td class="ranking_table_data" id="ranking_table_text">{{flag}}</td>
+				<td class="ranking_table_data" id="ranking_table_rank"><strong>{{forloop.counter}}</strong></td>
+				<td class="ranking_table_data" id="ranking_table_text">{{pref.flag}}</td>
 				<td class="ranking_table_data" id="ranking_table_text">
-					<a id="rating_link" href="">Add</a>
+					<a id="rating_link" href="">Remove</a>
+				</td>
+				<td class="ranking_table_data">
+					<ul id="up_down_vote">
+						<li><a id="rating_link" href=""><i class="fa fa-sort-up"></i></a></li>
+						<li><a id="rating_link" href=""><i class="fa fa-sort-down"></i></a></li>
+					</ul>
 				</td>
 			</tr>
 			{% endfor %}
 		</table>
-	</ul>
-	<h2>Stapher Prefences</h2>
-	<table id="ranking_table">
-		{% for pref in preferences %}
-		<tr>
-			<td class="ranking_table_data" id="ranking_table_rank"><strong>{{forloop.counter}}</strong></td>
-			<td class="ranking_table_data" id="ranking_table_text">{{pref.flag}}</td>
-			<td class="ranking_table_data" id="ranking_table_text">
-				<a id="rating_link" href="">Remove</a>
-			</td>
-			<td class="ranking_table_data">
-				<ul id="up_down_vote">
-					<li><a id="rating_link" href=""><i class="fa fa-sort-up"></i></a></li>
-					<li><a id="rating_link" href=""><i class="fa fa-sort-down"></i></a></li>
-				</ul>
-			</td>
-		</tr>
-		{% endfor %}
-	</table>
+	</div>
 </div>
 {% endblock %}
