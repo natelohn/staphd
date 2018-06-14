@@ -1387,8 +1387,6 @@ def stapher_preferences(request, *args, **kwargs):
 	return render(request, template, context)
 
 
-@login_required
-def stapher_preferences(request, *args, **kwargs):
 
 
 
