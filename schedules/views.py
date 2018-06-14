@@ -1405,7 +1405,7 @@ def stapher_preferences_add(request, *args, **kwargs):
 	else:
 		rank = 1
 		print(f'rank (1) = {rank}')
-	new_preference = ShiftPreference(stapher = stapher, flag = flag, rank = rank)
+	new_preference = ShiftPreference(stapher = stapher, flag = flag, ranking = rank)
 	new_preference.save()
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': stapher.id}))
 
