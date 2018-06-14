@@ -1329,42 +1329,34 @@ def rank_staphers_view(request, *args, **kwargs):
 
 
 @login_required
-def rank_staphers_swap_rank(request, swap_stapher, ordered_staphers):
+def rank_staphers_swap_rank(request, *args, **kwargs, up):
+	upvote_stapher_id = kwargs['pk']
+	try:
+		stapher = Stapher.objects.get(id = upvote_stapher_id)
+	except:
+		return Http404
+	ordered_staphers = cache.get('ordered_staphers')
+	if not ordered_staphers:
+		ordered_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age')
+		cache.set('ordered_staphers', ordered_staphers, 1800)
 	index = None
+	ordered_staphers = list(ordered_staphers)
 	for i, stapher in enumerate(ordered_staphers):
+		if up: index = i
 		if swap_stapher == stapher:
 			ordered_staphers.remove(swap_stapher)
 			break
-		index = i
+		if not up: index = i
 	if index:
 		ordered_staphers.insert(index, swap_stapher)
 	cache.set('ordered_staphers', ordered_staphers, 1800)
 	return rank_staphers_view(request, args, kwargs)
 
 def rank_staphers_up(request, *args, **kwargs):
-	upvote_stapher_id = kwargs['pk']
-	try:
-		stapher = Stapher.objects.get(id = upvote_stapher_id)
-	except:
-		return Http404
-	ordered_staphers = cache.get('ordered_staphers')
-	if not ordered_staphers:
-		ordered_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age')
-		cache.set('ordered_staphers', ordered_staphers, 1800)
-	ordered_staphers.reverse()
-	return rank_staphers_swap_rank(request, stapher, ordered_staphers)
+	return rank_staphers_swap_rank(request, *args, **kwargs, True)
 
 def rank_staphers_down(request, *args, **kwargs):
-	upvote_stapher_id = kwargs['pk']
-	try:
-		stapher = Stapher.objects.get(id = upvote_stapher_id)
-	except:
-		return Http404
-	ordered_staphers = cache.get('ordered_staphers')
-	if not ordered_staphers:
-		ordered_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age')
-		cache.set('ordered_staphers', ordered_staphers, 1800)
-	return rank_staphers_swap_rank(request, stapher, ordered_staphers)
+	return rank_staphers_swap_rank(request, *args, **kwargs, False)
 
 
 
