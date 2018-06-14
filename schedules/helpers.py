@@ -19,40 +19,6 @@ def get_time_str(time):
 	m = get_min(time)
 	return str(h + m)
 
-def get_shift_csv(shift):
-	csv = ''
-	for flag in shift.flags.all():
-		csv += flag.title + ','
-	csv += str(shift.day) + ',' + shift.title + ',' + get_time_str(shift.start) + ',' + get_time_str(shift.end) + ',' + str(shift.workers_needed) + ','
-	for qual in shift.qualifications.all():
-		csv += qual.title + ','
-	return csv[:-1]
-
-def make_shifts_csv(schedule):
-	all_csv_strings = []
-	for shift in Shift.objects.filter(shift_set = schedule.shift_set):
-		csv_string = get_shift_csv(shift)
-		all_csv_strings.append(csv_string)
-	return all_csv_strings
-
-def make_staphings_csv(schedule):
-	all_csv_strings = []
-	all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
-	for staphing in all_staphings:
-		shift_csv = get_shift_csv(staphing.shift)
-		csv_string = staphing.stapher.full_name() + ',' + shift_csv
-		all_csv_strings.append(csv_string)
-	return all_csv_strings
-
-def get_all_staphers_qualifications_csv():
-	all_staphers_and_quals = []
-	for stapher in Stapher.objects.all():
-		stapher_str = f'{stapher.first_name},{stapher.last_name}'
-		for qual in stapher.qualifications.all():
-			stapher_str += ',' + qual.title
-		all_staphers_and_quals.append(stapher_str)
-	return all_staphers_and_quals
-
 
 def get_week_schedule_view_info(stapher, staphings, shift, schedule):
 	if shift:
