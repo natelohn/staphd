@@ -244,8 +244,10 @@ class Shift(models.Model):
 		return self.day == day and self.is_during_time(time)
 
 	def is_in_window(self, day, start, end):
-		# TODO: check to see if start should be <= end?
-		return self.day == day and self.start < end and self.end > start
+		if start > end:
+			return False
+		else:
+			return self.day == day and self.start < end and self.end > start
 
 
 	def overlaps(self, shift):
