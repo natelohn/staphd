@@ -524,10 +524,12 @@ class StapherList(LoginRequiredMixin,ListView):
 					start = None
 					end = None
 					for i, d in enumerate(days):
+						print(f'day = {day}, start = {start}, end = {end}')
 						if d in query and not (day and start and end):
 							query_cpy = query
 							query_cpy.replace(d,'')
 							day = i
+							print(f'day = {day}, start = {start}, end = {end}')
 							if '-' in query_cpy:
 								start_str, end_str = query_cpy.split('-')
 								print(f'query_cpy = {query_cpy}, query = {query}')
