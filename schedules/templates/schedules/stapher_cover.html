@@ -42,33 +42,32 @@
 		<li>
 			- {{shift.txt}}
 			•
-			<a id="uncovered_shift_links" href="">See Staphers</a>
+			<a id="uncovered_shift_links" onclick="toggle_schedule({{forloop.counter}}) >See Staphers</a>
 			•
 			<a id="uncovered_shift_links" href="">Get Recommendation</a>
 		</li>
-		<div class="hidden_stapher_table" id="stapher_table_{{forloop.counter}}">
-			<table class="schedule_table">
-				{% for row in shift.stapher_table %}
-				<tr>
-					{% for cell in row %}
-					{% if cell.header %}
-					<th>{{cell.header}}</td>
-						{% else %}
-						{% if cell.link %}
-						<td class="ratio_time"><a id="uncovered_shift_links" href="{{ cell.link }}">{{cell.stapher}}</a></td>
-						{% else %}
-						<td></td>
-						{% endif %}	
-						{% endif %}
-						{% endfor %}
-					</tr>
-					{% endfor %}
-				</table>
-		</div>
+		<table class="hidden_schedule_table" id="stapher_schedule_{{forloop.counter}}">
+			{% for row in shift.stapher_table %}
+			<tr>
+			{% for cell in row %}
+			{% if cell.header %}
+			<th>{{cell.header}}</td>
+				{% else %}
+				{% if cell.link %}
+				<td class="ratio_time"><a id="uncovered_shift_links" href="{{ cell.link }}">{{cell.stapher}}</a></td>
+				{% else %}
+				<td></td>
+				{% endif %}	
+				{% endif %}
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</table>
 		{% endfor %}
 		</ul>
 		{% endfor %} 
 		<br>
 		{% endif %}
 	</div>
+	{% include "sections/show_schedules.html" %}
 	{% endblock %}
