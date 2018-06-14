@@ -9,12 +9,7 @@
 	{% endif %}
 	{% if schedule %}
 	<h2>Staphers order affects when they will get their special shift choices.</h2>
-	<table id="parameters_table">
-		<tr>
-			<th></th>
-			<th id="title_tablehead">Name</th>
-		</tr>
-
+	<table class="parameters_table">
 		{% for stapher in ordered_staphers %}
 		<tr>
 			<td id="parameters_table_rank"><strong>{{forloop.counter}}</strong></td>
