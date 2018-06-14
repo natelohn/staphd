@@ -15,24 +15,24 @@
 	<br>
 	<h2>Select the days {{stapher.first_name}} needs shifts covered for:</h2>
 	<form action="" method='POST' id='form' >{% csrf_token %}
-	<div id="cover_days">
-		{% for day in days%}
-		<label for="id_days_{{forloop.counter0}}"></label>
-		<h2 id="day_checkbox">
-			{% if day in shifts_to_cover.keys %}
-			<input type="checkbox" name="days" value="{{forloop.counter0}}" id="id_days_{{forloop.counter0}}" checked>
-			{% else %}
-			<input type="checkbox" name="days" value="{{forloop.counter0}}" id="id_days_{{forloop.counter0}}">
-			{% endif %}
-			{{day}}
-		</h2>
-		{% endfor %}
-	</div>
-	{% if shifts_to_cover %}
-	<button class='button' id="form_save" type='submit'>Update Days</button>
-	{% else %}
-	<button class='button' id="form_save" type='submit'>Cover Shifts</button>
-	{% endif %}
+		<div id="cover_days">
+			{% for day in days%}
+			<label for="id_days_{{forloop.counter0}}"></label>
+			<h2 id="day_checkbox">
+				{% if day in shifts_to_cover.keys %}
+				<input type="checkbox" name="days" value="{{forloop.counter0}}" id="id_days_{{forloop.counter0}}" checked>
+				{% else %}
+				<input type="checkbox" name="days" value="{{forloop.counter0}}" id="id_days_{{forloop.counter0}}">
+				{% endif %}
+				{{day}}
+			</h2>
+			{% endfor %}
+		</div>
+		{% if shifts_to_cover %}
+		<button class='button' id="form_save" type='submit'>Update Days</button>
+		{% else %}
+		<button class='button' id="form_save" type='submit'>Cover Shifts</button>
+		{% endif %}
 	</form>
 	<br>
 	{% for day, shifts in shifts_to_cover.items %}
@@ -40,16 +40,35 @@
 	<ul id="uncovered_shift_list">
 		{% for shift in shifts %}
 		<li>
-			{{shift.txt}}
+			- {{shift.txt}}
 			•
 			<a id="uncovered_shift_links" href="">See Staphers</a>
 			•
 			<a id="uncovered_shift_links" href="">Get Recommendation</a>
 		</li>
-		{% endfor %}
-	</ul>
-	{% endfor %} 
-	<br>
-	{% endif %}
-</div>
-{% endblock %}
+		<div class="hidden_stapher_table" id="stapher_table_{{forloop.counter}}">
+			<table class="schedule_table">
+				{% for row in shift.stapher_table %}
+				<tr>
+					{% for cell in row %}
+					{% if cell.header %}
+					<th>{{cell.header}}</td>
+						{% else %}
+						{% if cell.link %}
+						<td class="ratio_time"><a id="uncovered_shift_links" href="{{ cell.link }}">{{cell.stapher}}</a></td>
+						{% else %}
+						<td></td>
+						{% endif %}	
+						{% endif %}
+						{% endfor %}
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+			{% endfor %}
+		</ul>
+		{% endfor %} 
+		<br>
+		{% endif %}
+	</div>
+	{% endblock %}
