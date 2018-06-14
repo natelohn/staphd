@@ -1310,8 +1310,6 @@ class ShiftSetDelete(LoginRequiredMixin, DeleteView):
 
 
 
-
-
 # Special Shift Placement Based Views
 @login_required
 def rank_staphers_view(request, *args, **kwargs):
@@ -1330,9 +1328,13 @@ def rank_staphers_view(request, *args, **kwargs):
 	return render(request, template, context)
 
 
-
-
-
+@login_required
+def rank_staphers_view_up(request, *args, **kwargs):
+	upvote_stapher_id = kwargs['pk']
+	try:
+		stapher = Stapher.objects.get(id = upvote_stapher_id)
+	except:
+		return Http404
 
 
 
