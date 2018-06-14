@@ -1392,20 +1392,15 @@ def stapher_preferences_add(request, *args, **kwargs):
 	flag_id = kwargs['f']
 	try:
 		stapher = Stapher.objects.get(id = stapher_id)
-		print(f'stapher = {stapher}')
 		flag = Flag.objects.get(id = flag_id)
-		print(f'flag = {flag}')
+		all_preferences = list(ShiftPreference.objects.all().order_by('-ranking'))
+		if all_preferences:
+			ranking = all_preferences[0].ranking + 1
+		else:
+			ranking = 1
 	except:
 		return Http404
-	all_preferences = list(ShiftPreference.objects.all().order_by('-rank'))
-	print(f'all_preferences = {all_preferences}')
-	if all_preferences:
-		rank = all_preferences[0].rank + 1
-		print(f'rank = {rank}')
-	else:
-		rank = 1
-		print(f'rank (1) = {rank}')
-	new_preference = ShiftPreference(stapher = stapher, flag = flag, ranking = rank)
+	new_preference = ShiftPreference(stapher = stapher, flag = flag, ranking = ranking)
 	new_preference.save()
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': stapher.id}))
 
