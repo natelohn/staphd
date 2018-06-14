@@ -802,6 +802,10 @@ class ShiftList(LoginRequiredMixin, ListView):
 					else:
 						explanation_str += f' in the "{schedule.title}" schedule.'
 					query_explanation.append(explanation_str)
+				elif query == 'none':
+					queryset = [shift for shift in all_shifts if shift.has_no_qualifications()]
+					explanation_str = '- have at least one qualification' if negate_query else '- have no qualifications'
+					query_explanation.append(explanation_str)
 				elif '*' in query:
 					# To solve for shifts w/ both qualifications and flags always showing up
 					if '*q' in query:
