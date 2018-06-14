@@ -27,14 +27,22 @@
 	color: white;
 }
 
-#rating_link {
+#rating_link, #add_link, #remove_link {
 	text-decoration: none;
 	color: black;
 }
 
-#rating_link:hover {
+#rating_link:hover, #add_link:hover, #remove_link:hover {
 	text-decoration: underline;
 	font-weight: bold;
+}
+
+#add_link:hover {
+	color: green; 
+}
+
+#remove_link:hover {
+	color: red; 
 }
 
 #special_shift_btn {
@@ -46,3 +54,4 @@
 #preferences_div{
 	display: inline-block;
 }
+
