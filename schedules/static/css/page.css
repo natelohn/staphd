@@ -6,7 +6,7 @@
 	top: 60px;
 }
 
-.button, .link_btn, .list_btn, .delete_button, .final_delete_btn, .create_btn{
+.button, .link_btn, .list_btn, .delete_button, .final_delete_btn, .create_btn, .big_button{
 	/* Positioning */
 	position: relative;
 
@@ -49,6 +49,14 @@
 .final_delete_btn:hover{
 	background-color: #C50101;
 	color: black;
+}
+
+.big_button {
+	font-size: 4em;
+}
+
+.big_button:hover {
+	background-color: #52f97f;
 }
 
 .create_btn:hover{
