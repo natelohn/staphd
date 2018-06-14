@@ -17,8 +17,8 @@
 		<li><a class='list_btn' href="{% url 'schedules:download-meals' %}">Download Meal Masters</a></li>
 		<li><a class='list_btn' href="{% url 'schedules:download-analytics' %}">Download Schedule Analytics</a></li>
 	</ul>
-	{% for s in stapher_qual_csv%}
-	<p>{{p}}</p>
+	{% for s in stapher_qual_csv %}
+	<p>{{s}}</p>
 	{% endfor %}
 </div>
 {% endblock %}
