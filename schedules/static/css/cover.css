@@ -6,9 +6,6 @@
 	display: inline-block;
 	margin: 10px;
 	border: 1px;
-	border-style: solid;
-	border-color: black;
-	text-decoration: underline;
 }
 
 #uncovered_shift_list li{
