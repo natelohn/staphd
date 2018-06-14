@@ -1370,6 +1370,17 @@ def rank_staphers_down(request, *args, **kwargs):
 		return Http404
 	return rank_staphers_swap_rank(request, stapher, False)
 
+@login_required
+def stapher_preferences(request, *args, **kwargs):
+	stapher_id = kwargs['pk']
+	try:
+		stapher = Stapher.objects.get(id = stapher_id)
+	except:
+		return Http404
+	template = 'schedules/stapher_preferences.html'
+	context = {}
+	context['stapher'] = stapher
+	return render(request, template, context)
 
 
 

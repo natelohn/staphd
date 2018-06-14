@@ -61,6 +61,7 @@ urlpatterns = [
     url(r'^staphers/(?P<pk>[\d]+)/schedule/add$', views.stapher_schedule_add, name='stapher-schedule-shifts'),
     url(r'^staphers/(?P<pk>[\d]+)/schedule/add/(?P<s>[\d]+)$', views.stapher_shift_scheduled, name='stapher-shift-scheduled'),
     url(r'^staphers/(?P<pk>[\d]+)/cover/$', views.stapher_cover, name='stapher-cover'),
+    url(r'^staphers/preferences/(?P<pk>[\d]+)/$', views.stapher_preferences, name='stapher-preferences'),
 
     url(r'^qualification/create$', views.QualificationCreate.as_view(), name='qualification-create'),
     url(r'^qualification/(?P<pk>[\d]+)/delete$', views.QualificationDelete.as_view(), name='qualification-delete'),

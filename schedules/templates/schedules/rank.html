@@ -18,7 +18,9 @@
 			<td class="ranking_table_data" id="ranking_table_text">
 				<a id="rating_link" href="{% url 'schedules:stapher-detail' pk=stapher.id %}">{{stapher}}</a>
 			</td>
-			<td class="ranking_table_data" id="ranking_table_text"><a id="rating_link" href="">Edit Preferences</a></td>
+			<td class="ranking_table_data" id="ranking_table_text">
+				<a id="rating_link" href="{% url 'schedules:stapher-preferences' pk=stapher.id %}">Edit Preferences</a>
+			</td>
 			<td class="ranking_table_data">
 				<ul id="up_down_vote">
 					<li>
