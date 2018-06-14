@@ -2,6 +2,8 @@ import datetime
 
 from django.urls import reverse
 
+from operator import attrgetter
+
 from .analytics import get_hours_from_timedelta, get_readable_time, get_td_from_time
 from .models import Staphing, Shift
 
