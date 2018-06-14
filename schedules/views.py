@@ -27,7 +27,7 @@ from .forms import WeekdayForm, AddShiftsForm, FlagCreateForm, ScheduleCreateFor
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification
 from .models import Settings as ScheduleBuildingSettings
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
-from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table
+from .helpers import get_shifts_to_add, get_week_schedule_view_info, make_shifts_csv, make_staphings_csv, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string
 
 
 # Download Based Views
@@ -468,6 +468,12 @@ class StapherList(LoginRequiredMixin,ListView):
 	template_name = 'schedules/stapher_list.html'
 
 	def get_queryset(self):
+		try:
+			schedule = Schedule.objects.get(active__exact = True)
+			all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+		except:
+			all_staphings = []
+			schedule = None
 		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))	
 		query = self.request.GET.get('q')
 		filtered_query_set = all_staphers
@@ -512,7 +518,24 @@ class StapherList(LoginRequiredMixin,ListView):
 					summers_exact = all_staphers.filter(summers_worked__iexact = query)
 					if summers_exact: query_explanation += f' have worked {query} summer(s),'
 
-					queryset = list(names_contain) + list(title_exact) + list(class_year_exact) + list(age_exact) + list(summers_exact)
+					# Search by Day/Time
+					days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+					day, start, end = None
+					for i, d in enumerate(days):
+						if d in query:
+							query_cpy = query
+							query_cpy.replace(d,'')
+							day = i
+							if '-' in query_cpy:
+								start_str, end_str = query_cpy.split('-')
+								start = get_time_from_string(start_str)
+								end = get_time_from_string(end_str)
+							break
+					free_during_time = [s for s in all_staphers if s.free_during_window(all_staphings, day, start, end)] if (day and start and end) else []
+					explanation_str = f'- are free on {query} on the \"{schedule}\" schedule' if schedule else f'- all staphers are free on {query} since no schedule is selected.'
+					if free_during_time: query_explanation.append(explanation_str)
+
+					queryset = list(names_contain) + list(title_exact) + list(class_year_exact) + list(age_exact) + list(summers_exact) + free_during_time
 				filtered_query_set = list(set(filtered_query_set) & set(queryset))
 
 				# Used for the query_explanation
@@ -734,17 +757,6 @@ def stapher_cover(request, *args, **kwargs):
 # Shift based views
 class ShiftList(LoginRequiredMixin, ListView):
 	template_name = 'schedules/shift_list.html'
-	
-	def get_time_from_string(self, time_string):
-		try:
-			if ':' in time_string or 'am' in time_string or 'pm' in time_string:
-				string_dt = parse(time_string)
-				time = datetime.time(string_dt.hour, string_dt.minute, 0, 0)
-			else:
-				raise Exception
-		except:
-			time =  None
-		return time
 
 	def get_queryset(self, *args, **kwargs):
 		try:
@@ -827,7 +839,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 					if day_exact: query_explanation.append(explanation_str)
 
 					# Search by Time
-					time = self.get_time_from_string(query) 
+					time = get_time_from_string(query) 
 					during_time = [s for s in filtered_shifts if s.is_during_time(time)] if time else []
 					explanation_str = f'- are not during {query}' if negate_query else f'- are during {query}'
 					if during_time: query_explanation.append(explanation_str)

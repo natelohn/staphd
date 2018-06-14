@@ -298,3 +298,14 @@ def get_stapher_breakdown_table(shift, staphers, staphings):
 	return get_stapher_table(groups)
 
 
+def get_time_from_string(time_string):
+	try:
+		if ':' in time_string or 'am' in time_string or 'pm' in time_string:
+			string_dt = parse(time_string)
+			time = datetime.time(string_dt.hour, string_dt.minute, 0, 0)
+		else:
+			raise Exception
+	except:
+		time =  None
+	return time
+
