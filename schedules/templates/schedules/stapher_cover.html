@@ -34,6 +34,7 @@
 		<button class='button' id="form_save" type='submit'>Cover Shifts</button>
 		{% endif %}
 	</form>
+	<hr style="background-color: grey; height:1px; margin: 10px;">
 	<br>
 	{% for day, shifts in shifts_to_cover.items %}
 	<h2>Shifts to Cover on {{day}}:</h2>
@@ -42,11 +43,11 @@
 		<li>
 			- {{shift.txt}}
 			•
-			<a id="uncovered_shift_links" onclick="toggle_schedule({{forloop.counter}})">See Staphers</a>
+			<a id="uncovered_shift_links" onclick="toggle_schedule({{shift.id}})">Stapher Breakdown</a>
 			•
-			<a id="uncovered_shift_links" href="">Get Recommendation</a>
+			<a id="uncovered_shift_links" href="">Search</a>
 		</li>
-		<table class="hidden_schedule_table" id="stapher_schedule_{{forloop.counter}}">
+		<table class="hidden_schedule_table" id="stapher_schedule_{{shift.id}}">
 			{% for row in shift.stapher_table %}
 			<tr>
 			{% for cell in row %}

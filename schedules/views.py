@@ -708,11 +708,13 @@ def stapher_cover(request, *args, **kwargs):
 			for day in form.cleaned_data['days']:
 				day_str = days[int(day)]
 				shifts_to_cover[day_str] = []
-				for shift in all_staphers_shifts:
+				for shift in sorted(all_staphers_shifts, key = attrgetter('start')):
 					if shift.day == int(day) and not shift.is_unpaid():
+						break_down = get_stapher_breakdown_table(shift, Stapher.objects.exclude(id = stapher.id), all_staphings)
 						shift_obj = {}
-						shift_obj['txt'] = f'{shift.title}, {get_readable_time(shift.start)}-{get_readable_time(shift.end)}'
-						shift_obj['stapher_table'] = get_stapher_breakdown_table(shift, Stapher.objects.exclude(id = stapher.id), all_staphings)
+						shift_obj['txt'] = f'{shift.title}, {get_readable_time(shift.start)}-{get_readable_time(shift.end)}, {len(break_down[3])} availible.'
+						shift_obj['id'] = shift.id
+						shift_obj['stapher_table'] = break_down
 						shifts_to_cover[day_str].append(shift_obj)
 	else:
 		form = WeekdayForm()
