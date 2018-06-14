@@ -289,7 +289,7 @@ def get_preferences_information(stapher):
 	all_shifts = Shift.objects.all()
 	all_special_flags = set()
 	for shift in all_shifts:
-		if shift.is_special():
+		if shift.is_special() and not shift.is_unpaid():
 			new_flags = [flag for flag in shift.flags.all() if flag.title not in 'special']
 			all_special_flags.update(new_flags)
 	preferences = ShiftPreference.objects.filter(stapher = stapher)
