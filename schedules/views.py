@@ -1331,13 +1331,14 @@ def rank_staphers_view(request, *args, **kwargs):
 @login_required
 def rank_staphers_swap_rank(request, swap_stapher, ordered_staphers):
 	index = None
-	for i, other_staphers in enumerate(ordered_staphers):
-		if stapher == other_staphers:
-			ordered_staphers.remove(other_staphers)
+	for i, stapher in enumerate(ordered_staphers):
+		if swap_stapher == stapher:
+			ordered_staphers.remove(swap_stapher)
 			break
 		index = i
 	if index:
-		ordered_staphers.insert(index, stapher)
+		ordered_staphers.insert(index, swap_stapher)
+	cache.set('ordered_staphers', ordered_staphers, 1800)
 	return rank_staphers_view(request, args, kwargs)
 
 def rank_staphers_up(request, *args, **kwargs):
