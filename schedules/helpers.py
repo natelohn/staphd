@@ -5,7 +5,7 @@ from dateutil.parser import parse
 from operator import attrgetter
 
 from .analytics import get_hours_from_timedelta, get_readable_time, get_td_from_time
-from .models import Staphing, Shift, Stapher, ShiftPreferences
+from .models import Staphing, Shift, Stapher, ShiftPreference
 
 def get_min(time):
 	m = time.minute / 60
@@ -292,7 +292,7 @@ def get_preferences_information(stapher):
 		if shift.is_special():
 			new_flags = [flag for flag in shift.flags.all() if flag.title not in 'special']
 			all_special_flags.update(new_flags)
-	preferences = ShiftPreferences.objects.filter(stapher = stapher)
+	preferences = ShiftPreference.objects.filter(stapher = stapher)
 	pref_flags = [p.flag for p in preferences]
 	flags_to_add = []
 	for s_flag in all_special_flags:
