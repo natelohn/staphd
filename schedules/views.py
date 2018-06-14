@@ -1334,15 +1334,15 @@ def rank_staphers_swap_rank(request, swap_stapher, up):
 	if not ordered_staphers:
 		ordered_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age')
 		cache.set('ordered_staphers', ordered_staphers, 1800)
-	index = None
+	index = -1
 	ordered_staphers = list(ordered_staphers)
 	for i, stapher in enumerate(ordered_staphers):
 		if swap_stapher == stapher:
 			index = i
 			break
-	if index and up:
+	if index > 0 and up:
 		new_index = index - 1
-	elif index and not up:
+	elif index > 0 and not up:
 		new_index = index + 1
 	else:
 		new_index = -1
