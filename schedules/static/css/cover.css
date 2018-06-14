@@ -15,8 +15,8 @@
 }
 
 #uncovered_shift_links{
-	text-decoration: underline;
-	font-style: bold;
+	text-decoration: none;
+	color: black;
 }
 
 #uncovered_shift_links:hover {
