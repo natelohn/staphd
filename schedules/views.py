@@ -6,7 +6,6 @@ import os
 
 from celery import current_task
 from celery.result import AsyncResult
-from dateutil.parser import parse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
