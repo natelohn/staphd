@@ -275,6 +275,24 @@ def get_ratio_tables_in_window(ratios, day, start, end):
 	return all_tables
 
 def get_stapher_breakdown_table(shift, staphers, staphings):
-	return None
+	availible_workers = []
+	not_free_workers = []
+	not_qualified_workers = []
+	not_free_or_qualified_workers = []
+	for stapher in sorted(staphers, key = attrgetter('first_name', 'last_name')):
+		stapher_is_qualified = stapher.is_qualified(shift)
+		stapher_is_free = stapher.is_free(staphings, shift)
+		if stapher_is_qualified:
+			if stapher_is_free:
+				availible_workers.append(stapher)
+			else:
+				not_free_workers.append(stapher)
+		else:
+			if stapher_is_free:
+				not_qualified_workers.append(stapher)
+			else:
+				not_free_or_qualified_workers.append(stapher)
+	groups = [not_free_or_qualified_workers, not_qualified_workers, not_free_workers, availible_workers]
+	return get_stapher_table(groups)
 
 
