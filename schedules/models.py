@@ -319,6 +319,9 @@ class Shift(models.Model):
 	def is_programming(self):
 		return self.has_flag('programming')
 
+	def is_special(self):
+		return self.has_flag('special')
+
 	def has_qualifications(self):
 		return bool(self.qualifications.all())
 

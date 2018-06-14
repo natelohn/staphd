@@ -2,12 +2,15 @@
 {% block page %}
 <div id="page">
 	<h1>Special Shift Preferences for {{stapher}}</h1>
+	<br>
+	<br>
+	<h2>Stapher Prefences</h2>
 	{% for flag in flags_to_add %}
 	<a href="">{{flag}}</a>
 	{% endfor %}
 	<h2>Stapher Prefences</h2>
 	<table id="ranking_table">
-		{% for pref in stapher_preferences %}
+		{% for pref in preferences %}
 		<tr>
 			<td class="ranking_table_data" id="ranking_table_rank"><strong>{{forloop.counter}}</strong></td>
 			<td class="ranking_table_data" id="ranking_table_text">{{pref.flag}}</td>
