@@ -319,7 +319,7 @@ class Shift(models.Model):
 	def is_programming(self):
 		return self.has_flag('programming')
 
-	def has_no_qualifications(self):
+	def has_qualifications(self):
 		return bool(self.qualifications.all())
 
 	def get_day_string(self):
