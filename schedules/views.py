@@ -1350,7 +1350,7 @@ def rank_staphers_swap_rank(request, swap_stapher, up):
 		ordered_staphers.remove(swap_stapher)
 		ordered_staphers.insert(new_index, swap_stapher)
 	cache.set('ordered_staphers', ordered_staphers, 1800)
-	return HttpResponse(reverse('schedules:special'))
+	return HttpResponseRedirect(reverse('schedules:special'))
 
 @login_required
 def rank_staphers_up(request, *args, **kwargs):
