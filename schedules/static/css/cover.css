@@ -5,7 +5,9 @@
 #day_checkbox{
 	display: inline-block;
 	margin: 10px;
-	border: 1px;
+	border-bottom: 1px;
+	border-color: black;
+	border-style: solid;
 }
 
 #uncovered_shift_list li{
