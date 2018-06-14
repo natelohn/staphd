@@ -27,7 +27,7 @@
 				<td class="ranking_table_data" id="ranking_table_rank"><strong>{{forloop.counter}}</strong></td>
 				<td class="ranking_table_data" id="ranking_table_text">{{pref.flag}}</td>
 				<td class="ranking_table_data" id="ranking_table_text">
-					<a id="remove_link" href="">Remove</a>
+					<a id="remove_link" href="{% url 'schedules:stapher-preferences-delete' pk=pref.id %}">Remove</a>
 				</td>
 				<td class="ranking_table_data">
 					<ul id="up_down_vote">
