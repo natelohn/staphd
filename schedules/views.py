@@ -1319,8 +1319,8 @@ def rank_staphers_view(request, *args, **kwargs):
 		schedule = None
 	template = 'schedules/rank.html'
 	ordered_staphers = cache.get('ordered_staphers')
-	if not ordered_staphers:
-		ordered_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age')
+	if ordered_staphers:
+		ordered_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age', 'first_name')
 		cache.set('ordered_staphers', ordered_staphers, 1800)
 	context = {}
 	context['schedule'] = schedule
@@ -1332,7 +1332,7 @@ def rank_staphers_view(request, *args, **kwargs):
 def rank_staphers_swap_rank(request, swap_stapher, up):
 	ordered_staphers = cache.get('ordered_staphers')
 	if not ordered_staphers:
-		ordered_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age')
+		ordered_staphers = Stapher.objects.all().order_by('-summers_worked', 'class_year', '-age', 'first_name')
 		cache.set('ordered_staphers', ordered_staphers, 1800)
 	index = -1
 	ordered_staphers = list(ordered_staphers)
