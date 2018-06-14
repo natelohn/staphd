@@ -72,7 +72,6 @@
     font-size: 1.75em;
 }
 
-
 .list_header input {
 	/* Positioning */
     width: 60%;
@@ -103,7 +102,6 @@
     /* Style */
     font-size: 1.5em;
     text-align: center;
-    vertical-align: initial;
 }
 
 .lists {
