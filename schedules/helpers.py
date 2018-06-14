@@ -295,7 +295,7 @@ def get_preferences_information(stapher):
 	preferences = ShiftPreference.objects.filter(stapher = stapher)
 	pref_flags = [p.flag for p in preferences]
 	flags_to_add = []
-	for s_flag in all_special_flags:
+	for s_flag in sorted(all_special_flags, key = attrgetter('title')):
 		if s_flag not in pref_flags:
 			flags_to_add.append(s_flag)
 	return [flags_to_add, preferences]
