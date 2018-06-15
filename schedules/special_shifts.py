@@ -21,9 +21,9 @@ def swap_shift_preferences(swap, preferences, up):
 		pref_a = preferences[i - 1]
 		pref_b = preferences[i]
 		if pref_a.ranking <= swap.ranking and swap.ranking <= pref_b.ranking:
-			if up:
+			if up and pref_a != swap:
 				swap(pref_a, swap)
-			else:
+			elif pref_b != swap:
 				swap(swap, pref_b)
 
 
