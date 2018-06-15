@@ -32,10 +32,10 @@
 				<td class="ranking_table_data">
 					<ul id="up_down_vote">
 						<li>
-							<a id="rating_link" href="{% url 'stapher-preferences-up' pk=pref.id %}"><i class="fa fa-sort-up"></i></a>
+							<a id="rating_link" href="{% url 'schedules:stapher-preferences-up' pk=pref.id %}"><i class="fa fa-sort-up"></i></a>
 						</li>
 						<li>
-							<a id="rating_link" href="{% url 'stapher-preferences-down' pk=pref.id %}"><i class="fa fa-sort-down"></i></a>
+							<a id="rating_link" href="{% url 'schedules:stapher-preferences-down' pk=pref.id %}"><i class="fa fa-sort-down"></i></a>
 						</li>
 					</ul>
 				</td>
