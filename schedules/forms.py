@@ -285,24 +285,3 @@ class WeekdayForm(forms.Form):
 		self.fields['days'].choices = tuple(sorted(DAY_OF_THE_WEEK.items()))  
 
 
-class AddShiftPreferencesForm(forms.Form):
-	added_flags = forms.MultipleChoiceField(label='added_flags',widget = forms.CheckboxSelectMultiple())
-
-	def __init__(self, *args, **kwargs):
-		super(AddShiftPreferencesForm, self).__init__(*args, **kwargs)
-		ALL_FLAGS = {}
-		for flag in Flag.objects.all():
-			ALL_FLAGS[flag.id] = f'{flag}'
-		self.fields['added_flags'].choices = tuple(sorted(ALL_FLAGS.items()))
-
-	def clean_added_flags(self):
-		added_flag_ids = self.cleaned_data.get("added_flags")
-		added_flags = []
-		for flag_id in added_flag_ids:
-			try:
-				flag = Flag.objects.get(id = flag_id)
-				added_flags.append(flag)
-			except:
-				raise forms.ValidationError(f"{flag_id} is not vaild flag id.")
-		return added_flags
-

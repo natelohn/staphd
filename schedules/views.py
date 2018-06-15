@@ -25,8 +25,9 @@ from .analytics import get_readable_time
 from .forms import WeekdayForm, AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification, ShiftPreference
 from .models import Settings as ScheduleBuildingSettings
+from .special_shifts import swap_shift_preferences
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
-from .helpers import get_shifts_to_add, get_week_schedule_view_info, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string, get_preferences_information
+from .helpers import get_shifts_to_add, get_week_schedule_view_info, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string, get_preferences_information, swap_shift_preferences
 
 
 # Download Based Views
@@ -1417,6 +1418,25 @@ def stapher_preferences_delete(request, *args, **kwargs):
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': stapher.id}))
 
 
+def stapher_preferences_up(request, *args, **kwargs):
+	pref_id = kwargs['pk']
+	try:
+		preference = ShiftPreference.objects.get(id = pref_id)
+		other_preferences = ShiftPreference.objects.filter(stapher = preference.stapher).exclude(id = preference.id).order_by('rankings')
+	except:
+		return Http404
+	swap_shift_preferences(preference, other_preferences, True)
+	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': preference.stapher.id}))
+
+def stapher_preferences_down(request, *args, **kwargs):
+	pref_id = kwargs['pk']
+	try:
+		preference = ShiftPreference.objects.get(id = pref_id)
+		other_preferences = ShiftPreference.objects.filter(stapher = preference.stapher).exclude(id = preference.id).order_by('rankings')
+	except:
+		return Http404
+	swap_shift_preferences(preference, other_preferences, False)
+	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': preference.stapher.id}))
 
 
 
