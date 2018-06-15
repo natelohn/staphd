@@ -27,7 +27,7 @@ from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, 
 from .models import Settings as ScheduleBuildingSettings
 from .special_shifts import swap_shift_preferences
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
-from .helpers import get_shifts_to_add, get_week_schedule_view_info, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string, get_preferences_information, swap_shift_preferences
+from .helpers import get_shifts_to_add, get_week_schedule_view_info, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string, get_preferences_information
 
 
 # Download Based Views
