@@ -18,15 +18,15 @@ def swap(pref_a, pref_b):
 	pref_a.save()
 
 
-def swap_shift_preferences(swap, preferences, up):
+def swap_shift_preferences(to_swap, preferences, up):
 	for i in range(1, len(preferences)):
 		pref_a = preferences[i - 1]
 		pref_b = preferences[i]
-		if pref_a.ranking <= swap.ranking and swap.ranking <= pref_b.ranking:
-			if up and pref_a != swap:
-				swap(pref_a, swap)
-			elif pref_b != swap:
-				swap(swap, pref_b)
+		if pref_a.ranking <= to_swap.ranking and to_swap.ranking <= pref_b.ranking:
+			if up and pref_a != to_swap:
+				swap(pref_a, to_swap)
+			elif pref_b != to_swap:
+				swap(to_swap, pref_b)
 
 def get_special_shift_flags():
 	try:
