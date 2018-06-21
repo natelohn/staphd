@@ -31,7 +31,7 @@ def swap_shift_preferences(to_swap, preferences, up):
 				print('up!')
 				swap(pref_a, to_swap)
 				break
-			elif pref_b != to_swap:
+			elif not up and pref_b != to_swap:
 				print('down!')
 				swap(to_swap, pref_b)
 				break
