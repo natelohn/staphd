@@ -1380,7 +1380,7 @@ def stapher_preferences(request, *args, **kwargs):
 		return Http404
 
 	special_shift_flags = cache.get('special_shift_flags')
-	if not special_shift_flags:
+	if not special_shift_flags or True:
 		special_shift_flags = get_special_shift_flags()
 		cache.set('special_shift_flags', special_shift_flags, None)
 	staphers_preferences = ShiftPreference.objects.filter(stapher = stapher).order_by('ranking')

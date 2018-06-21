@@ -39,4 +39,4 @@ def get_special_shift_flags():
 		if shift.is_special() and not shift.is_unpaid():
 			new_flags = [flag for flag in shift.flags.all() if flag.title not in 'special' and flag not in all_special_flags]
 			all_special_flags += new_flags
-	return all_special_flags
+	return sorted(all_special_flags, key = attrgetter('title'))
