@@ -33,6 +33,10 @@ class Flag(models.Model):
 	def get_absolute_url(self):
 		return reverse('schedules:flag-settings')
 
+	def delete(self, *args, **kwargs):
+		cache.delete('special_shift_flags')
+		super(Flag, self).delete(*args, **kwargs)
+
 class Stapher(models.Model):
 	active			= models.BooleanField(default = True)
 	first_name 		= models.CharField(max_length = 100, default = 'FIRST NAME')
@@ -227,10 +231,12 @@ class Shift(models.Model):
 
 	def save(self, *args, **kwargs):
 		cache.set('sorted_shifts', None, 0)
+		if self.is_special(): cache.delete('special_shift_flags')
 		super(Shift, self).save(*args, **kwargs)
 
 	def delete(self, *args, **kwargs):
 		cache.set('sorted_shifts', None, 0)
+		if self.is_special(): cache.delete('special_shift_flags')
 		super(Shift, self).delete(*args, **kwargs)
 			
 
@@ -346,11 +352,13 @@ class Schedule(models.Model):
 
 	def save(self, *args, **kwargs):
 		cache.set('sorted_shifts', None, 0)
+		cache.delete('special_shift_flags')
 		super(Schedule, self).save(*args, **kwargs)
 			
 
 	def delete(self, *args, **kwargs):
 		cache.set('sorted_shifts', None, 0)
+		cache.delete('special_shift_flags')
 		latest_excel = Schedule.objects.latest('excel_updated')
 		if latest_excel == self:
 			cache.set('latest_excel_deleted', True, None)
