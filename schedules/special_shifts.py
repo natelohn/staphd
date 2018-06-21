@@ -30,9 +30,11 @@ def swap_shift_preferences(to_swap, preferences, up):
 			if up and pref_a != to_swap:
 				print('up!')
 				swap(pref_a, to_swap)
+				break
 			elif pref_b != to_swap:
 				print('down!')
 				swap(to_swap, pref_b)
+				break
 
 def get_special_shift_flags():
 	try:
