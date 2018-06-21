@@ -275,7 +275,6 @@ def get_stapher_breakdown_table(shift, staphers, staphings):
 
 def get_time_from_string(time_string):
 	try:
-		print('here')
 		if ':' in time_string or 'am' in time_string or 'pm' in time_string:
 			string_dt = parse(time_string)
 			time = datetime.time(string_dt.hour, string_dt.minute, 0, 0)
@@ -284,25 +283,6 @@ def get_time_from_string(time_string):
 	except:
 		time =  None
 	return time
-
-def get_preferences_information(stapher):
-	try:
-		schedule = Schedule.objects.get(active = True)
-		all_shifts = Shift.objects.filter(shift_set = schedule.shift_set)
-	except:
-		all_shifts = Shift.objects.all()
-	all_special_flags = set()
-	for shift in all_shifts:
-		if shift.is_special() and not shift.is_unpaid():
-			new_flags = [flag for flag in shift.flags.all() if flag.title not in 'special']
-			all_special_flags.update(new_flags)
-	preferences = ShiftPreference.objects.filter(stapher = stapher)
-	pref_flags = [p.flag for p in preferences]
-	flags_to_add = []
-	for s_flag in sorted(all_special_flags, key = attrgetter('title')):
-		if s_flag not in pref_flags:
-			flags_to_add.append(s_flag)
-	return [flags_to_add, preferences]
 
 
 
