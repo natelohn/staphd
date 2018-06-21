@@ -1,4 +1,4 @@
-from .models import ShiftPreference
+from .models import ShiftPreference, Schedule, Shift
 
 
 def swap(pref_a, pref_b):
