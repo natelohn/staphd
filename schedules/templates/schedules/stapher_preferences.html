@@ -20,7 +20,9 @@
 		</ul>
 	</div>
 	<div class="preferences_div" id="preferences_div_left">
+		{% if staphers_preferences %}
 		<h2>Stapher Prefences</h2>
+		{% endif %}
 		<table id="ranking_table">
 			{% for pref in staphers_preferences %}
 			<tr>
