@@ -10,10 +10,10 @@
 			<table id="ranking_table">
 				{% for flag in flags_to_add %}
 				<tr>
-					<td class="ranking_table_data" id="ranking_table_text">{{flag}}</td>
 					<td class="ranking_table_data" id="ranking_table_text">
-						<a id="add_link" href="{% url 'schedules:stapher-preferences-add' pk=stapher.id f=flag.id %}">Add</a>
-					</td>
+					<input type="checkbox" name="auto_schedule" id="id_auto_schedule" checked>
+					{{flag}}
+				</td>
 				</tr>
 				{% endfor %}
 			</table>
