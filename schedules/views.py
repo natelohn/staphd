@@ -1383,10 +1383,14 @@ def stapher_preferences(request, *args, **kwargs):
 	if not special_shift_flags:
 		special_shift_flags = get_special_shift_flags()
 		cache.set('special_shift_flags', special_shift_flags, None)
+	staphers_preferences = ShiftPreference.objects.filter(stapher = stapher).order_by('ranking')
+	preferenced_flags = [p.flag for p in staphers_preferences]
+	flags_to_add = [f for f in special_shift_flags if f not in preferenced_flags]
 	template = 'schedules/stapher_preferences.html'
 	context = {}
 	context['stapher'] = stapher
-	context['flags_to_add'] = special_shift_flags
+	context['flags_to_add'] = flags_to_add
+	context['staphers_preferences'] = staphers_preferences
 	return render(request, template, context)
 
 @login_required

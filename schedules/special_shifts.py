@@ -1,6 +1,6 @@
 from operator import attrgetter
 
-from .models import ShiftPreference, Schedule, Shift
+from .models import Schedule, Shift
 
 
 def swap(pref_a, pref_b):
