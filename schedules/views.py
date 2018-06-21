@@ -1428,7 +1428,7 @@ def stapher_preferences_up(request, *args, **kwargs):
 	pref_id = kwargs['pk']
 	try:
 		preference = ShiftPreference.objects.get(id = pref_id)
-		other_preferences = ShiftPreference.objects.filter(stapher = preference.stapher).exclude(id = preference.id).order_by('ranking')
+		other_preferences = ShiftPreference.objects.filter(stapher = preference.stapher).order_by('ranking')
 	except:
 		return Http404
 	swap_shift_preferences(preference, other_preferences, True)
@@ -1438,7 +1438,7 @@ def stapher_preferences_down(request, *args, **kwargs):
 	pref_id = kwargs['pk']
 	try:
 		preference = ShiftPreference.objects.get(id = pref_id)
-		other_preferences = ShiftPreference.objects.filter(stapher = preference.stapher).exclude(id = preference.id).order_by('ranking')
+		other_preferences = ShiftPreference.objects.filter(stapher = preference.stapher).order_by('ranking')
 	except:
 		return Http404
 	swap_shift_preferences(preference, other_preferences, False)
