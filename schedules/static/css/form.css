@@ -245,6 +245,11 @@ label[for=stapher_qualifications_hardcoded] {
 	top: 85px;
 }
 
+#stapher_active {
+	/* position */
+	position: absolute;
+	left: 100px;
+}
 
 
 /*******************************************************/
