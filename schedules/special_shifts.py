@@ -1,3 +1,5 @@
+from operator import attrgetter
+
 from .models import ShiftPreference, Schedule, Shift
 
 
