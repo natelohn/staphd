@@ -13,7 +13,7 @@ class StapherCreateForm(forms.ModelForm):
 	
 	class Meta:
 		model = Stapher
-		fields = ['first_name','last_name', 'title', 'age', 'class_year', 'summers_worked', 'gender','qualifications']
+		fields = ['first_name','last_name', 'title', 'age', 'class_year', 'summers_worked', 'gender','qualifications', 'active']
 		widgets = { 'qualifications': forms.CheckboxSelectMultiple()}
 
 
