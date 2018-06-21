@@ -67,7 +67,8 @@ label[for=id_title], #id_title {
 label[for=stapher_age], #stapher_age, 
 label[for=stapher_class_year], #stapher_class_year, 
 label[for=stapher_summers_worked], #stapher_summers_worked,
-label[for=stapher_gender], #stapher_gender {
+label[for=stapher_gender], #stapher_gender,
+label[for=stapher_active] {
 	font-size: 1.75em;
 	display: block;
 }
