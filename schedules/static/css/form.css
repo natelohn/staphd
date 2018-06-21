@@ -253,10 +253,10 @@ label[for=stapher_qualifications_hardcoded] {
 	top: 350px;
 }
 
-label[for=stapher_active], #stapher_active {
+label[for=stapher_active] {
 	/* position */
 	position: absolute;
-	top: 325px;
+	top: 335px;
 }
 
 /*******************************************************/
