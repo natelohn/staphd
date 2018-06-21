@@ -23,9 +23,15 @@ def swap_shift_preferences(to_swap, preferences, up):
 		pref_a = preferences[i - 1]
 		pref_b = preferences[i]
 		if pref_a.ranking <= to_swap.ranking and to_swap.ranking <= pref_b.ranking:
+			print(f'pref_a = {pref_a}')
+			print(f'pref_b = {pref_b}')
+			print(f'to_swap = {to_swap}')
+			print(f'up = {up}')
 			if up and pref_a != to_swap:
+				print('up!')
 				swap(pref_a, to_swap)
 			elif pref_b != to_swap:
+				print('down!')
 				swap(to_swap, pref_b)
 
 def get_special_shift_flags():
