@@ -1386,7 +1386,7 @@ def stapher_preferences(request, *args, **kwargs):
 	template = 'schedules/stapher_preferences.html'
 	context = {}
 	context['stapher'] = stapher
-	context['flags_to_add'] = 
+	context['flags_to_add'] = special_shift_flags
 	return render(request, template, context)
 
 @login_required
