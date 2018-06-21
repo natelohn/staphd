@@ -38,6 +38,7 @@ def get_special_shift_flags():
 	try:
 		schedule = Schedule.objects.get(active = True)
 		all_shifts = Shift.objects.filter(shift_set = schedule.shift_set)
+		# Could just filter for shifts w/ the special shift flag to improve time.
 	except:
 		all_shifts = Shift.objects.all()
 	all_special_flags = []
