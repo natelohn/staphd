@@ -1453,7 +1453,7 @@ def place_special_shifts(request, *args, **kwargs):
 		staphings = Staphing.objects.filter(schedule = schedule)
 	except:
 		return render(request,'schedules/rank.html', {})
-	special_shifts = Shift.objects.filter(shift_set = schedule.shift_set, flags_in = [special_flag])
+	special_shifts = Shift.objects.filter(shift_set = schedule.shift_set, flags__in = [special_flag])
 	print(f'special_shifts = {special_shifts}')
 	ordered_staphers = cache.get('ordered_staphers')
 	if not ordered_staphers:
