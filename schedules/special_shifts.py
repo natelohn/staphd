@@ -52,7 +52,6 @@ def get_special_shift_flags():
 
 
 def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, staphings):
-	print('here...')
 	shifts_can_be_placed = True
 	while shifts_can_be_placed:
 		shifts_can_be_placed = False
@@ -73,14 +72,14 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 										print(f'{stapher} added {qual} qualification for {shift}')
 										# stapher.save()
 								new_staphing = Staphing(schedule = schedule, stapher = stapher, shift = shift)
-								print(f'New Staphing: {new_staphing}')
+								print(f'		---- New Staphing: {new_staphing}')
 								# new_staphing.save()
 								staphings.append(new_staphing)
 								shift_was_placed = True
 			if shift_was_placed:
 				shifts_can_be_placed = True
 			else:
-				pritn(f'{stapher} has no shifts availible given their preferences.')
+				print(f'{stapher} has no shifts availible given their preferences.')
 		
 
 
