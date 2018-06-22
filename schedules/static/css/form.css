@@ -249,7 +249,6 @@ label[for=stapher_qualifications_hardcoded] {
 #stapher_active {
 	/* position */
 	left: 100px;
-	height: 100px;
 }
 
 label[for=stapher_active], #stapher_active {
