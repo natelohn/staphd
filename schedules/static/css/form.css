@@ -249,6 +249,8 @@ label[for=stapher_qualifications_hardcoded] {
 #stapher_active {
 	/* position */
 	left: 100px;
+	height: 20px;
+	transform:scale(1.5, 1.5);
 }
 
 label[for=stapher_active], #stapher_active {
