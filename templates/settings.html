@@ -2,7 +2,10 @@
 {% block page %}
 <div id="page">
 	<br>
-	<a class="button" href="{% url 'schedules:download'%}">Download Excel Files</a>
+	<a class="button" href="{% url 'schedules:download' %}">Download Excel Files</a>
+	<br>
+	<br>
+	<a class="button" href="{% url 'schedules:special' %}">Place Special Shifts</a>
 	<br>
 	<br>
 	<a class="button" href="{% url 'schedules:flag-settings' %}">Edit Flags</a>
