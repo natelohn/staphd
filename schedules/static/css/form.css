@@ -248,6 +248,7 @@ label[for=stapher_qualifications_hardcoded] {
 
 #stapher_active {
 	/* position */
+	position: absolute;
 	left: 100px;
 	font-size: 8em;
 	top: 350px;
