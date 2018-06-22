@@ -25,7 +25,7 @@ from .analytics import get_readable_time
 from .forms import WeekdayForm, AddShiftsForm, FlagCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification, ShiftPreference
 from .models import Settings as ScheduleBuildingSettings
-from .special_shifts import get_special_shift_flags, swap_shift_preferences
+from .special_shifts import get_special_shift_flags, swap_shift_preferences, place_special_shifts_by_rank
 from .tasks import build_schedules_task, update_files_task, find_ratios_task
 from .helpers import get_shifts_to_add, get_week_schedule_view_info, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string
 
@@ -1444,26 +1444,21 @@ def stapher_preferences_down(request, *args, **kwargs):
 	swap_shift_preferences(preference, other_preferences, False)
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': preference.stapher.id}))
 
-
-
-
+@login_required
 def place_special_shifts(request, *args, **kwargs):
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
+		special_flag = Flag.objects.get(title__iexact = 'special')
+		print(f'special_flag = {special_flag}')
+		special_shifts = Shift.objects.filter(shift_set = schedule.shift_set, flags_in = [special_flag])
+		staphings = Staphing.objects.filter(schedule = schedule)
 	except:
-		return render(request,'schedules/rank.html', {'special_error_message':'Must select a schedule first.'})
-	task_id = cache.get('current_task_id')
-	if not task_id:
-		schedule_id = schedule.id
-		task = build_schedules_task.delay(schedule_id)
-		task_id = task.task_id
-		cache.set('current_task_id', task_id, 3000)
-		cache.set('no_redirect', True, None)
-	request.session['task_id'] = task_id
-	context = {'task_id':task_id}
-	context['schedule'] = schedule.title
-	context['at_build'] = True
-	return render(request,'schedules/progress.html', context)
+		return render(request,'schedules/rank.html', {})
+	ordered_staphers = cache.get('ordered_staphers')
+	if not ordered_staphers:
+		return HttpResponseRedirect(reverse('schedules:special'))
+	place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, list(staphings))
+	return render(request,'schedules/schedule.html', context)
 
 
 

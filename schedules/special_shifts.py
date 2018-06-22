@@ -1,6 +1,6 @@
 from operator import attrgetter
 
-from .models import Schedule, Shift
+from .models import Schedule, Shift, Staphing, ShiftPreference
 
 
 def swap(pref_a, pref_b):
@@ -49,3 +49,41 @@ def get_special_shift_flags():
 			new_flags = [flag for flag in shift.flags.all() if flag.title not in 'special' and flag not in all_special_flags]
 			all_special_flags += new_flags
 	return sorted(all_special_flags, key = attrgetter('title'))
+
+
+def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, staphings):	
+	shifts_can_be_placed = True
+	while shifts_can_be_placed:
+		for stapher in ordered_staphers:
+			shift_was_placed = False
+			staphers_preferences = ShiftPreference.objects.filter(stapher = stapher).order_by('ranking')
+			for preference in staphers_preferences:
+				if not shift_was_placed:
+					for shift in special_shifts:
+						if not shift_was_placed:
+							can_take_shift = stapher.is_free(staphings, shift) and not shift.is_covered(staphings) 
+							if can_take_shift and shift.has_flag(preference.flag):
+								for qual in shift.qualifications.all():
+									if not qual in stapher.qualifications.all():
+										stapher.qualifications.add(qual)
+										print(f'{stapher} added {qual} qualification for {shift}')
+										# stapher.save()
+								new_staphing = Staphing(schedule = schedule, stapher = stapher, shift = shift)
+								print(f'New Staphing: {new_staphing}')
+								new_staphing.save()
+								staphings.append(new_staphing)
+								shift_was_placed = True
+								shifts_can_be_placed = True
+		ordered_staphers.append(ordered_staphers[0])
+		ordered_staphers.pop(0)
+		
+
+
+
+
+
+
+
+
+
+
