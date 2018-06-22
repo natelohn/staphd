@@ -38,7 +38,8 @@
 		</tr>
 		{% endfor %}
 	</table>
-	<a class="big_button" id="special_shift_btn" href="">Place Speical Shifts</a>
+	<a class="big_button" id="special_shift_btn" href="{% url 'schedules:special-placement' %}">Place Special Shifts</a>
+	<p class="error">{{special_error_message}}</p>
 	{% endif %}
 </div>
 {% endblock %}

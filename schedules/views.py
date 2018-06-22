@@ -1411,7 +1411,6 @@ def stapher_preferences_add(request, *args, **kwargs):
 	new_preference.save()
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': stapher.id}))
 
-
 @login_required
 def stapher_preferences_delete(request, *args, **kwargs):
 	pref_id = kwargs['pk']
@@ -1423,7 +1422,7 @@ def stapher_preferences_delete(request, *args, **kwargs):
 	preference.delete()
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': stapher.id}))
 
-
+@login_required
 def stapher_preferences_up(request, *args, **kwargs):
 	pref_id = kwargs['pk']
 	try:
@@ -1434,6 +1433,7 @@ def stapher_preferences_up(request, *args, **kwargs):
 	swap_shift_preferences(preference, other_preferences, True)
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': preference.stapher.id}))
 
+@login_required
 def stapher_preferences_down(request, *args, **kwargs):
 	pref_id = kwargs['pk']
 	try:
@@ -1443,6 +1443,30 @@ def stapher_preferences_down(request, *args, **kwargs):
 		return Http404
 	swap_shift_preferences(preference, other_preferences, False)
 	return HttpResponseRedirect(reverse('schedules:stapher-preferences', kwargs={'pk': preference.stapher.id}))
+
+
+
+
+def place_special_shifts(request, *args, **kwargs):
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+	except:
+		return render(request,'schedules/rank.html', {'special_error_message':'Must select a schedule first.'})
+	task_id = cache.get('current_task_id')
+	if not task_id:
+		schedule_id = schedule.id
+		task = build_schedules_task.delay(schedule_id)
+		task_id = task.task_id
+		cache.set('current_task_id', task_id, 3000)
+		cache.set('no_redirect', True, None)
+	request.session['task_id'] = task_id
+	context = {'task_id':task_id}
+	context['schedule'] = schedule.title
+	context['at_build'] = True
+	return render(request,'schedules/progress.html', context)
+
+
+
 
 
 
