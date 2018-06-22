@@ -48,7 +48,7 @@
 			{% if obj.active %}
 			<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
 			{% else %}
-			<a class="list_btn" id="non_active" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+			<a class="list_btn" id="non_active" href='{{ obj.get_absolute_url }}'>{{ obj }} (Not Active)</a>
 			{% endif %}
 			{% endfor %}
 			{% else %}
