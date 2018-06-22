@@ -57,9 +57,11 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 	while shifts_can_be_placed:
 		shifts_can_be_placed = False
 		for stapher in ordered_staphers:
+			print(f'Looking for a shift for {stapher}')
 			shift_was_placed = False
 			staphers_preferences = ShiftPreference.objects.filter(stapher = stapher).order_by('ranking')
 			for preference in staphers_preferences:
+				print(f'	- Checking for shifts w/ the {preference.flag} flag')
 				if not shift_was_placed:
 					for shift in special_shifts:
 						if not shift_was_placed:
