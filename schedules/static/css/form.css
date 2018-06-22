@@ -249,8 +249,7 @@ label[for=stapher_qualifications_hardcoded] {
 #stapher_active {
 	/* position */
 	left: 100px;
-    background: url(http://ramyasspace.files.wordpress.com/2011/06/tick.jpg);
-    background-size: 100%;
+	height: 100px;
 }
 
 label[for=stapher_active], #stapher_active {
