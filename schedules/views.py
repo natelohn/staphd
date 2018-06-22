@@ -475,6 +475,13 @@ class StapherList(LoginRequiredMixin,ListView):
 			all_staphings = []
 			schedule = None
 		all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))	
+		for s in all_staphers:
+			s.active = False
+			s.save()
+
+
+
+
 		query = self.request.GET.get('q')
 		filtered_query_set = all_staphers
 		if query:
