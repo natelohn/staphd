@@ -250,7 +250,8 @@ label[for=stapher_qualifications_hardcoded] {
 	/* position */
 	position: absolute;
 	left: 100px;
-	font-size: 50px;
+	width: 10em;
+	height: 10em;
 	top: 350px;
 }
 
