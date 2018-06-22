@@ -250,7 +250,7 @@ label[for=stapher_qualifications_hardcoded] {
 	/* position */
 	left: 80px;
 	height: 20px;
-	transform:scale(1.5, 1.5);
+	transform:scale(1.75, 1.75);
 }
 
 label[for=stapher_active], #stapher_active {
