@@ -51,7 +51,8 @@ def get_special_shift_flags():
 	return sorted(all_special_flags, key = attrgetter('title'))
 
 
-def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, staphings):	
+def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, staphings):
+	print('here...')
 	shifts_can_be_placed = True
 	while shifts_can_be_placed:
 		shifts_can_be_placed = False
