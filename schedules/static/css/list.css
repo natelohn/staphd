@@ -153,3 +153,8 @@
     top: 80px;
     left: 40px;
 }
+
+
+#non_active {
+    background-color: red;
+}

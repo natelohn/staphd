@@ -20,7 +20,7 @@ class Qualification(models.Model):
 		return reverse('schedules:qualification-settings')
 
 	def delete(self, *args, **kwargs):
-		cache.set('sorted_shifts', None, 0)
+		cache.delete('sorted_shifts')
 		super(Qualification, self).delete(*args, **kwargs)
 
 class Flag(models.Model):
@@ -52,12 +52,12 @@ class Stapher(models.Model):
 		return f'{self.first_name} {self.last_name}'
 
 	def save(self, *args, **kwargs):
-		cache.set('sorted_shifts', None, 0)
+		cache.delete('sorted_shifts')
 		super(Stapher, self).save(*args, **kwargs)
 			
 
 	def delete(self, *args, **kwargs):
-		cache.set('sorted_shifts', None, 0)
+		cache.delete('sorted_shifts')
 		super(Stapher, self).delete(*args, **kwargs)
 
 	def get_absolute_url(self):
@@ -230,12 +230,12 @@ class Shift(models.Model):
 		return f'{self.title} on {self.get_day_string()}, {start_str}-{end_str}'
 
 	def save(self, *args, **kwargs):
-		cache.set('sorted_shifts', None, 0)
+		cache.delete('sorted_shifts')
 		if self.is_special(): cache.delete('special_shift_flags')
 		super(Shift, self).save(*args, **kwargs)
 
 	def delete(self, *args, **kwargs):
-		cache.set('sorted_shifts', None, 0)
+		cache.delete('sorted_shifts')
 		if self.is_special(): cache.delete('special_shift_flags')
 		super(Shift, self).delete(*args, **kwargs)
 			
@@ -351,13 +351,13 @@ class Schedule(models.Model):
 
 
 	def save(self, *args, **kwargs):
-		cache.set('sorted_shifts', None, 0)
+		cache.delete('sorted_shifts')
 		cache.delete('special_shift_flags')
 		super(Schedule, self).save(*args, **kwargs)
 			
 
 	def delete(self, *args, **kwargs):
-		cache.set('sorted_shifts', None, 0)
+		cache.delete('sorted_shifts')
 		cache.delete('special_shift_flags')
 		latest_excel = Schedule.objects.latest('excel_updated')
 		if latest_excel == self:

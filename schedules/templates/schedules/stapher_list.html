@@ -28,6 +28,8 @@
 				- You can perform multiple searches by separating searches by “,” (i.e. Searching <i>"Ski Dock, ! lifeguarding, New"</i> gives you new staphers that are on Ski Dock and are NOT qualified to lifeguard). You can combine as many of these searches as you like. 
 				<br><br>
 				- An explanation of the results is shown above the list of Staphers. If a search results in all staphers being shown (i.e. Searching <i>"New, Returners"</i>) it will simply read "All Staphers" above the list.
+				<br><br>
+				- Non-Active Staphers (those not used in Ratio Checks, Schedule Building or Special Shift Placement) show up in Red
 			</span>
 		</div>
 		<form method='GET' action='.'>
@@ -43,7 +45,11 @@
 			<h2>{{query_explanation}}</h2>
 			{% endif %}
 			{% for obj in object_list %}
+			{% if obj.active %}
 			<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+			{% else %}
+			<a class="list_btn" id="non_active" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+			{% endif %}
 			{% endfor %}
 			{% else %}
 			<h3> No {{title}} found.</h3><br>

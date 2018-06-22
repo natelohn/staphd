@@ -36,9 +36,9 @@ def update_files_task(self, schedule_id):
 	update_analytics(all_staphers, staphings, all_flags, all_qualifications, xl_dir, self)
 
 	# Delete the amount of actions from the cache
-	cache.set('num_actions_made', None, 0)
-	cache.set('num_total_actions', None, 0)
-	cache.set('current_task_id', None, 0)
+	cache.delete('num_actions_made')
+	cache.delete('num_total_actions')
+	cache.delete('current_task_id')
 
 
 @task(bind=True, track_started=True, task_time_limit = 1500)
@@ -58,8 +58,8 @@ def build_schedules_task(self, schedule_id):
 		# Set the message for the front end
 		self.update_state(meta = {'message':'Preparing to Place Shifts', 'process_percent':0})
 		shifts_in_set = Shift.objects.filter(shift_set = schedule.shift_set)
-		all_staphers = Stapher.objects.all()
-		sorted_shifts = get_sorted_shifts(all_staphers, shifts_in_set)
+		active_staphers = Stapher.objects.filter(active = True)
+		sorted_shifts = get_sorted_shifts(active_staphers, shifts_in_set)
 		cache.set('sorted_shifts', sorted_shifts, None)
 	total_actions = sum([shift.workers_needed for shift, staphers in sorted_shifts])
 	cache.set('num_total_actions', total_actions, 1500)
@@ -76,15 +76,15 @@ def build_schedules_task(self, schedule_id):
 		cache.set('recommendation',recommendation, None)
 
 	# Delete the values needed to track progress
-	cache.set('num_actions_made', None, 0)
-	cache.set('num_total_actions', None, 0)
-	cache.set('current_task_id', None, 0)
+	cache.delete('num_actions_made')
+	cache.delete('num_total_actions')
+	cache.delete('current_task_id')
 
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
 def find_ratios_task(self, schedule_id, shift_set_id):
 	shifts = Shift.objects.filter(shift_set_id = shift_set_id)
-	staphers = Stapher.objects.all()
+	staphers = Stapher.objects.filter(active = True)
 	staphings = Staphing.objects.filter(schedule_id = schedule_id)
 	uncovered_shifts = [s for s in shifts if not s.is_covered(staphings)]
 	ordered_times_by_day = get_ordered_start_and_end_times_by_day(uncovered_shifts)
@@ -98,9 +98,9 @@ def find_ratios_task(self, schedule_id, shift_set_id):
 	cache.set('ratios', ratios, None)
 
 	# Delete the values needed to track progress
-	cache.set('num_actions_made', None, 0)
-	cache.set('num_total_actions', None, 0)
-	cache.set('current_task_id', None, 0)
+	cache.delete('num_actions_made')
+	cache.delete('num_total_actions')
+	cache.delete('current_task_id')
 
 	print('**************** Task Complete! ****************')
 

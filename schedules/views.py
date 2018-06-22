@@ -115,7 +115,7 @@ def build_view(request, *args, **kwargs):
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
 	context['at_build'] = True
-	cache.set('no_redirect', None, 0)
+	cache.delete('no_redirect')
 	return render(request, template, context) 
 
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
@@ -315,8 +315,8 @@ def recommendations_view(request, *args, **kwargs):
 
 	recs = cache.get('recommendation')
 	shift = cache.get('recommended_shift')
-	cache.set('recommendation', None, 0)
-	cache.set('recommended_shift', None, 0)
+	cache.delete('recommendation')
+	cache.delete('recommended_shift')
 
 	if not recs or not shift:
 		print(f'No recommendations to be made (rec = {recs})')
@@ -543,7 +543,7 @@ class StapherList(LoginRequiredMixin,ListView):
 					query_explanation = query_explanation[:-1] + ' and'
 			cache.set('query_explanation', query_explanation[:-1], 60)
 		else:
-			cache.set('query_explanation', None, 0)
+			cache.delete('query_explanation')
 
 		return filtered_query_set
 
@@ -880,7 +880,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 		
 		# If there is no query then we see if they have sorted the shifts and return the appr
 		else:
-			cache.set('query_explanation', None, 0)
+			cache.delete('query_explanation')
 			if 'sort' in self.kwargs:
 				sort_type = self.kwargs['sort']
 				if self.kwargs['key']:
