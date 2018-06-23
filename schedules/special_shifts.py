@@ -51,16 +51,25 @@ def get_special_shift_flags():
 	return sorted(all_special_flags, key = attrgetter('title'))
 
 
-def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, staphings):
+def update_task_info(task, msg, percent):
+	percent = int(actions_taken / total_actions) * 100
+	meta = {'message':message, 'process_percent':percent}
+	current_task.update_state(meta = meta)
+
+def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, staphings, current_task):
+	total_actions = len(ordered_staphers)
+	update_task_info(current_task, 'Starting to Place Special Shifts', 0,  total_actions)
+
 	shifts_can_be_placed = True
 	while shifts_can_be_placed:
 		shifts_can_be_placed = False
-		for stapher in ordered_staphers:
-			print(f'Looking for a shift for {stapher}')
+		for actions_taken, stapher in enumerate(ordered_staphers):
+			message = f'Looking for a shift for {stapher}...'
+			print(message)
+			update_task_info(current_task, message, actions_taken, total_actions)
 			shift_was_placed = False
 			staphers_preferences = ShiftPreference.objects.filter(stapher = stapher).order_by('ranking')
-			for preference in staphers_preferences:
-				print(f'	- Checking for shifts w/ the {preference.flag} flag')
+			for rank, preference in enumerate(staphers_preferences):
 				if not shift_was_placed:
 					for shift in special_shifts:
 						if not shift_was_placed:
@@ -69,17 +78,22 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 								for qual in shift.qualifications.all():
 									if not qual in stapher.qualifications.all():
 										stapher.qualifications.add(qual)
-										print(f'{stapher} added {qual} qualification for {shift}')
+										message = f'{stapher} added {qual} qualification for {shift}'
+										print(message)
 										# stapher.save()
 								new_staphing = Staphing(schedule = schedule, stapher = stapher, shift = shift)
-								print(f'		---- New Staphing: {new_staphing}')
-								# new_staphing.save()
+								message = f'New Staphing: {new_staphing}'
+								print(message)
+								update_task_info(current_task, message, actions_taken, total_actions)
+								new_staphing.save()
 								staphings.append(new_staphing)
 								shift_was_placed = True
 			if shift_was_placed:
 				shifts_can_be_placed = True
 			else:
-				print(f'{stapher} has no shifts availible given their preferences.')
+				message = f'{stapher} has no shifts availible given their preferences.'
+				print(message)
+				update_task_info(current_task, message, actions_taken, total_actions)
 		
 
 
