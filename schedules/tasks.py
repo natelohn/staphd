@@ -116,7 +116,7 @@ def place_special_shifts_task(self, schedule_id):
 	except:
 		return None
 	ordered_staphers = cache.get('ordered_staphers') #Made sure it exists in views.py
-	place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, list(staphings), self)
+	place_special_shifts_by_rank(schedule, list(ordered_staphers), special_shifts, list(staphings), self)
 
 	cache.delete('current_task_id')
 
