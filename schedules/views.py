@@ -1462,7 +1462,7 @@ def place_special_shifts(request, *args, **kwargs):
 	context = {'task_id':task_id}
 	context['schedule'] = schedule.title
 	context['at_build'] = True
-	return render(request,'schedules/progress.html', context)
+	return HttpResponseRedirect(reverse('schedules:schedule'))
 
 
 
