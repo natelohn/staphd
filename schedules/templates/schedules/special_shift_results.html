@@ -5,10 +5,10 @@
 	<ol>
 		{% for stapher in ordered_staphers %}
 		<li>
-			Ranked {{forloop.counter}}) {{stapher.name}}
+			<h2>Ranked {{forloop.counter}}) {{stapher.name}}</h2>
 			<ul>
 				{% for result in stapher.results %}
-				<li>- {{result}}</li>
+				<li><h4>	- {{result}}</h4></li>
 				{% endfor %}
 			</ul>
 		</li>
