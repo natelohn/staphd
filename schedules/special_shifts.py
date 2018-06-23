@@ -51,8 +51,8 @@ def get_special_shift_flags():
 	return sorted(all_special_flags, key = attrgetter('title'))
 
 
-def update_task_info(task, msg, percent):
-	percent = int(actions_taken / total_actions) * 100
+def update_task_info(task, msg, num, denom ):
+	percent = int(num / denom) * 100
 	meta = {'message':message, 'process_percent':percent}
 	current_task.update_state(meta = meta)
 
