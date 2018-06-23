@@ -57,6 +57,7 @@ def update_task_info(task, message, num, denom ):
 	task.update_state(meta = meta)
 
 def get_suffix(rank):
+	rank += 1
 	if rank == 1:
 		return 'st'
 	elif rank == 2:
@@ -85,7 +86,6 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 			shift_was_placed = False
 			staphers_preferences = ShiftPreference.objects.filter(stapher = stapher).order_by('ranking')
 			for rank, preference in enumerate(staphers_preferences):
-				rank += 1
 				if not shift_was_placed:
 					for shift in special_shifts:
 						if not shift_was_placed:
@@ -99,7 +99,7 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 										stapher.save()
 								new_staphing = Staphing(schedule = schedule, stapher = stapher, shift = shift)
 								suffix = get_suffix(rank)
-								message = f'- Recieved their {rank}{suffix} choice \'{preference.flag}\' - {shift}. '
+								message = f'Recieved their {rank}{suffix} choice, a \'{preference.flag}\' shift - {shift}. '
 								if qual_str:
 									message += f'(given the {qual_str[:-2]} qualifications for this shift)'
 								new_staphing.save()
@@ -108,7 +108,7 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 			if shift_was_placed:
 				shifts_can_be_placed = True
 			else:
-				message = f'{stapher} has no shifts availible given their preferences.'
+				message = f' had no more shifts availible given their preferences.'
 				complete_staphers.append(stapher)
 				actions_taken += 1
 
