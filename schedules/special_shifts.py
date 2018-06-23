@@ -52,7 +52,7 @@ def get_special_shift_flags():
 
 
 def update_task_info(task, message, num, denom ):
-	percent = int(num / denom) * 100
+	percent = int((num / denom) * 100)
 	meta = {'message':message, 'process_percent':percent}
 	task.update_state(meta = meta)
 
@@ -66,8 +66,6 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 		total_actions = len(ordered_staphers)
 		shifts_can_be_placed = False
 		for actions_taken, stapher in enumerate(ordered_staphers):
-			percent = int(actions_taken/total_actions) * 100
-			print(f'{actions_taken}/{total_actions} = {percent}')
 			message = f'Looking for a shift for {stapher}...'
 			print(message)
 			update_task_info(current_task, message, actions_taken, total_actions)
