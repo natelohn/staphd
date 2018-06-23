@@ -1,0 +1,18 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+<div id="page">
+	<h1>Special Shift Placement Results:</h1>
+	<ol>
+		{% for stapher in ordered_staphers %}
+		<li>
+			Ranked {{forloop.counter}}) {{stapher.name}}
+			<ul>
+				{% for result in stapher.results %}
+				<li>- {{result}}</li>
+				{% endfor %}
+			</ul>
+		</li>
+		{% endfor %}
+	</ol>
+</div>
+{% endblock %}

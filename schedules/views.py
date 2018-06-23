@@ -1467,6 +1467,29 @@ def place_special_shifts(request, *args, **kwargs):
 	context['at_build'] = True
 	return HttpResponseRedirect(reverse('schedules:schedule'))
 
+@login_required
+def special_shifts_results(request, *args, **kwargs):
+	special_shift_results = cache.get('special_shift_results')
+	if not special_shift_results:
+		return HttpResponseRedirect(reverse('schedules:schedule'))
+	else:
+		ordered_staphers = special_shift_results[0]
+		results_dict = special_shift_results[1]
+		context = {}
+		template = 'schedules/special_shift_results.html'
+		html_arr = []
+		for stapher in ordered_staphers:
+			html_obj = {}
+			html_obj['name'] = stapher.full_name()
+			html_obj['results'] = results_dict[stapher.id]
+			html_arr.append(html_obj)
+		context['ordered_staphers'] = html_arr
+	return render(request, template, context)
+
+
+
+
+
 
 
 
