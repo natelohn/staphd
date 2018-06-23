@@ -302,7 +302,7 @@ def redirect(request, *args, **kwargs):
 	elif no_redirect:
 		return HttpResponseRedirect(reverse('schedules:schedule'))
 	elif special_shift_results:
-		return HttpResponseRedirect(reverse('schedules:schedule'))
+		return HttpResponseRedirect(reverse('schedules:special-results'))
 	elif ratios:
 		return HttpResponseRedirect(reverse('schedules:ratio-week'))
 	else:
