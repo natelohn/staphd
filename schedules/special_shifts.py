@@ -54,7 +54,7 @@ def get_special_shift_flags():
 def update_task_info(task, message, num, denom ):
 	percent = int(num / denom) * 100
 	meta = {'message':message, 'process_percent':percent}
-	current_task.update_state(meta = meta)
+	task.update_state(meta = meta)
 
 def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, staphings, current_task):
 	total_actions = len(ordered_staphers)
