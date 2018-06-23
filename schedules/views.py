@@ -385,7 +385,7 @@ def get_ratio(request, *args, **kwargs):
 	context = {'task_id':task_id}
 	context['schedule'] = schedule.title
 	context['at_build'] = True
-	return render(request,'schedules/progress.html', context)
+	return HttpResponseRedirect(reverse('schedules:schedule'))
 
 @login_required
 def ratio_week_view(request, *args, **kwargs):
