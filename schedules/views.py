@@ -1453,7 +1453,7 @@ def place_special_shifts(request, *args, **kwargs):
 	if not cache.get('ordered_staphers'):
 		return HttpResponseRedirect(reverse('schedules:special'))
 	task_id = cache.get('current_task_id')
-	if not task_id:
+	if not task_id or True:
 		task = place_special_shifts_task.delay(schedule.id)
 		task_id = task.task_id
 		cache.set('current_task_id', task_id, 3000)
