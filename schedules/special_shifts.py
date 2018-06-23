@@ -82,14 +82,14 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 									if not qual in stapher.qualifications.all():
 										stapher.qualifications.add(qual)
 										qual_str += f'{qual}, '
-										# stapher.save()
+										stapher.save()
 								new_staphing = Staphing(schedule = schedule, stapher = stapher, shift = shift)
 								message = f'{stapher} was given {shift}, their {rank} ranked choice \'{preference.flag}\'. '
 								if qual_str:
 									message += f'({stapher} was given the {qual_str[:-2]} qualifications for this shift)'
 								print(message)
 								update_task_info(current_task, message, actions_taken, total_actions)
-								# new_staphing.save()
+								new_staphing.save()
 								staphings.append(new_staphing)
 								shift_was_placed = True
 			if shift_was_placed:
