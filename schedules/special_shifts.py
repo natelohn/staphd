@@ -66,6 +66,8 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 		total_actions = len(ordered_staphers)
 		shifts_can_be_placed = False
 		for actions_taken, stapher in enumerate(ordered_staphers):
+			percent = int(actions_taken/total_actions) * 100
+			print(f'{actions_taken}/{total_actions} = {percent}')
 			message = f'Looking for a shift for {stapher}...'
 			print(message)
 			update_task_info(current_task, message, actions_taken, total_actions)
