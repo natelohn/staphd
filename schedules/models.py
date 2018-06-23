@@ -54,12 +54,16 @@ class Stapher(models.Model):
 	def save(self, *args, **kwargs):
 		cache.delete('sorted_shifts')
 		cache.delete('ordered_staphers')
+		cache.delete('ratios')
+		cache.delete('special_shift_results')
 		super(Stapher, self).save(*args, **kwargs)
 			
 
 	def delete(self, *args, **kwargs):
 		cache.delete('sorted_shifts')
 		cache.delete('ordered_staphers')
+		cache.delete('ratios')
+		cache.delete('special_shift_results')
 		super(Stapher, self).delete(*args, **kwargs)
 
 	def get_absolute_url(self):

@@ -57,6 +57,7 @@ def update_task_info(task, message, num, denom ):
 	task.update_state(meta = meta)
 
 def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, staphings, current_task):
+	results = {}
 	total_actions = len(ordered_staphers)
 	update_task_info(current_task, 'Starting to Place Special Shifts', 0,  total_actions)
 
@@ -99,9 +100,16 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 				print(message)
 				update_task_info(current_task, message, actions_taken, total_actions)
 				complete_staphers.append(stapher)
+
+			if stapher.id in results:
+				results[stapher.id].append(message)
+			else:
+				results[stapher.id] = [message]
+
 		for stapher in complete_staphers:
 			if stapher in ordered_staphers:
 				ordered_staphers.remove(stapher)
+	return results
 
 
 		

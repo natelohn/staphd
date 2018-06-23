@@ -294,11 +294,14 @@ def track_state(request, *args, **kwargs):
 def redirect(request, *args, **kwargs):
 	recs = cache.get('recommendation')
 	shift = cache.get('recommended_shift')
+	special_shift_results = cache.get('special_shift_results')
 	no_redirect = cache.get('no_redirect')
 	ratios = cache.get('ratios')
 	if recs and shift:
 		return HttpResponseRedirect(reverse('schedules:recommendation'))
 	elif no_redirect:
+		return HttpResponseRedirect(reverse('schedules:schedule'))
+	elif special_shift_results:
 		return HttpResponseRedirect(reverse('schedules:schedule'))
 	elif ratios:
 		return HttpResponseRedirect(reverse('schedules:ratio-week'))

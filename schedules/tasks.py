@@ -96,14 +96,15 @@ def find_ratios_task(self, schedule_id, shift_set_id):
 
 	# Do the task
 	ratios = find_ratios(shifts, staphers, staphings, ordered_times_by_day, self)
+	cache.delete('special_shift_results')
 	cache.set('ratios', ratios, None)
+	
 
 	# Delete the values needed to track progress
 	cache.delete('num_actions_made')
 	cache.delete('num_total_actions')
 	cache.delete('current_task_id')
 
-	print('**************** Task Complete! ****************')
 
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
@@ -115,8 +116,12 @@ def place_special_shifts_task(self, schedule_id):
 		staphings = Staphing.objects.filter(schedule = schedule)
 	except:
 		return None
-	ordered_staphers = cache.get('ordered_staphers') #Made sure it exists in views.py
-	place_special_shifts_by_rank(schedule, list(ordered_staphers), special_shifts, list(staphings), self)
+	ordered_staphers = cache.get('ordered_staphers') # Made sure it exists in views.py
+	special_shift_results = place_special_shifts_by_rank(schedule, list(ordered_staphers), special_shifts, list(staphings), self)
+	
 
+	cache.delete('ratios')
+	cache.set('special_shift_results', special_shift_results, None)
 	cache.delete('current_task_id')
+
 
