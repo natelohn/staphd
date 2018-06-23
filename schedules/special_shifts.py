@@ -56,24 +56,36 @@ def update_task_info(task, message, num, denom ):
 	meta = {'message':message, 'process_percent':percent}
 	task.update_state(meta = meta)
 
+def get_suffix(rank):
+	if rank == 1:
+		return 'st'
+	elif rank == 2:
+		return 'nd'
+	elif rank == 3:
+		return 'rd'
+	else:
+		return 'th'
+
+
 def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, staphings, current_task):
 	results = {}
 	original_order = ordered_staphers[:]
+	actions_taken = 0
 	total_actions = len(ordered_staphers)
-	update_task_info(current_task, 'Starting to Place Special Shifts', 0,  total_actions)
+	update_task_info(current_task, 'Starting to Place Special Shifts', actions_taken,  total_actions)
 
 	complete_staphers = []
 	shifts_can_be_placed = True
 	while shifts_can_be_placed:
-		total_actions = len(ordered_staphers)
 		shifts_can_be_placed = False
-		for actions_taken, stapher in enumerate(ordered_staphers):
-			message = f'Looking for a shift for {stapher}...'
-			print(message)
-			update_task_info(current_task, message, actions_taken, total_actions)
+		for stapher in ordered_staphers:
+			update_message = f'Looking for a shift for {stapher}...'
+			print(update_message)
+			update_task_info(current_task, update_message, actions_taken, total_actions)
 			shift_was_placed = False
 			staphers_preferences = ShiftPreference.objects.filter(stapher = stapher).order_by('ranking')
 			for rank, preference in enumerate(staphers_preferences):
+				rank += 1
 				if not shift_was_placed:
 					for shift in special_shifts:
 						if not shift_was_placed:
@@ -86,11 +98,10 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 										qual_str += f'{qual}, '
 										stapher.save()
 								new_staphing = Staphing(schedule = schedule, stapher = stapher, shift = shift)
-								message = f'{stapher} was given {shift}, their {rank} ranked choice \'{preference.flag}\'. '
+								suffix = get_suffix(rank)
+								message = f'- Recieved their {rank}{suffix} choice \'{preference.flag}\' - {shift}. '
 								if qual_str:
-									message += f'({stapher} was given the {qual_str[:-2]} qualifications for this shift)'
-								print(message)
-								update_task_info(current_task, message, actions_taken, total_actions)
+									message += f'(given the {qual_str[:-2]} qualifications for this shift)'
 								new_staphing.save()
 								staphings.append(new_staphing)
 								shift_was_placed = True
@@ -98,9 +109,9 @@ def place_special_shifts_by_rank(schedule, ordered_staphers, special_shifts, sta
 				shifts_can_be_placed = True
 			else:
 				message = f'{stapher} has no shifts availible given their preferences.'
-				print(message)
-				update_task_info(current_task, message, actions_taken, total_actions)
 				complete_staphers.append(stapher)
+				actions_taken += 1
+
 
 			if stapher.id in results:
 				results[stapher.id].append(message)
