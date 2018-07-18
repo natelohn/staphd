@@ -340,5 +340,53 @@
 		"fields": {
 			"title":"stirfry"
 		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"microboppers"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"macroboppers"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"munchkins-a"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"munchkins-b"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"munchkins-c"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"munchkins-d"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"snoopers-a"
+		}
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title":"snoopers-b"
+		}
 	}
 ]

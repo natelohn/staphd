@@ -2,7 +2,7 @@
 	{
 		"model": "schedules.Settings",
 		"fields": {
-			"parameters":[98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113],
+			"parameters":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],
 			"auto_schedule":true,
 			"auto_threshold":0,
 			"tie_breaker":0

@@ -664,5 +664,65 @@
 		"fields": {
 			"title":"wine"
 		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"campfire"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"music-lessons"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"microboppers"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"macroboppers"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"munchkins-a"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"munchkins-b"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"munchkins-c"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"munchkins-d"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"snoopers-a"
+		}
+	},
+	{
+		"model": "schedules.Flag",
+		"fields": {
+			"title":"snoopers-b"
+		}
 	}
 ]
