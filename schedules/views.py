@@ -471,6 +471,7 @@ class ShiftSetList(LoginRequiredMixin, TemplateView):
 		context['list'] = ShiftSet.objects.all().order_by(Lower('title'))
 		context['shift_set'] = True
 		context['create_link'] = 'schedules:set-create'
+		context['delete_link'] = 'schedules:set-delete'
 		context['object_name'] = 'Shift Set'
 		context['at_settings'] = True
 		return context
