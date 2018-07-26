@@ -13,7 +13,6 @@
 			{% for set in other_shift_sets %}
 			<li><a class="button" href="{% url 'schedules:set-add' pk=shift_set.id add=set.id %}">{{set}}</a></li>
 			<br>
-			<br>
 			{% endfor %}
 		</ul>
 
