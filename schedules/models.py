@@ -215,7 +215,7 @@ class ShiftSet(models.Model):
 		return f'{self.title}'
 
 	def get_absolute_url(self):
-		return reverse('schedules:set-add', kwargs = {'pk': self.id})
+		return reverse('schedules:set-select-set', kwargs = {'pk': self.id})
 
 class Shift(models.Model):
 	active			= models.BooleanField(default = True)
