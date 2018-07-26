@@ -26,7 +26,7 @@ from .forms import WeekdayForm, AddShiftsForm, FlagCreateForm, ScheduleCreateFor
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification, ShiftPreference
 from .models import Settings as ScheduleBuildingSettings
 from .special_shifts import get_special_shift_flags, swap_shift_preferences
-from .tasks import build_schedules_task, update_files_task, find_ratios_task, place_special_shifts_task
+from .tasks import build_schedules_task, update_files_task, find_ratios_task, place_special_shifts_task, add_shifts_to_set_task
 from .helpers import get_shifts_to_add, get_week_schedule_view_info, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string
 
 
@@ -95,8 +95,6 @@ def download_meals(request, *args, **kwargs):
 @login_required
 def download_analytics(request, *args, **kwargs):
 	return download_file(request, 'analytics.xlsx')
-
-
 
 
 # Schedule Building based Views
@@ -1179,7 +1177,7 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 		context['title'] = 'Edit Schedule'
 		context['cancel_url'] = 'schedules:select'
 		context['create'] = True
-		context['shift_set_url'] = 'schedules:set-add'
+		context['shift_set_url'] = 'schedules:set-select-set'
 		context['shift_set'] = schedule.shift_set
 		context['at_build'] = True
 		return context
@@ -1283,7 +1281,7 @@ def shift_set_add_from_set(request, *args, **kwargs):
 		return Http404
 	shifts_in_set = []
 	uncheckable = []
-	all_shifts = Shift.objects.filter(shift_set = adding_set).order_by('title','shift_set','day','start')
+	all_shifts = Shift.objects.filter(Q(shift_set=shift_set) | Q(shift_set=adding_set)).order_by('title','shift_set','day','start')
 	shifts_arr = []
 	shifts_in_set = []
 	uncheckable = []
@@ -1301,16 +1299,17 @@ def shift_set_add_from_set(request, *args, **kwargs):
 		form = AddShiftsToSetForm(request.POST)
 		if form.is_valid():
 			added_shifts = form.cleaned_data['added_shifts']
-			for shift in added_shifts:
-				if shift not in shifts_in_set:
-					new_shift = Shift(title = shift.title, day = shift.day, start = shift.start, end = shift.end, workers_needed = shift.workers_needed, shift_set = shift_set)
-					new_shift.save()
-					new_shift.flags = shift.flags.all()
-					new_shift.qualifications = shift.qualifications.all()
-					new_shift.save()
-			for shift in shifts_in_set:
-				if shift not in added_shifts:
-					shift.delete()
+			add_shifts_to_set_task.delay(shifts_in_set, added_shifts)
+			# for shift in added_shifts:
+			# 	if shift not in shifts_in_set:
+			# 		new_shift = Shift(title = shift.title, day = shift.day, start = shift.start, end = shift.end, workers_needed = shift.workers_needed, shift_set = shift_set)
+			# 		new_shift.save()
+			# 		new_shift.flags = shift.flags.all()
+			# 		new_shift.qualifications = shift.qualifications.all()
+			# 		new_shift.save()
+			# for shift in shifts_in_set:
+			# 	if shift not in added_shifts:
+			# 		shift.delete()
 			return HttpResponseRedirect(reverse('schedules:schedule-create'))
 	else:
 		form = AddShiftsToSetForm()

@@ -125,3 +125,15 @@ def place_special_shifts_task(self, schedule_id):
 	cache.delete('current_task_id')
 
 
+def add_shifts_to_set_task(shifts_in_set, added_shifts):
+	for shift in added_shifts:
+		if shift not in shifts_in_set:
+			new_shift = Shift(title = shift.title, day = shift.day, start = shift.start, end = shift.end, workers_needed = shift.workers_needed, shift_set = shift_set)
+			new_shift.save()
+			new_shift.flags = shift.flags.all()
+			new_shift.qualifications = shift.qualifications.all()
+			new_shift.save()
+	for shift in shifts_in_set:
+		if shift not in added_shifts:
+			shift.delete()
+
