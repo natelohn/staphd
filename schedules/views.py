@@ -317,7 +317,6 @@ def recommendations_view(request, *args, **kwargs):
 	recs = cache.get('recommendation')
 	shift = cache.get('recommended_shift')
 	cache.delete('recommendation')
-	cache.delete('recommended_shift')
 
 	if not recs or not shift:
 		print(f'No recommendations to be made (rec = {recs})')
@@ -1304,16 +1303,6 @@ def shift_set_add_from_set(request, *args, **kwargs):
 				added_shift_ids.append(shift.id)
 			shifts_in_set_ids = []
 			add_shifts_to_set_task.delay(shift_set.id, added_shift_ids)
-			# for shift in added_shifts:
-			# 	if shift not in shifts_in_set:
-			# 		new_shift = Shift(title = shift.title, day = shift.day, start = shift.start, end = shift.end, workers_needed = shift.workers_needed, shift_set = shift_set)
-			# 		new_shift.save()
-			# 		new_shift.flags = shift.flags.all()
-			# 		new_shift.qualifications = shift.qualifications.all()
-			# 		new_shift.save()
-			# for shift in shifts_in_set:
-			# 	if shift not in added_shifts:
-			# 		shift.delete()
 			return HttpResponseRedirect(reverse('schedules:schedule-create'))
 	else:
 		form = AddShiftsToSetForm()
