@@ -124,8 +124,9 @@ def place_special_shifts_task(self, schedule_id):
 	cache.set('special_shift_results', special_shift_results, None)
 	cache.delete('current_task_id')
 
-
-def add_shifts_to_set_task(shifts_in_set, added_shifts):
+@task(bind=True, track_started=True, task_time_limit = 1500)
+@shared_task(bind=True, ignore_result=False)
+def add_shifts_to_set_task(self, shifts_in_set, added_shifts):
 	for shift in added_shifts:
 		if shift not in shifts_in_set:
 			new_shift = Shift(title = shift.title, day = shift.day, start = shift.start, end = shift.end, workers_needed = shift.workers_needed, shift_set = shift_set)
