@@ -46,7 +46,7 @@ urlpatterns = [
     url(r'^extras/$', views.Settings.as_view(), name='settings'),
     url(r'^extras/flags$', views.FlagSettings.as_view(), name='flag-settings'),
     url(r'^extras/qualifications$', views.QualificationSettings.as_view(), name='qualification-settings'),
-    url(r'^extras/sets$', views.ShiftSetList.as_view(), name='shift-set-list'),
+    url(r'^extras/sets$', views.QualificationSettings.as_view(), name='shift-set-list'),
 
     url(r'^shifts/$', views.ShiftList.as_view(), name='shift-list'),
     url(r'^shifts/create$', views.ShiftCreate.as_view(), name='shift-create'),
