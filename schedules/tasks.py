@@ -6,7 +6,7 @@ from django.db.models.functions import Lower
 
 from .build import build_schedules
 from .excel import update_individual_excel_files, update_masters, update_analytics
-from .models import Flag, Schedule, Stapher, Shift, Staphing, Qualification, Master
+from .models import Flag, Schedule, Stapher, Shift, ShiftSet, Staphing, Qualification, Master
 from .models import Settings as ScheduleBuildingSettings
 from .ratio import find_ratios
 from .sort import get_sorted_shifts, get_ordered_start_and_end_times_by_day
@@ -127,7 +127,8 @@ def place_special_shifts_task(self, schedule_id):
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
 def add_shifts_to_set_task(self, shift_set_id, added_shift_ids):
-	shifts_in_set = Shift.objects.filter(shift_set__id = shift_set_id)
+	shift_set = ShiftSet.objects.filter(id = shift_set_id)
+	shifts_in_set = Shift.objects.filter(shift_set = shift_set)
 	for shift_id in added_shift_ids:
 		shift = Shift.objects.get(id = shift_id)
 		if shift not in shifts_in_set:
