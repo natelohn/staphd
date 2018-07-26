@@ -7,15 +7,9 @@
 	<br>
 	<ul>
 		{% for obj in list %}
-			{% if shift_sets %}
-<!-- 			<a class="button" href="{{ obj.get_absolute_url }}">
-				Edit the "{{obj}}" {{object_name}}
-			</a> -->
-			{% else %}
 			<a class="delete_button" href="{% url delete_link pk=obj.id%}">
 				Delete the <mark style="background-color:#3d3d3d; color:white;">"{{obj}}"</mark> {{object_name}}
 			</a>
-			{% endif %}
 			<br>
 			<br>
 		{% endfor %}
