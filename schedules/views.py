@@ -463,7 +463,16 @@ class QualificationSettings(LoginRequiredMixin, TemplateView):
 		context['at_settings'] = True
 		return context
 
+class ShiftSetList(LoginRequiredMixin, TemplateView):
+	template_name = 'settings_edit.html'
 
+	def get_context_data(self, *args, **kwargs):
+		context = super(ShiftSetList, self).get_context_data(*args, **kwargs)
+		context['list'] = ShiftSet.objects.all().order_by(Lower('title'))
+		context['shift_sets'] = True
+		context['object_name'] = 'Shift Set'
+		context['at_settings'] = True
+		return context
 
 
 # Stapher based views
