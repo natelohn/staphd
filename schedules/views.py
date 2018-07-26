@@ -468,7 +468,7 @@ class ShiftSetList(LoginRequiredMixin, TemplateView):
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(ShiftSetList, self).get_context_data(*args, **kwargs)
-		context['list'] = Qualification.objects.all().order_by(Lower('title'))
+		context['list'] = ShiftSet.objects.all().order_by(Lower('title'))
 		context['delete_link'] = 'schedules:qualification-delete'
 		context['create_link'] = 'schedules:qualification-create'
 		context['object_name'] = 'Qualification'
