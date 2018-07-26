@@ -1261,7 +1261,7 @@ def shift_set_add(request, *args, **kwargs):
 		shift_set = ShiftSet.objects.get(id = set_id)
 	except:
 		return Http404
-	other_shift_sets = ShiftSet.objects.exclude(shift_set).order_by('title')
+	other_shift_sets = ShiftSet.objects.exclude(id = shift_set.id).order_by('title')
 	print(f'other_shift_sets = {other_shift_sets}')
 	template = 'schedules/shift_set_list.html'
 	context = {}
