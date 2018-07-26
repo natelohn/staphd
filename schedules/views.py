@@ -1261,11 +1261,13 @@ def shift_set_add(request, *args, **kwargs):
 		shift_set = ShiftSet.objects.get(id = set_id)
 	except:
 		return Http404
+	other_shift_sets = ShiftSet.objects.exclude(shift_set).order_by('title')
+	print(f'other_shift_sets = {other_shift_sets}')
 	template = 'schedules/shift_set_list.html'
 	context = {}
 	context['shift_set'] = shift_set
 	context['cancel_url'] = 'schedules:schedule-create'
-	context['shift_sets'] = ShiftSet.objects.exclude(shift_set).order_by('title')
+	context['other_shift_sets'] = other_shift_sets
 	context['at_build'] = True
 	return render(request, template, context)
 

@@ -7,7 +7,7 @@
 	</div>
 	<a class="delete_button" href="{% url 'schedules:set-delete' pk=shift_set.id %}">Delete {{shift_set}}</a>
 	<div class="left_list" id="shift_set_div" >
-		{% for set in shift_sets %}
+		{% for set in other_shift_sets %}
 		<a href="">{{set}}</a>
 		{% endfor %}
 	</div>
