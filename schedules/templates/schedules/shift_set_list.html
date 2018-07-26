@@ -6,9 +6,11 @@
 		<a class='button' id="form_cancel" href='{% url cancel_url %}'>Cancel</a>
 	</div>
 	<a class="delete_button" href="{% url 'schedules:set-delete' pk=shift_set.id %}">Delete {{shift_set}}</a>
+	<hr style="background-color: grey; height:1px; margin-top: 10px;">
+	<h1>Add Shifts From:</h1>
 	<div class="left_list" id="shift_set_div" >
 		{% for set in other_shift_sets %}
-		<a href="">{{set}}</a>
+		<a class="button" href="{% url 'schedules:set-add' pk=shift_set.id add=set.id %}">{{set}}</a>
 		{% endfor %}
 	</div>
 </div>
