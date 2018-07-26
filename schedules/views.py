@@ -1299,7 +1299,11 @@ def shift_set_add_from_set(request, *args, **kwargs):
 		form = AddShiftsToSetForm(request.POST)
 		if form.is_valid():
 			added_shifts = form.cleaned_data['added_shifts']
-			add_shifts_to_set_task.delay(shifts_in_set, added_shifts)
+			added_shift_ids = []
+			for shift in added_shifts:
+				added_shift_ids.append(shift.id)
+			shifts_in_set_ids = []
+			add_shifts_to_set_task.delay(shift_set.id, added_shift_ids)
 			# for shift in added_shifts:
 			# 	if shift not in shifts_in_set:
 			# 		new_shift = Shift(title = shift.title, day = shift.day, start = shift.start, end = shift.end, workers_needed = shift.workers_needed, shift_set = shift_set)
