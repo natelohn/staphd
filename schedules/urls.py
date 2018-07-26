@@ -76,7 +76,8 @@ urlpatterns = [
     url(r'^staphing/(?P<pk>[\d]+)/delete$', views.StaphingDelete.as_view(), name='staphing-delete'),
 
     url(r'^set/create/$', views.ShiftSetCreate.as_view(), name='set-create'),
-    url(r'^set/add/(?P<pk>[\d]+)$', views.shift_set_add, name='set-add'),
+    url(r'^set/add/(?P<pk>[\d]+)$', views.shift_set_add, name='set-select-set'),
+    url(r'^set/add/(?P<pk>[\d]+)/(?P<add>[\d]+)$', views.shift_set_add_from_set, name='set-add'),
     url(r'^set/delete/(?P<pk>[\d]+)$', views.ShiftSetDelete.as_view(), name='set-delete'),
 
 ]

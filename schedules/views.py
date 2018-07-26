@@ -1253,6 +1253,7 @@ class ShiftSetCreate(LoginRequiredMixin, CreateView):
 		context['at_build'] = True
 		return context
 
+
 @login_required
 def shift_set_add(request, *args, **kwargs):
 	set_id = kwargs['pk']
@@ -1260,9 +1261,34 @@ def shift_set_add(request, *args, **kwargs):
 		shift_set = ShiftSet.objects.get(id = set_id)
 	except:
 		return Http404
+	template = 'schedules/shift_set_form.html'
+	context = {}
+	context['shifts_arr'] = shifts_arr
+	context['form'] = form
+	context['shift_set'] = shift_set
+	context['cancel_url'] = 'schedules:schedule-create'
+	context['shift_set'] = adding_set
+	context['flags'] = Flag.objects.all().order_by('title')
+	context['all_shifts'] = all_shifts
+	context['shifts_in_set'] = shifts_in_set
+	context['uncheckable'] = uncheckable
+	context['at_build'] = True
+	return render(request, template, context)
+
+@login_required
+def shift_set_add_from_set(request, *args, **kwargs):
+	set_id = kwargs['pk']
+	add_id = kwargs['add']
+	if set_id == add_id:
+		return Http404
+	try:
+		shift_set = ShiftSet.objects.get(id = set_id)
+		adding_set = ShiftSet.objects.get(id = add_id)
+	except:
+		return Http404
 	shifts_in_set = []
 	uncheckable = []
-	all_shifts = Shift.objects.all().order_by('title','shift_set','day','start')
+	all_shifts = Shift.objects.filter(shift_set = adding_set).order_by('title','shift_set','day','start')
 	shifts_arr = []
 	shifts_in_set = []
 	uncheckable = []
@@ -1299,7 +1325,7 @@ def shift_set_add(request, *args, **kwargs):
 	context['form'] = form
 	context['shift_set'] = shift_set
 	context['cancel_url'] = 'schedules:schedule-create'
-	context['shift_sets'] = ShiftSet.objects.exclude(id = set_id)
+	context['shift_set'] = adding_set
 	context['flags'] = Flag.objects.all().order_by('title')
 	context['all_shifts'] = all_shifts
 	context['shifts_in_set'] = shifts_in_set
