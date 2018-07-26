@@ -1265,10 +1265,7 @@ def shift_set_add(request, *args, **kwargs):
 	context = {}
 	context['shift_set'] = shift_set
 	context['cancel_url'] = 'schedules:schedule-create'
-	context['flags'] = Flag.objects.all().order_by('title')
-	context['all_shifts'] = all_shifts
-	context['shifts_in_set'] = shifts_in_set
-	context['uncheckable'] = uncheckable
+	context['shift_sets'] = ShiftSet.exclude(shift_set).order_by('title')
 	context['at_build'] = True
 	return render(request, template, context)
 
