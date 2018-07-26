@@ -1320,7 +1320,7 @@ def shift_set_add_from_set(request, *args, **kwargs):
 	context['form'] = form
 	context['shift_set'] = shift_set
 	context['cancel_url'] = 'schedules:schedule-create'
-	# context['shift_set'] = adding_set
+	context['shift_sets'] = adding_set
 	context['flags'] = Flag.objects.all().order_by('title')
 	context['all_shifts'] = all_shifts
 	context['shifts_in_set'] = shifts_in_set
