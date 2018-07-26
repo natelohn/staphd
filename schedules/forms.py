@@ -265,16 +265,16 @@ class AddShiftsToSetForm(forms.Form):
 			ALL_SHIFTS[shift.id] = f'{shift}'
 		self.fields['added_shifts'].choices = tuple(sorted(ALL_SHIFTS.items()))
 
-	def clean_added_shifts(self):
-		added_shifts_ids = self.cleaned_data.get("added_shifts")
-		added_shifts = []
-		for shift_id in added_shifts_ids:
-			try:
-				shift = Shift.objects.get(id = shift_id)
-				added_shifts.append(shift)
-			except:
-				raise forms.ValidationError(f"{shift_id} is not vaild shift id.")
-		return added_shifts
+	# def clean_added_shifts(self):
+	# 	added_shifts_ids = self.cleaned_data.get("added_shifts")
+	# 	added_shifts = []
+	# 	for shift_id in added_shifts_ids:
+	# 		try:
+	# 			shift = Shift.objects.get(id = shift_id)
+	# 			added_shifts.append(shift)
+	# 		except:
+	# 			raise forms.ValidationError(f"{shift_id} is not vaild shift id.")
+	# 	return added_shifts
 
 class WeekdayForm(forms.Form):
 	days = forms.MultipleChoiceField(label='days', widget = forms.CheckboxSelectMultiple())
