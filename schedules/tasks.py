@@ -137,6 +137,6 @@ def add_shifts_to_set_task(self, shift_set_id, added_shift_ids):
 			new_shift.qualifications = shift.qualifications.all()
 			new_shift.save()
 	for shift in shifts_in_set:
-		if shift not in added_shifts:
+		if shift.id not in added_shifts_ids:
 			shift.delete()
 
