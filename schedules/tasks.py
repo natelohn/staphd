@@ -127,7 +127,7 @@ def place_special_shifts_task(self, schedule_id):
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
 def add_shifts_to_set_task(self, shift_set_id, added_shift_ids):
-	shift_set = ShiftSet.objects.filter(id = shift_set_id)
+	shift_set = ShiftSet.objects.get(id = shift_set_id)
 	shifts_in_set = Shift.objects.filter(shift_set = shift_set)
 	for shift_id in added_shift_ids:
 		shift = Shift.objects.get(id = shift_id)
