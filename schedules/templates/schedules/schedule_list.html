@@ -3,30 +3,30 @@
 <div id="page">
 	<div class="select_header">
 		{% if schedule %}
-			<h1>Current Schedule is "{{schedule}}"</h1>
+			<h1>Current Schedules are "{{schedule}}"</h1>
 			<a class="button" type=button href="{% url 'schedules:schedule-detail' pk=schedule.id %}">View {{schedule}}</a>
 		{% else %}
-			<h1>No Schedule Selected</h1>
+			<h1>No Schedules Selected</h1>
 		{% endif %}
-		<a class="create_btn" type=button href="{% url 'schedules:schedule-create' %}">New Schedule</a>
+		<a class="create_btn" type=button href="{% url 'schedules:schedule-create' %}">New Schedules</a>
 		<hr style="background-color: grey; height:1px; margin-top: 10px;">
 	</div>
 	<div class="select_list">
 		{% if object_list %}
-			<h1>Select New Schedule:</h1>
+			<h1>Select New Schedules:</h1>
 			{% for obj in object_list %}
 				<ul class="schedule_links">
 					<li><h2>{{obj}}</h2></li>
 					<li><a class="list_btn" href="{% url 'schedules:schedule-detail' pk=obj.id %}">View</a></li>
 					<li><a class="create_btn" href='{{ obj.get_absolute_url }}'>Select</a></li>
 					{% if schedule and obj.shift_set.id == schedule.shift_set.id %}
-					<li><a class="delete_button" href="{% url 'schedules:duplicate' pk=obj.id %}">Erase Current Schedule & Duplicate "{{obj.title}}"</a></li>
+					<li><a class="delete_button" href="{% url 'schedules:duplicate' pk=obj.id %}">Erase Current Schedules & Duplicate "{{obj.title}}"</a></li>
 					{% endif %}
 				</ul>
 			{% endfor %}
 		{% else %}
 			<h3> No Schedules found.</h3><br>
-			<p>Select "New Schedule" to create a schedule.</p>
+			<p>Select "New Schedules" to create a group of schedules.</p>
 		{% endif %}			
 	</div>
 </div>
