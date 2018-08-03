@@ -1181,6 +1181,20 @@ class ScheduleUpdate(LoginRequiredMixin, UpdateView):
 		return context
 
 @login_required
+def schedule_duplicate_confirmation(request, *args, **kwargs):
+	duplicate_id = kwargs['pk']
+	try:
+		schedule = Schedule.objects.get(active = True)
+		duplicate_schedule = Schedule.objects.get(id__exact = duplicate_id)
+	except:
+		return Http404
+	template = 'schedules/duplicate_confirmation.html'
+	context = {}
+	context['schedule'] = schedule
+	context['duplicate_schedule'] = duplicate_schedule
+	return render(request, template, context)
+
+@login_required
 def schedule_duplicate(request, *args, **kwargs):
 	duplicate_id = kwargs['pk']
 	try:
@@ -1198,7 +1212,6 @@ def schedule_duplicate(request, *args, **kwargs):
 	except:
 		return Http404
 	return HttpResponseRedirect(reverse('schedules:schedule-detail', kwargs={'pk':schedule.id}))
-
 
 
 
@@ -1236,7 +1249,6 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 
 
 
-
 # Shift Set Based Views
 class ShiftSetCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/schedule_form.html'
@@ -1248,7 +1260,6 @@ class ShiftSetCreate(LoginRequiredMixin, CreateView):
 		context['cancel_url'] = 'schedules:schedule-create'
 		context['at_build'] = True
 		return context
-
 
 @login_required
 def shift_set_add(request, *args, **kwargs):

@@ -26,7 +26,7 @@ def update_files_task(self, schedule_id):
 
 	# Set the amount of actions for the task to recieve later to use for percentage
 	# TODO: Dynamically get num_total_actions (?)
-	num_total_actions = (len(all_staphers) * 2) + ((len(all_masters) * 2) - 3) + 6
+	num_total_actions = (len(all_staphers) * 2) + ((len(all_masters) * 2) - 3) + 9
 	cache.set('num_actions_made', 0, 1500)
 	cache.set('num_total_actions', num_total_actions, 1500)
 
@@ -37,7 +37,7 @@ def update_files_task(self, schedule_id):
 	update_analytics(all_staphers, staphings, all_flags, all_qualifications, xl_dir, self)
 
 	#Update the Schedule's 'excel_updated' field
-	schedule = Schedule.get(id = schedule_id)
+	schedule = Schedule.objects.get(id = schedule_id)
 	schedule.excel_updated = timezone.now()
 
 	# Delete the amount of actions from the cache

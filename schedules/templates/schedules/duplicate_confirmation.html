@@ -1,0 +1,26 @@
+{% extends "sections/nav.html" %}
+{% block page %}
+<div id="page">
+	<div class="select_header">
+		{% if schedule %}
+			<h1>Current Schedules are "{{schedule}}"</h1>
+			<a class="button" type=button href="{% url 'schedules:schedule-detail' pk=schedule.id %}">View {{schedule}}</a>
+		{% else %}
+			<h1>No Schedules Selected</h1>
+		{% endif %}
+		<a class="create_btn" type=button href="{% url 'schedules:schedule-create' %}">New Schedules</a>
+		<hr style="background-color: grey; height:1px; margin-top: 10px;">
+	</div>
+	<div class="select_list">
+		{% if object_list %}
+			<h1>Select New Schedules:</h1>
+			<a class="list_btn" href="{% url 'schedules:schedule-detail' pk=obj.id %}">Cancel</a>
+			<a class="delete_button" href="{% url 'schedules:duplicate' pk=obj.id %}">Duplicate</a>
+			{% endfor %}
+		{% else %}
+			<h3> No Schedules found.</h3><br>
+			<p>Select "New Schedules" to create a group of schedules.</p>
+		{% endif %}			
+	</div>
+</div>
+{% endblock %}
