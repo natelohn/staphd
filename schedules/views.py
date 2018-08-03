@@ -41,6 +41,8 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 		except:
 			active_schedule = None
 		last_updated = Schedule.objects.latest('excel_updated')
+		print(f'last_updated = {last_updated} updated on {last_updated.updated_on}')
+		print(f'active_schedule = {active_schedule} updated on {active_schedule.updated_on}')
 		up_to_date = False
 		from_current_schedule = False
 		if active_schedule:
