@@ -36,6 +36,10 @@ def update_files_task(self, schedule_id):
 	update_masters(all_masters, staphings, xl_dir, self)
 	update_analytics(all_staphers, staphings, all_flags, all_qualifications, xl_dir, self)
 
+	#Update the Schedule's 'excel_updated' field
+	schedule = Schedule.get(id = schedule_id)
+	schedule.excel_updated = timezone.now()
+
 	# Delete the amount of actions from the cache
 	cache.delete('num_actions_made')
 	cache.delete('num_total_actions')
