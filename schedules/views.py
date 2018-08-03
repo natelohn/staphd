@@ -1262,7 +1262,7 @@ def shift_set_add(request, *args, **kwargs):
 	template = 'schedules/shift_set_list.html'
 	context = {}
 	context['shift_set'] = shift_set
-	context['cancel_url'] = 'schedules:schedule-create'
+	context['cancel_url'] = 'schedules:home'
 	context['other_shift_sets'] = other_shift_sets
 	context['at_build'] = True
 	return render(request, template, context)
