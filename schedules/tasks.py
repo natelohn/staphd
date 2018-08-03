@@ -3,6 +3,7 @@ from celery import shared_task
 from celery.decorators import task
 from django.core.cache import cache
 from django.db.models.functions import Lower
+from django.utils import timezone
 
 from .build import build_schedules
 from .excel import update_individual_excel_files, update_masters, update_analytics
