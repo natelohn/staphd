@@ -40,6 +40,7 @@ def update_files_task(self, schedule_id):
 	#Update the Schedule's 'excel_updated' field
 	schedule = Schedule.objects.get(id = schedule_id)
 	schedule.excel_updated = timezone.now()
+	schedule.save()
 
 	# Delete the amount of actions from the cache
 	cache.delete('num_actions_made')

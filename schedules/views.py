@@ -247,7 +247,6 @@ def update_files(request, *args, **kwargs):
 			context['update_error_message'] = 'No Shifts Scheduled - Must Schedule Shifts First'
 		else:
 			template = 'schedules/progress.html'
-			schedule.save()
 			task = update_files_task.delay(schedule_id)
 			task_id = task.task_id
 			cache.set('current_task_id', task_id, 3000)
