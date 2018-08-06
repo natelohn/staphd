@@ -291,18 +291,25 @@ def redirect(request, *args, **kwargs):
 	RATIO_REDIRECT = 2
 	SPECIAL_SHIFT_REDIRECT = 3
 	redirect_value = cache.get('redirect_value')
-
+	print(f'Cached Value = {redirect_value}')
 	recommendations_view = redirect_value == RECOMMENDATION_REDIRECT
 	ratio_view = redirect_value == RATIO_REDIRECT
 	special_results_view = redirect_value == SPECIAL_SHIFT_REDIRECT
+	print(f'recommendations_view = {recommendations_view}')
+	print(f'ratio_view = {ratio_view}')
+	print(f'special_results_view = {special_results_view}')
 
 	if not redirect_value:
+		print('No redirect')
 		return HttpResponseRedirect(reverse('schedules:schedule'))
 	if recommendations_view:
+		print('recommendations view')
 		return HttpResponseRedirect(reverse('schedules:recommendation'))
 	elif ratio_view:
+		print('ratio view')
 		return HttpResponseRedirect(reverse('schedules:ratio-week'))
 	elif special_results_view:
+		print('special shift view')
 		return HttpResponseRedirect(reverse('schedules:special-results'))
 	else:
 		return Http404
