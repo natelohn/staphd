@@ -114,9 +114,9 @@ def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 				cell.fill = PatternFill(patternType = 'solid', fill_type = 'solid', fgColor = Color('C4C4C4'))
 			else:
 				if shift.is_programming():
-					row_adjust = 2
-				else:
 					row_adjust = 1
+				else:
+					row_adjust = 2
 				for col in range(start_col, end_col + 1):
 					time_cell = stapher_ws.cell(row = row - row_adjust, column = col)
 					time_cell.value = '1'
