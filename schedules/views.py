@@ -100,6 +100,9 @@ def download_analytics(request, *args, **kwargs):
 # Schedule Building based Views
 @login_required
 def build_view(request, *args, **kwargs):
+	cache.delete('current_task_id')
+	cache.delete('redirect_value')
+
 	template = 'schedules/schedule.html'
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
@@ -298,7 +301,6 @@ def redirect(request, *args, **kwargs):
 	print(f'recommendations_view = {recommendations_view}')
 	print(f'ratio_view = {ratio_view}')
 	print(f'special_results_view = {special_results_view}')
-	cache.delete('current_task_id')
 
 	if not redirect_value:
 		print('No redirect')
