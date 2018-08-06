@@ -41,8 +41,6 @@ class DownloadView(LoginRequiredMixin, TemplateView):
 		except:
 			active_schedule = None
 		last_updated = Schedule.objects.latest('excel_updated')
-		print(f'last_updated = {last_updated} updated on {last_updated.updated_on}')
-		print(f'active_schedule = {active_schedule} updated on {active_schedule.updated_on}')
 		up_to_date = False
 		from_current_schedule = False
 		if active_schedule:
@@ -289,21 +287,26 @@ def track_state(request, *args, **kwargs):
 @login_required
 @csrf_exempt
 def redirect(request, *args, **kwargs):
-	recs = cache.get('recommendation')
-	shift = cache.get('recommended_shift')
-	special_shift_results = cache.get('special_shift_results')
-	no_redirect = cache.get('no_redirect')
-	ratios = cache.get('ratios')
-	if recs and shift:
+	RECOMMENDATION_REDIRECT = 1
+	RATIO_REDIRECT = 2
+	SPECIAL_SHIFT_REDIRECT = 3
+	redirect_value = cache.get('redirect_value')
+
+	recommendations_view = redirect_value == RECOMMENDATION_REDIRECT
+	ratio_view = redirect_value == RATIO_REDIRECT
+	special_results_view = redirect_value == SPECIAL_SHIFT_REDIRECT
+
+	if not redirect_value:
+		return HttpResponseRedirect(reverse('schedules:schedule'))
+	if recommendations_view:
 		return HttpResponseRedirect(reverse('schedules:recommendation'))
-	elif no_redirect:
-		return HttpResponseRedirect(reverse('schedules:schedule'))
-	elif special_shift_results:
-		return HttpResponseRedirect(reverse('schedules:special-results'))
-	elif ratios:
+	elif ratio_view:
 		return HttpResponseRedirect(reverse('schedules:ratio-week'))
+	elif special_results_view:
+		return HttpResponseRedirect(reverse('schedules:special-results'))
 	else:
-		return HttpResponseRedirect(reverse('schedules:schedule'))
+		return Http404
+		
 
 @login_required
 def recommendations_view(request, *args, **kwargs):
