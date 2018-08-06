@@ -79,7 +79,6 @@ def build_schedules_task(self, schedule_id):
 	shift_and_rec = build_schedules(sorted_shifts, settings, schedule, staphings, self)
 	if not shift_and_rec: #Schedule Building is done! (no more recs to be made)
 		self.update_state(meta = {'message':'All possible shifts placements made.', 'process_percent':100})
-		# Set the redirect value
 		cache.set('recommendation', False, None)
 	else:
 		recommended_shift = shift_and_rec[0]
@@ -89,13 +88,14 @@ def build_schedules_task(self, schedule_id):
 		cache.set('recommended_shift', recommended_shift, None)
 		cache.set('recommendation', recommendation, None)
 
+		# Set the redirect value
+		cache.set('redirect_value', RECOMMENDATION_REDIRECT, 300)
+
 	# Delete the values needed to track progress
 	cache.delete('num_actions_made')
 	cache.delete('num_total_actions')
 	cache.delete('current_task_id')
 
-	# Set the redirect value
-	cache.set('redirect_value', RECOMMENDATION_REDIRECT, 300)
 
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)

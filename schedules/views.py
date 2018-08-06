@@ -298,6 +298,7 @@ def redirect(request, *args, **kwargs):
 	print(f'recommendations_view = {recommendations_view}')
 	print(f'ratio_view = {ratio_view}')
 	print(f'special_results_view = {special_results_view}')
+	cache.delete('current_task_id')
 
 	if not redirect_value:
 		print('No redirect')
@@ -1503,7 +1504,7 @@ def place_special_shifts(request, *args, **kwargs):
 		task = place_special_shifts_task.delay(schedule.id)
 		task_id = task.task_id
 		cache.set('current_task_id', task_id, 3000)
-		cache.set('no_redirect', True, None)
+		cache.delete('no_redirect')
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
 	context['schedule'] = schedule.title
