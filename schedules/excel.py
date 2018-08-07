@@ -120,7 +120,7 @@ def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 					time_cell = stapher_ws.cell(row = row - row_adjust, column = col)
 					time_cell.value = '1'
 
-			stapher_ws.merge_cells(start_row = row, start_column = start_col, end_row = row, end_column = end_col)
+			stapher_ws.clean_merge_cells(start_row = row, start_column = start_col, end_row = row, end_column = end_col)
 			cell.border = Border(left = Side(style = 'thin'), right = Side(style = 'thin'), top = Side(style = 'thin'), bottom = Side(style = 'thin'))
 	
 
