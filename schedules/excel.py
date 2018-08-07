@@ -125,6 +125,7 @@ def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 			# To fix issue with openpyxl's inability to style merged sheets
 			cell.border = Border(left = Side(style = 'thin'), top = Side(style = 'thin'), bottom = Side(style = 'thin'))
 			right_cell = stapher_ws.cell(row = row, column = start_col + 1)
+			right_cell.fill = PatternFill(patternType = 'solid', fill_type = 'solid', fgColor = Color('C4C4C4'))
 			right_cell.border = Border(left = Side(style = 'thin'))
 
 	
