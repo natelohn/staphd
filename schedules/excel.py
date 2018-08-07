@@ -96,7 +96,6 @@ def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 			end_col = get_end_col_from_time(shift.end)
 			cell = stapher_ws.cell(row = row, column = start_col)
 			cell.alignment = Alignment(shrinkToFit = True, wrapText = True, horizontal = 'center', vertical = 'center')
-			cell.border = Border(left = Side(style = 'thin'), right = Side(style = 'thin'), top = Side(style = 'thin'), bottom = Side(style = 'thin'))
 
 			# Resize the text in the cell to make it more readable.
 			font_size = 10
@@ -122,6 +121,7 @@ def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 					time_cell.value = '1'
 
 			stapher_ws.merge_cells(start_row = row, start_column = start_col, end_row = row, end_column = end_col)
+			cell.border = Border(left = Side(style = 'thin'), right = Side(style = 'thin'), top = Side(style = 'thin'), bottom = Side(style = 'thin'))
 	
 
 	# Updating the state to send to the frontend and update the progress bar
