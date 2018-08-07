@@ -23,7 +23,7 @@ SPECIAL_SHIFT_REDIRECT = 3
 def update_files_task(self, schedule_id):
 	# Get necessary information from the DB
 	staphings = Staphing.objects.filter(schedule__id = schedule_id)
-	all_masters = Master.objects.all()
+	all_masters = Master.objects.all().order_by(Lower('title'))
 	all_staphers = Stapher.objects.all().order_by(Lower('first_name'), Lower('last_name'))
 	all_flags = Flag.objects.all().order_by(Lower('title'))
 	all_qualifications = Qualification.objects.all().order_by(Lower('title'))
