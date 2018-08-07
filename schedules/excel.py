@@ -120,8 +120,13 @@ def update_individual_excel_files(staphers, staphings, xl_dir, current_task):
 					time_cell = stapher_ws.cell(row = row - row_adjust, column = col)
 					time_cell.value = '1'
 
-			stapher_ws.clean_merge_cells(start_row = row, start_column = start_col, end_row = row, end_column = end_col)
-			cell.border = Border(left = Side(style = 'thin'), right = Side(style = 'thin'), top = Side(style = 'thin'), bottom = Side(style = 'thin'))
+			stapher_ws.merge_cells(start_row = row, start_column = start_col, end_row = row, end_column = end_col)
+
+			# To fix issue with openpyxl's inability to style merged sheets
+			cell.border = Border(left = Side(style = 'thin'), top = Side(style = 'thin'), bottom = Side(style = 'thin'))
+			right_cell = stapher_ws.cell(row = row, column = start_col + 1)
+			right_cell.border = Border(left = Side(style = 'thin'))
+
 	
 
 	# Updating the state to send to the frontend and update the progress bar
