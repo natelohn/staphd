@@ -11,16 +11,11 @@
 	{% else %}
 	<h2 class="error">{{clean_msg}}</h2>
 	{% endif %}
-	<ul id="download_list">
-		<li><a class='list_btn' href="{% url 'schedules:download-individual' %}">Download Indiviual Schedules</a></li>
-		<li><a class='list_btn' href="{% url 'schedules:download-masters' %}">Download Masters</a></li>
-		<li>
-			<a class='list_btn' href="{% url 'schedules:download-meals' %}">Download Meal Masters</a>
-			<div class="tooltip">More Info 
+	<div class="tooltip">Meal Master Info 
 			<span class="tooltiptext">
-				Automation Preferences:<br>
-				- These settings affect how the system will schedule shifts during automation.<br>
-				- There are three settings on this page:<br><br>
+				Meal Master Criteria:<br>
+				Copying all meal and wine shifts from the Summer 2017 shift set will meet all the below criteria, if for some reason you can not copy Summer 2017 meal shifts then make sure your shifts match the following criteria in order for them to show up correctly on the Meal Masters document.<br><br>
+
 				1: Automatically Schedule Shifts<br>
 				- When the box is checked, the system will automatically schedule certain shifts for you.<br>
 				- This includes shifts that only the exact number of workers needed can cover (i.e. 5 workers needed & 5 workers availible)<br>
@@ -42,7 +37,10 @@
 				- Also manually breaking ties ("I want to always choose") is reccomended<br>
 			</span>
 		</div>
-		</li>
+	<ul id="download_list">
+		<li><a class='list_btn' href="{% url 'schedules:download-individual' %}">Download Indiviual Schedules</a></li>
+		<li><a class='list_btn' href="{% url 'schedules:download-masters' %}">Download Masters</a></li>
+		<li><a class='list_btn' href="{% url 'schedules:download-meals' %}">Download Meal Masters</a></li>
 		<li><a class='list_btn' href="{% url 'schedules:download-analytics' %}">Download Schedule Analytics</a></li>
 	</ul>
 </div>
