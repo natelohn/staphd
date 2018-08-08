@@ -3,6 +3,78 @@
 {% load tz %}
 <div id="page">
 	<h1>Downloading files from {{last_updated}}</h1>
+	<div class="tooltip">Meal Master Info 
+		<span class="tooltiptext">
+			<strong>Meal Master Criteria:</strong><br>
+			Copying all meal and wine shifts from the Summer 2017 shift set will meet all the below criteria, if for some reason you can not copy Summer 2017 meal shifts then make sure your shifts match the following criteria in order for them to show up correctly on the Meal Masters document. If you would like to make a permanent change to this set of criteria, please contact the Nate Lohn.<br><br>
+
+			<strong>Breakfast Master Criteria:</strong><br>
+			All Shifts in the master must <strong>one</strong> of the three flags:<br>
+			- breakfast<br>
+			- breakfast-hobart<br>
+			- breakfast-head<br>
+			<br>
+			Shifts with the <strong>“breakfast”</strong> flag must follow these guidelines:<br>
+			- 2 workers working from 6:45-10:15  (Sunday-Saturday)<br>
+			- 3 workers working from 7:30-9 (Sunday-Saturday)<br>
+			- 3 workers working from 7:45-9:30 (Sunday-Saturday)<br>
+			- 3 workers working from 8:15-10:15 (Sunday-Saturday)<br>
+			<br>
+			Shifts with the <strong>“breakfast-hobart”</strong> flag must follow these guidelines:<br>
+			- 2 workers working from 7:00-10:30 (Sunday-Saturday)<br>
+			<br>
+			Shifts with the <strong>“breakfast-head”</strong> flag must follow these guidelines:<br>
+			- 1 worker working from 6:45-10:15 (Sunday-Saturday)<br>
+			<br>
+			<br>
+			<strong>Lunch Master Criteria:</strong><br>
+			All Shifts in the master must <strong>one</strong> of the three flags:<br>
+			- lunch<br>
+			- lunch-hobart<br>
+			- lunch-head<br>
+			<br>
+			Shifts with the <strong>“lunch”</strong> flag must follow these guidelines:<br>
+			- 3 workers working from 11:15-2:00 (Sunday, Tuesday, Wednesday and Friday)<br>
+			- 2 workers working from 11:15-2:00 (Monday and Thursday)<br>
+			- 3 workers working from 11:45-1:00 (Sunday, Tuesday, Wednesday and Friday)<br>
+			- 8 workers working from 11:45-1:00 (Sunday, Tuesday, Wednesday and Friday)<br>
+			- 4 workers working from 11:45-1:00 (Monday and Thursday)<br>
+			- 5 workers working from 12:00-2:00 (Sunday, Tuesday, Wednesday and Friday)<br>
+			- 4 workers working from 12:00-2:00 (Monday and Thursday)<br>
+			<br>
+			Shifts with the <strong>“lunch-hobart”</strong> flag must follow these guidelines:<br>
+			- 2 workers working from 12:00-2:30 (Sunday-Saturday)<br>
+			<br>
+			Shifts with the <strong>“lunch-head”</strong> flag must follow these guidelines:<br>
+			- 1 worker working from 11:15-2:00<br>
+			<br>
+			<br>
+			<strong>Dinner Master Criteria:</strong><br>
+			All Shifts in the master must <strong>one</strong> of the four flags:<br>
+			- dinner<br>
+			- wine<br>
+			- dinner-hobart<br>
+			- dinner-head<br>
+			<br>
+			Shifts with the “dinner” flag must follow these guidelines:<br>
+			- 11 workers working from 5:15-8:00 (Sunday-Thursday and Saturday)<br>
+			- 3 workers working from 6:00-8:00 (Sunday-Thursday and Saturday)<br>
+			- 9 workers working from 5:15-8:00 (Friday)<br>
+			- 8 workers working from 5:30-7:00 (Friday)<br>
+			<br>
+			Shifts with the <strong>“wine”</strong> flag must follow these guidelines:<br>
+			- 1 worker working from 5:15-7:30 (Sunday-Saturday)<br>
+			<br>
+			Shifts with the <strong>“dinner-hobart”</strong> flag must follow these guidelines:<br>
+			- 2 workers working from 5:30-8:00 (Sunday-Saturday)<br>
+			<br>	
+			Shifts with the <strong>“dinner-head”</strong> flag must follow these guidelines:<br>
+			- 1 worker working from 5:15-8:00 (Sunday-Saturday)<br>
+			<br>
+			<br>
+			<br>
+		</span>
+	</div>
 	{% localtime on %}
 	<h2>Files last updated on: {{last_updated.excel_updated}}</h2>
 	{% endlocaltime %}
@@ -11,78 +83,6 @@
 	{% else %}
 	<h2 class="error">{{clean_msg}}</h2>
 	{% endif %}
-	<div class="tooltip">Meal Master Info 
-			<span class="tooltiptext">
-				<strong>Meal Master Criteria:</strong><br>
-				Copying all meal and wine shifts from the Summer 2017 shift set will meet all the below criteria, if for some reason you can not copy Summer 2017 meal shifts then make sure your shifts match the following criteria in order for them to show up correctly on the Meal Masters document. If you would like to make a permanent change to this set of criteria, please contact the Nate Lohn.<br><br>
-
-				<strong>Breakfast Master Criteria:</strong><br>
-				All Shifts in the master must <strong>one</strong> of the three flags:<br>
-				- breakfast<br>
-				- breakfast-hobart<br>
-				- breakfast-head<br>
-				<br>
-				Shifts with the <strong>“breakfast”</strong> flag must follow these guidelines:<br>
-				- 2 workers working from 6:45-10:15  (Sunday-Saturday)<br>
-				- 3 workers working from 7:30-9 (Sunday-Saturday)<br>
-				- 3 workers working from 7:45-9:30 (Sunday-Saturday)<br>
-				- 3 workers working from 8:15-10:15 (Sunday-Saturday)<br>
-				<br>
-				Shifts with the <strong>“breakfast-hobart”</strong> flag must follow these guidelines:<br>
-				- 2 workers working from 7:00-10:30 (Sunday-Saturday)<br>
-				<br>
-				Shifts with the <strong>“breakfast-head”</strong> flag must follow these guidelines:<br>
-				- 1 worker working from 6:45-10:15 (Sunday-Saturday)<br>
-				<br>
-				<br>
-				<strong>Lunch Master Criteria:</strong><br>
-				All Shifts in the master must <strong>one</strong> of the three flags:<br>
-				- lunch<br>
-				- lunch-hobart<br>
-				- lunch-head<br>
-				<br>
-				Shifts with the <strong>“lunch”</strong> flag must follow these guidelines:<br>
-				- 3 workers working from 11:15-2:00 (Sunday, Tuesday, Wednesday and Friday)<br>
-				- 2 workers working from 11:15-2:00 (Monday and Thursday)<br>
-				- 3 workers working from 11:45-1:00 (Sunday, Tuesday, Wednesday and Friday)<br>
-				- 8 workers working from 11:45-1:00 (Sunday, Tuesday, Wednesday and Friday)<br>
-				- 4 workers working from 11:45-1:00 (Monday and Thursday)<br>
-				- 5 workers working from 12:00-2:00 (Sunday, Tuesday, Wednesday and Friday)<br>
-				- 4 workers working from 12:00-2:00 (Monday and Thursday)<br>
-				<br>
-				Shifts with the <strong>“lunch-hobart”</strong> flag must follow these guidelines:<br>
-				- 2 workers working from 12:00-2:30 (Sunday-Saturday)<br>
-				<br>
-				Shifts with the <strong>“lunch-head”</strong> flag must follow these guidelines:<br>
-				- 1 worker working from 11:15-2:00<br>
-				<br>
-				<br>
-				<strong>Dinner Master Criteria:</strong><br>
-				All Shifts in the master must <strong>one</strong> of the four flags:<br>
-				- dinner<br>
-				- wine<br>
-				- dinner-hobart<br>
-				- dinner-head<br>
-				<br>
-				Shifts with the “dinner” flag must follow these guidelines:<br>
-				- 11 workers working from 5:15-8:00 (Sunday-Thursday and Saturday)<br>
-				- 3 workers working from 6:00-8:00 (Sunday-Thursday and Saturday)<br>
-				- 9 workers working from 5:15-8:00 (Friday)<br>
-				- 8 workers working from 5:30-7:00 (Friday)<br>
-				<br>
-				Shifts with the <strong>“wine”</strong> flag must follow these guidelines:<br>
-				- 1 worker working from 5:15-7:30 (Sunday-Saturday)<br>
-				<br>
-				Shifts with the <strong>“dinner-hobart”</strong> flag must follow these guidelines:<br>
-				- 2 workers working from 5:30-8:00 (Sunday-Saturday)<br>
-				<br>	
-				Shifts with the <strong>“dinner-head”</strong> flag must follow these guidelines:<br>
-				- 1 worker working from 5:15-8:00 (Sunday-Saturday)<br>
-				<br>
-				<br>
-				<br>
-			</span>
-		</div>
 	<ul id="download_list">
 		<li><a class='list_btn' href="{% url 'schedules:download-individual' %}">Download Indiviual Schedules</a></li>
 		<li><a class='list_btn' href="{% url 'schedules:download-masters' %}">Download Masters</a></li>
