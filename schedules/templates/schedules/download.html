@@ -14,7 +14,35 @@
 	<ul id="download_list">
 		<li><a class='list_btn' href="{% url 'schedules:download-individual' %}">Download Indiviual Schedules</a></li>
 		<li><a class='list_btn' href="{% url 'schedules:download-masters' %}">Download Masters</a></li>
-		<li><a class='list_btn' href="{% url 'schedules:download-meals' %}">Download Meal Masters</a></li>
+		<li>
+			<a class='list_btn' href="{% url 'schedules:download-meals' %}">Download Meal Masters</a>
+			<div class="tooltip">More Info 
+			<span class="tooltiptext">
+				Automation Preferences:<br>
+				- These settings affect how the system will schedule shifts during automation.<br>
+				- There are three settings on this page:<br><br>
+				1: Automatically Schedule Shifts<br>
+				- When the box is checked, the system will automatically schedule certain shifts for you.<br>
+				- This includes shifts that only the exact number of workers needed can cover (i.e. 5 workers needed & 5 workers availible)<br>
+				- This also includes scheduling staphers that are the best option in the most parameters as long as the threshold is met (i.e. the worker is the best option in 3 parameters and the threshold is 3)<br>
+				- When the box is not checked, the system will not automatically schedule shifts.<br>
+				- Automatically Schedule Shifts is reccomended.<br>
+				<br><br>
+				2: Threshold to Automatically Schedule Shifts<br>
+				- The threshold (represented by the box w/ a number in it) only matters when Automatically Scheduling Shift is on<br>
+				- It will affect whether or not the system automatically schedules a stapher or give you suggestions and lets you decide<br>
+				- Close to %50 of the parameter count is the reccomended threshold. (If 6 parameters chosen, threshold = 3)<br>
+				- If you want the system to automatically place as many shifts as possible chose 0.<br>
+				<br><br>
+				3: Tie Breaking<br>
+				- This settings decides how a shift is scheduled given 2 or more workers are the "best option" given the parameters<br>
+				- i.e. If Calvin and Nate are both the best option in 3 parameters, how would you like the system to handle that.<br>
+				- If two workers tie in the same parameter they are both considered the best option.<br>
+				- This settings only matters if the "Automatically Scheduling Shifts" box is checked.<br>
+				- Also manually breaking ties ("I want to always choose") is reccomended<br>
+			</span>
+		</div>
+		</li>
 		<li><a class='list_btn' href="{% url 'schedules:download-analytics' %}">Download Schedule Analytics</a></li>
 	</ul>
 </div>
