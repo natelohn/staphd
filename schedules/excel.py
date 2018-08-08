@@ -514,7 +514,6 @@ def update_analytics(staphers, staphings, flags, qualifications, xl_dir, current
 
 	# For each analytics, update the worksheet
 	for row in range(0, len(analytics)):
-		
 		for col in range(0, len(analytics[row])):
 			cell = analytics_ws.cell(row = row + 2, column = col + 1)
 			cell.value = analytics[row][col]

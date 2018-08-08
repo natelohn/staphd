@@ -255,6 +255,9 @@ def get_qualification_information(stapher, staphers, staphings, shifts_by_day, f
 					qual_ids_to_hours[qual.id] += get_hours_from_timedelta(shift.length())
 	return [qual_ids_to_hours[qual.id] for qual in qualifications]
 
+def get_meal_period_violation_count(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
+	return 3
+
 def get_analytics(staphers, staphings, flags, qualifications):
 	initial_row = [
 		'Name',
@@ -295,7 +298,7 @@ def get_analytics(staphers, staphings, flags, qualifications):
 		'Total Time of Off Day',
 		'# of Top 3 Special Shifts on Schedule',
 		'# of Top 5 Special Shifts on Schedule',
-		
+		'# of Meal Period Violations'
 	]
 	for flag in flags:
 		initial_row.append(flag.title.replace('-',' ').capitalize())
@@ -311,7 +314,8 @@ def get_analytics(staphers, staphings, flags, qualifications):
 		get_total_day_off_time,
 		get_special_shift_success_rate,
 		get_flag_information,
-		get_qualification_information
+		get_qualification_information,
+		get_meal_period_violation_count
 	]
 	for stapher in staphers:
 		stapher_analytics = [stapher.full_name()]
