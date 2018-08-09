@@ -100,7 +100,6 @@ def download_analytics(request, *args, **kwargs):
 # Schedule Building based Views
 @login_required
 def build_view(request, *args, **kwargs):
-	cache.delete('current_task_id')
 	template = 'schedules/schedule.html'
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
