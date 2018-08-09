@@ -256,10 +256,7 @@ def get_qualification_information(stapher, staphers, staphings, shifts_by_day, f
 	return [qual_ids_to_hours[qual.id] for qual in qualifications]
 
 def get_meal_period_violation_count(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
-	for day in shifts_by_day:
-		for shift in shifts_by_day[day]:
-			
-	return [3]
+	return [0]
 
 def get_analytics(staphers, staphings, flags, qualifications):
 	initial_row = [
