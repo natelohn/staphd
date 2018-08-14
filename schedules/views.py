@@ -1065,7 +1065,7 @@ class ShiftDelete(LoginRequiredMixin, DeleteView):
 @login_required
 def shift_schedule(request, *args, **kwargs):
 	try:
-		shift = Shift.objects.get(kwargs['pk'])
+		shift = Shift.objects.get(id = kwargs['pk'])
 		schedule = Schedule.objects.get(active__exact = True)
 		staphings = Staphing.objects.filter(schedule_id = schedule.id)
 	except:
