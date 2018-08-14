@@ -1089,9 +1089,7 @@ def shift_schedule(request, *args, **kwargs):
 	context['stapher_table'] = get_stapher_breakdown_table(shift, unscheduled_staphers, staphings)
 	return render(request, template, context)
 
-@login_required
-def shift_schedule(request, *args, **kwargs):
-	
+
 
 # Qualification Based Views
 class QualificationCreate(LoginRequiredMixin, CreateView):
