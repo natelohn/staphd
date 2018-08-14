@@ -12,7 +12,7 @@
 			{% if cell.link %}
 			{% if forloop.last %}
 			<td class="ratio_time">
-				<a id="uncovered_shift_links" href="{% url 'schedules:shift-schedule-stapher' sh=object.id st=cell.stapher.id %}">Schedule {{cell.stapher}}</a>
+				<a class="create_btn" id="uncovered_shift_links" href="{% url 'schedules:shift-schedule-stapher' sh=object.id st=cell.stapher.id %}">Schedule {{cell.stapher}}</a>
 			</td>
 			{% else %}
 			<td class="ratio_time"><a id="uncovered_shift_links" href="{{ cell.link }}">{{cell.stapher}}</a></td>

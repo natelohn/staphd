@@ -30,6 +30,8 @@ from .tasks import build_schedules_task, update_files_task, find_ratios_task, pl
 from .helpers import get_shifts_to_add, get_week_schedule_view_info, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string
 
 
+
+
 # Download Based Views
 class DownloadView(LoginRequiredMixin, TemplateView):
 	template_name = 'schedules/download.html'
@@ -1089,7 +1091,17 @@ def shift_schedule(request, *args, **kwargs):
 	context['stapher_table'] = get_stapher_breakdown_table(shift, unscheduled_staphers, staphings)
 	return render(request, template, context)
 
-
+@login_required
+def shift_schedule_stapher(request, *args, **kwargs):
+	try:
+		shift = Shift.objects.get(id = kwargs['sh'])
+		stapher = Stapher.objects.get(id = kwargs['st'])
+		schedule = Schedule.objects.get(active__exact = True)
+		new_staphing = Staphing(shift = shift, stapher = stapher, schedule = schedule)
+		new_staphing.save()
+	except:
+		return Http404
+	return HttpResponseRedirect(reverse('schedules:shift-detail', kwargs={'pk': shift.id}))
 
 # Qualification Based Views
 class QualificationCreate(LoginRequiredMixin, CreateView):
