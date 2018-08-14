@@ -1093,21 +1093,22 @@ def shift_schedule(request, *args, **kwargs):
 
 @login_required
 def shift_schedule_stapher(request, *args, **kwargs):
-	try:
-		print(f'Heyyyy')
-		shift = Shift.objects.get(id = kwargs['sh'])
-		print(f'SHIFTTT = {shift}')
-		stapher = Stapher.objects.get(id = kwargs['st'])
-		print(f'SHIFTTT = {stapher}')
-		schedule = Schedule.objects.get(active__exact = True)
-		print(f'SHIFTTT = {schedule}')
-		new_staphing = Staphing(shift = shift, stapher = stapher, schedule = schedule)
-		print(f'SHIFTTT = {new_staphing}')
-		new_staphing.save()
-		print(f'DOONNNEE')
-	except:
-		return Http404
 	return HttpResponseRedirect(reverse('schedules:shift-detail', kwargs={'pk': shift.id}))
+	# try:
+	# 	print(f'Heyyyy')
+	# 	shift = Shift.objects.get(id = kwargs['sh'])
+	# 	print(f'SHIFTTT = {shift}')
+	# 	stapher = Stapher.objects.get(id = kwargs['st'])
+	# 	print(f'SHIFTTT = {stapher}')
+	# 	schedule = Schedule.objects.get(active__exact = True)
+	# 	print(f'SHIFTTT = {schedule}')
+	# 	new_staphing = Staphing(shift = shift, stapher = stapher, schedule = schedule)
+	# 	print(f'SHIFTTT = {new_staphing}')
+	# 	new_staphing.save()
+	# 	print(f'DOONNNEE')
+	# except:
+	# 	return Http404
+	
 
 # Qualification Based Views
 class QualificationCreate(LoginRequiredMixin, CreateView):
