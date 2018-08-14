@@ -1072,6 +1072,7 @@ def shift_schedule(request, *args, **kwargs):
 		return Http404
 	template = 'schedules/shift_schedule.html'
 	context = {}
+	context['object'] = shift
 	context['day'] = shift.get_day_string()
 	context['time_msg'] = get_readable_time(shift.start) + '-' + get_readable_time(shift.end)
 	worker_str = ' Workers Needed' if shift.workers_needed > 1 else ' Worker Needed'
