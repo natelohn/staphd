@@ -1063,8 +1063,29 @@ class ShiftDelete(LoginRequiredMixin, DeleteView):
 
 @login_required
 def shift_schedule(request, *args, **kwargs):
+	context = ShiftDetail.get_context_data(*args, **kwargs)
 	template = 'schedules/shift_schedule.html'
 	context = {}
+	shift = self.get_object()
+	context['day'] = shift.get_day_string()
+	context['time_msg'] = get_readable_time(shift.start) + '-' + get_readable_time(shift.end)
+	worker_str = ' Workers Needed' if shift.workers_needed > 1 else ' Worker Needed'
+	context['needed_msg'] = str(shift.workers_needed) + worker_str
+	try:
+		schedule = Schedule.objects.get(active__exact = True)
+		schedule_title = f'Schedule: {schedule.title}'
+		staphings = Staphing.objects.filter(schedule_id = schedule.id)
+	except:
+		schedule_title = 'No Schedule Selected.'
+		staphings = []
+	context['schedule_title'] = schedule_title
+	working_shift = [s.stapher for s in staphings if s.shift == shift]
+	context['working_shift'] = sorted(working_shift, key = attrgetter('first_name'))
+	context['working_msg'] = str(len(working_shift))+ ' Workers Scheduled on :' if working_shift else 'No Workers Scheduled.'
+	context['can_schedule_more'] = False
+	context['qualifications'] = sorted(shift.qualifications.all(), key = attrgetter('title'))
+	context['flags'] = sorted(shift.flags.all(), key = attrgetter('title'))
+	context['at_shifts'] = True
 	return render(request, template, context)
 
 
