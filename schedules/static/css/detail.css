@@ -73,6 +73,6 @@
 
 #schedule_shift_table{
 	top: 50px;
-	visibility: hidden;
-	
+	position: relative;
+
 }
