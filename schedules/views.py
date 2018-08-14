@@ -1006,6 +1006,7 @@ class ShiftDetail(LoginRequiredMixin, DetailView):
 		working_shift = [s.stapher for s in staphings if s.shift == shift]
 		context['working_shift'] = sorted(working_shift, key = attrgetter('first_name'))
 		context['working_msg'] = str(len(working_shift))+ ' Workers Scheduled on :' if working_shift else 'No Workers Scheduled.'
+		context['can_schedule_more'] = len(working_shift) < shift.workers_needed 
 		context['qualifications'] = sorted(shift.qualifications.all(), key = attrgetter('title'))
 		context['flags'] = sorted(shift.flags.all(), key = attrgetter('title'))
 		context['at_shifts'] = True

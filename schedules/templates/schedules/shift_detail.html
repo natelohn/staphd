@@ -16,6 +16,9 @@
 					<li><a class='button' href='{{ worker.get_absolute_url }}'>{{ worker }}</a></li>
 				</ul>
 			{% endfor %}
+			{% if can_schedule_more %}
+			<a class='button' href="{% url 'schedules:shift-schedule' pk=object.id%}">Schedule Shift</a>
+			{% endif %}
 		</div>
 		<div id="detail_body_flags">
 			{% if flags %}

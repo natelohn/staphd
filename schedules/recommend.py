@@ -35,4 +35,3 @@ def get_recommended_staphers(staphers, shift, staphings, settings, all_shifts):
 	# Finally, we return a list of staphers, scores, and wins/losses with the stapher with the most wins at the front.
 	reccomendations.sort(reverse = True, key = get_wins)
 	return reccomendations
-
