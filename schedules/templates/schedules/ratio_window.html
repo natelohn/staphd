@@ -36,15 +36,15 @@
 		{% for row in table.stapher_table %}
 		<tr>
 			{% for cell in row %}
-			{% if cell.header %}
-			<th>{{cell.header}}</td>
-			{% else %}
-			{% if cell.link %}
-			<td class="ratio_time"><a id="ratio_link" href="{{ cell.link }}">{{cell.stapher}}</a></td>
-			{% else %}
-			<td></td>
-			{% endif %}	
-			{% endif %}
+				{% if cell.header %}
+					<th>{{cell.header}}</td>
+				{% else %}
+					{% if cell.link %}
+						<td class="ratio_time"><a id="ratio_link" href="{{ cell.link }}">{{cell.stapher}}</a></td>
+					{% else %}
+						<td></td>
+					{% endif %}	
+				{% endif %}
 			{% endfor %}
 		</tr>
 		{% endfor %}

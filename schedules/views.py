@@ -1012,6 +1012,7 @@ class ShiftDetail(LoginRequiredMixin, DetailView):
 		context['at_shifts'] = True
 		return context
 
+
 class ShiftCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/form.html'
 	form_class = ShiftCreateForm
@@ -1060,7 +1061,11 @@ class ShiftDelete(LoginRequiredMixin, DeleteView):
 	model = Shift
 	success_url = reverse_lazy('schedules:shift-list')
 
-
+@login_required
+def shift_schedule(request, *args, **kwargs):
+	template = 'schedules/shift_schedule.html'
+	context = ShiftDetail.get_context_data(args, kwargs)
+	return render(request, template, context)
 
 
 # Qualification Based Views
