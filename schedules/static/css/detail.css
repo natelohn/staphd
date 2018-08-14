@@ -72,8 +72,10 @@
 
 
 #schedule_shift_table{
-	top: 100px;
-	position: relative;
 	width: 90%;
+	top: 100px;
+	left: 5%;
+	position: relative;
+
 
 }
