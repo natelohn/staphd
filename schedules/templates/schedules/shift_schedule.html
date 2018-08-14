@@ -1,21 +1,23 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 {% include "schedules/shift_detail.html" %}
-<table class="schedule_table">
+<div id="schedule_shift_table">
+	<table class="schedule_table">
 	{% for row in stapher_table %}
 	<tr>
-	{% for cell in row %}
-	{% if cell.header %}
-	<th>{{cell.header}}</td>
-		{% else %}
-		{% if cell.link %}
-		<td class="ratio_time"><a id="uncovered_shift_links" href="{{ cell.link }}">{{cell.stapher}}</a></td>
-		{% else %}
-		<td></td>
-		{% endif %}	
-		{% endif %}
-		{% endfor %}
+		{% for cell in row %}
+		{% if cell.header %}
+		<th>{{cell.header}}</td>
+			{% else %}
+			{% if cell.link %}
+			<td class="ratio_time"><a id="uncovered_shift_links" href="{{ cell.link }}">{{cell.stapher}}</a></td>
+			{% else %}
+			<td></td>
+			{% endif %}	
+			{% endif %}
+			{% endfor %}
 	</tr>
 	{% endfor %}
-</table>
+	</table>	
+</div>
 {% endblock %}
