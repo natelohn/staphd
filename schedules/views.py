@@ -1094,6 +1094,7 @@ def shift_schedule(request, *args, **kwargs):
 @login_required
 def shift_schedule_stapher(request, *args, **kwargs):
 	try:
+		print(f'Heyyyy')
 		shift = Shift.objects.get(id = kwargs['sh'])
 		print(f'SHIFTTT = {shift}')
 		stapher = Stapher.objects.get(id = kwargs['st'])
