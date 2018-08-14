@@ -1064,7 +1064,6 @@ class ShiftDelete(LoginRequiredMixin, DeleteView):
 @login_required
 def shift_schedule(request, *args, **kwargs):
 	template = 'schedules/shift_schedule.html'
-	context = ShiftDetail.get_context_data(args, kwargs)
 	return render(request, template, context)
 
 
