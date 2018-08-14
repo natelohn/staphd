@@ -65,7 +65,11 @@
 			{% endif %}
 			{% endfor %}
 			{% for obj in object_list %}
-			<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+				{% if new_tab %}
+				<a class="list_btn" href='{{ obj.get_absolute_url }}' target="_blank">{{ obj }}</a>
+				{% else %}
+				<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+				{% endif %}
 			{% endfor %}
 			{% else %}
 			<h3> No {{title}} found.</h3><br>

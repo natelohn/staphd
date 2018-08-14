@@ -46,9 +46,17 @@
 			{% endif %}
 			{% for obj in object_list %}
 			{% if obj.active %}
-			<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+				{% if new_tab %}
+				<a class="list_btn" href='{{ obj.get_absolute_url }}' target="_blank">{{ obj }}</a>
+				{% else %}
+				<a class="list_btn" href='{{ obj.get_absolute_url }}'>{{ obj }}</a>
+				{% endif %}
 			{% else %}
-			<a class="list_btn" id="non_active" href='{{ obj.get_absolute_url }}'>{{ obj }} (Not Active)</a>
+				{% if new_tab %}
+				<a class="list_btn" id="non_active" href='{{ obj.get_absolute_url }}' target="_blank">{{ obj }} (Not Active)</a>
+				{% else %}
+				<a class="list_btn" id="non_active" href='{{ obj.get_absolute_url }}'>{{ obj }} (Not Active)</a>
+				{% endif %}
 			{% endif %}
 			{% endfor %}
 			{% else %}

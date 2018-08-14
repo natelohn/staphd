@@ -570,8 +570,11 @@ class StapherList(LoginRequiredMixin,ListView):
 		context = super(StapherList, self).get_context_data(*args, **kwargs)
 		context['title'] = 'Staphers'
 		context['link'] = 'schedules:stapher-create'
-		context['query_explanation'] = cache.get('query_explanation')
+		q_e = cache.get('query_explanation')
+		context['query_explanation'] = q_e
 		context['at_staph'] = True
+		if q_e:
+			context['new_tab'] = True
 		return context
 
 class StapherDetail(LoginRequiredMixin, DetailView):
@@ -793,6 +796,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 			all_shifts = Shift.objects.all()
 		query = self.request.GET.get('q')
 		if query:
+			query_existed = True
 			filtered_shifts = all_shifts
 			qual_titles = [q.title for q in Qualification.objects.all()]
 			flag_titles = [f.title for f in Flag.objects.all()]
@@ -978,6 +982,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 							else:
 								msg += f' from All Shift Sets'
 							context['shift_displayed_msg'] = [msg]
+		context['new_tab'] = query_explanation or 'sort' in self.kwargs
 		return context
 
 class ShiftDetail(LoginRequiredMixin, DetailView):
