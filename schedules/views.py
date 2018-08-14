@@ -1085,6 +1085,8 @@ def shift_schedule(request, *args, **kwargs):
 	context['qualifications'] = sorted(shift.qualifications.all(), key = attrgetter('title'))
 	context['flags'] = sorted(shift.flags.all(), key = attrgetter('title'))
 	context['at_shifts'] = True
+	unscheduled_staphers = [s for s in Stapher.objects.filter(active = True) if s not in working_shift] 
+	context['stapher_table'] = get_stapher_breakdown_table(shift, unscheduled_staphers, staphings)
 	return render(request, template, context)
 
 
