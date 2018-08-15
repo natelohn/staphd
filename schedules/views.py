@@ -109,6 +109,22 @@ def build_view(request, *args, **kwargs):
 		context['percent_complete'] = schedule.get_percent_complete()
 	except:
 		context = {}
+
+	shifts = Shifts.objects.filter(schedule = schedule)
+	out_q = Qualification.objects.get(title = 'outrigger-canoe')
+	mb_q = Qualification.objects.get(title = 'microboppers')
+	for shift in shifts:
+		if out_q in shift.qualifications.all():
+			print(f'Shift = {shift}')
+			shift.qualifications.remove(out_q)
+			print(f'Shift qualifications = {shift.qualifications.all()}')
+			shift.qualifications.add(mb_q)
+			print(f'Shift qualifications now = {shift.qualifications.all()}')
+			shift.save()
+
+
+
+
 	task_id = cache.get('current_task_id')
 	if task_id:
 		template = 'schedules/progress.html'
