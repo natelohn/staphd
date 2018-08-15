@@ -110,7 +110,7 @@ def build_view(request, *args, **kwargs):
 	except:
 		context = {}
 
-	shifts = Shifts.objects.filter(schedule = schedule)
+	shifts = Shift.objects.filter(schedule = schedule)
 	out_q = Qualification.objects.get(title = 'outrigger-canoe')
 	mb_q = Qualification.objects.get(title = 'microboppers')
 	for shift in shifts:
