@@ -276,8 +276,7 @@ def get_meal_period_violation_count(stapher, staphers, staphings, shifts_by_day,
 						total_mpvs += 1
 					hours_straight = last_shift.length()
 
-				last_shift = next_shift
-				
+				last_shift = next_shift	
 	return [total_mpvs]
 	
 

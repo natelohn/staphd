@@ -26,7 +26,7 @@
 					jQuery('#progress_task_msg').html(task.message)
 					jQuery('#refresh-message').html('Please wait as this can take up to 15 minutes.')
 				} else if (task.building_complete) {
-					building_complete = true;
+					check_state_again = true;
 				} else {
 					check_state_again = false;
 				};
