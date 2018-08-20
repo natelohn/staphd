@@ -56,6 +56,7 @@ def get_hours_info(stapher, staphers, staphings, shifts_by_day, flags, qualifica
 		length_strs.append(length_str)
 	return [sum(hours_for_days)] + hours_for_days + [max_hours, least_hours] + length_strs + [shortest_length, max_length]
 
+
 # TODO: Clean up this function (Set Start/End Times before the logic of off/mid day to avoid repeating code)
 def get_average_first_last_info(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
 	off_day = stapher.get_off_day()
@@ -256,7 +257,29 @@ def get_qualification_information(stapher, staphers, staphings, shifts_by_day, f
 	return [qual_ids_to_hours[qual.id] for qual in qualifications]
 
 def get_meal_period_violation_count(stapher, staphers, staphings, shifts_by_day, flags, qualifications):
-	return [0]
+	off_day = stapher.get_off_day()
+	total_mpvs = 0
+	total_last_shift_time_mid = datetime.timedelta(0, 0)
+	meal_period_violation_length = 5
+	for day in range(0, 7):
+		if day != off_day:
+			shifts = shifts_by_day[day]
+			last_shift = shifts_by_day[day][0]
+			hours_straight = last_shift.length()
+			for next_shift in shifts[1:]:
+				last_shift_end = get_td_from_time(last_shift.end)
+				next_shift_start = get_td_from_time(next_shift.end)
+				if last_shift_end == next_shift_start and not next_shift.has_flag('off-day'):
+					hours_straight += next_shift.length()
+				else:
+					if hours_straight > meal_period_violation_length:
+						total_mpvs += 1
+					hours_straight = last_shift.length()
+
+				last_shift = next_shift
+				
+	return [total_mpvs]
+	
 
 def get_analytics(staphers, staphings, flags, qualifications):
 	initial_row = [
