@@ -28,6 +28,7 @@ from .models import Settings as ScheduleBuildingSettings
 from .special_shifts import get_special_shift_flags, swap_shift_preferences
 from .tasks import build_schedules_task, update_files_task, find_ratios_task, place_special_shifts_task, add_shifts_to_set_task
 from .helpers import get_shifts_to_add, get_week_schedule_view_info, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string
+from .task import RECOMMENDATION_REDIRECT, RATIO_REDIRECT, SPECIAL_SHIFT_REDIRECT
 
 
 
@@ -103,7 +104,8 @@ def download_analytics(request, *args, **kwargs):
 @login_required
 def build_view(request, *args, **kwargs):
 	template = 'schedules/schedule.html'
-	cache.delete('current_task_id')
+	# cache.delete('current_task_id')
+	print(f'RECOMMENDATION_REDIRECT = {RECOMMENDATION_REDIRECT}, RATIO_REDIRECT = {RATIO_REDIRECT}, SPECIAL_SHIFT_REDIRECT = {SPECIAL_SHIFT_REDIRECT}')
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
 		context = {'schedule':schedule.title}
@@ -290,9 +292,6 @@ def track_state(request, *args, **kwargs):
 @login_required
 @csrf_exempt
 def redirect(request, *args, **kwargs):
-	RECOMMENDATION_REDIRECT = 1
-	RATIO_REDIRECT = 2
-	SPECIAL_SHIFT_REDIRECT = 3
 	redirect_value = cache.get('redirect_value')
 	print(f'Cached Value = {redirect_value}')
 	recommendations_view = redirect_value == RECOMMENDATION_REDIRECT

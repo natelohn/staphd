@@ -83,6 +83,7 @@ def build_schedules_task(self, schedule_id):
 	if not shift_and_rec: #Schedule Building is done! (no more recs to be made)
 		self.update_state(meta = {'message':'All possible shifts placements made.', 'process_percent':100})
 		cache.set('recommendation', False, None)
+		cache.delete('redirect_value')
 	else:
 		recommended_shift = shift_and_rec[0]
 		recommendation = shift_and_rec[1]
