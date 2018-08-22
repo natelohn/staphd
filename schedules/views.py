@@ -314,7 +314,6 @@ def redirect(request, *args, **kwargs):
 	else:
 		return Http404
 		
-
 @login_required
 def recommendations_view(request, *args, **kwargs):
 	try:
