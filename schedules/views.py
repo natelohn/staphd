@@ -108,15 +108,6 @@ def build_view(request, *args, **kwargs):
 		schedule = Schedule.objects.get(active__exact = True)
 		context = {'schedule':schedule.title}
 		context['percent_complete'] = schedule.get_percent_complete()
-
-		all_shifts = Shift.objects.filter(shift_set = schedule.shift_set)
-		all_staphings = Staphing.objects.filter(schedule = schedule)
-		for shift in all_shifts:
-			if shift.left_to_cover(all_staphings) < 0:
-				print(f'SHIFT HAS TOO MANY: {shift}')
-
-
-
 	except:
 		context = {}
 	task_id = cache.get('current_task_id')
