@@ -54,7 +54,6 @@ def update_files_task(self, schedule_id):
 @task(bind=True, track_started=True, task_time_limit = 1500)
 @shared_task(bind=True, ignore_result=False)
 def build_schedules_task(self, schedule_id):
-	print(f'BUILD SCHEDULES TASK')
 	try:
 		schedule = Schedule.objects.get(id__exact = schedule_id)
 		settings = ScheduleBuildingSettings.objects.get()
@@ -76,10 +75,7 @@ def build_schedules_task(self, schedule_id):
 	cache.set('num_total_actions', total_actions, 1500)
 
 	# Do the task
-	print(f'BUILDING...')
 	shift_and_rec = build_schedules(sorted_shifts, settings, schedule, staphings, self)
-	print(f'shift = {shift_and_rec[0]}')
-	print(f'rec = {shift_and_rec[1]}')
 	if not shift_and_rec: #Schedule Building is done! (no more recs to be made)
 		self.update_state(meta = {'message':'All possible shifts placements made.', 'process_percent':100})
 		cache.set('recommendation', False, None)
