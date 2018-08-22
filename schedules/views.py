@@ -104,8 +104,7 @@ def download_analytics(request, *args, **kwargs):
 @login_required
 def build_view(request, *args, **kwargs):
 	template = 'schedules/schedule.html'
-	# cache.delete('current_task_id')
-	print(f'RECOMMENDATION_REDIRECT = {RECOMMENDATION_REDIRECT}, RATIO_REDIRECT = {RATIO_REDIRECT}, SPECIAL_SHIFT_REDIRECT = {SPECIAL_SHIFT_REDIRECT}')
+	cache.delete('current_task_id')
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
 		context = {'schedule':schedule.title}
