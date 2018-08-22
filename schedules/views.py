@@ -104,11 +104,19 @@ def download_analytics(request, *args, **kwargs):
 @login_required
 def build_view(request, *args, **kwargs):
 	template = 'schedules/schedule.html'
-	cache.delete('current_task_id')
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
 		context = {'schedule':schedule.title}
 		context['percent_complete'] = schedule.get_percent_complete()
+
+		all_shifts = Shift.objects.filter(shift_set = schedule.shift_set)
+		all_staphings = Staphing.objects.filter(schedule = schedule)
+		for shift in all_shifts:
+			if shift.left_to_cover(all_staphings) < 0:
+				print(f'SHIFT HAS TOO MANY: {shift}')
+
+
+
 	except:
 		context = {}
 	task_id = cache.get('current_task_id')
