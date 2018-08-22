@@ -59,7 +59,9 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 
 	all_shifts = [shift[0] for shift in sorted_shifts]
 	actions_taken = 0
+	print(f'# OF SHIFTS = {len(all_shifts)}')
 	for shift, qualified_staphers in sorted_shifts:
+		print(f'SCHEDULING SHIFT: {shift}')
 		actions_taken += shift.workers_needed
 		if not shift.is_covered(staphings):
 			free_and_qualified = get_free_staphers(qualified_staphers, shift, staphings)
