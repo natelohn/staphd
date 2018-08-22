@@ -66,7 +66,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 			
 			if len(free_and_qualified) > 0:
 				# Fail case, not enough qualified staphers to cover the shift
-				elif len(free_and_qualified) < shift.left_to_cover(staphings) and settings.auto_schedule:
+				if len(free_and_qualified) < shift.left_to_cover(staphings) and settings.auto_schedule:
 					for stapher in free_and_qualified:
 						staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
 						staphings.append(staphing)
