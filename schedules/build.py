@@ -96,9 +96,11 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 			# Depending on the settings, we either auto-schedule those recommendations or return them.
 			else:
 				recommendations = get_recommended_staphers(free_and_qualified, shift, staphings, settings, all_shifts)
+				print(f'IN BUILD REC = {recommendations}')
 				if not settings.auto_schedule:
 					for staphing in staphings:
 						staphing.save()
+					print('Return A')
 					return [shift, recommendations]
 				else:
 					ties_exist = do_ties_exist(recommendations, shift.left_to_cover(staphings))
@@ -106,6 +108,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 						if settings.user_breaks_ties():
 							for staphing in staphings:
 								staphing.save()
+							print('Return B')
 							return [shift, recommendations]
 						else:
 							recommendations = resolve_ties(settings, recommendations)
