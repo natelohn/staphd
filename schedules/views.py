@@ -28,7 +28,7 @@ from .models import Settings as ScheduleBuildingSettings
 from .special_shifts import get_special_shift_flags, swap_shift_preferences
 from .tasks import build_schedules_task, update_files_task, find_ratios_task, place_special_shifts_task, add_shifts_to_set_task
 from .helpers import get_shifts_to_add, get_week_schedule_view_info, get_ratio_table, get_ratio_tables_in_window, get_stapher_breakdown_table, get_time_from_string
-from .task import RECOMMENDATION_REDIRECT, RATIO_REDIRECT, SPECIAL_SHIFT_REDIRECT
+from .tasks import RECOMMENDATION_REDIRECT, RATIO_REDIRECT, SPECIAL_SHIFT_REDIRECT
 
 
 
