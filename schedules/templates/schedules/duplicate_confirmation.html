@@ -9,7 +9,7 @@
 		<h1>Are you sure you would like to copy all schedules from {{duplicate_schedule}} to {{schedule}}?</h1>
 		<h1>Doing so will <strong>Delete</strong> all current schedules on {{schedule}}.</h1>
 		<a class="button" href="{% url 'schedules:select' %}">Cancel</a>
-		<a class="delete_button" href="{% url 'schedules:duplicate' %}">Duplicate</a>	
+		<a class="delete_button" href="{% url 'schedules:duplicate' pk=duplicate_schedule.id %}">Duplicate</a>	
 	</div>
 </div>
 {% endblock %}
