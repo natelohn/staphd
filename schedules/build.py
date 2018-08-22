@@ -59,78 +59,74 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 
 	all_shifts = [shift[0] for shift in sorted_shifts]
 	actions_taken = 0
-	print(f'# OF SHIFTS = {len(all_shifts)}')
 	for shift, qualified_staphers in sorted_shifts:
-		print(f'SCHEDULING SHIFT: {shift}')
 		actions_taken += shift.workers_needed
 		if not shift.is_covered(staphings):
 			free_and_qualified = get_free_staphers(qualified_staphers, shift, staphings)
+			
+			if len(free_and_qualified) > 0:
 
-			# Fail case, not enough qualified staphers to cover the shift
-			if len(free_and_qualified) < shift.left_to_cover(staphings) and settings.auto_schedule:
-				for stapher in free_and_qualified:
-					staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
-					staphings.append(staphing)
+				# Fail case, not enough qualified staphers to cover the shift
+				elif len(free_and_qualified) < shift.left_to_cover(staphings) and settings.auto_schedule:
+					for stapher in free_and_qualified:
+						staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+						staphings.append(staphing)
 
-					# Update frontend information
+						# Update frontend information
+						percent = get_percent(actions_taken, total_actions)
+						meta = {'message':f'Auto scheduled {staphing}', 'process_percent':percent}
+						current_task.update_state(meta = meta)
+					left = shift.left_to_cover(staphings)
 					percent = get_percent(actions_taken, total_actions)
-					meta = {'message':f'Auto scheduled {staphing}', 'process_percent':percent}
-					current_task.update_state(meta = meta)
-				left = shift.left_to_cover(staphings)
-				percent = get_percent(actions_taken, total_actions)
-				meta = {'message':f'Could not schedule: {shift}. {left} more needed.', 'process_percent':percent}
-				current_task.update_state(meta = meta)
-
-			# In this system, all shifts that have no other options of people to cover them will be automatically scheduled when autoschedule is selected.
-			elif len(free_and_qualified) == shift.left_to_cover(staphings) and settings.auto_schedule:
-				for stapher in free_and_qualified:
-					staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
-					staphings.append(staphing)
-
-					# Update frontend information
-					percent = get_percent(actions_taken, total_actions)
-					meta = {'message':f'Auto scheduled {staphing}', 'process_percent':percent}
+					meta = {'message':f'Could not schedule: {shift}. {left} more needed.', 'process_percent':percent}
 					current_task.update_state(meta = meta)
 
-			# If the shift can be covered and there are more than just enough staphers to cover it, we make recommendations as to who should cover it
-			# Depending on the settings, we either auto-schedule those recommendations or return them.
-			else:
-				recommendations = get_recommended_staphers(free_and_qualified, shift, staphings, settings, all_shifts)
-				print(f'IN BUILD REC = {recommendations}')
-				if not settings.auto_schedule:
-					for staphing in staphings:
-						staphing.save()
-					print('Return A')
-					return [shift, recommendations]
+				# In this system, all shifts that have no other options of people to cover them will be automatically scheduled when autoschedule is selected.
+				elif len(free_and_qualified) == shift.left_to_cover(staphings) and settings.auto_schedule:
+					for stapher in free_and_qualified:
+						staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+						staphings.append(staphing)
+
+						# Update frontend information
+						percent = get_percent(actions_taken, total_actions)
+						meta = {'message':f'Auto scheduled {staphing}', 'process_percent':percent}
+						current_task.update_state(meta = meta)
+
+				# If the shift can be covered and there are more than just enough staphers to cover it, we make recommendations as to who should cover it
+				# Depending on the settings, we either auto-schedule those recommendations or return them.
 				else:
-					ties_exist = do_ties_exist(recommendations, shift.left_to_cover(staphings))
-					if ties_exist:
-						if settings.user_breaks_ties():
-							for staphing in staphings:
-								staphing.save()
-							print('Return B')
-							return [shift, recommendations]
-						else:
-							recommendations = resolve_ties(settings, recommendations)
-					recommendations_used = 0
-					for stapher, scores, wins_losses in recommendations:
-						wins = wins_losses.count(True)
-						if wins >= settings.auto_threshold and not shift.is_covered(staphings):
-							staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
-							staphings.append(staphing)
-							recommendations_used += 1
-
-							# Update frontend information
-							percent = get_percent(actions_taken, total_actions)
-							meta = {'message':f'Scheduled {staphing} on recommendation' , 'process_percent':percent}
-							current_task.update_state(meta = meta)
-							
-					recommendations = recommendations[recommendations_used:]
-					if not shift.is_covered(staphings):
+					recommendations = get_recommended_staphers(free_and_qualified, shift, staphings, settings, all_shifts)
+					if not settings.auto_schedule:
 						for staphing in staphings:
 							staphing.save()
-						print(f'Not enough recs over the threshold. settings.auto_threshold = {settings.auto_threshold}')
 						return [shift, recommendations]
+					else:
+						ties_exist = do_ties_exist(recommendations, shift.left_to_cover(staphings))
+						if ties_exist:
+							if settings.user_breaks_ties():
+								for staphing in staphings:
+									staphing.save()
+								return [shift, recommendations]
+							else:
+								recommendations = resolve_ties(settings, recommendations)
+						recommendations_used = 0
+						for stapher, scores, wins_losses in recommendations:
+							wins = wins_losses.count(True)
+							if wins >= settings.auto_threshold and not shift.is_covered(staphings):
+								staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
+								staphings.append(staphing)
+								recommendations_used += 1
+
+								# Update frontend information
+								percent = get_percent(actions_taken, total_actions)
+								meta = {'message':f'Scheduled {staphing} on recommendation' , 'process_percent':percent}
+								current_task.update_state(meta = meta)
+								
+						recommendations = recommendations[recommendations_used:]
+						if not shift.is_covered(staphings):
+							for staphing in staphings:
+								staphing.save()
+							return [shift, recommendations]
 	# Update the frontend
 	percent = get_percent(actions_taken, total_actions)
 	meta = {'message':f'Saving Schedule', 'process_percent':percent}
