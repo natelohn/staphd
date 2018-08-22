@@ -104,7 +104,7 @@ def download_analytics(request, *args, **kwargs):
 def build_view(request, *args, **kwargs):
 	template = 'schedules/schedule.html'
 	cache.delete('current_task_id')
-	print(f'CURRENT TASK = {cache.get('current_task_id')}')
+	print f'CURRENT TASK = {cache.get('current_task_id')}'
 	try:
 		schedule = Schedule.objects.get(active__exact = True)
 		context = {'schedule':schedule.title}
