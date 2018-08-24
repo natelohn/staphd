@@ -859,7 +859,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 								if not no_schedule:
 									explanation_str += f' in the "{schedule.title}" schedule.'								
 								explanations.add(explanation_str)
-						if name_contains: query_explanation.extend(list(explanations))
+					if name_contains: query_explanation.extend(list(explanations))
 
 					# Search by Titles
 					title_contains = all_shifts.filter(title__icontains = query)
