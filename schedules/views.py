@@ -1301,7 +1301,6 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 		stapher = staphing.stapher
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
-			stapher = kwargs['object'].stapher
 			staphings = Staphing.objects.filter(schedule_id__exact = schedule.id, stapher = stapher)
 		except:
 			schedule = None
