@@ -786,7 +786,6 @@ class ShiftList(LoginRequiredMixin, ListView):
 	def get_queryset(self, *args, **kwargs):
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
-			all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
 			no_schedule = False
 			all_shifts = Shift.objects.filter(shift_set = schedule.shift_set)
 		except:
@@ -808,6 +807,9 @@ class ShiftList(LoginRequiredMixin, ListView):
 				query = query.lower()
 				
 				# Special Queries (covered/uncovered, just flag, just qualification)
+				if query == 'covered' or query == 'uncovered':
+					all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+
 				if query == 'covered':
 					queryset = [shift for shift in all_shifts if shift.is_covered(all_staphings)]
 					explanation_str =  '- are not covered' if negate_query else '- are covered'
@@ -844,17 +846,20 @@ class ShiftList(LoginRequiredMixin, ListView):
 					if queryset: query_explanation.append(explanation_str)
 				else:
 					# Search by Name of Stapher Scheduled
-					name_contains = []
-					explanations = set()
-					for s in all_staphings:
-						if query == s.stapher.first_name.lower() or query == s.stapher.last_name.lower() or query == s.stapher.full_name().lower():
-							print(s.stapher)
-							name_contains.append(s.shift)
-							explanation_str = f'- {s.stapher.full_name()} is not working' if negate_query else f'- {s.stapher.full_name()} is working'
-							if not no_schedule:
-								explanation_str += f' in the "{schedule.title}" schedule.'								
-							explanations.add(explanation_str)
-					if name_contains: query_explanation.extend(list(explanations))
+					if 'working' in query:
+						query = query.replace('working', '').strip()
+						all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+						name_contains = []
+						explanations = set()
+						for s in all_staphings:
+							if query == s.stapher.first_name.lower() or query == s.stapher.last_name.lower() or query == s.stapher.full_name().lower():
+								print(s.stapher)
+								name_contains.append(s.shift)
+								explanation_str = f'- {s.stapher.full_name()} is not working' if negate_query else f'- {s.stapher.full_name()} is working'
+								if not no_schedule:
+									explanation_str += f' in the "{schedule.title}" schedule.'								
+								explanations.add(explanation_str)
+						if name_contains: query_explanation.extend(list(explanations))
 
 					# Search by Titles
 					title_contains = all_shifts.filter(title__icontains = query)
@@ -916,7 +921,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 						f = Flag.objects.get(id = key)
 						all_shifts = [s for s in all_shifts if s.has_flag(f.title)]
 					if sort_type == 'staphers':
-						stapher_staphings = all_staphings.filter(stapher__id = key) if all_staphings else []
+						stapher_staphings = Staphing.objects.filter(stapher__id = key, schedule_id__exact = schedule.id)
 						all_shifts = [s.shift for s in stapher_staphings]
 		return sorted(all_shifts, key = attrgetter('day', 'start'))
 	
