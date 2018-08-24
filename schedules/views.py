@@ -1291,17 +1291,18 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 	model = Staphing
 
 	def get_queryset(self, *args, **kwargs):
-		schedule = Schedule.objects.get(active__exact = True)
-		return Staphing.objects.filter(schedule_id__exact = schedule.id)
+		print(f'****************** KAWARGS = {kwargs}')
+		return kwargs['object']
 
 	def get_context_data(self, *args, **kwargs):
-		print(f'***************** KWARGS = {kwargs}')
+		print(f'****************** KAWARGS = {kwargs}')
 		context = super(StaphingDelete, self).get_context_data(*args, **kwargs)
 		staphing = self.get_object()
 		stapher = staphing.stapher
 		try:
 			schedule = Schedule.objects.get(active__exact = True)
-			staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+			stapher = kwargs['object'].stapher
+			staphings = Staphing.objects.filter(schedule_id__exact = schedule.id, stapher = stapher)
 		except:
 			schedule = None
 			staphings = []
