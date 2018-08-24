@@ -320,7 +320,7 @@ def get_analytics(staphers, staphings, flags, qualifications):
 		'Total Time of Off Day',
 		'# of Top 3 Special Shifts on Schedule',
 		'# of Top 5 Special Shifts on Schedule',
-		'# of Meal Period Violations'
+		# '# of Meal Period Violations'
 	]
 	for flag in flags:
 		initial_row.append(flag.title.replace('-',' ').capitalize())
@@ -337,7 +337,7 @@ def get_analytics(staphers, staphings, flags, qualifications):
 		get_special_shift_success_rate,
 		get_flag_information,
 		get_qualification_information,
-		get_meal_period_violation_count
+		# get_meal_period_violation_count
 	]
 	for stapher in staphers:
 		stapher_analytics = [stapher.full_name()]
