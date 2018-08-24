@@ -808,7 +808,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 				query = query.lower()
 				
 				# Special Queries (covered/uncovered, just flag, just qualification)
-				if query == 'covered' or query == 'uncovered':
+				if query == 'covered' or query == 'uncovered' and not no_schedule:
 					all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
 
 				if query == 'covered':
@@ -850,7 +850,8 @@ class ShiftList(LoginRequiredMixin, ListView):
 					name_contains = []
 					if 'working' in query:
 						query = query.replace('working', '').strip()
-						all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
+						if not no_schedule:
+							all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
 						explanations = set()
 						for s in all_staphings:
 							if query == s.stapher.first_name.lower() or query == s.stapher.last_name.lower() or query == s.stapher.full_name().lower():
@@ -922,7 +923,10 @@ class ShiftList(LoginRequiredMixin, ListView):
 						f = Flag.objects.get(id = key)
 						all_shifts = [s for s in all_shifts if s.has_flag(f.title)]
 					if sort_type == 'staphers':
-						stapher_staphings = Staphing.objects.filter(stapher__id = key, schedule_id__exact = schedule.id)
+						if no_schedule:
+							stapher_staphings = []
+						else:
+							stapher_staphings = Staphing.objects.filter(stapher__id = key, schedule_id__exact = schedule.id)
 						all_shifts = [s.shift for s in stapher_staphings]
 		return sorted(all_shifts, key = attrgetter('day', 'start'))
 	
