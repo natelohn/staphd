@@ -1291,7 +1291,7 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 	model = Staphing
 
 	def get_queryset(self):
-		return Staphing.objects.all()
+		return self.get_object()
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(StaphingDelete, self).get_context_data(*args, **kwargs)
