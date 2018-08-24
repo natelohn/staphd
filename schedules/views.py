@@ -1290,10 +1290,12 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 	template_name = 'schedules/staphing_delete.html'
 	model = Staphing
 
-	def get_queryset(self):
-		return self.get_object()
+	def get_queryset(self, *args, **kwargs):
+		schedule = Schedule.objects.get(active__exact = True)
+		return Staphing.objects.filter(schedule_id__exact = schedule.id)
 
 	def get_context_data(self, *args, **kwargs):
+		print(f'***************** KWARGS = {kwargs}'
 		context = super(StaphingDelete, self).get_context_data(*args, **kwargs)
 		staphing = self.get_object()
 		stapher = staphing.stapher
