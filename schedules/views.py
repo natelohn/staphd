@@ -791,6 +791,7 @@ class ShiftList(LoginRequiredMixin, ListView):
 		except:
 			all_staphings = []
 			no_schedule = True
+			schedule = None
 			all_shifts = Shift.objects.all()
 		query = self.request.GET.get('q')
 		if query:
