@@ -846,10 +846,10 @@ class ShiftList(LoginRequiredMixin, ListView):
 					if queryset: query_explanation.append(explanation_str)
 				else:
 					# Search by Name of Stapher Scheduled
+					name_contains = []
 					if 'working' in query:
 						query = query.replace('working', '').strip()
 						all_staphings = Staphing.objects.filter(schedule_id__exact = schedule.id)
-						name_contains = []
 						explanations = set()
 						for s in all_staphings:
 							if query == s.stapher.first_name.lower() or query == s.stapher.last_name.lower() or query == s.stapher.full_name().lower():
