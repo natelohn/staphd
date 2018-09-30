@@ -257,7 +257,7 @@ class ShiftSetCreateForm(forms.ModelForm):
 class MasterCreateForm(forms.ModelForm):
 	class Meta:
 		model = Master
-		fields = ['title']
+		fields = ['title', 'template']
 
 
 class AddShiftsToSetForm(forms.Form):

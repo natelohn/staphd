@@ -1592,12 +1592,10 @@ def special_shifts_results(request, *args, **kwargs):
 	return render(request, template, context)
 
 
-
-
 # Shift Set Based Views
 class MasterCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/sign_up.html'
-	form_class = Master
+	form_class = MasterCreateForm
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(MasterCreate, self).get_context_data(*args, **kwargs)
