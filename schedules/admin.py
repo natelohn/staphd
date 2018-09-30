@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Flag, Stapher, Shift, Qualification, Staphing, Schedule, Parameter, Settings, Master, ShiftSet, ShiftPreference
+from .models import Flag, SignUp, Stapher, Shift, Qualification, Staphing, Schedule, Parameter, Settings, Master, ShiftSet, ShiftPreference
 
 admin.site.register(Flag)
 admin.site.register(Stapher)
@@ -14,3 +14,4 @@ admin.site.register(Settings)
 admin.site.register(Master)
 admin.site.register(ShiftSet)
 admin.site.register(ShiftPreference)
+admin.site.register(SignUp)
