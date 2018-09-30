@@ -22,7 +22,7 @@ from operator import attrgetter
 from staphd.celery import app
 
 from .analytics import get_readable_time
-from .forms import WeekdayForm, AddShiftsForm, FlagCreateForm, MasterCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
+from .forms import WeekdayForm, AddShiftsForm, FlagCreateForm, SignUpCreateForm, ScheduleCreateForm, SettingsParameterForm, SettingsPreferenceForm, ShiftCreateForm, StapherCreateForm, QualificationCreateForm, ShiftSetCreateForm, AddShiftsToSetForm
 from .models import Flag, Schedule, Shift, ShiftSet, Stapher, Staphing, Master, Parameter, Qualification, ShiftPreference
 from .models import Settings as ScheduleBuildingSettings
 from .special_shifts import get_special_shift_flags, swap_shift_preferences
@@ -1101,17 +1101,11 @@ def shift_schedule(request, *args, **kwargs):
 @login_required
 def shift_schedule_stapher(request, *args, **kwargs):
 	try:
-		print(f'Heyyyy')
 		shift = Shift.objects.get(id = kwargs['sh'])
-		print(f'SHIFTTT = {shift}')
 		stapher = Stapher.objects.get(id = kwargs['st'])
-		print(f'SHIFTTT = {stapher}')
 		schedule = Schedule.objects.get(active__exact = True)
-		print(f'SHIFTTT = {schedule}')
 		new_staphing = Staphing(shift = shift, stapher = stapher, schedule = schedule)
-		print(f'SHIFTTT = {new_staphing}')
 		new_staphing.save()
-		print(f'DOONNNEE')
 	except:
 		return Http404
 	return HttpResponseRedirect(reverse('schedules:shift-detail', kwargs={'pk': shift.id}))
@@ -1593,15 +1587,15 @@ def special_shifts_results(request, *args, **kwargs):
 
 
 # Shift Set Based Views
-class MasterCreate(LoginRequiredMixin, CreateView):
+class SignUpCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/sign_up.html'
-	form_class = MasterCreateForm
+	form_class = SignUpCreateForm
 
 	def get_context_data(self, *args, **kwargs):
-		context = super(MasterCreate, self).get_context_data(*args, **kwargs)
-		context['cancel_url'] = 'schedules:home'
+		context = super(SignUpCreate, self).get_context_data(*args, **kwargs)
 		return context
 
-
-
+# Shift Set Based Views
+class SignUpSucess(LoginRequiredMixin, TemplateView):
+	template_name = 'schedules/sign_up_sucess.html'
 

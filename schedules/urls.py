@@ -84,6 +84,7 @@ urlpatterns = [
     url(r'^set/delete/(?P<pk>[\d]+)$', views.ShiftSetDelete.as_view(), name='set-delete'),
 
     # Temp
-    url(r'^sign_up/$', views.MasterCreate.as_view(), name='sign_up'),
+    url(r'^sign_up/$', views.SignUpCreate.as_view(), name='sign_up'),
+    url(r'^sign_up_success/$', views.SignUpSucess.as_view(), name='sign_up_success'),
 
 ]

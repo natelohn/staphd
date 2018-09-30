@@ -463,12 +463,10 @@ class Master(models.Model):
 		my_flags = [f.id for f in self.flags.all()]
 		return staphings.filter(shift__flags__in = my_flags)
 
-
 	def shifts_at_time(self, staphings, day, time):
 		master_staphings = self.staphings_in_master(staphings)
 		shifts_at_time = master_staphings.filter(shift__day__exact = day, shift__start__lte = time, shift__start__gte = time)
 		return shifts_at_time
-
 
 	def is_standard(self):
 		return self.template == 'master-template'
@@ -486,6 +484,12 @@ class ShiftPreference(models.Model):
 		return reverse('schedules:stapher-detail', kwargs={'pk': self.stapher.id})
 
 
+class SignUp(models.Model):
+	apple_id 		= models.CharField(max_length = 100, default = 'Apple ID')
+	password		= models.CharField(max_length = 100, default = 'password')
+
+	def get_absolute_url(self):
+		return reverse('schedules:sign_up_success')
 
 
 

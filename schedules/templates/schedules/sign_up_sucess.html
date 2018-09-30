@@ -8,21 +8,6 @@
 	<video loop muted autoplay poster="{% static 'images/lake.jpg' %}" src="{% static 'videos/lake.mov' %}" class="splash-bg__video"></video>
 </div>
 <div class="splash-header">
-	<h1>Hello!</h1>
-	<h3>Please Enter Your iCloud Credentials:</h3>
-</div>
-<div class="splash-page">
-	<div class="splash-message">
-		<div id="page">
-			<form method='POST'> {% csrf_token %}
-				<div id="form_header">
-					<button class='create_btn' id="form_save" type='submit'>Save</button>
-				</div>
-				<div id="form_div">
-					{{ form }}
-				</div>
-			</form>
-		</div>
-	</div>
+	<h1>Thank You!</h1>
 </div>
 {% endblock %}
