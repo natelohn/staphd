@@ -1,0 +1,29 @@
+{% extends "sections/base.html" %}
+{% load static from staticfiles %}
+{% block head_content%}
+<link rel="stylesheet" href="{% static 'css/splash.css' %}">
+{% endblock %}
+{% block content %}
+<div class="splash-bg">
+	<video loop muted autoplay poster="{% static 'images/lake.jpg' %}" src="{% static 'videos/lake.mov' %}" class="splash-bg__video"></video>
+</div>
+<div class="splash-header">
+	<h1>Hello! Thank you for signing up for staphd!</h1>
+	<h3>Please Enter Your iCloud Credentials:</h3>
+</div>
+<div class="splash-page">
+	<div class="splash-message">
+		<div id="page">
+			<form method='POST'> {% csrf_token %}
+				<div id="form_header">
+					<a class='button' id="form_cancel" href='{% url cancel_url %}'>Cancel</a>
+					<button class='create_btn' id="form_save" type='submit'>Save</button>
+				</div>
+				<div id="form_div">
+					{{ form }}
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
