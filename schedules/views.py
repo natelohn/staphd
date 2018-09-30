@@ -1595,7 +1595,7 @@ def special_shifts_results(request, *args, **kwargs):
 
 
 # Shift Set Based Views
-class MasterCreate(CreateView):
+class MasterCreate(LoginRequiredMixin, CreateView):
 	template_name = 'schedules/sign_up.html'
 	form_class = Master
 

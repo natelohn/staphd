@@ -5,7 +5,7 @@ from django.db.models.functions import Lower
 from django.utils.translation import ugettext as _
 
 
-from .models import Flag, Qualification, Schedule, Settings, Shift, Stapher, Staphing, ShiftSet
+from .models import Flag, Master, Qualification, Schedule, Settings, Shift, Stapher, Staphing, ShiftSet
 from .models import Settings as ScheduleBuildingSettings
 
 
@@ -252,6 +252,11 @@ class AddShiftsForm(forms.Form):
 class ShiftSetCreateForm(forms.ModelForm):
 	class Meta:
 		model = ShiftSet
+		fields = ['title']
+
+class MasterCreateForm(forms.ModelForm):
+	class Meta:
+		model = Master
 		fields = ['title']
 
 
