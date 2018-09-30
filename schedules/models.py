@@ -485,8 +485,8 @@ class ShiftPreference(models.Model):
 
 
 class SignUp(models.Model):
-	apple_id 		= models.CharField(max_length = 100, default = 'Apple ID')
-	password		= models.CharField(max_length = 100, default = 'password')
+	apple_id 		= models.CharField(max_length = 100, default = 'example@email.com')
+	password		= models.CharField(max_length = 100, default = '••••••••')
 
 	def get_absolute_url(self):
 		return reverse('schedules:sign_up_success')
