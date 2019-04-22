@@ -562,6 +562,7 @@ class StapherList(LoginRequiredMixin,ListView):
 					queryset = list(names_contain) + list(title_exact) + list(class_year_exact) + list(age_exact) + list(summers_exact) + free_during_time
 				filtered_query_set = list(set(filtered_query_set) & set(queryset))
 
+
 				# Used for the query_explanation
 				if len(querylist) > 1 and query == querylist[-2].lower().strip():
 					query_explanation = query_explanation[:-1] + ' and'
@@ -569,7 +570,7 @@ class StapherList(LoginRequiredMixin,ListView):
 		else:
 			cache.delete('query_explanation')
 
-		return filtered_query_set
+		return sorted(filtered_query_set, key = attrgetter('first_name', 'last_name'))
 
 	def get_context_data(self, *args, **kwargs):
 		context = super(StapherList, self).get_context_data(*args, **kwargs)
