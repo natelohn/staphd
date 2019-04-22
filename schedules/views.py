@@ -568,6 +568,7 @@ class StapherList(LoginRequiredMixin,ListView):
 					query_explanation = query_explanation[:-1] + ' and'
 			cache.set('query_explanation', query_explanation[:-1], 60)
 		else:
+			filtered_query_set = all_staphers.filter(active__exact = True)
 			cache.delete('query_explanation')
 
 		return sorted(filtered_query_set, key = attrgetter('first_name', 'last_name'))
