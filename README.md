@@ -33,7 +33,7 @@ Follow the on-screen prompts. When it finishes, close and reopen Terminal.
 ### 2. Python 3
 
 ```
-brew install python@3.11
+brew install python@3.13
 ```
 
 Verify it worked:
@@ -42,13 +42,13 @@ Verify it worked:
 python3 --version
 ```
 
-You should see something like `Python 3.11.x`.
+You should see something like `Python 3.13.x`.
 
 ### 3. PostgreSQL (the database)
 
 ```
-brew install postgresql@14
-brew services start postgresql@14
+brew install postgresql@16
+brew services start postgresql@16
 ```
 
 Verify it is running:
@@ -57,7 +57,7 @@ Verify it is running:
 pg_isready
 ```
 
-You should see: `localhost:5432 - accepting connections`
+You should see a line ending in `accepting connections`.
 
 ---
 
@@ -93,7 +93,7 @@ source venv/bin/activate
 
 Your terminal prompt will change to show `(venv)` at the beginning — that means it worked.
 
-> You will need to run `source venv/bin/activate` each time you open a new Terminal window before running the app. The `make run` command handles this automatically if you are already in the folder.
+> You will need to run `source venv/bin/activate` each time you open a new Terminal window before running the app.
 
 ### Step 3 — Install dependencies
 
@@ -103,19 +103,35 @@ pip install -r requirements.txt
 
 This installs everything Staph-D needs. It may take a minute or two.
 
-### Step 4 — Create the database
+### Step 4 — Configure local settings
+
+```
+cp staphd/settings/local_settings.example.py staphd/settings/local_settings.py
+```
+
+This creates your local configuration file. You do not need to edit it.
+
+### Step 5 — Create the database
 
 ```
 createdb staphddb
 ```
 
-### Step 5 — Set up the database tables
+### Step 6 — Set up the database tables and admin account
 
 ```
 make setup
 ```
 
-This will run through some setup steps and then ask you to create an admin account. Choose a username and password you will remember — this is how you will log in.
+This will run through the database setup and then ask you to create an admin account. Choose a username and password you will remember — this is how you will log in.
+
+### Step 7 — Load the demo staff
+
+```
+make load-demo
+```
+
+This loads 61 demo staff members so the app has data to work with right away.
 
 ---
 
@@ -124,6 +140,7 @@ This will run through some setup steps and then ask you to create an admin accou
 Every time you want to use Staph-D, open Terminal, navigate to the staphd folder, activate the virtual environment, and run:
 
 ```
+source venv/bin/activate
 make run
 ```
 
@@ -134,11 +151,6 @@ http://localhost:8000
 ```
 
 Log in with the admin account you created during setup.
-
-> **Shortcut for next time:** Once you have done the one-time setup, the only things you need each session are:
-> 1. Open Terminal in the staphd folder
-> 2. `source venv/bin/activate`
-> 3. `make run`
 
 ---
 
@@ -156,7 +168,7 @@ Run `xcode-select --install` in Terminal and try again.
 **"connection refused" or database errors**
 PostgreSQL may not be running. Start it with:
 ```
-brew services start postgresql@14
+brew services start postgresql@16
 ```
 
 **"No module named ..." errors**
