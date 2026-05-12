@@ -70,7 +70,7 @@ Do these steps **once** when you first install Staph-D.
 If you received a zip file, unzip it and note the folder path. If you are cloning from GitHub:
 
 ```
-git clone <repository-url>
+git clone https://github.com/natelohn/staphd.git
 cd staphd
 ```
 
