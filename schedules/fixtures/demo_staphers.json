@@ -1,0 +1,197 @@
+[
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Barry",
+			"last_name": "Charge",
+			"title": "Camp Director",
+			"gender": "1",
+			"age": "38",
+			"class_year": "2010",
+			"summers_worked": "12",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Sue",
+			"last_name": "Ture",
+			"title": "Camp Nurse",
+			"gender": "0",
+			"age": "29",
+			"class_year": "2018",
+			"summers_worked": "4",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Wade",
+			"last_name": "Rpool",
+			"title": "Ski Dock Head",
+			"gender": "1",
+			"age": "22",
+			"class_year": "2024",
+			"summers_worked": "2",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Gail",
+			"last_name": "Winds",
+			"title": "Sailing Instructor",
+			"gender": "0",
+			"age": "21",
+			"class_year": "2025",
+			"summers_worked": "1",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Cliff",
+			"last_name": "Hanger",
+			"title": "Hiking Leader",
+			"gender": "1",
+			"age": "20",
+			"class_year": "2026",
+			"summers_worked": "1",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Brock",
+			"last_name": "Wall",
+			"title": "Rock Climbing Instructor",
+			"gender": "1",
+			"age": "23",
+			"class_year": "2023",
+			"summers_worked": "2",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Mel",
+			"last_name": "O. Dee",
+			"title": "Music Instructor",
+			"gender": "0",
+			"age": "19",
+			"class_year": "2027",
+			"summers_worked": "0",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Drew",
+			"last_name": "Alot",
+			"title": "Arts Instructor",
+			"gender": "1",
+			"age": "20",
+			"class_year": "2026",
+			"summers_worked": "1",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Stan",
+			"last_name": "Dup",
+			"title": "Theater Instructor",
+			"gender": "1",
+			"age": "21",
+			"class_year": "2025",
+			"summers_worked": "1",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Chuck",
+			"last_name": "Wagon",
+			"title": "Head Chef",
+			"gender": "1",
+			"age": "45",
+			"class_year": "2002",
+			"summers_worked": "15",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Paige",
+			"last_name": "Turner",
+			"title": "Office",
+			"gender": "0",
+			"age": "22",
+			"class_year": "2024",
+			"summers_worked": "2",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Robin",
+			"last_name": "Woods",
+			"title": "Naturalist",
+			"gender": "0",
+			"age": "24",
+			"class_year": "2022",
+			"summers_worked": "3",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Lance",
+			"last_name": "Uphill",
+			"title": "Mountain Biking Instructor",
+			"gender": "1",
+			"age": "20",
+			"class_year": "2026",
+			"summers_worked": "0",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Stretch",
+			"last_name": "Armstrong",
+			"title": "Yoga Instructor",
+			"gender": "2",
+			"age": "27",
+			"class_year": "2019",
+			"summers_worked": "3",
+			"qualifications": []
+		}
+	},
+	{
+		"model": "schedules.Stapher",
+		"fields": {
+			"first_name": "Ace",
+			"last_name": "Serve",
+			"title": "Tennis Instructor",
+			"gender": "1",
+			"age": "21",
+			"class_year": "2025",
+			"summers_worked": "1",
+			"qualifications": []
+		}
+	}
+]

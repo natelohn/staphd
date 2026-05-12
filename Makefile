@@ -1,4 +1,4 @@
-.PHONY: run setup
+.PHONY: run setup load-demo
 
 run:
 	python manage.py runserver
@@ -6,3 +6,6 @@ run:
 setup:
 	python manage.py migrate
 	python manage.py createsuperuser
+
+load-demo:
+	python manage.py loaddata demo_staphers
