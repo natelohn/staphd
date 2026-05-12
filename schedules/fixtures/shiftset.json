@@ -1,0 +1,10 @@
+[
+	{
+		"model": "schedules.ShiftSet",
+		"pk": 19,
+		"fields": {
+			"title": "Summer 2017",
+			"active": true
+		}
+	}
+]

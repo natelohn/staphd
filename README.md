@@ -125,13 +125,13 @@ make setup
 
 This will run through the database setup and then ask you to create an admin account. Choose a username and password you will remember — this is how you will log in.
 
-### Step 7 — Load the demo staff
+### Step 7 — Load the demo data
 
 ```
 make load-demo
 ```
 
-This loads 61 demo staff members so the app has data to work with right away.
+This loads the full demo dataset: 638 shifts, 61 staff members, qualifications, flags, and a Summer 2017 shift set — so the app has real data to work with right away.
 
 ---
 

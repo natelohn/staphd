@@ -2,391 +2,456 @@
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"fountain-specialist"
-		}
+			"title": "fountain-specialist"
+		},
+		"pk": 117
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"kids-group-coordinator"
-		}
+			"title": "kids-group-coordinator"
+		},
+		"pk": 118
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"photo"
-		}
+			"title": "photo"
+		},
+		"pk": 119
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"artists"
-		}
+			"title": "artists"
+		},
+		"pk": 120
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"play"
-		}
+			"title": "play"
+		},
+		"pk": 121
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"menehunes"
-		}
+			"title": "menehunes"
+		},
+		"pk": 122
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"individual-instructor-coordinator"
-		}
+			"title": "individual-instructor-coordinator"
+		},
+		"pk": 123
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"town-run"
-		}
+			"title": "town-run"
+		},
+		"pk": 124
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"female"
-		}
+			"title": "female"
+		},
+		"pk": 125
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"odo"
-		}
+			"title": "odo"
+		},
+		"pk": 126
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"chicken"
-		}
+			"title": "chicken"
+		},
+		"pk": 127
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"improv"
-		}
+			"title": "improv"
+		},
+		"pk": 128
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"arts"
-		}
+			"title": "arts"
+		},
+		"pk": 129
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"yoga"
-		}
+			"title": "yoga"
+		},
+		"pk": 130
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"hiking"
-		}
+			"title": "hiking"
+		},
+		"pk": 131
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"returner"
-		}
+			"title": "returner"
+		},
+		"pk": 132
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"tennis"
-		}
+			"title": "tennis"
+		},
+		"pk": 133
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"ski-dock-head"
-		}
+			"title": "ski-dock-head"
+		},
+		"pk": 134
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"sports"
-		}
+			"title": "sports"
+		},
+		"pk": 135
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"fountain"
-		}
+			"title": "fountain"
+		},
+		"pk": 136
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"munchkins"
-		}
+			"title": "munchkins"
+		},
+		"pk": 137
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"opho"
-		}
+			"title": "opho"
+		},
+		"pk": 138
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"music"
-		}
+			"title": "music"
+		},
+		"pk": 139
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"boat-dock-coordinator"
-		}
+			"title": "boat-dock-coordinator"
+		},
+		"pk": 140
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"astrocruise"
-		}
+			"title": "astrocruise"
+		},
+		"pk": 141
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"greeting"
-		}
+			"title": "greeting"
+		},
+		"pk": 142
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"omelet-bar"
-		}
+			"title": "omelet-bar"
+		},
+		"pk": 143
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"office"
-		}
+			"title": "office"
+		},
+		"pk": 144
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"male"
-		}
+			"title": "male"
+		},
+		"pk": 145
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"midorees"
-		}
+			"title": "midorees"
+		},
+		"pk": 146
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"boat-dock"
-		}
+			"title": "boat-dock"
+		},
+		"pk": 147
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"snoopers"
-		}
+			"title": "snoopers"
+		},
+		"pk": 148
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"hobart"
-		}
+			"title": "hobart"
+		},
+		"pk": 149
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"climbing"
-		}
+			"title": "climbing"
+		},
+		"pk": 150
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"kids-naturalist"
-		}
+			"title": "kids-naturalist"
+		},
+		"pk": 151
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"icom"
-		}
+			"title": "icom"
+		},
+		"pk": 152
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"teens"
-		}
+			"title": "teens"
+		},
+		"pk": 153
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"lifeguarding"
-		}
+			"title": "lifeguarding"
+		},
+		"pk": 154
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"theater"
-		}
+			"title": "theater"
+		},
+		"pk": 155
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"sailing"
-		}
+			"title": "sailing"
+		},
+		"pk": 156
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"naturalist"
-		}
+			"title": "naturalist"
+		},
+		"pk": 157
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"rowing"
-		}
+			"title": "rowing"
+		},
+		"pk": 158
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"mountain-biking"
-		}
+			"title": "mountain-biking"
+		},
+		"pk": 159
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"meal-head"
-		}
+			"title": "meal-head"
+		},
+		"pk": 160
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"volleyball"
-		}
+			"title": "volleyball"
+		},
+		"pk": 161
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"ski-dock"
-		}
+			"title": "ski-dock"
+		},
+		"pk": 162
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"crafts"
-		}
+			"title": "crafts"
+		},
+		"pk": 163
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"yahoos"
-		}
+			"title": "yahoos"
+		},
+		"pk": 164
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"wine"
-		}
+			"title": "wine"
+		},
+		"pk": 165
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"musical"
-		}
+			"title": "musical"
+		},
+		"pk": 166
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"boatster"
-		}
+			"title": "boatster"
+		},
+		"pk": 167
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"suaves"
-		}
+			"title": "suaves"
+		},
+		"pk": 168
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"sumo"
-		}
+			"title": "sumo"
+		},
+		"pk": 169
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"motue"
-		}
+			"title": "motue"
+		},
+		"pk": 170
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"tueway"
-		}
+			"title": "tueway"
+		},
+		"pk": 171
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"wethur"
-		}
+			"title": "wethur"
+		},
+		"pk": 172
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"stirfry"
-		}
+			"title": "stirfry"
+		},
+		"pk": 173
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"microboppers"
-		}
+			"title": "microboppers"
+		},
+		"pk": 174
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"macroboppers"
-		}
+			"title": "macroboppers"
+		},
+		"pk": 175
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"munchkins-a"
-		}
+			"title": "munchkins-a"
+		},
+		"pk": 176
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"munchkins-b"
-		}
+			"title": "munchkins-b"
+		},
+		"pk": 177
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"munchkins-c"
-		}
+			"title": "munchkins-c"
+		},
+		"pk": 178
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"munchkins-d"
-		}
+			"title": "munchkins-d"
+		},
+		"pk": 179
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"snoopers-a"
-		}
+			"title": "snoopers-a"
+		},
+		"pk": 180
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title":"snoopers-b"
-		}
+			"title": "snoopers-b"
+		},
+		"pk": 181
 	}
 ]
