@@ -37,7 +37,7 @@
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "menehunes"
+			"title": "mergansers"
 		},
 		"pk": 122
 	},
@@ -142,7 +142,7 @@
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "munchkins"
+			"title": "guppies"
 		},
 		"pk": 137
 	},
@@ -205,7 +205,7 @@
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "midorees"
+			"title": "marmots"
 		},
 		"pk": 146
 	},
@@ -219,7 +219,7 @@
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "snoopers"
+			"title": "crawdads"
 		},
 		"pk": 148
 	},
@@ -331,7 +331,7 @@
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "yahoos"
+			"title": "chickarees"
 		},
 		"pk": 164
 	},
@@ -359,7 +359,7 @@
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "suaves"
+			"title": "ospreys"
 		},
 		"pk": 168
 	},
@@ -415,43 +415,71 @@
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "munchkins-a"
+			"title": "guppies-a"
 		},
 		"pk": 176
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "munchkins-b"
+			"title": "guppies-b"
 		},
 		"pk": 177
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "munchkins-c"
+			"title": "guppies-c"
 		},
 		"pk": 178
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "munchkins-d"
+			"title": "guppies-d"
 		},
 		"pk": 179
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "snoopers-a"
+			"title": "crawdads-a"
 		},
 		"pk": 180
 	},
 	{
 		"model": "schedules.Qualification",
 		"fields": {
-			"title": "snoopers-b"
+			"title": "crawdads-b"
 		},
 		"pk": 181
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title": "nurse"
+		},
+		"pk": 182
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title": "fitness"
+		},
+		"pk": 183
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title": "counselor"
+		},
+		"pk": 184
+	},
+	{
+		"model": "schedules.Qualification",
+		"fields": {
+			"title": "maintenance"
+		},
+		"pk": 185
 	}
 ]

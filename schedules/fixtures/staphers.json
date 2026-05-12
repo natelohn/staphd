@@ -30,7 +30,7 @@
 		"fields": {
 			"first_name":"Alex",
 			"last_name":"Bradfield",
-			"title":"Yahoos",
+			"title":"Chickarees",
 			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
@@ -43,7 +43,7 @@
 		"fields": {
 			"first_name":"Ali",
 			"last_name":"Zilversmit",
-			"title":"Snoopers",
+			"title":"Crawdads",
 			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
@@ -56,7 +56,7 @@
 		"fields": {
 			"first_name":"Alida",
 			"last_name":"Ratteray",
-			"title":"Midorees",
+			"title":"Marmots",
 			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
@@ -108,7 +108,7 @@
 		"fields": {
 			"first_name":"Bella",
 			"last_name":"Sullivan",
-			"title":"Munchkins",
+			"title":"Guppies",
 			"gender":"0",
 			"age":"18",
 			"class_year":"2021",
@@ -134,7 +134,7 @@
 		"fields": {
 			"first_name":"Callie",
 			"last_name":"Heiderscheit",
-			"title":"Yahoos",
+			"title":"Chickarees",
 			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
@@ -160,7 +160,7 @@
 		"fields": {
 			"first_name":"Christopher",
 			"last_name":"Jackson",
-			"title":"Snoopers",
+			"title":"Crawdads",
 			"gender":"1",
 			"age":"19",
 			"class_year":"2020",
@@ -173,7 +173,7 @@
 		"fields": {
 			"first_name":"Dani",
 			"last_name":"Lyle",
-			"title":"Midorees",
+			"title":"Marmots",
 			"gender":"0",
 			"age":"18",
 			"class_year":"2021",
@@ -212,7 +212,7 @@
 		"fields": {
 			"first_name":"Edward",
 			"last_name":"Malacon",
-			"title":"Menehunes",
+			"title":"Mergansers",
 			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
@@ -251,7 +251,7 @@
 		"fields": {
 			"first_name":"Ethan",
 			"last_name":"Cruikshank",
-			"title":"Yahoos",
+			"title":"Chickarees",
 			"gender":"1",
 			"age":"19",
 			"class_year":"2020",
@@ -264,7 +264,7 @@
 		"fields": {
 			"first_name":"Eva",
 			"last_name":"Borgwardt",
-			"title":"Theater Instructor & Yahoos",
+			"title":"Theater Instructor & Chickarees",
 			"gender":"0",
 			"age":"20",
 			"class_year":"2019",
@@ -277,7 +277,7 @@
 		"fields": {
 			"first_name":"Gabri",
 			"last_name":"Posard",
-			"title":"Suaves",
+			"title":"Ospreys",
 			"gender":"0",
 			"age":"20",
 			"class_year":"2019",
@@ -290,7 +290,7 @@
 		"fields": {
 			"first_name":"Grace",
 			"last_name":"Lucas",
-			"title":"Snoopers",
+			"title":"Crawdads",
 			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
@@ -342,7 +342,7 @@
 		"fields": {
 			"first_name":"Jake",
 			"last_name":"Brooks",
-			"title":"Suaves",
+			"title":"Ospreys",
 			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
@@ -355,7 +355,7 @@
 		"fields": {
 			"first_name":"Jeffrey",
 			"last_name":"Propp",
-			"title":"Snoopers",
+			"title":"Crawdads",
 			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
@@ -368,7 +368,7 @@
 		"fields": {
 			"first_name":"Johnathan",
 			"last_name":"Bridges",
-			"title":"Suaves",
+			"title":"Ospreys",
 			"gender":"1",
 			"age":"18",
 			"class_year":"2021",
@@ -459,7 +459,7 @@
 		"fields": {
 			"first_name":"Lauren",
 			"last_name":"Frost",
-			"title":"Menehunes",
+			"title":"Mergansers",
 			"gender":"0",
 			"age":"20",
 			"class_year":"2019",
@@ -524,7 +524,7 @@
 		"fields": {
 			"first_name":"Matt",
 			"last_name":"Bernstein",
-			"title":"Midorees",
+			"title":"Marmots",
 			"gender":"1",
 			"age":"19",
 			"class_year":"2020",
@@ -537,7 +537,7 @@
 		"fields": {
 			"first_name":"Meg",
 			"last_name":"Enthoven",
-			"title":"Snoopers",
+			"title":"Crawdads",
 			"gender":"0",
 			"age":"19",
 			"class_year":"2020",
@@ -563,7 +563,7 @@
 		"fields": {
 			"first_name":"Michelle",
 			"last_name":"Hull",
-			"title":"Munchkins",
+			"title":"Guppies",
 			"gender":"0",
 			"age":"20",
 			"class_year":"2019",
@@ -602,7 +602,7 @@
 		"fields": {
 			"first_name":"Neil",
 			"last_name":"Nathan",
-			"title":"Menehunes",
+			"title":"Mergansers",
 			"gender":"1",
 			"age":"20",
 			"class_year":"2019",
@@ -615,7 +615,7 @@
 		"fields": {
 			"first_name":"Nico",
 			"last_name":"Ponza",
-			"title":"Midorees",
+			"title":"Marmots",
 			"gender":"1",
 			"age":"21",
 			"class_year":"2018",
@@ -628,7 +628,7 @@
 		"fields": {
 			"first_name":"Rozy",
 			"last_name":"Eastaugh",
-			"title":"Yahoos",
+			"title":"Chickarees",
 			"gender":"0",
 			"age":"18",
 			"class_year":"2021",
@@ -693,7 +693,7 @@
 		"fields": {
 			"first_name":"Susi",
 			"last_name":"Arguello",
-			"title":"Menehunes",
+			"title":"Mergansers",
 			"gender":"0",
 			"age":"19",
 			"class_year":"2020",
@@ -732,7 +732,7 @@
 		"fields": {
 			"first_name":"Toots",
 			"last_name":"Lagattuta",
-			"title":"Munchkins",
+			"title":"Guppies",
 			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
@@ -745,7 +745,7 @@
 		"fields": {
 			"first_name":"Tracy",
 			"last_name":"Roberts",
-			"title":"Suaves",
+			"title":"Ospreys",
 			"gender":"0",
 			"age":"21",
 			"class_year":"2018",
@@ -758,7 +758,7 @@
 		"fields": {
 			"first_name":"Trey",
 			"last_name":"Hale",
-			"title":"Midorees",
+			"title":"Marmots",
 			"gender":"1",
 			"age":"21",
 			"class_year":"2018",
@@ -771,7 +771,7 @@
 		"fields": {
 			"first_name":"Wes",
 			"last_name":"Annan",
-			"title":"Munchkins",
+			"title":"Guppies",
 			"gender":"1",
 			"age":"20",
 			"class_year":"2019",
@@ -784,7 +784,7 @@
 		"fields": {
 			"first_name":"Zoe",
 			"last_name":"Clute",
-			"title":"Menehunes",
+			"title":"Mergansers",
 			"gender":"0",
 			"age":"19",
 			"class_year":"2020",
