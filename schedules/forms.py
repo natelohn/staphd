@@ -2,7 +2,7 @@ import datetime as dt
 from django import forms
 from django.db import models
 from django.db.models.functions import Lower
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 
 from .models import Flag, SignUp, Qualification, Schedule, Settings, Shift, Stapher, Staphing, ShiftSet

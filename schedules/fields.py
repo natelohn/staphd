@@ -1,7 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import SmallIntegerField
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
 
 
 DAY_OF_THE_WEEK = {
