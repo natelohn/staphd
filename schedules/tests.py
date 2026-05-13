@@ -921,6 +921,32 @@ class TrackStateViewTests(TestCase):
         data = json.loads(response.content)
         self.assertNotIn('running', data if isinstance(data, dict) else {})
 
+    @patch('schedules.views.app')
+    def test_pending_task_returns_running_true(self, mock_app):
+        mock_result = MagicMock()
+        mock_result.result = None
+        mock_result.state = 'PENDING'
+        mock_result.ready.return_value = False
+        mock_app.AsyncResult.return_value = mock_result
+
+        response = self._ajax_post({'task_id': 'pending-id'})
+        data = json.loads(response.content)
+        self.assertIsInstance(data, dict)
+        self.assertTrue(data['running'])
+        self.assertEqual(data['process_percent'], 0)
+
+    @patch('schedules.views.app')
+    def test_failed_task_returns_json_not_500(self, mock_app):
+        mock_result = MagicMock()
+        mock_result.result = ValueError('worker died')
+        mock_result.state = 'FAILURE'
+        mock_result.ready.return_value = True
+        mock_app.AsyncResult.return_value = mock_result
+
+        response = self._ajax_post({'task_id': 'failed-id'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response['Content-Type'], 'application/json')
+
 
 # ============================================================================
 # ========================   ANALYTICS TESTS   ================================

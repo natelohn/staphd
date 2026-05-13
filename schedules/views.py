@@ -3,6 +3,7 @@ import botocore
 import datetime
 import json
 import os
+import uuid
 
 from celery import current_task
 from celery.result import AsyncResult
@@ -221,10 +222,15 @@ def build_schedules(request, *args, **kwargs):
 	task_id = cache.get('current_task_id')
 	if not task_id:
 		schedule_id = schedule.id
-		task = build_schedules_task.delay(schedule_id)
-		task_id = task.task_id
+		task_id = str(uuid.uuid4())
 		cache.set('current_task_id', task_id, 3000)
 		cache.set('no_redirect', True, None)
+		task = build_schedules_task.delay(schedule_id)
+		if not cache.get('current_task_id'):
+			# Task ran synchronously (eager mode) and already finished — skip progress screen
+			return HttpResponseRedirect(reverse('schedules:redirect'))
+		task_id = task.task_id
+		cache.set('current_task_id', task_id, 3000)
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
 	context['schedule'] = schedule.title
@@ -248,11 +254,15 @@ def update_files(request, *args, **kwargs):
 			context['update_error_message'] = 'No Shifts Scheduled - Must Schedule Shifts First'
 		else:
 			template = 'schedules/progress.html'
-			task = update_files_task.delay(schedule_id)
-			task_id = task.task_id
+			task_id = str(uuid.uuid4())
 			cache.set('current_task_id', task_id, 3000)
 			cache.set('no_redirect', True, None)
 			cache.set('latest_excel_deleted', False, None)
+			task = update_files_task.delay(schedule_id)
+			if not cache.get('current_task_id'):
+				return HttpResponseRedirect(reverse('schedules:redirect'))
+			task_id = task.task_id
+			cache.set('current_task_id', task_id, 3000)
 	else:
 		template = 'schedules/progress.html'
 		context['update_error_message'] = 'Please wait for the current task to complete.'
@@ -274,17 +284,25 @@ def track_state(request, *args, **kwargs):
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
 			task = app.AsyncResult(task_id)
-			data = task.result or task.state
+			if task.state == 'PENDING':
+				# Task queued but not yet started or result not yet stored — keep polling
+				data = {'running': True, 'process_percent': 0, 'message': 'Starting...'}
+				task_running = True
+			else:
+				data = task.result or task.state
+				task_running = not task.ready() and not isinstance(data, str)
+				if task_running:
+					data['running'] = task_running
 			print(f'			data -> {data}')
-			task_running = not task.ready() and not isinstance(data, str)
 			print(f'			task_running -> {task_running}')
-			if task_running:
-				data['running'] = task_running
 		else:
 			data = 'No task_id in the request'
 	else:
 		data = 'This is not an ajax request'
-	json_data = json.dumps(data)
+	try:
+		json_data = json.dumps(data)
+	except (TypeError, ValueError):
+		json_data = json.dumps(str(data))
 	return HttpResponse(json_data, content_type='application/json')
 
 @login_required
@@ -386,7 +404,12 @@ def get_ratio(request, *args, **kwargs):
 	if not task_id:
 		schedule_id = schedule.id
 		shift_set_id = schedule.shift_set.id
+		task_id = str(uuid.uuid4())
+		cache.set('current_task_id', task_id, 3000)
 		task = find_ratios_task.delay(schedule_id, shift_set_id)
+		if not cache.get('current_task_id'):
+			# Task ran synchronously (eager mode) and already finished — skip progress screen
+			return HttpResponseRedirect(reverse('schedules:redirect'))
 		task_id = task.task_id
 		cache.set('current_task_id', task_id, 3000)
 	request.session['task_id'] = task_id
@@ -1564,10 +1587,14 @@ def place_special_shifts(request, *args, **kwargs):
 		return HttpResponseRedirect(reverse('schedules:special'))
 	task_id = cache.get('current_task_id')
 	if not task_id:
-		task = place_special_shifts_task.delay(schedule.id)
-		task_id = task.task_id
+		task_id = str(uuid.uuid4())
 		cache.set('current_task_id', task_id, 3000)
 		cache.delete('no_redirect')
+		task = place_special_shifts_task.delay(schedule.id)
+		if not cache.get('current_task_id'):
+			return HttpResponseRedirect(reverse('schedules:redirect'))
+		task_id = task.task_id
+		cache.set('current_task_id', task_id, 3000)
 	request.session['task_id'] = task_id
 	context = {'task_id':task_id}
 	context['schedule'] = schedule.title
