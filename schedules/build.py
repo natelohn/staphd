@@ -55,7 +55,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 	# Initialize the frontend information
 	total_actions = cache.get('num_total_actions') or 1595 # TODO Remove Magic Number
 	meta = {'message':'Starting to Build Schedules', 'process_percent':0}
-	current_task.update_state(meta = meta)
+	current_task.update_state(state='PROGRESS', meta=meta)
 
 	all_shifts = [shift[0] for shift in sorted_shifts]
 	actions_taken = 0
@@ -74,11 +74,11 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 						# Update frontend information
 						percent = get_percent(actions_taken, total_actions)
 						meta = {'message':f'Auto scheduled {staphing}', 'process_percent':percent}
-						current_task.update_state(meta = meta)
+						current_task.update_state(state='PROGRESS', meta=meta)
 					left = shift.left_to_cover(staphings)
 					percent = get_percent(actions_taken, total_actions)
 					meta = {'message':f'Could not schedule: {shift}. {left} more needed.', 'process_percent':percent}
-					current_task.update_state(meta = meta)
+					current_task.update_state(state='PROGRESS', meta=meta)
 
 				# In this system, all shifts that have no other options of people to cover them will be automatically scheduled when autoschedule is selected.
 				elif len(free_and_qualified) == shift.left_to_cover(staphings) and settings.auto_schedule:
@@ -89,7 +89,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 						# Update frontend information
 						percent = get_percent(actions_taken, total_actions)
 						meta = {'message':f'Auto scheduled {staphing}', 'process_percent':percent}
-						current_task.update_state(meta = meta)
+						current_task.update_state(state='PROGRESS', meta=meta)
 
 				# If the shift can be covered and there are more than just enough staphers to cover it, we make recommendations as to who should cover it
 				# Depending on the settings, we either auto-schedule those recommendations or return them.
@@ -119,7 +119,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 								# Update frontend information
 								percent = get_percent(actions_taken, total_actions)
 								meta = {'message':f'Scheduled {staphing} on recommendation' , 'process_percent':percent}
-								current_task.update_state(meta = meta)
+								current_task.update_state(state='PROGRESS', meta=meta)
 								
 						recommendations = recommendations[recommendations_used:]
 						if not shift.is_covered(staphings):
@@ -129,7 +129,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 	# Update the frontend
 	percent = get_percent(actions_taken, total_actions)
 	meta = {'message':f'Saving Schedule', 'process_percent':percent}
-	current_task.update_state(meta = meta)
+	current_task.update_state(state='PROGRESS', meta=meta)
 
 	# Finally we save all the staphings that were made and return the Scheudle
 	for staphing in staphings:

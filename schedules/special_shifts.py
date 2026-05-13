@@ -54,7 +54,7 @@ def get_special_shift_flags():
 def update_task_info(task, message, num, denom ):
 	percent = int((num / denom) * 100)
 	meta = {'message':message, 'process_percent':percent}
-	task.update_state(meta = meta)
+	task.update_state(state='PROGRESS', meta=meta)
 
 def get_suffix(rank):
 	rank += 1

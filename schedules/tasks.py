@@ -56,7 +56,7 @@ def build_schedules_task(self, schedule_id):
 		staphings = []
 	sorted_shifts = cache.get('sorted_shifts')
 	if not sorted_shifts:
-		self.update_state(meta={'message': 'Preparing to Place Shifts', 'process_percent': 0})
+		self.update_state(state='PROGRESS', meta={'message': 'Preparing to Place Shifts', 'process_percent': 0})
 		shifts_in_set = Shift.objects.filter(shift_set=schedule.shift_set)
 		active_staphers = Stapher.objects.filter(active=True)
 		sorted_shifts = get_sorted_shifts(active_staphers, shifts_in_set)
@@ -66,7 +66,7 @@ def build_schedules_task(self, schedule_id):
 
 	shift_and_rec = build_schedules(sorted_shifts, settings, schedule, staphings, self)
 	if not shift_and_rec:
-		self.update_state(meta={'message': 'All possible shifts placements made.', 'process_percent': 100})
+		self.update_state(state='PROGRESS', meta={'message': 'All possible shifts placements made.', 'process_percent': 100})
 		cache.set('recommendation', False, None)
 		cache.delete('redirect_value')
 	else:

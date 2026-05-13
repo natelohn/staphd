@@ -42,7 +42,7 @@ def get_ratios_info_in_window(shifts, staphers, workers_left, busy_staphers):
 def find_ratios(shifts, staphers, staphings, all_ordered_times, current_task):
 	total_actions = cache.get('num_total_actions') or 70
 	meta = {'message':'Retrieving Information for Ratios', 'process_percent':0}
-	current_task.update_state(meta = meta)
+	current_task.update_state(state='PROGRESS', meta=meta)
 	days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 
 	workers_left = {}
@@ -59,7 +59,7 @@ def find_ratios(shifts, staphers, staphings, all_ordered_times, current_task):
 			actions_taken += 1
 			percent = get_percent(actions_taken, total_actions)
 			meta = {'message':f'Geting Ratio for {days[day]}, {start}-{end}', 'process_percent':percent}
-			current_task.update_state(meta = meta)
+			current_task.update_state(state='PROGRESS', meta=meta)
 			
 			shifts_in_window = [s for s in shifts.filter(day = day, start__lt = end, end__gt = start) if workers_left[s.id] > 0]
 			if len(shifts_in_window) > 0:
