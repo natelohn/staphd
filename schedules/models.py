@@ -236,8 +236,11 @@ class Shift(models.Model):
 		return f'{self.title} on {self.get_day_string()}, {start_str}-{end_str}'
 
 	def save(self, *args, **kwargs):
+		if self.start >= self.end or self.day < 0 or self.day > 6:
+			return
 		cache.delete('sorted_shifts')
-		if self.is_special(): cache.delete('special_shift_flags')
+		if self.is_special():
+			cache.delete('special_shift_flags')
 		super(Shift, self).save(*args, **kwargs)
 
 	def delete(self, *args, **kwargs):

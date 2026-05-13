@@ -1,0 +1,6 @@
+#!/bin/sh
+set -e
+cd "$(git rev-parse --show-toplevel)"
+echo "Running full test suite (pre-push)..."
+source venv/bin/activate
+python manage.py test schedules --verbosity=1

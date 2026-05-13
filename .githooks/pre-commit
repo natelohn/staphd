@@ -1,0 +1,19 @@
+#!/bin/sh
+set -e
+cd "$(git rev-parse --show-toplevel)"
+echo "Running unit tests (pre-commit)..."
+source venv/bin/activate
+python manage.py test \
+    schedules.tests.StapherModelTests \
+    schedules.tests.ShiftModelTests \
+    schedules.tests.SettingsModelTests \
+    schedules.tests.BuildTests \
+    schedules.tests.BuildUnitTests \
+    schedules.tests.RecommendTests \
+    schedules.tests.AnalyticsTests \
+    schedules.tests.HelpersTests \
+    schedules.tests.SortUnitTests \
+    schedules.tests.BuildSchedulesViewTests \
+    schedules.tests.GetRatioViewTests \
+    schedules.tests.TrackStateViewTests \
+    --verbosity=1

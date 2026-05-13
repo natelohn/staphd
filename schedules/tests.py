@@ -8,18 +8,30 @@ from django.core.cache import cache
 from django.test import Client, TestCase
 from django.urls import reverse
 
-from .build import get_free_staphers
+from .analytics import (
+    get_hours_from_timedelta, get_td_from_time, get_hours_between_times,
+    get_readable_time, get_str_from_td,
+    get_average_window_between_shifts, get_people_not_worked_with,
+)
+from .build import get_free_staphers, do_ties_exist, highest_ranked_win
+from .helpers import get_min, get_time_str, get_span_from_time, get_max_ratio
 from .models import Stapher, Shift, Qualification, Schedule, ShiftSet, Staphing, Settings, Parameter
-from .sort import get_qual_and_shifts_dicts, get_stapher_dict, get_sorted_shifts
+from .sort import (
+    get_qual_and_shifts_dicts, get_stapher_dict, get_sorted_shifts,
+    get_seconds_from_time, get_seconds_from_day_and_time, get_ordered_start_and_end_times_by_day,
+)
 from .recommend import get_recommended_staphers
 
 class StapherModelTests(TestCase):
+    def setUp(self):
+        ShiftSet.objects.create(pk=1, title='Default')
+
 # ============================================================================
 # -----------------------   STAPHER IS_QUALIFIED   --------------------------
 # ============================================================================
     def test_is_qualified_stapher_has_same_qualifications_for_shift(self):
         # Make sure is_qualified is working when the shift and stapher have the same qualifications
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         shift = Shift()
         shift.save()
@@ -36,7 +48,7 @@ class StapherModelTests(TestCase):
 
     def test_is_qualified_stapher_has_more_qualifications_than_shift(self):
         # Make sure is_qualified is working when the shift and stapher have the same qualifications
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         shift = Shift()
         shift.save()
@@ -52,7 +64,7 @@ class StapherModelTests(TestCase):
 
     def test_is_qualified_stapher_has_less_qualifications_than_shift(self):
         # Make sure is_qualified is working when the shift and stapher have the same qualifications
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         shift = Shift()
         shift.save()
@@ -67,7 +79,7 @@ class StapherModelTests(TestCase):
 
     def test_is_qualified_stapher_has_no_qualifications(self):
         # Make sure is_qualified is working when the shift and stapher have the same qualifications
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         shift = Shift()
         shift.save()
@@ -78,7 +90,7 @@ class StapherModelTests(TestCase):
 
     def test_is_qualified_shift_has_no_qualifications(self):
         # Make sure is_qualified is working when the shift and stapher have the same qualifications
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         shift = Shift()
         shift.save()
@@ -92,7 +104,7 @@ class StapherModelTests(TestCase):
 # ============================================================================
     def test_is_free_stapher_not_free(self):
         # Make sure is_free is working when the stapher has a shift at the same time
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         shift1 = Shift(start = datetime.time(hour = 9), end = datetime.time(hour = 10))
         shift1.save()
@@ -106,7 +118,7 @@ class StapherModelTests(TestCase):
 
     def test_is_free_stapher_not_free_same_shift(self):
         # Make sure is_free is working when the stapher has the same shift scheduled
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         shift1 = Shift(start = datetime.time(hour = 9), end = datetime.time(hour = 10))
         shift1.save()
@@ -118,13 +130,13 @@ class StapherModelTests(TestCase):
 
     def test_is_free_stapher_has_no_shifts(self):
         # Make sure is_free is working when the stapher has no shifts
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         shift1 = Shift(start = datetime.time(hour = 9), end = datetime.time(hour = 10))
         self.assertTrue(stapher.is_free([], shift1))
 
     def test_is_free_stapher_is_free(self):
         # Make sure is_free is working when the stapher has a shift that doesn't overlap scheduled
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         shift1 = Shift(start = datetime.time(hour = 9), end = datetime.time(hour = 10))
         shift1.save()
@@ -137,7 +149,7 @@ class StapherModelTests(TestCase):
     
     def test_is_free_stapher_has_two_overlaping_shifts(self):
         # Make sure is_free is working when the stapher has two shifts that overlap
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         shift1 = Shift(start = datetime.time(hour = 8), end = datetime.time(hour = 10))
         shift1.save()
@@ -153,7 +165,7 @@ class StapherModelTests(TestCase):
 
     def test_is_free_stapher_has_overlaping_shift_on_different_day(self):
         # Make sure is_free is working when the stapher has a shift at the same time on a different day
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         shift1 = Shift(day = 0, start = datetime.time(hour = 8), end = datetime.time(hour = 10))
         shift1.save()
@@ -168,11 +180,11 @@ class StapherModelTests(TestCase):
 # ------------------------   STAPHER HOURS_IN_DAY  ---------------------------
 # ============================================================================
     def test_hours_in_day_no_shifts(self):
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         self.assertEquals(stapher.hours_in_day([], 0).seconds, 0)
 
     def test_hours_in_day_one_hour_shifts(self):
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         shift = Shift()
         schedule = Schedule()
         staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
@@ -180,7 +192,7 @@ class StapherModelTests(TestCase):
         self.assertEquals(stapher.hours_in_day([staphing], 0).seconds, seconds_in_hour)
 
     def test_hours_in_day_two_one_hour_shifts(self):
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         shift1 = Shift()
         shift2 = Shift()
         schedule = Schedule()
@@ -190,7 +202,7 @@ class StapherModelTests(TestCase):
         self.assertEquals(stapher.hours_in_day([staphing1, staphing2], 0).seconds, seconds_in_hour * 2)
 
     def test_hours_in_day_two_one_hour_shifts_different_days(self):
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         shift1 = Shift()
         shift2 = Shift(day=1)
         schedule = Schedule()
@@ -203,11 +215,11 @@ class StapherModelTests(TestCase):
 # -------------------------   STAPHER TOTAL_HOURS  ---------------------------
 # ============================================================================
     def test_total_hours_no_shifts(self):
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         self.assertEquals(stapher.total_hours([]).seconds, 0)
 
     def test_total_hours_one_hour_shifts(self):
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         shift = Shift()
         schedule = Schedule()
         staphing = Staphing(stapher = stapher, shift = shift, schedule = schedule)
@@ -215,7 +227,7 @@ class StapherModelTests(TestCase):
         self.assertEquals(stapher.total_hours([staphing]).seconds, seconds_in_hour)
 
     def test_total_hours_two_one_hour_shifts(self):
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         shift1 = Shift()
         shift2 = Shift()
         schedule = Schedule()
@@ -225,7 +237,7 @@ class StapherModelTests(TestCase):
         self.assertEquals(stapher.total_hours([staphing1, staphing2]).seconds, seconds_in_hour * 2)
 
     def test_total_hours_two_one_hour_shifts_different_days(self):
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         shift1 = Shift()
         shift2 = Shift(day=1)
         schedule = Schedule()
@@ -235,7 +247,7 @@ class StapherModelTests(TestCase):
         self.assertEquals(stapher.total_hours([staphing1, staphing2]).seconds, seconds_in_hour * 2)
 
     def test_total_hours_three_one_hour_shifts_different_days(self):
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         shift1 = Shift()
         shift2 = Shift(day=1)
         shift3 = Shift(day=2)
@@ -247,6 +259,9 @@ class StapherModelTests(TestCase):
         self.assertEquals(stapher.total_hours([staphing1, staphing2, staphing3]).seconds, seconds_in_hour * 3)
 
 class ShiftModelTests(TestCase):
+    def setUp(self):
+        ShiftSet.objects.create(pk=1, title='Default')
+
 # ============================================================================
 # -----------------------------   SHIFT SAVE  --------------------------------
 # ============================================================================
@@ -390,7 +405,7 @@ class ShiftModelTests(TestCase):
         # Test to make sure is_covered is working when shift that needs 1 worker has 1 worker
         shift = Shift(workers_needed = 1)
         shift.save()
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         stapher.save()
         schedule = Schedule()
         schedule.save()
@@ -401,11 +416,11 @@ class ShiftModelTests(TestCase):
         # Test to make sure is_covered is working when shift that needs 3 workers has 3 workers
         shift = Shift(workers_needed = 3)
         shift.save()
-        stapher1 = Stapher()
+        stapher1 = Stapher(gender=0)
         stapher1.save()
-        stapher2 = Stapher()
+        stapher2 = Stapher(gender=0)
         stapher2.save()
-        stapher3 = Stapher()
+        stapher3 = Stapher(gender=0)
         stapher3.save()
         schedule = Schedule()
         schedule.save()
@@ -424,9 +439,9 @@ class ShiftModelTests(TestCase):
         # Test to make sure is_covered is working when shift that needs 3 workers has 2 workers
         shift = Shift(workers_needed = 3)
         shift.save()
-        stapher1 = Stapher()
+        stapher1 = Stapher(gender=0)
         stapher1.save()
-        stapher2 = Stapher()
+        stapher2 = Stapher(gender=0)
         stapher2.save()
         schedule = Schedule()
         schedule.save()
@@ -508,7 +523,7 @@ class ShiftModelTests(TestCase):
 
     def test_left_to_cover_is_covered(self):
         shift = Shift(workers_needed = 1)
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         schedule = Schedule()
         shift.save()
         stapher.save()
@@ -518,7 +533,7 @@ class ShiftModelTests(TestCase):
 
     def test_left_to_cover_partially_covered(self):
         shift = Shift(workers_needed = 2)
-        stapher = Stapher()
+        stapher = Stapher(gender=0)
         schedule = Schedule()
         shift.save()
         stapher.save()
@@ -574,10 +589,11 @@ class SettingsModelTests(TestCase):
 
 class SortTests(TestCase):
     fixtures = [
+        'shiftset.json',
         'flags.json',
         'qualifications.json',
         'staphers.json',
-        'shifts.json'
+        'shifts.json',
     ]
 # ============================================================================
 # ---------------------   get_qual_and_shifts_dicts  -------------------------
@@ -679,17 +695,13 @@ class SortTests(TestCase):
 # ------------------------   get_sorted_shifts  ------------------------------
 # ============================================================================
 
-    def test_get_sorted_shifts_are_sorted(self):
-        shifts_are_sorted = True
-        sorted_shifts = get_sorted_shifts()
-        last_ratio = sorted_shifts[0][0]
-        for shift in sorted_shifts:
-            ratio = shift[0]
-            if last_ratio < ratio:
-                shifts_are_sorted = False
-                break
-            last_ratio = ratio
-        self.assertTrue(shifts_are_sorted)
+    def test_get_sorted_shifts_returns_shift_stapher_pairs(self):
+        sorted_shifts = get_sorted_shifts(Stapher.objects.all(), Shift.objects.all())
+        self.assertIsInstance(sorted_shifts, list)
+        for item in sorted_shifts:
+            self.assertEqual(len(item), 2)
+            self.assertIsInstance(item[0], Shift)
+            self.assertIsInstance(item[1], list)
 
 class BuildTests(TestCase):
 # ============================================================================
@@ -697,17 +709,16 @@ class BuildTests(TestCase):
 # ============================================================================
     
     def test_get_free_staphers_one_stapher_free(self):
-        stapher1 = Stapher()
+        stapher1 = Stapher(gender=0)
         stapher1.save()
-        stapher2 = Stapher()
+        stapher2 = Stapher(gender=0)
         stapher2.save()
-        shift = Shift()
-        shift.save()
+        busy_shift = Shift(start=datetime.time(hour=9), end=datetime.time(hour=10))
+        target_shift = Shift(start=datetime.time(hour=9), end=datetime.time(hour=10))
         schedule = Schedule()
-        schedule.save()
-        # add_shift(stapher1, shift, schedule)
+        staphing = Staphing(stapher=stapher1, shift=busy_shift, schedule=schedule)
         staphers = [stapher1, stapher2]
-        free_staphers = get_free_staphers(staphers, shift, schedule)
+        free_staphers = get_free_staphers(staphers, target_shift, [staphing])
         self.assertEqual(free_staphers, [stapher2])
 
 class RecommendTests(TestCase):
@@ -715,17 +726,33 @@ class RecommendTests(TestCase):
 # ---------------------   get_recommended_staphers  --------------------------
 # ============================================================================
 
-    def test_get_recommended_staphers_test(self):
-        stapher1 = Stapher()
+    def test_get_recommended_staphers_empty_staphers_returns_empty(self):
+        settings_mock = MagicMock()
+        settings_mock.parameters.all.return_value.order_by.return_value = []
+        result = get_recommended_staphers([], None, [], settings_mock, [])
+        self.assertEqual(result, [])
+
+    def test_get_recommended_staphers_returns_one_entry_per_stapher(self):
+        stapher1 = Stapher(gender=0)
         stapher1.save()
-        stapher2 = Stapher()
+        stapher2 = Stapher(gender=0)
         stapher2.save()
-        shift = Shift()
-        shift.save()
-        schedule = Schedule()
-        schedule.save()
-        staphers = [stapher1, stapher2]
-        get_recommended_staphers(staphers, shift, schedule)
+        settings_mock = MagicMock()
+        settings_mock.parameters.all.return_value.order_by.return_value = []
+        shift = Shift(start=datetime.time(9), end=datetime.time(10))
+        result = get_recommended_staphers([stapher1, stapher2], shift, [], settings_mock, [])
+        self.assertEqual(len(result), 2)
+
+    def test_get_recommended_staphers_each_entry_has_stapher_scores_wins(self):
+        stapher1 = Stapher(gender=0)
+        stapher1.save()
+        settings_mock = MagicMock()
+        settings_mock.parameters.all.return_value.order_by.return_value = []
+        shift = Shift(start=datetime.time(9), end=datetime.time(10))
+        result = get_recommended_staphers([stapher1], shift, [], settings_mock, [])
+        self.assertEqual(result[0][0], stapher1)
+        self.assertIsInstance(result[0][1], list)
+        self.assertIsInstance(result[0][2], list)
 
 
 # ============================================================================
@@ -893,6 +920,277 @@ class TrackStateViewTests(TestCase):
         response = self._ajax_post({'task_id': 'done-id'})
         data = json.loads(response.content)
         self.assertNotIn('running', data if isinstance(data, dict) else {})
+
+
+# ============================================================================
+# ========================   ANALYTICS TESTS   ================================
+# ============================================================================
+
+class AnalyticsTests(TestCase):
+
+    def test_get_hours_from_timedelta_zero(self):
+        self.assertEqual(get_hours_from_timedelta(datetime.timedelta(0)), 0)
+
+    def test_get_hours_from_timedelta_one_hour(self):
+        self.assertEqual(get_hours_from_timedelta(datetime.timedelta(hours=1)), 1.0)
+
+    def test_get_hours_from_timedelta_one_day(self):
+        self.assertEqual(get_hours_from_timedelta(datetime.timedelta(days=1)), 24.0)
+
+    def test_get_hours_from_timedelta_half_hour(self):
+        self.assertEqual(get_hours_from_timedelta(datetime.timedelta(minutes=30)), 0.5)
+
+    def test_get_td_from_time_midnight(self):
+        self.assertEqual(get_td_from_time(datetime.time(0, 0)), datetime.timedelta(0))
+
+    def test_get_td_from_time_noon(self):
+        self.assertEqual(get_td_from_time(datetime.time(12, 0)), datetime.timedelta(hours=12))
+
+    def test_get_td_from_time_with_minutes(self):
+        self.assertEqual(get_td_from_time(datetime.time(9, 30)), datetime.timedelta(hours=9, minutes=30))
+
+    def test_get_hours_between_times_one_hour(self):
+        self.assertEqual(get_hours_between_times(datetime.time(9, 0), datetime.time(10, 0)), 1.0)
+
+    def test_get_hours_between_times_half_hour(self):
+        self.assertEqual(get_hours_between_times(datetime.time(9, 0), datetime.time(9, 30)), 0.5)
+
+    def test_get_hours_between_times_two_hours(self):
+        self.assertEqual(get_hours_between_times(datetime.time(8, 0), datetime.time(10, 0)), 2.0)
+
+    def test_get_readable_time_9am(self):
+        self.assertEqual(get_readable_time(datetime.time(9, 0)), '9am')
+
+    def test_get_readable_time_2pm(self):
+        self.assertEqual(get_readable_time(datetime.time(14, 0)), '2pm')
+
+    def test_get_readable_time_noon(self):
+        self.assertEqual(get_readable_time(datetime.time(12, 0)), '12pm')
+
+    def test_get_readable_time_with_minutes(self):
+        self.assertEqual(get_readable_time(datetime.time(9, 30)), '9:30am')
+
+    def test_get_str_from_td_one_hour_contains_1(self):
+        self.assertIn('1', get_str_from_td(datetime.timedelta(hours=1)))
+
+    def test_get_str_from_td_noon_contains_12(self):
+        self.assertIn('12', get_str_from_td(datetime.timedelta(hours=12)))
+
+    def test_get_average_window_no_gaps(self):
+        shifts_by_day = {day: [] for day in range(7)}
+        self.assertEqual(get_average_window_between_shifts(None, None, None, shifts_by_day, None, None), [24])
+
+    def test_get_average_window_one_hour_gap(self):
+        shift1 = Shift(start=datetime.time(9, 0), end=datetime.time(10, 0))
+        shift2 = Shift(start=datetime.time(11, 0), end=datetime.time(12, 0))
+        shifts_by_day = {day: [] for day in range(7)}
+        shifts_by_day[0] = [shift1, shift2]
+        self.assertEqual(get_average_window_between_shifts(None, None, None, shifts_by_day, None, None), [1.0])
+
+    def test_get_average_window_zero_gap_excluded(self):
+        shift1 = Shift(start=datetime.time(9, 0), end=datetime.time(10, 0))
+        shift2 = Shift(start=datetime.time(10, 0), end=datetime.time(11, 0))
+        shifts_by_day = {day: [] for day in range(7)}
+        shifts_by_day[0] = [shift1, shift2]
+        self.assertEqual(get_average_window_between_shifts(None, None, None, shifts_by_day, None, None), [24])
+
+    def test_get_people_not_worked_with_no_staphings(self):
+        stapher = Stapher(gender=0)
+        stapher.save()
+        other = Stapher(gender=0)
+        other.save()
+        result = get_people_not_worked_with(stapher, [stapher, other], [], {}, None, None)
+        self.assertEqual(result[0], 1)
+
+    def test_get_people_not_worked_with_all_alone(self):
+        stapher = Stapher(gender=0)
+        stapher.save()
+        result = get_people_not_worked_with(stapher, [stapher], [], {}, None, None)
+        self.assertEqual(result[0], 0)
+
+    def test_get_people_not_worked_with_worked_together(self):
+        stapher = Stapher(gender=0)
+        stapher.save()
+        other = Stapher(gender=0)
+        other.save()
+        shift = Shift(start=datetime.time(9), end=datetime.time(10))
+        schedule = Schedule()
+        staphings = [
+            Staphing(stapher=stapher, shift=shift, schedule=schedule),
+            Staphing(stapher=other, shift=shift, schedule=schedule),
+        ]
+        result = get_people_not_worked_with(stapher, [stapher, other], staphings, {}, None, None)
+        self.assertEqual(result[0], 0)
+
+
+# ============================================================================
+# ========================   HELPERS TESTS   ==================================
+# ============================================================================
+
+class HelpersTests(TestCase):
+
+    def test_get_min_zero_minutes(self):
+        self.assertEqual(get_min(datetime.time(9, 0)), 0)
+
+    def test_get_min_15_minutes(self):
+        self.assertEqual(get_min(datetime.time(9, 15)), 0.25)
+
+    def test_get_min_30_minutes(self):
+        self.assertEqual(get_min(datetime.time(9, 30)), 0.5)
+
+    def test_get_min_45_minutes(self):
+        self.assertEqual(get_min(datetime.time(9, 45)), 0.75)
+
+    def test_get_time_str_whole_hour(self):
+        self.assertEqual(get_time_str(datetime.time(9, 0)), '9')
+
+    def test_get_time_str_half_hour(self):
+        self.assertEqual(get_time_str(datetime.time(9, 30)), '9.5')
+
+    def test_get_time_str_quarter_hour(self):
+        self.assertEqual(get_time_str(datetime.time(9, 15)), '9.25')
+
+    def test_get_span_from_time_one_hour(self):
+        self.assertEqual(get_span_from_time(datetime.time(9, 0), datetime.time(10, 0)), 12)
+
+    def test_get_span_from_time_30_minutes(self):
+        self.assertEqual(get_span_from_time(datetime.time(9, 0), datetime.time(9, 30)), 6)
+
+    def test_get_span_from_time_two_hours(self):
+        self.assertEqual(get_span_from_time(datetime.time(9, 0), datetime.time(11, 0)), 24)
+
+    def test_get_max_ratio_single_entry(self):
+        ratios = [[[2, 4], 'dummy']]
+        self.assertAlmostEqual(get_max_ratio(ratios), 0.5)
+
+    def test_get_max_ratio_picks_highest(self):
+        ratios = [[[1, 2], 'dummy'], [[3, 2], 'dummy']]
+        self.assertAlmostEqual(get_max_ratio(ratios), 1.5)
+
+    def test_get_max_ratio_zero_denominator(self):
+        ratios = [[[5, 0], 'dummy']]
+        self.assertEqual(get_max_ratio(ratios), 6)
+
+    def test_get_max_ratio_equal_ratio(self):
+        ratios = [[[2, 2], 'dummy']]
+        self.assertAlmostEqual(get_max_ratio(ratios), 1.0)
+
+
+# ============================================================================
+# =====================   SORT UNIT TESTS   ===================================
+# ============================================================================
+
+class SortUnitTests(TestCase):
+
+    def test_get_seconds_from_time_midnight(self):
+        self.assertEqual(get_seconds_from_time(datetime.time(0, 0)), 0)
+
+    def test_get_seconds_from_time_one_hour(self):
+        self.assertEqual(get_seconds_from_time(datetime.time(1, 0)), 3600)
+
+    def test_get_seconds_from_time_with_minutes(self):
+        self.assertEqual(get_seconds_from_time(datetime.time(1, 30)), 5400)
+
+    def test_get_seconds_from_time_noon(self):
+        self.assertEqual(get_seconds_from_time(datetime.time(12, 0)), 43200)
+
+    def test_get_seconds_from_day_and_time_sunday_midnight(self):
+        self.assertEqual(get_seconds_from_day_and_time(0, datetime.time(0, 0)), 0)
+
+    def test_get_seconds_from_day_and_time_monday_midnight(self):
+        self.assertEqual(get_seconds_from_day_and_time(1, datetime.time(0, 0)), 86400)
+
+    def test_get_seconds_from_day_and_time_with_time(self):
+        self.assertEqual(get_seconds_from_day_and_time(1, datetime.time(12, 0)), 86400 + 43200)
+
+    def test_get_seconds_from_day_and_time_saturday(self):
+        self.assertEqual(get_seconds_from_day_and_time(6, datetime.time(0, 0)), 6 * 86400)
+
+    def test_get_ordered_times_single_shift(self):
+        shift = Shift(day=0, start=datetime.time(9), end=datetime.time(10))
+        result = get_ordered_start_and_end_times_by_day([shift])
+        self.assertEqual(result[0], [datetime.time(9), datetime.time(10)])
+
+    def test_get_ordered_times_two_shifts_same_day(self):
+        shift1 = Shift(day=0, start=datetime.time(9), end=datetime.time(10))
+        shift2 = Shift(day=0, start=datetime.time(11), end=datetime.time(12))
+        result = get_ordered_start_and_end_times_by_day([shift1, shift2])
+        self.assertEqual(result[0], [datetime.time(9), datetime.time(10), datetime.time(11), datetime.time(12)])
+
+    def test_get_ordered_times_two_different_days(self):
+        shift1 = Shift(day=0, start=datetime.time(9), end=datetime.time(10))
+        shift2 = Shift(day=1, start=datetime.time(11), end=datetime.time(12))
+        result = get_ordered_start_and_end_times_by_day([shift1, shift2])
+        self.assertIn(0, result)
+        self.assertIn(1, result)
+        self.assertNotIn(2, result)
+
+    def test_get_ordered_times_deduplicates_same_time(self):
+        shift1 = Shift(day=0, start=datetime.time(9), end=datetime.time(10))
+        shift2 = Shift(day=0, start=datetime.time(9), end=datetime.time(11))
+        result = get_ordered_start_and_end_times_by_day([shift1, shift2])
+        self.assertEqual(result[0].count(datetime.time(9)), 1)
+
+
+# ============================================================================
+# ======================   BUILD UNIT TESTS   =================================
+# ============================================================================
+
+class BuildUnitTests(TestCase):
+
+    def test_do_ties_exist_no_tie(self):
+        recs = [
+            [None, None, [True, True]],
+            [None, None, [True, False]],
+        ]
+        self.assertFalse(do_ties_exist(recs, 1))
+
+    def test_do_ties_exist_with_tie(self):
+        recs = [
+            [None, None, [True, False]],
+            [None, None, [True, False]],
+        ]
+        self.assertTrue(do_ties_exist(recs, 1))
+
+    def test_highest_ranked_win_at_index_zero(self):
+        self.assertEqual(highest_ranked_win([None, None, [True, False, False]]), 0)
+
+    def test_highest_ranked_win_at_index_one(self):
+        self.assertEqual(highest_ranked_win([None, None, [False, True, False]]), 1)
+
+    def test_highest_ranked_win_no_wins_returns_length(self):
+        self.assertEqual(highest_ranked_win([None, None, [False, False]]), 2)
+
+    def test_get_free_staphers_all_free_with_no_staphings(self):
+        stapher1 = Stapher(gender=0)
+        stapher1.save()
+        stapher2 = Stapher(gender=0)
+        stapher2.save()
+        shift = Shift(start=datetime.time(9), end=datetime.time(10))
+        result = get_free_staphers([stapher1, stapher2], shift, [])
+        self.assertEqual(len(result), 2)
+
+    def test_get_free_staphers_one_busy(self):
+        stapher1 = Stapher(gender=0)
+        stapher1.save()
+        stapher2 = Stapher(gender=0)
+        stapher2.save()
+        busy_shift = Shift(start=datetime.time(9), end=datetime.time(10))
+        target_shift = Shift(start=datetime.time(9), end=datetime.time(10))
+        schedule = Schedule()
+        staphing = Staphing(stapher=stapher1, shift=busy_shift, schedule=schedule)
+        result = get_free_staphers([stapher1, stapher2], target_shift, [staphing])
+        self.assertEqual(result, [stapher2])
+
+    def test_get_free_staphers_non_overlapping_is_free(self):
+        stapher = Stapher(gender=0)
+        stapher.save()
+        morning_shift = Shift(start=datetime.time(9), end=datetime.time(10))
+        afternoon_shift = Shift(start=datetime.time(14), end=datetime.time(15))
+        schedule = Schedule()
+        staphing = Staphing(stapher=stapher, shift=morning_shift, schedule=schedule)
+        result = get_free_staphers([stapher], afternoon_shift, [staphing])
+        self.assertEqual(result, [stapher])
 
 
 
