@@ -1,9 +1,15 @@
 import datetime
+import json
+from unittest.mock import MagicMock, patch
+
+from django.contrib.auth.models import User
 from django.conf import settings
-from django.test import TestCase
+from django.core.cache import cache
+from django.test import Client, TestCase
+from django.urls import reverse
 
 from .build import get_free_staphers
-from .models import Stapher, Shift, Qualification, Schedule, Staphing, Settings, Parameter
+from .models import Stapher, Shift, Qualification, Schedule, ShiftSet, Staphing, Settings, Parameter
 from .sort import get_qual_and_shifts_dicts, get_stapher_dict, get_sorted_shifts
 from .recommend import get_recommended_staphers
 
@@ -720,6 +726,173 @@ class RecommendTests(TestCase):
         schedule.save()
         staphers = [stapher1, stapher2]
         get_recommended_staphers(staphers, shift, schedule)
+
+
+# ============================================================================
+# ========================   AJAX VIEW TESTS   ================================
+# ============================================================================
+
+def _make_user_and_login(client):
+    user = User.objects.create_user('testuser', '', 'testpass')
+    client.login(username='testuser', password='testpass')
+    return user
+
+
+class BuildSchedulesViewTests(TestCase):
+# ============================================================================
+# --------------------   build_schedules (POST /building)   ------------------
+# ============================================================================
+
+    def setUp(self):
+        cache.clear()
+        self.client = Client()
+        _make_user_and_login(self.client)
+        self.shift_set = ShiftSet.objects.create(pk=1, title='Default')
+
+    def test_requires_login(self):
+        self.client.logout()
+        response = self.client.post(reverse('schedules:building'))
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/accounts/login/', response['Location'])
+
+    def test_no_active_schedule_shows_error(self):
+        response = self.client.post(reverse('schedules:building'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Must select a schedule first')
+
+    @patch('schedules.views.build_schedules_task')
+    def test_active_schedule_renders_progress_template(self, mock_task):
+        mock_task.delay.return_value.task_id = 'build-task-id'
+        Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
+        response = self.client.post(reverse('schedules:building'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'schedules/progress.html')
+
+    @patch('schedules.views.build_schedules_task')
+    def test_active_schedule_passes_task_id_to_template(self, mock_task):
+        mock_task.delay.return_value.task_id = 'build-task-id'
+        Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
+        response = self.client.post(reverse('schedules:building'))
+        self.assertEqual(response.context['task_id'], 'build-task-id')
+
+    @patch('schedules.views.build_schedules_task')
+    def test_active_schedule_fires_celery_task(self, mock_task):
+        mock_task.delay.return_value.task_id = 'build-task-id'
+        schedule = Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
+        self.client.post(reverse('schedules:building'))
+        mock_task.delay.assert_called_once_with(schedule.id)
+
+
+class GetRatioViewTests(TestCase):
+# ============================================================================
+# ---------------   get_ratio (GET /get_ratios) — Check Ratios   -------------
+# ============================================================================
+
+    def setUp(self):
+        cache.clear()
+        self.client = Client()
+        _make_user_and_login(self.client)
+        self.shift_set = ShiftSet.objects.create(pk=1, title='Default')
+
+    def test_requires_login(self):
+        self.client.logout()
+        response = self.client.get(reverse('schedules:get-ratio'))
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/accounts/login/', response['Location'])
+
+    def test_no_active_schedule_shows_error(self):
+        response = self.client.get(reverse('schedules:get-ratio'))
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Must select a schedule first')
+
+    @patch('schedules.views.find_ratios_task')
+    def test_active_schedule_fires_celery_task(self, mock_task):
+        mock_task.delay.return_value.task_id = 'ratio-task-id'
+        schedule = Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
+        self.client.get(reverse('schedules:get-ratio'))
+        mock_task.delay.assert_called_once_with(schedule.id, self.shift_set.id)
+
+    @patch('schedules.views.find_ratios_task')
+    def test_active_schedule_redirects_to_schedule(self, mock_task):
+        mock_task.delay.return_value.task_id = 'ratio-task-id'
+        Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
+        response = self.client.get(reverse('schedules:get-ratio'))
+        self.assertRedirects(response, reverse('schedules:schedule'))
+
+    @patch('schedules.views.find_ratios_task')
+    def test_task_id_stored_in_session(self, mock_task):
+        mock_task.delay.return_value.task_id = 'ratio-task-id'
+        Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
+        self.client.get(reverse('schedules:get-ratio'))
+        self.assertEqual(self.client.session['task_id'], 'ratio-task-id')
+
+
+class TrackStateViewTests(TestCase):
+# ============================================================================
+# --------   track_state (POST /track) — AJAX polling endpoint   -------------
+# ============================================================================
+
+    def setUp(self):
+        cache.clear()
+        self.client = Client()
+        _make_user_and_login(self.client)
+
+    def _ajax_post(self, data):
+        return self.client.post(
+            reverse('schedules:track'),
+            data,
+            HTTP_X_REQUESTED_WITH='XMLHttpRequest',
+        )
+
+    def test_requires_login(self):
+        self.client.logout()
+        response = self._ajax_post({'task_id': 'some-id'})
+        self.assertEqual(response.status_code, 302)
+
+    def test_always_returns_json_content_type(self):
+        response = self._ajax_post({'task_id': ''})
+        self.assertEqual(response['Content-Type'], 'application/json')
+
+    def test_non_ajax_request_returns_error_string(self):
+        # Without the XMLHttpRequest header the endpoint must return a clear
+        # error string — not a 500 (which is what the removed is_ajax() caused).
+        response = self.client.post(reverse('schedules:track'), {'task_id': 'x'})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(json.loads(response.content), 'This is not an ajax request')
+
+    def test_ajax_with_empty_task_id_returns_error(self):
+        response = self._ajax_post({'task_id': ''})
+        self.assertEqual(json.loads(response.content), 'No task_id in the request')
+
+    def test_ajax_with_missing_task_id_key_returns_error(self):
+        response = self._ajax_post({})
+        self.assertEqual(json.loads(response.content), 'No task_id in the request')
+
+    @patch('schedules.views.app')
+    def test_running_task_returns_progress_with_running_flag(self, mock_app):
+        mock_result = MagicMock()
+        mock_result.result = {'message': 'Placing Shifts', 'process_percent': 42}
+        mock_result.state = 'PROGRESS'
+        mock_result.ready.return_value = False
+        mock_app.AsyncResult.return_value = mock_result
+
+        response = self._ajax_post({'task_id': 'running-id'})
+        data = json.loads(response.content)
+        self.assertEqual(data['process_percent'], 42)
+        self.assertEqual(data['message'], 'Placing Shifts')
+        self.assertTrue(data['running'])
+
+    @patch('schedules.views.app')
+    def test_completed_task_returns_state_without_running_flag(self, mock_app):
+        mock_result = MagicMock()
+        mock_result.result = None
+        mock_result.state = 'SUCCESS'
+        mock_result.ready.return_value = True
+        mock_app.AsyncResult.return_value = mock_result
+
+        response = self._ajax_post({'task_id': 'done-id'})
+        data = json.loads(response.content)
+        self.assertNotIn('running', data if isinstance(data, dict) else {})
 
 
 

@@ -269,7 +269,7 @@ def track_state(request, *args, **kwargs):
 	""" A view to report the progress of a task to the user """
 	data = 'Fail'
 	task_id = cache.get('current_task_id')
-	if request.is_ajax():
+	if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
 			task_id = request.POST['task_id']
 			print(f'			task_id -> {task_id}')
