@@ -1,19 +1,40 @@
 #!/bin/sh
 set -e
 cd "$(git rev-parse --show-toplevel)"
-echo "Running unit tests (pre-commit)..."
-source venv/bin/activate
-python manage.py test \
-    schedules.tests.StapherModelTests \
-    schedules.tests.ShiftModelTests \
-    schedules.tests.SettingsModelTests \
-    schedules.tests.BuildTests \
-    schedules.tests.BuildUnitTests \
-    schedules.tests.RecommendTests \
-    schedules.tests.AnalyticsTests \
-    schedules.tests.HelpersTests \
-    schedules.tests.SortUnitTests \
-    schedules.tests.BuildSchedulesViewTests \
-    schedules.tests.GetRatioViewTests \
-    schedules.tests.TrackStateViewTests \
-    --verbosity=1
+. venv/bin/activate
+
+# Staged Python files inside schedules/
+STAGED=$(git diff --cached --name-only --diff-filter=ACMR | grep '^schedules/.*\.py$' || true)
+
+if [ -z "$STAGED" ]; then
+    echo "No schedules/*.py files staged — skipping tests."
+    exit 0
+fi
+
+# If tests.py itself changed, run the full suite (tests may have shifted)
+if echo "$STAGED" | grep -q 'schedules/tests\.py'; then
+    echo "tests.py staged — running full test suite..."
+    python manage.py test schedules --verbosity=1
+    exit 0
+fi
+
+# Map each staged module to its test class(es)
+TEST_CLASSES=""
+
+echo "$STAGED" | grep -q 'schedules/models\.py'     && TEST_CLASSES="$TEST_CLASSES schedules.tests.StapherModelTests schedules.tests.ShiftModelTests schedules.tests.SettingsModelTests"
+echo "$STAGED" | grep -q 'schedules/views\.py'      && TEST_CLASSES="$TEST_CLASSES schedules.tests.BuildSchedulesViewTests schedules.tests.GetRatioViewTests schedules.tests.TrackStateViewTests"
+echo "$STAGED" | grep -q 'schedules/analytics\.py'  && TEST_CLASSES="$TEST_CLASSES schedules.tests.AnalyticsTests"
+echo "$STAGED" | grep -q 'schedules/helpers\.py'    && TEST_CLASSES="$TEST_CLASSES schedules.tests.HelpersTests"
+echo "$STAGED" | grep -q 'schedules/sort\.py'       && TEST_CLASSES="$TEST_CLASSES schedules.tests.SortUnitTests schedules.tests.SortTests"
+echo "$STAGED" | grep -q 'schedules/build\.py'      && TEST_CLASSES="$TEST_CLASSES schedules.tests.BuildTests schedules.tests.BuildUnitTests"
+echo "$STAGED" | grep -q 'schedules/recommend\.py'  && TEST_CLASSES="$TEST_CLASSES schedules.tests.RecommendTests"
+
+# Staged file has no test class mapping yet — run full suite to be safe
+if [ -z "$TEST_CLASSES" ]; then
+    echo "Staged file(s) have no test mapping — running full test suite..."
+    python manage.py test schedules --verbosity=1
+    exit 0
+fi
+
+echo "Running tests for staged modules..."
+python manage.py test $TEST_CLASSES --verbosity=1
