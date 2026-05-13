@@ -49,6 +49,7 @@ def build_schedules_task(self, schedule_id):
 		schedule = Schedule.objects.get(id__exact=schedule_id)
 		settings = ScheduleBuildingSettings.objects.get()
 	except:
+		cache.delete('current_task_id')
 		return None
 	try:
 		staphings = list(Staphing.objects.filter(schedule_id=schedule.id))
@@ -110,6 +111,7 @@ def place_special_shifts_task(self, schedule_id):
 		special_shifts = Shift.objects.filter(shift_set=schedule.shift_set, flags__in=[special_flag])
 		staphings = Staphing.objects.filter(schedule=schedule)
 	except:
+		cache.delete('current_task_id')
 		return None
 
 	ordered_staphers = cache.get('ordered_staphers')
