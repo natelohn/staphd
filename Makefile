@@ -1,34 +1,36 @@
+PYTHON = venv/bin/python
+
 .PHONY: run setup load-demo reset-demo test install-hooks
 
 run:
-	python manage.py runserver
+	$(PYTHON) manage.py runserver
 
 setup:
-	python manage.py migrate
-	python manage.py collectstatic --noinput
+	$(PYTHON) manage.py migrate
+	$(PYTHON) manage.py collectstatic --noinput
 
 load-demo:
-	python manage.py loaddata shiftset
-	python manage.py loaddata flags
-	python manage.py loaddata qualifications
-	python manage.py loaddata shifts
-	python manage.py loaddata demo_staphers
-	python manage.py loaddata parameters
-	python manage.py loaddata settings
-	python manage.py create_demo_superuser
+	$(PYTHON) manage.py loaddata shiftset
+	$(PYTHON) manage.py loaddata flags
+	$(PYTHON) manage.py loaddata qualifications
+	$(PYTHON) manage.py loaddata shifts
+	$(PYTHON) manage.py loaddata demo_staphers
+	$(PYTHON) manage.py loaddata parameters
+	$(PYTHON) manage.py loaddata settings
+	$(PYTHON) manage.py create_demo_superuser
 
 reset-demo:
-	python manage.py loaddata shiftset
-	python manage.py loaddata flags
-	python manage.py loaddata qualifications
-	python manage.py loaddata shifts
-	python manage.py reset_demo_staphers
-	python manage.py loaddata parameters
-	python manage.py loaddata settings
-	python manage.py create_demo_superuser
+	$(PYTHON) manage.py loaddata shiftset
+	$(PYTHON) manage.py loaddata flags
+	$(PYTHON) manage.py loaddata qualifications
+	$(PYTHON) manage.py loaddata shifts
+	$(PYTHON) manage.py reset_demo_staphers
+	$(PYTHON) manage.py loaddata parameters
+	$(PYTHON) manage.py loaddata settings
+	$(PYTHON) manage.py create_demo_superuser
 
 test:
-	python manage.py test schedules --verbosity=1
+	$(PYTHON) manage.py test schedules --verbosity=1
 
 install-hooks:
 	git config core.hooksPath .githooks
