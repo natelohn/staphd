@@ -728,9 +728,7 @@ class RecommendTests(TestCase):
 # ============================================================================
 
     def test_get_recommended_staphers_empty_staphers_returns_empty(self):
-        settings_mock = MagicMock()
-        settings_mock.parameters.all.return_value.order_by.return_value = []
-        result = get_recommended_staphers([], None, [], settings_mock, [])
+        result = get_recommended_staphers([], None, [], [], [])
         self.assertEqual(result, [])
 
     def test_get_recommended_staphers_returns_one_entry_per_stapher(self):
@@ -738,19 +736,15 @@ class RecommendTests(TestCase):
         stapher1.save()
         stapher2 = Stapher(gender=0)
         stapher2.save()
-        settings_mock = MagicMock()
-        settings_mock.parameters.all.return_value.order_by.return_value = []
         shift = Shift(start=datetime.time(9), end=datetime.time(10))
-        result = get_recommended_staphers([stapher1, stapher2], shift, [], settings_mock, [])
+        result = get_recommended_staphers([stapher1, stapher2], shift, [], [], [])
         self.assertEqual(len(result), 2)
 
     def test_get_recommended_staphers_each_entry_has_stapher_scores_wins(self):
         stapher1 = Stapher(gender=0)
         stapher1.save()
-        settings_mock = MagicMock()
-        settings_mock.parameters.all.return_value.order_by.return_value = []
         shift = Shift(start=datetime.time(9), end=datetime.time(10))
-        result = get_recommended_staphers([stapher1], shift, [], settings_mock, [])
+        result = get_recommended_staphers([stapher1], shift, [], [], [])
         self.assertEqual(result[0][0], stapher1)
         self.assertIsInstance(result[0][1], list)
         self.assertIsInstance(result[0][2], list)

@@ -86,6 +86,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 			(staphing.shift.day, staphing.shift.start, staphing.shift.end)
 		)
 
+	parameters = list(settings.parameters.all().order_by('rank'))
 	all_shifts = [shift[0] for shift in sorted_shifts]
 	actions_taken = 0
 	for shift, qualified_staphers in sorted_shifts:
@@ -125,7 +126,7 @@ def build_schedules(sorted_shifts, settings, schedule, staphings, current_task):
 				# If the shift can be covered and there are more than just enough staphers to cover it, we make recommendations as to who should cover it
 				# Depending on the settings, we either auto-schedule those recommendations or return them.
 				else:
-					recommendations = get_recommended_staphers(free_and_qualified, shift, staphings, settings, all_shifts)
+					recommendations = get_recommended_staphers(free_and_qualified, shift, staphings, parameters, all_shifts)
 					if not settings.auto_schedule:
 						for staphing in staphings:
 							staphing.save()
