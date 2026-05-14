@@ -86,6 +86,7 @@ def get_sorted_shifts(staphers, shifts):
 	# Used to check to track and compare a shift's ratio across different times.
 	ids_to_ratio = {}
 
+	stapher_count = staphers.count()
 	# We loop all posible time windows given the shifts
 	ordered_times_by_day = get_ordered_start_and_end_times_by_day(shifts)
 	for day in ordered_times_by_day:
@@ -151,7 +152,7 @@ def get_sorted_shifts(staphers, shifts):
 				shuffle(available_staphers)
 
 				# We then use these ammounts to make a ratio used for sorting the shifts. The higher the ratio, the sooner it is scheduled.
-				percent_of_staph_unavailable = 1 - (len(available_staphers) / staphers.count())
+				percent_of_staph_unavailable = 1 - (len(available_staphers) / stapher_count)
 				ratio = (total_needed / len(available_staphers)) * percent_of_staph_unavailable if available_staphers else 0
 
 				# Now we will check to see if the ratio is higher than the last ratio.
