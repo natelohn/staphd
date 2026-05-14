@@ -1,6 +1,6 @@
 import datetime
 import json
-from unittest.mock import MagicMock, patch
+from unittest.mock import ANY, MagicMock, patch
 
 from django.contrib.auth.models import User
 from django.conf import settings
@@ -784,7 +784,7 @@ class BuildSchedulesViewTests(TestCase):
 
     @patch('schedules.views.build_schedules_task')
     def test_active_schedule_renders_progress_template(self, mock_task):
-        mock_task.delay.return_value.task_id = 'build-task-id'
+        mock_task.apply_async.return_value.task_id = 'build-task-id'
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         response = self.client.post(reverse('schedules:building'))
         self.assertEqual(response.status_code, 200)
@@ -792,17 +792,17 @@ class BuildSchedulesViewTests(TestCase):
 
     @patch('schedules.views.build_schedules_task')
     def test_active_schedule_passes_task_id_to_template(self, mock_task):
-        mock_task.delay.return_value.task_id = 'build-task-id'
+        mock_task.apply_async.return_value.task_id = 'build-task-id'
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         response = self.client.post(reverse('schedules:building'))
         self.assertEqual(response.context['task_id'], 'build-task-id')
 
     @patch('schedules.views.build_schedules_task')
     def test_active_schedule_fires_celery_task(self, mock_task):
-        mock_task.delay.return_value.task_id = 'build-task-id'
+        mock_task.apply_async.return_value.task_id = 'build-task-id'
         schedule = Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         self.client.post(reverse('schedules:building'))
-        mock_task.delay.assert_called_once_with(schedule.id)
+        mock_task.apply_async.assert_called_once_with((schedule.id,), task_id=ANY)
 
     @patch('schedules.views.build_schedules_task')
     def test_eager_mode_redirects_to_redirect_view(self, mock_task):
@@ -812,7 +812,7 @@ class BuildSchedulesViewTests(TestCase):
             result = MagicMock()
             result.task_id = 'eager-id'
             return result
-        mock_task.delay.side_effect = eager_side_effect
+        mock_task.apply_async.side_effect = eager_side_effect
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         response = self.client.post(reverse('schedules:building'))
         self.assertRedirects(response, reverse('schedules:redirect'), fetch_redirect_response=False)
@@ -823,7 +823,7 @@ class BuildSchedulesViewTests(TestCase):
         cache.set('current_task_id', 'existing-task-id', 3000)
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         self.client.post(reverse('schedules:building'))
-        mock_task.delay.assert_not_called()
+        mock_task.apply_async.assert_not_called()
 
 
 class GetRatioViewTests(TestCase):
@@ -850,21 +850,21 @@ class GetRatioViewTests(TestCase):
 
     @patch('schedules.views.find_ratios_task')
     def test_active_schedule_fires_celery_task(self, mock_task):
-        mock_task.delay.return_value.task_id = 'ratio-task-id'
+        mock_task.apply_async.return_value.task_id = 'ratio-task-id'
         schedule = Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         self.client.get(reverse('schedules:get-ratio'))
-        mock_task.delay.assert_called_once_with(schedule.id, self.shift_set.id)
+        mock_task.apply_async.assert_called_once_with((schedule.id, self.shift_set.id), task_id=ANY)
 
     @patch('schedules.views.find_ratios_task')
     def test_active_schedule_redirects_to_schedule(self, mock_task):
-        mock_task.delay.return_value.task_id = 'ratio-task-id'
+        mock_task.apply_async.return_value.task_id = 'ratio-task-id'
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         response = self.client.get(reverse('schedules:get-ratio'))
         self.assertRedirects(response, reverse('schedules:schedule'))
 
     @patch('schedules.views.find_ratios_task')
     def test_task_id_stored_in_session(self, mock_task):
-        mock_task.delay.return_value.task_id = 'ratio-task-id'
+        mock_task.apply_async.return_value.task_id = 'ratio-task-id'
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         self.client.get(reverse('schedules:get-ratio'))
         self.assertEqual(self.client.session['task_id'], 'ratio-task-id')
@@ -876,7 +876,7 @@ class GetRatioViewTests(TestCase):
             result = MagicMock()
             result.task_id = 'eager-id'
             return result
-        mock_task.delay.side_effect = eager_side_effect
+        mock_task.apply_async.side_effect = eager_side_effect
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         response = self.client.get(reverse('schedules:get-ratio'))
         self.assertRedirects(response, reverse('schedules:redirect'), fetch_redirect_response=False)
@@ -886,7 +886,7 @@ class GetRatioViewTests(TestCase):
         cache.set('current_task_id', 'existing-task-id', 3000)
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         self.client.get(reverse('schedules:get-ratio'))
-        mock_task.delay.assert_not_called()
+        mock_task.apply_async.assert_not_called()
 
 
 class TrackStateViewTests(TestCase):

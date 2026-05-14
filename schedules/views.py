@@ -225,7 +225,7 @@ def build_schedules(request, *args, **kwargs):
 		task_id = str(uuid.uuid4())
 		cache.set('current_task_id', task_id, 3000)
 		cache.set('no_redirect', True, None)
-		task = build_schedules_task.delay(schedule_id)
+		task = build_schedules_task.apply_async((schedule_id,), task_id=task_id)
 		if not cache.get('current_task_id'):
 			# Task ran synchronously (eager mode) and already finished — skip progress screen
 			return HttpResponseRedirect(reverse('schedules:redirect'))
@@ -258,7 +258,7 @@ def update_files(request, *args, **kwargs):
 			cache.set('current_task_id', task_id, 3000)
 			cache.set('no_redirect', True, None)
 			cache.set('latest_excel_deleted', False, None)
-			task = update_files_task.delay(schedule_id)
+			task = update_files_task.apply_async((schedule_id,), task_id=task_id)
 			if not cache.get('current_task_id'):
 				return HttpResponseRedirect(reverse('schedules:redirect'))
 			task_id = task.task_id
@@ -406,7 +406,7 @@ def get_ratio(request, *args, **kwargs):
 		shift_set_id = schedule.shift_set.id
 		task_id = str(uuid.uuid4())
 		cache.set('current_task_id', task_id, 3000)
-		task = find_ratios_task.delay(schedule_id, shift_set_id)
+		task = find_ratios_task.apply_async((schedule_id, shift_set_id), task_id=task_id)
 		if not cache.get('current_task_id'):
 			# Task ran synchronously (eager mode) and already finished — skip progress screen
 			return HttpResponseRedirect(reverse('schedules:redirect'))
@@ -1590,7 +1590,7 @@ def place_special_shifts(request, *args, **kwargs):
 		task_id = str(uuid.uuid4())
 		cache.set('current_task_id', task_id, 3000)
 		cache.delete('no_redirect')
-		task = place_special_shifts_task.delay(schedule.id)
+		task = place_special_shifts_task.apply_async((schedule.id,), task_id=task_id)
 		if not cache.get('current_task_id'):
 			return HttpResponseRedirect(reverse('schedules:redirect'))
 		task_id = task.task_id
