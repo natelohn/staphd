@@ -782,40 +782,46 @@ class BuildSchedulesViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Must select a schedule first')
 
+    @patch('schedules.views.threading.Thread')
     @patch('schedules.views.build_schedules_task')
-    def test_active_schedule_renders_progress_template(self, mock_task):
-        mock_task.apply_async.return_value.task_id = 'build-task-id'
+    def test_active_schedule_renders_progress_template(self, mock_task, mock_thread):
+        mock_thread.return_value = MagicMock()
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         response = self.client.post(reverse('schedules:building'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'schedules/progress.html')
 
+    @patch('schedules.views.threading.Thread')
     @patch('schedules.views.build_schedules_task')
-    def test_active_schedule_passes_task_id_to_template(self, mock_task):
-        mock_task.apply_async.return_value.task_id = 'build-task-id'
+    def test_active_schedule_passes_task_id_to_template(self, mock_task, mock_thread):
+        mock_thread.return_value = MagicMock()
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         response = self.client.post(reverse('schedules:building'))
-        self.assertEqual(response.context['task_id'], 'build-task-id')
+        self.assertIsInstance(response.context['task_id'], str)
+        self.assertTrue(len(response.context['task_id']) > 0)
 
+    @patch('schedules.views.threading.Thread')
     @patch('schedules.views.build_schedules_task')
-    def test_active_schedule_fires_celery_task(self, mock_task):
-        mock_task.apply_async.return_value.task_id = 'build-task-id'
+    def test_active_schedule_fires_celery_task(self, mock_task, mock_thread):
+        # Thread is started with apply_async as target; run it synchronously to verify the call.
+        def run_sync(**kwargs):
+            t = MagicMock()
+            t.start.side_effect = lambda: kwargs['target'](*kwargs['args'], **kwargs['kwargs'])
+            return t
+        mock_thread.side_effect = run_sync
         schedule = Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         self.client.post(reverse('schedules:building'))
         mock_task.apply_async.assert_called_once_with((schedule.id,), task_id=ANY)
 
+    @patch('schedules.views.threading.Thread')
     @patch('schedules.views.build_schedules_task')
-    def test_eager_mode_redirects_to_redirect_view(self, mock_task):
-        # Simulate task running synchronously: it deletes current_task_id before returning.
-        def eager_side_effect(*args, **kwargs):
-            cache.delete('current_task_id')
-            result = MagicMock()
-            result.task_id = 'eager-id'
-            return result
-        mock_task.apply_async.side_effect = eager_side_effect
+    def test_always_shows_progress_screen(self, mock_task, mock_thread):
+        # Tasks always run in background; progress screen always rendered immediately.
+        mock_thread.return_value = MagicMock()
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         response = self.client.post(reverse('schedules:building'))
-        self.assertRedirects(response, reverse('schedules:redirect'), fetch_redirect_response=False)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'schedules/progress.html')
 
     @patch('schedules.views.build_schedules_task')
     def test_already_running_task_skips_new_task(self, mock_task):
@@ -848,38 +854,34 @@ class GetRatioViewTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'Must select a schedule first')
 
+    @patch('schedules.views.threading.Thread')
     @patch('schedules.views.find_ratios_task')
-    def test_active_schedule_fires_celery_task(self, mock_task):
-        mock_task.apply_async.return_value.task_id = 'ratio-task-id'
+    def test_active_schedule_fires_celery_task(self, mock_task, mock_thread):
+        def run_sync(**kwargs):
+            t = MagicMock()
+            t.start.side_effect = lambda: kwargs['target'](*kwargs['args'], **kwargs['kwargs'])
+            return t
+        mock_thread.side_effect = run_sync
         schedule = Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         self.client.get(reverse('schedules:get-ratio'))
         mock_task.apply_async.assert_called_once_with((schedule.id, self.shift_set.id), task_id=ANY)
 
+    @patch('schedules.views.threading.Thread')
     @patch('schedules.views.find_ratios_task')
-    def test_active_schedule_redirects_to_schedule(self, mock_task):
-        mock_task.apply_async.return_value.task_id = 'ratio-task-id'
+    def test_active_schedule_redirects_to_schedule(self, mock_task, mock_thread):
+        mock_thread.return_value = MagicMock()
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         response = self.client.get(reverse('schedules:get-ratio'))
         self.assertRedirects(response, reverse('schedules:schedule'))
 
+    @patch('schedules.views.threading.Thread')
     @patch('schedules.views.find_ratios_task')
-    def test_task_id_stored_in_session(self, mock_task):
-        mock_task.apply_async.return_value.task_id = 'ratio-task-id'
+    def test_task_id_stored_in_session(self, mock_task, mock_thread):
+        mock_thread.return_value = MagicMock()
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         self.client.get(reverse('schedules:get-ratio'))
-        self.assertEqual(self.client.session['task_id'], 'ratio-task-id')
-
-    @patch('schedules.views.find_ratios_task')
-    def test_eager_mode_redirects_to_redirect_view(self, mock_task):
-        def eager_side_effect(*args, **kwargs):
-            cache.delete('current_task_id')
-            result = MagicMock()
-            result.task_id = 'eager-id'
-            return result
-        mock_task.apply_async.side_effect = eager_side_effect
-        Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
-        response = self.client.get(reverse('schedules:get-ratio'))
-        self.assertRedirects(response, reverse('schedules:redirect'), fetch_redirect_response=False)
+        self.assertIsInstance(self.client.session['task_id'], str)
+        self.assertTrue(len(self.client.session['task_id']) > 0)
 
     @patch('schedules.views.find_ratios_task')
     def test_already_running_task_skips_new_task(self, mock_task):
