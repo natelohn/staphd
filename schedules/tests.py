@@ -21,6 +21,7 @@ from .sort import (
     get_seconds_from_time, get_seconds_from_day_and_time, get_ordered_start_and_end_times_by_day,
 )
 from .recommend import get_recommended_staphers
+from .tasks import RATIO_REDIRECT, RECOMMENDATION_REDIRECT, SPECIAL_SHIFT_REDIRECT
 
 class StapherModelTests(TestCase):
     def setUp(self):
@@ -809,6 +810,27 @@ class BuildSchedulesViewTests(TestCase):
         self.client.post(reverse('schedules:building'))
         mock_task.delay.assert_called_once_with(schedule.id)
 
+    @patch('schedules.views.build_schedules_task')
+    def test_eager_mode_redirects_to_redirect_view(self, mock_task):
+        # Simulate task running synchronously: it deletes current_task_id before returning.
+        def eager_side_effect(*args, **kwargs):
+            cache.delete('current_task_id')
+            result = MagicMock()
+            result.task_id = 'eager-id'
+            return result
+        mock_task.delay.side_effect = eager_side_effect
+        Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
+        response = self.client.post(reverse('schedules:building'))
+        self.assertRedirects(response, reverse('schedules:redirect'), fetch_redirect_response=False)
+
+    @patch('schedules.views.build_schedules_task')
+    def test_already_running_task_skips_new_task(self, mock_task):
+        # With a task already in flight, should not dispatch a second one.
+        cache.set('current_task_id', 'existing-task-id', 3000)
+        Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
+        self.client.post(reverse('schedules:building'))
+        mock_task.delay.assert_not_called()
+
 
 class GetRatioViewTests(TestCase):
 # ============================================================================
@@ -852,6 +874,25 @@ class GetRatioViewTests(TestCase):
         Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
         self.client.get(reverse('schedules:get-ratio'))
         self.assertEqual(self.client.session['task_id'], 'ratio-task-id')
+
+    @patch('schedules.views.find_ratios_task')
+    def test_eager_mode_redirects_to_redirect_view(self, mock_task):
+        def eager_side_effect(*args, **kwargs):
+            cache.delete('current_task_id')
+            result = MagicMock()
+            result.task_id = 'eager-id'
+            return result
+        mock_task.delay.side_effect = eager_side_effect
+        Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
+        response = self.client.get(reverse('schedules:get-ratio'))
+        self.assertRedirects(response, reverse('schedules:redirect'), fetch_redirect_response=False)
+
+    @patch('schedules.views.find_ratios_task')
+    def test_already_running_task_skips_new_task(self, mock_task):
+        cache.set('current_task_id', 'existing-task-id', 3000)
+        Schedule.objects.create(active=True, title='Test Schedule', shift_set=self.shift_set)
+        self.client.get(reverse('schedules:get-ratio'))
+        mock_task.delay.assert_not_called()
 
 
 class TrackStateViewTests(TestCase):
@@ -946,6 +987,82 @@ class TrackStateViewTests(TestCase):
         response = self._ajax_post({'task_id': 'failed-id'})
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response['Content-Type'], 'application/json')
+
+
+# ============================================================================
+# =============   build_view (GET /schedules/) — schedule hub   ==============
+# ============================================================================
+
+class BuildViewTests(TestCase):
+
+    def setUp(self):
+        cache.clear()
+        self.client = Client()
+        _make_user_and_login(self.client)
+
+    def test_requires_login(self):
+        self.client.logout()
+        response = self.client.get(reverse('schedules:schedule'))
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/accounts/login/', response['Location'])
+
+    def test_no_task_renders_schedule_template(self):
+        response = self.client.get(reverse('schedules:schedule'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'schedules/schedule.html')
+
+    def test_task_in_cache_renders_progress_template(self):
+        cache.set('current_task_id', 'some-task-id', 3000)
+        response = self.client.get(reverse('schedules:schedule'))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'schedules/progress.html')
+
+    def test_task_in_cache_passes_task_id_to_template(self):
+        cache.set('current_task_id', 'some-task-id', 3000)
+        response = self.client.get(reverse('schedules:schedule'))
+        self.assertEqual(response.context['task_id'], 'some-task-id')
+
+    def test_always_clears_no_redirect_from_cache(self):
+        cache.set('no_redirect', True, None)
+        self.client.get(reverse('schedules:schedule'))
+        self.assertIsNone(cache.get('no_redirect'))
+
+
+# ============================================================================
+# =============   redirect (GET /schedules/redirect) — post-task   ===========
+# ============================================================================
+
+class RedirectViewTests(TestCase):
+
+    def setUp(self):
+        cache.clear()
+        self.client = Client()
+        _make_user_and_login(self.client)
+
+    def test_requires_login(self):
+        self.client.logout()
+        response = self.client.get(reverse('schedules:redirect'))
+        self.assertEqual(response.status_code, 302)
+        self.assertIn('/accounts/login/', response['Location'])
+
+    def test_no_redirect_value_goes_to_schedule(self):
+        response = self.client.get(reverse('schedules:redirect'))
+        self.assertRedirects(response, reverse('schedules:schedule'), fetch_redirect_response=False)
+
+    def test_ratio_redirect_goes_to_ratio_week(self):
+        cache.set('redirect_value', RATIO_REDIRECT, 300)
+        response = self.client.get(reverse('schedules:redirect'))
+        self.assertRedirects(response, reverse('schedules:ratio-week'), fetch_redirect_response=False)
+
+    def test_recommendation_redirect_goes_to_recommendation(self):
+        cache.set('redirect_value', RECOMMENDATION_REDIRECT, 300)
+        response = self.client.get(reverse('schedules:redirect'))
+        self.assertRedirects(response, reverse('schedules:recommendation'), fetch_redirect_response=False)
+
+    def test_special_shift_redirect_goes_to_special_results(self):
+        cache.set('redirect_value', SPECIAL_SHIFT_REDIRECT, 300)
+        response = self.client.get(reverse('schedules:redirect'))
+        self.assertRedirects(response, reverse('schedules:special-results'), fetch_redirect_response=False)
 
 
 # ============================================================================
