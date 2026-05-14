@@ -1,9 +1,9 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<h1>Recomendations for {{shift}}</h1>
+	<h1>Recommendations for {{shift}}</h1>
 	{% for rec_row in rows %}
-	<table id="recomendation_table">
+	<table id="recommendation_table">
 		{% if forloop.first %}
 		<tr>
 			<th></th>
@@ -22,7 +22,7 @@
 			{% endif %}
 			{% endfor %}
 			<td class="button" id="view_week_btn" onclick="toggle_schedule({{rec_row.stapher.id}})">View Week</td>
-			<td class="create_btn"><a id="scheudle_link" href="{% url 'schedules:recommendation_add' pk=rec_row.stapher.id%}">Schedule</a></td>
+			<td class="create_btn"><a id="schedule_link" href="{% url 'schedules:recommendation_add' pk=rec_row.stapher.id%}">Schedule</a></td>
 		</tr>
 	</table>
 	{% for all_rows_for_time in rec_row.schedule %}

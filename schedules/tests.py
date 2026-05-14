@@ -1016,10 +1016,9 @@ class BuildViewTests(TestCase):
         response = self.client.get(reverse('schedules:schedule'))
         self.assertEqual(response.context['task_id'], 'some-task-id')
 
-    def test_always_clears_no_redirect_from_cache(self):
-        cache.set('no_redirect', True, None)
-        self.client.get(reverse('schedules:schedule'))
-        self.assertIsNone(cache.get('no_redirect'))
+    def test_build_view_renders_schedule_template(self):
+        response = self.client.get(reverse('schedules:schedule'))
+        self.assertEqual(response.status_code, 200)
 
 
 # ============================================================================

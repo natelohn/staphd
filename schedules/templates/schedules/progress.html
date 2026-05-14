@@ -7,12 +7,12 @@
 	<div id="progress-bar-outer">
 		<div id="progress-bar-inner"></div>
 	</div>
+	<a class="button" href="{% url 'schedules:cancel' %}">Cancel</a>
 </div>
 {% if task_id %}
 <script type="text/javascript">
 	jQuery(document).ready(function() {
 		var check_state_again = true;
-		// pole state of the current task
 		var PollState = function(task_id) {
 			jQuery.ajax({
 				url: "track",
@@ -20,24 +20,22 @@
 				data: "task_id=" + task_id,
 			}).done(function(task){
 				if (task.running) {
-					jQuery('.button').css({'pointer-events':'none'});
+					jQuery('.button, .big_button').css({'pointer-events':'none'});
 					jQuery('#progress-bar-inner').css({'width': task.process_percent + '%'});
-					jQuery('#progress_percent_msg').html('Current Task ' + task.process_percent + '% Complete')
-					jQuery('#progress_task_msg').html(task.message)
-					jQuery('#refresh-message').html('Please wait as this can take up to 15 minutes.')
-				} else if (task.building_complete) {
-					check_state_again = true;
+					jQuery('#progress_percent_msg').html('Current Task ' + task.process_percent + '% Complete');
+					jQuery('#progress_task_msg').html(task.message);
+					jQuery('#refresh-message').html('Please wait as this can take up to 15 minutes.');
 				} else {
 					check_state_again = false;
-				};
-				
-				// create the infinite loop of Ajax calls to check the state
-				// of the current task
-				if (check_state_again) {
-					PollState(task_id);
-				} else {
-					window.location = "{% url 'schedules:redirect' %}"
 				}
+				if (check_state_again) {
+					setTimeout(function(){ PollState(task_id); }, 1000);
+				} else {
+					window.location = "{% url 'schedules:redirect' %}";
+				}
+			}).fail(function(){
+				jQuery('#progress_task_msg').html('Connection error. Please refresh the page.');
+				jQuery('#refresh-message').html('');
 			});
 		}
 		PollState('{{ task_id }}');

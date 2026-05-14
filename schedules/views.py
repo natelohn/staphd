@@ -116,8 +116,7 @@ def build_view(request, *args, **kwargs):
 		template = 'schedules/progress.html'
 		context['task_id'] = task_id
 	context['at_build'] = True
-	cache.delete('no_redirect')
-	return render(request, template, context) 
+	return render(request, template, context)
 
 class SettingParameterUpdate(LoginRequiredMixin, UpdateView):
 	template_name = 'schedules/settings_select.html'
@@ -224,7 +223,6 @@ def build_schedules(request, *args, **kwargs):
 		schedule_id = schedule.id
 		task_id = str(uuid.uuid4())
 		cache.set('current_task_id', task_id, 3000)
-		cache.set('no_redirect', True, None)
 		task = build_schedules_task.apply_async((schedule_id,), task_id=task_id)
 		if not cache.get('current_task_id'):
 			# Task ran synchronously (eager mode) and already finished — skip progress screen
@@ -256,7 +254,6 @@ def update_files(request, *args, **kwargs):
 			template = 'schedules/progress.html'
 			task_id = str(uuid.uuid4())
 			cache.set('current_task_id', task_id, 3000)
-			cache.set('no_redirect', True, None)
 			cache.set('latest_excel_deleted', False, None)
 			task = update_files_task.apply_async((schedule_id,), task_id=task_id)
 			if not cache.get('current_task_id'):
@@ -282,19 +279,15 @@ def track_state(request, *args, **kwargs):
 	if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
 		if 'task_id' in request.POST.keys() and request.POST['task_id']:
 			task_id = request.POST['task_id']
-			print(f'			task_id -> {task_id}')
 			task = app.AsyncResult(task_id)
 			if task.state == 'PENDING':
 				# Task queued but not yet started or result not yet stored — keep polling
 				data = {'running': True, 'process_percent': 0, 'message': 'Starting...'}
-				task_running = True
 			else:
 				data = task.result or task.state
 				task_running = not task.ready() and not isinstance(data, str)
 				if task_running:
 					data['running'] = task_running
-			print(f'			data -> {data}')
-			print(f'			task_running -> {task_running}')
 		else:
 			data = 'No task_id in the request'
 	else:
@@ -309,28 +302,25 @@ def track_state(request, *args, **kwargs):
 @csrf_exempt
 def redirect(request, *args, **kwargs):
 	redirect_value = cache.get('redirect_value')
-	print(f'Cached Value = {redirect_value}')
-	recommendations_view = redirect_value == RECOMMENDATION_REDIRECT
-	ratio_view = redirect_value == RATIO_REDIRECT
-	special_results_view = redirect_value == SPECIAL_SHIFT_REDIRECT
-	print(f'recommendations_view = {recommendations_view}')
-	print(f'ratio_view = {ratio_view}')
-	print(f'special_results_view = {special_results_view}')
-
 	if not redirect_value:
-		print('No redirect')
 		return HttpResponseRedirect(reverse('schedules:schedule'))
-	if recommendations_view:
-		print('recommendations view')
+	if redirect_value == RECOMMENDATION_REDIRECT:
 		return HttpResponseRedirect(reverse('schedules:recommendation'))
-	elif ratio_view:
-		print('ratio view')
+	elif redirect_value == RATIO_REDIRECT:
 		return HttpResponseRedirect(reverse('schedules:ratio-week'))
-	elif special_results_view:
-		print('special shift view')
+	elif redirect_value == SPECIAL_SHIFT_REDIRECT:
 		return HttpResponseRedirect(reverse('schedules:special-results'))
 	else:
 		return Http404
+
+
+@login_required
+def cancel_build(request, *args, **kwargs):
+	cache.delete('current_task_id')
+	cache.delete('redirect_value')
+	cache.delete('recommendation')
+	cache.delete('recommended_shift')
+	return HttpResponseRedirect(reverse('schedules:schedule'))
 		
 @login_required
 def recommendations_view(request, *args, **kwargs):
@@ -342,11 +332,9 @@ def recommendations_view(request, *args, **kwargs):
 
 	recs = cache.get('recommendation')
 	shift = cache.get('recommended_shift')
-	cache.delete('recommendation')
 
 	if not recs or not shift:
-		print(f'No recommendations to be made (rec = {recs})')
-		return HttpResponseRedirect(reverse('schedules:building'))
+		return HttpResponseRedirect(reverse('schedules:schedule'))
 
 	template = 'schedules/recommendation.html'
 	context = {}
@@ -388,9 +376,10 @@ def add_recommendation(request, *args, **kwargs):
 	shift = cache.get('recommended_shift')
 	if not shift:
 		return Http404
-	else:
-		new_staphing = Staphing(schedule = schedule, stapher = stapher, shift = shift)
-		new_staphing.save()
+	new_staphing = Staphing(schedule = schedule, stapher = stapher, shift = shift)
+	new_staphing.save()
+	cache.delete('recommendation')
+	cache.delete('recommended_shift')
 	return HttpResponseRedirect(reverse('schedules:building'))
 
 @login_required
@@ -1320,7 +1309,6 @@ class StaphingDelete(LoginRequiredMixin, DeleteView):
 		return Staphing.objects.filter(schedule_id__exact = schedule.id)
 
 	def get_context_data(self, *args, **kwargs):
-		print(f'****************** KAWARGS = {kwargs}')
 		context = super(StaphingDelete, self).get_context_data(*args, **kwargs)
 		staphing = self.get_object()
 		stapher = staphing.stapher
