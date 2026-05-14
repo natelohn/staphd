@@ -5,6 +5,7 @@ run:
 
 setup:
 	python manage.py migrate
+	python manage.py collectstatic --noinput
 
 load-demo:
 	python manage.py loaddata shiftset
