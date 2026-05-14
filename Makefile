@@ -12,6 +12,8 @@ load-demo:
 	python manage.py loaddata qualifications
 	python manage.py loaddata shifts
 	python manage.py loaddata demo_staphers
+	python manage.py loaddata parameters
+	python manage.py loaddata settings
 	python manage.py create_demo_superuser
 
 reset-demo:
@@ -20,6 +22,8 @@ reset-demo:
 	python manage.py loaddata qualifications
 	python manage.py loaddata shifts
 	python manage.py reset_demo_staphers
+	python manage.py loaddata parameters
+	python manage.py loaddata settings
 	python manage.py create_demo_superuser
 
 test:
