@@ -226,7 +226,7 @@ label[for=stapher_qualifications_hardcoded] {
 	display: block;
 }
 
-#form_div li label{
+#form_div li label, #form_div div label{
 	display: block;
 }
 
