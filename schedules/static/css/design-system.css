@@ -6,6 +6,7 @@
 
   /* Nav */
   --nav-height: 52px;
+  --nav-bg: rgba(242, 242, 247, 0.82);
 
   /* Spacing (4 px grid) */
   --sp-1: 4px;  --sp-2: 8px;   --sp-3: 12px; --sp-4: 16px;
@@ -63,6 +64,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --nav-bg: rgba(28, 28, 30, 0.82);
     --bg:       #000000;
     --surface:  #1C1C1E;
     --surface-2: #2C2C2E;

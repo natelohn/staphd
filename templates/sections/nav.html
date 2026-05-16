@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="{% static 'css/progress.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="{% static 'js/party-mode.js' %}"></script>
 {% endblock %}
 {% block content %}
 <nav id="navbar">
@@ -37,6 +38,7 @@
       <a href="{% url 'schedules:settings' %}">Extras</a>
     </li>
   </ul>
+  <button id="party-btn" class="party-btn" aria-pressed="false" title="Party mode (Shift+P)">🎉</button>
   <div id="user">
     <span>{{ user.get_username }}</span>
     <a href="{% url 'logout' %}">Log out</a>
