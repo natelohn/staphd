@@ -1,25 +1,32 @@
-#cover_days {
-	width: 100%;
+#cover_days { width: 100%; }
+
+#day_checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin: var(--sp-2) var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  background: var(--surface);
+  border: 1px solid var(--separator);
+  border-radius: var(--r-sm);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--label);
+  cursor: pointer;
+  transition: background var(--t);
 }
 
-#day_checkbox{
-	display: inline-block;
-	margin: 10px;
-	border-bottom: 1px;
-	border-color: black;
-	border-style: solid;
+#day_checkbox:hover { background: var(--fill-2); }
+
+#uncovered_shift_list li {
+  margin-bottom: var(--sp-2);
 }
 
-#uncovered_shift_list li{
-	left: 15px;
+#uncovered_shift_links {
+  text-decoration: none;
+  color: var(--blue);
+  font-size: 15px;
+  font-weight: 500;
 }
 
-#uncovered_shift_links{
-	text-decoration: none;
-	color: black;
-}
-
-#uncovered_shift_links:hover {
-	text-decoration: underline;
-	font-weight: bold;
-}
+#uncovered_shift_links:hover { text-decoration: underline; }

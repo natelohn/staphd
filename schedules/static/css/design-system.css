@@ -1,0 +1,102 @@
+/* ─── design-system.css — iOS/HIG-aligned design tokens ───────────── */
+
+:root {
+  /* Typography */
+  --font: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+
+  /* Nav */
+  --nav-height: 52px;
+
+  /* Spacing (4 px grid) */
+  --sp-1: 4px;  --sp-2: 8px;   --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px;  --sp-8: 32px; --sp-10: 40px;
+  --sp-12: 48px;
+
+  /* Border radius */
+  --r-sm:   8px;
+  --r-md:   12px;
+  --r-lg:   16px;
+  --r-xl:   20px;
+  --r-pill: 9999px;
+
+  /* Transitions */
+  --t: 0.15s ease;
+  --t-slow: 0.25s ease;
+
+  /* ── Light mode ─────────────────────────────────────────────────── */
+  --bg:       #F2F2F7;
+  --surface:  #FFFFFF;
+  --surface-2: #F2F2F7;
+  --surface-3: #E5E5EA;
+
+  --label:   #000000;
+  --label-2: #6C6C70;
+  --label-3: #AEAEB2;
+  --label-4: #C7C7CC;
+
+  --separator:        rgba(60, 60, 67, 0.29);
+  --separator-opaque: #C6C6C8;
+
+  --fill:   rgba(120, 120, 128, 0.12);
+  --fill-2: rgba(120, 120, 128, 0.08);
+  --fill-3: rgba(120, 120, 128, 0.18);
+
+  --blue:       #007AFF;
+  --blue-hover: #0066CC;
+  --blue-tint:  rgba(0, 122, 255, 0.12);
+
+  --red:       #FF3B30;
+  --red-hover: #D70015;
+  --red-tint:  rgba(255, 59, 48, 0.12);
+
+  --green:      #34C759;
+  --green-tint: rgba(52, 199, 89, 0.14);
+
+  --orange: #FF9500;
+  --yellow: #FFCC00;
+
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.07), 0 1px 6px rgba(0,0,0,0.04);
+  --shadow-md:  0 2px 10px rgba(0,0,0,0.09), 0 4px 20px rgba(0,0,0,0.05);
+  --shadow-lg:  0 4px 20px rgba(0,0,0,0.11), 0 12px 48px rgba(0,0,0,0.07);
+  --shadow-btn: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg:       #000000;
+    --surface:  #1C1C1E;
+    --surface-2: #2C2C2E;
+    --surface-3: #3A3A3C;
+
+    --label:   #FFFFFF;
+    --label-2: #8D8D93;
+    --label-3: #636366;
+    --label-4: #48484A;
+
+    --separator:        rgba(84, 84, 88, 0.65);
+    --separator-opaque: #38383A;
+
+    --fill:   rgba(120, 120, 128, 0.22);
+    --fill-2: rgba(120, 120, 128, 0.15);
+    --fill-3: rgba(120, 120, 128, 0.28);
+
+    --blue:       #0A84FF;
+    --blue-hover: #409CFF;
+    --blue-tint:  rgba(10, 132, 255, 0.18);
+
+    --red:       #FF453A;
+    --red-hover: #FF6961;
+    --red-tint:  rgba(255, 69, 58, 0.18);
+
+    --green:      #30D158;
+    --green-tint: rgba(48, 209, 88, 0.18);
+
+    --orange: #FF9F0A;
+    --yellow: #FFD60A;
+
+    --shadow-sm:  none;
+    --shadow-md:  none;
+    --shadow-lg:  none;
+    --shadow-btn: none;
+  }
+}

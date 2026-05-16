@@ -1,97 +1,137 @@
-#page {
-	/* Positioning */
-	position: relative;
-	width: 95%;
-	left: 2.5%;
-	top: 60px;
+/* ── Button system ─────────────────────────────────────────── */
+.button, .link_btn, .list_btn, .delete_button, .final_delete_btn, .create_btn, .big_button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: 8px 16px;
+  border-radius: var(--r-sm);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--t), box-shadow var(--t), transform 0.1s ease;
+  white-space: nowrap;
+  border: none;
+  outline: none;
+  -webkit-appearance: none;
+  position: relative;
 }
 
-.button, .link_btn, .list_btn, .delete_button, .final_delete_btn, .create_btn, .big_button{
-	/* Positioning */
-	position: relative;
-
-	/* Style */
-	font-size: 1.5em;
-	font-weight: bold;
-	text-decoration: none;
-	background-color: #EEEEEE;
-	color: #333333;
-	padding: 1px 2px 1px 2px;
-	border-top: 1px solid #CCCCCC;
-	border-right: 1px solid #333333;
-	border-bottom: 1px solid #333333;
-	border-left: 1px solid #CCCCCC;
+/* Secondary */
+.button {
+  background: var(--surface);
+  color: var(--label);
+  border: 1px solid var(--separator-opaque);
+  box-shadow: var(--shadow-sm);
 }
+.button:hover { background: var(--surface-2); }
 
+/* Primary */
+.create_btn {
+  background: var(--blue);
+  color: #fff;
+  box-shadow: var(--shadow-btn);
+}
+.create_btn:hover { background: var(--blue-hover); }
+
+/* Danger outline */
+.delete_button {
+  background: transparent;
+  color: var(--red);
+  border: 1px solid var(--separator-opaque);
+}
+.delete_button:hover { background: var(--red-tint); border-color: var(--red); }
+
+/* Danger filled */
+.final_delete_btn {
+  background: var(--red);
+  color: #fff;
+  box-shadow: var(--shadow-btn);
+}
+.final_delete_btn:hover { background: var(--red-hover); }
+
+/* Ghost */
 .link_btn {
-	/* Style */
-	color: white;
-	background-color: #999999;
-	border: 0;
-	padding: 0;
-	line-height: 40px;
+  background: transparent;
+  color: var(--blue);
+  border: none;
+  box-shadow: none;
+  padding: 8px 12px;
 }
+.link_btn:hover { background: var(--blue-tint); }
 
-.button:hover, .list_btn:hover, .link_btn:hover{
-	/* Style */
-	background-color: silver;
+/* Full-width list item */
+.list_btn {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  justify-content: flex-start;
+  padding: 11px 14px;
+  margin-bottom: 2px;
+  background: var(--surface);
+  color: var(--label);
+  border-radius: var(--r-md);
+  border: 1px solid var(--separator);
+  font-size: 15px;
+  font-weight: 400;
+  box-shadow: var(--shadow-sm);
 }
+.list_btn:hover { background: var(--fill-2); }
 
-.delete_button:hover{
-	background-color: #F21D1D;
-}
-
-.final_delete_btn{
-	background-color: #F21D1D;
-	color: black;
-}
-
-.final_delete_btn:hover{
-	background-color: #C50101;
-	color: black;
-}
-
+/* Hero build button */
 .big_button {
-	font-size: 4em;
+  padding: 16px 52px;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  background: var(--blue);
+  color: #fff;
+  border-radius: var(--r-xl);
+  box-shadow: var(--shadow-md);
+  border: none;
 }
-
 .big_button:hover {
-	background-color: #52f97f;
+  background: var(--blue-hover);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
 }
+.big_button:active { transform: translateY(0); box-shadow: var(--shadow-sm); }
 
-.create_btn:hover{
-	background-color: #32e535;
-}
-
+/* ── Tooltip ───────────────────────────────────────────────── */
 .tooltip {
-	position: relative;
-	display: inline-block;
-	border-bottom: 1px dotted black;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: help;
+  border-bottom: none;
 }
 
 .tooltip .tooltiptext {
-	visibility: hidden;
-	background-color: black;
-	color: #fff;
-	text-align: center;
-	border-radius: 6px;
-	padding: 5px 0;
-
-	/* Position the tooltip */
-	position: absolute;
-	z-index: 1;
+  visibility: hidden;
+  opacity: 0;
+  background: var(--surface);
+  color: var(--label);
+  text-align: left;
+  border-radius: var(--r-lg);
+  padding: var(--sp-4) var(--sp-5);
+  position: absolute;
+  z-index: 200;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 480px;
+  border: 1px solid var(--separator);
+  box-shadow: var(--shadow-lg);
+  font-size: 13px;
+  line-height: 1.65;
+  font-weight: 400;
+  transition: opacity var(--t);
 }
 
-.tooltip:hover .tooltiptext {
-	visibility: visible;
-}
-
-
-.tooltiptext {
-	width: 900px;
-}
-
-#tooltiptext_small {
-	width: 350px;
-}
-
+.tooltip:hover .tooltiptext { visibility: visible; opacity: 1; }
+#tooltiptext_small { width: 300px; }

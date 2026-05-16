@@ -1,56 +1,46 @@
 {% extends "sections/base.html" %}
 {% load static %}
-{% block head_content%}
-	<link rel="stylesheet" href="{% static 'css/delete.css' %}">
-	<link rel="stylesheet" href="{% static 'css/detail.css' %}">
-	<link rel="stylesheet" href="{% static 'css/download.css' %}">
-	<link rel="stylesheet" href="{% static 'css/form.css' %}">
-	<link rel="stylesheet" href="{% static 'css/list.css' %}">
-	<link rel="stylesheet" href="{% static 'css/nav.css' %}">
-	<link rel="stylesheet" href="{% static 'css/page.css' %}">
-	<link rel="stylesheet" href="{% static 'css/schedule.css' %}">
-	<link rel="stylesheet" href="{% static 'css/schedule_settings.css' %}">
-	<link rel="stylesheet" href="{% static 'css/stapher_schedule.css' %}">
-	<link rel="stylesheet" href="{% static 'css/recommendation.css' %}">
-	<link rel="stylesheet" href="{% static 'css/shift_set.css' %}">
-	<link rel="stylesheet" href="{% static 'css/ratio.css' %}">
-	<link rel="stylesheet" href="{% static 'css/cover.css' %}">
-	<link rel="stylesheet" href="{% static 'css/special_shift.css' %}">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+{% block head_content %}
+  <link rel="stylesheet" href="{% static 'css/delete.css' %}">
+  <link rel="stylesheet" href="{% static 'css/detail.css' %}">
+  <link rel="stylesheet" href="{% static 'css/download.css' %}">
+  <link rel="stylesheet" href="{% static 'css/form.css' %}">
+  <link rel="stylesheet" href="{% static 'css/list.css' %}">
+  <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+  <link rel="stylesheet" href="{% static 'css/page.css' %}">
+  <link rel="stylesheet" href="{% static 'css/schedule.css' %}">
+  <link rel="stylesheet" href="{% static 'css/schedule_settings.css' %}">
+  <link rel="stylesheet" href="{% static 'css/stapher_schedule.css' %}">
+  <link rel="stylesheet" href="{% static 'css/recommendation.css' %}">
+  <link rel="stylesheet" href="{% static 'css/shift_set.css' %}">
+  <link rel="stylesheet" href="{% static 'css/ratio.css' %}">
+  <link rel="stylesheet" href="{% static 'css/cover.css' %}">
+  <link rel="stylesheet" href="{% static 'css/special_shift.css' %}">
+  <link rel="stylesheet" href="{% static 'css/progress.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 {% endblock %}
 {% block content %}
-<div id="navbar">
-	<div id="title">staphd.com</div>
-	<div id="user">
-		user: {{ user.get_username }}, <a href="{% url 'logout'%}">Log out</a>
-	</div>
-	<ul id="links">
-		{% if at_build %}
-		<li class="current_link"><a href="{% url 'schedules:schedule'%}">Build</a></li>
-		{% else %}
-		<li><a href="{% url 'schedules:schedule'%}">Build</a></li>
-		{% endif %}
-		{% if at_staph %}
-		<li class="current_link"><a href="{% url 'schedules:stapher-list'%}">Staphers</a></li>
-		{% else %}
-		<li><a href="{% url 'schedules:stapher-list'%}">Staphers</a></li>
-		{% endif %}
-		{% if at_shifts %}
-		<li class="current_link"><a href="{% url 'schedules:shift-list' %}">Shifts</a></li>
-		{% else %}
-		<li><a href="{% url 'schedules:shift-list' %}">Shifts</a></li>
-		{% endif %}
-		{% if at_settings %}
-		<li class="current_link"><a href="{% url 'schedules:settings' %}">Extras</a></li>
-		{% else %}
-		<li><a href="{% url 'schedules:settings' %}">Extras</a></li>
-		{% endif %}
-	</ul>
-</div>
-{% block page %}
-<!-- page content -->
+<nav id="navbar">
+  <div id="title">staphd</div>
+  <ul id="links">
+    <li {% if at_build %}class="current_link"{% endif %}>
+      <a href="{% url 'schedules:schedule' %}">Build</a>
+    </li>
+    <li {% if at_staph %}class="current_link"{% endif %}>
+      <a href="{% url 'schedules:stapher-list' %}">Staphers</a>
+    </li>
+    <li {% if at_shifts %}class="current_link"{% endif %}>
+      <a href="{% url 'schedules:shift-list' %}">Shifts</a>
+    </li>
+    <li {% if at_settings %}class="current_link"{% endif %}>
+      <a href="{% url 'schedules:settings' %}">Extras</a>
+    </li>
+  </ul>
+  <div id="user">
+    <span>{{ user.get_username }}</span>
+    <a href="{% url 'logout' %}">Log out</a>
+  </div>
+</nav>
+{% block page %}{% endblock %}
 {% endblock %}
-
-{% endblock %}
-

@@ -1,17 +1,53 @@
-#delete_form{
-	position: relative;
-	width: 70%;
-	left: 15%;
-	text-align: center;
-	font-size: 1.5em;
+#delete_form {
+  max-width: 480px;
+  margin: var(--sp-12) auto;
+  text-align: center;
+  background: var(--surface);
+  border-radius: var(--r-lg);
+  border: 1px solid var(--separator);
+  box-shadow: var(--shadow-md);
+  padding: var(--sp-8) var(--sp-6);
+  position: static;
+  left: auto;
+  width: auto;
+  font-size: 1em;
 }
 
-#delete_form_btns{
-	padding-top: 10px;
-	text-align: center;
+#delete_form h1 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--label);
+  margin-bottom: var(--sp-5);
+  line-height: 1.4;
 }
 
-#delete_form_btns a {
-	padding: 2px;
-	text-align: center;
+#delete_form h2 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--red);
+  margin-bottom: var(--sp-2);
+}
+
+#delete_form h4 {
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--label-2);
+  margin-bottom: var(--sp-1);
+}
+
+#delete_form_btns {
+  display: flex;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+  padding-top: 0;
+}
+
+#delete_form_btns a,
+#delete_form_btns input {
+  min-width: 100px;
+  padding: 2px 16px;
 }

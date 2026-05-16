@@ -1,31 +1,38 @@
 #recomendation_table {
-	width: 100%;
-	table-layout: fixed;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 3px;
 }
 
-#recomendation_table td{
-	height: 60px;
-	border: 1px;
-	border-color: black;
-	border-style: solid;
-	text-align: center;
+#recomendation_table td {
+  height: 56px;
+  border: 1px solid var(--separator);
+  border-radius: var(--r-sm);
+  text-align: center;
+  background: var(--surface);
+  font-size: 14px;
+  color: var(--label);
 }
 
-#recomendation_table a{
-	text-decoration: none;
-	color: black;
-	pointer-events: auto;
+#recomendation_table a {
+  text-decoration: none;
+  color: var(--blue);
+  pointer-events: auto;
+  font-weight: 500;
 }
+
+#recomendation_table a:hover { text-decoration: underline; }
 
 #winning_cell {
-	font-weight: bold;
-	background-color: #32e535;
+  font-weight: 700;
+  background: var(--green-tint);
+  border-color: var(--green);
 }
 
 #stapher_cell {
-	text-align: right;
+  text-align: right;
+  color: var(--label-2);
 }
 
-.hidden_schedule_table {
-	display: none;
-}
+.hidden_schedule_table { display: none; }

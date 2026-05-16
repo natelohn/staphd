@@ -1,75 +1,108 @@
 #stapher_schedule_msg {
-	margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--label);
+  margin-bottom: var(--sp-4);
 }
 
-.schedule_table, .hidden_schedule_table{
-	width: 100%;
-	background-color: #EEEEEE;
+/* ── Week grid ─────────────────────────────────────────────── */
+.schedule_table, .hidden_schedule_table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 3px;
+  background: transparent;
+  margin-top: var(--sp-4);
 }
 
-#add_shifts_table{
-	width: 100%;
-	background-color: white;
+#add_shifts_table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 3px;
+  background: transparent;
 }
 
-.schedule_table th, #add_shifts_table th, .hidden_schedule_table th{
-	background-color: grey;
-	width: 14.285%; /* 100 / 7 = 14.285 */
+.schedule_table th,
+#add_shifts_table th,
+.hidden_schedule_table th {
+  background: var(--blue);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 4px;
+  border-radius: var(--r-sm);
+  width: 14.285%;
+  text-align: center;
+  border: none;
 }
 
-.scheduled_time{
-	position: relative;
-	background-color: silver;
-	text-align: center;
+.scheduled_time {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--separator);
+  border-radius: var(--r-sm);
+  text-align: center;
+  padding: var(--sp-2) var(--sp-1);
+  font-size: 12px;
+  font-weight: 500;
+  transition: background var(--t);
 }
 
-.schedule_table, .schedule_table th, .scheduled_time, #add_shifts_table th, .add_shift_row_td,
- .hidden_schedule_table, .hidden_schedule_table th{
-	border: 1px;
-	border-color: black;
-	border-style: solid;
+/* Remove old solid-border cascade */
+.schedule_table, .schedule_table th, .scheduled_time,
+#add_shifts_table th, .add_shift_row_td,
+.hidden_schedule_table, .hidden_schedule_table th {
+  border-color: transparent;
 }
+
+.scheduled_time { border: 1px solid var(--separator); }
 
 #delete_icon {
-	position: absolute;
-	top:0;
-	left:0;
-	color: #C50101;
-	background-color: silver;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  color: var(--red);
+  background: var(--surface);
+  border-radius: var(--r-sm);
+  padding: 1px 4px;
+  font-size: 11px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--t);
 }
 
-#delete_icon {
-	visibility: hidden;
+.scheduled_time:hover #delete_icon { visibility: visible; opacity: 1; }
+
+.add_shift_row_td {
+  background: var(--fill-2);
+  border: 1px dashed var(--separator-opaque);
+  border-radius: var(--r-sm);
+  text-align: center;
+  height: 56px;
+  font-size: 13px;
+  color: var(--label-2);
+  transition: background var(--t);
 }
 
-.scheduled_time:hover #delete_icon {
-	visibility: visible;
-}
-
-.add_shift_row_td{
-	background-color: silver;
-	text-align: center;
-	height: 60px;
-}
-
+.add_shift_row_td:hover { background: var(--fill); }
 
 #empty_cell {
-	background-color: white;
-	pointer-events: none;
+  background: transparent;
+  pointer-events: none;
+  border: none;
 }
 
-
 #new_shift {
-	background-color: #32e535;
+  background: var(--green-tint);
+  border-color: var(--green);
 }
 
 #new_shift_link {
-	text-decoration: none;
-	color: black;
+  text-decoration: none;
+  color: var(--label);
+  font-size: 12px;
+  font-weight: 500;
 }
 
-#new_shift_link:hover {
-	text-decoration: underline;
-}
+#new_shift_link:hover { text-decoration: underline; }
 
-
+.hidden_schedule_table { display: none; }

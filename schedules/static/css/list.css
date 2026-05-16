@@ -1,164 +1,221 @@
-.select_header h1{
-    height: 100%;
-    font-size: 2em;
-    text-align: left;
-    margin-top: 10px;
-}
-
-.select_list {
-    width: 100%;
-}
-
-.schedule_links {
-    text-align: center;
-    border-top: 1px;
-    border-style: solid;
-    border-color: black;
-    width: 50%;
-}
-
-.schedule_links li{
-    display: inline-block;
-    margin-right: 5px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
-.schedule_links h2{
-    width: 300px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    background-color: #EEEEEE;
-}
-
-
+/* ── List header ──────────────────────────────────────────── */
 .list_header {
-    /* Positioning */
-    position: relative;
-    width: 100%;
-    height: 80px;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+  position: static;
+  width: auto;
+  height: auto;
 }
 
-.list_header h1{
-    /* Positioning */
-    position: absolute;
-    width: 20%;
-    height: 100%;
-    font-size: 4em;
-
-    /* Style */
-    text-align: left;
-    margin-left: 10px;
-    margin-top: 10px;
+.list_header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--label);
+  margin-right: auto;
+  position: static;
+  width: auto;
+  height: auto;
+  margin-left: 0;
+  margin-top: 0;
 }
 
 .list_header form {
-    position: absolute;
-    height: 100%;
-    width: 75%;
-    left: 25%;
-    top: 0%;
-
-    /* Style */
-    text-align: right;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  position: static;
+  width: auto;
+  height: auto;
+  left: auto;
+  text-align: left;
 }
 
-.list_header input, .list_header button , .list_header a{
-	/* Positioning */
-    position: absolute;
-    height: 50%;
-    top: 50%;
-    font-size: 1.75em;
+.list_header input[type="text"],
+.list_header input:not([type="submit"]) {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: var(--r-pill);
+  border: 1px solid var(--separator-opaque) !important;
+  background: var(--surface);
+  color: var(--label);
+  font-family: var(--font);
+  font-size: 15px;
+  width: 260px;
+  outline: none;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--t), box-shadow var(--t);
+  position: static;
+  top: auto;
+  left: auto;
+  text-align: left;
 }
 
-.list_header input {
-	/* Positioning */
-    width: 60%;
-    left: 0%;
-
-    /* Style */
-    padding-right: 5px;
-    outline: 1px solid black;
-    text-align: right;
+.list_header input[type="text"]:focus,
+.list_header input:not([type="submit"]):focus {
+  border-color: var(--blue) !important;
+  box-shadow: 0 0 0 3px var(--blue-tint);
 }
+
+.list_header input::placeholder { color: var(--label-3); }
 
 .list_header button {
-	/* Positioning */
-    width: 15%;
-    left: 60%;
-    margin-left: 10px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: var(--r-pill);
+  background: var(--fill);
+  color: var(--label);
+  font-family: var(--font);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background var(--t);
+  position: static;
+  top: auto;
+  left: auto;
+  width: auto;
+  margin-left: 0;
+}
+.list_header button:hover { background: var(--fill-3); }
 
-    /* Style */
-    text-align: center;
+.list_header a {
+  position: static;
+  left: auto;
+  top: auto;
+  width: auto;
+  height: auto;
+  margin-left: 0;
+  font-size: 15px;
 }
 
-.list_header a{
-	/* Positioning */
-	width: 10%;
-    height: 36px;
-	left: 80%;
-	margin-left: 35px;
+/* ── Search info tooltip ──────────────────────────────────── */
+#search_info { top: auto; left: auto; order: -1; }
 
-    /* Style */
-    font-size: 1.75em;
-    text-align: center;
-}
-
+/* ── List body ────────────────────────────────────────────── */
 .lists {
-	/* Positioning */
-	position: relative;
-	width: 85%;
-	left: 7.5%;
-	top: 25px;
-
-    /* Style */
-    list-style-type: none;
-}
-
-#stapher_list {
-    /* Positioning */
-    width: 40%;
+  position: static;
+  width: 100%;
+  left: auto;
+  top: auto;
+  overflow: hidden;
 }
 
 .left_list {
-	/* Positioning */
-	position: absolute;
-	width: 25%;
-
-	/* Style */
+  position: static;
+  float: left;
+  width: 220px;
+  margin-right: var(--sp-5);
 }
 
 .right_list {
-	/* Positioning */
-	position: absolute;
-	width: 60%;
-	left: 30%;
-
-	/* Style */
+  position: static;
+  margin-left: 240px;
+  width: auto;
+  left: auto;
 }
 
+#stapher_list {
+  width: 100%;
+  max-width: 640px;
+  position: static;
+}
 
-
+/* ── List items ───────────────────────────────────────────── */
 .list_btn {
-	display: block;
-	width: 100%;
-	margin-bottom: 2.5px;
-	/* Style */
-	/*background-color: purple;*/
+  display: flex;
+  width: 100%;
+  text-align: left;
+  justify-content: flex-start;
+  padding: 11px 14px;
+  margin-bottom: 3px;
+  background: var(--surface);
+  color: var(--label);
+  border-radius: var(--r-md);
+  border: 1px solid var(--separator);
+  font-size: 15px;
+  font-weight: 400;
+  box-shadow: var(--shadow-sm);
 }
-
-
-#search_info {
-    top: 80px;
-    left: 40px;
-}
-
+.list_btn:hover { background: var(--fill-2); }
 
 #non_active {
-    background-color: red;
+  color: var(--red) !important;
+  border-color: rgba(255,59,48,0.25) !important;
+}
+#non_active:hover { background: var(--red-tint) !important; }
+
+/* ── Sort/key headers ─────────────────────────────────────── */
+.left_list h2,
+.right_list h2,
+.select_list h1 {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--label-3);
+  margin-bottom: var(--sp-2);
+  margin-top: var(--sp-4);
 }
 
-#non_active:hover {
-    background-color: firebrick;
+.right_list h3 {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--label-2);
+  margin-bottom: var(--sp-3);
+}
+
+/* ── Schedule select page ─────────────────────────────────── */
+.select_header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--sp-5);
+  padding-bottom: var(--sp-5);
+  border-bottom: 1px solid var(--separator);
+  height: auto;
+}
+
+.select_header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  flex: 1;
+  margin-top: 0;
+}
+
+.select_list { width: 100%; }
+
+.schedule_links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-3) 0;
+  border: none;
+  border-bottom: 1px solid var(--separator);
+  width: 100%;
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+.schedule_links h2 {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  background: none;
+  border: none;
+  padding: 0;
+  width: auto;
+  color: var(--label);
+}
+
+.schedule_links li {
+  display: flex;
+  align-items: center;
+  margin: 0;
 }

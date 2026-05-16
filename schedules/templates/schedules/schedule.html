@@ -1,35 +1,44 @@
 {% extends "sections/nav.html" %}
 {% block page %}
 <div id="page">
-	<div id="schedule_settings">
-		<a class="button" href="{% url 'schedules:settings-select' %}">Schedule Building Settings</a>
-	</div>
-	<div id="update_excel_form">
-		{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-		<form action="{% url 'schedules:update' %}" method="post">
-			{% csrf_token %}
-			<input class="button" type="submit" value="Update Excel Files">
-		</form>
-		{% if update_error_message %}<p><strong>{{ update_error_message }}</strong></p>{% endif %}
-	</div>
-	<div id="schedule_information">
-		{% if schedule %}
-		<h2><strong>{{ schedule }}</strong>{%if percent_complete %} - {{percent_complete}}% complete. {% endif %}</h2>
-		<a class="button" href="{% url 'schedules:get-ratio' %}">Check Ratios</a>
-		{% else %}
-		<h2><strong>No Current Schedules</strong></h2>
-		{% endif %}
-		<a class="button" href="{% url 'schedules:select' %}">Select New Schedules</a>
-	</div>
-	<div id="build_schedule_form">
-		{% if error_message %}<h5><strong>{{ error_message }}</strong></h5>{% endif %}
-		<form action="{% url 'schedules:building' %}" method="post">
-			{% csrf_token %}
-			<input class="big_button" type="submit" value="Build Schedules">
-		</form>
-		{% if schedule_error_message %}<p><strong>{{ schedule_error_message }}</strong></p>{% endif %}
-	</div>
-	{% block progress %}{% endblock %}
+
+  {# ── Current schedule status card ── #}
+  <div id="schedule_information">
+    <div style="flex:1">
+      {% if schedule %}
+        <h2>{{ schedule }}{% if percent_complete %} &mdash; {{ percent_complete }}% complete{% endif %}</h2>
+      {% else %}
+        <h2>No schedule selected</h2>
+      {% endif %}
+    </div>
+    <a class="button" href="{% url 'schedules:select' %}">Select Schedule</a>
+    {% if schedule %}
+      <a class="button" href="{% url 'schedules:get-ratio' %}">Check Ratios</a>
+    {% endif %}
+  </div>
+
+  {# ── Primary CTA ── #}
+  <div id="build_schedule_form">
+    {% if error_message %}<p style="color:var(--red);margin-bottom:var(--sp-3)">{{ error_message }}</p>{% endif %}
+    <form action="{% url 'schedules:building' %}" method="post">
+      {% csrf_token %}
+      <button class="big_button" type="submit">Build Schedules</button>
+    </form>
+    {% if schedule_error_message %}<p style="color:var(--red);margin-top:var(--sp-2)">{{ schedule_error_message }}</p>{% endif %}
+  </div>
+
+  {# ── Secondary actions ── #}
+  <div id="schedule_settings">
+    <a class="button" href="{% url 'schedules:settings-select' %}">Schedule Settings</a>
+  </div>
+  <div id="update_excel_form">
+    {% if update_error_message %}<p style="color:var(--red);font-size:13px">{{ update_error_message }}</p>{% endif %}
+    <form action="{% url 'schedules:update' %}" method="post" style="display:inline">
+      {% csrf_token %}
+      <button class="button" type="submit">Update Excel</button>
+    </form>
+  </div>
+
+  {% block progress %}{% endblock %}
 </div>
 {% endblock %}
-

@@ -1,62 +1,67 @@
+/* ── Special shift ranking table ──────────────────────────── */
+#ranking_table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 4px;
+}
+
+#ranking_table td {
+  background: var(--surface);
+  border-top: 1px solid var(--separator);
+  border-bottom: 1px solid var(--separator);
+  padding: 10px 14px;
+}
+
+#ranking_table td:first-child {
+  border-left: 1px solid var(--separator);
+  border-radius: var(--r-md) 0 0 var(--r-md);
+}
+
+#ranking_table td:last-child {
+  border-right: 1px solid var(--separator);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+}
 
 #ranking_table_rank {
-	padding-left: 5px;
-	padding-right: 5px;
-	text-align: center;
-	font-size: 1.5em;
+  padding: var(--sp-2) var(--sp-3);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--label);
 }
 
-#ranking_table td{
-	border: 1px;
-	border-color: black;
-	border-style: solid;
-	background-color: silver;
+#ranking_table_text {
+  font-size: 15px;
+  color: var(--label);
+  padding: var(--sp-2) var(--sp-3);
 }
 
-#ranking_table_text{
-	padding-left: 5px;
-	padding-right: 5px;
-	font-size: 1.35em;
-}
-
-#ranking_table i{
-	color: black;
-}
-
-#ranking_table i:hover{
-	color: white;
-}
+#ranking_table i { color: var(--blue); }
+#ranking_table i:hover { color: var(--blue-hover); }
 
 #rating_link, #add_link, #remove_link {
-	text-decoration: none;
-	color: black;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-#rating_link:hover, #add_link:hover, #remove_link:hover {
-	text-decoration: underline;
-	font-weight: bold;
-}
+#rating_link { color: var(--label); }
+#add_link    { color: var(--blue); }
+#remove_link { color: var(--red); }
 
-#add_link:hover {
-	color: green; 
-}
-
-#remove_link:hover {
-	color: red; 
-}
+#rating_link:hover  { text-decoration: underline; }
+#add_link:hover     { text-decoration: underline; }
+#remove_link:hover  { text-decoration: underline; }
 
 #special_shift_btn {
-	position: fixed;
-	top: 180px;
-	left: 50%;
+  position: fixed;
+  top: calc(var(--nav-height) + var(--sp-10));
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-.preferences_div{
-	display: inline-block;
-}
+.preferences_div { display: inline-block; }
 
-#preferences_div_left{
-	left: 20%;
-	text-align: center;
+#preferences_div_left {
+  text-align: center;
+  margin-left: 20%;
 }
-

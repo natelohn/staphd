@@ -1,104 +1,72 @@
-#ratio_header div{
-	display: inline-block;
+#ratio_header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
 }
 
+#ratio_header div { display: inline-block; }
+
+/* ── Ratio table ───────────────────────────────────────────── */
 .ratio_table {
-	width: 100%;
-	background-color: #EEEEEE;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 3px;
+  background: transparent;
 }
 
 .ratio_table th {
-	background-color: grey;
-	width: 14.285%; /* 100 / 7 = 14.285 */
+  background: var(--surface-2);
+  color: var(--label);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 4px;
+  border-radius: var(--r-sm);
+  text-align: center;
+  width: 14.285%;
+  border: none;
 }
 
-.ratio_time{
-	position: relative;
-	background-color: silver;
-	text-align: center;
-	height: 50px;
+.ratio_time {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--separator);
+  border-radius: var(--r-sm);
+  text-align: center;
+  height: 48px;
+  font-size: 12px;
+  transition: background var(--t);
 }
 
-.ratio_table, .ratio_table th, .ratio_time{
-	border: 1px;
-	border-color: black;
-	border-style: solid;
-}
+.ratio_table, .ratio_table th, .ratio_time { border-color: transparent; }
+.ratio_time { border: 1px solid var(--separator); }
 
-#ratio_link {
-	text-decoration: none;
-	color: black;
-}
+#ratio_link { text-decoration: none; color: var(--label); font-size: 12px; }
+#ratio_link:hover { text-decoration: underline; }
 
-#ratio_link:hover {
-	text-decoration: underline;
-}
+/* Status colors */
+#clean_ratio    { background: var(--green-tint); border-color: var(--green); }
+#at_limit_ratio { background: rgba(255,204,0,0.18); border-color: var(--yellow); }
+#bad_ratio      { background: var(--red-tint); border-color: var(--red); }
 
-#clean_ratio {
-	background-color: green;
-}
-
-
-#at_limit_ratio {
-	background-color: yellow;
-}
-
-
-#bad_ratio {
-	background-color: red;
-}
-
-
+/* ── Window table ──────────────────────────────────────────── */
 .ratio_window_table {
-	width: 100%;
-	height: 50px;
-	table-layout: fixed;
+  width: 100%;
+  height: 48px;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 3px;
 }
 
-.ratio_window_table td{
-	border: 1px;
-	border-color: black;
-	border-style: solid;
-}
+.ratio_window_table td { border-radius: var(--r-sm); border: none; }
 
-#ratio_grey {
-	background-color: grey;
-}
+#ratio_grey     { background: var(--fill-3); }
+#ratio_green    { background: var(--green-tint); border: 1px solid var(--green); }
+#ratio_yellow   { background: rgba(255,204,0,0.18); border: 1px solid var(--yellow); }
+#ratio_red      { background: var(--red-tint); border: 1px solid var(--red); }
+#ratio_dark_red { background: var(--red); }
 
-#ratio_green {
-	background-color: green;
-}
+#empty_cell { border: none; background: transparent; }
 
-#ratio_yellow {
-	background-color: yellow;
-}
-
-#ratio_red {
-	background-color: red;
-}
-
-#ratio_dark_red {
-	background-color: darkred;
-}
-
-#empty_cell {
-	border: 0px;
-	border-color: white;
-	border-style: none;
-}
-
-
-#ratio_btn {
-	bottom: 15px;
-}
-
-
-
-
-
-
-
-
-
-
-
+#ratio_btn { margin-top: var(--sp-4); }

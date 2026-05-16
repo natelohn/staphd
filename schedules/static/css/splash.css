@@ -1,79 +1,108 @@
 .splash-bg {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%; 
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   overflow: hidden;
-  z-index:-1;
-  background-attachment: fixed;  
 }
 
 .splash-bg__video {
-  /* Make video to at least 100% wide and tall */
-  min-width: 100%; 
-  min-height: 100%; 
-
-  /* Setting width & height to auto prevents the browser from stretching or squishing the video */
+  min-width: 100%;
+  min-height: 100%;
   width: auto;
   height: auto;
-
-  /* Center the video */
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
-  background-attachment: fixed;  
+  transform: translate(-50%, -50%);
 }
 
 .splash-header {
-	width: 360px;
-	margin: auto;
-	width: auto;
-	height: auto;
-	text-align: center;
+  text-align: center;
+  padding-top: 10vh;
+  margin-bottom: var(--sp-8);
 }
 
-
-.splash-header h1{
-	font-size: 6em;
-	font-family: "Roboto", sans-serif;
-	color: white;
-	text-shadow: 1px 1px #000000
+.splash-header h1 {
+  font-size: 52px;
+  font-weight: 700;
+  font-family: var(--font);
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  letter-spacing: -1px;
 }
 
 .splash-page {
-	width: 360px;
-	margin: auto;
+  display: flex;
+  justify-content: center;
 }
+
 .splash-message {
-	position: relative;
-	z-index: 1;
-	max-width: 360px;
-	margin: 0 auto 100px;
-	padding: 45px;
-	text-align: center;
-	font-family: "Roboto", sans-serif;
+  position: relative;
+  z-index: 1;
+  width: 360px;
+  padding: var(--sp-8);
+  background: rgba(255,255,255,0.14);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-radius: var(--r-xl);
+  border: 1px solid rgba(255,255,255,0.22);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.28);
+  text-align: center;
 }
-.splash-message input {
-	outline: 0;
-	background: #f2f2f2;
-	width: 100%;
-	border: 0;
-	margin: 0 0 15px;
-	padding: 15px;
-	box-sizing: border-box;
-	font-size: 14px;
-	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+.splash-message input[type="text"],
+.splash-message input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: 13px 16px;
+  margin-bottom: var(--sp-3);
+  border-radius: var(--r-md);
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.88);
+  font-family: var(--font);
+  font-size: 16px;
+  color: #1C1C1E;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color var(--t), box-shadow var(--t);
+}
+
+.splash-message input[type="text"]:focus,
+.splash-message input[type="password"]:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(0,122,255,0.28);
+}
+
+.splash-message input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin-top: var(--sp-2);
+  border-radius: var(--r-md);
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: background var(--t), transform 0.1s ease;
 }
 
 .splash-message input[type="submit"]:hover {
-    border: 1px solid #999;
-    color: #000000;
+  background: var(--blue-hover);
+  transform: translateY(-1px);
+  border: none;
+  color: #fff;
 }
 
+.splash-message h1, .splash-message a {
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.35);
+}
 
-.splash-message h1, a{
-	color: white;
-	text-shadow: 1px 1px #000000
+.splash-message p {
+  color: rgba(255,255,255,0.88);
+  font-size: 14px;
+  margin-top: var(--sp-3);
 }
