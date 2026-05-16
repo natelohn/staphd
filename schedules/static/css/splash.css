@@ -1,3 +1,6 @@
+/* The video is position:fixed z-index:-1; body must be transparent for it to show through */
+html, body { background: transparent !important; }
+
 .splash-bg {
   position: fixed;
   inset: 0;
